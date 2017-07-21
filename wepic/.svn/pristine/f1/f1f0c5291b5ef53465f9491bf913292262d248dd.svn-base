@@ -1,0 +1,1524 @@
+#appointProjectCon{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0;
+	text-align:left;
+	width:1180px;
+	margin:0 auto;
+	padding-bottom: 50px;
+	/*height:1530px;*/
+	}
+
+
+
+
+/*详细信息*/	
+#appointProjectConInfo{
+	position:relative;
+	top:0px;
+	left:0;
+	margin-top:10px;
+	width:857px;
+	text-align:left;
+	/*height:815px;*/
+	background:#FFFFFF;
+	}	
+
+/*招标状态*/
+#appointProjectConInfo .divStage{
+	position:relative;
+	top:0px;
+	left:0;
+	width:857px;
+	height:100px;
+	margin:0 auto;
+	border-bottom:1px solid #e0e0e0;
+	}
+#appointProjectConInfo .divStage .left{
+	width:500px;
+	height:100px;
+	float:left;
+	border-right:1px solid #e0e0e0;
+	}	
+#appointProjectConInfo .divStage .left .character{
+	position:relative;
+	top:0px;
+	left:0;
+	height:37px;
+	line-height:45px;
+	font-family: "微软雅黑";
+	padding-left:30px;
+	margin-top:31px;
+	}
+#appointProjectConInfo .divStage .left .character .active{
+	color:#ea2e00;
+	}
+#appointProjectConInfo .divStage .left .character span{
+	margin-left:22px;}
+#appointProjectConInfo .divStage .left .ico{
+	position:relative;
+	top:0px;
+	left:0;
+	height:30px;
+	width:320px;
+	}
+#appointProjectConInfo .divStage .left .ico .one{
+	position:absolute;
+	top:5px;
+	left:0px;
+	width:69px;
+	height:27px;
+	background:url(../../../../back/pubimg/images/trainTickets.png) no-repeat 0 0;
+	}
+#appointProjectConInfo .divStage .left .ico .two{
+	position:absolute;
+	top:0px;
+	left:65px;
+	width:8px;
+	height:15px;
+	background:url(../../../images/11.png) no-repeat 0 -170px;
+	}
+#appointProjectConInfo .divStage .left .ico .three{
+	position:absolute;
+	top:5px;
+	left:73px;
+	width:55px;
+	height:10px;
+	border-top:1px solid #e9e9e9;
+	}
+#appointProjectConInfo .divStage .left .ico .four{
+	position:absolute;
+	top:0px;
+	left:127px;
+	width:8px;
+	height:15px;
+	background:url(../../../images/11.png) no-repeat 0 -151px;
+	}
+#appointProjectConInfo .divStage .left .ico .five{
+	position:absolute;
+	top:5px;
+	left:135px;
+	width:55px;
+	height:10px;
+	border-top:1px solid #e9e9e9;
+	}
+#appointProjectConInfo .divStage .left .ico .six{
+	position:absolute;
+	top:0px;
+	left:189px;
+	width:8px;
+	height:15px;
+	background:url(../../../images/11.png) no-repeat 0 -151px;
+	}
+#appointProjectConInfo .divStage .left .ico .seven{
+	position:absolute;
+	top:5px;
+	left:197px;
+	width:55px;
+	height:10px;
+	border-top:1px solid #e9e9e9;
+	}
+#appointProjectConInfo .divStage .left .ico .eight{
+	position:absolute;
+	top:0px;
+	left:251px;
+	width:8px;
+	height:15px;
+	background:url(../../../images/11.png) no-repeat 0 -151px;
+	}
+
+
+#appointProjectConInfo .divStage .right{
+	width:350px;
+	height:100px;
+	float:left;
+	}
+#appointProjectConInfo .divStage .right .character{
+	height: 20px;
+	color: #474747;
+    font-family: "微软雅黑";
+    font-size: 18px;
+	padding-left:20px;
+	padding-top:10px;
+	}	
+#appointProjectConInfo .divStage .right .account_info_com{
+	position:relative;
+	top:0;
+	left:0;
+	width: 330px;
+	height: 70px;
+	float:left;
+	}	
+	
+#appointProjectConInfo .divStage .right .account_info_com  .headImg{
+	width: 60px;
+	height: 54px;
+    left: 20px;
+    position: absolute;
+    top: 10px;
+	}
+#appointProjectConInfo .divStage .right .account_info_com .headImg .headImgCon{
+	width: 40px;
+	height: 40px;
+    left: 9px;
+    position: absolute;
+    top: 7px;
+	/*background:url(../../../back/pubimg/images/defaultHead_80.png) 0 0 no-repeat;*/
+	}
+#appointProjectConInfo .divStage .right .account_info_com  .headImg .head{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}
+#appointProjectConInfo .divStage .right .account_info_com  .headImg .radius{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}	
+#appointProjectConInfo .divStage .right .account_info_com  .info{
+	width: 250px;
+	height: 54px;
+    left: 80px;
+    position: absolute;
+    top: 10px;
+	}
+#appointProjectConInfo .divStage .right .account_info_com  .info .name{
+	height: 30px;
+	line-height: 30px;
+	color:#000;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+#appointProjectConInfo .divStage .right .account_info_com  .info .detail .job{
+	float:right;
+	}
+
+
+/*招标状态*/
+
+
+
+/*拍摄内容*/
+#appointProjectConInfo .divShoot{
+	position:relative;
+	top:0px;
+	left:0;
+	width:857px;
+	height:40px;
+	border-bottom:1px solid #ececec;
+	}
+
+#appointProjectConInfo .divShoot table{
+	margin-top:15px;
+	}
+#appointProjectConInfo .divShoot .td1{
+	width:80px;
+	text-align:right;
+	}
+#appointProjectConInfo .divShoot table .shootC {
+	border-radius: 2px;
+    color: #FFFFFF;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 8px;
+	font-family: "微软雅黑";
+	}
+#appointProjectConInfo .divShoot table .shootCP{
+    background: #e92f00;
+	}
+#appointProjectConInfo .divShoot table .productType{
+    background: #ed9f23;
+	}
+
+/*无人应约*/
+#appointProjectConInfo .divShoot table .shootCw{
+    background: #898989;
+	}
+/*无人应约*/
+
+
+/*拍摄内容*/
+
+
+
+
+
+/*标题部分*/
+#appointProjectConInfo .divProjectTitle{
+	position:relative;
+	top:0px;
+	left:0;
+	width:857px;
+	height:110px;
+	border-bottom:1px solid #ececec;
+	}	
+#appointProjectConInfo .divProjectTitle .titleTop{
+	position:relative;
+	top:0px;
+	left:0;
+	width:757px;
+	height:60px;
+	font-family: "微软雅黑";
+	border-bottom:1px solid #ececec;
+	margin-left:77px;
+	}
+#appointProjectConInfo .divProjectTitle .titleBottom{
+	position:relative;
+	top:0px;
+	left:0;
+	text-align:left;
+	width:757px;
+	height:30px;
+	font-family: "宋体";
+	margin-left:85px;
+	}
+
+#appointProjectConInfo .divProjectTitle .titleTop .title{
+	position: absolute;
+	bottom:5px;
+	left:10px;
+	
+	}
+
+#appointProjectConInfo .divProjectTitle .titleTop .title .topName{
+	/*display:inline-block;*/
+	height: 38px;
+	font-size:21px;
+	_line-height: 28px;
+	color:#000;
+	}	
+#appointProjectConInfo .divProjectTitle .titleTop .title .privacyI{
+	width:15px;
+	height: 17px;
+	display:inline-block;
+	margin-left:10px;
+	background:url(../../../images/privacy.png) 0 0 no-repeat;
+	}	
+#appointProjectConInfo .divProjectTitle .titleTop .topIco{
+	/*width:400px;*/
+	position: absolute;
+	bottom:5px;
+	right:0;
+	text-align:right;
+	}
+#appointProjectConInfo .divProjectTitle .titleTop .topIco a{
+	padding-left: 20px;
+	margin-right: 15px;
+	color: #848484;
+	}	
+#appointProjectConInfo .divProjectTitle .titleTop .topIco .view{
+	background: url(../../../images/11.png) no-repeat 0 0;
+	}
+#appointProjectConInfo .divProjectTitle .titleTop .topIco .collect{
+	background: url(../../../images/11.png) no-repeat 0 -19px;
+	}
+#appointProjectConInfo .divProjectTitle .titleTop .topIco .good{
+	background: url(../../../images/11.png) no-repeat 0 -39px;
+	}
+	
+	
+#appointProjectConInfo .divProjectTitle .titleBottom table{
+	margin-top:8px;
+	}	
+
+
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdone{
+	width:270px;
+	}
+	
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdone .in{
+	border-radius: 2px;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 2px 5px;
+	background: #b6b6b6;
+	}
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdone .ined{
+	border-radius: 2px;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 2px 5px;
+	background: #f6b37f;
+	}
+	
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdtwo{
+	width:220px;
+	}
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdthree{
+	width:120px;
+	}
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdfour{
+	width:290px;
+	}
+#appointProjectConInfo .divProjectTitle .titleBottom table .tdfive{
+	width:160px;
+	}
+
+	
+#daojishi{
+	font-family:"Arial";
+	}
+#daojishi input{
+	font-family:"Arial";
+	border:0;
+	disabled:ture;
+	}
+#daojishi .daojishiT{
+	width:15px;
+	}
+	
+	
+#appointProjectConInfo .divProjectTitle .titleRightps{
+	height: 50px;
+    left: 30px;
+    position: absolute;
+    top: 35px;
+    width: 50px;
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px 0px;
+	}
+#appointProjectConInfo .divProjectTitle .titleRightzj{
+	height: 50px;
+    left: 30px;
+    position: absolute;
+    top: 35px;
+    width: 50px;
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px -153px;
+	}	
+#appointProjectConInfo .divProjectTitle .titleRightmt{
+	height: 50px;
+    left: 30px;
+    position: absolute;
+    top: 35px;
+    width: 50px;
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px -102px;
+	}
+#appointProjectConInfo .divProjectTitle .titleRightwp{
+	height: 50px;
+    left: 30px;
+    position: absolute;
+    top: 35px;
+    width: 50px;
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px -51px;
+	}
+/*标题部分*/	
+
+
+
+
+/*招标*/
+#appointProjectConInfo .divInviteBids{
+	position:relative;
+	top:0px;
+	left:0;
+	width:857px;
+	height:92px;
+	margin:0 auto;
+	padding-top:10px;
+	border-bottom:1px solid #f0f0f0;
+	}
+#appointProjectConInfo .divInviteBids table{
+	height:90%;
+	/*width:100%;*/
+	}
+#appointProjectConInfo .divInviteBids table td{
+	height:20px;
+	color:#848484;
+	font-family: "宋体";
+	}
+#appointProjectConInfo .divInviteBids table .icobid{
+	width:80px;
+	padding-right:10px;
+	}
+#appointProjectConInfo .divInviteBids table .icobid div{
+	background: url(../../../images/yuepaiicon.png) no-repeat scroll 0 -130px transparent;
+    height: 50px;
+    width: 50px;
+	margin-left:28px;
+	}
+	
+#appointProjectConInfo .divInviteBids table .td2{
+	width:65px;
+	}
+#appointProjectConInfo .divInviteBids table .td3{
+	width:230px;
+	color:#000000;
+	font-family:Arial;
+	}
+#appointProjectConInfo .divInviteBids table .td3 a{
+	margin-left:20px;
+	padding-left:20px;
+	background: url(../../../images/yuepaiicon02.png) no-repeat 0 -65px;
+	/*
+	日程冲突时用此图标
+	background:url(../../../../pubimg/images/schedule.gif) 0 0 no-repeat;
+	*/
+	}
+
+#appointProjectConInfo .divInviteBids table .td4{
+	width:65px;
+	}
+#appointProjectConInfo .divInviteBids table .td5{
+	width:260px;
+	color:#000000;
+	font-family:Arial;
+	}
+#appointProjectConInfo .divInviteBids table .shootBg{
+	display:inline-block;
+	margin-left:10px;
+	color:#fff;
+	padding:2px 5px;
+	border-radius:2px;
+	}
+#appointProjectConInfo .divInviteBids table .td5 .shootType{
+	background:#79ba44;
+	}
+#appointProjectConInfo .divInviteBids table .td5 .shootgp{
+	background:#4578b9;
+	}
+#appointProjectConInfo .divInviteBids table .td3 .shootjj{
+	background:#b99825;
+	}
+
+
+
+/*招标*/
+
+
+/*中标*/
+#appointProjectConInfo .divWinBids{
+	position:relative;
+	top:0px;
+	left:0;
+	width:796px;
+	height:70px;
+	margin:0 auto;
+	padding-top:20px;
+	border-bottom:1px solid #f0f0f0;
+	}
+
+	
+
+
+#appointProjectConInfo .divWinBids table .td1 .icoWin{
+	background: url(../../../images/yuepaiicon.png) no-repeat scroll 0 -175px transparent;
+    height: 50px;
+    width: 50px;
+	}
+#appointProjectConInfo .divWinBids table .td1,
+#appointProjectConInfo .divWinBids table .td2{
+    width: 60px;
+	padding-right:10px;
+	}
+#appointProjectConInfo .divWinBids table .td2 .tocj{
+	font-size:18px;
+	font-family:'Arial';
+	color:#000000;
+	}
+#appointProjectConInfo .divWinBids table .td3 a{
+	background: url(../../../images/yuepaiicon02.png) no-repeat 0 -80px;
+    display: inline-block;
+    height: 20px;
+    width: 55px;
+	}
+#appointProjectConInfo .divWinBids table .td4 .percj{
+	font-size:15px;
+	font-family:'Arial';
+	color:#000;
+	}
+/*中标*/
+
+
+
+
+/*报价应约操作*/
+#appointProjectConInfo .divOption{
+	position:relative;
+	top:0px;
+	left:0;
+	width:796px;
+	height:90px;
+	margin:0 auto;
+	border-bottom:1px solid #f0f0f0;
+	}
+#appointProjectConInfo .divOption .divOption_link{
+	position:absolute;
+	bottom:10px;
+	left:0;
+	width:299px;
+	height:15px;
+	line-height:15px;
+	}
+
+#appointProjectConInfo .divOption .divOption_link .report{
+	color:#7f7f7f;
+	margin-left:12px;
+	padding-left:25px;
+	padding-bottom:5px;
+	background: url(../../../images/yuepaiicon02.png) no-repeat 0px -22px;
+	}
+#appointProjectConInfo .divOption .option_submit{
+	position:absolute;
+	top:32px;
+	right:0px;
+	width:350px;
+	height:36px;
+	text-align:right;
+	}
+
+#appointProjectConInfo .divOption .option_submit .white_but{
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -836px;
+	cursor: pointer;
+	width: 143px;
+	height: 36px;
+	color: white;
+	border: 0px;
+	font-family: "微软雅黑";
+	font-size: 17px;
+	color: #242424;
+	/*text-shadow: 1px 1px 1px black;*/
+	}
+#appointProjectConInfo .divOption .option_submit .white_but:hover{
+	background: url(../../../images/buttonGroup01.png) no-repeat 0 -872px;
+	}
+#appointProjectConInfo .divOption .option_submit .white_but:active{
+	background: url(../../../images/buttonGroup01.png) no-repeat 0 -908px;
+	}
+#appointProjectConInfo .divOption .option_submit .red_but{
+	background: url(../../../images/buttonGroup01.png) no-repeat 0 -718px;
+	cursor: pointer;
+	margin-left:20px;
+	width: 143px;
+	height: 36px;
+	color: white;
+	border:0;
+	font-family: "微软雅黑";
+	font-size: 17px;
+	}
+#appointProjectConInfo .divOption .option_submit .red_but:hover{
+	background: url(../../../images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+#appointProjectConInfo .divOption .option_submit .red_but:active{
+	background: url(../../../images/buttonGroup01.png) no-repeat 0 -790px;
+	color: #D6D6D6;
+	text-shadow: 1px 1px 1px black;
+	}
+/*报价应约操作*/
+
+#appointProjectConInfo .divExplain{
+	position:relative;
+	top:0px;
+	left:0;
+	width:796px;
+	height:70px;
+	margin:0 auto;
+	padding-top:10px;
+	line-height:22px;
+	}
+
+
+
+
+
+
+
+
+
+/*右边栏*/
+#divApointProjectRight{
+	position:absolute;
+	top:0px;
+	left:865px;
+	width:314px;
+	/*height:1000px;*/
+	}
+
+
+/*操作项目*/
+#divApointProjectRight .operate{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:314px;
+	height:96px;
+	background:#FFFFFF;
+	}
+	
+#divApointProjectRight .operate p{
+	text-align:center;
+	color:#848484;
+	}
+#divApointProjectRight .operate a{
+	display:inline-block;
+	}
+#divApointProjectRight .operate .previousPage,
+#divApointProjectRight .operate .release{
+	border-right:1px solid #ececec;
+	width:108px;
+	height:96px;
+	float:left;
+	}
+#divApointProjectRight .operate .previousPage a,
+#divApointProjectRight .operate .release a,
+#divApointProjectRight .operate .share a{
+	margin-left:23px;
+	margin-top:3px;
+	}
+
+#divApointProjectRight .operate .previousPage .backimg{
+	background:url(../../../images/yuepaiicon.png) no-repeat 0 0;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+#divApointProjectRight .operate .release .backimg{
+	background:url(../../../images/yuepaiicon.png) no-repeat 0 -362px;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+#divApointProjectRight .operate .share .backimg{
+	background:url(../../../images/yuepaiicon.png) no-repeat 0 -316px;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+	
+#divApointProjectRight .operate .share,
+#divApointProjectRight .operate .shareTerrace{
+	width:96px;
+	height:96px;
+	float:left;
+	}
+
+/*分享*/
+.shareTerrace{
+	display:none;
+	}
+.shareTerraceUL li{
+	position:relative;
+	margin-left:2px;
+	margin-top:2px;
+	width:30px;
+	height:30px;
+	float:left;	
+	}
+.shareTerraceUL li a{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:30px;
+	height:30px;
+	}
+.shareTerraceUL .shareSina{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+	}
+.shareTerraceUL li .shareQqzone{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-30px 0px;
+	}
+.shareTerraceUL li .shareQqblog{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-60px 0px;
+	}
+	
+.shareTerraceUL li .shareDouban{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-180px 0px;
+	}	
+.shareTerraceUL li .shareRenren{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-150px 0px;
+	}
+.shareTerraceUL li .shareKaiXin{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-210px 0px;
+	}
+
+.shareTerraceUL li .shareTwitter{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-90px 0px;
+	}
+.shareTerraceUL li .shareFacebook{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-120px 0px;
+	}
+.shareTerraceUL li .shareEmail{
+	background:url(../../../images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-240px 0px;
+	}
+
+	
+	
+.shareTerraceUL .active .shareSina{
+	background-position:0px -30px;
+	}
+.shareTerraceUL .active .shareQqzone{
+	background-position:-30px -30px;
+	}
+.shareTerraceUL .active .shareQqblog{
+	background-position:-60px -30px;
+	}
+	
+.shareTerraceUL .active .shareDouban{
+	background-position:-180px -30px;
+	}	
+.shareTerraceUL .active .shareRenren{
+	background-position:-150px -30px;
+	}
+.shareTerraceUL .active .shareKaiXin{
+	background-position:-210px -30px;
+	}
+	
+.shareTerraceUL .active .shareTwitter{
+	background-position:-90px -30px;
+	}
+.shareTerraceUL .active .shareFacebook{
+	background-position:-120px -30px;
+	}
+.shareTerraceUL .active .shareEmail{
+	background-position:-240px -30px;
+	}
+
+/*分享*/	
+
+
+#divApointProjectRight .preNext{
+	width:314px;
+	height:50px;
+	background:#ffffff;
+	border:1px solid #f0f0f0;
+	}
+#divApointProjectRight .preNext .pre{
+	width:156px;
+	height:50px;
+	float:left;
+	border-right:1px solid #f0f0f0;
+	}
+#divApointProjectRight .preNext .next{
+	width:156px;
+	height:50px;
+	float:left;
+	}
+#divApointProjectRight .preNext a {
+    color: #A0A0A0;
+    height: 25px;
+    left: 0px;
+    margin-left: 40px;
+    margin-top: 15px;
+    position: relative;
+    top: 0px;
+    width: 75px;
+    display: inline-block;
+}
+#divApointProjectRight .preNext .pre a i {
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+#divApointProjectRight .preNext .pre a span {
+    position: absolute;
+    right: 0;
+    top: 2px;
+}
+#divApointProjectRight .preNext .next a i {
+    height: 20px;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+#divApointProjectRight .preNext .next a span {
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+#divApointProjectRight .preNext .pre a i {
+    background:url(../../../images/preNext.png) no-repeat 0 0 ;
+	}
+#divApointProjectRight .preNext .pre a:hover i {
+    background: url(../../../images/preNext.png) no-repeat 0 -25px ;
+	}
+	
+#divApointProjectRight .preNext .next a i {
+    background: url(../../../images/preNext.png) no-repeat -25px 0px ;
+	}
+#divApointProjectRight .preNext .next a:hover i {
+    background: url(../../../images/preNext.png) no-repeat -25px -25px;
+	}
+
+
+
+
+/*约拍推荐项目开始*/
+
+#divApointProjectRight .appointProjectRecom{
+	position:relative;
+	top:0px;
+	left:0;
+	width:310px;
+	margin-top:5px;
+	min-height:150px;
+	padding-bottom: 10px;
+	border:1px solid #e2e2e2;
+	}
+#divApointProjectRight .appointProjectHumanQi{
+	position:relative;
+	top:0px;
+	left:0;
+	margin-top:5px;
+	width:310px;
+	min-height:160px;
+	padding-bottom: 10px;
+	border:1px solid #e2e2e2;
+	}
+	
+#divApointProjectRight .appointProjectRecom_top{
+	padding-left:15px;
+	width:295px;
+	height:40px;
+	line-height:40px;
+	background:#ffffff;
+	font-family: "微软雅黑";
+	border-bottom:1px solid #e3e3e3;
+	font-size:17px;
+	color:#242424;
+	}
+#divApointProjectRight .appointProjectBottomCon{
+	padding-left:20px;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon{
+	line-height:27px;
+	color:red;
+	font-weight:bold;
+	_line-height:22px;
+	_margin-top:17px;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon .td_one{
+	width:210px;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon a{
+	padding-left:28px;
+	color:#000;
+	width:150px;
+	height:10px;
+	font-weight:normal;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon .shoot{
+	background:url(../../../images/11.png) no-repeat 0 -132px;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon .model{
+	background:url(../../../images/11.png) no-repeat 0 -248px;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon .collect{
+	background:url(../../../images/11.png) no-repeat 0 -269px;
+	}
+#divApointProjectRight .tableAppointProjectBottomCon .outShoot{
+	background:url(../../../images/11.png) no-repeat 0 -230px;
+	}	
+
+
+/*约拍推荐项目开始end*/
+
+
+
+/*操作项目end*/
+
+
+
+
+
+
+
+
+#appointProjectTimelyState{
+	position:relative;
+	top:0px;
+	left:0;
+	margin-top:8px;
+	width:857px;
+	min-height:400px;
+	background:#FFFFFF;
+	padding-bottom:50px;
+	}
+
+/*选项卡标签*/
+#appointProjectTimelyState .divStateCard{
+	position:relative;
+	top:0;
+	left:0;
+	height:41px;
+	border-bottom:1px solid #e2e2e2;
+	}
+#appointProjectTimelyState .divStateCard li{
+	float:left;
+	padding-left:3px;
+	padding-right:3px;
+	height:36px;
+	line-height:36px;
+	text-align:center;
+	margin-left:35px;
+	_width:100px;
+	border-bottom:5px solid #FFFFFF;
+	}
+
+#appointProjectTimelyState .divStateCard .active{
+	border-bottom:5px solid #e92d00;
+	}
+
+#appointProjectTimelyState .divStateCard li a{
+	display:block;
+	height:40px;
+	font-family: "微软雅黑";
+	color:#535353;
+	font-size:16px;
+	}
+#appointProjectTimelyState .divStateCard .active a{
+	color:#e92d00;
+	}
+/*选项卡标签*/
+
+
+
+
+/*没有内容*/
+#appointProjectTimelyState .divStateCardCon .divList .nobody{
+	margin:100px auto;
+	text-align:center;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .nobody .ico{
+	width:40px;
+	height:40px;
+	margin:0 auto;
+	margin-bottom:20px;
+	background:url(../../../images/yuepaiicon02.png) 0 -104px no-repeat;
+	}
+
+/*没有内容*/
+
+
+
+
+
+
+
+/*应约者列表*/
+#appointProjectTimelyState .divStateCardCon .divList{
+	position:relative;
+	top:0px;
+	left:0px;
+	padding:0px 30px;
+	/*height:835px;*/
+	}
+#appointProjectTimelyState .divStateCardCon .divList ul{
+	border-left:1px solid #e2e2e2;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one{
+	position:relative;
+	top:0;
+	left:0;
+	float:left;
+	height:257px;
+	width:152px;
+	border-right:1px solid #e2e2e2;
+	border-bottom:1px solid #e2e2e2;
+	padding:30px 23px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one:hover{
+	background:#efefef;
+	}
+	
+	
+/*公用	---头像*/
+.divImg{
+	position:relative;
+	top:0;
+	left:0;
+	width:150px;
+	height:150px;
+	}
+.divImg img{
+	width:150px;
+	height:150px;
+	}
+.divImg .divBackGround{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:150px;
+	height:50px;
+	}
+.divImg .divBackGround .opacity{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:150px;
+	height:50px;
+	background:#000000;
+	filter:alpha(opacity:70);
+	opacity:0.7;
+	}
+.divImg .divBackGround .info{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:140px;
+	height:50px;
+	color:#bfbfc1;
+	padding-left:10px;
+	font-family: "宋体";
+	font-size:13px;
+	}
+.divImg .divBackGround .info .one{
+	height:18px;
+	line-height:24px;
+	}
+.divImg .divBackGround .info .two{
+	color:#fcfefd;
+	font-family: "微软雅黑";
+	line-height:30px;
+	font-size:17px;
+	}
+/*公用	---头像*/
+
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one .divUserInfo{
+	height:100px;
+	
+	}
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one .divUserInfo .one{
+	height:36px;
+	margin-top:8px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one .divUserInfo .one .name{
+	color: #474747;
+    font-family: "微软雅黑";
+    font-size: 18px;
+	}
+
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one .divUserInfo .two{
+	height:28px;
+	}
+		
+/*公用*/
+.approveNo{
+	width:65px;
+	height:20px;
+	display:inline-block;
+	background:url(../../../images/identityNew.png) 0 3px no-repeat;
+	}
+.approveHave{
+	width:55px;
+	height:20px;
+	display:inline-block;
+	background:url(../../../images/identityNew.png) 0 -20px no-repeat;
+	}
+.approveQy{
+	width:55px;
+	height:20px;
+	display:inline-block;
+	background:url(../../../images/identityNew.png) 0 -44px no-repeat;
+	}
+/*公用*/
+
+
+/*公用*/
+.age{
+	width:20px;
+	height:20px;
+	padding-left:20px;
+	margin-right:10px;
+	background:url(../../../images/11.png) 0 -97px no-repeat;
+	}
+.ageMan{
+	width:20px;
+	height:20px;
+	padding-left:20px;
+	margin-right:10px;
+	background:url(../../../images/11.png) 0 -211px no-repeat;
+	}
+.address{
+	width:50px;
+	height:22px;
+	padding-left:18px;
+	padding-bottom:2px;
+	background:url(../../../images/11.png) 0 -115px no-repeat;
+	}
+.address span{
+	margin-right:5px;
+	}
+.divUserInfo .three{
+	height:20px;
+	}
+
+.job{
+	background:url(../../../images/background.png) no-repeat 0 0;
+    color: #AE9E7C;
+	float:left;
+    height: 16px;
+    left: 0;
+    padding-left: 12px;
+    padding-right: 11px;
+	margin-right:10px;
+    position: relative;
+    top: 0;
+	}
+
+.job a {
+	background:url(../../../images/background.png) no-repeat  0px -89px;
+    height: 16px;
+    position: absolute;
+    right: -12px;
+    top: 0;
+    width: 14px;
+	}
+/*公用*/	
+	
+#appointProjectTimelyState .divStateCardCon .divList .lilist_one .divUserInfo .four .view{
+	width:50px;
+	height:20px;
+	padding-left:24px;
+	background:url(../../../images/11.png) 0 0px no-repeat;
+	}
+
+/*应约者列表*/
+
+
+/*中标者列表*/
+#appointProjectTimelyState .divStateCardCon .divListTwo{
+	position:relative;
+	top:0px;
+	left:0px;
+	/*height:835px;*/
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo ul{
+	
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two{
+	position:relative;
+	top:0;
+	left:0;
+	float:left;
+	height:156px;
+	width:350px;
+	border:1px solid #e2e2e2;
+	margin-left:52px;
+	margin-top:26px;
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .divImg{
+	margin:3px;
+	float:left;
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info{
+	float: left;
+    height: 156px;
+    width: 194px;
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info div{
+    padding-left: 15px;
+	}	
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info .user_info_one{
+	padding:5px 15px;
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info .user_info_two{
+	padding:3px 15px;
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info .user_info_four{
+	padding:5px 15px;
+	border-bottom:1px solid #e2e2e2;
+	}
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info .user_info_five{
+	height: 22px;
+    line-height: 22px;
+	}	
+#appointProjectTimelyState .divStateCardCon .divListTwo .lilist_two .user_info .user_info_one .name{
+	color: #474747;
+    font-family: "微软雅黑";
+    font-size: 18px;
+	}
+/*中标者列表*/
+
+
+
+
+
+
+.ppointPagingthis {
+    width: 800px;
+	}
+.ppointPaging{
+	background:#fff;
+	}
+#divListOne{
+	display:block;
+	}
+#divListTwo{
+	display:none;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	
+/*弹出我要应约*/
+#popupIRespondForm{
+	display:none;
+	width:620px;
+	}
+#popupIRespond{
+	position:relative;
+	top:0px;
+	left:0;
+	background:#FFFFFF;
+	text-align:left;
+	width:620px;
+	}
+
+#popupIRespond .sure{
+	position:relative;
+	top:0px;
+	left:0;
+	width:570px;
+	height:20px;
+	margin:50px auto;
+	text-align:center;
+	}	
+#popupIRespond .sure .name{
+	color:#eb6100;
+	margin-left:5px;
+	}
+
+#popupIRespondSuccess{
+	width:154px;
+	height:38px;
+	line-height:38px;
+	color:#fff;
+	font-family:"微软雅黑";
+	font-size:16px;
+	background:#82bf00;
+	position:absolute;
+	top:200px;
+	left:50%;
+	margin-left:-77px;
+	display:none;
+	
+	
+	box-shadow: 3px 3px 4px #9d9d9d;
+	/*这是对Safari和Chrome浏览器而设置的*/
+	-moz-box-shadow: 3px 3px 4px #9d9d9d;
+	/*这是专对火狐浏览器的支持而设置的*/
+	-webkit-box-shadow: 3px 3px 4px #9d9d9d;
+	
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#9d9d9d')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#9d9d9d');
+	}
+/*弹出我要应约*/
+
+
+
+/*我要报价*/
+#popupIQuoteForm{
+	display:none;
+	width:620px;
+	}
+#popupIQuote{
+	position:relative;
+	top:0px;
+	left:0;
+	background:#FFFFFF;
+	text-align:left;
+	width:620px;
+	}
+
+.popupBox .table_quote_one{
+	color:#585858;
+	font-family:"微软雅黑";
+	font-size:14px;
+	
+	}
+.popupBox .table_quote_one .td_one{
+	width:120px;
+	padding-right:10px;
+	text-align:right;
+	height:50px;
+	}
+
+.popupBox .table_quote_one .td_two label{
+	margin-right:30px;
+	margin-left:5px;
+	}
+.popupBox .table_quote_one .td_two .inputPrices{
+	background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 165px;
+	}
+.popupBox .table_quote_one .td_two .yuan{
+	font-size: 18px;
+	margin-left:10px;
+	}
+.popupBox .table_quote_one .td_two li{
+	position:relative;
+	left:0px;
+	top:0;
+	float:left;
+    font-family: "微软雅黑";
+	height:23px;
+	line-height:23px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:10px;
+	
+	background: #FFFAE8;
+    border: 1px solid #B89723;
+    color: #B89723;
+	}
+
+.popupBox .table_quote_one .td_two li i{
+	position:absolute;
+	right:0px;
+	bottom:0;
+	width:11px;
+	height:10px;
+	background:url(../../../../back/pubimg/images/relprocolor.png) 0 -105px no-repeat;
+	}
+/*我要报价*/
+
+
+
+/*弹出公共*/
+.popupBox .top{
+	position:relative;
+	top:0px;
+	left:0;
+	width:620px;
+	height:58px;
+	background:#f6f6f6;
+	border-bottom:1px solid #e3e3e3;
+	}
+.popupBox .top h2{
+	height:58px;
+	line-height:58px;
+	width:100px;
+	padding-left:20px;
+	font-size:22px;
+	font-weight:normal;
+	font-family:"微软雅黑";
+	color:#575757;
+	}
+.popupBox .top a{
+	position:absolute;
+	top:0px;
+	right:0;
+	width:58px;
+	height:58px;
+	background:url(../../../images/closeBox.png) no-repeat 0 0;
+	}
+.popupBox .top a:hover{
+	background:url(../../../images/closeBox.png) no-repeat 0 -58px;
+	}
+.popupBox .top a:active{
+	background:url(../../../images/closeBox.png) no-repeat 0 -116px;
+	}
+
+.popupBox .btn{
+	position:relative;
+	top:0px;
+	left:0;
+	width:570px;
+	height:100px;
+	margin:0 auto;
+	border-bottom:1px solid #dfdfdf;
+	}
+.popupBox .btn .reset{
+	position:absolute;
+	top:30px;
+	left:150px;
+	width:126px;
+	height:36px;
+	cursor:pointer;
+	font-size: 17px;
+	font-family:"微软雅黑";
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -482px;
+	border:0;
+	}
+.popupBox .btn .reset:hover{
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -518px;
+	}
+.popupBox .btn .reset:active{
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -554px;
+	}
+.popupBox .btn .submit{
+	position:absolute;
+	top:30px;
+	left:340px;
+	width:126px;
+	height:36px;
+	cursor:pointer;
+	font-size: 17px;
+	color:#ffffff;
+	font-family:"微软雅黑";
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -600px;
+	border:0;
+	}
+.popupBox .btn .submit:hover{
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -636px;
+	}
+.popupBox .btn .submit:active{
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -672px;
+	}
+	
+	
+.popupBox .explain{
+	position:relative;
+	top:0px;
+	left:0;
+	width:570px;
+	height:120px;
+	margin:0 auto;
+	}
+.popupBox .explain .ep1{
+	height:30px;
+	line-height:30px;
+	color:#3d3d3d;
+	font-size:12px;
+	}
+.popupBox .explain .ep{
+	height:22px;
+	line-height:22px;
+	font-family:"宋体";
+	}
+/*弹出公共*/
+
+
+

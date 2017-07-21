@@ -1,0 +1,84 @@
+.container_body{
+	width:870px;
+	height:780px;
+	border-radius:5px;
+	background:#fff;
+	margin:10px auto 40px;
+	text-align:left;
+	font-family:"宋体";
+	}
+
+.container_body .info_top{
+	line-height:60px;
+	height:48px;
+	width:870px;
+	color:#8c8c8c;
+	border-bottom:1px solid #e8e8e8;
+	}
+.container_body .info_top .top_one{
+	font-family:"微软雅黑";
+	color:#4a4a4a;
+	font-size:14px;
+	margin-left:25px;
+	margin-right:25px;
+	}
+.container_body .info_top .top_must{
+	color:#989898;
+	}
+	
+	
+	
+
+
+.container_body .info_table{
+	height:610px;
+	width:740px;
+	color:#8c8c8c;
+	margin:0 auto;
+	border-bottom:1px solid #e8e8e8;
+	}
+	
+.container_body .info_table .input_text {
+    background: #FCFCFC;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    color: #000000;
+    font-family: "宋体";
+    font-size: 14px;
+    height: 20px;
+    padding: 6px 15px;
+}
+
+.container_body .info_table .tr_two{
+	height:50px;
+	}
+
+
+.container_body .info_table .td_one{
+	width:60px;
+	padding-right:10px;
+	text-align:left;
+	}
+.container_body .info_table .td_one label{
+	color:#989898;
+	margin-right:5px;
+	}
+.container_body .info_table .td_two{
+	width:305px;
+	}
+
+
+
+
+
+.container_body .info_table .tr_enterprise{
+	height:60px;
+	}
+.container_body .info_table .tr_enterprise .td_two .rightI{
+	margin-left:20px;
+	}
+.container_body .info_table .tr_enterprise .td_two label{
+	margin-left:5px;
+	font-family:"微软雅黑";
+	color:#696969;
+	}

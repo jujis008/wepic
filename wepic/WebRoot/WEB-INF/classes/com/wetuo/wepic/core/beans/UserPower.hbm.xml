@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.UserPower"
+	table="UserPower"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="increment" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_userPower_User" 
+		index="IDX_userPower_User"
+		lazy="false"
+		/> 
+	
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="250"
+	/>
+	<property 
+		name="entry"
+		type="java.lang.String"
+		column="entry"
+		length="250"
+	/>
+	<property 
+		name="time"
+		type="java.lang.String"
+		column="time"
+		length="250"
+	/>
+	<property 
+		name="entrytime"
+		type="java.lang.String"
+		column="entrytime"
+		length="150"
+	/>
+	<property 
+		name="opustype"
+		type="java.lang.String"
+		column="opustype"
+		length="150"
+	/>
+	<property 
+		name="entryAdress"
+		type="java.lang.String"
+		column="entryAdress"
+		length="250"
+	/>
+	
+		<property 
+		name="projectresponsibilities"
+		type="java.lang.String"
+		column="projectresponsibilities"
+		length="250"
+	/>
+	
+		<property 
+		name="ssuedbytheorganization"
+		type="java.lang.String"
+		column="ssuedbytheorganization"
+		length="250"
+	/>
+	
+		<property 
+		name="ssuedAddress"
+		type="java.lang.String"
+		column="ssuedAddress"
+		length="250"
+	/>
+	
+		<property 
+		name="awardwinningworks"
+		type="java.lang.String"
+		column="awardwinningworks"
+		length="250"
+	/>
+	
+		
+	<property 
+		name="picUrl"
+		type="java.lang.String"
+		column="picUrl"
+		length="250"
+	/>
+	<property 
+		name="zhengMingType"
+		type="java.lang.String"
+		column="zhengMingType"
+		length="250"
+	/>
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

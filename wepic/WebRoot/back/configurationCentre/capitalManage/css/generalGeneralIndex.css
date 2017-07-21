@@ -1,0 +1,613 @@
+.container_general{
+	width:1180px;
+	height:242px;
+	border-radius:5px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	}
+	
+	
+.container_general .general_top{
+	padding-left:25px;
+	font-family:"微软雅黑";
+	color:#1d1d1d;
+	font-size:18px;
+	height:49px;
+	line-height:49px;
+	border-bottom:1px solid #e8e8e8;
+	}
+	
+	
+.container_general .general_cont{
+	padding:0px 70px;
+	color:#aeaeae;
+	width:1040px;
+	height:192px;
+	}
+.container_general .general_cont .div_left{
+	width:340px;
+	height:192px;
+	float:left;
+	}	
+	
+.container_general .general_cont .div_left .char_balance{
+	height:55px;
+	line-height:40px;
+	}
+.container_general .general_cont .div_left .char_balance .spanone{
+	font-family:"微软雅黑";
+	font-size:14px;
+	color:#696969;
+	margin-right:10px;
+	}	
+.container_general .general_cont .div_left .char_balance .yuan{
+	margin-left:5px;
+	margin-right:5px;
+	}
+	
+	
+.container_general .general_cont .div_left .now_balance{
+	height:85px;
+	}
+.container_general .general_cont .div_left .now_balance .money{
+	font-size:36px;
+	font-family:"Arial";
+	color:#e60122;
+	}	
+.container_general .general_cont .div_left .now_balance .yuan{
+	font-size:14px;
+	font-family:"微软雅黑";
+	color:#959595;
+	}		
+	
+	
+	
+	
+.container_general .general_cont .div_left .general_option a{
+	text-decoration:underline;
+	color:#0084c7;
+	margin-right:20px;
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.container_general .general_cont .div_center{
+	width:300px;
+	height:192px;
+	float:left;
+	}		
+	
+.container_general .general_cont .total_earning{
+	height:65px;
+	line-height:85px;
+	}
+.container_general .general_cont .total_earning .money{
+	font-family:"微软雅黑";
+	font-size:18px;
+	color:#696969;
+	margin-left:5px;
+	margin-right:5px;
+	}	
+
+.container_general .general_cont .total_earning .yuan{
+	font-family:"微软雅黑";
+	font-size:14px;
+	color:#959595;
+	}	
+
+
+
+.container_general .general_cont .div_right{
+	width:400px;
+	height:192px;
+	float:left;
+	}		
+
+.container_general .general_cont .div_right .general_right_option{
+	margin-top:40px;
+	}	
+	
+.container_general .general_cont .div_right .applicationDeposit,
+.container_general .general_cont .div_right .generalize {
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:20px;
+    text-align: center;
+    width: 116px;
+	}
+
+.container_general .general_cont .div_right .applicationDeposit:hover,
+.container_general .general_cont .div_right .generalize:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.container_general .general_cont .div_right .applicationDeposit:active,
+.container_general .general_cont .div_right .generalize:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+.container_general .general_cont .div_right .recharge{
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+
+.container_general .general_cont .div_right .recharge:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.container_general .general_cont .div_right .recharge:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+	
+	
+	
+	
+	
+.container_relevance{
+	width:1180px;
+	min-height:323px;
+	border-radius:5px;
+	background:#fff;
+	margin:0px auto 40px;
+	text-align:left;
+	font-family:"宋体";
+	}
+	
+	
+.container_relevance .relevance_top{
+	padding-left:25px;
+	font-family:"微软雅黑";
+	color:#1d1d1d;
+	font-size:18px;
+	height:49px;
+	line-height:49px;
+	border-bottom:1px solid #e8e8e8;
+	}
+	
+	
+.container_relevance .relevance_cont{
+	padding-left:70px;
+	color:#aeaeae;
+	min-height:200px;
+	padding-bottom:75px;
+	}
+
+.container_relevance .relevance_cont .character_top{
+	height:50px;
+	line-height:50px;
+	font-family:"微软雅黑";
+	color:#6a6a6a;
+	font-size:14px;
+	}
+	
+.container_relevance .relevance_cont .blank_all .blank{
+	width:236px;
+	height:145px;
+	border:1px solid #E8E8E8;
+	float:left;
+	margin-right:30px;
+	position:relative;
+	top:0;
+	left:0;
+	margin-bottom:30px;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_top{
+	height:39px;
+	width:236px;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_top .card_use{
+	height:39px;
+	line-height:39px;
+	width:120px;
+	float:left;
+	margin-left:12px;
+	color:#aaaaaa;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_top .card_tail_number{
+	height:39px;
+	line-height:39px;
+	width:75px;
+	float:left;
+	color:#6a6a6a;
+	}
+	
+.container_relevance .relevance_cont .blank_all .blank .blank_ico{
+	height:36px;
+	width:236px;
+	background:#f3f3f3;
+	}	
+
+/*其他银行*/
+.container_relevance .relevance_cont .blank_all .blank .blank_ico .other{
+	height:36px;
+	line-height:36px;
+	margin-left:12px;
+	color:#231816;
+	font-family:"微软雅黑";
+	font-size:16px;
+	}
+/*其他银行*/
+
+/*中国银行*/
+.bank_ico_bc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -139px no-repeat;
+	}
+/*中国银行*/
+	
+/*农业银行*/
+.bank_ico_abc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -277px no-repeat;
+	}
+/*农业银行*/
+	
+/*工商银行*/
+.bank_ico_icbc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -184px no-repeat;
+	}
+/*工商银行*/
+	
+/*建设银行*/
+.bank_ico_cbc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -231px no-repeat;
+	}
+/*建设银行*/
+	
+/*招商银行*/
+.bank_ico_cmb{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -322px no-repeat;
+	}
+/*招商银行*/
+	
+/*交通银行*/
+.bank_ico_bcm{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -370px no-repeat;
+	}
+/*交通银行*/
+	
+/*中信银行*/
+.bank_ico_ccb{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -414px no-repeat;
+	}
+/*中信银行*/
+
+.container_relevance .relevance_cont .blank_all .blank .blank_option{
+	height:48px;
+	width:236px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	}
+
+.container_relevance .relevance_cont .blank_all .blank .blank_option .deposit_time{
+	height:48px;
+	line-height:48px;
+	width:120px;
+	float:left;
+	margin-left:12px;
+	color:#848484;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .deposit_time .spano{
+	color:#d5d5d5;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .default_card {
+	width:80px;
+	float:left;
+	color:#848484;
+	margin-top: 14px;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .default_card font{
+	background:url(../../../../public/images/register.png) no-repeat 0 -84px;
+	padding-left:20px;
+	width: 60px;
+	height: 20px;
+	}
+
+
+.container_relevance .relevance_cont .blank_all .blank .blank_option .option_to{
+	position: absolute;
+    top: 0;
+	left:0;
+	height:48px;
+	width:236px;
+	display:none;
+	}	
+		
+.container_relevance .relevance_cont .blank_all .blank .blank_option .option_to .bj{
+	position: absolute;
+    top: 0;
+	left:0;
+	height:48px;
+	width:236px;
+	background:#000000;
+	filter:alpha(opacity=80);    /* IE 4-7 */     
+	opacity: 0.8;              /* Firefox, Safari(WebKit), Opera */
+	}	
+.container_relevance .relevance_cont .blank_all .blank .blank_option .bjc{
+	position: absolute;
+    top: 0;
+	left:0;
+	height:20px;
+	width:236px;
+	padding:14px 0;
+	text-align:center;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .bjc a{
+	padding-left:24px;
+	color:#dcdcdc;
+	display: inline-block;
+	height:20px;
+	line-height:20px;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .bjc .opyDefault{
+	margin-right:15px;
+	background:url(../../../pubimg/images/addCard.png) no-repeat 0 -97px;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .bjc .opyDefault:hover{
+	background:url(../../../pubimg/images/addCard.png) no-repeat 0px -120px;
+	color:#e96e67;
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .bjc .opyDelete{
+	background:url(../../../../public/images/edit.png) no-repeat 0 -42px; 
+	}
+.container_relevance .relevance_cont .blank_all .blank .blank_option .bjc .opyDelete:hover{
+	background:url(../../../../public/images/edit.png) no-repeat 0 2px;
+	color:#e96e67;
+	}
+
+.container_relevance .relevance_cont .blank_all .blank .active .option_to{
+	display:block;
+	}
+	
+	
+
+.container_relevance .relevance_cont .blank_all .blank{
+	width:236px;
+	height:145px;
+	border:1px solid #E8E8E8;
+	float:left;
+	margin-right:30px;
+	position:relative;
+	top:0;
+	left:0;
+	}	
+	
+	
+	
+	
+/*增加银行*/
+.container_relevance .relevance_cont .blank_all .add_blank{
+	width:236px;
+	height:145px;
+	border:1px dashed #E8E8E8;
+	float:left;
+	margin-right:30px;
+	position:relative;
+	top:0;
+	left:0;
+	background:#fafafa;
+	cursor:pointer;
+	}
+.container_relevance .relevance_cont .blank_all .add_blank .add_ico{
+	width:39px;
+	height:39px;
+	margin:0 auto;
+	margin-top:35px;
+	background:url(../../../pubimg/images/addCard.png) 0 0 no-repeat;
+	}
+.container_relevance .relevance_cont .blank_all .add_blank:hover .add_ico{
+	background:url(../../../pubimg/images/addCard.png) 0 -50px no-repeat;
+	}
+.container_relevance .relevance_cont .blank_all .add_blank .add_character{
+	width:100px;
+	height:39px;
+	text-align:center;
+	margin:10px auto;
+	}
+/*增加银行*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*添加提现银行卡*/
+
+.add_withdraw_deposit{
+	width:560px;
+	height:550px;
+	background:#ffffff;
+	display:none;
+	}
+.add_withdraw_deposit .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width:560px;
+	}
+.add_withdraw_deposit .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.add_withdraw_deposit .top a {
+    background:url(../../../../public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.add_withdraw_deposit .top a:hover{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.add_withdraw_deposit .top a:active{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+
+
+	
+.add_withdraw_deposit .table_con{
+    height: 280px;
+    width: 560px;
+	margin-top:30px;
+	}
+.add_withdraw_deposit .table_con .td_one{
+    width: 145px;
+	padding-right:15px;
+	text-align:right;
+	height:50px;
+	}
+.add_withdraw_deposit .table_con .td_two{
+	text-align:left;
+	}
+.add_withdraw_deposit .table_con .td_two .open_name,
+.add_withdraw_deposit .table_con .td_two .input_remark{
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 114px;
+	}
+.add_withdraw_deposit .table_con .td_two .open_blank,
+.add_withdraw_deposit .table_con .td_two .blank_number{
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 254px;
+	}
+
+
+.add_withdraw_deposit .submit{
+	margin-top:50px;
+	}
+.add_withdraw_deposit .submit .save {
+    background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -718px;
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 17px;
+    height: 36px;
+    width: 143px;
+	letter-spacing: 15px;
+    padding-left: 20px;
+	}
+.add_withdraw_deposit .submit .save:hover{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+.add_withdraw_deposit .submit .save:active{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -790px;
+	color: #D6D6D6;
+	text-shadow: 1px 1px 1px black;
+	}
+
+
+.add_withdraw_deposit .tr_remind{
+	heigth:20px;
+	text-align:left;
+	color:#ff0000;
+	display:none;
+	}
+
+/*所属银行框*/
+
+.dropDownBox{
+    height: 36px;
+	padding: 0 40px 0 0;
+	}
+.dropDownBox .dropDownBoxR {
+    height: 26px;
+	}
+.dropDownBox .dropDownBoxR i {
+    top: 11px;
+	}
+	
+.dropDownBoxValue {
+	width: 210px;
+	top: 38px;
+	}
+.dropDownBoxValue div{
+    width: 210px;
+	margin:0;
+	padding-left:12px;
+	}
+.dropDownBoxValue div:hover{
+	background-color:#f0f0f0;
+	}

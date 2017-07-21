@@ -1,0 +1,341 @@
+#div-schedule-time{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:10px auto 0;
+	height:300px;
+	}
+#div-schedule-time .div-schedule-time-left{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:860px;
+	height:300px;
+	float:left;
+	background:#fff;
+	
+	}
+#div-schedule-time .div-schedule-time-right{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:310px;
+	height:300px;
+	float:right;
+	background:#fff;
+	border:1px solid #e6e6e6;
+	}
+#div-schedule-hour{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:0 auto;
+	height:30px;
+	background:#e6e6e6;
+	}
+	
+
+
+
+
+
+
+
+
+
+/*日程列表*/
+#div-schedule-con{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:10px auto 50px;
+	}
+#div-schedule-con .div-schedule-con-left{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:860px;
+	float:left;
+	background:#fff;
+	
+	}
+
+#div-schedule-con .div-schedule-con-left .character{
+	height:55px;
+	line-height:60px;
+	padding-left:20px;
+	color: #232323;
+    font-family: "微软雅黑";
+    font-size: 20px;
+	border-bottom: 1px solid #E6E6E6;
+	}
+	
+.earnings-list{
+	}	
+	
+.earnings-list .div-earning{
+	width:830px;
+	height:60px;
+	border-left:1px solid #fbfbfb;
+	background:#fbfbfb;
+	margin-left:24px;
+	margin-top:20px;
+	}
+
+.earnings-list .active .div-earning{
+	border-left:1px solid #e92d00;
+	background:#f8f8f8;
+	}
+.earnings-list .active .opt-earning{
+	display:block;
+	}
+.earnings-list .div-earning .ico-earning{	
+	float:left;
+	width:46px;
+	height:46px;
+	margin-left:13px;
+	margin-top:8px;
+	}
+	
+.earnings-list .div-earning .shoot{
+	background:url(../../../../pubimg/images/projectType.png) no-repeat 0px 0px;	/*商业拍摄*/
+	}
+
+.earnings-list .div-earning .picCollect{
+	background:url(../../../../pubimg/images/projectType.png) no-repeat 0px -153px;		/*征集图片*/
+	}
+
+.earnings-list .div-earning .model{
+	background:url(../../../../pubimg/images/projectType.png) no-repeat 0px -102px;		/*模特*/
+	}
+
+.earnings-list .div-earning .outShoot{
+	background:url(../../../../pubimg/images/projectType.png) no-repeat 0px -51px; 		/*外拍*/
+	}
+	
+.earnings-list .name-earning{
+	float:left;
+	width:360px;
+	height:60px;
+	padding-left:10px;
+	border-right: 1px solid #E6E6E6;
+	}	
+	
+.earnings-list .name-earning .n-top{
+	width: 350px;
+	height:35px; 
+	white-space: nowrap;      
+ 	text-overflow: ellipsis;        /* for IE */
+	-o-text-overflow:  ellipsis ;      /* for Opera */
+	overflow: hidden;
+	line-height:35px;
+	color: #000000;
+    font-family: "微软雅黑";
+    font-size: 18px;
+	border-bottom: 1px solid #E6E6E6;
+	}
+.earnings-list .name-earning .n-num{
+	line-height:26px;
+	}
+.earnings-list .time-earning{
+	float:left;
+	width:270px;
+	height:60px;
+	padding-left:20px;
+	}
+.earnings-list .time-earning .t-top{
+	height:35px; 
+	color:#000;
+	line-height:35px;
+	}
+.earnings-list .time-earning .t-top .ps{
+	color: #848484;
+	}
+.earnings-list .time-earning .t-bottom{
+	padding-left:65px;
+	}
+
+
+.earnings-list .opt-earning{
+	float:right;
+	width:107px;
+	height:60px;
+	display:none;
+	}
+.earnings-list .opt-earning .edit-earning{
+	float:left;
+	width:52px;
+	height:60px;
+	cursor:pointer;
+	}
+.earnings-list .opt-earning .edit-earning .edit-ico{
+	background:url(../../../../pubimg/images/edit.png) 0 -132px no-repeat;
+	width:16px;
+	height:17px;
+	margin-top:20px;
+	margin-left:18px;
+	}
+.earnings-list .opt-earning .edit-earning:hover,
+.earnings-list .opt-earning .del-earning:hover{
+	background:#b93f3e;
+	}
+.earnings-list .opt-earning .edit-earning:hover .edit-ico{
+	background:url(../../../../pubimg/images/edit.png) 0 -109px no-repeat;
+	}
+.earnings-list .opt-earning .del-earning{
+	float:left;
+	width:55px;
+	height:60px;
+	cursor:pointer;
+	}
+.earnings-list .opt-earning .del-earning .del-ico{
+	background:url(../../../../pubimg/images/edit.png) 0 -21px no-repeat;
+	width:16px;
+	height:17px;
+	margin-top:20px;
+	margin-left:18px;
+	}
+.earnings-list .opt-earning .del-earning:hover .del-ico{
+	background:url(../../../../pubimg/images/edit.png) 0 -44px no-repeat;
+	}
+	
+	
+	
+	
+
+/*自定义*/	
+.earnings-list .div-custom{
+	width:830px;
+	height:50px;
+	border-left:1px solid #fbfbfb;
+	background:#fbfbfb;
+	margin-left:24px;
+	margin-top:20px;
+	}
+.earnings-list .active .div-custom{
+	border-left:1px solid #e92d00;
+	background:#f8f8f8;
+	}
+
+.earnings-list .div-custom .ico-earning{
+	float:left;
+	width:20px;
+	height:20px;
+	margin-left:23px;
+	margin-top:17px;
+	margin-right: 15px;
+	}
+.earnings-list .div-custom .name-earning .n-top,
+.earnings-list .div-custom .time-earning .t-top{
+	border-bottom:0;
+	line-height: 50px;
+	}
+.earnings-list .div-custom .name-earning,
+.earnings-list .div-custom .time-earning,
+.earnings-list .div-custom .opt-earning,
+.earnings-list .div-custom .edit-earning,
+.earnings-list .div-custom .del-earning{
+	height:50px;
+	}
+.earnings-list .div-custom .edit-earning .edit-ico,
+.earnings-list .div-custom .del-earning .del-ico{
+	margin-top: 17px;
+	}
+	
+	
+.earnings-list .div-custom .red{
+	background:#dc1b1c;
+	}
+.earnings-list .div-custom .orange{
+	background:#ffc000;
+	}
+.earnings-list .div-custom .golden{
+	background:#ebee01;
+	}
+.earnings-list .div-custom .green{
+	background:#7cdb01;
+	}
+.earnings-list .div-custom .blueq{
+	background:#00c0bd;
+	}
+.earnings-list .div-custom .darkBlue{
+	background:#0057c1;
+	}
+.earnings-list .div-custom .purple{
+	background:#810099;
+	}
+
+/*自定义*/	
+/*日程列表*/	
+	
+	
+	
+
+/*操作项目*/
+#div-schedule-con .div-schedule-con-right{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:310px;
+	height:96px;
+	float:right;
+	background:#fff;
+	}
+
+	
+#div-schedule-con .div-schedule-con-right .operate p{
+	text-align:center;
+	color:#848484;
+	}
+#div-schedule-con .div-schedule-con-right .operate a{
+	display:inline-block;
+	}
+#div-schedule-con .div-schedule-con-right .operate .previousPage,
+#div-schedule-con .div-schedule-con-right .operate .other{
+	border-right:1px solid #ececec;
+	width:104px;
+	height:96px;
+	float:left;
+	}
+#div-schedule-con .div-schedule-con-right .operate .previousPage a,
+#div-schedule-con .div-schedule-con-right .operate .other a,
+#div-schedule-con .div-schedule-con-right .operate .release a{
+	margin-left:20px;
+	margin-top:3px;
+	}
+
+#div-schedule-con .div-schedule-con-right .operate .previousPage .backimg{
+	background:url(../../../../../public/images/yuepaiicon.png) no-repeat 0 0;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+#div-schedule-con .div-schedule-con-right .operate .other .backimg{
+	background:url(../../../../../public/images/yuepaiicon.png) no-repeat 0 -316px;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+#div-schedule-con .div-schedule-con-right .operate .release .backimg{
+	background:url(../../../../../public/images/yuepaiicon.png) no-repeat 0 -362px;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+	
+
+.ppointPagingthis{
+	width:860px;
+	}
+.ppointPaging{
+	background:#fff;
+	}

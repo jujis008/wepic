@@ -1,0 +1,468 @@
+package com.wetuo.wepic.publish.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.FetchMode;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.publish.beans.Publish;
+import com.wetuo.wepic.publish.beans.PublishPicSearchByTerm;
+import com.wetuo.wepic.publish.beans.PublishStatus;
+import com.wetuo.wepic.publish.beans.Story;
+
+public class PublishPicSearchByTermServiceImp implements PublishPicSearchByTermService {
+	private PublishService publishService;
+	private PublishCatService publishCatService;
+	private StoryService storyService;
+	//private PublishPicSearchByTerm picSearchByTerm;
+	private PublishCat_PublishService publishCatPublishService;
+	private PublishStatusService  publishStatusService;
+
+	public Pager searchByTermfromMylib(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize) {
+		
+           if(picSearchByTerm.getPublishParentTypeId()!=null&&!picSearchByTerm.getPublishParentTypeId().equals("")){
+			
+			DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Publish.class);
+			
+			
+			detachedCriteria.createAlias( "publishSpecialCat" ,  "publishSpecialCat" );
+			detachedCriteria.createAlias( "publishStatus" ,  "publishStatus" );
+			detachedCriteria.createAlias( "user" ,  "user" );
+		
+			detachedCriteria.add(Restrictions.eq("type", Integer.parseInt(picSearchByTerm.getPublishParentTypeId())));
+			
+			if(picSearchByTerm.getSpecalCatId()!=null&&!picSearchByTerm.getSpecalCatId().equals("")){
+			detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));	
+			}
+			//1未发布 2已发布为仅展示3已发布为可销售4已下架
+			if(picSearchByTerm.getPublishStaute()!=null&&picSearchByTerm.getPublishStaute()!=""){
+				if(picSearchByTerm.getPublishStaute().equals("1")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.unreleased", 0));
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("2")){
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.justShow", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.noPass", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.userSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.adminSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("3")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.onOffer", 1));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.noPass", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.userSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.adminSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("4")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.userSoldout", 1));
+					detachedCriteria.add(Restrictions.eq("publishStatus.adminSoldout", 1));
+					detachedCriteria.add(Restrictions.eq("publishStatus.copyrightBuyout", 1));
+					
+					
+				}
+				
+			}
+			detachedCriteria.add(Restrictions.not(Restrictions.or(Restrictions.eq("publishStatus.adminDelete", 1),Restrictions.eq("publishStatus.userDelete", 1))));
+			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+			Pager pager=publishCatPublishService.findByDetachedCriteria(detachedCriteria, pageNo, pageSize);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/*
+			List<Publish> publishs=(List<Publish>) pager.getResultList();
+			List<Publish> newlist=new ArrayList<Publish>();
+			for (Publish publish : publishs) {
+				PublishStatus publishStatus= publishStatusService.findById(publish.getPublishStatus().getId());
+				if(publishStatus.getAdminDelete()==1){
+					continue;
+				}else if(publishStatus.getAdminSoldout()==1){
+					continue;	
+				}else if(publishStatus.getUserDelete()==1){
+					continue;	
+				}
+				publish.setPublishStatus(publishStatus);
+				newlist.add(publish);
+			}
+			pager.setResultList(newlist);
+			*/
+			
+			  List<Publish> listPublish=(List<Publish>)pager.getResultList();
+			    for (Publish publish : listPublish) {
+				 String reson=publish.getNotPassedCause();
+					List list=new ArrayList<String>();
+					if(reson!=null&&!reson.trim().equals("")){
+						String[] resons=reson.split(",");
+						for (String string : resons) {
+							if(string.equals("1")){
+								list.add("您上传的证件不清晰");
+								
+							}
+							else if(string.equals("2")) {
+								list.add("证件照片有改动");
+								
+							}
+							else if(string.equals("3")) {
+								list.add("您提交的身份信息不正确");
+								
+							}
+							else {
+								list.add(string);
+								
+							}
+							
+						}
+						
+						
+						
+					}
+					publish.setResons(list);
+				 
+				
+			}
+			
+			
+			
+			
+			
+			
+			return pager;
+		}else{
+			 DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Publish.class);
+			 /*if(picSearchByTerm.getPublishStaute()!=null&&!picSearchByTerm.getPublishStaute().equals("")){
+				detachedCriteria.add(Restrictions.eq("status", Integer.parseInt(picSearchByTerm.getPublishStaute())));
+				}
+				*/
+			 
+			 detachedCriteria.createAlias("publishStatus", "publishStatus");
+			 detachedCriteria.createAlias("publishSpecialCat", "publishSpecialCat");
+			 detachedCriteria.createAlias( "user" ,  "user" );
+			if(picSearchByTerm.getSpecalCatId()!=null&&!picSearchByTerm.getSpecalCatId().equals("")){
+				detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));	
+				}
+			
+			//detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.adminSoldout", 1)));
+			detachedCriteria.add(Restrictions.not(Restrictions.or(Restrictions.eq("publishStatus.userDelete", 1),Restrictions.eq("publishStatus.adminDelete", 1))));
+			//detachedCriteria.add(Restrictions.not());
+			
+			//1未发布 2已发布为仅展示3已发布为可销售4已下架
+			if(picSearchByTerm.getPublishStaute()!=null&&picSearchByTerm.getPublishStaute()!=""){
+				if(picSearchByTerm.getPublishStaute().equals("1")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.unreleased", 0));
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("2")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.justShow", 1));
+					detachedCriteria.add(Restrictions.eq("publishStatus.pass", 1));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.noPass", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.userSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.adminSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("3")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.onOffer", 1));
+					detachedCriteria.add(Restrictions.eq("publishStatus.pass", 1));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.noPass", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.userSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.adminSoldout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("4")){
+					detachedCriteria.add(Restrictions.or(Restrictions.or(Restrictions.eq("publishStatus.userSoldout", 1), Restrictions.eq("publishStatus.adminSoldout", 1)),Restrictions.eq("publishStatus.copyrightBuyout", 1)));
+					
+				}
+				else if(picSearchByTerm.getPublishStaute().equals("5")){
+					detachedCriteria.add(Restrictions.eq("publishStatus.noPass", 1));
+					
+				}
+			}
+			
+			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+			detachedCriteria.add(Restrictions.not(Restrictions.or(Restrictions.eq("publishStatus.adminDelete", 1),Restrictions.eq("publishStatus.userDelete", 1))));
+			
+			Pager pager=publishCatPublishService.findByDetachedCriteria(detachedCriteria, pageNo, pageSize);
+			
+			
+			  List<Publish> listPublish=(List<Publish>)pager.getResultList();
+			    for (Publish publish : listPublish) {
+				 String reson=publish.getNotPassedCause();
+					List list=new ArrayList<String>();
+					if(reson!=null&&!reson.trim().equals("")){
+						String[] resons=reson.split(",");
+						for (String string : resons) {
+							if(string.equals("1")){
+								list.add("您上传的证件不清晰");
+								
+							}
+							else if(string.equals("2")) {
+								list.add("证件照片有改动");
+								
+							}
+							else if(string.equals("3")) {
+								list.add("您提交的身份信息不正确");
+								
+							}
+							else {
+								list.add(string);
+								
+							}
+							
+						}
+						
+						
+						
+					}
+					publish.setResons(list);
+				 
+				
+			}
+			
+			    
+			    
+			
+			return pager;
+		
+		
+		}
+		
+	}	
+	
+	        public Pager searchByTermPicforUnpublishStory(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize) {
+	        	DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Story.class);
+	        	detachedCriteria.createAlias( "publishSpecialCat" ,  "publishSpecialCat" );
+      			detachedCriteria.createAlias( "user" ,  "user2" );
+	        	if (picSearchByTerm.getSpecalCatId().equals("0")) {
+	        	}else {
+	        		detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));
+				}
+      			Pager pager=storyService.findbyDetachedCriteria(detachedCriteria, pageNo, pageSize);
+      			List<Story> stories=(List<Story>)pager.getResultList();
+      			List<Story> newlist=new ArrayList<Story>();
+      			pager.setResultList(stories);
+				return pager;
+	        }
+			public Pager searchByTermPicforStory(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize) {
+				DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Story.class);
+				detachedCriteria.createAlias( "publishSpecialCat" ,  "publishSpecialCat" );
+      			detachedCriteria.createAlias( "publishStatus" ,  "publishStatus" );
+      			detachedCriteria.createAlias( "user" ,  "user2" );
+      			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+      			if (picSearchByTerm.getSpecalCatId().equals("0")) {
+				}else if ((picSearchByTerm.getSpecalCatId()!= null && !picSearchByTerm.getSpecalCatId().equals("")) && (!picSearchByTerm.getSpecalCatId().equals("all"))) {
+					detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));
+				}
+      			if (picSearchByTerm.getPublishStaute() != null && !picSearchByTerm.getPublishStaute().equals("")) {
+					if (picSearchByTerm.getPublishStaute() == "1" || picSearchByTerm.getPublishStaute() .equals("1") ) {
+          				//detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.unreleased", 1)));
+						detachedCriteria.add(Restrictions.or(Restrictions.eq("publishStatus.unreleased", 0),Restrictions.eq("publishStatus.awaitingReview",1)));
+						detachedCriteria.add(Restrictions.eq("publishStatus.noPass",0));
+						detachedCriteria.add(Restrictions.eq("publishStatus.pass",0));
+					}else if (picSearchByTerm.getPublishStaute() == "2" || picSearchByTerm.getPublishStaute().equals("2")) {
+						detachedCriteria.add(Restrictions.or(Restrictions.ne("publishStatus.pass", 0),Restrictions.ne("publishStatus.onOffer", 0)));
+						detachedCriteria.add(Restrictions.eq("publishStatus.userDelete", 0));
+						detachedCriteria.add(Restrictions.eq("publishStatus.adminDelete", 0));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.pass", 0)));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.onOffer", 0)));
+					}else if (picSearchByTerm.getPublishStaute() == "3" || picSearchByTerm.getPublishStaute().equals("3")){
+						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 0)));
+						detachedCriteria.add(Restrictions.eq("publishStatus.userDelete", 0));
+						detachedCriteria.add(Restrictions.eq("publishStatus.adminDelete", 0));
+					}else if (picSearchByTerm.getPublishStaute() == "0" || picSearchByTerm.getPublishStaute().equals("0")){
+						detachedCriteria.add(Restrictions.or(Restrictions.ne("publishStatus.unreleased", 1), Restrictions.or(Restrictions.ne("publishStatus.pass", 0),
+					    		   Restrictions.or(Restrictions.ne("publishStatus.onOffer", 0), Restrictions.or(Restrictions.ne("publishStatus.copyrightBuyout", 0),
+					    		   Restrictions.or(Restrictions.ne("publishStatus.userSoldout", 0), Restrictions.or(Restrictions.ne("publishStatus.adminSoldout", 0), Restrictions.eq("publishStatus.awaitingReview", 1))))))));
+						detachedCriteria.add(Restrictions.eq("publishStatus.userDelete", 0));
+						detachedCriteria.add(Restrictions.eq("publishStatus.adminDelete", 0));
+						//detachedCriteria.add(Restrictions.or(Restrictions.ne("publishStatus.unreleased", 1),Restrictions.ne("publishStatus.pass", 0)));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.pass", 0)));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.onOffer", 0)));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.copyrightBuyout", 0)));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.userDelete", 0)));
+//						detachedCriteria.add(Restrictions.not(Restrictions.eq("publishStatus.adminDelete", 0)));
+					}
+				}
+//      			else {
+//					detachedCriteria.add(Restrictions.or(Restrictions.eq("publishStatus.unreleased", 0),Restrictions.eq("publishStatus.awaitingReview",1)));
+//					detachedCriteria.add(Restrictions.eq("publishStatus.noPass",0));
+//					detachedCriteria.add(Restrictions.eq("publishStatus.pass",0));
+//				}
+      			Pager pager=storyService.findbyDetachedCriteria(detachedCriteria, pageNo, pageSize);
+      			List<Story> stories=(List<Story>)pager.getResultList();
+      			List<Story> newlist=new ArrayList<Story>();
+      			pager.setResultList(stories);
+				return pager;
+			}
+             public Pager searchByTermPicforPublish(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize) {
+         		
+                if(picSearchByTerm.getPublishParentTypeId()!=null&&!picSearchByTerm.getPublishParentTypeId().equals("")){
+      			DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Publish.class).setFetchMode("setpublishCat_Publish", FetchMode.SELECT);			
+      			detachedCriteria.createAlias( "setpublishCat_Publish" ,  "setpublishCat_Publish" );
+      			detachedCriteria.createAlias("setpublishCat_Publish.publishCat", "publishCat");
+      			detachedCriteria.createAlias( "publishSpecialCat" ,  "publishSpecialCat" );
+      			detachedCriteria.createAlias( "publishStatus" ,  "publishStatus" );
+      			detachedCriteria.createAlias( "user" ,  "user" );
+      		
+      			detachedCriteria.add(Restrictions.eq("publishCat.pid", Integer.parseInt(picSearchByTerm.getPublishParentTypeId())));
+      			if(picSearchByTerm.getSpecalCatId()!=null&&!picSearchByTerm.getSpecalCatId().equals("")){
+      			detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));	
+      			}
+      			detachedCriteria.add(Restrictions.eq("publishStatus.unreleased", 0));
+      			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+      			//detachedCriteria.add(Restrictions.not(Restrictions.eq("logo", "1")));
+      			Pager pager=publishCatPublishService.findByDetachedCriteria(detachedCriteria, pageNo, pageSize);
+      			List<Publish> publishs=(List<Publish>) pager.getResultList();
+      			List<Publish> newlist=new ArrayList<Publish>();
+      			pager.setResultList(publishs);
+      			
+      			
+      			return pager;
+      		}else{
+      			 DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Publish.class);
+      			 detachedCriteria.createAlias("publishStatus", "publishStatus");
+      			 detachedCriteria.createAlias("publishSpecialCat", "publishSpecialCat");
+      			detachedCriteria.createAlias( "user" ,  "user" );
+      			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+      			if(picSearchByTerm.getSpecalCatId()!=null&&!picSearchByTerm.getSpecalCatId().equals("")){
+      				detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));	
+      				}
+      			
+      			detachedCriteria.add(Restrictions.eq("publishStatus.unreleased", 0));
+      			//detachedCriteria.add(Restrictions.not(Restrictions.eq("logo", "1")));
+      			return publishService.findbyDetachedCriteria(detachedCriteria,pageNo,pageSize);
+      		
+      		
+      		}
+      		
+      	}	
+      		
+             
+             
+             
+             public Pager searchByTermPicforUser(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize) {
+          		
+                 if(picSearchByTerm.getPublishParentTypeId()!=null&&!picSearchByTerm.getPublishParentTypeId().equals("")){
+       			DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Publish.class).setFetchMode("setpublishCat_Publish", FetchMode.SELECT);			
+       			detachedCriteria.createAlias( "setpublishCat_Publish" ,  "setpublishCat_Publish" );
+       			detachedCriteria.createAlias("setpublishCat_Publish.publishCat", "publishCat");
+       			detachedCriteria.createAlias( "publishSpecialCat" ,  "publishSpecialCat" );
+       			detachedCriteria.createAlias( "publishStatus" ,  "publishStatus" );
+       			detachedCriteria.createAlias( "user" ,  "user" );
+       		
+       			detachedCriteria.add(Restrictions.eq("publishCat.pid", Integer.parseInt(picSearchByTerm.getPublishParentTypeId())));
+       			if(picSearchByTerm.getSpecalCatId()!=null&&!picSearchByTerm.getSpecalCatId().equals("")){
+       			detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));	
+       			}
+       			detachedCriteria.add(Restrictions.eq("publishStatus.unreleased", 0));
+       			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+       			detachedCriteria.add(Restrictions.not(Restrictions.eq("logo", "1")));
+       			Pager pager=publishCatPublishService.findByDetachedCriteria(detachedCriteria, pageNo, pageSize);
+       			List<Publish> publishs=(List<Publish>) pager.getResultList();
+       			List<Publish> newlist=new ArrayList<Publish>();
+       			pager.setResultList(publishs);
+       			
+       			
+       			return pager;
+       		}else{
+       			 DetachedCriteria detachedCriteria=DetachedCriteria.forClass(Publish.class);
+       			 detachedCriteria.createAlias("publishStatus", "publishStatus");
+       			 detachedCriteria.createAlias("publishSpecialCat", "publishSpecialCat");
+       			detachedCriteria.createAlias( "user" ,  "user" );
+       			detachedCriteria.add(Restrictions.eq("user.id",picSearchByTerm.getUserId()));
+       			if(picSearchByTerm.getSpecalCatId()!=null&&!picSearchByTerm.getSpecalCatId().equals("")){
+       				detachedCriteria.add(Restrictions.eq("publishSpecialCat.id", Integer.parseInt(picSearchByTerm.getSpecalCatId())));	
+       				}
+       			
+       			detachedCriteria.add(Restrictions.eq("publishStatus.unreleased", 0));
+       			detachedCriteria.add(Restrictions.not(Restrictions.eq("logo", "1")));
+       			return publishService.findbyDetachedCriteria(detachedCriteria,pageNo,pageSize);
+       		
+       		
+       		}
+       		
+       	}	
+	
+	
+	
+	
+	
+	
+	public PublishService getPublishService() {
+		return publishService;
+	}
+	public void setPublishService(PublishService publishService) {
+		this.publishService = publishService;
+	}
+	public PublishCatService getPublishCatService() {
+		return publishCatService;
+	}
+	public void setPublishCatService(PublishCatService publishCatService) {
+		this.publishCatService = publishCatService;
+	}
+	
+	public PublishCat_PublishService getPublishCatPublishService() {
+		return publishCatPublishService;
+	}
+	public void setPublishCatPublishService(
+			PublishCat_PublishService publishCatPublishService) {
+		this.publishCatPublishService = publishCatPublishService;
+	}
+	public PublishStatusService getPublishStatusService() {
+		return publishStatusService;
+	}
+	public void setPublishStatusService(PublishStatusService publishStatusService) {
+		this.publishStatusService = publishStatusService;
+	}
+
+	public StoryService getStoryService() {
+		return storyService;
+	}
+
+	public void setStoryService(StoryService storyService) {
+		this.storyService = storyService;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

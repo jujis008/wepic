@@ -1,0 +1,114 @@
+$(function(){
+	
+	
+	
+	judgeLi("divListOneUl",16);	//达到图片数显示分页
+	judgeLi("divListTwoUl",16);	//达到图片数显示分页
+	judgeLi("divListThreeUl",16);	//达到图片数显示分页
+	judgeLi("divListFourUl",16);	//达到图片数显示分页
+	
+	
+	xuan();
+	
+	clock();				//倒计时
+	
+	
+	objscroll("divApointProjectRight",260);
+	
+	divLiBarClickCollect("topdbUL");
+	
+	
+	});
+	
+/* click 动作		jquery*/
+function divLiBarClickCollect(divName){
+	var allMainBarLi=$("#"+divName).find("li");
+	
+	$(allMainBarLi).each(function(){
+			$(this).click(function(){
+				var allMainBarLi=$("#"+divName).find("li").each(function() {$(this).removeClass("active");});
+				$(this).addClass("active");
+			});	
+    });	
+}
+
+/* active 动作	---jquery*/
+function hoverAddClassDE(divName){
+	var allLi=$("."+divName).find(".lilist");
+	var timer ;
+	$(allLi).each(function(){
+		var teemp=this;
+			$(this).hover(
+				function(){$(teemp).addClass("active");},
+				function(){$(teemp).removeClass("active");}
+				
+				
+			);
+			
+			
+    });	
+
+}
+
+function xuan(){
+        var cardLi=$("#recruitCameristTimelyStateCard").find("li");
+		var oDivSon =$(".divStateCardCon").find(".divList");
+		
+		
+        for(var i=0;i<cardLi.length;i++){  
+            cardLi[i].index=i; //input[0].index=0 index是自定义属性
+            cardLi[i].onclick=function(){
+               for(var i=0;i<cardLi.length;i++){  //循环历遍去掉button样式和把div隐藏
+                  cardLi[i].className='';
+                  oDivSon[i].style.display='none';
+               };
+               this.className='active';  //当前按钮添加样式
+               oDivSon[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+           };
+         };
+		 
+       }
+	
+
+ 
+
+function nextimg(obj){
+	
+	
+	
+	$item = $sliderMove.children();
+	var $iSteep = $item.outerWidth();
+	$sliderMove.css('width',$item.length * $iSteep +'px' );
+			
+			
+			
+			
+			
+	$(obj).next().children().css( "left",-$iSteep+'px');
+	
+	}
+
+//初始化样式
+	
+
+		//添加点击事件
+		$sliderNext.on('click',moveNext);
+		$sliderPrev.on('click',movePrev);
+
+		
+		//缓存运动样式
+		var data1 = {}, data2 = {};
+		data1[dir] = -$iSteep;
+		data2[dir] = 0;
+
+		//运动样式函数
+		function moveNext(){
+			alert($iSteep);
+			$sliderMove.css( dir,-$iSteep+'px').children().last().prependTo( $sliderMove );
+			$sliderMove.animate(data2,  options.speed);
+		};
+
+		function movePrev(){
+			$sliderMove.animate( data1,  options.speed, function(){
+				$sliderMove.css( dir, 0 ).children().first().appendTo( $sliderMove );
+			})

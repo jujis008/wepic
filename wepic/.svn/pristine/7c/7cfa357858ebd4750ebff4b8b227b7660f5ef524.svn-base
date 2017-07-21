@@ -1,0 +1,487 @@
+#divtPersonInfo{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:546px;
+	height:724px;
+	background:#ffffff;
+	margin:0 auto; 
+	margin-top:10px;
+	margin-bottom:26px;
+	}
+
+#divtPersonInfo .title,
+#divtPersonIn .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:52px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:20px;
+	}
+#divtPersonInfo .title h2,
+#divtPersonIn .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	}
+
+#divtPersonInfo .content,
+#divtPersonIn .content{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:573px;
+	margin-top:20px;
+	text-align:left;
+	z-index:50;
+	}
+
+#divtPersonInfo .content .left,
+#divtPersonIn .content .left{
+	width:100px;
+	height:45px;
+	line-height:40px;
+	text-align:right;
+	color: #8A8A8A;
+	display:inline-block;
+	/*border:1px solid red;*/
+	padding-right:10px;
+	font-family: "宋体";
+	}
+#divtPersonInfo .content .name,
+#divtPersonIn .content .name{
+	font-size: 15px;
+	}
+#divtPersonInfo .content .abstract,
+#divtPersonIn .content .abstract{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:546px;
+	height:66px;
+	}
+#divtPersonInfo .content .leftabstract,
+#divtPersonIn .content .leftabstract{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100px;
+	height:45px;
+	line-height:40px;
+	text-align:right;
+	color: #8A8A8A;
+	display:inline-block;
+	padding-right:10px;
+	font-family: "宋体";
+	}
+#divtPersonInfo .content .abstract textarea,
+#divtPersonIn .content .abstract textarea{
+	position:absolute;
+	top:0px;
+	left:115px;
+	width:355px;
+	height:66px;
+	resize:none;
+	background:#fffdf1;
+	font-size:12px; 
+	border:1px solid #e9e8e6;
+	}
+#divtPersonInfo .content .nickname,
+#divtPersonIn .content .nickname{
+	margin-top:20px;
+	}
+#divtPersonInfo .content .inputNickname,
+#divtPersonIn .content .inputNickname {
+	width: 163px;
+	height: 21px;
+	background: #fcfcfc;
+	border: 1px solid #e8e8e8;
+	border-radius: 3px 3px 3px 3px;
+	color: #535353;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	padding: 5px 10px 5px 10px;
+	}
+#divtPersonInfo .content .birthDay,
+#divtPersonInfo .content .sexAgeSx,
+#divtPersonInfo .content .constellationBlt,
+#divtPersonIn .content .birthDay,
+#divtPersonIn .content .sexAgeSx,
+#divtPersonIn .content .constellationBlt{
+	position:relative;
+	top:0px;
+	left:0px;
+	}
+#divtPersonInfo .content .birthDay,
+#divtPersonIn .content .birthDay{
+	z-index:50;
+	}
+#divtPersonInfo .content .sexAgeSx,
+#divtPersonIn .content .sexAgeSx{
+	z-index:40;
+	}
+#divtPersonInfo .content .constellationBlt,
+#divtPersonIn .content .constellationBlt{
+	z-index:30;
+	}
+#divtPersonInfo .content .hometown,
+#divtPersonIn .content .hometown{
+	z-index:20;
+	position:relative;
+	top:0px;
+	left:0px;
+	}
+#divtPersonInfo .content .workingLocation,
+#divtPersonIn .content .workingLocation{
+	z-index:10;
+	position:relative;
+	top:0px;
+	left:0px;
+	}
+#divSelectBirthDayYear{
+	position:absolute;
+	left:115px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectBirthDayMonth{
+	position:absolute;
+	left:215px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectBirthDayDay{
+	position:absolute;
+	left:315px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectSex,
+#divSelectConstellation{
+	position:absolute;
+	left:115px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectSx{
+	position:absolute;
+	left:415px;
+	top:6px;
+	}
+#divSelectBlt{
+	position:absolute;
+	left:265px;
+	top:6px;
+	}
+#divSelectBirthDayYearValue,
+#divSelectBirthDayMonthValue,
+#divSelectBirthDayDayValue{
+	height:300px;
+	overflow:auto;
+	overflow-x:hidden;
+	}
+#divtPersonInfo .content .age,
+#divtPersonInfo .content .sx,
+#divtPersonInfo .content .blt,
+#divtPersonIn .content .age,
+#divtPersonIn .content .sx,
+#divtPersonIn .content .blt{
+	position:absolute;
+	top:0px;
+	width:100px;
+	height:45px;
+	line-height:38px;
+	color: #8A8A8A;
+	display:inline-block;
+	padding-right:10px;
+	font-family: "宋体";
+	}
+#divtPersonInfo .content .age,
+#divtPersonInfo .content .blt,
+#divtPersonIn .content .age,
+#divtPersonIn .content .blt{
+	left:230px;
+	}
+#divtPersonInfo .content .sexAgeSx .sx,
+#divtPersonIn .content .sexAgeSx .sx{
+	left:380px;
+	}
+#divtPersonInfo .content .inputAge,
+#divtPersonIn .content .inputAge{
+	position:absolute;
+	left:263px;
+	top:4px;
+	width: 70px;
+	height: 18px;
+	background: #fcfcfc;
+	border: 1px solid #e8e8e8;
+	border-radius: 3px 3px 3px 3px;
+	color: #535353;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	padding: 5px 10px 5px 10px;
+	}
+#divtPersonInfo .preserve,
+#divtPersonIn .preserve,
+#divtPersonInfoMo .preserve{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:97px;
+	width:460px;
+	border-top:1px solid #f0f0f0;
+	margin:0 auto;
+	}
+#divtPersonInfo .preserve input,
+#divtPersonIn .preserve input,
+#divtPersonInfoMo .preserve input{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -718px;
+	border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 36px;
+    padding-bottom: 2px;
+    width: 142px;
+	margin-top:23px;
+	letter-spacing:15px; 
+	text-align:center;
+	padding-left:20px;
+	*padding-left:0px;
+	}
+#divtPersonInfo .preserve input:hover,
+#divtPersonIn .preserve input:hover,
+#divtPersonInfoMo .preserve input:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+#divtPersonInfo .preserve input:active,
+#divtPersonIn .preserve input:active,
+#divtPersonInfoMo .preserve input:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -792px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}
+.address{
+	width: 546px;
+	height: 80px;
+	}	
+.address .leftAddress{
+	color: #8A8A8A;
+    display: inline-block;
+    font-family: "宋体";
+    height: 80px;
+    left: 0;
+	margin-top:15px;
+    padding-right: 10px;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    width: 100px;
+	}
+.address .left{
+	height: 65px;
+	}
+.address .adr{
+	left:115px;
+	width:400px;
+	text-align:left;
+	}	
+.address .adr dl{
+	margin-top:5px;
+	}	
+.address .adr .dl1{
+	z-index:20;
+	}
+.address .adr .dl2{
+	z-index:19;
+	}
+.address .adr .dl3{
+	z-index:18;
+	}	
+.address .adr .dl4{
+	z-index:17;
+	}
+.address .adr .dl5{
+	z-index:16;
+	}
+.address .adr .dl6{
+	z-index:15;
+	}
+
+
+
+
+
+/*模特*/
+#divtPersonInfoModel{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:1180px;
+	height:724px;
+	margin:0 auto; 
+	margin-top:10px;
+	margin-bottom:26px;
+	}
+#divtPersonIn{
+	float:left;
+	width:546px;
+	height:724px;
+	background:#ffffff;
+	margin-left:40px;
+	_margin-left:20px;
+	}
+#divtPersonInfoMo{
+	float:left;
+	width:546px;
+	height:420px;
+	background:#ffffff;
+	margin-left:10px;
+	}
+#divtPersonInfoMo .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:52px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:20px;
+	}
+#divtPersonInfoMo .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	}
+#divtPersonInfoMo .content{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:227px;
+	}
+#divtPersonInfoMo .content .first{
+	float:left;
+	width:110px;
+	height:30px;
+	margin-left:50px;
+	margin-top:22px;
+	}
+#divtPersonInfoMo .content .first span{
+	font-size:12px;
+	font-family:"宋体";
+	color: #8A8A8A;
+	}
+#divtPersonInfoMo .content .first input{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 2px 2px 2px 2px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 4px 6px 4px 6px;
+    width: 60px;
+	margin-left:8px;
+	}
+
+#divtPersonInfoMo .addP{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:30px;
+	width:470px;
+	margin:0 auto;
+	margin-bottom:10px;
+	text-align:left;
+	}
+
+#divtPersonInfoMo .addP .spanAddP{
+	margin-left:10px;
+	font-size:12px;
+	font-family:"宋体";
+	color: #8A8A8A;
+	}
+#divtPersonInfoMo .addP .spanAddTS{
+	font-size:12px;
+	font-family:"宋体";
+	color: #8A8A8A;
+	}
+#divtPersonInfoMo .addP .inputAddP{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 2px 2px 2px 2px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 4px 6px 4px 6px;
+    width: 70px;
+	margin-left:0px;
+	}
+#divtPersonInfoMo .addP .buttomAddP{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 0px;
+    border: 0;
+    color: #383232;
+	margin-left:10px;
+    cursor: pointer;
+	letter-spacing: 5px;
+	padding-left:5px;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    height: 27px;
+    text-align: center;
+    width: 65px;
+	}
+#divtPersonInfoMo .addP .buttomAddP:hover{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -27px;
+	}
+#divtPersonInfoMo .addP .buttomAddP:active{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -54px;
+	}
+
+#divtPersonInfoMo .content .custom{
+	float:left;
+	width:180px;
+	height:30px;
+	margin-left:50px;
+	margin-top:22px;
+	text-align:left;
+	}
+#divtPersonInfoMo .content .custom span{
+	font-size:12px;
+	font-family:"宋体";
+	color: #8A8A8A;
+	}
+#divtPersonInfoMo .content .custom input{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 2px 2px 2px 2px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 4px 6px 4px 6px;
+    width: 60px;
+	margin-left:8px;
+	}
+#divtPersonInfoMo .content a{
+	position:relative;
+	top:5px;
+	display:inline-block;
+	width:20px;
+	height:20px;
+	background:url(../../../pubimg/images/edit.png) no-repeat 0 -20px;
+	}
+#divtPersonInfoMo .content a:hover{
+	background:url(../../../pubimg/images/edit.png) no-repeat 0 2px;
+	}
+/*模特*/

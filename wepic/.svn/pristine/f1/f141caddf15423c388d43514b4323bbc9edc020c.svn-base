@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.User"
+	table="user"
+>	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	<!-- 用户档案(个人空间) -->
+	<property name="userNo" type="java.lang.String" column="userNo" length="255"/>
+	<property 
+		name="age"
+		type="java.lang.String"
+		column="age"
+		length="50"
+	/>
+	<property 
+		name="username"
+		type="java.lang.String"
+		column="username"
+		length="50"
+	/>
+	<property 
+		name="isediteuserInfo"
+		type="java.lang.String"
+		column="isediteuserInfo"
+		length="50"
+	/>
+	
+	<property 
+		name="personTag"
+		type="java.lang.String"
+		column="personTag"
+		length="255"
+	/>
+	
+	<property 
+		name="userTag"
+		type="java.lang.String"
+		column="userTag"
+		length="255"
+	/>
+	
+	
+	<property 
+		name="qqOpenId"
+		type="java.lang.String"
+		column="qqOpenId"
+		length="50"
+	/>
+	<property 
+		name="weiboOpenId"
+		type="java.lang.String"
+		column="weiboOpenId"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="password"
+		type="java.lang.String"
+		column="password"
+		length="50"
+	/>
+	<property 
+		name="email"
+		type="java.lang.String"
+		column="email"
+		length="50"
+	/>
+	<property 
+		name="specificUrl"
+		type="java.lang.String"
+		column="specificUrl"
+		length="50"
+	/>
+	
+	<property 
+		name="realName"
+		type="java.lang.String"
+		column="realName"
+		length="50"
+	/>
+	<property 
+		name="homeTown"
+		type="java.lang.String"
+		column="homeTown"
+		length="250"
+	/>
+	<property 
+		name="address"
+		type="java.lang.String"
+		column="address"
+		length="250"
+	/>
+	
+	
+	
+	<!-- (前台显示及搜索显示) -->
+	<property 
+		name="nickName"
+		type="java.lang.String"
+		column="nickName"
+		length="100"
+	/>
+	<property 
+		name="portrait"
+		type="java.lang.String"
+		column="portrait"
+		length="100"
+	/>
+	<property 
+		name="occupation"
+		type="java.lang.String"
+		column="occupation"
+		length="100"
+	/>
+	<property 
+		name="workPlace"
+		type="java.lang.String"
+		column="workPlace"
+		length="200"
+	/>
+	<property name="creditRatings" type="java.lang.Integer" column="creditRatings" length="50" />
+	<property name="totalCredits" type="java.lang.Integer" column="totalCredits" length="50" />
+	
+	
+	
+	
+	 <property name="pic" type="java.lang.String" length="255">   
+        <column name="pic" />   
+    </property>
+	<property 
+		name="worktel"
+		type="java.lang.String"
+		column="worktel"
+		length="50"
+	/>
+	<property 
+		name="mobile"
+		type="java.lang.String"
+		column="mobile"
+		length="50"
+	/>
+	
+	<property 
+		name="birthday"
+		type="java.lang.String"
+		column="birthday"
+		length="50"
+	/>
+	<property 
+		name="regTime"
+		type="java.util.Date"
+		column="regTime"
+		length="50"
+	/>
+	<property 
+		name="height"
+		type="java.lang.String"
+		column="height"
+		length="50"
+	/>
+	<property 
+		name="smallportrait"
+		type="java.lang.String"
+		column="smallportrait"
+		length="255"
+	/>
+	
+	<property 
+		name="weight"
+		type="java.lang.String"
+		column="weight"
+		length="50"
+	/>
+	<property 
+		name="bust"
+		type="java.lang.String"
+		column="bust"
+		length="50"
+	/>
+	<property 
+		name="detail1"
+		type="java.lang.String"
+		column="detail1"
+		length="50"
+	/>
+	
+	<property 
+		name="detail2"
+		type="java.lang.String"
+		column="detail2"
+		length="50"
+	/>
+	
+	<property 
+		name="waist"
+		type="java.lang.String"
+		column="waist"
+		length="50"
+	/>
+	<property 
+		name="hip"
+		type="java.lang.String"
+		column="hip"
+		length="50"
+	/>
+	<property 
+		name="newhip"
+		type="java.lang.String"
+		column="newhip"
+		length="50"
+	/>
+	<property 
+		name="shoeSize"
+		type="java.lang.String"
+		column="shoeSize"
+		length="50"
+	/>
+	<property 
+		name="hairColor"
+		type="java.lang.String"
+		column="hairColor"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="sex"
+		type="java.lang.String"
+		column="sex"
+		length="50"
+	/>
+	
+	<!-- //学历	-->
+	<property name="highestDegree" type="java.lang.String" column="highestDegree" length="50" />
+	<property name="highestDegreeDate" type="java.lang.String" column="highestDegreeDate" length="50" />
+	<property name="highestDegreeSchool" type="java.lang.String" column="highestDegreeSchool" length="50" />
+	<property name="bachelorDate" type="java.lang.String" column="bachelorDate" length="50" />
+	<property name="bachelorSchool" type="java.lang.String" column="bachelorSchool" length="50" />
+	<property name="training" type="java.lang.String" column="training" length="50" />
+	
+	<!-- //个人自荐(空间主页左栏显示) -->
+	<property name="selfIntroduction" type="java.lang.String"	column="selfIntroduction" length="500"	/>
+	<property name="projects" type="java.lang.String"	column="projects" length="500"	/>
+	
+	<!-- //作品及获奖(空间主页左栏显示)	 -->
+	<property name="works" type="java.lang.String"	column="works" length="500"	/>
+	<property name="prize" type="java.lang.String"	column="prize" length="500"	/>
+	
+	
+	<property 
+		name="favorate"
+		type="java.lang.String"
+		column="favorate"
+		length="50"
+	/>
+	
+	<property 
+		name="beAgreed"
+		type="java.lang.String"
+		column="beAgreed"
+		length="100"
+	/>
+	
+	
+	<property 
+		name="context"
+		type="java.lang.String"
+		column="context"
+		length="50"
+	/>
+	
+	<property 
+		name="bloodtype"
+		type="java.lang.String"
+		column="bloodtype"
+		length="50"
+	/>
+	
+	<property 
+		name="Constellation"
+		type="java.lang.String"
+		column="Constellation"
+		length="50"
+	/>
+	
+	<property 
+		name="zodiac"
+		type="java.lang.String"
+		column="zodiac"
+		length="50"
+	/>
+	<many-to-one name="userCat"	column="userCatid" not-null="false" lazy="false" />
+	<!-- 
+	<set name="userDetailSet" inverse="true">
+		<key column="userid"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.UserDetail"/>
+	</set>
+	
+	<set name="userHistorySet" inverse="true">
+		<key column="userid"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.UserHistory"/>
+	</set>
+	 
+	<set name="loginHistorySet" inverse="true">
+		<key column="userid"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.LoginHistory"/>
+	</set>
+	
+	<set name="userCreditHistorySet" inverse="true">
+		<key column="userid"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.UserCreditHistory"/>
+	</set>
+	-->	
+	
+	<!-- -->
+	<property name="personOrCompany" type="java.lang.Integer" column="personOrCompany" length="50" />
+	<property name="companyName" type="java.lang.String" column="companyName" length="50" />
+	<!-- 
+	private String companyEmail;//企业邮箱
+	private String companyAddr;//企业地址
+	private String certificateNo;//营业执照注册号
+	private String companyRegAddr;//企业注册所在地
+	private Date companyBuildDate;//公司成立时间
+	private String busnissAllowedT;//公司营业期限
+	private String businessScope;//经营范围
+	private Double companyRegMoney;//注册资本
+	private String companyorgcode;//组织结构代码
+	private String markerName;//运营者姓名
+	private String markerIDCard;//运营者身份证号码
+	private String certificatePic;//营业执照（营业执照扫描件）
+	private String licenseagreement;//授权运营书
+	private String markerduty;//运营者职务
+	 -->
+	<property name="companyEmail" type="java.lang.String" column="companyEmail" length="255" />
+	<property name="companyAddr" type="java.lang.String" column="companyAddr" length="255" />
+	<property name="certificateNo" type="java.lang.String" column="certificateNo" length="255" />
+	<property name="companyRegAddr" type="java.lang.String" column="companyRegAddr" length="255" />
+	<property name="companyBuildDate" type="java.lang.String" column="companyBuildDate" length="255" />
+	<property name="busnissAllowedTime" type="java.lang.String" column="busnissAllowedTime" length="255" />
+	<property name="businessScope" type="java.lang.String" column="businessScope" length="255" />
+	<property name="companyRegMoney" type="java.lang.String" column="companyRegMoney" length="50" />
+	<property name="companyorgcode" type="java.lang.String" column="companyorgcode" length="255" />
+	<property name="markerName" type="java.lang.String" column="markerName" length="255" />
+	<property name="markerIDCard" type="java.lang.String" column="markerIDCard" length="255" />
+	<property name="licenseagreement" type="java.lang.String" column="licenseagreement" length="255" />
+	<property name="markerduty" type="java.lang.String" column="markerduty" length="255" />
+	
+	
+	
+	
+	<property name="certificatePic" type="java.lang.String">
+        <column name="certificatePic" />   
+    </property>
+	<property name="idCardFrontPic" type="java.lang.String">
+        <column name="idCardFrontPic" />   
+    </property>
+	<property name="idCardBackPic" type="java.lang.String">
+        <column name="idCardBackPic" />   
+    </property>
+	<property name="residence" type="java.lang.String" column="residence" length="50" />
+	<property name="idCardNo" type="java.lang.String" column="idCardNo" length="50" />
+	<property name="qq" type="java.lang.String" column="qq" length="50" />
+	<property name="qqCode" type="java.lang.String" column="qqCode" length="50" />
+	<property name="phone" type="java.lang.String" column="phone" length="50" />
+	
+	<property name="hasBadHistory" type="java.lang.Integer" column="hasBadHistory" length="50" />
+	
+	<property name="ifApplyContributingPhotographer" type="java.lang.Integer" column="ifApplyContributingPhotographer" length="50" />
+	
+	<property name="isContributingPhotographer" type="java.lang.Integer" column="isContributingPhotographer" length="50" />
+	<property name="adminId" type="java.lang.Integer" column="adminId" length="50" />
+	<property name="ifIdentityTrue" type="java.lang.Integer" column="ifIdentityTrue" length="50" />
+	<property name="punishToAllPublish" type="java.lang.Integer" column="punishToAllPublish" length="50" />
+	<property name="role" type="java.lang.String" column="role" length="1000" />
+	<property name="chineseRole" type="java.lang.String" column="chineseRole" length="255"></property>
+	<property name="brokerFlag" type="java.lang.String" column="brokerFlag" length="100" />
+	<property name="major" type="java.lang.String" column="major" length="255"></property>
+	<property name="bgPic" type="java.lang.String" column="bgPic" length="255"></property>
+	
+	<property name="nopassreason" type="java.lang.String" column="nopassreason" length="255"></property>
+	<property name="statu" type="java.lang.Integer" column="statu" length="50"></property>
+	<property name="authenticationCode" type="java.lang.String" column="authenticationCode" length="255"></property>
+<!-- 
+	<set name="publishFavoriteSet" inverse="true">
+		<key column="userid"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.PublishFavorite"/>
+	</set>
+	 -->
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

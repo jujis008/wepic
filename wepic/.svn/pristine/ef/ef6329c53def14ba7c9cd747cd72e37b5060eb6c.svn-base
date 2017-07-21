@@ -1,0 +1,407 @@
+package com.wetuo.wepic.deal.beans ;
+ 
+import java.io.Serializable;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import com.wetuo.wepic.core.beans.User;
+ 
+import java.util.*;
+	
+import java.util.*;
+	
+import java.util.*;
+	
+import java.util.*;
+	
+import java.util.*;
+	
+import java.util.*;
+	
+public class Bid  implements Serializable {
+ 
+	/////instantce variable//////
+	private static final long serialVersionUID = 1L;
+	private String id;
+	protected User user;
+	private String name;
+	private double totalMoney;
+	private Integer recruitNum;
+	private java.sql.Timestamp startTime;//发布时间
+	private String period;//应约截至时间
+	private Integer bidType;
+	private Integer publicOrPrivate;//0公开 1是秘密
+	private Integer refresh;
+	private Integer status;// 0-发布中，2筛选中 ,3拍摄中,4已结束,5-任务成功结束,6-已取消 7--约拍出现争议  8--未审核9--审核不通过;// 1-时间到，流标,3
+	private String bidderAssess;
+	private java.sql.Timestamp payTime;
+	private Integer ifTaskFinished;//0初始状态,1应标者完成工作一点击确认2发标者点击确认工作完成工作
+	private Integer autoFinishPeriod;
+	private Integer numChangeWorker;
+	private Integer type;///招标类型分为人或�?1为人2事情
+	private String tag;//标签搜索�?	private String content; //内容
+	private String workStartTime;//工作开始时间爱你
+	private String workEndTime;//工作结束时间
+	private String content;//拍摄内容以及要求
+	private int user_;
+	private int imgSum;
+	private int ifAskPrice; //是否需要摄影师报价？0 不需要，1需要
+	private String workPlace;
+	private String appendix;
+	private String contextHtml;//应约条件
+	private String shootingEnvironment;//拍摄环境
+	private String isHaveModel;//0是不需要模特1需要模特
+	private Integer sumProdct;//产品数量 
+	private Integer sumProductPhoto;//每件商品正片数量 /或者片长
+    private double unitpriceProduct;//单价
+    private Integer unitpriceType;//单价类型 1每件产品拍摄价2每张正片价格3邀约总价
+    private String attachmentUrl;//附件地址
+    private BidDetailCount bidDetailCount;
+    private int bidView;//查看
+    private int bidGood;//赞
+    private int saveFrarite;//收藏
+    private String copyRighyt;//1版权2使用权
+    private int   ifNeedbill;//6--发票已填写
+    private String workHour;
+    private String needModelOrPhoto;//1是摄影师2 model;
+    
+    
+    
+    
+	
+   
+	public BidDetailCount getBidDetailCount() {
+		return bidDetailCount;
+	}
+	public void setBidDetailCount(BidDetailCount bidDetailCount) {
+		this.bidDetailCount = bidDetailCount;
+	}
+	public String getAttachmentUrl() {
+		return attachmentUrl;
+	}
+	public Integer getUnitpriceType() {
+		return unitpriceType;
+	}
+	public void setUnitpriceType(Integer unitpriceType) {
+		this.unitpriceType = unitpriceType;
+	}
+	public void setAttachmentUrl(String attachmentUrl) {
+		this.attachmentUrl = attachmentUrl;
+	}
+	public double getUnitpriceProduct() {
+		return unitpriceProduct;
+	}
+	public void setUnitpriceProduct(double unitpriceProduct) {
+		this.unitpriceProduct = unitpriceProduct;
+	}
+	
+	public String getAppendix() {
+		return appendix;
+	}
+	public void setAppendix(String appendix) {
+		this.appendix = appendix;
+	}
+	public String getWorkPlace() {
+		return workPlace;
+	}
+	public void setWorkPlace(String workPlace) {
+		this.workPlace = workPlace;
+	}
+	public int getImgSum() {
+		return imgSum;
+	}
+	public void setImgSum(int imgSum) {
+		this.imgSum = imgSum;
+	}
+	public String getWorkStartTime() {
+		return workStartTime;
+	}
+	public void setWorkStartTime(String workStartTime) {
+		this.workStartTime = workStartTime;
+	}
+	public String getWorkEndTime() {
+		return workEndTime;
+	}
+	public int getUser_() {
+		return user_;
+	}
+	public void setUser_(int user) {
+		user_ = user;
+	}
+	public void setWorkEndTime(String workEndTime) {
+		this.workEndTime = workEndTime;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	////start OneToMany
+	private Set<BidDetail> bidDetailSet  = new HashSet<BidDetail>();// 
+	public Set<BidDetail> getBidDetailSet() {
+		return this.bidDetailSet;
+	}//end get
+	public void setBidDetailSet(Set<BidDetail> bidDetailSet) {
+		this.bidDetailSet = bidDetailSet ;
+	}//end set
+	////start OneToMany
+	BidAimPerson bidAimPerson  = new BidAimPerson();// 
+	
+
+	public BidAimPerson getBidAimPerson() {
+		return bidAimPerson;
+	}
+	public void setBidAimPerson(BidAimPerson bidAimPerson) {
+		this.bidAimPerson = bidAimPerson;
+	}
+	////start OneToMany
+	private Set<BidResponseInvited> bidResponseInvitedSet  = new HashSet<BidResponseInvited>();// 
+	public Set<BidResponseInvited> getBidResponseInvitedSet() {
+		return this.bidResponseInvitedSet;
+	}//end get
+	public void setBidResponseInvitedSet(Set<BidResponseInvited> bidResponseInvitedSet) {
+		this.bidResponseInvitedSet = bidResponseInvitedSet ;
+	}//end set
+	////start OneToMany
+	private Set<BidAccountOperation> bidAccountOperationSet  = new HashSet<BidAccountOperation>();// 
+	public Set<BidAccountOperation> getBidAccountOperationSet() {
+		return this.bidAccountOperationSet;
+	}//end get
+	public void setBidAccountOperationSet(Set<BidAccountOperation> bidAccountOperationSet) {
+		this.bidAccountOperationSet = bidAccountOperationSet ;
+	}//end set
+	////start OneToMany
+	private Set<BidReceiverConfirmChange> bidReceiverConfirmChangeSet  = new HashSet<BidReceiverConfirmChange>();// 
+	public Set<BidReceiverConfirmChange> getBidReceiverConfirmChangeSet() {
+		return this.bidReceiverConfirmChangeSet;
+	}//end get
+	public void setBidReceiverConfirmChangeSet(Set<BidReceiverConfirmChange> bidReceiverConfirmChangeSet) {
+		this.bidReceiverConfirmChangeSet = bidReceiverConfirmChangeSet ;
+	}//end set
+	////start OneToMany
+	private Set<BidForOpus> bidForOpusSet  = new HashSet<BidForOpus>();// 
+	public Set<BidForOpus> getBidForOpusSet() {
+		return this.bidForOpusSet;
+	}//end get
+	public void setBidForOpusSet(Set<BidForOpus> bidForOpusSet) {
+		this.bidForOpusSet = bidForOpusSet ;
+	}//end set
+	/////////constructor//////////////////
+	
+	public Bid(String id,User user,String name,double totalMoney,Integer recruitNum,java.sql.Timestamp startTime,String period,Integer bidType,Integer publicOrPrivate,Integer refresh,Integer status,String bidderAssess,java.sql.Timestamp payTime,Integer ifTaskFinished,Integer autoFinishPeriod,Integer numChangeWorker) {
+		this.id = id;
+		this.user = user;
+		this.name = name;
+		this.totalMoney = totalMoney;
+		this.recruitNum = recruitNum;
+		this.startTime = startTime;
+		this.period = period;
+		this.bidType = bidType;
+		this.publicOrPrivate = publicOrPrivate;
+		this.refresh = refresh;
+		this.status = status;
+		this.bidderAssess = bidderAssess;
+		this.payTime = payTime;
+		this.ifTaskFinished = ifTaskFinished;
+		this.autoFinishPeriod = autoFinishPeriod;
+		this.numChangeWorker = numChangeWorker;
+	}//
+	
+	public Bid(){
+		super();
+	}
+ 
+	/////getter////setter//////
+	public String getId() {
+		return this.id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public User  getUser(){
+		return this.user;
+	}
+	public void  setUser(User user){
+		this.user = user ;
+	}
+	public String  getName(){
+		return this.name;
+	}
+	public void  setName(String name){
+		this.name = name ;
+	}
+	public double  getTotalMoney(){
+		return this.totalMoney;
+	}
+	public void  setTotalMoney(double totalMoney){
+		this.totalMoney = totalMoney ;
+	}
+	public Integer  getRecruitNum(){
+		return this.recruitNum;
+	}
+	public void  setRecruitNum(Integer recruitNum){
+		this.recruitNum = recruitNum ;
+	}
+	public java.sql.Timestamp  getStartTime(){
+		return this.startTime;
+	}
+	public void  setStartTime(java.sql.Timestamp startTime){
+		this.startTime = startTime ;
+	}
+	public String  getPeriod(){
+		return this.period;
+	}
+	public void  setPeriod(String period){
+		this.period = period ;
+	}
+	public Integer  getBidType(){
+		return this.bidType;
+	}
+	public void  setBidType(Integer bidType){
+		this.bidType = bidType ;
+	}
+	public Integer  getPublicOrPrivate(){
+		return this.publicOrPrivate;
+	}
+	public void  setPublicOrPrivate(Integer publicOrPrivate){
+		this.publicOrPrivate = publicOrPrivate ;
+	}
+	public Integer  getRefresh(){
+		return this.refresh;
+	}
+	public void  setRefresh(Integer refresh){
+		this.refresh = refresh ;
+	}
+	public Integer  getStatus(){
+		return this.status;
+	}
+	public void  setStatus(Integer status){
+		this.status = status ;
+	}
+	public String  getBidderAssess(){
+		return this.bidderAssess;
+	}
+	public void  setBidderAssess(String bidderAssess){
+		this.bidderAssess = bidderAssess ;
+	}
+	public java.sql.Timestamp  getPayTime(){
+		return this.payTime;
+	}
+	public void  setPayTime(java.sql.Timestamp payTime){
+		this.payTime = payTime ;
+	}
+	public Integer  getIfTaskFinished(){
+		return this.ifTaskFinished;
+	}
+	public void  setIfTaskFinished(Integer ifTaskFinished){
+		this.ifTaskFinished = ifTaskFinished ;
+	}
+	public Integer  getAutoFinishPeriod(){
+		return this.autoFinishPeriod;
+	}
+	public void  setAutoFinishPeriod(Integer autoFinishPeriod){
+		this.autoFinishPeriod = autoFinishPeriod ;
+	}
+	public Integer  getNumChangeWorker(){
+		return this.numChangeWorker;
+	}
+	public void  setNumChangeWorker(Integer numChangeWorker){
+		this.numChangeWorker = numChangeWorker ;
+	}
+	public int getIfAskPrice() {
+		return ifAskPrice;
+	}
+	public void setIfAskPrice(int ifAskPrice) {
+		this.ifAskPrice = ifAskPrice;
+	}
+	public String getContextHtml() {
+		return contextHtml;
+	}
+	public void setContextHtml(String contextHtml) {
+		this.contextHtml = contextHtml;
+	}
+	public String getShootingEnvironment() {
+		return shootingEnvironment;
+	}
+	public void setShootingEnvironment(String shootingEnvironment) {
+		this.shootingEnvironment = shootingEnvironment;
+	}
+	public String getIsHaveModel() {
+		return isHaveModel;
+	}
+	public void setIsHaveModel(String isHaveModel) {
+		this.isHaveModel = isHaveModel;
+	}
+	public Integer getSumProdct() {
+		return sumProdct;
+	}
+	public void setSumProdct(Integer sumProdct) {
+		this.sumProdct = sumProdct;
+	}
+	public Integer getSumProductPhoto() {
+		return sumProductPhoto;
+	}
+	public void setSumProductPhoto(Integer sumProductPhoto) {
+		this.sumProductPhoto = sumProductPhoto;
+	}
+	public int getBidView() {
+		return bidView;
+	}
+	public void setBidView(int bidView) {
+		this.bidView = bidView;
+	}
+	public int getBidGood() {
+		return bidGood;
+	}
+	public void setBidGood(int bidGood) {
+		this.bidGood = bidGood;
+	}
+	public int getSaveFrarite() {
+		return saveFrarite;
+	}
+	public void setSaveFrarite(int saveFrarite) {
+		this.saveFrarite = saveFrarite;
+	}
+	
+	public int getIfNeedbill() {
+		return ifNeedbill;
+	}
+	public void setIfNeedbill(int ifNeedbill) {
+		this.ifNeedbill = ifNeedbill;
+	}
+	
+	public String getNeedModelOrPhoto() {
+		return needModelOrPhoto;
+	}
+	public void setNeedModelOrPhoto(String needModelOrPhoto) {
+		this.needModelOrPhoto = needModelOrPhoto;
+	}
+	public String getCopyRighyt() {
+		return copyRighyt;
+	}
+	public void setCopyRighyt(String copyRighyt) {
+		this.copyRighyt = copyRighyt;
+	}
+	public String getWorkHour() {
+		return workHour;
+	}
+	public void setWorkHour(String workHour) {
+		this.workHour = workHour;
+	}
+
+	
+	
+	
+ 
+}//end class

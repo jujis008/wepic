@@ -1,0 +1,228 @@
+package com.wetuo.wepic.deal.beans ;
+ 
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.deal.beans.BidAimPerson;
+ 
+public class BidResponseInvited  implements Serializable {
+ 
+	/////instantce variable//////
+	private static final long serialVersionUID = 1L;
+	private String id;
+	protected User user;
+	protected BidAimPerson bidAimPerson;
+	//private Bid bid;
+	private Integer isResponse;//-0未回复，1已回复
+	private java.sql.Timestamp reponseTime;//回复时间
+	private double reponseMoney;//报价
+	private String reponseContent;//回复详细
+	private Integer isInvited;//-0未被邀请，1已被邀请
+	private java.sql.Timestamp inviteTime;//邀请时间
+	private Integer isConfirmed;//1表示确认，2表示已本更换，确认后又取消，0没确认,
+	private java.sql.Timestamp confirmedTime;
+	private double coonfirmMoney;
+	private String bidderRemark;
+	private int taskFinished;//0未付款 1已付款
+	private int isCheck;//0以查看,1为查看
+	private String waitingPeople;   // 1设为不选的人2设为待定
+	//---------------------------------------
+	private String bidderRemarkTime;
+	private Integer bidRemarkType;//1好评0差评
+	private String complain;//投诉
+	private String complainTime;//投诉时间
+	private String complainHandle;//投诉处理
+	private String complainHandleTime;//投诉处理时间
+	private String complainstatus;//0是未处理,1延迟处理2成功处理完成3处理完成,但不成功4驳回投诉5没有投诉
+	private String complainHandler;//处理人
+	private String complainHandleResulet;//投诉结果
+	
+	
+ 
+	
+	public String getComplainstatus() {
+		return complainstatus;
+	}
+	public void setComplainstatus(String complainstatus) {
+		this.complainstatus = complainstatus;
+	}
+	public String getBidderRemarkTime() {
+		return bidderRemarkTime;
+	}
+	public void setBidderRemarkTime(String bidderRemarkTime) {
+		this.bidderRemarkTime = bidderRemarkTime;
+	}
+	
+	public Integer getBidRemarkType() {
+		return bidRemarkType;
+	}
+	public void setBidRemarkType(Integer bidRemarkType) {
+		this.bidRemarkType = bidRemarkType;
+	}
+	public String getComplain() {
+		return complain;
+	}
+	public void setComplain(String complain) {
+		this.complain = complain;
+	}
+	public String getComplainTime() {
+		return complainTime;
+	}
+	public void setComplainTime(String complainTime) {
+		this.complainTime = complainTime;
+	}
+	
+	
+	public String getComplainHandle() {
+		return complainHandle;
+	}
+	public void setComplainHandle(String complainHandle) {
+		this.complainHandle = complainHandle;
+	}
+	public String getComplainHandleTime() {
+		return complainHandleTime;
+	}
+	public void setComplainHandleTime(String complainHandleTime) {
+		this.complainHandleTime = complainHandleTime;
+	}
+	public String getComplainHandler() {
+		return complainHandler;
+	}
+	public void setComplainHandler(String complainHandler) {
+		this.complainHandler = complainHandler;
+	}
+	public String getComplainHandleResulet() {
+		return complainHandleResulet;
+	}
+	public void setComplainHandleResulet(String complainHandleResulet) {
+		this.complainHandleResulet = complainHandleResulet;
+	}
+	public int getTaskFinished() {
+		return taskFinished;
+	}
+	public void setTaskFinished(int taskFinished) {
+		this.taskFinished = taskFinished;
+	}
+	////start OneToMany
+	private Bid bid;//
+	public Bid getBid() {
+		return bid;
+	}//end get()
+	public void setBid(Bid bid) {
+		this.bid = bid;
+	}//end set()
+	/////////constructor//////////////////
+	
+	
+	
+	public BidResponseInvited(Integer isInvited, Integer isConfirmed,
+			Timestamp confirmedTime) {
+		super();
+		this.isInvited = isInvited;
+		this.isConfirmed = isConfirmed;
+		this.confirmedTime = confirmedTime;
+	}
+	public BidResponseInvited(){
+		super();
+	}
+ 
+	/////getter////setter//////
+	public String getId() {
+		return this.id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public User  getUser(){
+		return this.user;
+	}
+	public void  setUser(User user){
+		this.user = user ;
+	}
+	
+	public Integer  getIsResponse(){
+		return this.isResponse;
+	}
+	public void  setIsResponse(Integer isResponse){
+		this.isResponse = isResponse ;
+	}
+	public java.sql.Timestamp  getReponseTime(){
+		return this.reponseTime;
+	}
+	public void  setReponseTime(java.sql.Timestamp reponseTime){
+		this.reponseTime = reponseTime ;
+	}
+	public double  getReponseMoney(){
+		return this.reponseMoney;
+	}
+	public void  setReponseMoney(double reponseMoney){
+		this.reponseMoney = reponseMoney ;
+	}
+	public String  getReponseContent(){
+		return this.reponseContent;
+	}
+	public void  setReponseContent(String reponseContent){
+		this.reponseContent = reponseContent ;
+	}
+	public Integer  getIsInvited(){
+		return this.isInvited;
+	}
+	public void  setIsInvited(Integer isInvited){
+		this.isInvited = isInvited ;
+	}
+	public java.sql.Timestamp  getInviteTime(){
+		return this.inviteTime;
+	}
+	public void  setInviteTime(java.sql.Timestamp inviteTime){
+		this.inviteTime = inviteTime ;
+	}
+	public Integer  getIsConfirmed(){
+		return this.isConfirmed;
+	}
+	public void  setIsConfirmed(Integer isConfirmed){
+		this.isConfirmed = isConfirmed ;
+	}
+	public java.sql.Timestamp  getConfirmedTime(){
+		return this.confirmedTime;
+	}
+	public void  setConfirmedTime(java.sql.Timestamp confirmedTime){
+		this.confirmedTime = confirmedTime ;
+	}
+	public double  getCoonfirmMoney(){
+		return this.coonfirmMoney;
+	}
+	public void  setCoonfirmMoney(double coonfirmMoney){
+		this.coonfirmMoney = coonfirmMoney ;
+	}
+	public String  getBidderRemark(){
+		return this.bidderRemark;
+	}
+	public void  setBidderRemark(String bidderRemark){
+		this.bidderRemark = bidderRemark ;
+	}
+	public BidAimPerson getBidAimPerson() {
+		return bidAimPerson;
+	}
+	public void setBidAimPerson(BidAimPerson bidAimPerson) {
+		this.bidAimPerson = bidAimPerson;
+	}
+	public int getIsCheck() {
+		return isCheck;
+	}
+	public void setIsCheck(int isCheck) {
+		this.isCheck = isCheck;
+	}
+	public String getWaitingPeople() {
+		return waitingPeople;
+	}
+	public void setWaitingPeople(String waitingPeople) {
+		this.waitingPeople = waitingPeople;
+	}
+ 
+	
+	
+}//end class

@@ -1,0 +1,682 @@
+$(function(){
+	
+	/*bar("divTwoStage","divThreeStage","threeStage");*/
+	divLiBar2("mainbar","personalCenter");   //主导航背景底边框
+	
+	divLiBar("divTopBarContainer");   //展开头部右边详细
+	
+	userBuyCart();  				/*头部展开用户/购物车信息详细 */
+	
+	divLiBar("topBarShoppingDetailed");   //头部购物车展开列表背景
+	});	
+
+
+
+/*显示下拉框列表*/
+function showBelow(showDiv){
+	$("#"+showDiv).show();
+	$("#"+showDiv).parent().parent().css("z-index","200");
+	}
+	
+
+/*获取下拉框值并隐藏*/
+// bolewDiv		下拉框div列表
+// showValue		显示值
+function achieveBelow(bolewDiv,showValue){
+	var bolewDivSpan=$("#"+bolewDiv).find("span");
+	/*alert("11");*/
+	
+	$(bolewDivSpan).each(function() {
+		$(this).click(
+			function(){
+				$("#"+showValue).html(this.innerHTML);
+				$("#"+bolewDiv).hide();
+				});
+	
+		});	
+	$(".divdropDown").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".dropDownBoxValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+	
+	$(".editSelect").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".belowValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+}
+/*获取下拉框值并隐藏*/
+
+
+
+	
+function locatArea(province,city,district,box){
+	this.Are = new getArea(province,city,district);
+	this.tag = [box.getElementsByTagName('dt'),box.getElementsByTagName('dd')];
+	this.setAreaDat(0);
+		box.onclick = function(areaObj){ 
+				return function(e){
+						var evt = e || event, span = evt.srcElement || evt.target;
+						var mName = span.parentNode.nodeName.toLowerCase();
+						if(mName === 'dt'){
+								for(var i=0,j; j=areaObj.tag[1][i++];) j.style.display = 'none';
+								span.parentNode.nextSibling.style.display = 'block';
+						}else if(mName === 'dd'){
+								span.firstChild.parentNode.parentNode.style.display = 'none';
+								areaObj.setProvince(span);
+						}
+				} 
+		}(this);
+}
+locatArea.prototype.setAreaDat = function(i) {
+		this.Name = [this.Are.pName,this.Are.cName,this.Are.dName];
+		this.Dat = [this.Are.pDat,this.Are.cDat,this.Are.dDat];
+		for(i; i<3; i++) {
+				this.tag[0][i].getElementsByTagName('span')[0].innerHTML = this.Name[i];
+				this.tag[0][i].getElementsByTagName('input')[0].value = this.Name[i];
+				this.tag[1][i].innerHTML = this.createHTML(this.Dat[i],i);
+		}
+}
+locatArea.prototype.createHTML = function(arr,a) {
+		if(arr==null) return '请先选择城市';
+		var html = '';
+		for(var i = 0, j; j = arr[i++]; )
+		html += '<span rel="'+a+'">'+j+'</span>';
+		return html;
+}
+locatArea.prototype.setDistrict = function(district) { this.Are.dName = district; }
+locatArea.prototype.setProvince = function(mouseTag) {
+		var a = Number(mouseTag.getAttribute('rel'));
+		var areaName = mouseTag.innerHTML;
+		switch (a) {
+				case 0: this.Are.getCity(areaName);
+				break;
+				case 1: this.Are.getDistrict(areaName);
+				break;
+				case 2: this.setDistrict(areaName);
+				break;
+		} this.setAreaDat(a);
+}
+
+
+
+
+/*获取年份		1914--2013*/
+function createYear(addDiv){
+	var option = "" ;
+	
+	var oDate=new Date();
+	var iYear=oDate.getYear();
+	
+	if(iYear<1900)
+	{
+		iYear+=1900;
+	}
+	
+	for(var i = 0; i<100; i++){
+		option += "<span class='selectValueIn'>" + iYear-- +"</span>";
+		}
+		
+	$("#"+addDiv).append(option);
+	}
+/*获取年份		1914--2013*/
+
+/*获取月份		1-12月*/
+function createMonth(addDiv){
+	var option = "" ;
+	
+	for(var  i= 0; i<12; i++){
+		month = i + 1;
+		option += "<span class='selectValueIn'>" + month +"月</span>";
+		}
+		
+	$("#"+addDiv).append(option);
+	}
+/*获取月份		1-12月*/
+
+/*获取日		1-30日*/
+function createDay(addDiv){
+	var option = "" ;
+	
+	for(var  i= 0; i<30; i++){
+		day = i + 1;
+		option += "<span class='selectValueIn'>" + day +"日</span>";
+		}
+		
+	$("#"+addDiv).append(option);
+	}
+/*获取日		1-30日*/
+
+
+/*创建24小时		*/
+function createHour(addDiv){
+	var option = "" ;
+	var hour;
+	for(var  i= 0; i < 24; i++){
+		if(i < 10){
+			hour = "0" + i;
+			}
+		else{
+			hour =  i;
+			}
+		option += "<span class='dropValue'>" + hour +"</span>";
+		}
+		
+	$("#"+addDiv).append(option);
+	}
+/*创建24小时		*/
+
+/*增加推荐标签*/
+      function addreProfTag(obj,addDiv){
+	var option = "" ;
+	var addvalue = $(obj).prev().html();
+	var id =($(obj).parent().parent().attr("id"));
+	var classN =$(obj).parent().attr("class");
+	//alert(classN+"classN");
+	if($(obj).attr('title') == '删除'){
+		var divAdd;
+		if(addDiv == "divAddReTagPerson"){
+			divAdd = "divAddPersonTag";
+			}
+		else{
+			divAdd = "divAddEnTagpho";
+			}
+	var option = "" ;
+	var addvalue = $(obj).prev().html();
+	
+	
+	$(obj).parent().remove();
+	option = "<div class='retag'><span>"  + addvalue + "</span><a title='增加' onclick=addreProfTag(this,'"+ divAdd +"');></a></div>";
+	$("#"+addDiv).append(option);
+	}
+	else{
+		var option = "" ;
+	//	alert(123+"option");                          
+			/*隐藏推荐标签*/  
+		if(classN == "retag" && id == "divAddReTag"){
+			var addvalue = $(obj).prev().html();
+			
+			var tags=$("#hiddenReTags").val();
+			if(tags!=""){
+				tags+=" "+$.trim($(obj).prev().text());		//已经有值
+				}
+			else{
+				tags=$.trim($(obj).prev().text());		//赋第一个值
+				}
+			$("#hiddenReTags").val(tags);
+		}
+			/*隐藏推荐标签*/
+		
+			/*隐藏推荐标签个人*/      
+		if(classN == "retag" && id == "divAddReTagPerson"){
+			var addvalue = $(obj).prev().html(); 
+			var tags=$("#hiddenUserTags").val();
+			if(tags!=""){
+				
+				tags+=" "+$.trim($(obj).prev().text());		//已经有值
+				}
+			else{
+				tags=$.trim($(obj).prev().text());			//赋第一个值
+				}
+			$("#hiddenUserTags").val(tags);
+		}
+			/*隐藏推荐标签个人divAddEnTagpho */
+		
+		if(classN =="tag" && addDiv == "divAddEnTagpho"){
+			//alert("sssssssssssss");
+			var addvalue = $(obj).prev().text(); 
+			var tags=$("#hiddenReTags").val();
+			if(tags!=""){
+				
+				tags+=" "+$.trim($(obj).prev().text());		//已经有值
+				}
+			else{
+				tags=$.trim($(obj).prev().text());			//赋第一个值
+				}
+			$("#hiddenReTags").val(tags);
+		}
+		
+		
+		if(classN =="tag" && addDiv.indexOf("divAddEnTagEnterprise")!=-1){
+			var addvalue = $(obj).prev().text();
+			var tags=$("#hiddenReTags").val();
+			if(tags!=""){
+				
+				tags+=" "+$.trim($(obj).prev().text());		//已经有值
+				}
+			else{
+				tags=$.trim($(obj).prev().text());			//赋第一个值
+				}
+			$("#hiddenReTags").val(tags);
+		}
+	$(obj).parent().remove();
+	
+	option = "<div class='retag'><input type='hidden' value='"+$.trim(addvalue)+"' name='mytags'></input><span>"  + $.trim(addvalue) + "</span><a title='删除' onclick='deleteProModel(this);'></a></div>";
+	$("#"+addDiv).append(option);
+	
+		}
+}
+/*增加推荐标签*/
+
+
+/*增加其他标签*/
+function addOtherTag(obj,addDiv){
+	if($(obj).attr('title') == '删除'){
+		var option = "" ;
+	var addvalue = $(obj).prev().html();
+	
+	$(obj).parent().remove();
+	
+	option = "<div class='othtag'><span>"  + addvalue + "</span><a title='增加' onclick=addOtherTag(this,'divAddEnTagpho');></a></div>";
+	$("#"+addDiv).append(option);
+		}
+	else{
+		
+		
+		var addvalue = $(obj).prev().text(); 
+		var tags=$("#hiddenReTags").val();
+		if(tags!=""){
+			tags+=" "+$.trim($(obj).prev().text());		//已经有值
+			}
+		else{
+			tags=$.trim($(obj).prev().text());		//赋第一个值
+			}
+		$("#hiddenReTags").val(tags);
+		
+	
+			/*input隐藏推荐标签*/
+			
+		var option = "" ;
+		var addvalue = $(obj).prev().html();
+	
+	$(obj).parent().remove();
+	
+	option = "<div class='othtag'><span>"  + addvalue + "</span><a title='删除' onclick='deleteProModel(this);'></a></div>";
+	$("#"+addDiv).append(option);
+	
+		}
+	
+	}
+/*增加其他标签*/
+
+
+/*增加自定义标签*/
+function addProfTag(value,addDiv){
+	var option = "" ;
+	var addvalue = $("#"+value).val();
+	$("#"+value).val("");
+	
+	var addoDiv=document.getElementById(addDiv);
+	
+	var addDivCon=addoDiv.getElementsByTagName("div");
+	
+		var addObj = [];
+		for(var i=0;i<addDivCon.length;i++){
+			if(addDivCon[i].className == "tag"){
+				addObj[addObj.length] = addDivCon[i];
+				}
+		}
+	//判断新增字段是否已存在
+	var allSpan = $(addoDiv).find("span") ;
+		
+		for(var i = 0; i<allSpan.length; i++){
+			if($(allSpan[i]).html() != addvalue ){
+				}
+			else{
+				alert("不好意思，该标签已存在！");
+				return;
+				}
+		}
+		
+	//判断新增字段是否为空
+	if(addvalue == '' || addvalue == null){
+		alert("不好意思，职业标签名不能为空！");
+		}
+	else if(addObj.length < 2){
+		option = "<div class='tag'><span>"  + addvalue + "</span><a title='删除' onclick='deleteProModel(this);'></a></div>";
+		}
+	else{
+		alert("不好意思，新增项目只可以有两个！");
+		}
+	
+			/*input自定义推荐标签*/
+			var tags=$("#hiddenUserTags").val();
+			if(tags!=""){
+				tags+=" "+$.trim(addvalue);		//已经有值
+				}
+			else{
+				tags=$.trim(addvalue);			//赋第一个值
+				}
+			$("#hiddenUserTags").val(tags);
+			if(addDiv=="divAddEnTagEnterpriseAdm"){
+				
+				var tags=$("#hiddenReTags").val();
+				if(tags!=""){
+					tags+=" "+$.trim(addvalue);		//已经有值
+					}
+				else{
+					tags=$.trim(addvalue);			//赋第一个值
+					}
+				$("#hiddenReTags").val(tags);
+				
+			}
+	
+	/*自定义推荐标签*/
+	$("#"+addDiv).append(option);
+}
+/*增加自定义标签*/
+
+
+
+/*删除标签*/	
+function deleteProModel(obj){
+	var id =($(obj).parent().parent().attr("id"));
+	var classN =$(obj).parent().attr("class");
+	
+	 if(confirm("确定删除吗?")){
+		 
+		/* 删除隐藏推荐标签*/
+		if(classN == "retag" && id == "divAddEnTagpho"){
+			var detag=$.trim($(obj).prev().text());
+		
+			var tags=$("#hiddenReTags").val();		//隐藏Input的值
+			var tag=tags.split(" ");
+		
+			var newtag="";							//d定义一个新数组
+			for(var i=0;i<tag.length;i++){			//循环旧数组
+				if(tag[i]==detag){
+					}
+				else{
+					if(newtag!=""){					//讲遍历出来与要删除不相等的数据删掉
+		        	newtag+=" "+$.trim(tag[i]);
+		   				}
+					else{
+					newtag=tag[i];
+						}
+					}
+			}
+		$("#hiddenReTags").val(newtag);
+		
+		}
+		/* 删除隐藏推荐标签*/
+		
+		/* 删除隐藏推荐标签个人*/
+		if(classN == "retag" && id == "divAddPersonTag"){
+			var detag=$.trim($(obj).prev().text());
+		
+			var tags=$("#hiddenUserTags").val();		//隐藏Input的值
+			if($.trim(tags)!=""){
+			var tag=tags.split(" ");
+		
+			var newtag="";							//d定义一个新数组
+			for(var i=0;i<tag.length;i++){			//循环旧数组
+				if(tag[i]==detag){
+					}
+				else{
+					if(newtag!=""){					//讲遍历出来与要删除不相等的数据删掉
+		        	newtag+=" "+tag[i];
+		   				}
+					else{
+					newtag=tag[i];
+						}
+					}
+			}
+			}
+		$("#hiddenUserTags").val(newtag);
+		
+		}
+		/* 删除隐藏推荐标签个人*/
+		
+		
+		/* 删除隐藏其他标签*/
+		if(classN == "othtag" && id=="divAddEnTagpho"){
+			var detag=$(obj).prev().html();
+		
+			var tags=$("#hiddenOtherTags").val();		//隐藏Input的值
+			var tag=tags.split(" ");
+		
+			var newtag="";							//d定义一个新数组
+			for(var i=0;i<tag.length;i++){			//循环旧数组
+				if(tag[i]==detag){
+					}
+				else{
+					if(newtag!=""){					//讲遍历出来与要删除不相等的数据删掉
+		        	newtag+=" "+tag[i];
+		   				}
+					else{
+					newtag=tag[i];
+						}
+					}
+			}
+		$("#hiddenOtherTags").val(newtag);
+		}
+		/* 删除隐藏其他标签*/
+		
+		
+		/* 删除隐藏自定义标签职业*/
+		if(classN == "tag" && id=="divAddEnTagpho"){
+			var detag=$(obj).prev().html();
+		
+			var tags=$("#hiddenUserTags").val();		//隐藏Input的值
+			var tag=tags.split(" ");
+		
+			var newtag="";							//d定义一个新数组
+			for(var i=0;i<tag.length;i++){			//循环旧数组
+				if(tag[i]==detag){
+					}
+				else{
+					if(newtag!=""){					//讲遍历出来与要删除不相等的数据删掉
+		        	newtag+=" "+tag[i];
+		   				}
+					else{
+					newtag=tag[i];
+						}
+					}
+			}
+		$("#hiddenUserTags").val(newtag);
+		}
+		/* 删除隐藏自定义标签职业*/
+		
+		/* 删除隐藏自定义标签个人*/
+		if(classN == "tag" && id=="divAddPersonTag"){
+			var detag=$(obj).prev().html();
+		
+			var tags=$("#hiddenUserTagsP").val();		//隐藏Input的值
+			var tag=tags.split(" ");
+		
+			var newtag="";							//d定义一个新数组
+			for(var i=0;i<tag.length;i++){			//循环旧数组
+				if(tag[i]==detag){
+					}
+				else{
+					if(newtag!=""){					//讲遍历出来与要删除不相等的数据删掉
+		        	newtag+=" "+tag[i];
+		   				}
+					else{
+					newtag=tag[i];
+						}
+					}
+			}
+		$("#hiddenUserTagsP").val(newtag);
+		}
+		/* 删除隐藏自定义标签个人*/
+		
+		$(obj).parent().remove();
+		
+		if($(obj).parent().attr('class') == 'othtag'){
+		addOtherTag(obj,'divAddOtherTag');
+		
+		}
+	else if(classN == 'retag' && id == "divAddPersonTag"){
+		
+		addreProfTag(obj,'divAddReTagPerson');	//移除到divAddReTagPerson中
+		}
+			
+	else if(classN == 'retag' && id == "divAddEnTagpho"){
+		addreProfTag(obj,'divAddReTag');
+		}
+	}
+	
+	
+		
+	
+	
+}
+
+/*删除标签*/
+
+
+/*删除li*/
+function deleteLiFile(obj){
+	
+		$(obj).parents("li").remove();
+	//}
+}
+
+/*删除li*/
+
+
+/*选择发布类型*/
+function chooseRelType(obj){
+	var option = "";
+	
+	$("#"+obj).click(function(){
+		var htmlWidth = document.body.clientWidth;
+		var htmlHeight = document.body.clientHeight;
+		var borwerViewWidth =  document.documentElement.clientWidth;
+		var borwerViewHeight =  document.documentElement.clientHeight;
+		/*alert(htmlHeight);*/
+	
+		var getwidth = parseInt($("#divChoseUser").css("width"));
+		var getheight = parseInt($("#divChoseUser").css("height"));
+	
+		var topWidth = (borwerViewWidth - getwidth)/2;
+		var topHeight = (borwerViewHeight - getheight)/ 2;
+	
+	
+		$("body").prepend('<div id="iframechooseRelType" style="width:'+borwerViewWidth+'px;height:'+htmlHeight+'px; background:454;z-index:100000000;overflow:hidden;"></div>');
+		$("#iframechooseRelType").prepend('<iframe name="child" style="border:0px;width:'+borwerViewWidth+'px;height:'+htmlHeight+'px;z-index:100000000" src="chooseRelProject.html"></iframe>');
+		$("#iframechooseRelType").css({ "position": "absolute","z-index":"10000","top":topHeight + "px" , "left": topWidth+"px"});
+		
+	
+		});
+	}
+/*选择发布类型*/
+
+
+function addClickzj(divName){
+	var allMainBarLi=$("#"+divName).find("li");
+	
+	$(allMainBarLi).each(function(){
+			$(this).click(function(){
+				var allMainBarLi=$("#"+divName).find("li").each(function() {
+                    $(this).removeClass("active");
+					$(this).children().find(".click").remove();
+                });
+					$(this).addClass("active");
+					$(this).children().append('<div class="click"></div>');
+					 });
+					
+    });	
+}
+
+function closeOwnBox(obj){
+	$("#greybackground").remove();
+	$("#"+obj).hide();
+	}
+	
+	
+
+
+var b_v = navigator.appVersion;
+var IE6 = b_v.search(/MSIE 6/i) != -1;
+function objscroll(divname,toppx){
+	var objs=document.getElementById(divname);  
+	
+	
+	$(window).scroll(function(){
+		var bodyH=$(document).scrollTop();
+		   $(objs).css({"top":"0px","left":"865px","margin-left":"0px","z-index":"0"});
+		if(IE6){
+			if(bodyH>=toppx){
+				$(objs).css("top",bodyH+"px");				   
+				}				
+		  	}
+		else if(bodyH>=toppx){
+			$(objs).css({"position":"fixed","top":"40px","left":"50%","margin-left":"275px","z-index":"100"});
+			}
+		else{
+			$(objs).css("position","absolute");
+			}			
+	});	
+}
+
+
+
+
+
+/*弹出层 查找里面某个大小*/
+function openPopUpBoxObj(divPopUpBox,obj){
+	var htmlWidth = document.body.clientWidth;
+	var htmlHeight = document.body.clientHeight;
+	var borwerViewWidth =  document.documentElement.clientWidth;
+	var borwerViewHeight =  document.documentElement.clientHeight;
+	
+	
+	var scrollTop = getScrollTop();
+	
+	var getw =$("#"+divPopUpBox).find("#"+obj).width();
+	var geth = $("#"+divPopUpBox).find("#"+obj).height();
+	
+	if(getheight == '' || getheight == null){
+		getheight = 0;
+		}
+		
+	var getwidth = parseInt(getw);
+	var getheight = parseInt(geth);
+	
+	var topWidth = (borwerViewWidth - getwidth)/2;
+	var topHeight = (borwerViewHeight - getheight)/ 2;
+	
+	/*alert($("#"+divPopUpBox).find("#"+obj).attr("id"));
+	alert(borwerViewWidth);*/
+	$("#greybackground").remove();
+	$("body").prepend('<div id="greybackground" style="position:absolute; z-index:9999;background:black;display:none"></div>');
+	//$("html,body").animate({ scrollTop:0},0);
+	//$("html,body").css({ "overflow": "hidden"});
+	$("#greybackground").css({ "opacity": "0.8", "height": htmlHeight+"px","display":"block","width": htmlWidth+"px","background":"black","top":"0px","left":"0px"});
+	$("#greybackground").show();
+	
+	$("#"+divPopUpBox).show();
+	$("#"+divPopUpBox).css({ "position": "absolute","z-index":"10000","top": scrollTop+40 + "px" , "left": topWidth+"px"});
+	
+	/*var qq = $("#greybackground").css("z-index");
+	/*window.scrollTo(0,$(document).scrollTop());*/
+	
+}
+
+
+
+
+
+//只可输入数字
+function onlyWriteNum(obj){
+	if(obj.value.length==1){
+		obj.value=obj.value.replace(/[^1-9]/g,'');
+		}
+	else{
+		obj.value=obj.value.replace(/\D/g,'');
+		}
+}
+

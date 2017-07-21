@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.BrokerRelationship"
+	table="BrokerRelationship"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="broker" 
+		column="broker" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_BrokerRelationship_Broker" 
+		index="IDX_BrokerRelationship_Broker" lazy="false"/> 
+	
+	<many-to-one name="author" 
+		column="author" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_BrokerRelationship_Author" 
+		index="IDX_BrokerRelationship_Author" lazy="false"/> 
+		
+	<many-to-one name="whoIsActive" 
+		column="whoIsActive" 
+		not-null="false" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_BrokerRelationship_whoIsActive" 
+		index="IDX_BrokerRelationship_whoIsActive" lazy="false"/> 
+	
+	<property 
+		name="applyTime"
+		type="java.sql.Timestamp"
+		column="applyTime"
+		length="50"
+	/>
+	
+	<property 
+		name="creationTime"
+		type="java.sql.Timestamp"
+		column="creationTime"
+		length="50"
+		
+		
+	/>
+	<property 
+		name="isValid"
+		type="java.lang.Integer"
+		column="isValid"
+		length="50"
+	/>
+	
+	<property 
+		name="ifAccept"
+		type="java.lang.Integer"
+		column="ifAccept"
+		length="50"
+	/>
+	
+	<property 
+		name="invalidReason"
+		type="java.lang.String"
+		column="invalidReason"
+		length="50"
+	/>
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

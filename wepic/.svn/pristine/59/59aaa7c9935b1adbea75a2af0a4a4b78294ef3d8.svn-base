@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.Publish"
+	table="Publish"
+>
+
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+	
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_Publish_User" 
+		index="IDX_Publish_User"
+		
+		lazy="false"
+		/> 
+		
+	<many-to-one name="admin" 
+		column="admin_" 
+		not-null="false" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_Publish_Admin" 
+		index="IDX_Publish_Admin"/> 
+		
+	<property 
+		name="picNumber"
+		type="java.lang.String"
+		column="picNumber"
+		length="50"
+	/>
+	
+	<property 
+		name="upTime"
+		type="java.lang.String"
+		column="upTime"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="thumbnail125"
+		type="java.lang.String"
+		column="thumbnail125"
+		length="250"
+	/>
+	
+	
+	
+	
+	<property 
+		name="copyrightproperty"
+		type="java.lang.Integer"
+		column="copyrightproperty"
+		length="50"
+	/>
+	<property 
+		name="portraitprotocol"
+		type="java.lang.String"
+		column="portraitprotocol"
+		length="500"
+	/>
+	<property 
+		name="productsprotocol"
+		type="java.lang.String"
+		column="productsprotocol"
+		length="500"
+	/>
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="50"
+	/>
+	<property 
+		name="content"
+		type="java.lang.String"
+		column="content"
+		length="2000"
+	/>
+	<property 
+		name="logo"
+		type="java.lang.String"
+		column="logo"
+		length="50"
+	/>
+	<property 
+		name="publishTime"
+		type="java.sql.Timestamp"
+		column="publishTime"
+		length="50"
+	/>
+	<property 
+		name="period"
+		type="java.lang.Integer"
+		column="period"
+		length="50"
+	/>
+	<property 
+		name="position"
+		type="java.lang.String"
+		column="position"
+		length="50"
+	/>
+	<property 
+		name="sequence"
+		type="java.lang.Integer"
+		column="sequence"
+		length="50"
+	/>
+	<property 
+		name="sequenceShould"
+		type="java.lang.Integer"
+		column="sequenceShould"
+		length="50"
+	/>
+	<property 
+		name="moneyExpect"
+		type="java.lang.Integer"
+		column="moneyExpect"
+		length="50"
+	/>
+	<property 
+		name="hit"
+		type="java.lang.Integer"
+		column="hit"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="notPassedCause"
+		type="java.lang.String"
+		column="notPassedCause"
+		length="255"
+	/>
+	
+	
+	<property 
+		name="commend"
+		type="java.lang.Integer"
+		column="commend"
+		length="50"
+	/>
+	
+	<property 
+		name="status"
+		type="java.lang.Integer"
+		column="status"
+		length="50"
+	/>
+	<property 
+		name="periodShould"
+		type="java.lang.Integer"
+		column="periodShould"
+		length="50"
+	/>
+	<property 
+		name="positionShould"
+		type="java.lang.String"
+		column="positionShould"
+		length="50"
+	/>
+	<property 
+		name="moneyUnit"
+		type="java.lang.String"
+		column="moneyUnit"
+		length="50"
+	/>
+	<property 
+		name="moneyAmount"
+		type="java.lang.Double"
+		column="moneyAmount"
+		length="50"
+	/>
+	<property 
+		name="moneyTime"
+		type="java.sql.Timestamp"
+		column="moneyTime"
+		length="50"
+	/>
+	<many-to-one name="publishCat"	column="publishCatid" not-null="false" lazy="false" />
+	<!-- 
+	
+	<set name="publishDetailSet" inverse="true" lazy="false" >
+		<key column="publishid"/>
+		<one-to-many class="com.wetuo.wepic.publish.beans.PublishDetail"/>
+	</set>
+	 -->
+	<!-- 映射blob类型 -->   
+    <property name="picture" type="blob">   
+        <column name="picture" />   
+    </property>
+    <property 
+		name="picUrl"
+		type="java.lang.String"
+		column="picUrl"
+		length="1000"
+	/>  
+	<property 
+		name="thumbnailUrl"
+		type="java.lang.String"
+		column="thumbnailUrl"
+		length="1000"
+	/>  
+	<property 
+		name="watermarkUrl"
+		type="java.lang.String"
+		column="watermarkUrl"
+		length="1000"
+	/>  
+	<property 
+		name="smalldrawUrl"
+		type="java.lang.String"
+		column="smalldrawUrl"
+		length="1000"
+	/>  
+	
+	<property name="smallDraw2"
+	    type="java.lang.String"
+		column="smalldrawUrl2"
+		length="1000"
+	/>
+	<property name="smallDrawCut"
+	    type="java.lang.String"
+		column="smallDrawCut"
+		length="1000"
+	/>
+	
+	<property 
+		name="fixwidthUrl"
+		type="java.lang.String"
+		column="fixwidthUrl"
+		length="1000"
+	/>  
+	<property name="indexImgUrl" type="java.lang.String" column="indexImgUrl"
+		length="1000"/>
+	<property name="smallthumbnailUrl" type="java.lang.String" column="smallthumbnailUrl"
+		length="1000"/>
+		
+		
+		
+	 <property 
+		name="venderUrl"
+		type="java.lang.String"
+		column="venderUrl"
+		length="1000"
+	/>  
+	<property 
+		name="voiceUrl"
+		type="java.lang.String"
+		column="voiceUrl"
+		length="1000"
+	/>  
+	<property 
+		name="backImageUrl"
+		type="java.lang.String"
+		column="backImageUrl"
+		length="1000"
+	/> 
+	<property 
+		name="publishwish"
+		type="java.lang.Integer"
+		column="publishwish"
+		length="50"
+	/>  
+	
+	<property 
+		name="backColor"
+		type="java.lang.String"
+		column="backColor"
+		length="1000"
+	/>  
+	
+	<property name="type"	type="java.lang.Integer" column="type"	length="50" />  
+	<property name="originalPic"	type="java.lang.String" column="originalPic"	length="1000" />  
+	<property name="samplePic"	type="java.lang.String" column="samplePic"	length="1000" />  
+	<property name="biggerPic"	type="java.lang.String" column="biggerPic"	length="1000" />  
+	<property name="smallPic"	type="java.lang.String" column="smallPic"	length="1000" />  
+	<property name="copyright"	type="java.lang.Integer" column="copyright"	length="50" />  
+	<property name="copyrightArea"	type="java.lang.String" column="copyrightArea"	length="1000" />  
+	<property name="copyrightPrice"	type="java.lang.Integer" column="copyrightPrice"	length="50" />  
+	<property name="authorization"	type="java.lang.Integer" column="authorization"	length="50" />  
+	<property name="size"	type="java.lang.Integer" column="size"	length="50" />  
+	<property name="usageBuyNum"	type="java.lang.Integer" column="usageBuyNum"	length="50" />  
+	<property name="usagePrice"	type="java.lang.Integer" column="usagePrice"	length="50" />  
+	<property name="usagePeriod"	type="java.lang.Double" column="usagePeriod"	length="50" />  
+	<property name="tags"	type="java.lang.String" column="tags"	length="1000" />  
+	<property name="QRCode"	type="java.lang.String" column="QRCode"	length="1000" />  
+	<property name="qualityLevel"	type="java.lang.Integer" column="qualityLevel"	length="50" />  
+	<property name="ifContentHealthy"	type="java.lang.Integer" column="ifContentHealthy"	length="50" />  
+	<property name="ifTort"	type="java.lang.Integer" column="ifTort"	length="50" />  
+	
+	<property name="violationReason"	type="java.lang.String" column="violationReason"	length="1000" />  
+	<property name="violationPunish"	type="java.lang.Integer" column="violationPunish"	length="50" />  
+	<property name="violationPunishTime"  type="java.sql.Timestamp" column="violationPunishTime" length="50" />
+	<property name="ifPermitPublish"	type="java.lang.Integer" column="ifPermitPublish"	length="50" />  
+	
+	<property name="licenseAgreement"	type="java.lang.String" column="licenseAgreement"	length="1000" />
+	<property name="purpose" type="java.lang.Integer" column="purpose" length="50" ></property>  
+	<property name="writenopassreason" type="java.lang.String" column="writenopassreason" length="1000"></property>
+	
+	<set name="setpublishCat_Publish" inverse="true" lazy="false" >
+		<key column="publish"/>
+		<one-to-many class="com.wetuo.wepic.publish.beans.PublishCat_Publish"/>
+	</set>
+
+	 <property name="width"	type="java.lang.Integer" column="width"	length="50" />
+	 <property name="height"	type="java.lang.Integer" column="height"	length="50" />
+	 <property name="picMode"	type="java.lang.String" column="picMode"	length="50" />
+	 <property name="workdescribe" type="java.lang.String" column="workdescribe" length="1000"></property>
+	  <many-to-one name="publishSpecialCat"	column="publishSpecialCatid" not-null="false" lazy="false" />
+	<!-- <many-to-one name="publishSpecialCat"	column="publishSpecialCatid" />
+	<one-to-one name="publishStatus" class="com.wetuo.wepic.publish.beans.PublishStatus" constrained="true"   cascade="all"></one-to-one> -->
+	<many-to-one name="publishStatus"   class="com.wetuo.wepic.publish.beans.PublishStatus" column="publishStatusId"  unique="true" cascade="all"></many-to-one>
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

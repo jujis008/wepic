@@ -1,0 +1,247 @@
+.withdrawDeposit_record{
+	width:1180px;
+	min-height:600px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	padding-bottom:50px;
+	}
+
+
+
+
+.withdrawDeposit_record .withdrawDeposit_record_top{
+	width:100%;
+	height:40px;
+	text-align:left;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	padding-top: 15px;
+	}
+	
+.withdrawDeposit_record .withdrawDeposit_record_top table{
+	height:35px;
+	}	
+.withdrawDeposit_record .withdrawDeposit_record_top table td{
+	vertical-align:center;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .char{
+	font-weight:normal;
+	color:#000;
+	font-size:18px;
+	font-family:"微软雅黑";
+	padding:0 20px;
+	vertical-align:top;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table  .totalwith{
+	width:500px;
+	padding-right:40px;
+	}
+
+
+.withdrawDeposit_record .withdrawDeposit_record_top table .timeInputStr {
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-size: 12px;
+    height: 21px;
+    padding: 3px 10px;
+    width: 90px;
+	margin-left:5px;
+	margin-right:5px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire_td{
+	padding-left:20px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .deposit_td{
+	padding-left:60px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire_td .inquire {
+    background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -182px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+	margin-right:20px;
+    text-align: center;
+    width: 86px;
+	}
+
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire_td .inquire:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -209px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire_td .inquire:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -236px;
+	}
+	
+	
+
+.withdrawDeposit_cont{
+	width:1180px;
+	/*min-height:75px;*/
+	margin:20px auto 0;
+	}
+
+
+.withdrawDeposit_cont .withdrawDeposit_cont_char{
+	width:700px;
+	text-align:left;
+	margin:20px auto 0;
+	display:none;
+	}
+.withdrawDeposit_cont .withdrawDeposit_cont_char .count{
+	margin-left:20px;
+	}	
+
+	
+.withdrawDeposit_cont .withdrawDeposit_cont_char .gobackA{
+	color: #0084C7;
+    text-decoration: underline;
+	margin-left:100px;
+	}
+
+
+
+.withdrawDeposit_cont table{
+	border:1px solid #e7e7e5;
+	text-align:center;
+	color:#676767;
+	margin:20px auto 0;
+	}
+.withdrawDeposit_cont table td{
+	padding:8px 15px;
+	border:1px solid #e7e7e5;
+	}
+.withdrawDeposit_cont table th{
+	height:30px;
+	font-weight:normal;
+	background:#cfe69d;
+	}
+
+
+.withdrawDeposit_cont table .name{
+    color: #A01E1E;
+    cursor: pointer;
+    font-family: "微软雅黑";
+	}
+.withdrawDeposit_cont table .time{
+	margin-left:10px;
+	}
+
+.withdrawDeposit_cont table .money{
+    color: #a01e1e;
+    font-family: "微软雅黑";
+	}
+
+.withdrawDeposit_cont table .moneyg{
+    color: #595959;
+    font-family: "微软雅黑";
+	}
+.withdrawDeposit_cont table .td_opt a{
+	color: #0084C7;
+	text-decoration: underline;
+	margin:0 10px;
+	}	
+
+
+
+.withdrawDeposit_cont table .td_option .pass_cancel{
+	color: #0084C7;
+	text-decoration: underline;
+	margin:0 10px;
+	}
+
+		
+.withdrawDeposit_cont table .td_station .no_produce{
+	color: #A01E1E;
+	margin:0 10px;
+	}	
+
+.productTable{
+	position:relative;
+	top:0;
+	left:0;
+	width:1180px;
+	height:75px;
+	text-align:right;
+	margin:20px auto 0;
+	}
+.productTable input{
+    background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	margin-right:60px;
+	}
+
+.productTable input:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.productTable input:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+
+.ppointPaging{
+	background: #fff;
+	}
+
+
+
+
+.pop_box_public{
+	width:560px;
+	}
+.pop_box_public .top{
+    width:560px;
+	}
+.pop_box_public .textarea{
+    height: 240px;
+	margin:30px auto;
+	text-align:center
+	}
+.pop_box_public .textarea textarea{
+    background: #fcfcfc;
+    border: 1px solid #E9E8E6;
+    font-size: 12px;
+	line-height:15px;
+    height: 230px;
+    resize: none;
+    width: 480px;
+	}
+	
+#popupIRespondSuccess{
+	width:154px;
+	height:38px;
+	line-height:38px;
+	color:#fff;
+	font-family:"微软雅黑";
+	font-size:16px;
+	background:#82bf00;
+	position:absolute;
+	top:200px;
+	left:50%;
+	margin-left:-77px;
+	display:none;
+	
+	
+	box-shadow: 3px 3px 4px #9d9d9d;
+	/*这是对Safari和Chrome浏览器而设置的*/
+	-moz-box-shadow: 3px 3px 4px #9d9d9d;
+	/*这是专对火狐浏览器的支持而设置的*/
+	-webkit-box-shadow: 3px 3px 4px #9d9d9d;
+	
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#9d9d9d')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#9d9d9d');
+	}

@@ -1,0 +1,228 @@
+.generalize{
+	position:relative;
+	left:0;
+	top:0;
+	width:870px;
+	height:550px;
+	background:#fff;
+	text-align:left;
+	margin:5px auto;
+	font-family:"宋体";
+	}
+	
+.generalize .pervIco{
+	position:absolute;
+	top:250px;
+	left:30px;
+	width:51px;
+	height:51px;
+	cursor:pointer;
+	background:url(../../../pubimg/images/popPaging.png) 0 0 no-repeat;
+	}
+.generalize .activePrev{
+	background:url(../../../pubimg/images/popPaging.png) 0 -56px no-repeat;
+	}
+.generalize .nextIco{
+	position:absolute;
+	top:250px;
+	right:30px;
+	width:51px;
+	height:51px;
+	cursor:pointer;
+	background:url(../../../pubimg/images/popPaging.png) -57px 0 no-repeat;
+	}
+
+.generalize .activeNext{
+	background:url(../../../pubimg/images/popPaging.png) -57px -56px no-repeat;
+	}
+.generalize .top{
+	width:870px;
+	height:78px;
+	line-height:90px;
+	text-align:center;
+	color:#232323;
+	font-size:24px;
+	border-bottom:1px solid #f0f0f0;
+	font-family:"微软雅黑";
+	}
+	
+.generalize .generalizeCon{
+	width:540px;
+	height:400px;
+	margin:0px auto;
+	overflow:hidden;
+	}
+.generalize .generalizeCon ul{
+	position:relative;
+	left:0;
+	top:0;
+	}
+.generalize .generalizeCon li{
+	width:540px;
+	height:400px;
+	float:left;
+	}
+.generalize .generalizeCon .generalize_one{
+	width:540px;
+	height:400px;
+	}
+.generalize .generalizeCon .generalize_one .tit{
+	height:50px;
+	line-height:60px;
+	font-family:"微软雅黑";
+	color:#232323;
+	font-size:15px;
+	}
+.generalize .generalizeCon .generalize_one .int{
+	height:22px;
+	line-height:22px;
+	}
+.generalize .generalizeCon .generalize_one .intV{
+	margin-top:20px;
+	}
+	
+.generalize .generalizeCon .generalize_one .chooseShare{
+	margin-top:30px;
+	}	
+.generalize .generalizeCon .generalize_one .chooseShare table td{
+	padding:5px 0;
+	}
+	
+.generalize .generalizeCon .generalize_one .chooseShare table .td_one{
+	width:85px;
+	text-align:left;
+	}
+.generalize .generalizeCon .generalize_one .chooseShare table .td_one .remind{
+	color: #A94100;
+	}	
+.generalize .generalizeCon .generalize_one .chooseShare table .td_one textarea{
+	background: #FCFCFC;
+    border: 1px solid #E9E8E6;
+    color: #898989;
+    font-size: 12px;
+    height: 40px;
+    line-height: 22px;
+    padding: 10px 15px;
+    resize: none;
+    width: 505px;
+	}
+
+.generalize .generalizeCon .generalize_one .chooseShare table .td_one a{
+	color: #0269B8;
+    text-decoration: underline;
+	}	
+	
+	
+	
+.generalize .generalizeCon .generalize_one .chooseShare table .td_two{
+	width:370px;
+	text-align:left;
+	}
+.generalize .generalizeCon .generalize_one .chooseShare table .td_three .copy{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -182px;
+    border: 0 ;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+    text-align: center;
+    width: 86px;
+	}
+
+
+
+
+.generalize .generalizeCon .generalize_one .terrace{
+	width:540px;
+	height:60px;
+	margin-top:20px;
+	}	
+.generalize .generalizeCon .generalize_one .terrace div{
+	width:35px;
+	height:35px;
+	float:left;
+	cursor:pointer;
+	margin-right:20px;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .QQ{
+	background:url(../../../pubimg/images/promotionTheplatform.png) 0 0 no-repeat;
+	}	
+.generalize .generalizeCon .generalize_one .terrace .WB{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -36px 0 no-repeat;
+	}	
+.generalize .generalizeCon .generalize_one .terrace .twitter{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -72px 0 no-repeat;
+	}	
+.generalize .generalizeCon .generalize_one .terrace .facebook{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -108px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .QZome{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -144px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .kaixin{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -180px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .pengyou{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -216px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .renren{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -252px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .douban{
+	background:url(../../../pubimg/images/promotionTheplatform.png) -288px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terrace .txwb{
+	margin-right:0;
+	background:url(../../../pubimg/images/promotionTheplatform.png) -324px 0 no-repeat;
+	}		
+.generalize .generalizeCon .generalize_one .terracechar{
+	}
+.generalize .generalizeCon .generalize_one .terracechar textarea{
+	background: #FCFCFC;
+    border: 1px solid #E9E8E6;
+    color: #fcfcfc;
+    font-size: 12px;
+    height: 120px;
+    line-height: 22px;
+    padding: 10px 15px;
+    resize: none;
+    width: 400px;
+	float:left;
+	}
+.generalize .generalizeCon .generalize_one .terracechar .copy{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -182px;
+    border: 0 ;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+    text-align: center;
+    width: 86px;
+	float:left;
+	}
+
+
+.generalize .generalizeCon .generalize_one .intV .inputEmail {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    height: 18px;
+    padding: 5px 10px;
+    width: 500px;
+	}
+.generalize .generalizeCon .generalize_one .send {
+    background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -182px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    float: right;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+	float:right;
+	margin-right:20px;
+    width: 86px;
+	}

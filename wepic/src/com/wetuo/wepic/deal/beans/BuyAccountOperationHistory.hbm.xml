@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BuyAccountOperationHistory"
+	table="BuyAccountOperationHistory"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="siteConfig" 
+		column="siteConfig_" 
+		not-null="true"
+		class="com.wetuo.wepic.core.beans.SiteConfig" 
+		foreign-key="FK_BuyAccountOperationHistory_SiteConfig" 
+		index="IDX_BuyAccountOperationHistory_SiteConfig"/> 
+	
+	<many-to-one name="account" 
+		column="account_" 
+		not-null="true"	
+	     class="com.wetuo.wepic.core.beans.Account" 
+		foreign-key="FK_BuyAccountOperationHistory_Account" 
+		index="IDX_BuyAccountOperationHistory_Account"/> 
+	
+	<property 
+		name="lockTime"
+		type="java.sql.Timestamp"
+		column="lockTime"
+		length="50"
+	/>
+	<property 
+		name="unlockTime"
+		type="java.sql.Timestamp"
+		column="unlockTime"
+		length="50"
+	/>
+	<property 
+		name="deductionTime"
+		type="java.sql.Timestamp"
+		column="deductionTime"
+		length="50"
+	/>
+	<property 
+		name="entryTime"
+		type="java.sql.Timestamp"
+		column="entryTime"
+		length="50"
+	/>
+	<property 
+		name="entryMoney"
+		type="java.lang.Double"
+		column="entryMoney"
+		length="50"
+	/>
+	<property 
+		name="moneyUnit"
+		type="java.lang.String"
+		column="moneyUnit"
+		length="50"
+	/>
+	<property 
+		name="ifSuccess"
+		type="java.lang.Integer"
+		column="ifSuccess"
+		length="50"
+	/>
+	
+	<many-to-one name="buyHistory"	column="buyHistoryid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

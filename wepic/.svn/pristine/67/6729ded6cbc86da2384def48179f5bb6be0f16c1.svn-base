@@ -1,0 +1,116 @@
+/*翻页*/
+.ppointPagingthis {
+    height: 80px;
+    left: 0;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    width: 1180px;
+	}
+.ppointPaging{
+	background: none repeat scroll 0 0 #F4F4F4;
+    position: absolute;
+    right: 0;
+    top: 0;
+	}
+.tablePpointPaging{
+	margin-top:20px;
+	}
+.tablePpointPaging td{
+	height:20px;
+	width:30px;
+	text-align:center;
+	vertical-align:middle;
+	}
+.tablePpointPaging td a{
+	height:20px;
+	width:30px;
+	text-align:center;
+	line-height:20px;
+	color:#b7b9b6;
+	display:block;
+	}
+.tablePpointPaging td a:hover{
+	color:#e90000;
+	}
+.ppointPagingN{
+	border:1px solid #FFFFFF;
+	}
+.ppointPagingN:hover{
+	border:1px solid #b7b9b6;
+	}
+	
+ .tablePpointPaging  .page{
+  border:1px solid #b7b9b6;
+}
+ .tablePpointPaging  .page a{
+  color:#e90000;
+}
+.ppointPagingOne{
+	cursor:pointer;
+	background:url(../../public/images/page/leftend_normal.png) no-repeat 6px 5px;
+	}
+.ppointPagingOne a:hover{
+	background:url(../../public/images/page/leftend_hover.png) no-repeat 6px 5px;
+	}
+.ppointPagingPre{
+	background:url(../../public/images/page/left_normal.png) no-repeat 10px 5px;
+	}
+.ppointPagingPre a:hover{
+	background:url(../../public/images/page/left_hover.png) no-repeat 10px 5px;
+	}
+.ppointPagingNext{
+	background:url(../../public/images/page/right_nomal.png) no-repeat 10px 5px;
+	}
+.ppointPagingNext a:hover{
+	background:url(../../public/images/page/right_hover.png) no-repeat 10px 5px;
+	}
+.ppointPagingLast{
+	background:url(../../public/images/page/rightend_nomal.png) no-repeat 6px 5px;
+	}
+.ppointPagingLast a:hover{
+	background:url(../../public/images/page/rightend_hover.png) no-repeat 6px 5px;
+	}
+/*翻页*/
+
+
+.gradeOne{
+	background:url(../images/grade.png) 0 0 no-repeat;
+    padding-left: 30px;
+	}
+.gradeTwo{
+	background:url(../images/grade.png) 0 -19px no-repeat;
+    padding-left: 30px;
+	}
+.gradeThree{
+	background:url(../images/grade.png) 0 -38px no-repeat;
+    padding-left: 30px;
+	}
+.gradeFour{
+	background:url(../images/grade.png) 0 -57px no-repeat;
+    padding-left: 30px;
+	}
+.gradeFive{
+	background:url(../images/grade.png) 0 -76px no-repeat;
+    padding-left: 30px;
+	}
+.gradeSix{
+	background:url(../images/grade.png) 0 -96px no-repeat;
+    padding-left: 30px;
+	}
+.gradeSeven{
+	background:url(../images/grade.png) 0 -115px no-repeat;
+    padding-left: 30px;
+	}
+.gradeEight{
+	background:url(../images/grade.png) 0 -134px no-repeat;
+    padding-left: 30px;
+	}
+.gradeNine{
+	background:url(../images/grade.png) 0 -152px no-repeat;
+    padding-left: 30px;
+	}
+.gradeTen{
+	background:url(../images/grade.png) 0 -171px no-repeat;
+    padding-left: 30px;
+	}	

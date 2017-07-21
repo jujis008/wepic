@@ -1,0 +1,156 @@
+package com.wetuo.wepic.core.service ;
+ 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.core.beans.Account;
+import com.wetuo.wepic.core.beans.AccountWithdraw;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.dao.AccountDao;
+import com.wetuo.wepic.core.dao.AccountWithdrawDao;
+import com.wetuo.wepic.core.dao.UserDao;
+ 
+public class AccountWithdrawServiceImpl implements AccountWithdrawService {
+	AccountWithdrawDao domainDao;
+	AccountDao accountDao;
+	UserDao userDao;
+	public AccountWithdrawDao getAccountWithdrawDao() {
+		return domainDao;
+	}//
+	public void setAccountWithdrawDao(AccountWithdrawDao  domainDao) {
+		this.domainDao = domainDao;
+	}//
+	
+	//////////////common crud////////////////
+	public List<AccountWithdraw> findAll(){ 
+		return domainDao.findAll();
+	}
+	
+	public List<AccountWithdraw> findPart(String strFields, String[] arrStrValues){ 
+		return domainDao.findPart(strFields,arrStrValues);
+	}
+	
+	public Pager list(int pageSize, int pageNo)  {
+		return domainDao.list(pageSize,pageNo);
+	}//end list()
+	
+	public Pager list(String username, int pageSize, int pageNo)  {
+		return domainDao.list(username,pageSize,pageNo);
+	}//end list()
+	
+	public Pager list(Map<String,Object> mapSqlParam, int pageSize, int pageNo)  {
+		return domainDao.list(mapSqlParam,pageSize,pageNo);
+	}//end list()
+	
+	/////insert///
+	public Integer insert(AccountWithdraw record) {
+		return domainDao.insert(record) ;
+	}//end insert()
+			
+	/////delete///
+	public boolean delete(AccountWithdraw record)  {
+		return domainDao.delete(record);
+	}//end delete()
+			
+	public boolean delete(Integer id)  {
+		return domainDao.delete(id);
+	}//end delete()
+	
+	/////update///
+	public boolean update(AccountWithdraw record)  {
+		return domainDao.update(record);
+	}//end update()
+	
+	
+	/***提现申请***/
+	public boolean accountWithdrawApplay(AccountWithdraw accountWithdraw,
+			Account account) {
+		Integer nit = domainDao.insert(accountWithdraw);
+		boolean b = accountDao.update(account);
+		if(nit>0 && b){
+			return true;
+		}
+		return false;
+	}
+	/***获取申请提现列表***/
+	public Pager list(Integer userId, int pageSize, int pageNo) {
+		Pager pager =  domainDao.List(userId, pageSize, pageNo);
+		return pager;
+	}
+	
+	public Pager applayList(int pageSize, int pageNo) {
+		return domainDao.applayList(pageSize, pageNo,0);
+	}
+	
+	/***生产提现订单****/
+	public boolean productApplyForm(int accountWithdrawId, int userId) {
+		User user = userDao.selectById(userId);
+		AccountWithdraw accountWithdraw = domainDao.select(accountWithdrawId);
+		accountWithdraw.setAdmin(user);
+		accountWithdraw.setIfDemandWithdraw(1);
+		return domainDao.update(accountWithdraw);
+	}
+	
+	
+	/****查询体现单列表****/
+	public Pager ifEnsureApplyList(int pageSize, int pageNo) {
+		return domainDao.applayList(pageSize, pageNo,1);
+	}
+	
+	/***确认提现订单****/
+//	public boolean confirmApply(int id,int accountId,int flag) {
+//		AccountWithdraw accountWithdraw = domainDao.select(id);
+//		User user = accountWithdraw.getAdmin();
+//		if(user == null){
+//			int userId=(Integer)ActionContext.getContext().getSession().get("id");
+//			user = userDao.select(userId);
+//			accountWithdraw.setAdmin(user);
+//		}
+//		Account account = accountDao.select(accountId);
+//		if(flag==2)
+//			account.setTotalMoney(account.getTotalMoney().subtract(new BigDecimal(accountWithdraw.getWithdrawMoney())));
+//		else if(flag==3)
+//			account.setRemainingMoney(account.getRemainingMoney().add(new BigDecimal(accountWithdraw.getWithdrawMoney())));
+//		else 
+//			return false;
+//		
+//		accountWithdraw.setIfDemandWithdraw(flag);
+//		accountWithdraw.setWithdrawTime(new Timestamp(new Date().getTime()));
+//		return (accountDao.update(account) && domainDao.update(accountWithdraw));
+//	}
+	
+			
+	/////select///
+	public AccountWithdraw select(Integer id)  {
+		return domainDao.select(id);
+	}//end select()
+	public AccountDao getAccountDao() {
+		return accountDao;
+	}
+	public void setAccountDao(AccountDao accountDao) {
+		this.accountDao = accountDao;
+	}
+	public UserDao getUserDao() {
+		return userDao;
+	}
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	public boolean confirmApply(int id, int accountId, int flag) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public List<AccountWithdraw> findByAccount(int id) {
+		// TODO Auto-generated method stub
+		return domainDao.findByAccount(id);
+	}
+	
+	
+	
+	
+}//end class

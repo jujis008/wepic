@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.Story"
+	table="story"
+>
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+	
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_Publish_User" 
+		index="IDX_Publish_User"
+		
+		lazy="false"
+		/> 
+		
+	<property 
+		name="title"
+		type="java.lang.String"
+		column="title"
+		length="500"
+	/>
+	
+	
+	<property 
+		name="storydescription"
+		type="java.lang.String"
+		column="storydescription"
+		length="500"
+	/>
+	
+	
+	<property 
+		name="cover"
+		type="java.lang.String"
+		column="cover"
+		length="500"
+	/>
+	<property 
+		name="storycxt"
+		type="java.lang.String"
+		column="storycxt"
+		length="100000"
+	/>
+		<property 
+		name="uploadTime"
+		type="java.sql.Timestamp"
+		column="uploadTime"
+		length="50"
+	/>
+	<property 
+		name="checkTime"
+		type="java.sql.Timestamp"
+		column="checkTime"
+		length="50"
+	/>
+	<property 
+		name="publishTime"
+		type="java.sql.Timestamp"
+		column="publishTime"
+		length="50"
+	/>
+	<property 
+		name="hit"
+		type="java.lang.Integer"
+		column="hit"
+		length="50"
+	/>
+	<property 
+		name="buynum"
+		type="java.lang.Integer"
+		column="buynum"
+		length="50"
+	/>
+	
+	<property 
+		name="recommend"
+		type="java.lang.Integer"
+		column="recommend"
+		length="50"
+	/>
+	<property 
+		name="copyright"
+		type="java.lang.Integer"
+		column="copyright"
+		length="50"
+	/>
+	<property 
+		name="statu"
+		type="java.lang.Integer"
+		column="statu"
+		length="50"
+	/>
+	<property 
+		name="storytype"
+		type="java.lang.Integer"
+		column="storytype"
+		length="50"
+	/>
+	<property 
+	     name="passstatu"
+	     type="java.lang.Integer"
+		 column="passstatu"
+		 length="50"
+	
+	/>
+	<property 
+	     name="notPassedCause"
+	     type="java.lang.Integer"
+		 column="notPassedCause"
+		 length="50"
+	
+	/>
+	<property 
+		name="nopassration"
+		type="java.lang.String"
+		column="nopassration"
+		length="1000"
+	/>
+	<property 
+		name="remark"
+		type="java.lang.String"
+		column="remark"
+		length="500"
+	/>
+	
+	
+	
+	<property 
+		name="publishid"
+		type="java.lang.Integer"
+		column="publishid"
+		length="50"
+	/>
+	<set name="storyDetailSet" inverse="true" lazy="false" >
+		<key column="storyId"/>
+		<one-to-many class="com.wetuo.wepic.publish.beans.StoryDetail"/>
+	</set>
+	
+	<many-to-one name="publishSpecialCat"	column="publishSpecialCatid" not-null="false" lazy="false" />
+	
+	<property 
+		name="tags"
+		type="java.lang.String"
+		column="tags"
+		length="1000"
+	/>
+	<property 
+		name="copyrightres"
+		type="java.lang.String"
+		column="copyrightres"
+		length="1000"
+	/>
+	<property 
+		name="moneyType"
+		type="java.lang.String"
+		column="moneyType"
+		length="1000"
+	/>
+	<property 
+		name="copyrightArea"
+		type="java.lang.String"
+		column="copyrightArea"
+		length="1000"
+	/>
+	<property 
+		name="copyrightProperty"
+		type="java.lang.String"
+		column="copyrightProperty"
+		length="1000"
+	/>
+	<property 
+		name="usagePrice"
+		type="java.lang.Integer"
+		column="usagePrice"
+		length="50"
+	/>
+	<property 
+		name="copyrightPrice"
+		type="java.lang.Integer"
+		column="copyrightPrice"
+		length="50"
+	/>
+	<property 
+		name="saleNum"
+		type="java.lang.Integer"
+		column="saleNum"
+		length="50"
+	/>
+	<many-to-one name="publishStatus"   class="com.wetuo.wepic.publish.beans.PublishStatus" column="publishStatusId"  unique="true" cascade="save-update" lazy="false"></many-to-one>
+	
+	<property 
+		name="detailpicNum"
+		type="java.lang.Integer"
+		column="detailpicNum"
+		length="50"
+	/>
+	<property 
+		name="detailtextNum"
+		type="java.lang.Integer"
+		column="detailtextNum"
+		length="50"
+	/>
+</class>
+</hibernate-mapping>

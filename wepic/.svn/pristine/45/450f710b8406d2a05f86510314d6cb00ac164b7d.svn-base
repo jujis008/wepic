@@ -1,0 +1,564 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../../public/images/logoSmall.ico"/>
+
+<title>wepic管理_个人中心_我的约拍_发布约拍_发布作品征集_创意图片</title>
+<script type="text/javascript" src="../../../public/js/jquery.js"></script>
+
+
+<link type="text/css" rel="stylesheet" href="css/releaseCollect.css" />
+<script type="text/javascript" src="js/releaseCollect.js"></script>
+<!--公共js-->
+
+<script type="text/javascript" src="../../js/publicBack.js"></script>
+<script type="text/javascript" src="../../../public/js/public.js"></script>
+<script type="text/javascript" src="../../../public/js/topBar.js"></script>
+<script type="text/javascript" src="../../../public/js/header.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../../pubimg/css/backMainBar.css" />
+<link type="text/css" rel="stylesheet" href="../../../public/css/topBarMain.css" />
+<link type="text/css" rel="stylesheet" href="../../../public/css/header.css" />
+<link type="text/css" rel="stylesheet" href="../../../public/css/footer.css" />
+
+
+    <link type="text/css" rel="stylesheet" href="../../pubimg/css/lyz.calendar.css"  />
+    <script src="../../../public/js/lyz.calendar.min.js" type="text/javascript"></script>
+<script>
+        $(function () {
+           
+            
+            $("#txtEndDate").calendar({
+                controlId: "divDate2",                                       // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+                speed: 200,                                                 // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+                complement: true,                                           // 是否显示日期或年空白处的前后月的补充,默认：true
+                readonly: true,                                             // 目标对象是否设为只读，默认：true
+               	addToDiv: "choseTime2"
+                
+            });
+		});
+</script>
+
+<style type="text/css">
+#shootProduct .content .divChooseCon .divInfo .shootTime .shootSourceFileFormat{
+	width: 150px;
+	}
+
+#uploadAccessory{
+	display:none;
+	}
+#shootProduct .content .divChooseCon{
+    min-height: 770px;
+	}
+</style>
+</head>
+
+<body>
+<div id="container">
+	<div id="topBar">
+	<script type="text/javascript" src="../../js/topbar.js"></script> 
+	</div>
+    
+<!-- 头部结束-->
+	
+    <!-- logo行-->
+	<div id="header">
+    	<div id="headerCenter">
+        	<div id="divlogo">
+    			<a id="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+    				<img src="../../../public/images/wepic_logo.png" alt="唯图网"/>
+        			<p><span id="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+   				</a>
+    		</div>
+            <div id="divKeyWord">
+                    	<input id="inputkeyword" type="text" value="搜索" 
+                    		onfocus="searchonfocus();" onblur="searchonblur()"/>
+            </div>
+                   
+            <div id="divSelect">
+                    <input  type="text" value="选择类型"  onclick="hide('selectValue')" 
+                    		id="inputselect" class="inputselect" readonly="value"/>
+                           
+                    <div id="selectValue" style="display:none;" class="selectValue" onmouseout="hidemouseout('selectValue')" onmouseover="hidemouseover('selectValue')">
+  						<span id="a1" onclick="pick('测试一','inputselect','selectValue')" onmouseover="bgcolor('a1')" 
+                        	onMouseOut="nocolor('a1')" class="cur">测试一</span> 
+  						<span id="a2" onclick="pick('测试二','inputselect','selectValue')" onMouseOver="bgcolor('a2')" 
+                        	onMouseOut="nocolor('a2')" class="cur">测试二</span> 
+  						<span id="a3" onclick="pick('测试三','inputselect','selectValue')" onMouseOver="bgcolor('a3')" 
+                        	onMouseOut="nocolor('a3')" class="cur">测试三</span> 
+  						<span id="a4" onclick="pick('测试四','inputselect','selectValue')" onMouseOver="bgcolor('a4')" 
+                       		onMouseOut="nocolor('a4')" class="cur">测试四</span> 
+ 						<span id="a5" onclick="pick('测试五','inputselect','selectValue')" onMouseOver="bgcolor('a5')" 
+                        	onMouseOut="nocolor('a5')" class="cur">测试五</span> 
+ 	    				<span id="a6" onclick="pick('测试六','inputselect','selectValue')" onMouseOver="bgcolor('a6')" 
+                        	onMouseOut="nocolor('a6')" class="cur">测试六</span>            
+ 					</div>
+                    
+            </div>
+            
+            <div id="divButtonSecrch">
+            	<div id="buttonsearch"></div>
+            </div>
+            
+            <div id="divSeniorSecrch">
+            	<input type="button" value="高级搜索" id="higtsearch"/>
+            </div>
+       </div>
+	</div>
+    
+    <!-- 分割线 	样式在	registerLogin.css-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+    <!-- logo行-->
+    
+    <div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="personalCenter" class="active">
+            		<a href="javascript:void(0)">个人中心</a>
+            	</li>
+            	<li id="configureCenter">
+            		<a href="javascript:void(0)">配置中心</a>
+            	</li>
+            	<li id="inforCenter">
+            		<a href="javascript:void(0)">消息中心</a>
+           	 	</li>
+            	<li id="myRoom">
+            		<a href="javascript:void(0)">我的空间</a>
+            	</li>
+        	</ul>
+        </div>
+	</div>
+    
+	<!-- logo行 end-->
+	
+     <!-- 导航 -->
+  	<div id="assistantBar">
+    	<div class="twoStage" id="divTwoStage">
+        	<a href="javascript:"><div class='bar'><span>首页</span><i></i></div></a>
+            
+            <a href="javascript:"><div class='bar'><span>账户基本资料</span><i></i></div></a>
+            
+            <a href="javascript:"><div class='bar'><span>我的作品库</span><i></i></div></a>
+            
+            <a href="javascript:"><div class='bar active'><span>我的约拍</span><i></i></div></a>
+            
+            <a href="javascript:"><div class='bar'><span>我买到的作品</span><i></i></div></a>
+            
+           <a href="javascript:"> <div class='bar'><span>收藏/订阅/推荐</span><i></i></div></a>
+        </div>
+    	
+        <div id="divThreeStage">
+        
+        <div class="threeStage">
+        	<a href="javascript:"><div class='bar'><span>应约记录</span><i></i></div></a>
+            
+            <a href="javascript:"><div class='bar'><span>发布记录</span><i></i></div></a>
+            
+            <a href="javascript:"><div class='bar'><span>约拍日程</span><i></i></div></a>
+            
+            <a href="relProjectChoose.html"><div class='bar active'><span>发布约拍</span><i></i></div></a>
+        </div>
+        </div>
+    </div>
+    <!-- 导航  end-->
+    
+    <!--内容-->
+    <div id="shootProduct">
+    	<div class="divHead">
+    		<p class="title-name">发布商业拍摄</p>
+        </div>
+        
+        <form action="" id="formshootProduct">
+        <div class="content">
+        	<div class="title">
+            	<span class="na">征集主题</span>
+                <input class="titleinput" type="text" name="Memo"
+onkeydown="gbcount(this.form.Memo,this.form.total,this.form.used);" 
+  onkeyup="gbcount(this.form.Memo,this.form.total,this.form.used);"/>
+
+				<input disabled name="used" size="1" value="0" class="inputtext"/>/
+				<input disabled name="total" size="1" value="20" class="inputtext"/>
+            </div>
+        	
+        	<div class="divChooseCon">
+            	<div class="shootBar">
+                	<ul>
+                    	<a href="releaseCollect_sytp.html"><li>摄影图片</li></a>
+                        <a href="releaseCollect_cytp.html"><li class="active">创意图片</li></a>
+                        <a href="releaseCollect_cysj.html"><li>创意设计</li></a>
+                        <a href="releaseCollect_sygs.html"><li>摄影故事</li></a>
+                	</ul>
+                </div>
+            	
+                <!--第一行-->
+                <div class="divInfo">
+                	<div class="productType">
+                        	<span class="characterl">作品类型</span>
+                            <div class="proType">
+                            	<ul id="chooseProductType">
+                					<li class="active"><span>壁纸</span><i></i></li>
+                    				<li><span>封面</span><i></i></li>
+ 				                   	<li><span>插画</span><i></i></li>
+                			    	<li><span>游戏角色</span><i></i></li>
+              				      	<li><span>游戏场景</span><i></i></li>
+     				               	<li><span>卡通形象</span><i></i></li>
+              				      	<li><span>图形纹样</span><i></i></li>
+                                    
+                                    <!--添加自定义-->
+              				      	<div class="addCustomLi">
+                                    
+                                    	<div class="addF" onclick="viewCustom();">+ 添加</div>
+                                    
+                                        <div class="custom" id="customDiv">
+                                            <div class="character">自定义类型：（5个汉字以内）</div>
+                                            <div class="addCustom">
+                                                <input class="addinput" type="text" id="addCustomInput" onkeyup="checkwords(this,10)" onafterpaste="checkwords(this,10)"/>
+                                                <input class="surebut" type="button" value="确定"  onclick="addCustom('addCustomInput','chooseProductType');"/>
+                                            </div>
+                                            
+                                            <div class="sanjiao"></div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--添加自定义-->
+                                    
+                                    <div class="divClear" style="clear:both;"></div>
+                                    
+                				</ul>
+                        	</div>
+                    	
+                            
+                            <div style="clear:both;"></div>
+                    </div>
+                    <!--第一行-->
+                    
+                    <!--第二行-->
+                	<div class="shootWay">
+                    	<div class="left">
+                        	<div class="character">作品要求</div>
+                            <div class="num">
+                            	<input disabled name="used2" size="1" value="0" class="inputtext"/>/
+								<input disabled name="total2" size="1" value="300" class="inputtext"/>
+                            </div>
+                        	
+                        </div>
+                        <div class="divAextarea">
+                        	<textarea name="requireWork"
+                            onkeydown="gbcount(this.form.requireWork,this.form.total2,this.form.used2);" 
+  							onkeyup="gbcount(this.form.requireWork,this.form.total2,this.form.used2);"></textarea>
+                        </div>
+                    </div>
+                    <!--第二行-->
+                    
+                    
+                    
+                    <!--第三行-->
+                	<div class="shootTime">
+                    	<table>
+                        	<tr>
+                            	<td class="td1">作品规格</td>
+                            	<td class="workStandard">
+                                	<input class="numinput" type="text" value="" 
+                                            onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <span>×</span>
+                                    <input class="numinput" type="text" value="" 
+                                            onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <span>px</span>
+                                </td>
+                                
+                            	<td class="td1">源文件格式</td>
+                                
+                                <td class="shootWayCon shootSourceFileFormat">
+                                	<ul id="chooseShootSourceFileFormat">
+                                        <li class="active"><span>位图</span><i></i></li>
+                                    </ul>
+                                </td>
+                                
+                                
+                                <td class="td3"><span id="spanWorkStandardcytp">分辨率</span></td>
+                                
+                                <td class="workStandard workStandardcytp">
+                                <div id="divWorkStandardcytp">
+                                	<input class="numinput" type="text" value="" 
+                                            onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <span>dpi</span>
+                                </div>
+                                </td>
+                            </tr>
+                        
+                        	<tr>
+                            	<td class="td1">征集数量</td>
+                            	<td class="divNum">
+                                	<input class="subtract" type="button" onclick="subtractProductNum('inputproductNum');"/>
+                                    <input class="numinput" type="text" id="inputproductNum" value="1" 
+                                            onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <input class="plus" type="button" onclick="plusProductNum('inputproductNum');"/>
+                                    <span class="nums">件</span>
+                                </td>
+                                <td class="td3">征集截止日期</td>
+                                
+                                <td class="time" id="choseTime2">
+                                	<input class="timeInputStr" id="txtEndDate" type="text" readonly="true"/>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    	
+                        
+                        <!--<div class="shootLayout">
+                    		<div class="character">格式要求</div>
+                            <div class="shootWayCon shootWayConmodel">
+                                  <ul id="chooseShootModel">
+                                      <li class="active"><span>不限</span><i></i></li>
+                                      <li><span>JPG</span><i></i></li>
+                                      <li><span>Tif</span><i></i></li>
+                                  </ul>
+                          	</div>
+                    	</div>-->
+                    </div>
+                    <!--第三行-->
+                    
+                    
+                    <!--第四行-->
+                	<div class="productNum">
+                        <table>
+                        	<tr>
+                            	<td class="td1">版权需求</td>
+                            
+                            	<td class="shootWayCon shootCopyright">
+                                	<ul id="chooseShootCopyright">
+                                        <li class="active"><span>买断版权</span><i></i></li>
+                                        <li><span>仅使用权</span><i></i></li>
+                                    </ul>
+                                </td>
+                                
+                            </tr>
+                        
+                        	
+                            <tr>
+                            	<td class="td1">征集单价</td>
+                            
+                            	<td>
+                                	<input class="priceinput" type="text"
+                                    onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <span class="pricesp">元/件</span>
+                                </td>
+                                
+                                <td>
+                                	<input id="checkjsbj" type="checkbox"/>
+                            		<label for="checkjsbj">接受应约者报价</label>
+                                </td>
+                            </tr>
+                            <tr>
+                            	<td class="tdone"></td>
+                            	<td>总价：<span>34234</span>元</td>
+                            </tr>
+                            <tr>
+                            	<td class="td1">招标方式</td>
+                            
+                            	<td class="shootWayCon invitationType">
+                                	<ul id="chooseShootzbfs">
+                                        <li class="active"><span>公开</span><i></i></li>
+                                        <li><span>私密</span><i></i></li>
+                                    </ul>
+                                </td>
+                                <td class="invitation">
+                                	<input class="inputinvit" type="button" value="邀请好友/粉丝" onclick="yyyyyyyy();"/>
+                            		<span>已邀请</span><a href="javascript:" id="invitationNum">0</a>人
+                                </td>
+                            </tr>
+                            
+                            <tr id="shootWayConSpanYQ" class="yqhy"><td class="tdone"></td><td>私密招标需要邀请好友</td></tr>
+                        </table>
+                        
+                    </div>
+                    
+                    <!--第四行-->
+                    
+                    <div class="divChoose" id="uploadAccessory">
+                    	<div>
+                        	<span class="character">上传附件</span>
+                        	<span class="chooseIn">选择文件</span>
+                        </div>
+                        
+                        
+                        <div class="rightc">
+                            <div class="tableUpload" id="ULUpload">
+                                    <ul>
+                                    <li>
+                                        <div class="success">
+                                            <div class="contenttd">
+                                                <div class="divtd"><i class="file"></i><i class="true" title="上传成功"></i></div>
+                                                <div class="infos" title="这里是全名称">附件三等份收复失地附件三等份收复失地附件附件三等份收复失地附件附件三等份收复失地附件1111111111111111111111111111.pdf(56.KB)</div>
+                                            </div>
+                                            
+                                            <div class="bjcon">
+                                                <div class="bj"></div>
+                                                <div class="bjc"><i class="del" title="删除" onclick="deleteFile(this);"></i></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                                            
+                                    <li>
+                                        <div class="faled">
+                                            <div class="contenttd">
+                                                <div class="divtd"><i class="file"></i><i class="false" title="上传失败"></i></div>
+                                                <div class="infosf" title="这里是全名称">附件三等份附件三等份收附件三等份收收附件三等份收.pdf(56.KB)</div>
+                                                <div class="infosf2">上传失败</div>
+                                            </div>
+                                            <div class="bjcon">
+                                                <div class="bj"></div>
+                                                <div class="bjc">
+                                                    <i class="reload" title="重新上传"></i>
+                                                    <i class="del" title="删除" onclick="deleteFile(this);"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="loadingtd">
+                                            <div class="divtd"><i class="loading" title="上传中"></i></div>
+                                            <div class="loadingname">
+                                                <span title="这里是全名称">1111111111111111111111111111</span>
+                                            </div>
+                                            <div class="loadingname2">
+                                                <span>上传中...</span>
+                                                <i title="删除" onclick="deleteFile(this);"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul> 
+                            </div>
+                        </div>
+                     </div>
+                    
+                </div>
+                
+                
+                
+                <div class="submit">
+                    <input class="finished" id="finished" type="button" onclick="verifyForm();" value="发布"/>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+        </form>
+    </div>
+    
+    
+    <!--内容-->
+    
+    <!--foot 开始-->
+    <div id="footer">
+    <div id="footCenter">
+    	<div id="footServer">
+        	<div id="aboutOur" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">关于我们</a></div>
+                <p><a href="javascript:">服务内容</a></p>
+                <p><a href="javascript:">身份注册</a></p>
+                <p><a href="javascript:">积分等级</a></p>
+                <p><a href="javascript:">交易流程</a></p>
+            </div>
+            <div id="rechargeDefray" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">充值支付</a></div>
+                <p><a href="javascript:">账户管理</a></p>
+                <p><a href="javascript:">充值方式</a></p>
+                <p><a href="javascript:">交易记录</a></p>
+                <p><a href="javascript:">充值</a></p>
+                <p><a href="javascript:">提现</a></p>
+            </div>
+            <div id="personnelRecruitment" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">人才招聘</a></div>
+                <p><a href="javascript:">人才计划</a></p>
+                <p><a href="javascript:">招聘职位</a></p>
+            </div>
+            <div id="legalColumn" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">法律专栏</a></div>
+                <p><a href="javascript:">使用条款</a></p>
+                <p><a href="javascript:">相关协议</a></p>
+                <p><a href="javascript:">版权声明</a></p>
+                <p><a href="javascript:">隐私政策</a></p>
+                <p><a href="javascript:">免责声明</a></p>
+                <p><a href="javascript:">法律知识</a></p>
+            </div>
+            <div id="footProblem" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">疑难解答</a></div>
+            	<div class="serverConStr"><a href="javascript:">投诉建议</a></div>
+            	<div class="serverConStr"><a href="javascript:">广告服务</a></div>
+            	<div class="serverConStr"><a href="javascript:">信息中心</a></div>
+            </div>
+        </div>
+        
+        <div id="footCopyright">
+        	<div class="serverConStr" id="serverConStrid">版权声明</div>
+            <div id="footCopyrightCon">
+            	<p>所有图片及文件都受著作权保护，未经允许不得使用，</p>
+                <p>不得转载编辑</p>
+            	<p>Copyright&copy;2012-2013 wepic.cn</p>
+                <p>上海维拓网络科技有限公司</p>
+                <p>ICP备案/许可证：沪ICP备13010366号</p>
+            </div>
+        </div>
+        
+        <div id="footCustom">
+        	<div id="twoDimensionCode">
+            	<img src="../../../public/images/weixin.png"/>
+                <p>微信公众账号</p>
+            </div>
+            
+            <div id="DimensionCodeServer">
+            	<p class="serverConStr">客服电话</p>
+                <p id="serverPhone">400-809-9060</p>
+                <p>（周一至周五：9:00-18:00）</p>
+                <div id="serverShare">
+                	<ul>
+                    	<li><a href="javascript:" id="shareSina" class="shareSina" title="分享到新浪微博"></a></li>
+                        <li><a href="javascript:" id="shareQqzone" class="shareQqzone" title="分享到QQ空间"></a></li>
+                        <li><a href="javascript:" id="shareQqblog" class="shareQqblog" title="分享到腾讯微博"></a></li>
+                        <li><a href="javascript:" id="shareTwitter" class="shareTwitter" title="分享到twitter"></a></li>
+                        <li><a href="javascript:" id="shareFacebook" class="shareFacebook" title="分享到facebook"></a></li>
+                        <li><a href="javascript:" id="shareRenren" class="shareRenren" title="分享到人人网"></a></li>
+                        <li><a href="javascript:" id="shareDouban" class="shareDouban" title="分享到豆瓣"></a></li>
+                    </ul>
+                    	
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--foot 结束-->
+    
+	<div id="goTopBtn" style="display:none;"></div>
+</div>
+<!--[if lte IE 6]>
+<script src="../../../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+<div id="iframeChooseFriend" style="border:0px;width:875px;height:765px;position:absolute;top:0;left:0;display:none;"></div>
+</body>
+</html>

@@ -1,0 +1,1116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/public/images/logoSmall.ico"/>
+<title>唯图网 欢迎您来注册</title>
+
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/back/loginRegister/css/register.css" />
+<link href="css/perfect-scrollbar.css" rel="stylesheet" media="screen,projection"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/back/loginRegister/js/register.js"></script>
+<script src="${pageContext.request.contextPath}/back/loginRegister/js/perfect-scrollbar.js"></script>
+<script src="${pageContext.request.contextPath}/back/loginRegister/js/jquery.mousewheel.js"></script>
+
+<!--公共js-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/js/topBar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/js/header.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/js/public.js"></script>
+
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/public/css/footer.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/public/css/header.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/public/css/registerLogin.css" />
+
+
+<script>
+
+
+	
+	  
+
+$(function(){
+	document.getElementById("formRegister").reset();		//form表单重置
+	//$("#createAccount").attr("disabled",false);
+	$("#serverTerm").attr("checked",false);
+	
+	 if($("#serverTerm").attr("checked")=="checked"){
+	   	$("#createAccount").attr("disabled",false);
+		$("#createAccount").css({"background":"red"});	
+	 }
+	
+	$('#demo').perfectScrollbar();
+	$("#demo").scrollLeft(300);
+	$("#demo").perfectScrollbar('update');
+});
+
+</script>
+</head>
+
+<body>
+<div id="container">
+	<!-- 头部开始						样式在	registerLogin.css -->						
+    <div id="topBar">
+	<div id="topbar">
+    	<div id="topcenterbar">
+        	<div id="topbarCollect">
+    			<a id="topcollect" href="javascript:addToFavorite('http://www.wepic.cn/','唯图网_商业拍摄 原创商业图片交易平台')">
+                	<span>收藏唯图</span>			
+        		</a>
+       		</div>
+            
+            <div id="topbarRegisterLogin">
+            	<a href="${pageContext.request.contextPath}/back/loginRegister/login.jsp" id="topbarLogin"><span>登录</span></a>
+                <a href="${pageContext.request.contextPath}/back/loginRegister/register.jsp" id="topbarRegister"><span>注册</span></a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- 头部结尾 -->
+    
+<!-- logo开始					样式在	header.css -->
+    <div id="header">
+    	<div id="headerCenter">
+        	<div id="divlogo">
+    			<a id="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+    				<img src="${pageContext.request.contextPath}/public/images/wepic_logo.png" alt="唯图网"/>
+        			<p><span id="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+   				</a>
+    		</div>
+            <div id="divKeyWord">
+                    	<input id="inputkeyword" type="text" value="搜索" 
+                    		onfocus="searchonfocus();" onblur="searchonblur()"/>
+            </div>
+                   
+            <div id="divSelect">
+                    <input  type="text" value="选择类型"  onclick="hide('selectValue')" 
+                    		id="inputselect" class="inputselect" readonly="value"/>
+                           
+                    <div id="selectValue" style="display:none;" class="selectValue" onmouseout="hidemouseout('selectValue')" onmouseover="hidemouseover('selectValue')">
+  						<span id="a1" onclick="pick('测试一','inputselect','selectValue')" onmouseover="bgcolor('a1')" 
+                        	onMouseOut="nocolor('a1')" class="cur">测试一</span> 
+  						<span id="a2" onclick="pick('测试二','inputselect','selectValue')" onMouseOver="bgcolor('a2')" 
+                        	onMouseOut="nocolor('a2')" class="cur">测试二</span> 
+  						<span id="a3" onclick="pick('测试三','inputselect','selectValue')" onMouseOver="bgcolor('a3')" 
+                        	onMouseOut="nocolor('a3')" class="cur">测试三</span> 
+  						<span id="a4" onclick="pick('测试四','inputselect','selectValue')" onMouseOver="bgcolor('a4')" 
+                       		onMouseOut="nocolor('a4')" class="cur">测试四</span> 
+ 						<span id="a5" onclick="pick('测试五','inputselect','selectValue')" onMouseOver="bgcolor('a5')" 
+                        	onMouseOut="nocolor('a5')" class="cur">测试五</span> 
+ 	    				<span id="a6" onclick="pick('测试六','inputselect','selectValue')" onMouseOver="bgcolor('a6')" 
+                        	onMouseOut="nocolor('a6')" class="cur">测试六</span>            
+ 					</div>
+                    
+            </div>
+            
+            <div id="divButtonSecrch">
+            	<div id="buttonsearch"></div>
+            </div>
+            
+            <div id="divSeniorSecrch">
+            	<input type="button" value="高级搜索" id="higtsearch"/>
+            </div>
+       </div>
+	</div>
+<!-- logo结束 -->
+	
+    
+    
+    <!-- 分割线 					样式在	registerLogin.css-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+    
+    
+	<!-- 注册开始 -->
+    <div id="divRegister">
+    <form action="${pageContext.request.contextPath}/register.do" id="formRegister" method="post">
+    	<div id="divRegisterTitle">
+            <span>
+           	<s:if test="#session.openID==null&&#session.weiboOpenId==null"> 
+            注册新账户
+        </s:if>
+        <s:else>
+        绑定新用户
+        
+        
+        </s:else>    
+            </span>
+            <a href="${pageContext.request.contextPath}/back/loginRegister/login.jsp">使用已有账户登录</a>
+        </div>
+    	<table id="tableRegister">
+        <!--用户名-->
+        <tr>
+            	<td class="label" colspan="2" style="color:red; font-size: 12px" >
+				<s:fielderror theme="simple"></s:fielderror>
+                </td>
+                </tr>
+        	<tr>
+            	<td class="label">
+					<b class="labelName">*</b>
+					用户名
+                </td>
+                
+                <td class="regName">
+                	<div class="divRegName">
+						<input id="inputUserName" style="ime-mode:inactive" class="text" value='<s:property value="model.username"/>' type="text" name="username" onblur="checkUserName();" onfocus="tableInputOnfocus(this);" />
+						<i class="i-name" id="i-name"></i>
+					</div>
+                </td>
+                <td class="remind">
+                	<div class="divRemind">
+                		<font class="bremind" id="bremind">一旦注册成功不能修改</font>
+                        
+                        <div class="divremind" id="divremindnull">
+                    		<span>用户名不能为空</span>
+                    	</div>
+                        
+                    	<div class="divremind" id="divremind">
+                    		<span>用户名不符合要求，请检查用户名</span>
+                    	</div>
+                        
+                        <div class="divremind" id="divremindhave">
+                    		<span>该用户名已被注册，请重新输入</span>
+                    	</div>
+                        
+                        
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+            	<td class="label2">
+                </td>
+                
+                <td class="instruction">
+                	<div class="divRegName">
+						<span>请输入5-12位字符的用户名，不包括特殊字符</span>
+					</div>
+                </td>
+            </tr>
+            <!--邮箱地址-->
+            <tr>
+            	<td class="label">
+					<b class="labelName">*</b>
+					邮箱地址
+                </td>
+                
+                <td class="regName">
+                	<div class="divRegName">
+						<input id="inputEmail" class="text" type="text" value='<s:property value="model.email"/>' name="email" onblur="checkEmail();" onfocus="tableInputOnfocus(this);"/>
+						<i class="i-name" id="i-email"></i>
+					</div>
+                </td>
+                <td class="remind">
+                	<div class="divRemind">
+                		<b class="bremind" id="bremindEmail"></b>
+                        
+                        <div class="divremind" id="divremindEmailnull">
+                    		<span>邮箱不能为空</span>
+                    	</div>
+                        <div class="divremind" id="divremindEmailError">
+                    		<span>请检查您的邮箱地址</span>
+                    	</div>
+                    	<div class="divremind" id="divremindEmailhave">
+                    		<span>该邮箱已被注册,请重新输入</span>
+                    	</div>
+                    </div>
+                </td>
+            </tr>
+           
+            <tr>
+            	<td class="label2">
+                </td>
+                
+                <td class="instruction">
+                	<div class="divRegName">
+						<span>请输入真实有效的邮箱地址</span>
+					</div>
+                </td>
+            </tr>
+            <!--密码-->
+            <tr>
+            	<td class="label">
+					<b class="labelName">*</b>
+					输入密码
+                </td>
+                
+                <td class="regName">
+                	<div class="divRegName">
+						<input id="inputPassword" class="text" type="password" name="password" onblur="checkPassword();" onfocus="tableInputOnfocus(this);"/>
+						<i class="i-name" id="i-password"></i>
+					</div>
+                </td>
+                <td class="remind">
+                	<div class="divRemind" >
+                		<b class="bremind" id="bremindPassword"></b>
+                        
+                        <div class="divremind" id="divremindPasswordnull">
+                    		<span>密码不能为空</span>
+                    	</div>
+                        <div class="divremind" id="divremindPasswordError">
+                    		<span>该密码不符合要求，请重新输入</span>
+                    	</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+            	<td class="label2">
+                </td>
+                
+                <td class="instruction">
+                	<div class="divRegName">
+						<span>请输入5-12位字符的密码，不区分大小写</span>
+					</div>
+                </td>
+            </tr>
+            <!--确认密码-->
+             <tr>
+            	<td class="label">
+					<b class="labelName">*</b>
+					确认密码
+                </td>
+                
+                <td class="regName">
+                	<div class="divRegName">
+						<input id="inputPasswordAffirm" class="text" type="password" name="rePassword" onblur="checkPasswordAffirm();" onfocus="tableInputOnfocus(this);">
+						<i class="i-name" id="i-passwordAffirm"></i>
+					</div>
+                </td>
+                <td class="remind">
+                	<div class="divRemind">
+                		<b class="bremind" id="bremindPasswordAffirm"></b>
+                    	<div class="divremind" id="divbremindPasswordAffirm">
+                    		<span>两次输入密码不一致，清重新输入</span>
+                    	</div>
+                        
+                        <div class="divremind" id="divbremindPasswordAffirmNull">
+                    		<span>请输入密码</span>
+                    	</div>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+            	<td class="label2">
+                </td>
+                
+                <td class="instruction">
+                	<div class="divRegName">
+						<span>请再次输入密码</span>
+					</div>
+                </td>
+            </tr>
+            <!--用户服务条款-->
+            <tr>
+            	<td class="label">
+                	<input type="checkbox" name="serverTerm" id="serverTerm" checked="checked" value ="serverTerm" onchange="changeCheckboxTerm(this)">
+                </td>
+                
+                <td class="" id="instruction">
+                	<div class="divRegName">
+						<label for="serverTerm"><span>同意唯图网的</span></label>
+                        <a href="javascript:openPopUpBox('tiaokuan');">用户服务条款</a>
+					</div>
+                </td>
+            </tr>
+        </table>
+        
+        <div id="divRegisterSubmit">
+        	<div id="divRegisterSubmitA">
+        	 	<s:if test="#session.openID==null&&#session.weiboOpenId==null"> 
+            	<input type="button" value="创建账户" onclick="submitForm()"  id="createAccount" disabled="disabled"/>
+            	</s:if>
+            	<s:else>
+            	
+            	<input type="button" value="绑定新账户" onclick="submitForm()"  id="createAccount" disabled="disabled"/>
+            	
+            	</s:else>
+            	
+            	
+            	
+            </div>
+        </div>
+ 	</form>
+ 	<div id="quickLogin">
+        	<a href="${pageContext.request.contextPath}/back/loginRegister/sendqqLogin.jsp"><div class="qq"><i></i><span>使用QQ登录</span></div></a>
+           	<a href="${pageContext.request.contextPath}/back/loginRegister/sendWeibo.jsp">  <div class="sina"><i></i><span>新浪微博登录</span></div></a>
+        </div>
+ 	
+    </div>
+    
+    
+    <!-- 注册结束 -->
+    
+    
+    <!--foot 开始-->
+    <div id="footer">
+    <div id="footCenter">
+    	<div id="footServer">
+        	<div id="aboutOur" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">关于我们</a></div>
+                <p><a href="javascript:">服务内容</a></p>
+                <p><a href="javascript:">身份注册</a></p>
+                <p><a href="javascript:">积分等级</a></p>
+                <p><a href="javascript:">交易流程</a></p>
+            </div>
+            <div id="rechargeDefray" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">充值支付</a></div>
+                <p><a href="javascript:">账户管理</a></p>
+                <p><a href="javascript:">充值方式</a></p>
+                <p><a href="javascript:">交易记录</a></p>
+                <p><a href="javascript:">充值</a></p>
+                <p><a href="javascript:">提现</a></p>
+            </div>
+            <div id="personnelRecruitment" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">人才招聘</a></div>
+                <p><a href="javascript:">人才计划</a></p>
+                <p><a href="javascript:">招聘职位</a></p>
+            </div>
+            <div id="legalColumn" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">法律专栏</a></div>
+                <p><a href="javascript:">使用条款</a></p>
+                <p><a href="javascript:">相关协议</a></p>
+                <p><a href="javascript:">版权声明</a></p>
+                <p><a href="javascript:">隐私政策</a></p>
+                <p><a href="javascript:">免责声明</a></p>
+                <p><a href="javascript:">法律知识</a></p>
+            </div>
+            <div id="footProblem" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">疑难解答</a></div>
+            	<div class="serverConStr"><a href="javascript:">投诉建议</a></div>
+            	<div class="serverConStr"><a href="javascript:">广告服务</a></div>
+            	<div class="serverConStr"><a href="javascript:">信息中心</a></div>
+            </div>
+        </div>
+        
+        <div id="footCopyright">
+        	<div class="serverConStr" id="serverConStrid">版权声明</div>
+            <div id="footCopyrightCon">
+            	<p>所有图片及文件都受著作权保护，未经允许不得使用，</p>
+                <p>不得转载编辑</p>
+            	<p>Copyright&copy;2012-2013 wepic.cn</p>
+                <p>上海维拓网络科技有限公司</p>
+                <p>ICP备案/许可证：沪ICP备13010366号</p>
+            </div>
+        </div>
+        
+        <div id="footCustom">
+        	<div id="twoDimensionCode">
+            	<img src="<%=path %>/public/images/weixin.png"/>
+                <p>微信公众账号</p>
+            </div>
+            
+            <div id="DimensionCodeServer">
+            	<p class="serverConStr">客服电话</p>
+                <p id="serverPhone">400-809-9060</p>
+                <p>（周一至周五：9:00-18:00）</p>
+                <div id="serverShare">
+                	<ul>
+                    	<li><a href="javascript:" id="shareSina" class="shareSina"></a></li>
+                        <li><a href="javascript:" id="shareQqzone" class="shareQqzone"></a></li>
+                        <li><a href="javascript:" id="shareQqblog" class="shareQqblog"></a></li>
+                        <li><a href="javascript:" id="shareTwitter" class="shareTwitter"></a></li>
+                        <li><a href="javascript:" id="shareFacebook" class="shareFacebook"></a></li>
+                        <li><a href="javascript:" id="shareRenren" class="shareRenren"></a></li>
+                        <li><a href="javascript:" id="shareDouban" class="shareDouban"></a></li>
+                    </ul>
+                    	
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--foot 结束-->
+</div>
+
+
+
+
+
+
+
+
+
+<!--服务条款-->
+
+<div style="width:706px; background:#F2F2F3;display:none; height:690px;" id="tiaokuan">
+   	<div style=" width:50px; height:50px; float:right;  margin-right:-50px; position:relative">
+	<img onclick="closeServerTerm('tiaokuan')" style="width:50px; height:50px; cursor: pointer;" src="<%=path%>/public/images/close.gif"/>
+</div>
+<div style="width:704px; height:40px; background:#FAFAFA; margin:auto; border-bottom:1px solid #CFCFCF; margin-top: 0px;float: left">
+	<span style="font-weight:bold;font-size:10.5000pt;font-family:'宋体';"> 
+    	<span style="font-size:32px;">唯图网</span>
+    </span>
+    <span style="font-weight:bold;font-size:32px;font-family:'宋体';">使用</span>
+    <span style="font-weight:bold;font-size:32px;font-family:'宋体';">条款</span>
+    <span style="font-weight:bold;font-size:10.5000pt;font-family:'宋体';"></span> 
+</div>
+	<div id="demo">
+		<div style="width:80%; margin:auto">
+
+					<p>
+						<br />
+					</p>
+					<p class="p0">
+						请仔细阅读唯图网使用协议
+						<span>(</span><span>以下简称“本协议</span><span>")</span><span>，协议是您以注册用户的身份与上海</span>维拓网络科技有限公司
+						<span>(</span><span>以下简称“</span>唯图网”
+						<span>)</span><span>之间达成法律上的共识，和您作为用户使用</span>唯图网所需遵守的条款。您同意遵守本协议和相关的修改版本。唯图保留随时修改本协议的权利。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						本协议以中文版为基础，翻译成英文和其他语种的版本，如果其他语种的版本和中文版本在翻译上有不同，以中文版为准。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">1.使用唯图网</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网由上海维拓网络科技有限公司拥有和经营。网站展示的图片、标题、文字和附带证书的著作权或版权属于图片作者
+						<span>/</span><span>上海</span>维拓网络科技有限公司或相关的团体所有。所有图片的著作权和版权受中国和世界著作权和版权法的保护。使用本网站应遵守上述法律和法规。如果您不遵守本协议条款
+						<span>,&nbsp;</span>唯图随时可以取消你的账户和图片授权，而不事先通知。当上述情况出现时，用户同意立即停止使用本网站的图片，并删除所有图片、图片副本和衍生品。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网的图片购买分为购买使用权和购买版权。为了浏览方便，唯图允许您搜索和浏览带水印的图片。如果您已成功注册成为用户，按照本协议，您可以购买使用权和版权。根据本协议，当您购买使用权时，所有其他未明确授予您的权利是版权所有者保留的权利。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">2.注册唯图网账户</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						登陆网站和上传图片需要注册唯图网账户
+						<span>,&nbsp;</span><span>您同意提供完整、真实、准确的信息。摄影师</span>、模特和经纪人（统称为卖家）需要提供本人身份证明文件和收款银行帐号，唯图按照中国“网络实名制”的规定，审核您提交文件的真实性后，决定是否同意您开设账户。当您注册用户账户时，我们将为您开通图片购买的权限，如果您需要发布商业拍摄需求时，请您完善您的资料信息，并本人身份证或企业营业执照文件，在我们核准后您才能发布您的项目需求。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						您同意负责自己的账号和密码的私密安全，您不可以让他人使用您的用户名和密码。您需要采取合理措施防范他人使用您的账户，如果发现任何未经授权使用您的账户，请马上通知唯图。您将对任何人（包括你的雇员或代理人）使用您的账户和密码下载图片的后果负责并同意支付相关的费用。如果账户发生任何侵权行为，您同意唯图有权冻结直至取消您的帐户。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">3.</span>
+						</strong><span style="font-size: 14px;"><strong>商业拍摄使用条款</strong>
+						</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						参加商业拍摄任务
+						<span>,</span><span>您必须履行下列条件：</span>
+					</p>
+					<p class="p0">
+						1
+						<span>）拥有</span>唯图有效的摄影师或模特账户。
+					</p>
+					<p class="p0">
+						2
+						<span>）您是上传图片唯一的作者和拥有者。</span>
+					</p>
+					<p class="p0">
+						3）如果征集者需要的模特肖像权授权书，您需要配合。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						参加作者的义务：您同意加入商业拍摄任务，出售图片仅通过唯图网站
+						<span>,&nbsp;</span><span>不再通过其他渠道</span>出售。
+					</p>
+					<p class="p0">
+						唯图网为注册用户提供了商业拍摄服务，包括商业拍摄、找摄影师和模特、图片征集服务，注册用户通过身份验证后即可发布相关的拍摄需求，同时摄影师和模特可以进行商业拍摄的应约。用户进行拍摄需求发布申请并通过唯图审核通过后即可在网站显示，唯图有监督项目真实性的权利，即是否允许发布，根据本协议
+						<span>,</span><span>我们不保证</span>用户所发布的信息的真实性与准确性，或网站的任何服务将不间断或无误。除了中国法律不能免除的责任外，唯图公司和它的子公司或唯图的雇员不会赔偿您和任何第三方因使用唯图网商业拍摄服务导致的直接的、间接的、附带的或相关的损失与其他权益的损害，不管这些损失和损害是否与使用这项服务有关或无关。在任何情况下，唯图或其附属机构的法律责任仅限于赔偿您使用该服务支付给唯图的服务费用。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">4.图片使用权购买</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网上不带水印的高分辨率的图片（供下载的图片）和其他展示用的小图片（不带水印展示图）同样受到中国著作权法的保护。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						购买使用权图片的使用和限制
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						您购买图片使用权后，除了协议规定的某些限制外，在图片的使用期限内，您可以多次使用该图片。超出使用期限后，您需要重新购买。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						购买使用权的图片以免版税图片授权形式下载，可以用于印刷品、网页、杂志、报纸、书籍、手册、宣传和广告品上&nbsp;也可以使用在电子媒体上，只要它和以下的限制性条件不冲突。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果你对使用范围不确定或需要咨询
+						<span>,&nbsp;</span><span>请致电</span>唯图客户服务热线（400-8099-060）或发电子邮件（
+						<span>service@</span>wepic.cn）查询。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						把图片用作出售产品的要素，例如：网页模板，为销售做的贺卡或明信片，按需制作的打印图片，把图片印在画布上或&nbsp;
+						<span>T</span><span>恤衫或杯子上、日历，明信片，鼠标垫或任何其他类似项目，不管是打算出售或免费赠与，都被认为是再售图片的行为，在标准免费授权许可的范围内，</span>唯图禁止图片用于这些目的。你可以使用图片在自己的网页上，但是，在网站上提供唯图图片的下载（例如：屏保图片）是被禁止的。在网络中使用图片，图片单边不得大于&nbsp;
+						<span>800</span><span>像素，如果图片用于制作网页、广告页面或网站设计中的一部分画面或素材，图片宽度可大于</span><span>800</span><span>像素。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果您把图片用于一般出版类印刷品，印刷数量不能超过
+						<span>50</span><span>万份。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">5.购买图片版权</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						您通过购买使用权购买的仅仅是图片的使用权，版权不属于您也没有转让给你。您不可以声称拥有版权，也不可以把图片再次转售给任何人，或者给任何第三者使用、发布或分销。唯图图片如果刊登在媒体上，请写“摄影师姓名
+						<span>/</span>唯图网”的版权说明以告知读者，这项版权说明是鼓励摄影师提供更好更多的图片。
+					</p>
+					<p class="p0">
+						如果您希望拥有上述的所有权利，请选择购买版权。您可以把它用于任何合法类型的设计上使用，但是图片使用的某些限制仍然适用，例如图片不能用于敏感的政治领域和色情领域。您也不得宣称他是作者。此项许可成交后，网站将从图片库中删除该图无水印图片，使他人不能下载。摄影师将不能把该图片再次卖给任何客户
+						<span>,&nbsp;</span><span>此项许可在成交后立刻生效</span><span>,</span><span>最迟生效时间不超过成交后的</span><span>72</span><span>小时。摄影师同意把图片的所有权卖给您时，如果该图片有模特肖像权授权书</span><span>,</span><span>仍将放在网站的数据库中，</span>唯图网会出具一份证明信给您，证明模特肖像权授权书的存在。但是不会把模特肖像权授权书交给您
+						<span>,</span><span>模特的相关信息也不会告诉您，这样做是为了保护摄影师和模特的隐私。这是在标准合同上附加的许可权，其他协议授权使用范围的限制依然适用。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">6.编辑类图片的使用许可</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						编辑类图片是有新闻价值的图片，它的内容反映了社会文化的变迁。使用编辑类图片，需按照免版税图片的授权和编辑类图片使用的规定，它不能在敏感的政治、宗教和道德评判场合使用。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果您下载编辑类图片用于报刊、电视和数码出版的插图：如果你修改图片的内容或其中的一部分，使观众产生误判或误读，您自己负相关的责任。在不改变图片内容的前提下，标准的裁减图像或调整亮度
+						<span>/</span><span>对比度是允许的。如果微图认为上传的图片不适合使用，我们保留拒绝的权利。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						买家使用编辑类图片的要求：编辑类图片中可能有商标或人物，他
+						<span>/</span><span>她</span><span>/</span><span>它们都没有签署过模特授权书，您使用这类图片时请注意这个限制。编辑类图像不能用于商业用途，使用不当您要负全部的责任。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						作者提供编辑类图片的要求：请注意，拍编辑类图片需要客观的反映某个事件，因此，任何可能歪曲现实的后处理照片是不允许上传的。调整标准亮度
+						<span>/</span><span>对比度调整是可以的，但不要使用移植，或用艺术画笔</span><span>/</span><span>滤镜进行处理。您在此同意上传提交的图片都是通过合法途径拍摄到的。您自己要对图片的拍摄行为负责，如果有人提出索赔，您保证赔偿损失。不让</span>唯图或第三者受到损害。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						您对使用上述附加许可的细节有任何问题
+						<span>,</span><span>可以写信或致电</span>唯图询问。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">7.图片未授权使用的范围</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						图片不得用作商标或服务商标
+						<span>(</span><span>除非用户</span>购买版权
+						<span>)</span><span>，不能用于任何色情或违法的用途</span><span>,</span><span>不能用于诋毁任何个人或组织，不能侵犯任何人的隐私权和肖像权。用户在未经授权使用的范围内使用图片将构成侵权。根据著作权法，</span>唯图网和作者有权行使一切权利去阻止该图片的使用，包括申请禁止令以防止进一步对版权形成伤害，有权要求受益者对利用该图像造成的损害赔偿。对于任何侵权使用，上述声明并没有限制唯图和作者采取其他补救措施的权利。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">8.在敏感领域使用图片的限制</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网授予的任何图片使用许可
+						<span>,</span><span>并不意味允许一张图片可以在任何场合使用。由于用户权决定把图片用于何种场合或加上什么文字，未经</span>唯图网书面同意，用户保证图片不使用在社会敏感的议题上。这些敏感议题包括但不限于
+						<span>:&nbsp;</span><span>图片模特儿有精神或健康问题、社会问题、性问题、药物滥用、犯罪和其他可能被人用于攻击或损害模特形象的任何地方。在涉及使用图片在任何敏感话题前，你必须事先联络</span>唯图，以获得书面使用许可。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">9.模特肖像权或物权授权书</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						作者上传的图片必须拥有所有权和版权。如果上传图片中有可以辨别的人脸，作者应该把模特肖像权授权书一起上传。肖像权不仅仅包括成人，还包括儿童和死者。儿童是由家长或监护人签字，死者应有直系亲属签字。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网不会对作者上传授权书的准确性负责。唯图授予您的图片使用权，并不包括图片中出现的人的肖像、商标及建筑物权等使用权
+						<span>,&nbsp;</span><span>根据各国不同的法律规定，所有人可能根据著作权法、商标法、广告法等主张属于他们的权益。</span>唯图不保证图片中任何东西都已经得到第三方的授权，唯图也从来没有授权给用户图片中人物的肖像权、商标权、建筑或财产权。也不保证图片中的任何作者提供文字材料的准确性，用户自己要负责确定使用该图像是否需要第三方的同意，或任何第三方的授权。你不应该仅仅依靠唯图所提供的图片或文字资料。如果您不能确定该图片是否需要额外授权，您有责任咨询法律顾问。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						另外，模特肖像权授权书文件必须由摄影师提供，并保证图片中的人物都已经书面签署，上传到唯图的文件摄影师必须保证是真实的和有效的。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果模特肖像权授权书包含在图片文件中
+						<span>,</span><span>那么表明图片有模特肖像权授权书。模特授权书可能有限制使用范围，包括敏感场合使用的限制。如果</span>唯图在网页中错误说明图片有模特肖像权授权书，但是实际上无法提供，唯图的责任仅限于退回你的使用费。含有模特的图片或图片中的模特素材在某些场合使用将导致一个正常人相信此模特自己使用这个产品或者支持该产品用户必须在使用时声明：
+						<span>"</span><span>此人是模特，仅用于示范目的</span><span>"</span><span>。在任何情况下，都不能暗示图片中的模特支持或赞同某种产品、某种服务或某种敏感问题。根据本协议，</span>唯图授予你的图片使用权是有条件的许可，包括你必须得到第三方的许可才可以使用，如果需要，你同意向唯图提供得到第三方许可的证明。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">10.图片退换政策</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;"><br /> </span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						从购买日期
+						<span>30</span><span>天内，如果图片质量有问题，您可以要求</span>唯图退还您购买图片的金额。退款要求必须说明合理的理由和您的用户名，同时您要立即删除所有退还图片的下载文件，删除含有退还图片设计和使用样稿和作品。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果你下载的一张图片存在技术缺陷无法使用，请在发信通知我们，我们将把下载扣除的金额退还到你的账户。如果你付了款而无法下载图像
+						<span>,</span>唯图将可以用人工邮件的方式发送给你，请您打电话通知我们（400-8099-060）。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">11.Wepic</span>
+						</strong><span style="font-size: 14px;"><strong>唯图</strong>
+						</span><strong><span style="font-size: 14px;">注册商标</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图商标也是网络电子商务标识和标志，是唯图登记并注册的商标。Wepic
+						<span>唯图</span>的商标只有得到唯图公司书面同意后才能公开使用。除非明确授权，任何人使用唯图商标、服务标识和标志都是违反商标法的行为。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">12.赔偿</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果您违反本协议的条款，如果您没有遵守图片使用的限制性的规定而引起索赔，如果使用唯图网或单独使用图片或和其他材料一起使用图片不当，您同意赔偿唯图可能产生的一切损失、这些损失包括直接和间接的损失，包括损害赔偿要求和补偿费用，包括合理的法律费用和开支。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">13.免责声明</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网是一个图片库网站
+						<span>.</span><span>根据本协议</span><span>,</span><span>我们不保证网站信息、图片或图片说明等信息的准确性</span><span>,&nbsp;</span><span>或图片适合你的特殊需要。或网站的任何服务将不间断或无误。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						除了中国法律不能免除的责任外，唯图网公司和它的子公司或唯图网的雇员不会赔偿您和任何第三方因使用图片导致直接的、间接的、附带的或相关的损失，不管这些损失与使用图片有关或无关。在任何情况下，唯图网或其附属机构的法律责任仅限于赔偿您使用该图片支付给唯图网的使用权费用。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">14.著作权和代理权</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网已告诉图片摄影师，禁止上传含有侵害到任何专利、商标、著作权、隐私权或展示权，财产权或任何相关法律权利的图片到唯图网站。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网也告知图片摄影师，上传图片必须是摄影师自己拍摄的图片，摄影师必须拥有图片完整的所有权和版权。摄影师的图片说明必须提供准确的时间
+						<span>,</span><span>地点和主题信息，</span>唯图网保留核实图片信息的权利。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						图片作者给予唯图网站是非排他性的版权作品的代理权，代理权内容包括但不限于：作品的发表权、复制权、发行权、展览权、信息网络传播权、汇编权和出租权。唯图网可以把图片放在网上销售图片的使用权，也可以通过唯图的代理机构或代理网站销售该图片，唯图网也可以通过销售代表销售图片。图片使用权的条件按照【图片购买协议】为准。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						作者上传自己的图片或内容作品到唯图网，即表示作者接受此图片或内容授予唯图的图片的代理权，唯图网可以对个别图片由于质量问题下架停售。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网和图片作者双方同意作者保留上传图片的所有权和版权，除非另有协议规定。作者也同意唯图公司的董事、雇员，合伙人或代理商任何代理商不需要付给上传图片的作者任何补偿。图片每次付费下载后，唯图网将把作者应得的收益（售价税后的80%）划到作者的唯图网账户上。唯图网有权可以随时修改作者应得收益的分成比列。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						每个作者可以随时要求唯图网把他
+						<span>/</span><span>她的账户的余额付清，</span>您可以通过您的账户申请提现，一般情况下，我们将要求以10
+						<span>元人民币（海外付款</span><span>10</span><span>美元）</span>为提现基数，在您决定不再使用唯图网并申请销户时，唯图网将会结清您所有款项。唯图网有权认真分析所有下载图片的细节和所有项目的细节，如果对真实性有怀疑
+						<span>,&nbsp;</span>唯图网有权要求推迟支付或拒绝付款
+						<span>,</span><span>直到所有细节清理完毕。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						作者有权修改已经上传的图片说明，可以登陆【我的空间】进行修改或删除
+						<span>,&nbsp;24</span><span>小时以后图片将在公共网页上调整。&nbsp;</span>唯图网有权保持过去的图片拷贝和所有记录，是为了让以前购买的用户核实内容。图片被作者替换后，旧片和相关记录将被保留一个月，期满后，唯图网将可能删除旧图片和相关记录。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果用户使用图片产生版权问题或侵权问题，图片作者同意既不追究唯图网站也不追究唯图公司任何董事、雇员、合伙人或代理人的损害赔偿
+						<span>,&nbsp;</span><span>无论造成损害是直接的还是间接的、偶然或必然的。作者确认如果发生自己图片的侵权行为，他</span><span>/</span><span>她个人负责向第三方起诉对图片著作权的侵权行为，</span>唯图网将提供必要的协助。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">15.侵权的通知</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						如果您侵犯图片的著作权或版权，唯图网有权终止您的账户。如果作者认为您的图片已经被用户侵权使用，而确信这种侵权行为是发生在唯图网站上，请马上用电话、电子邮件或书信通知唯图网。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						随后需要递交的书面文件必须包含：
+					</p>
+					<p class="p0">
+						(
+						<span>一</span><span>)</span><span>版权拥有者的本人签名或电子签名。</span>
+					</p>
+					<p class="p0">
+						(
+						<span>二</span><span>)</span><span>说明是什么权利受到侵犯和是谁侵犯了版权。</span>
+					</p>
+					<p class="p0">
+						(
+						<span>三</span><span>)</span><span>说明</span>唯图网站上具体哪张图片和图片编号。
+					</p>
+					<p class="p0">
+						(
+						<span>四</span><span>)</span><span>留下足够的个人信息</span><span>,</span><span>允许</span>唯图联络的地址、电话号码、电子邮件地址。
+					</p>
+					<p class="p0">
+						(
+						<span>五</span><span>)</span><span>你相信使用这些图片没有得到作者或它法定代理人授权。</span>
+					</p>
+					<p class="p0">
+						(
+						<span>六</span><span>)</span><span>声明您提供信息是准确的，得到版权拥有者的授权，您愿意接受法律对作假证的惩罚。</span>
+					</p>
+					<p class="p0">
+						<span><br /> </span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<span style="font-size: 14px;"><strong>16.摄影师出售图片使用权合同</strong>
+						</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						经过慎重考虑，本人（摄影师）同意授权唯图网把本人上传的图片在唯图网站上进行发行浏览、出售和分销，本人与唯图网站签订的是非排他性的版权作品销售代理权合同，唯图网拥有上传图片的版权代理权和销售权。在代理期间内，本人（摄影师）可以把已上传图片再次给其他图片机构代理，但无权单方面要求撤销唯图网图片代理合同，如果摄影师在合同有效期内，与其他图片库签订独家代理合同，所产生的后果自负。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						本人同意上传图片给唯图网站，授权唯图网对图片进行复制、打印、出售和分销，给用户或商业机构。本人同意上传任何一张有人像的照片
+						<span>,</span><span>如果有模特本人签名的模特肖像权授权书</span><span>,&nbsp;</span><span>也作为附件上传到</span>唯图网站。本人了解唯图网站拒绝任何盗版图片，唯图网也不会为图片的任何侵权行为负责，本人将对上传图片的版权负责。本人上传的图片到唯图网站和画廊出售时，本人已经授权唯图网出售图片版权的使用权。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						本人同意唯图网出售我的图片使用权或版权给买方，不需要告诉本人买主的真实姓名。在这种情况下
+						<span>,&nbsp;</span><span>您同意不接触任何买我图片的买家，除非他们是违反</span>唯图网图片购买合同。如果本人采取行动对付侵权的买家，本人同意以书面形式通知唯图网站，并同意不对唯图网站的所有股东或董事、职员和合作伙伴提出任何侵权索赔的要求。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						作者同意每次收取税后80％（百分之八十）的图片售价作为每次图片出售的报酬。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						为了履行本协议的条款
+						<span>,</span><span>作者向</span>唯图网站确认：
+					</p>
+					<p class="p0">
+						1
+						<span>）上传照片是作者自己拍摄的，作者拥有版权和所有权。</span>
+					</p>
+					<p class="p0">
+						2
+						<span>）您授权</span>唯图网出售您的图片的各类使用权或版权，同意遵守本协议和唯图网图片使用权合同和版权法有关的规定。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">17.唯图网的隐私政策</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						在唯图网站，注册成为用户或摄影师，您同意唯图收集，使用你的个人信息。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网致力于保护您的隐私。唯图网收集、使用和披露的个人信息，将按照中国法律的规定履行自己的义务。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						用户可以提出任何对收集个人信息的问题，意见或投诉，请发电邮至个人信息专职人员的邮箱：service@wepic.cn
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						您同意唯图网收集的个人信息包括：
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						买家：您注册时收集的信息包括你的用户名和密码，您的姓名，通讯地址，电子邮件地址和电话号码。当你购买图片时，唯图网不会收集您的信用卡号码和帐单地址的信息，因为唯图网采取的是委托收款的方式，只有委托收款的机构（例如：银联，
+						<span>Palpay</span><span>）会收集上述资料。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						摄影师（卖家）：按照中国网络实名制的规定，收集的信息包括（
+						<span>1</span><span>）银行帐号的信息，仅用于支付稿费</span><span>;</span><span>（</span><span>2</span><span>）中国公民需提供您的身份证，外国公民需提供护照或驾驶执照的照片或复印件，我们需要按照规定对卖家进行实名制审核。</span>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">18.适用法律以及属地法院</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						您同意任何由使用本网站而引发的争议只适用中国法律。双方同意把所有合同争议递交到唯图公司所在地的属地法院管辖并审理。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">19.弃权和合同中止</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						除了书面的弃权和修正外，唯图公司的任何行为都不被认为是对已有协议条款的弃权和修正。如果这些条款中有任何条款被判定不可执行，它不应影响到其他条款
+						<span>,</span><span>其他条款仍旧生效和执行。</span>
+					</p>
+					<p class="p0">
+						<span><br /> </span>
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;">20.未成年人</span>
+						</strong>
+					</p>
+					<p class="p0">
+						<strong><span style="font-size: 14px;"><br /> </span>
+						</strong>
+					</p>
+					<p class="p0">
+						未成年人(
+						<span>未满</span><span>18</span><span>岁</span><span>)</span><span>不符合使用本网站的资格。请</span>未成年人不要注册本网站的账户，不要提交任何个人的资料或图片。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						唯图网有权随时修改【用户使用协议】的条款而不需事先通知。修改后的条款会在网上公示，如果作者不同意这些修改，作者可以停止参与唯图网的活动。
+					</p>
+					<p class="p0">
+						<br />
+					</p>
+					<p class="p0">
+						&nbsp;【唯图网版权所有，未经许可，不得转摘。】
+					</p>
+					<p class="p0">&nbsp;
+						
+					</p>
+					<p>
+						<br />
+					</p>
+					<p>
+						<br />
+					</p>
+
+
+
+
+
+				</div>
+			</div>
+			<div
+				style="width: 100%; height: 80px; background: #F9F9F9; margin: auto; margin-top: 10px;">
+				<table width="100%" align="center">
+					<tr>
+						<td height='20px;'></td>
+					</tr>
+					<tr>
+						<td align="center">
+							<button onclick="closeServerTerm('tiaokuan')" id="buttontrue">
+								<span style="color: #FFF; font-size: 14px;margin-left:5px;"><b>确认</b>
+								</span>
+							</button>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	<div id="goTopBtn" style="display:none;"></div>
+<!--[if lte IE 6]>
+<script src="../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a');
+    </script>
+<![endif]--> 
+</body>
+</html>

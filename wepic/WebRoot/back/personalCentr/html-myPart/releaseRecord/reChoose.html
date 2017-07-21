@@ -1,0 +1,1416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>重新选择</title>
+
+
+<script type="text/javascript" src="../../../../public/js/jquery.js"></script>
+<script type="text/javascript" src="js/reChoose.js"></script>
+
+
+<link type="text/css" rel="stylesheet" href="css/reChoose.css" />
+<link type="text/css" rel="stylesheet" href="../../../../public/css/public.css" />
+
+
+</head>
+
+<body>
+
+    <!--重新选择-->
+    <div class="pay_mentreChoose" id="divChooseRe">
+    	<div class="top">
+    		<h2>请选择一个应约者替换他</h2>
+			<a href="javascript:cloosePPopBox('divChooseRe');"></a>
+    	</div> 
+    	
+        <div id="appointProjectTimelyState">
+        	<div class="divStateCard">
+        		<ul id="recruitCameristTimelyStateCard">
+                	<li class="active"><a href="javascript:">应约者列表</a></li>
+                    <li><a href="javascript:">待定列表</a></li>
+            	</ul>
+                
+                
+                
+            </div>
+            
+            <div class="divStateCardCon">
+            
+            <!--应约者列表-->
+                <div class="divList" id="divListOne">
+                <!--非模特-->
+                	<div class="divList_one">
+                    	<div class="divList_one_top">
+                            <div class="divPicInfoLeft">
+                            	<div class="yaoqing"></div>
+                                <div class="divTop">
+                                    <a class="recommendeli2" href="javascript:;"><img src="../../../../public/pic/head/1.png" /></a>
+                                    <div class="divUserName">
+                                        <div class="pUserName">
+                                            <span>你是谁</span>
+                                            <a class="approveNo" title="未实名认证"></a>
+                                            <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                            <!-- <a class="approveQy" title="企业实名认证"></a>-->
+                                            <a class="gradeThree"></a>
+                                        </div>
+                                       
+                                        <div class="userPosition">
+                                            <a class="age" title="年龄">20岁</a>
+                                            <a class="address" title="工作地"><span>上海</span><span>嘉定</span></a>
+                                        </div>
+                                        
+                                        <div class="userType">
+                                            <div class="job" title="职业"><span>摄影师</span><a></a></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="userAppraise">
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89789</p>
+                                                <p>关注</p>
+                                            </div>
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89898789</p>
+                                                <p>粉丝</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">898789</p>
+                                                <p>好评</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne userAppraiseLast">
+                                                <p class="userAppraiseOneTop">90%</p>
+                                                <p>好评率</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="divUserGrade">
+                                   <div class="child">
+                                        <p class="number">89789</p>
+                                        <p>约拍项目</p>
+                                    </div>
+                                    
+                                    <div class="child">
+                                        <p class="number">89898789</p>
+                                        <p>项目收入</p>
+                                    </div> 
+                                    
+                                    <div class="child">
+                                        <p class="number">90%</p>
+                                        <p>应约成功率</p>
+                                    </div> 
+                                    
+                                    <div class="child lastchild">
+                                        <p class="number">4545</p>
+                                        <p>发布作品</p>
+                                    </div>  
+                                </div>
+                            </div>
+                               
+                            <div class="checkPic">
+                                <div class="topdb">
+                                    <ul>
+                                        <li class="active">代表作品</li>
+                                        <li>代表项目</li>
+                                        <li>他的荣誉</li>
+                                    </ul>
+                                </div>
+                                <div class="sliderPersonal">
+                                    <div class="slider_div_work">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="nowtop">
+                                                            <div class="bj"></div>
+                                                            <div class="bjc">
+                                                            <a href="javascript:" class="del"></a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/2.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/3.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/4.png" /></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="slider_div_project">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_honor">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                               <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="option">
+                            <input class="white_button" type="button" value="选择他"/>
+                        </div>
+                                
+                    </div>
+                <!--非模特-->   
+                
+                
+                
+                <!--企业-->   
+                    <div class="divList_one">
+                    	<div class="divList_one_top">
+                            <div class="divPicInfoLeft">
+                            	<div class="yaoqing"></div>
+                                <div class="divTop">
+                                    <a class="recommendeli2" href="javascript:;"><img src="../../../../public/pic/head/1.png" /></a>
+                                    <div class="divUserName">
+                                        <div class="pUserNameqy">
+                                            <span class="name">企业名称企业名称企业名称</span>
+                                             <a class="approveQy" title="企业实名认证"></a>
+                                            
+                                            <a class="gradeThree"></a>
+                                        </div>
+                                       
+                                        <div class="userPosition">
+                                            <a class="address" title="公司所在地"><span>上海</span></a>
+                                        </div>
+                                        
+                                        <div class="userType">
+                                            <div class="job" title="公司类型"><span>私营企业</span><a></a></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="userAppraise">
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89789</p>
+                                                <p>关注</p>
+                                            </div>
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89898789</p>
+                                                <p>粉丝</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">898789</p>
+                                                <p>好评</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne userAppraiseLast">
+                                                <p class="userAppraiseOneTop">90%</p>
+                                                <p>好评率</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="divUserGrade">
+                                   <div class="child">
+                                        <p class="number">89789</p>
+                                        <p>约拍项目</p>
+                                    </div>
+                                    
+                                    <div class="child">
+                                        <p class="number">89898789</p>
+                                        <p>项目收入</p>
+                                    </div> 
+                                    
+                                    <div class="child">
+                                        <p class="number">90%</p>
+                                        <p>应约成功率</p>
+                                    </div> 
+                                    
+                                    <div class="child lastchild">
+                                        <p class="number">4545</p>
+                                        <p>发布作品</p>
+                                    </div>  
+                                </div>
+                            </div>
+                               
+                            <div class="checkPic">
+                                <div class="topdb">
+                                    <ul>
+                                        <li class="active">代表作品</li>
+                                        <li>代表项目</li>
+                                        <li>他的荣誉</li>
+                                    </ul>
+                                </div>
+                                <div class="sliderPersonal">
+                                    <div class="slider_div_work">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="nowtop">
+                                                            <div class="bj"></div>
+                                                            <div class="bjc">
+                                                            <a href="javascript:" class="del"></a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/2.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/3.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/4.png" /></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="slider_div_project">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_honor">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                               <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="option">
+                            <input class="white_button" type="button" value="选择他"/>
+                        </div>
+                                
+                    </div> 
+                <!--企业-->     
+                
+                
+                
+                <!--模特-->
+                    <div class="divList_one">
+                    	<div class="divList_one_top">
+                            <div class="divPicInfoLeft">
+                            	<div class="yaoqing"></div>
+                                <div class="divTop">
+                                    <a class="recommendeli2" href="javascript:;"><img src="../../../../public/pic/head/1.png" /></a>
+                                    <div class="divUserName">
+                                        <div class="pUserName">
+                                            <span>你是谁</span>
+                                           	<!-- <a class="approveNo" title="未实名认证"></a>-->
+                                             <a class="approveHave" title="个人实名认证"></a>
+                                            <!-- <a class="approveQy" title="企业实名认证"></a>-->
+                                            
+                                            <a class="gradeThree"></a>
+                                        </div>
+                                       
+                                        <div class="userPosition">
+                                            <a class="ageMan" title="年龄">20岁</a>
+                                            <a class="address" title="工作地"><span>上海</span><span>嘉定</span></a>
+                                        </div>
+                                        
+                                        <div class="userType">
+                                            <div class="job" title="职业"><span>摄影师</span><a></a></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="userAppraise">
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89789</p>
+                                                <p>关注</p>
+                                            </div>
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89898789</p>
+                                                <p>粉丝</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">898789</p>
+                                                <p>好评</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne userAppraiseLast">
+                                                <p class="userAppraiseOneTop">90%</p>
+                                                <p>好评率</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="divUserGrade">
+                                   <div class="child">
+                                        <p class="number">89789</p>
+                                        <p>约拍项目</p>
+                                    </div>
+                                    
+                                    <div class="child">
+                                        <p class="number">89898789</p>
+                                        <p>项目收入</p>
+                                    </div> 
+                                    
+                                    <div class="child">
+                                        <p class="number">90%</p>
+                                        <p>应约成功率</p>
+                                    </div> 
+                                    
+                                    <div class="child lastchild">
+                                        <p class="number">4545</p>
+                                        <p>发布作品</p>
+                                    </div>  
+                                </div>
+                            </div>
+                               
+                            <div class="checkPic">
+                                <div class="topdb">
+                                    <ul>
+                                        <li class="active">模特信息</li>
+                                        <li>代表作品</li>
+                                        <li>代表项目</li>
+                                        <li>他的荣誉</li>
+                                    </ul>
+                                </div>
+                                <div class="sliderModel">
+                                	<div class="slider_div_model">
+                                        <div class="slider_div_model_top">
+                                           <div class="slider_children">
+                                           		<div class="height_ico"></div>
+                                           		<div class="ico_value">170cm</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="weight_ico"></div>
+                                           		<div class="ico_value">58kg</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="BWH_ico"></div>
+                                           		<div class="ico_value">88-65-88</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="xxx_ico"></div>
+                                           		<div class="ico_value">70D</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="shoe_size_ico"></div>
+                                           		<div class="ico_value">245(欧码)</div>
+                                           </div>
+                                        </div>
+                                        <div class="slider_div_model_con">
+                                           淘宝是利用了很多小商户聚集了流量和用户，为自己的商城做了铺垫。但是，反过来想，这些商户也没少从淘宝赚到钱啊。不能只看到现在的怨怒，不想到感恩。 你依附于渠道赚钱，必也会受制于渠道，你可以想解决方案，但绝不是目前这种行径
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_work">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="nowtop">
+                                                            <div class="bj"></div>
+                                                            <div class="bjc">
+                                                            <a href="javascript:" class="del"></a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/2.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/3.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/4.png" /></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="slider_div_project">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_honor">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                               <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="option">
+                            <input class="white_button" type="button" value="选择他"/>
+                        </div>
+                                
+                    </div>
+                <!--模特-->   
+                
+                </div>
+                
+            <!--应约者列表-->
+                
+                
+            <!--应约者列表-->
+                <div class="divList" id="divListTwo">
+                <!--非模特-->
+                	<div class="divList_one">
+                    	<div class="divList_one_top">
+                            <div class="divPicInfoLeft">
+                            	<div class="yaoqing"></div>
+                                <div class="divTop">
+                                    <a class="recommendeli2" href="javascript:;"><img src="../../../../public/pic/head/1.png" /></a>
+                                    <div class="divUserName">
+                                        <div class="pUserName">
+                                            <span>1111111</span>
+                                            <a class="approveNo" title="未实名认证"></a>
+                                            <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                            <!-- <a class="approveQy" title="企业实名认证"></a>-->
+                                            <a class="gradeThree"></a>
+                                        </div>
+                                       
+                                        <div class="userPosition">
+                                            <a class="age" title="年龄">20岁</a>
+                                            <a class="address" title="工作地"><span>上海</span><span>嘉定</span></a>
+                                        </div>
+                                        
+                                        <div class="userType">
+                                            <div class="job" title="职业"><span>摄影师</span><a></a></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="userAppraise">
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89789</p>
+                                                <p>关注</p>
+                                            </div>
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89898789</p>
+                                                <p>粉丝</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">898789</p>
+                                                <p>好评</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne userAppraiseLast">
+                                                <p class="userAppraiseOneTop">90%</p>
+                                                <p>好评率</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="divUserGrade">
+                                   <div class="child">
+                                        <p class="number">89789</p>
+                                        <p>约拍项目</p>
+                                    </div>
+                                    
+                                    <div class="child">
+                                        <p class="number">89898789</p>
+                                        <p>项目收入</p>
+                                    </div> 
+                                    
+                                    <div class="child">
+                                        <p class="number">90%</p>
+                                        <p>应约成功率</p>
+                                    </div> 
+                                    
+                                    <div class="child lastchild">
+                                        <p class="number">4545</p>
+                                        <p>发布作品</p>
+                                    </div>  
+                                </div>
+                            </div>
+                               
+                            <div class="checkPic">
+                                <div class="topdb">
+                                    <ul>
+                                        <li class="active">代表作品</li>
+                                        <li>代表项目</li>
+                                        <li>他的荣誉</li>
+                                    </ul>
+                                </div>
+                                <div class="sliderPersonal">
+                                    <div class="slider_div_work">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="nowtop">
+                                                            <div class="bj"></div>
+                                                            <div class="bjc">
+                                                            <a href="javascript:" class="del"></a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/2.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/3.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/4.png" /></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="slider_div_project">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_honor">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                               <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="option">
+                            <input class="white_button" type="button" value="选择他"/>
+                        </div>
+                                
+                    </div>
+                <!--非模特-->   
+                
+                
+                
+                <!--企业-->   
+                    <div class="divList_one">
+                    	<div class="divList_one_top">
+                            <div class="divPicInfoLeft">
+                            	<div class="yaoqing"></div>
+                                <div class="divTop">
+                                    <a class="recommendeli2" href="javascript:;"><img src="../../../../public/pic/head/1.png" /></a>
+                                    <div class="divUserName">
+                                        <div class="pUserNameqy">
+                                            <span class="name">企业名称企业名称企业名称</span>
+                                             <a class="approveQy" title="企业实名认证"></a>
+                                            
+                                            <a class="gradeThree"></a>
+                                        </div>
+                                       
+                                        <div class="userPosition">
+                                            <a class="address" title="公司所在地"><span>上海</span></a>
+                                        </div>
+                                        
+                                        <div class="userType">
+                                            <div class="job" title="公司类型"><span>私营企业</span><a></a></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="userAppraise">
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89789</p>
+                                                <p>关注</p>
+                                            </div>
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89898789</p>
+                                                <p>粉丝</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">898789</p>
+                                                <p>好评</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne userAppraiseLast">
+                                                <p class="userAppraiseOneTop">90%</p>
+                                                <p>好评率</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="divUserGrade">
+                                   <div class="child">
+                                        <p class="number">89789</p>
+                                        <p>约拍项目</p>
+                                    </div>
+                                    
+                                    <div class="child">
+                                        <p class="number">89898789</p>
+                                        <p>项目收入</p>
+                                    </div> 
+                                    
+                                    <div class="child">
+                                        <p class="number">90%</p>
+                                        <p>应约成功率</p>
+                                    </div> 
+                                    
+                                    <div class="child lastchild">
+                                        <p class="number">4545</p>
+                                        <p>发布作品</p>
+                                    </div>  
+                                </div>
+                            </div>
+                               
+                            <div class="checkPic">
+                                <div class="topdb">
+                                    <ul>
+                                        <li class="active">代表作品</li>
+                                        <li>代表项目</li>
+                                        <li>他的荣誉</li>
+                                    </ul>
+                                </div>
+                                <div class="sliderPersonal">
+                                    <div class="slider_div_work">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="nowtop">
+                                                            <div class="bj"></div>
+                                                            <div class="bjc">
+                                                            <a href="javascript:" class="del"></a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/2.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/3.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/4.png" /></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="slider_div_project">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_honor">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                               <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="option">
+                            <input class="white_button" type="button" value="选择他"/>
+                        </div>
+                                
+                    </div> 
+                <!--企业-->     
+                
+                
+                
+                <!--模特-->
+                    <div class="divList_one">
+                    	<div class="divList_one_top">
+                            <div class="divPicInfoLeft">
+                            	<div class="yaoqing"></div>
+                                <div class="divTop">
+                                    <a class="recommendeli2" href="javascript:;"><img src="../../../../public/pic/head/1.png" /></a>
+                                    <div class="divUserName">
+                                        <div class="pUserName">
+                                            <span>你是谁</span>
+                                           	<!-- <a class="approveNo" title="未实名认证"></a>-->
+                                             <a class="approveHave" title="个人实名认证"></a>
+                                            <!-- <a class="approveQy" title="企业实名认证"></a>-->
+                                            
+                                            <a class="gradeThree"></a>
+                                        </div>
+                                       
+                                        <div class="userPosition">
+                                            <a class="ageMan" title="年龄">20岁</a>
+                                            <a class="address" title="工作地"><span>上海</span><span>嘉定</span></a>
+                                        </div>
+                                        
+                                        <div class="userType">
+                                            <div class="job" title="职业"><span>摄影师</span><a></a></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="userAppraise">
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89789</p>
+                                                <p>关注</p>
+                                            </div>
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">89898789</p>
+                                                <p>粉丝</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne">
+                                                <p class="userAppraiseOneTop">898789</p>
+                                                <p>好评</p>
+                                            </div> 
+                                            
+                                            <div class="userAppraiseOne userAppraiseLast">
+                                                <p class="userAppraiseOneTop">90%</p>
+                                                <p>好评率</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="divUserGrade">
+                                   <div class="child">
+                                        <p class="number">89789</p>
+                                        <p>约拍项目</p>
+                                    </div>
+                                    
+                                    <div class="child">
+                                        <p class="number">89898789</p>
+                                        <p>项目收入</p>
+                                    </div> 
+                                    
+                                    <div class="child">
+                                        <p class="number">90%</p>
+                                        <p>应约成功率</p>
+                                    </div> 
+                                    
+                                    <div class="child lastchild">
+                                        <p class="number">4545</p>
+                                        <p>发布作品</p>
+                                    </div>  
+                                </div>
+                            </div>
+                               
+                            <div class="checkPic">
+                                <div class="topdb">
+                                    <ul>
+                                        <li class="active">模特信息</li>
+                                        <li>代表作品</li>
+                                        <li>代表项目</li>
+                                        <li>他的荣誉</li>
+                                    </ul>
+                                </div>
+                                <div class="sliderModel">
+                                	<div class="slider_div_model">
+                                        <div class="slider_div_model_top">
+                                           <div class="slider_children">
+                                           		<div class="height_ico"></div>
+                                           		<div class="ico_value">170cm</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="weight_ico"></div>
+                                           		<div class="ico_value">58kg</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="BWH_ico"></div>
+                                           		<div class="ico_value">88-65-88</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="xxx_ico"></div>
+                                           		<div class="ico_value">70D</div>
+                                           </div>
+                                           
+                                           <div class="slider_children">
+                                           		<div class="shoe_size_ico"></div>
+                                           		<div class="ico_value">245(欧码)</div>
+                                           </div>
+                                        </div>
+                                        <div class="slider_div_model_con">
+                                           淘宝是利用了很多小商户聚集了流量和用户，为自己的商城做了铺垫。但是，反过来想，这些商户也没少从淘宝赚到钱啊。不能只看到现在的怨怒，不想到感恩。 你依附于渠道赚钱，必也会受制于渠道，你可以想解决方案，但绝不是目前这种行径
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_work">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="nowtop">
+                                                            <div class="bj"></div>
+                                                            <div class="bjc">
+                                                            <a href="javascript:" class="del"></a></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/2.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/3.png" /></div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="img"><img src="../../../pubimg/pic/4.png" /></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="slider_div_project">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                                <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>2005年</div>
+                                                            <div>国际商务礼仪示范拍摄国际商务礼仪</div>
+                                                            <div>德国柏林</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slider_div_honor">
+                                        <div class="slider_box_ul">
+                                            <a href='javascript:;' class="slider_next" title="下一张"></a>
+                                            <div class="slider-wrapper">
+                                               <ul class='slider-move'>
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/1.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/2.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/3.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <div class="divimg"><img src="../../../pubimg/pic/4.png" /></div>
+                                                        <div class="divimgDetail">
+                                                            <div>奖项：</div>
+                                                            <div>我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项我的奖项</div>
+                                                            <div>颁发时间：2013年09月</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href='javascript:;' class="slider_prev" title="上一张"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="option">
+                            <input class="white_button" type="button" value="选择他"/>
+                        </div>
+                                
+                    </div>
+                <!--模特-->   
+                
+                   
+                </div>
+                
+            <!--应约者列表-->
+            
+            </div>
+        </div>
+        
+    </div>
+    <!--重新选择-->
+</body>
+</html>

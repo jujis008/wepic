@@ -1,0 +1,138 @@
+#div-schedule-time{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:10px auto 0;
+	height:300px;
+	}
+#div-schedule-time .div-schedule-time-left{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:860px;
+	height:300px;
+	float:left;
+	background:#fff;
+	
+	}
+#div-schedule-time .div-schedule-time-right{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:310px;
+	height:300px;
+	float:right;
+	background:#fff;
+	border:1px solid #e6e6e6;
+	}
+#div-schedule-hour{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:0 auto;
+	height:30px;
+	background:#e6e6e6;
+	}
+	
+
+
+
+
+
+#div-schedule-con{
+	font-family:'宋体';
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:10px auto 50px;
+	}
+#div-schedule-con .div-schedule-con-left{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:860px;
+	float:left;
+	background:#fff;
+	
+	}
+
+#div-schedule-con .div-schedule-con-left .character{
+	height:55px;
+	line-height:60px;
+	padding-left:20px;
+	color: #232323;
+    font-family: "微软雅黑";
+    font-size: 20px;
+	border-bottom: 1px solid #E6E6E6;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+/*操作项目*/
+#div-schedule-con .div-schedule-con-right{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:310px;
+	height:96px;
+	float:right;
+	background:#fff;
+	}
+
+	
+#div-schedule-con .div-schedule-con-right .operate p{
+	text-align:center;
+	color:#848484;
+	}
+#div-schedule-con .div-schedule-con-right .operate a{
+	display:inline-block;
+	}
+#div-schedule-con .div-schedule-con-right .operate .previousPage,
+#div-schedule-con .div-schedule-con-right .operate .other{
+	border-right:1px solid #ececec;
+	width:104px;
+	height:96px;
+	float:left;
+	}
+#div-schedule-con .div-schedule-con-right .operate .previousPage a,
+#div-schedule-con .div-schedule-con-right .operate .other a,
+#div-schedule-con .div-schedule-con-right .operate .release a{
+	margin-left:20px;
+	margin-top:3px;
+	}
+
+#div-schedule-con .div-schedule-con-right .operate .previousPage .backimg{
+	background:url(../../../../../public/images/yuepaiicon.png) no-repeat 0 0;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+#div-schedule-con .div-schedule-con-right .operate .other .backimg{
+	background:url(../../../../../public/images/yuepaiicon.png) no-repeat 0 -316px;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+#div-schedule-con .div-schedule-con-right .operate .release .backimg{
+	background:url(../../../../../public/images/yuepaiicon.png) no-repeat 0 -362px;
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	}
+	

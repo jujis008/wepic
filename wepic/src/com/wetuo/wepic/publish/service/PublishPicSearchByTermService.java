@@ -1,0 +1,12 @@
+package com.wetuo.wepic.publish.service;
+
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.publish.beans.PublishPicSearchByTerm;
+
+public interface PublishPicSearchByTermService {
+ public Pager searchByTermfromMylib(PublishPicSearchByTerm byTerm,int pageNo,int pageSize);
+ public Pager searchByTermPicforPublish(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize);
+ public Pager searchByTermPicforStory(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize);
+ public Pager searchByTermPicforUnpublishStory(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize);
+ public Pager searchByTermPicforUser(PublishPicSearchByTerm picSearchByTerm,int pageNo,int pageSize);
+}

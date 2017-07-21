@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BuyAccountOperation"
+	table="BuyAccountOperation"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="account" 
+		column="account_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.Account" 
+		foreign-key="FK_BuyAccountOperation_Account" 
+		index="IDX_BuyAccountOperation_Account"/> 
+	
+	<many-to-one name="siteConfig" 
+		column="siteConfig_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.SiteConfig" 
+		foreign-key="FK_BuyAccountOperation_SiteConfig" 
+		index="IDX_BuyAccountOperation_SiteConfig"/> 
+	
+	<property 
+		name="operationType"
+		type="java.lang.Integer"
+		column="operationType"
+		length="50"
+	/>
+	<property 
+		name="operationTime"
+		type="java.sql.Timestamp"
+		column="operationTime"
+		length="50"
+	/>
+	<property 
+		name="money"
+		type="java.math.BigDecimal"
+		column="money"
+		length="50"
+	/>
+	<property 
+		name="moneyUnit"
+		type="java.lang.String"
+		column="moneyUnit"
+		length="50"
+	/>
+	<property 
+		name="ifSuccess"
+		type="java.lang.Integer"
+		column="ifSuccess"
+		length="50"
+	/>
+	
+	<many-to-one name="buyCartDeal"	column="buyCartDealid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

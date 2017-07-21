@@ -1,0 +1,972 @@
+package com.wetuo.wepic.core.actions;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alipay.util.AlipayNotify;
+import com.alipay.util.httpClient.HttpResponse;
+import com.wetuo.wepic.core.beans.AccountRecharge;
+import com.wetuo.wepic.core.beans.MoneyInfo;
+import com.wetuo.wepic.core.beans.MoneyRecharge;
+
+import com.wetuo.wepic.core.service.AccountRechargeService;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.service.UserService;
+
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.struts.Constants;
+
+import org.apache.struts2.ServletActionContext;
+import org.aspectj.weaver.ast.Var;
+
+import com.wetuo.wepic.core.beans.Account;
+import com.wetuo.wepic.core.service.AccountService;
+import com.unionpay.upop.sdk.QuickPayConf;
+import com.unionpay.upop.sdk.QuickPayUtils;
+
+import freemarker.cache.StrongCacheStorage;
+public class AccountRechargeAction extends PageAction {
+		
+	private AccountService accountService;
+	public AccountService getAccountService() {
+		return accountService;
+	}
+	public void setAccountService(AccountService accountService) {
+		this.accountService = accountService;
+	}
+		
+ 
+ 
+	/////instantce variable//////
+	private static final long serialVersionUID = 1L;
+	protected String id = null ; 
+ 	private AccountRechargeService accountRechargeService;
+	protected String userId = null ;
+	private UserService userService;
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	protected String accountID = null ; 
+	protected String rechargeTime = null ; 
+	protected String rechargeMoney = null ; 
+	protected String ifConfirmed = null ; 
+	protected String confirmTime = null ; 
+	protected String username = null; 
+	private BigDecimal totalMoney;
+	private Integer tradeId;
+	private List rechargeList;
+    private MoneyInfo moneyInfo;
+    private int nowPage=1;
+    private int endPage=1;
+    
+	public int getNowPage() {
+		return nowPage;
+	}
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+	public MoneyInfo getMoneyInfo() {
+		return moneyInfo;
+	}
+	public void setMoneyInfo(MoneyInfo moneyInfo) {
+		this.moneyInfo = moneyInfo;
+	}
+	//???????????��????
+	public void validate() {
+		
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		String queryString = getRequestPath();
+		if (queryString.indexOf("accountRechargeadd!insert") != -1 || queryString.indexOf("accountRechargeedit!update") != -1) {
+		
+			if (userId == null || userId.equals("")) {
+				addFieldError("userId", "userId must be inputed");
+			}//end if null
+			if (accountID == null || accountID.equals("")) {
+				addFieldError("accountID", "accountID must be inputed");
+			}//end if null
+			if (rechargeTime == null || rechargeTime.equals("")) {
+				addFieldError("rechargeTime", "rechargeTime must be inputed");
+			}//end if null
+			if (rechargeMoney == null || rechargeMoney.equals("")) {
+				addFieldError("rechargeMoney", "rechargeMoney must be inputed");
+			}//end if null
+			if (ifConfirmed == null || ifConfirmed.equals("")) {
+				addFieldError("ifConfirmed", "ifConfirmed must be inputed");
+			}//end if null
+			if (confirmTime == null || confirmTime.equals("")) {
+				addFieldError("confirmTime", "confirmTime must be inputed");
+			}//end if null
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+		}//end if
+	}//end validate()
+	public String init() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		
+		// ???????????
+		super.pager = this.getAccountRechargeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end init()
+	
+	public String init_notverify() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		
+		// ???????????
+		super.pager = this.getAccountRechargeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+		
+		return Constants.LIST_KEY_NOTVERIFY;
+		
+	}//end init()
+	
+	
+	
+		
+	public String list() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ???????????
+		super.pager = this.getAccountRechargeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);	
+	
+		setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end list()
+	/**
+	 * 指定账户的充值记录
+	 * @return
+	 * @throws Exception
+	 */
+	public String rechargeResult()throws Exception {
+		int id=this.getTradeId();
+		List<AccountRecharge> accountRecharges=this.getAccountRechargeService().findByAccount(id);
+		rechargeList=new ArrayList();
+		totalMoney=new BigDecimal(0);
+		for (AccountRecharge accountRecharge:accountRecharges) {
+			rechargeList.add(accountRecharge);
+			totalMoney=totalMoney.add(accountRecharge.getRechargeMoney());
+		}
+	return "rechargeResult";	
+	}
+	
+	
+	
+	//
+	public String adminCheckRecharge() throws Exception {
+		
+       
+		
+		
+		//clearErrorsAndMessages();
+		int userId=Integer.parseInt(super.getRequest().getParameter("userId"));
+	   User user=userService.selectById(userId);
+//		super.pageSize = Constants.pageSize;
+//		super.pageNo = Constants.pageNo;
+//		super.pager = this.getAccountRechargeService().list(user.getUsername(), super.pageSize, super.pageNo);
+//
+//		setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+//		
+		
+		
+		 clearErrorsAndMessages();
+			
+			// ??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+			
+			// ???????????
+			super.pager = this.getAccountRechargeService().list(user.getUsername(), super.pageSize, super.pageNo);
+			
+			// ?????????
+			setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+		
+		
+		return "adminCheckRecharge";
+		
+	}//end list()
+		
+	
+	//管理员查看用户充值记录
+	public String adminuserRecharge() throws Exception {
+		
+       pageSize=12;
+		if(super.getLoginUsername()==null){
+			
+			return "login";
+		}
+		
+	
+		
+		
+		 clearErrorsAndMessages();
+			
+			String loginuser=username;
+			if(loginuser==null||loginuser.length()==0){
+				
+				return "login";
+				
+			}
+			//username=new String(username.getBytes("is0-8859-1"),"utf-8");
+			//super.pageSize = Constants.pageSize;
+			//super.pageNo = Constants.pageNo;
+			User user=userService.selectById(Integer.parseInt(username));
+			Pager pager1= this.getAccountRechargeService().list(user.getUsername(),pageSize, nowPage);
+			List<AccountRecharge> list=(List<AccountRecharge>)pager1.getResultList();
+			List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+			
+			//User user= userService.select(user1);
+			Account account=accountService.select(user.getId(),"");
+			 BigDecimal allmoney=new BigDecimal(0);
+			 account=accountService.select(user.getId(),"");
+			 moneyInfo=accountService.countselect(account.getId());
+			 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+			 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+			 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+			for (AccountRecharge accountRecharge : list) {
+				  MoneyRecharge moneyRecharge=new MoneyRecharge();
+				  moneyRecharge.setFlag("银行充值");
+				  moneyRecharge.setMoney(accountRecharge.getRechargeMoney()+"");
+				  moneyRecharge.setDateTime(accountRecharge.getRechargeTime());
+				  moneyRecharge.setSelerId(accountRecharge.getOrderId());
+				
+				moneyRecharges.add(moneyRecharge);
+
+			}
+			
+			pager=new Pager(pageSize, pageNo, pager1.getRowCount(), moneyRecharges);
+			endPage=pager.getLastPageNo();
+			// ?????????
+			setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+		
+		
+		return "adminuserRecharge";
+		
+	}//end list()
+		
+	
+	
+	
+	
+	//用户充值记录
+	public String userRecharge() throws Exception {
+		
+       pageSize=12;
+		if(super.getLoginUsername()==null){
+			
+			return "login";
+		}
+		
+	
+		
+		
+		 clearErrorsAndMessages();
+			
+			String loginuser=super.getLoginUsername();
+			if(loginuser==null||loginuser.length()==0){
+				
+				return "login";
+				
+			}
+			//super.pageSize = Constants.pageSize;
+			//super.pageNo = Constants.pageNo;
+			Pager pager1= this.getAccountRechargeService().list(super.getLoginUsername(),pageSize, nowPage);
+			List<AccountRecharge> list=(List<AccountRecharge>)pager1.getResultList();
+			List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+			
+			User user= userService.select(loginuser);
+			Account account=accountService.select(user.getId(),"");
+			 BigDecimal allmoney=new BigDecimal(0);
+			 account=accountService.select(user.getId(),"");
+			 moneyInfo=accountService.countselect(account.getId());
+			 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+			 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+			 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+			for (AccountRecharge accountRecharge : list) {
+				  MoneyRecharge moneyRecharge=new MoneyRecharge();
+				  moneyRecharge.setFlag("银行充值");
+				  moneyRecharge.setMoney(accountRecharge.getRechargeMoney()+"");
+				  moneyRecharge.setDateTime(accountRecharge.getRechargeTime());
+				  moneyRecharge.setSelerId(accountRecharge.getOrderId());
+				
+				moneyRecharges.add(moneyRecharge);
+
+			}
+			
+			pager=new Pager(pageSize, pageNo, pager1.getRowCount(), moneyRecharges);
+			endPage=pager.getLastPageNo();
+			// ?????????
+			setSession(Constants.PAGER_ACCOUNTRECHARGE, super.pager);
+		
+		
+		return "userRecharge";
+		
+	}//end list()
+		
+	
+	
+	public String add() throws Exception {
+		System.out.println("F2 add getParameter of oneId: "+ServletActionContext.getRequest().getParameter("oneId"));
+		
+		if(ServletActionContext.getRequest().getParameter("from") != null && ServletActionContext.getRequest().getParameter("from") != ""){
+			if(ServletActionContext.getRequest().getParameter("from").indexOf("accountRecharge") > -1){
+				ServletActionContext.getResponse().sendRedirect("account!init.do");
+			}
+		}
+		ServletActionContext.getRequest().setAttribute("oneId", ServletActionContext.getRequest().getParameter("oneId"));
+		// ?????????
+		clearErrorsAndMessages();
+		
+		
+		// ?????????
+		reset();
+		return Constants.ADD_KEY;
+	}//end add()
+	private void reset() {
+		setId(null);
+		setUserId(null);
+		setAccountID(null);
+		setRechargeTime(null);
+		setRechargeMoney(null);
+		setIfConfirmed(null);
+		setConfirmTime(null);
+	}//end reset()
+		// ?????��??
+	private void bean2Form(AccountRecharge accountRecharge) {
+		setId(accountRecharge.getId().toString());
+		setUserId(accountRecharge.getUser().getId().toString());
+		setAccountID(accountRecharge.getAccountID());
+		setRechargeTime(accountRecharge.getRechargeTime().toString()      );
+		setRechargeMoney(accountRecharge.getRechargeMoney().toString()      );
+		setIfConfirmed(accountRecharge.getIfConfirmed().toString()      );
+		setConfirmTime(accountRecharge.getConfirmTime().toString()      );
+	}//end bean2Form()
+	public String edit() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// id???????????
+		if (this.getId() == null) {
+			saveActionError("accountRecharge.message.edit.notexist");
+			return Constants.LIST_KEY;
+		} else {
+			// ???????
+			AccountRecharge accountRecharge = this.getAccountRechargeService().select(Integer.valueOf(id));
+			
+			// ??????????????
+			if (accountRecharge == null) {
+				saveActionError("accountRecharge.message.edit.notexist");
+				return Constants.LIST_KEY;
+			} else {
+				// ?????��??
+				bean2Form(accountRecharge);
+				return Constants.EDIT_KEY;
+			}
+		}//end if
+		
+	}//end edit()
+		
+	public String insert() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		Integer nid = null ;
+		
+		try{
+			
+		//
+		AccountRecharge accountRecharge = new AccountRecharge();
+			accountRecharge.setUser(this.getUserService().select(userId));   
+			
+		accountRecharge.setAccountID(this.getAccountID());
+		accountRecharge.setRechargeTime(java.sql.Timestamp.valueOf(this.getRechargeTime() ));
+		accountRecharge.setRechargeMoney(new BigDecimal(this.getRechargeMoney()));
+		accountRecharge.setIfConfirmed(Integer.valueOf(this.getIfConfirmed() ));
+		accountRecharge.setConfirmTime(java.sql.Timestamp.valueOf(this.getConfirmTime() ));
+		String strOneId = ServletActionContext.getRequest().getParameter("oneId");
+		System.out.println("F2 insert getParameter  of oneId:"+strOneId);
+		Account oneInstance = this.getAccountService().select(Integer.parseInt(strOneId));
+		accountRecharge.setAccount(oneInstance);
+		
+		nid = this.getAccountRechargeService().insert(accountRecharge);
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_ACCOUNTRECHARGE);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+		//????????????
+		super.pager = this.getAccountRechargeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		// ?????????
+		if (nid != null) {
+			saveActionMessage("accountRecharge.message.add.success");
+			return Constants.LIST_KEY;
+		} else {
+			saveActionError("accountRecharge.message.add.failed");
+			return Constants.ADD_KEY;
+		}
+	}//end insert()
+	public String update() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		
+		try{
+			// 
+			AccountRecharge accountRecharge = this.getAccountRechargeService().select(new Integer(id));
+//			accountRecharge.setUser(userInstance);    
+			accountRecharge.setUser(this.getUserService().select(userId));   
+			
+			accountRecharge.setAccountID(this.getAccountID());
+			accountRecharge.setRechargeTime(java.sql.Timestamp.valueOf(this.getRechargeTime() ));
+			accountRecharge.setRechargeMoney(new BigDecimal(this.getRechargeMoney()));
+			accountRecharge.setIfConfirmed(Integer.valueOf(this.getIfConfirmed() ));
+			accountRecharge.setConfirmTime(java.sql.Timestamp.valueOf(this.getConfirmTime() ));
+		this.getAccountRechargeService().update(accountRecharge);
+		
+		bean2Form(accountRecharge);	
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_ACCOUNTRECHARGE);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+			// ????????????
+			super.pager = this.getAccountRechargeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			saveActionMessage("accountRecharge.message.edit.success");
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		return Constants.LIST_KEY;
+	}//end update() 
+	public String delete() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		try{
+			// id???????????
+			if (this.getId() == null) {
+				saveActionError("accountRecharge.message.edit.notexist");
+			} else {
+				// ??????
+				this.getAccountRechargeService().delete(Integer.valueOf(id));
+				saveActionMessage("accountRecharge.message.delete.success");
+			}
+			
+			// ???????????
+			super.pager = this.getAccountRechargeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2("Please delete child first");
+			return Constants.ERROR_KEY;
+		}
+		return Constants.LIST_KEY;
+		
+	}
+	
+	
+	
+	
+	/**
+	 * 支付宝支付成功之后的服务器通知网站action
+	 * @throws IOException 
+	 * @throws IOException 
+	 * 
+	 * 
+	
+	  public String updateAcount() throws IOException{
+		  HttpServletRequest request=super.getRequest();
+		  HttpServletResponse response=super.getReponse();
+		  response.setContentType("text/html;charset=utf-8");//解决中文乱码
+	      PrintStream out = new PrintStream(response.getOutputStream());//获取out输出对象
+	      
+		  String partner = "2088702858244451"; //partner合作伙伴id（必须填写）
+			String privateKey ="oo7lwdzmwbhhi54v65ayox32tqibt2yn"; //partner 的对应交易安全校验码（必须填写）
+			                   //oo7lwdzmwbhhi54v65ayox32tqibt2yn
+//**********************************************************************************
+			//如果您服务器不支持https交互，可以使用http的验证查询地址
+			//***注意下面的注释，如果在测试的时候导致response等于空值的情况，请将下面一个注释，打开上面一个验证连接
+			//String alipayNotifyURL = "https://www.alipay.com/cooperate/gateway.do?service=notify_verify"
+			String alipayNotifyURL = "http://notify.alipay.com/trade/notify_query.do?"
+			+ "partner="
+			+ partner
+			+ "&notify_id="
+			+ request.getParameter("notify_id");
+			//**********************************************************************************
+
+			//获取支付宝ATN返回结果，true是正确的订单信息，false 是无效的
+			String responseTxt = CheckURL.check(alipayNotifyURL);
+
+			Map params = new HashMap();
+			//获得POST 过来参数设置到新的params中
+			Map requestParams = request.getParameterMap();
+			for (Iterator iter = requestParams.keySet().iterator(); iter
+					.hasNext();) {
+				String name = (String) iter.next();
+				String[] values = (String[]) requestParams.get(name);
+				String valueStr = "";
+				for (int i = 0; i < values.length; i++) {
+					valueStr = (i == values.length - 1) ? valueStr + values[i]
+							: valueStr + values[i] + ",";				
+				}
+				//CheckURL.star(valueStr+"转码前");
+				//乱码解决，这段代码在出现乱码时使用。如果mysign和sign不相等也可以使用这段代码转化
+				//valueStr=new String (valueStr.getBytes("ISO-8859-1"),"UTF-8");
+				//CheckURL.star(valueStr+"UTf-8转码后");
+				params.put(name, valueStr);
+			}
+			//CheckURL.star(valueStr+"UTf-8转码后");
+			String mysign = com.alipay.util.SignatureHelper.sign(params, privateKey);
+			
+			
+
+			// 交易状态更多信息请看文档介绍， 该文件不允许包含html代码，请注意，只能做数据业务操作.
+			if(mysign.equals(request.getParameter("sign")) && responseTxt.equals("true")){
+				if(request.getParameter("trade_status").equals("WAIT_BUYER_PAY")){
+					//交易已创建，等待买家付款。
+					//在这里可以写入数据处理,
+					CheckURL.star("交易已创建，等待买家付款");
+					out.println("success");
+				}else if(request.getParameter("trade_status").equals("WAIT_SELLER_SEND_GOODS")){
+					//买家付款成功，等待卖家发货
+					//在这里可以写入数据处理,`	1111111111
+					
+					String trade=(String)params.get("out_trade_no");
+					float money=Float.parseFloat(params.get("total_fee").toString());
+					
+					int accountuserId=Integer.parseInt(trade.split("_")[0]);
+					CheckURL.star("买家付款成功，等待卖家发货"+trade+":"+money+"=============="+id);
+                   
+					accountRechargeService.addMoney( accountuserId, new BigDecimal(1),accountService ,userService,trade);
+					
+					//交易成功结束
+					//在这里可以写入数据处理,
+					CheckURL.star("交易成功结束"+trade+":"+money+"==============");
+					out.println("success");
+				}else if(request.getParameter("trade_status").equals("WAIT_BUYER_CONFIRM_GOODS")){
+					//卖家已发货， 等待买家确认
+					//在这里可以写入数据处理,
+					CheckURL.star("卖家已发货， 等待买家确认");
+					out.println("success");
+				}else if(request.getParameter("trade_status").equals("TRADE_FINISHED")){
+					String trade=(String)params.get("trade_no");
+					int id=Integer.parseInt(trade.split("_")[0
+					                                         ]);
+					int money=(Integer)params.get("total_fee");
+
+					CheckURL.star("交易成功结束"+id+money+"==============");
+					out.println("success");
+				}
+			}else{
+				CheckURL.star("失败");
+				CheckURL.star("mysign="+mysign);
+				CheckURL.star("sign="+request.getParameter("sign"));
+				CheckURL.star(responseTxt.equals("true")+"");
+				out.println("fail");
+			}
+		  
+		  
+		  
+		  return null;
+	  }
+	
+	  **/
+	  public void updateAcount() throws IOException{
+		 // log_result();
+		  System.out.println("=========================================");
+		 
+		
+		  HttpServletResponse response=super.getReponse();
+		  response.setContentType("text/html;charset=utf-8");//解决中文乱码
+	      PrintStream out = new PrintStream(response.getOutputStream());//获取out输出对象
+		  
+		  HttpServletRequest request=ServletActionContext.getRequest();
+		  
+		  Map<String,String> params = new HashMap<String,String>();
+			Map requestParams = request.getParameterMap();
+			for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
+				String name = (String) iter.next();
+				String[] values = (String[]) requestParams.get(name);
+				String valueStr = "";
+				for (int i = 0; i < values.length; i++) {
+					valueStr = (i == values.length - 1) ? valueStr + values[i]
+							: valueStr + values[i] + ",";
+				}
+				//乱码解决，这段代码在出现乱码时使用。如果mysign和sign不相等也可以使用这段代码转化
+				//valueStr = new String(valueStr.getBytes("ISO-8859-1"), "gbk");
+				params.put(name, valueStr);
+			}
+			
+			//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以下仅供参考)//
+			//商户订单号
+			/*
+
+			String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+
+			//支付宝交易号
+			System.out.println("=========================================");
+
+			int accountuserId=Integer.parseInt(out_trade_no.split("_")[0]);
+			//CheckURL.star("买家付款成功，等待卖家发货"+trade+":"+money+"=============="+id);
+           
+			accountRechargeService.addMoney(accountuserId, new BigDecimal(1),accountService ,userService,out_trade_no);
+			//交易状态
+			 * 
+			 */
+			String trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"),"UTF-8");
+		
+
+			//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
+
+			if(AlipayNotify.verify(params)){//验证成功
+				//////////////////////////////////////////////////////////////////////////////////////////
+				//请在这里加上商户的业务逻辑程序代码
+
+				//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
+				
+				if(trade_status.equals("TRADE_FINISHED")){
+					
+					
+					
+					
+					//判断该笔订单是否在商户网站中已经做过处理
+						//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+						//如果有做过处理，不执行商户的业务程序
+						
+					//注意：
+					//该种交易状态只在两种情况下出现
+					//1、开通了普通即时到账，买家付款成功后。
+					//2、开通了高级即时到账，从该笔交易成功时间算起，过了签约时的可退款时限（如：三个月以内可退款、一年以内可退款等）后。
+				} else if (trade_status.equals("TRADE_SUCCESS")){
+					//判断该笔订单是否在商户网站中已经做过处理
+						//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+						//如果有做过处理，不执行商户的业务程序
+						
+					//注意：
+					//该种交易状态只在一种情况下出现——开通了高级即时到账，买家付款成功后。
+				}
+
+				//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
+				
+				
+
+				String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+
+				//支付宝交易号
+				System.out.println("=========================================");
+
+				int accountuserId=Integer.parseInt(out_trade_no.split("_")[0]);
+				//CheckURL.star("买家付款成功，等待卖家发货"+trade+":"+money+"=============="+id);
+				String money=params.get("total_fee").toString();
+				accountRechargeService.addMoney( accountuserId, new BigDecimal(money),accountService ,userService,out_trade_no);
+				//交易状态
+			//	String trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"),"UTF-8");
+
+               
+					
+				out.println("success");	//请不要修改或删除
+
+				//////////////////////////////////////////////////////////////////////////////////////////
+			}else{//验证失败
+				//out.println("fail");
+			}
+		  		  
+		  //return "";
+		  
+	  }
+	/******
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 银联支付Action
+	 * 
+	 * 
+	 * 
+	 * ***/
+	int i=0;
+	public String rechageByChinaPay() {
+
+		HttpServletRequest request = super.getRequest();
+		HttpServletResponse response=super.getReponse();
+		String orderId= super.getLoginUsername()+"_"+new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+(++i);
+		System.out.println(orderId+"=====================================================");
+		//商户需要组装如下对象的数据
+		String[] valueVo = new String[]{
+				QuickPayConf.version,//协议版本
+				QuickPayConf.charset,//字符编码
+	            "01",//交易类型
+	            "",//原始交易流水号
+	            QuickPayConf.merCode,//商户代码
+	            QuickPayConf.merName,//商户简称
+	            "",//收单机构代码（仅收单机构接入需要填写）
+	            "",//商户类别（收单机构接入需要填写）
+	            "",//商品URL
+	            "",//商品名称
+	            "1",//商品单价 单位：分
+	            "1",//商品数量
+	            "0",//折扣 单位：分
+	            "0",//运费 单位：分
+	            orderId,//订单号（需要商户自己生成）
+	            
+	            (Integer.parseInt(this.getRechargeMoney())*100)+"",//交易金额 单位：分
+	            "156",//交易币种
+	            new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()),//交易时间
+	            "127.0.0.1",//用户IP
+	            "张三",//用户真实姓名
+	            "",//默认支付方式
+	            "",//默认银行编号
+	            "300000",//交易超时时间
+	            QuickPayConf.merFrontEndUrl,// 前台回调商户URL
+				QuickPayConf.merBackEndUrl,// 后台回调商户URL
+	            ""//商户保留域
+		};
+		
+		String signType = request.getParameter("sign");
+		if (!QuickPayConf.signType_SHA1withRSA.equalsIgnoreCase(signType)) {
+			signType = QuickPayConf.signType;
+		}
+		
+		String html = new QuickPayUtils().createPayHtml(valueVo, signType);//跳转到银联页面支付
+		
+		response.setContentType("text/html;charset="+QuickPayConf.charset);   
+		response.setCharacterEncoding(QuickPayConf.charset);
+		try {
+			response.getWriter().write(html);
+		} catch (IOException e) {
+			
+		}
+		response.setStatus(HttpServletResponse.SC_OK);
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+	}
+	  /*
+	   * 
+	   * 银联支付通知
+	   * 
+	   * 
+	   * */
+	  
+	  public String chinaPayReturn(){
+		    HttpServletRequest request = super.getRequest();
+			HttpServletResponse response=super.getReponse();
+		  
+		  
+		  try {
+				request.setCharacterEncoding(QuickPayConf.charset);
+			} catch (UnsupportedEncodingException e) {
+			}
+			
+			String[] resArr = new String[QuickPayConf.notifyVo.length]; 
+			for(int i=0;i<QuickPayConf.notifyVo.length;i++){
+				resArr[i] = request.getParameter(QuickPayConf.notifyVo[i]);
+			}
+			String signature = request.getParameter(QuickPayConf.signature);
+			String signMethod = request.getParameter(QuickPayConf.signMethod);
+			
+			response.setContentType("text/html;chardset="+QuickPayConf.charset);   
+			response.setCharacterEncoding(QuickPayConf.charset);
+			
+			try {
+				Boolean signatureCheck = new QuickPayUtils().checkSign(resArr, signMethod, signature);
+				if(signatureCheck&&"00".equals(resArr[10])){
+					for(int i=0;i<resArr.length;i++ ){
+						System.out.println(i+"="+resArr[i]);
+						
+						
+					}
+					
+					String userName=resArr[8].split("_")[0];
+					userId=userService.select(userName).getId()+"";
+					//Account account=accountService.select(Integer.parseInt(userId),"");
+					accountRechargeService.addMoney(Integer.parseInt(userId), new BigDecimal((float)Float.parseFloat(resArr[6])/100),accountService ,userService,resArr[8]);
+					//tran
+						//User user=userService.select(userName);
+					    //Account account=accountService.s      
+					
+					
+					
+				}
+				//.append("签名是否正确："+ signatureCheck)
+				//.append("<br>交易是否成功："+"00".equals(resArr[10]));
+				if(!"00".equals(resArr[10])){
+					response.getWriter().append("<br>失败原因:"+resArr[11]);
+				}
+			} catch (IOException e) {
+				
+			}
+		
+			response.setStatus(HttpServletResponse.SC_OK);
+	
+		  
+		  
+		  
+		  return null;
+	  }
+	  
+
+ 
+	/////getter////setter//////
+	public String getId(){
+		return  id;
+	}
+	public void  setId(String id){
+		this.id = id ;
+	}
+	 
+	public AccountRechargeService getAccountRechargeService() {
+		return accountRechargeService;
+	}
+	public void setAccountRechargeService(AccountRechargeService accountRechargeService) {
+		this.accountRechargeService = accountRechargeService;
+	}
+	
+	public String getUserId(){
+		return  userId;
+	}
+	public void  setUserId(String userId){
+		this.userId = userId ;
+	}
+	 
+	public String getAccountID(){
+		return  accountID;
+	}
+	public void  setAccountID(String accountID){
+		this.accountID = accountID ;
+	}
+	 
+	public String getRechargeTime(){
+		return  rechargeTime;
+	}
+	public void  setRechargeTime(String rechargeTime){
+		this.rechargeTime = rechargeTime ;
+	}
+	 
+	public String getRechargeMoney(){
+		return  rechargeMoney;
+	}
+	public void  setRechargeMoney(String rechargeMoney){
+		this.rechargeMoney = rechargeMoney ;
+	}
+	 
+	public String getIfConfirmed(){
+		return  ifConfirmed;
+	}
+	public void  setIfConfirmed(String ifConfirmed){
+		this.ifConfirmed = ifConfirmed ;
+	}
+	 
+	public String getConfirmTime(){
+		return  confirmTime;
+	}
+	public void  setConfirmTime(String confirmTime){
+		this.confirmTime = confirmTime ;
+	}
+	 
+	 public String getUsername() {
+	 	return username;
+	 }
+	 public void setUsername(String username) {
+	 	this.username = username;
+	 }
+	public BigDecimal getTotalMoney() {
+		return totalMoney;
+	}
+	public void setTotalMoney(BigDecimal totalMoney) {
+		this.totalMoney = totalMoney;
+	}
+	
+	public Integer getTradeId() {
+		return tradeId;
+	}
+	public void setTradeId(Integer tradeId) {
+		this.tradeId = tradeId;
+	}
+	public List getRechargeList() {
+		return rechargeList;
+	}
+	public void setRechargeList(List rechargeList) {
+		this.rechargeList = rechargeList;
+	}
+	 
+}//end class

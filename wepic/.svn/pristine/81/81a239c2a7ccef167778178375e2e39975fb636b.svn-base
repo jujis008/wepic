@@ -1,0 +1,193 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<script type="text/javascript" src="../../../public/js/imgsf.js"></script>
+<script type="text/javascript" src="../../../public/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../back/pubimg/css/index.css" />
+<script type="text/javascript" src="../../../back/chajian/jquery.ocupload-1.1.2.js"></script>
+<link type="text/css" rel="stylesheet" href="picSpecialFormat.css" />
+<script type="text/javascript">
+$(function(){
+    $("#butportraRight").upload({
+	name : 'accessories', // <input typdddddddde="file" name="upload" />
+	enctype : 'multipart/form-data',
+	action : '${pageContext.request.contextPath}/jsonpublish_uploadAccessories.do',
+	autoSubmit : true,
+	onSubmit: function (self, element) {
+		
+		
+	},
+	 onComplete: function (data, self, element){  
+	 }
+	});
+
+
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="container">
+
+	<div class="top">
+        <h2>选择应征作品并报价</h2>
+        <a href="javascript:cloosePopBox();"></a>
+    </div> 
+    
+    <div class="div_character">
+    	<span>为了方便发布人筛选您的作品，增加作品曝光率及被选中几率，以下作品需要提供缩略图：</span>
+    </div> 
+        
+    <div class="div_imgList">
+        <div id="previewPic">
+            <div class="scroll">
+                <a id="left_img_btn" class="s_pre" href="javascript:void(0)"></a>
+                <div class="current" id="current"></div>
+                <div class="outScroll_pic">
+                    <ul class="scroll_pic cls" id="small_pic"></ul>
+                </div>
+                <a id="right_img_btn" class="s_next" href="javascript:void(0)"></a> 
+            </div>
+        </div>   
+        
+        
+        <!--摄影故事内容-->
+        <div id="picDetail">
+        	<div class="picDetailLeft">
+        		<div class="divPicimg">
+       				<ul class="imagebg" id="imagebg">
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/1.jpg">
+      						<div class="bannerbg_main">
+                            	<div class="divPsd">
+                                	<div class="specialLayout">Psd</div>
+                                	<div class="specialLayoutTitle">作品标题作品标题</div>
+                                	<div class="specialLayoutTime">2012-08-08</div>
+                                </div>
+      							<!--<img src="../../../back/pubimg/pic/1.jpg" onload="javascript:DrawImage(this,285,285)"/>-->
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/2.jpg">
+      						<div class="bannerbg_main">
+                            	<div class="divAi">
+                                	<div class="specialLayout">Ai</div>
+                                	<div class="specialLayoutTitle">作品标题作品标题</div>
+                                	<div class="specialLayoutTime">2012-08-08</div>
+                                </div>
+      							<!--<img src="../../../back/pubimg/pic/2.jpg"  onload="javascript:DrawImage(this,285,285)"/>-->
+						    </div>
+    					</li>
+    					
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/3.jpg">
+      						<div class="bannerbg_main">
+                            	<div class="divEps">
+                                	<div class="specialLayout">Eps</div>
+                                	<div class="specialLayoutTitle">作品标题作品标题</div>
+                                	<div class="specialLayoutTime">2012-08-08</div>
+                                </div>
+      							<!--<img src="../../../back/pubimg/pic/3.jpg"  onload="javascript:DrawImage(this,285,285)"/>-->
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/4.jpg">
+      						<div class="bannerbg_main">
+                            	<div class="divCdr">
+                                	<div class="specialLayout">Cdr</div>
+                                	<div class="specialLayoutTitle">作品标题作品标题</div>
+                                	<div class="specialLayoutTime">2012-08-08</div>
+                                </div>
+      							<!--<img src="../../../back/pubimg/pic/4.jpg"  onload="javascript:DrawImage(this,285,285)"/>-->
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/5.jpg">
+      						<div class="bannerbg_main">
+      							<!--<img src="../../../back/pubimg/pic/5.jpg"  onload="javascript:DrawImage(this,285,285)"/>-->
+                                <div class="divMax">
+                                	<div class="specialLayout">Max</div>
+                                	<div class="specialLayoutTitle">作品标题作品标题</div>
+                                	<div class="specialLayoutTime">2012-08-08</div>
+                                </div>
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/6.jpg">
+      						<div class="bannerbg_main">
+      							<img src="../../../back/pubimg/pic/6.jpg"  onload="javascript:DrawImage(this,285,285)"/>
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/7.jpg">
+      						<div class="bannerbg_main">
+      							<img src="../../../back/pubimg/pic/7.jpg" />
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/8.jpg">
+      						<div class="bannerbg_main">
+      							<img src="../../../back/pubimg/pic/8.jpg"  onload="javascript:DrawImage(this,285,285)"/>
+						    </div>
+    					</li>
+    					<li class="bannerbg" data-sPic="../../../back/pubimg/pic/9.jpg">
+      						<div class="bannerbg_main">
+      							<img src="../../../back/pubimg/pic/9.jpg" onload="javascript:DrawImage(this,285,285)" />
+						    </div>
+    					</li>
+  					</ul>
+        		</div>
+            </div>
+        
+        	<div class="picDetailRight">
+            	<div class="picDetailRight_top">
+                	<div class="close"></div>
+                	<p class="num"><span>作品编号：</span>2121212121212</p>
+                	<p class="state"><span>当前状态：</span>未发布</p>
+                </div>
+                
+                <div class="picDetailRight_bot">
+                	<div class="upload">
+                    	<input class="uploadinput" type="button" value="上传作品缩略图" id="butportraRight"/>
+                    </div>
+                	<div class="uploadper">
+                    	<span class="success">上传成功！</span>
+                    	<span>正在上传...</span>
+                    	<span class="uping">90%</span>
+                        
+                    </div>
+                	<div class="uploadper">修改缩略图清移步 个人中心-我的作品库中修改</div>
+                </div>
+                
+                <div class="div_scroll">
+                	<div class="divS"></div>
+                </div>
+            </div>
+        
+        </div>
+        <!--摄影故事内容-->
+    </div>  
+   
+    <div class="div_submit">
+    	<input class="sub" type="button" onclick="submitPopBox();" value="下一步"/>
+    </div> 
+    
+</div>
+
+<!--焦点图结束-->
+<script type="text/javascript" src="jquery.imgSlider.js"></script>
+<script type="text/javascript">
+img.init();
+img.play(0);
+//阻止事件冒泡
+function estop(e){
+	var e=arguments.callee.caller.arguments[0]||event;
+	if (e && e.stopPropagation){
+	//因此它支持W3C的stopPropagation()方法
+	   e.stopPropagation();
+	}else{
+	//否则，我们需要使用IE的方式来取消事件冒泡
+	   window.event.cancelBubble = true;
+	   return false;
+	}
+}
+</script>
+</body>
+</html>

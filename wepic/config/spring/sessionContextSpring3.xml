@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 http://www.springframework.org/schema/tx
+	 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	 http://www.springframework.org/schema/aop
+	 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	 http://www.springframework.org/schema/context 
+	 http://www.springframework.org/schema/context/spring-context-2.5.xsd"> 
+	<description>Spring session factory</description>
+	
+	<!--  要使用@Autowired需要开启下面的配置  <context:annotation-config/>
+	这个可以不需要，因为Java代码  收藏代码
+    <context:component-scan base-package="">  已经隐含激活了。 
+	-->
+	<!--  定义受环境影响易变的变量  <context:annotation-config/>-->
+	<bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:*.properties</value>
+            	
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- 数据源配置,测试环境用 -->
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+	 -->		
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">	
+		<property name="driverClass" value="${c3p0.driverClass}"></property>
+		<!--
+		<property name="jdbcUrl">
+			<value>jdbc:oracle:thin:@172.168.1.87:1522:orcl</value> 
+			<value>
+				jdbc:mysql://localhost:${database.port}/${database.dbName}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true
+			</value>			
+		</property>
+		-->
+		<property name="jdbcUrl" value="${c3p0.url}"></property>  
+			
+	    <property name="user" value="${c3p0.user}"></property>  
+	    <property name="password" value="${c3p0.password}"></property>  
+	    <property name="acquireIncrement" value="${c3p0.acquireIncrement}"></property>  
+	    <property name="initialPoolSize" value="${c3p0.initialPoolSize}"></property>  
+	    <property name="maxIdleTime" value="${c3p0.maxIdleTime}"></property>  
+	    <property name="maxPoolSize" value="${c3p0.maxPoolSize}"></property>  
+	    <property name="minPoolSize" value="${c3p0.minPoolSize}"></property>  
+	    <property name="acquireRetryDelay" value="1000"></property>  
+	    <property name="acquireRetryAttempts" value="30"></property>  
+	    <!--定义所有连接测试都执行的测试语句。在使用连接测试的情况下这个一显著提高测试速度。注意：
+		测试的表必须在初始数据源的时候就存在。Default: null
+		<property name="preferredTestQuery" value="select id from test where id=1"></property>
+	    -->
+	    <!--如果设为true那么在取得连接的同时将校验连接的有效性。Default: false -->
+		<property name="testConnectionOnCheckin" value="true"></property>
+	    
+	    <!--连接关闭时默认将所有未提交的操作回滚。Default: false -->
+		<property name="autoCommitOnClose" value="false"></property>
+				<!--c3p0将建一张名为Test的空表，并使用其自带的查询语句进行测试。如果定义了这个参数那么
+		属性preferredTestQuery将被忽略。你不能在这张Test表上进行任何操作，它将只供c3p0测试
+		使用。Default: null-->
+	
+		
+	    <!--   <property name="breakAfterAcquireFailure" value="false"></property>  2013年8月14日16:46:56宫伟修改程序 -->
+	    <property name="breakAfterAcquireFailure" value="false"></property> 
+	    <!-- 新增 -->
+	     <property name="checkoutTimeout" value="5000"></property> 
+						
+		<property name="idleConnectionTestPeriod" value="60"/>
+		<property name="numHelperThreads" value="3"/>
+		<property name="preferredTestQuery" value=" select 1 from dual "/>
+		<!-- 
+		<property name="testConnectionOnCheckin" value="true"/>
+		
+		<property name="properties" ref="dataSourceProperties"/>	
+		 -->
+		<!-- 
+		<property name="url">
+			<value>
+				jdbc:mysql://localhost:${database.port}/${database.dbName}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true
+			</value>
+		</property>
+	    <property name="username"> 
+			<value>${database.username}</value>
+		</property>
+		<property name="password"> 
+			<value>${database.password}</value>
+		</property>
+		-->
+	</bean>
+	
+	<!--  for Environment 
+	<bean id="dataSourceProperties" class="com.qhkj.goodChance.common.service.PropertiesEncryptFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="user">root</prop>
+				<prop key="password"></prop>
+			</props>
+		</property>
+	</bean>
+	 --> 
+	
+
+	<!-- Hibernate配置 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />  
+    	<property name="lobHandler" ref="lobHandler" />  
+    	<property name="configLocations">  
+	        <list>  
+	            <value>classpath*:/hibernate/hibernate.cfg.xml</value>  
+	        </list>  
+    	</property> 
+    	<property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" /> 
+    	-->  
+        <property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">com.wetuo.wepic.common.hibernate.EnhanceMySQLDialect</prop>
+				<!--  
+				<prop key="hibernate.dialect"> 
+				org.hibernate.dialect.MySQLDialect 
+				</prop> 
+				-->
+				
+				<!-- <prop key="hibernate.dialect">com.gfa4j.hibernate.Oracle9Dialect</prop> -->				
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.provider_configuration_file_resource_path"> 
+					ehcache.xml 
+				</prop> 
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>	
+				<prop key="hibernate.jdbc.batch_size">16</prop>
+				<!--  
+				<prop key="hibernate.connection.autocommit">true</prop>
+				-->
+				<prop key="hibernate.default_batch_fetch_size">100</prop>
+				<prop key="hibernate.query.substitutions">true 1, false 0</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				
+				<prop key="hibernate.current_session_context_class">thread</prop> 
+				<!-- 
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>  
+	            <prop key="hibernate.connection.provider_class">${hibernate.connection.provider_class}</prop>  
+	            <prop key="hibernate.current_session_context_class">${hibernate.current_session_context_class}</prop>  
+				 -->
+			</props>
+		</property>
+		
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:/com/wetuo/wepic/core/beans</value>
+				<value>classpath:/com/wetuo/wepic/publish/beans</value>
+				<value>classpath:/com/wetuo/wepic/deal/beans</value>
+			</list>
+		</property>
+		<!-- 
+		<property name="mappingJarLocations">
+			<list>
+				<value>
+					WEB-INF\lib\sitc-common-hibernate-mapping.jar
+				</value>
+			</list>
+		</property>
+		-->
+		
+		
+	</bean> 
+
+	
+</beans>

@@ -1,0 +1,447 @@
+*{margin:0;padding:0;}
+
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	background-color:#FFFFFF;
+	color:#848484;
+  	font-family:'微软雅黑' ,'宋体',Arial, Verdana ;
+  	font-size:12px;
+	}
+/*------------------------------------------------------------*/
+/*网页整体布局*/
+#container{
+	position:relative;
+	width:100%;
+	margin:0 auto;
+	background:#f4f4f4;
+	}
+
+/*topBarMain.css*/
+
+
+/*header.css*/
+
+/*mainbar.css*/
+
+
+
+/*网页整体布局*/	
+/*------------------------------------------------------------*/
+/*公共元素控制*/
+img{
+	border:0;
+	}
+ul{
+	list-style:none;
+	}
+a{
+  /*color:#A5A5A5;*/
+  text-decoration:none;
+}
+
+/*公共元素控制*/
+/*------------------------------------------------------------*/
+/*topBarMain.css*/
+
+/*------------------------------------------------------------*/
+/*header.css*/
+
+/*------------------------------------------------------------*/
+/*mainbar.css*/
+
+/*------------------------------------------------------------*/ 
+
+#cameristHead{
+	position:relative;
+	top:0px;
+	left:0;
+	width:1180px;
+	height:360px;
+	margin:0 auto;
+	}
+.CameristT{
+	position:relative;
+	z-index:20;
+	top:0px;
+	margin:0px auto;
+	width:1180px;
+	height:460px;
+	border:1px solid #E6E6E6;
+	margin-top:20px;
+	} 
+#originalityCamerist{
+	margin-bottom:20px;
+	}
+/*头部 */ 
+#cameristUL{
+	position:relative;
+	top:0;
+	left:0;
+	margin-left:-18px;
+	}
+#cameristUL a{
+	_cursor:pointer;
+	}
+#cameristUL ul{
+	position:relative;
+	top:0;
+	left:0;
+	}
+#cameristUL li{
+	position:relative;
+	top:0;
+	left:0;
+	width:580px;
+	height:360px;
+	margin-top:10px;
+	float:left;
+	margin-left:18px;
+	background:#FFFFFF;
+	overflow:hidden;
+	}
+#cameristUL .cameristLi{
+	position:relative;
+	top:0;
+	left:0;
+	}
+#cameristUL .cameristLi img{
+	position:relative;
+	top:0px;
+	left:0;
+	width:580px;
+	height:360px;
+	z-index:10;
+	}
+#cameristUL .cameristLiBjMan{
+	position:absolute;
+	bottom:0px;
+	left:0;
+	width:580px;
+	height:130px;
+	opacity:1;
+	filter:alpha(opacity=1); 
+	z-index:11;
+	}
+#cameristUL .cameristLiBj{
+	position:absolute;
+	top:0px;
+	left:0;
+	width:580px;
+	height:130px;
+	background:#ffffff;
+	opacity:0.8;
+	filter:alpha(opacity=80); 
+	}
+#cameristUL .cameristLiBjCon{
+	position:absolute;
+	top:0px;
+	left:0;
+	width:580px;
+	height:130px;
+	text-align:left;
+	}
+#cameristUL .cameristLiBjCon .p1{
+	width:500px;
+	height:40px;
+	line-height:40px;
+	padding-left:20px;
+	}
+#cameristUL .cameristLiBjCon .p1 span{
+	color:#3a132e;
+  	font-size:16px;
+	}
+#cameristUL .cameristLiBjCon .p2{
+	width:580px;
+	height:70px;
+	}
+#cameristUL .cameristLiBjCon .p2 .con{
+	width:140px;
+	height:70px;
+	float:left;
+	border-right:1px solid #3b132d;
+	}
+#cameristUL .cameristLiBjCon .p2 .con .con1{
+	width:140px;
+	height:50px;
+	line-height:50px;
+	color:#3e122d;
+  	font-size:24px;
+	padding-left:20px;
+	}
+#cameristUL .cameristLiBjCon .p2 .con .con2{
+	width:140px;
+	height:20px;
+	line-height:20px;
+	color:#563c49;
+  	font-size:14px;
+	padding-left:20px;
+	}
+#cameristUL .cameristLiBjCon .p2 .ranking{
+	border-right:0;
+	}
+/*头部 */
+
+
+/*头像   start*/
+.CameristT .title{
+	position:relative;
+	height:53px;
+	width:1180px;
+	background:#FFFFFF;
+	}
+.CameristT .titleName{
+	position:absolute;
+	top:17px;
+	left:20px;
+	font-size:18px;
+	color:#000000;
+	}
+.CameristT .titleRight{
+	position:absolute;
+	top:27px;
+	right:14px;
+	color:#A5A5A5;
+	font-size:16px;
+	text-decoration:underline;
+	}
+.CameristT .titleRight:hover{
+	color:#000000;
+	}
+	
+.CameristT .headCon{
+	position:relative;
+	left:0;
+	top:0;
+	z-index:50;
+	background:#f9f9f9;
+	}
+.CameristT .headCon ul{
+	
+	
+	}
+.CameristT .headCon ul li{
+	position:relative;
+	top:-10px;
+	left:-12px;
+	float:left;
+	width:158px;
+	height:158px;
+	border:1px solid #E6E6E6;
+	margin-left:35px;
+	_margin-left:30px;
+	margin-top:33px;
+	}
+
+.CameristT .headCon .headConPic{
+	position:absolute;
+	top:4px;
+	left:4px;
+	z-index:10;
+	width:150px;
+	height:150px;
+	}
+
+.CameristT .headCon .headConPic img{
+	width:150px;
+	height:150px;
+	}
+
+.CameristT .headCon  li .divPicInfo{
+	display:none;
+	position:absolute;
+	z-index:60;
+	top:-280px;
+	left:-15px;
+	width:474px;
+	height:300px;
+	background:#FFFFFF;
+	/*filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/
+    -moz-box-shadow: 6px 21px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 6px 12px 10px #909090;/*safari或chrome*/
+    box-shadow:6px 2px 10px #909090;/*opera或ie9*/
+	box-shadow: 0 1px 10px #909090;
+	
+	}
+.CameristT .headCon  li .divPicInfoFive{
+	left:-150px;
+	}
+.CameristT .headCon  li .divPicInfoSix{
+	left:-290px;
+	}
+.CameristT .headCon .active .divPicInfo{
+	display:block;
+	}
+.CameristT .headCon .headConPic2{
+	position:absolute;
+	top:24px;
+	left:24px;
+	width:150px;
+	height:150px;
+	}
+.CameristT .headCon .headConPic2 img{
+	width:150px;
+	height:150px;
+	}
+	
+.CameristT .headCon .divUserName{
+	position:absolute;
+	top:24px;
+	left:180px;
+	_left:160px;
+	width:290px;
+	height:150px;
+	padding-left:20px;
+	/*background:#09C;*/
+	}
+.CameristT .headCon .pUserName{
+	font-size:18px;
+	color:#242424;
+	font-family:"微软雅黑";
+	text-align:left;
+	padding-left:5px;
+	width:260px;
+	height:30px;
+	}
+.CameristT .headCon .pUserName input{
+	width:65px;
+	height:27px;
+	margin-left:120px;
+	border:0;
+	cursor:pointer;
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -00px;
+	_background:none;
+	_border:1px solid red;
+	}
+	
+.CameristT .headCon .pUserName input:hover{
+	height:28px;
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -27px;
+	}
+.CameristT .headCon .pUserName input:active{
+	height:28px;
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -54px;
+	}
+.CameristT .headCon .userLogo{
+	text-align:left;
+	height:16px;
+	width:260px;
+	_width:220px;
+	background:url(../../public/images/grade/uesrLogo.png);
+	background-repeat:no-repeat;
+	background-position:5px 1px;
+	padding-left:40px;
+	}
+.CameristT .headCon .userLogo img{
+	width:11px;
+	height:11px;
+	}
+.CameristT .headCon .userPosition{
+	margin-top:10px;
+	_margin-top:0px;
+	width:260px;
+	_width:260px;
+	text-align:left;
+	}
+.CameristT .headCon .userPosition a{
+	color:#a0a0a0;
+	font-size:12px;
+	}
+.CameristT .headCon .userPosition .userPositionName{
+	background:url(../../public/images/11.png) no-repeat 0px -95px;
+	padding-left:20px;}
+.CameristT .headCon .userPosition .userPositionAddress{
+	margin-left:20px;
+	background:url(../../public/images/11.png) no-repeat 0px -114px;
+	padding-left:20px;}
+	
+.CameristT .headCon .userType{
+	margin-top:10px;
+	width:280px;
+	text-align:left;
+	}
+.CameristT .headCon .userType a{
+	margin-left:5px;
+	color:#ac9e7b;
+	font-size:12px;
+	font-family:"宋体";
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:12px;
+	padding-right:12px;
+	background:url(../../public/images/userType.png) no-repeat 0px 0px;
+	width:50px;
+	height:17px;
+	}
+.CameristT .headCon .userAppraise{
+	margin-top:10px;
+	width:280px;
+	text-align:left;
+	font-family:"宋体";
+	}
+.CameristT .headCon .userAppraise .userAppraiseOne{
+	width:64px;
+	height:46px;
+	text-align:center;
+	background:#f8f8f8;
+	margin-left:2px;
+	float:left;}
+.CameristT .headCon .userAppraise .userAppraiseOne .userAppraiseOneTop{
+	color:#5c5c5c;    
+	height:25px; 
+	line-height:25px; 
+	overflow:hidden;
+	}
+
+.CameristT .headCon .divUserAbstract{
+	position:absolute;
+	top:190px;
+	left:25px;
+	width:435px;
+	height:60px;
+	line-height:20px;
+	text-align:left;
+	color:#bbbbbb;
+	overflow:auto;
+	
+	}
+
+.CameristT .headCon .divUserTurnover{
+	position:absolute;
+	top:260px;
+	left:25px;
+	width:435px;
+	height:30px;
+	text-align:left;
+	color:#5b5b5b;
+	border-top:1px solid #ececec;
+	}
+.CameristT .headCon .sanjiao{
+	position:absolute;
+	bottom:-20px;
+	left:100px;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	margin-bottom: 10px;
+	border-top: 10px solid #FFFFFF;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	}
+.CameristT .headCon .sanjiao1{
+	left:270px;
+	}
+.CameristT .headCon .sanjiao2{
+	left:350px;
+	}
+.CameristT .headCon .divUserTurnover font{
+	color:#bbbbbb;
+		}
+.CameristT .headCon .divUserTurnover .fontUserTurnover{
+	margin-left:25px;
+	}
+.CameristT .headCon .divUserTurnover span{
+	margin-left:8px;
+	}
+/*humanCamerist   end*/

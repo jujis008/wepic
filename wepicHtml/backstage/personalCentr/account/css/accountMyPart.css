@@ -1,0 +1,370 @@
+#divAccountMyPart{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:1180px;
+	min-height:530px;
+	margin:0 auto; 
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+
+#divAccountPartTag{
+	float:left;
+	width:553px;
+	min-height:530px;
+	background:#ffffff;
+	margin-left:30px;
+	_margin-left:20px;
+	font-family:"宋体";
+	}
+#divAccountPersonTag{
+	float:left;
+	width:553px;
+	min-height:530px;
+	background:#ffffff;
+	margin-left:10px;
+	}
+
+
+#divAccountPartTag .title,
+#divAccountPersonTag .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:60px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:20px;
+	}
+#divAccountPartTag .title h2,
+#divAccountPersonTag .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	font-family:"微软雅黑";
+	}
+
+
+
+#divAccountPartTag .occupation{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:35px;
+	text-align:left;
+	padding-left:20px;
+	}
+#divAccountPartTag .occupation .cen{
+	height:35px;
+	line-height:35px;
+	font-family:"宋体";
+	color:#b1b1b1;
+	}	
+.chooseTag .occupation .tagDe{
+	float:left;
+	position: absolute;
+    left: 80px;
+    top: 0;
+	margin-left:18px;
+	margin-top:10px;
+	height:16px;
+	padding-left:15px;
+	padding-right:8px;
+	background:url(../../../public/images/background.png) 0 0 no-repeat;
+	color:#ae9e7c;
+	}
+.chooseTag .occupation .tagDe a{
+	position: absolute;
+    right: -9px;
+    top: 0;
+	width:10px;
+	height:16px;
+	background:url(../../../public/images/background.png) 0 -89px no-repeat;
+	}
+	
+	
+	
+
+
+/*公共属性*/
+.chooseTag .con {
+    padding-right: 30px;
+	}
+	
+.chooseTag .con .tag, 
+.chooseTag .con .retag, 
+.chooseTag .con .othtag {
+    float: left;
+    height: 16px;
+    left: 0;
+    margin-left: 18px;
+    margin-top: 10px;
+    padding-left: 12px;
+    padding-right: 11px;
+    position: relative;
+    top: 0;
+    background: url(../../../public/images/background.png) no-repeat 0 0 ;
+    color:#ae9e7c;
+	}
+
+.chooseTag .con .tag a, 
+.chooseTag .con .retag a, 
+.chooseTag .con .othtag a {
+    cursor: pointer;
+    height: 16px;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 16px;
+	}
+/*公共属性*/
+
+
+/*添加好的标签*/
+
+
+
+
+.chooseTag .choosed {
+    background:#fcfcfc;
+    left: 0;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    position: relative;
+    top: 0;
+    width: 553px;
+    min-height: 80px;
+	}
+
+.chooseTag .choosed .one {
+    color: #b1b1b1;
+    font-family: "宋体";
+    height: 20px;
+    padding-left: 18px;
+    text-align: left;
+	}
+
+
+.chooseTag .choosed .con .tag a, 
+.chooseTag .choosed .con .retag a, 
+.chooseTag .choosed .con .othtag a {
+    background: url(../../../public/images/background.png) no-repeat -14px -89px;
+	}
+.chooseTag .choosed .con .tag a:hover, 
+.chooseTag .choosed .con .retag a:hover, 
+.chooseTag .choosed .con .othtag a:hover {
+    background: url(../../../public/images/background.png) no-repeat -35px -89px;
+	}
+/*添加好的标签*/
+
+/*推荐标签*/
+.chooseTag .chooseCon{
+    left: 0;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    position: relative;
+    top: 0;
+	width:550px;
+    min-height: 20px;
+	}
+
+.chooseTag .chooseCon .one {
+    font-family: "宋体";
+    height: 20px;
+    padding-left: 18px;
+    text-align: left;
+	color:#b1b1b1;
+	}
+
+.chooseTag .chooseCon .con .tag a, 
+.chooseTag .chooseCon .con .retag a, 
+.chooseTag .chooseCon .con .othtag a {
+    background: url(../../../public/images/background.png) no-repeat -56px -89px;
+	}
+.chooseTag .chooseCon .con .tag a:hover, 
+.chooseTag .chooseCon .con .retag a:hover, 
+.chooseTag .chooseCon .con .othtag a:hover {
+    background: url(../../../public/images/background.png) no-repeat -77px -89px;
+	}
+/*推荐标签*/
+
+/*添加*/
+.chooseTag .addProf{
+    position: relative;
+    left: 0;
+    top: 0;
+	height:50px;
+	padding-left:18px;
+	text-align:left;
+	border-bottom:1px solid #efefef;
+	}
+.chooseTag .addProf .inputaddProf{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px 3px 3px 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 21px;
+    padding: 5px 10px;
+    width: 126px;
+	}	
+.chooseTag .addProf .inputaddProfTag{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.chooseTag .addProf .inputaddProfTag:hover{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}	
+.chooseTag .addProf .spanintro{
+    font-family: "宋体";
+	margin-left:12px;
+	}
+/*添加*/
+
+
+
+/*---------右边------------*/
+
+
+/*公共属性*/
+.chooseTagM .con {
+    padding-right: 30px;
+	}
+	
+.chooseTagM .con .tag, 
+.chooseTagM .con .retag{
+    float: left;
+    height: 18px;
+    left: 0;
+    margin-left: 18px;
+    margin-top: 10px;
+    padding-left: 12px;
+    padding-right: 11px;
+    position: relative;
+    top: 0;
+    background: url(../../../public/images/background.png) no-repeat 0 -20px ;
+    color:#616161;
+	}
+
+.chooseTagM .con .tag a, 
+.chooseTagM .con .retag a {
+    cursor: pointer;
+    height: 18px;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 16px;
+	}
+/*公共属性*/
+
+
+/*添加好的标签*/
+
+
+
+
+.chooseTagM .choosed {
+    background:#fcfcfc;
+    left: 0;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    position: relative;
+    top: 0;
+    width: 553px;
+    min-height: 80px;
+	}
+
+
+.chooseTagM .choosed .con .tag a, 
+.chooseTagM .choosed .con .retag a {
+    background: url(../../../public/images/background.png) no-repeat -56px -109px;
+	}
+.chooseTagM .choosed .con .tag a:hover, 
+.chooseTagM .choosed .con .retag a:hover {
+    background: url(../../../public/images/background.png) no-repeat -77px -109px;
+	}
+/*添加好的标签*/
+
+/*推荐标签*/
+.chooseTagM .chooseCon{
+    left: 0;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    position: relative;
+    top: 0;
+	width:550px;
+    min-height: 20px;
+	}
+
+.chooseTagM .chooseCon .one {
+    font-family: "宋体";
+    height: 20px;
+    padding-left: 18px;
+    text-align: left;
+	color:#b1b1b1;
+	}
+
+.chooseTagM .chooseCon .con .tag a, 
+.chooseTagM .chooseCon .con .retag a {
+    background: url(../../../public/images/background.png) no-repeat -14px -109px;
+	}
+.chooseTagM .chooseCon .con .tag a:hover, 
+.chooseTagM .chooseCon .con .retag a:hover {
+    background: url(../../../public/images/background.png) no-repeat -35px -109px;
+	}
+/*推荐标签*/
+
+/*添加*/
+.chooseTagM .addProf{
+    position: relative;
+    left: 0;
+    top: 0;
+	height:50px;
+	padding-left:18px;
+	text-align:left;
+	border-bottom:1px solid #efefef;
+	}
+.chooseTagM .addProf .inputaddProf{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px 3px 3px 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 21px;
+    padding: 5px 10px;
+    width: 126px;
+	}	
+.chooseTagM .addProf .inputaddProfTag{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.chooseTagM .addProf .inputaddProfTag:hover{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}	
+.chooseTagM .addProf .spanintro{
+    font-family: "宋体";
+	margin-left:12px;
+	}
+/*添加*/

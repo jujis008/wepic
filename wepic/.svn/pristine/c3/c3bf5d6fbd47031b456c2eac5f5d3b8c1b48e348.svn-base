@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.UserDetail"
+	table="UserDetail"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<!--   -->
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="150"
+	/>
+	
+	<property 
+		name="type"
+		type="java.lang.String"
+		column="type"
+		length="150"
+	/>
+	
+	<property 
+		name="picName"
+		type="java.lang.String"
+		column="picName"
+		length="150"
+	/>
+	<property 
+		name="picUrl"
+		type="java.lang.String"
+		column="picUrl"
+		length="150"
+	/>
+	
+	
+	
+	<many-to-one name="userPower"	column="userPowerid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.Account"
+	table="Account"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_Account_User" 
+		index="IDX_Account_User"
+		unique="true"
+		lazy="false"
+		/> 
+	
+	<property 
+		name="accountID"
+		type="java.lang.String"
+		column="accountID"
+		length="50"
+	/>
+	<property 
+		name="totalMoney"
+		type="java.math.BigDecimal"
+		column="totalMoney"
+		length="50"
+	/>
+	<property 
+		name="remainingMoney"
+		type="java.math.BigDecimal"
+		column="remainingMoney"
+		length="50"
+	/>
+	<property 
+		name="bankAccount"
+		type="java.lang.String"
+		column="bankAccount"
+		length="50"
+	/>
+	<property 
+		name="openingBank"
+		type="java.lang.String"
+		column="openingBank"
+		length="50"
+	/>
+	<property 
+		name="belongBank"
+		type="java.lang.String"
+		column="belongBank"
+		length="50"
+	/>
+	<set name="accountRechargeSet" inverse="true">
+		<key column="account_id"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.AccountRecharge"/>
+	</set>
+	
+	<set name="accountWithdrawSet" inverse="true">
+		<key column="account_id"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.AccountWithdraw"/>
+	</set>
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

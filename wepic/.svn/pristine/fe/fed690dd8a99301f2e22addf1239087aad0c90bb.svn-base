@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="10701096" />
+
+	<package name="com.wetuo.wepic.publish.actions.PublishAction"
+		extends="larry-default">
+		<action name="publish*" class="publishAction">
+		<result name="myworklibrary">/back/personalCentr/myworklib/creatStory.jsp</result>
+		<result name="findAllMyLib">/back/personalCentr/myworklib/picWork.jsp</result>
+		 <result name="downloadPic" type="stream">
+		 
+        <!-- inputName默认值是inputStream，如果action中用于读取下载文件内容的属性名是inputStream，那么可以省略这个参数 -->
+        <param name="inputName">inputStream</param>
+        <!--动态获取文件名，从Action中的取得filename -->
+        <param name="contentDisposition">
+            attachment;filename="${downloadFileName}"
+        </param>
+       
+        <param name="bufferSize">2048</param>
+	    </result>
+		 <result name="deletePublishPic" type="redirectAction">
+		publish!findAllMyLib.do
+		</result>
+		
+		
+		<result name="getMyWorkLib">
+		/back/personalCentr/publish/choosePicWorkHead.jsp
+		
+		</result>
+		
+		<result name="findEditePublish">
+		/back/personalCentr/myworklib/relPic.jsp
+		
+		</result>
+			
+		 <result name="updatePublish" type="redirectAction">
+		  publish!findAllMyLib.do
+		 </result>
+		
+		<result name="userSoldout" type="redirectAction">
+		  publish!findAllMyLib.do
+		 </result>
+		
+		
+		<result name="editeSamplePic">
+		/back/personalCentr/publish/cropHead.jsp
+		</result>
+		<result name="updateSamplePic">
+		/back/personalCentr/publish/reflush.jsp
+		</result>
+		<result name="findEditeUnPublish">
+		/back/personalCentr/myworklib/picWorkUnpublishedEdit.jsp
+		</result>
+		
+		
+		<result name="findPublish">
+		/back/personalCentr/myworklib/picWorkUnpublished.jsp
+		</result>
+		
+		<result name="findEditereleasPublish">
+		/back/personalCentr/myworklib/picWorkReleasedEdit.jsp
+		</result>
+		
+		<result name="findRelesePublish" >
+		/back/personalCentr/myworklib/picWorkReleased.jsp
+		</result>
+		
+		
+		<!-- 管理员审核相关 -->
+		<result name="adminCheckPhotoPic">
+		/administrator/production/picWorkAuthstrList.jsp
+		</result>
+		
+		
+		<result name="adminPassPhoto" type="redirectAction">
+		publish!adminCheckPhotoPic
+		</result>
+		
+		
+		<result name="adminfindDetail">
+		/administrator/production/picWorkSingleCheck.jsp
+		</result>
+		
+		
+		<result name="adminPassPhotoPic">
+		/administrator/production/picWorkPassedList.jsp
+		</result>
+		<!-- 管理员查看已审核的图片 -->
+		<result name="adminfindPassDetail">
+		/administrator/production/picWorkPassedView.jsp
+		</result>
+		
+		
+	   <!-- 管理员查看审核未通过的图片 -->
+		<result name="adminNoPassList">
+		/administrator/production/picWorkNoPassList.jsp
+		</result>
+		 <!-- 管理员查看审核未通过的图片 单张-->
+		<result name="adminNoPassDetail">
+		/administrator/production/picWorkNoPassView.jsp
+		</result>
+		
+		
+		<!-- 管理员查看下架的图列表-->
+		<result name="adminUndercarriageList">
+		/administrator/production/picWorkSoldOutList.jsp
+		</result>
+		
+		<!-- 管理员给图片下架-->
+		<result name="adminUndercarriage" type="redirectAction">
+		publish!adminUndercarriageList.do
+		</result>
+		
+		
+		<!-- 管理员查看下架的图片的详情-->
+		<result name="adminUndercarriageDetail">
+		/administrator/production/picWorkSoldOutView.jsp
+		</result>
+		
+		
+		
+		</action>
+	</package>
+    <package name="com.wetuo.wepic.publish.actions.StoryAction"
+		extends="larry-default">
+		<action name="story*" class="storyAction">
+		<!-- admin operate -->
+		<result name="waitcheck">/administrator/production/story/shootStoryAuthstrList.jsp</result>
+		<result name="adminsearch">/administrator/production/story/shootStorySingleCheck.jsp</result>
+		<result name="admindelstory" type="redirect">story!waitcheck.do</result>
+		<result name="admindelstoryofnopass" type="redirect">story!checkfaillist.do</result>
+		<result name="adminchecksuc" type="redirect">story!waitcheck.do</result>
+		<result name="checksuclist">/administrator/production/story/shootStoryPassedList.jsp</result>
+		<result name="adminchecksucsearch">/administrator/production/story/shootStorySingleView.jsp</result>
+		<result name="adminedit">/administrator/production/story/shootStorySingleEdit.jsp</result>
+		<result name="checknopass" type="redirect">story!waitcheck.do</result>
+		<result name="checkfaillist">/administrator/production/story/shootStoryNoPassList.jsp </result>
+		<result name="searchnopass">/administrator/production/story/shootStoryNoPassView.jsp</result>
+		<result name="admincheckallfail" type="redirect">story!waitcheck.do</result>
+		<result name="admincheckallsuc" type="redirect">story!waitcheck.do</result>
+		<result name="adminSoldout">/administrator/production/story/shootStorySoldOutList.jsp</result>
+		<result name="searchadminsoldout">/administrator/production/story/shootStorySoldOutListView.jsp</result>
+		<result name="admindelstory" type="redirect">story!adminSoldout.do</result>
+		<result name="recoverupload" type="redirect">story!checksuclist.do</result>
+		<result name="adminsinglesoldout" type="redirect">story!adminSoldout.do</result>
+		<result name="admindelstoryofsoldout" type="redirect">story!adminSoldout.do</result>
+		
+		
+		<result name="myworklibrary">/back/personalCentr/myworklib/creatStory.jsp</result>
+		<result name="initdata">/back/personalCentr/myworklib/creatStory.jsp</result>
+		<result name="insertsuc" type="redirect">story!storylist.do</result>
+		<result name="storylist">/back/personalCentr/myworklib/storylist.jsp</result>
+		<result name="searchbyspecial">/back/personalCentr/myworklib/storylist.jsp</result>
+		<result name="searchStoryunpublish">/back/personalCentr/myworklib/unpublishstory.jsp</result>
+		<result name="startpubish" type="redirect">story!startpublish2.do?storyId=${storyId}</result>
+		<result name="startpublish2">/back/personalCentr/myworklib/publishstory.jsp</result>
+		<result name="editunpublishedstory">/back/personalCentr/myworklib/editunpublishedstory.jsp</result>
+		<result name="delstory" type="redirect">story!storylist.do</result>
+		<result name="editsuc" type="redirect">story!storylist.do</result>
+		<result name="publishstorysuc" type="redirect">story!storylist.do</result>
+		<result name="editpublishedstory">/back/personalCentr/myworklib/editpublishedstory.jsp</result>
+		<result name="searchStorypublish">/back/personalCentr/myworklib/publishedstory.jsp</result>
+		<result name="offsale" type="redirect">story!storylist.do</result>
+		<!-- 用户自己删除操作 -->
+		<result name="userdelstory" type="redirect">story!storylist.do</result>
+		<result name="downloadstory" type="redirect">story!storylist.do</result>
+		 <result name="downloadstory" type="stream">
+                <param name="contentType">application/octet-stream;charset=utf-8</param>
+                <param name="contentDisposition">
+                    attachment;filename=${downFileName}
+                </param>
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">4096</param>
+            </result>
+		</action>
+	</package>
+
+		<package name="com.wetuo.wepic.publish.actions.publishPicterm" extends="larry-default">
+		 <action name="searchPublishPic*" class="searchPublishPic">
+		 <result name="searchByTermfromMylib">
+		 /back/personalCentr/myworklib/picWorkSearch.jsp
+		 </result>
+		 
+		 <result name="searchByTermfromMylibforPublish">
+		/back/personalCentr/publish/choosePicWorkHead.jsp
+		</result>
+		<result name="searchstoryByfrom">/back/personalCentr/myworklib/storylist.jsp</result>
+		
+		<result name="searchunpublishstoryByfrom">
+		/back/personalCentr/myworklib/storylist.jsp
+		</result>
+		<result name="searchByTermfromMylibforUser">
+		
+		/back/personalCentr/publish/chooseWork.jsp
+		</result>	
+		<result name="searchByTermfromMylibforHonor">
+		
+		/back/personalCentr/publish/chooseHead.jsp
+		</result>	
+		
+		<result name="searchByTermfromMylibforUserPic">
+		/back/personalCentr/publish/chooseUserPic.jsp
+		</result>
+		
+		 </action>
+		
+		
+		
+		</package>
+		
+		
+		
+		
+		
+		
+		<package name="com.wetuo.wepic.publish.actions.PublishSpecialCatActin" extends="larry-default">
+		 <action name="specialPublish*" class="publishSpecialCatAction">
+		 <result name="findSpecialByUser">
+		 /back/personalCentr/myworklib/manageSpecial.jsp
+		 </result>
+		 <result name="findSpecialOfStoryByUser">
+		 /back/personalCentr/myworklib/manageSpecialOfStory.jsp
+		 </result>
+		 <result name="deleteSpPic" type="redirectAction">
+		 specialPublish!findSpecialByUser.do
+		 </result>
+		 
+		 
+		 </action>
+		
+		
+		
+		</package>
+		
+		
+
+
+</struts>

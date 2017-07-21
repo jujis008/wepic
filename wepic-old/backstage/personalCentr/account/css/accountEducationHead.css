@@ -1,0 +1,185 @@
+#divAccountEducationHead{
+	background:#FFFFFF;
+    height: 550px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 621px;
+	margin-bottom:20px;
+	margin-top:10px;
+	
+	}
+
+#divAccountEducationHead .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:52px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:30px;
+	}
+#divAccountEducationHead .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	}
+
+
+
+
+
+
+
+
+#divAccountEducationHead .conennt{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:366px;
+	width: 621px;
+	border-bottom:1px solid #f0f0f0;
+	}
+#divAccountEducationHead .conennt .conenntHead{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:230px;
+	}
+	
+#divAccountEducationHead .conennt .conenntHead  .big{
+	position:absolute;
+	top:43px;
+	left:137px;
+	margin:0 auto;
+	width:150px;
+	height:170px;
+	}
+#divAccountEducationHead .conennt .conenntHead .big .bige{
+	position:relative;
+	top:5px;
+	left:0;
+	width:150px;
+	text-align:left;
+	font-family:"宋体";
+	color:#8c8c8c;
+	}
+
+#divAccountEducationHead .conennt .conenntHead .small{
+	position:absolute;
+	top:43px;
+	left:350px;
+	margin:0 auto;
+	width:80px;
+	height:100px;
+	}
+#divAccountEducationHead .conennt .conenntHead .small .smalle{
+	position:relative;
+	top:5px;
+	left:0;
+	width:80px;
+	text-align:left;
+	font-family:"宋体";
+	color:#8c8c8c;
+	}
+#divAccountEducationHead .conennt .inputButtom{
+	position:relative;
+	top:0px;
+	left:137px;
+	text-align:left;
+	color:#8c8c8c;
+	font-family:"宋体";
+	}
+#divAccountEducationHead .conennt .inputButtom .localPhoto{
+	position:relative;
+	top:0px;
+	left:0px;
+	border: 0;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 17px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -1072px;
+    color: #000000;
+	}
+#divAccountEducationHead .conennt .inputButtom .localPhoto:hover{
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -1104px;
+	}
+#divAccountEducationHead .conennt .inputButtom .localPhoto:active{
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -1136px;
+	}	
+#divAccountEducationHead .conennt .inputButtom .p1{
+	position:relative;
+	top:0px;
+	left:0px;
+	line-height:35px;
+	}
+#divAccountEducationHead .conennt .inputButtom .p2{
+	position:relative;
+	top:0px;
+	left:0px;
+	}
+
+
+
+
+#divAccountEducationHead .submit{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:104px;
+	width: 621px;
+	}
+#divAccountEducationHead .submit .input{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width: 500px;
+	height:104px;
+	}
+
+
+#divAccountEducationHead .submit input {
+   	margin-left:68px;
+	*margin-left:0px;
+    border: 0;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 36px;
+    letter-spacing: 15px;
+    margin-top: 23px;
+    padding-bottom: 2px;
+    padding-left: 18px;
+	*padding-left: 0px;
+    text-align: center;
+    width: 126px;
+	}
+#divAccountEducationHead .submit .reset{ 
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -482px;
+    color: #000000;
+	}
+#divAccountEducationHead .submit .reset:hover{ 
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -518px;
+	}
+#divAccountEducationHead .submit .reset:active{ 
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -554px;
+	}
+#divAccountEducationHead .submit .submit{ 
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -600px;
+    color: #FFFFFF;
+	}
+#divAccountEducationHead .submit .submit:hover{ 
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -636px;
+	}
+#divAccountEducationHead .submit .submit:active{ 
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat  0 -672px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}

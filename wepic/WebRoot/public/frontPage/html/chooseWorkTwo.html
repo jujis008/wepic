@@ -1,0 +1,768 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>选择作品</title>
+
+<script type="text/javascript" src="../../js/jquery.js"></script>
+
+<script>
+$(document).ready(function(){ 
+
+	closeLi();					//删除作品报价
+
+	sureBJ();					//确认作品报价
+	
+});
+//只可输入数字
+function onlyWriteNum(obj){
+	if(obj.value.length==1){
+		obj.value=obj.value.replace(/[^1-9]/g,'');
+		}
+	else{
+		obj.value=obj.value.replace(/\D/g,'');
+		}
+}
+
+/*关闭弹出框*/
+function cloosePopBox(){
+	window.parent.closeOwnBox("chooseStory");
+}
+/*关闭弹出框*/
+
+
+//确认作品报价
+function sureBJ(){
+	var allClose = $('.inputSure');
+	$(allClose).each(function(index, element) {
+		$(this).click(
+			function(){
+				var now = $(this).val();
+				var nowV = $(this).prev().prev().val();
+				var nowHV = $(this).prev().prev().html();
+				
+				if(now == "确认"){
+					if(nowV == '' || nowV == null){
+						alert("请填写报价");
+						}
+					else{
+						
+						$(this).parents(".value").prepend('<span class="spanVal">'+ nowV +'</span>');
+						$(this).prev().prev().remove();
+						$(this).val("修改");
+						}
+					}
+				else{
+					$(this).parents(".value").prepend('<input class="inputVal" type="text" onafterpaste="onlyWriteNum(this)" onkeyup="onlyWriteNum(this)" value="'+nowHV+'">');
+					$(this).prev().prev().remove();
+					$(this).val("确认");
+					}
+				findInput();
+				});
+        
+    });
+	
+}
+
+
+function findInput(){
+	var allinput = $(".inputVal");
+	var allspan = $(".spanVal");
+	if(allinput.length == 0 && allspan.length != 0){
+		$("#submitBJ").removeAttr("disabled");
+		$("#submitBJ").css({"background":"#c04647","cursor":"pointer"});
+		}
+	else{
+		$("#submitBJ").attr("disabled","disabled");
+		$("#submitBJ").css({"background":"#CCCCCC","cursor":"default"});
+		}
+	}
+//删除作品报价
+function closeLi(){
+	var allClose = $('.close');
+	$(allClose).each(function(index, element) {
+		$(this).click(
+			function(){
+				$(this).parents("li").remove();
+				findInput();
+				}
+		);
+        
+    });
+	
+}
+
+
+/*提交信息并返回前一个页面*/
+function submitPopBox(){
+	
+	
+}
+	
+	
+/*提交信息并返回前一个页面*/
+
+	
+	
+	
+</script>
+
+
+<style>
+/*我的代表作弹出框*/
+
+*{margin:0;padding:0;}
+li{list-style: none;}
+img{border:0;}
+#divChooseWorkPop{
+	width:950px;
+	height:800px;
+	background:#ffffff;
+    font-family: "微软雅黑";
+	font-size:12px;
+	}
+
+.rework .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 950px;
+	}
+.rework .top h2 {
+    color: #585858;
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+.rework .top a {
+    background:url(../../images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.rework .top a:hover{
+	background:url(../../images/closeBox.png) no-repeat 0 -58px;
+	}
+.rework .top a:active{
+	background:url(../../images/closeBox.png) no-repeat 0 -116px;
+	}
+	
+	
+
+.rework .div_character{
+    border-bottom: 1px solid #E3E3E3;
+    height: 95px;
+    left: 0;
+    position: relative;
+    top: 0;
+	padding-left:68px;
+	}
+.rework .div_character h2{
+	height: 70px;
+	line-height:70px;
+	font-weight:normal;
+	color:#585858;
+	}	
+	
+.rework .div_character .write{
+	height: 25px;
+	line-height:25px;
+	font-size:14px;
+	color:#747474;
+	}	
+.rework .div_character .write .cen{
+	margin-left:120px;
+	color:#e83c3c;
+	}		
+
+
+
+
+	
+
+.rework .submit{
+    height: 90px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 950px;
+	margin-top:25px;
+	}
+
+.rework .submit .choose {
+	left: 68px;
+    position: absolute;
+    top: 0;
+    background:url(../../images/buttonGroup01.png) no-repeat 0 -836px;
+    border: 0 ;
+    color: #242424;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 17px;
+    height: 36px;
+    width: 143px;
+	}	
+.rework .submit .choose:hover{
+	background: url(../../images/buttonGroup01.png) no-repeat 0 -872px;
+	}
+.rework .submit .choose:active{
+	background: url(../../images/buttonGroup01.png) no-repeat 0 -908px;
+	}
+.rework .submit  .sub {
+	right: 73px;
+    position: absolute;
+    top: 0;
+    background:#CCC;
+    border: 0 none;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    font-size: 17px;
+    height: 36px;
+    margin-left: 20px;
+    width: 143px;
+	border-radius:3px;
+	}
+
+/*我的代表作弹出框*/
+
+	
+
+
+
+
+.rework .writePrice{
+	background:#f5f5f5;
+    height: 450px;
+	overflow:auto;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 950px;
+	text-align:left;
+	}
+
+.rework .writePrice ul{
+	margin-left:58px;
+	}
+.rework .writePrice li{
+	float:left;
+	}
+.rework .writePrice .div_price{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 395px;
+    height: 135px;
+	border:1px solid #E3E3E3;
+	margin:10px 0 0 10px;
+	background:#ffffff;
+	}
+.rework .writePrice .div_price .close{
+	position: absolute;
+    right: 0;
+    top: 0;
+	width:16px;
+	height:16px;
+	cursor:pointer;
+	background:url(../../../back/pubimg/images/background.png) -77px -110px no-repeat;
+	}
+.rework .writePrice .div_price .close:hover{
+	background:url(../../../back/pubimg/images/background.png) -98px -110px no-repeat;
+	}
+.rework .writePrice .div_price .div_price_left{
+    width: 135px;
+    height: 135px;
+	float:left;
+	}
+.rework .writePrice .div_price .div_price_left img{
+	margin:5px 0 0 5px;
+	}
+.rework .writePrice .div_price .div_price_right{
+    width: 250px;
+    height: 135px;
+	padding-left: 10px;
+	float:left;
+	}
+.rework .writePrice .div_price .div_price_right .num{
+	font-size:14px;
+    height: 30px;
+    line-height: 30px;
+	color:#444444;
+	}
+.rework .writePrice .div_price .div_price_right .state{
+    height: 28px;
+	color:#9e9e9e;
+	font-family:"宋体";
+	}
+.rework .writePrice .div_price .div_price_right .stateq{
+    height: 20px;
+    line-height: 20px;
+	color:#878787;
+	font-family:"宋体";
+	}
+	
+.rework .writePrice .div_price .div_price_right .value{
+	}	
+.rework .writePrice .div_price .div_price_right .value .inputVal{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 80px;
+	}
+.rework .writePrice .div_price .div_price_right .value span{
+	font-size:16px;
+	}
+.rework .writePrice .div_price .div_price_right .inputSure{
+	background: url(../../images/buttonGroup01.png) no-repeat 0 0px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    height: 27px;
+    margin-left: 20px;
+    width: 66px;
+	}
+
+.rework .writePrice .div_price .div_price_right .inputSure:hover{
+	background: url(../../images/buttonGroup01.png) no-repeat 0 -27px;
+	}
+
+
+.rework .chooseedNum{
+	width:800px;
+	height:40px;
+	margin:8px auto;
+	text-align:right;
+	}
+.rework .chooseedNum .numb,
+.rework .chooseedNum .total{
+	color:#e73e3b;
+	}
+.rework .explain{
+	position:relative;
+	top:0px;
+	left:0;
+	width:800px;
+	height:120px;
+	color:#a0a0a0;
+	margin:0 auto;
+	border-top: 1px solid #E3E3E3;
+	}
+.rework .explain .ep1{
+	height:30px;
+	line-height:30px;
+	color:#3d3d3d;
+	font-size:14px;
+	}
+.rework .explain .ep{
+	height:22px;
+	line-height:22px;
+	font-family:"宋体";
+	}
+</style>
+</head>
+
+<body>
+ <!--代表作品弹出框-->
+    <div class="rework" id="divChooseWorkPop">
+    	<input type="hidden" id="hiddenv" />
+    	          
+    	<div class="top">
+    		<h2>选择应征作品并报价</h2>
+			<a href="javascript:cloosePopBox();"></a>
+    	</div> 
+        
+        <div class="div_character">
+    		<h2>报价第二步</h2>
+            <div class="write">
+            	<span>填写并确认作品价格：</span>
+            	<span class="cen">您尚未完成报价，清确认每个作品均已确认报价！</span>
+            </div>
+    	</div> 
+        
+        
+    	<div class="writePrice">
+            <div class="viewHead" id="divViewRe">
+            	<ul>
+                	<li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                
+                	<li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                
+                	<li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                
+                	<li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" onkeyup="onlyWriteNum(this)" onafterpaste="onlyWriteNum(this)"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" 
+                                    onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                
+                	<li>
+                    	<div class="div_price">
+                        	<div class="close"></div>
+                        	<div class="div_price_left">
+                            	<img src="../../pic/4.png" />
+                            </div>
+                            <div class="div_price_right">
+                            	<div class="num">
+                                	<span>作品编号：</span>
+                                	<span>21212121212112121</span>
+                                </div>
+                                <div class="state">
+                                	<span>当前状态：</span>
+                                	<span>未发布</span>
+                                </div>
+                                <div class="stateq">
+                                	<span>版权售价：</span>
+                                </div>
+                                <div class="value">
+                                	<input class="inputVal" type="text" 
+                                    onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                                    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                    <span>元</span>
+                                	<input class="inputSure" type="button" onclick="" value="确认"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <div style="clear:both;"></div>
+                </ul>
+            </div>
+    	</div>
+        
+        
+        <div class="chooseedNum">
+			<span>当前应征作品数量为：</span>
+			<span class="numb">4</span>
+			<span>张，报价总额为</span>
+			<span class="total">41212</span>
+			<span>元</span>
+    	</div>
+            
+        <div class="submit">
+			<input class="choose" type="button" value="继续选择作品" onclick=""/>
+			<input class="sub" type="button" value="提交报价" onclick="submitPopBox();" id="submitBJ" disabled="disabled"/>
+    	</div>
+        
+        <div class="explain">
+            <div class="ep1">收入说明：</div>
+            <div class="ep">您的收入为应约收入总额的90%；扣除部分包括：国家收取的税收与附加费、银行或第三方支付进出转账汇款手续费等。</div>
+        </div>
+    </div>
+    <style>
+		
+
+		/*水平滚动样式*/
+		.slider-box{
+			position: relative;
+			top:0;
+			left:0;
+			height: 125px;
+			width: 785px;
+			margin: 0 auto;
+			margin-top:10px;
+			border: 1px solid #ccc
+			}
+		.slider-btn{
+			position:absolute;
+			top:-26px;
+			height:20px;
+			width: 20px;
+			background: url(images/changePage.png) no-repeat;
+			}
+		.slider-next{
+			right:30px;
+			background-position:0 -72px;
+			}
+		.slider-next:hover{
+			background-position:0 -96px;
+			}
+			
+		.slider-prev{
+			right:00px;
+			background-position:0 0;
+			}
+			
+		.slider-prev:hover{
+			background-position:0 -24px;
+			}
+		.slider-wrapper{
+			height: 100%;
+			position: relative;
+			top:0;
+			left:0;
+			width: 785px;
+			overflow:hidden;
+			}
+		.slider-wrapper ul{
+			position: absolute;
+			top:0;
+			left:0;
+			height: 100%;
+			width: 800px;}
+		.slider-wrapper li{
+			float: left;
+			width:132px;
+			position: relative; 
+			top:0;
+			left:0;
+			}
+		.slider-wrapper li img{
+			width: 125px;
+			height: 125px;
+			border: none;
+			float: left;
+			}
+
+
+	</style>
+  
+</body>
+</html>

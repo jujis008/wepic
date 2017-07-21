@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+    <package name="com.wetuo.wepic.core.actions.ConfigurationActionofConfigrue"
+		extends="larry-default">
+		<action name="configure*" class="configuration">
+		    <!-- 配置中心 -->
+			<result name="configuration">/back/configurationCentre/accountSecurity/accountInfo/changeEmailByPassword.jsp</result>
+			<result name="changesteptwo">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepTwo.jsp</result>
+			<result name="sendregemail" type="redirect">configure!sendsuc.do</result>
+			<result name="sendsuc">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepThree.jsp</result>
+			<result name="checkmailfail">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepFailed.jsp</result>
+			<result name="modifysuc">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepSuccess.jsp</result>
+			<result name="securityIndex">/back/configurationCentre/accountSecurity/securityIndex.jsp</result>
+			<result name="mobilevalidate"> /back/configurationCentre/accountSecurity/accountInfo/changeEmailByPhone.jsp</result>
+			
+			
+			<!-- 修改手机 -->
+			<result name="modifymobile">/back/configurationCentre/accountSecurity/accountInfo/changePhoneByPassword.jsp</result>	
+			<result name="changephonesteptwo">/back/configurationCentre/accountSecurity/accountInfo/changePhoneTwo.jsp</result>
+			<result name="changephonesuc">/back/configurationCentre/accountSecurity/accountInfo/changePhoneSuccess.jsp</result>
+			<result name="changephonebycurrentemail">/back/configurationCentre/accountSecurity/accountInfo/changephonebyemail.jsp</result>
+			<result name="changephonefail">/back/configurationCentre/accountSecurity/accountInfo/changePhoneFailed.jsp</result>
+			
+			<!-- 修改密码 -->
+			<result name="modifypassword">/back/configurationCentre/accountSecurity/accountInfo/changePassword.jsp</result>
+			<result name="modifypwdsuc">/back/configurationCentre/accountSecurity/accountInfo/changePasswordSuccess.jsp</result>
+			
+			<!--个人实名认证 	-->
+			
+			<result name="personvalidate">/back/configurationCentre/accountSecurity/realauthentication/personvalidate.jsp</result>
+			<result name="personvalidateing" type="redirect">configure!personvalidateprocess.do</result>
+			<result name="personvalidateprocess">/back/configurationCentre/accountSecurity/realauthentication/personvalidateprocess.jsp</result>
+			
+			<result name="personvalidatesuc">/back/configurationCentre/accountSecurity/realauthentication/personvalidatesuc.jsp</result>
+			<result name="personvalidatefail">/back/configurationCentre/accountSecurity/realauthentication/personvalidatefail.jsp</result>
+			
+			<!-- 企业实名认证 -->
+			<result name="enterpricevalidate">/back/configurationCentre/accountSecurity/realauthentication/enterpricevalidate.jsp</result>
+			<result name="enterpricevalidateing" type="redirect">configure!enterpricevalidateprocess.do</result>
+			<result name="enterpricevalidateprocess">/back/configurationCentre/accountSecurity/realauthentication/enterpriceprocess.jsp</result>
+			<result name="enterpricevalidatesuc">/back/configurationCentre/accountSecurity/realauthentication/enterpricesuc.jsp</result>
+			<result name="enterprisevalidatefail">/back/configurationCentre/accountSecurity/realauthentication/enterpricefail.jsp</result>
+			
+			<result name="govermentvalidate">/back/configurationCentre/accountSecurity/realauthentication/governmentvalidate.jsp</result>
+			<result name="govermentvalidateing" type="redirect">configure!govermentvalidateingprocess.do</result>
+			<result name="govermentvalidateingprocess">/back/configurationCentre/accountSecurity/realauthentication/governmentprocess.jsp</result>
+			<result name="govermentvalidatesuc">/back/configurationCentre/accountSecurity/realauthentication/governmentsuc.jsp</result>
+			<result name="govermentvalidatefail">/back/configurationCentre/accountSecurity/realauthentication/governmentfail.jsp</result>
+			
+			<result name="mediavalidate">/back/configurationCentre/accountSecurity/realauthentication/mediavalidate.jsp</result>
+			<result name="mediavalidateing" type="redirect">configure!mediavalidateingprocess.do</result>
+			<result name="mediavalidateingprocess">/back/configurationCentre/accountSecurity/realauthentication/mediavalidateprocess.jsp</result>
+			<result name="mediavalidatesuc">/back/configurationCentre/accountSecurity/realauthentication/mediavalidatesuc.jsp</result>
+			<result name="mediavalidatefail">/back/configurationCentre/accountSecurity/realauthentication/mediavalidatefail.jsp</result>
+			
+			<result name="othervalidate">/back/configurationCentre/accountSecurity/realauthentication/othervalidate.jsp</result>
+			<result name="othervalidateing" type="redirect">configure!othervalidateingprocess.do</result>
+			<result name="othervalidateingprocess">/back/configurationCentre/accountSecurity/realauthentication/othervalidateprocess.jsp</result>
+			<result name="othervalidatesuc">/back/configurationCentre/accountSecurity/realauthentication/othervalidatesuc.jsp</result>
+			<result name="othervalidatefail">/back/configurationCentre/accountSecurity/realauthentication/othervalidatefail.jsp</result>
+			
+			<!-- 管理员审核实名认证 -->
+			<result name="adminpersoncheck">/administrator/user/adminCheckPersonalList.jsp</result>
+			<result name="adminpersoncheckbytype">/administrator/user/adminpersoncheckbytype.jsp</result>
+			<result name="checkpersondetail"> /administrator/user/adminCheckPersonDetail.jsp </result>
+			<result name="checkpersonpass" type="redirect">configure!adminpersonlist.do</result>
+			<result name="adminpersonlist">/administrator/user/adminuserlistpersonal.jsp</result>
+			<result name="adminpersontype">/administrator/user/adminuserlistpersontype.jsp</result>
+            <result name="checkpersonnopass" type="redirect">configure!adminpersonchecknopasslist.do</result>
+            <result name="adminpersonchecknopasslist">/administrator/user/adminCheckPersonNopassList.jsp</result>
+            <result name="adminpersonchecknopasslistbytype">/administrator/user/adminCheckPersonNopassListbytype.jsp</result>
+            <result name="checkpersonnopassdetail">/administrator/user/adminCheckPersonNopassDetail.jsp</result>
+            
+            <!-- 管理员审核企业实名认证 -->
+            
+            <result name="adminorganizationcheck">/administrator/user/enterprise/adminorganizationlist.jsp</result>
+            <result name="adminorganizationnopasslist">/administrator/user/enterprise/adminorganizationnopasslist.jsp</result>
+            <result name="checkallnopass" type="redirect">configure!adminorganizationcheck.do</result>
+            <result name="adminorganizationlist">/administrator/user/enterprise/adminuserorganizationlist.jsp</result>
+            <result name="adminorganizationlistoftype">/administrator/user/enterprise/adminuserorganizationlist.jsp</result>
+            <result name="adminorganizationcheckbygoverment">/administrator/user/enterprise/admingovermentlist.jsp</result>
+            <result name="admingovernmentnopasslist">/administrator/user/enterprise/admingovernmentnopasslist.jsp</result>
+            <result name="admindetailcheckofgovernment">/administrator/user/enterprise/admindetailcheckofgovernment.jsp</result>
+            <result name="checkgovernmentnopass" type="redirect">configure!admingovernmentnopasslist.do</result>
+            <result name="admindetailcheckofgovernmentnopass">/administrator/user/enterprise/admindetailcheckofgovernmentnopass.jsp</result>
+            
+            <result name="adminorganizationcheckbymedia">/administrator/user/enterprise/adminmedialist.jsp</result>
+            <result name="adminmedianopasslist">/administrator/user/enterprise/adminmedianopasslist.jsp</result>
+            <result name="admindetailcheckofmedia">/administrator/user/enterprise/admindetailcheckofmedia.jsp</result>
+            <result name="checkgmedianopass" type="redirect">configure!adminmedianopasslist.do</result>
+            <result name="admindetailcheckofmedianopass">/administrator/user/enterprise/admindetailcheckofmedianopass.jsp</result>
+            
+            <result name="adminorganizationcheckbyenterprise">/administrator/user/enterprise/adminenterpriselist.jsp</result>
+            <result name="adminenterprisenopasslist">/administrator/user/enterprise/adminenterprisenopasslist.jsp</result>
+            <result name="admindetailcheckofenterprise">/administrator/user/enterprise/admindetailcheckofenterprise.jsp</result>
+            <result name="checkenterprisenopass" type="redirect">configure!adminenterprisenopasslist.do</result>
+            <result name="admindetailcheckofenterprisenopass">/administrator/user/enterprise/adminenterprisenopasslist.jsp</result>
+            
+            <result name="adminorganizationcheckbyother">/administrator/user/enterprise/adminotherlist.jsp</result>
+            <result name="adminothernopasslist">/administrator/user/enterprise/adminothernopasslist.jsp</result>
+            <result name="admindetailcheckofother">/administrator/user/enterprise/admindetailcheckofother.jsp</result>
+            <result name="checkothernopass" type="redirect">configure!adminothernopasslist.do</result>
+            <result name="admindetailcheckofothernopass">/administrator/user/enterprise/admindetailcheckofothernopass.jsp</result>
+            <!-- 无身份类型 -->
+            <result name="adminusernochooselist">/administrator/user/adminusernochooselist.jsp</result>
+            <result name="adminusernochooselistoftype">/administrator/user/adminusernochooselistoftype.jsp</result>
+		</action>
+	</package>
+</struts>

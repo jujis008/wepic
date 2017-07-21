@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BidCat"
+	table="BidCat"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	<!-- 
+	<many-to-one name="publishCat" 
+		column="publishCat_" 
+		not-null="true" 
+		class="com.qhkj.goodChance.publish.beans.PublishCat" 
+		foreign-key="FK_PublishCat_PublishCat" 
+		index="IDX_PublishCat_PublishCat"  lazy="false" /> 
+	 -->	
+	<property name="pId" type="java.lang.Integer">
+            <column name="pId" not-null="true" />
+        </property>
+		
+	
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="200"
+	/>
+	
+	<property 
+		name="discription"
+		type="java.lang.String"
+		column="discription"
+		length="200"
+	/>
+	<property 
+		name="type"
+		type="java.lang.String"
+		column="type"
+		length="200"
+	/>
+	
+	<property 
+		name="icon"
+		type="java.lang.String"
+		column="icon"
+		length="200"
+	/>
+	<many-to-one name="user" class="com.wetuo.wepic.core.beans.User" column="user_" ></many-to-one>
+	
+	
+		
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

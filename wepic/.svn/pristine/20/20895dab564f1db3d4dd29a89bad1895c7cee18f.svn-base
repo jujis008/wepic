@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	
+	<!-- Add packages here -->
+	<package name="deal" extends="larry-default">
+	
+	
+	   <action name="bid*" class="bidAction">
+	   
+	   <result name="findAllMyBid">/back/personalCentr/bid/releaseRecord.jsp</result>
+	   
+	   <!-- 
+		   	<result name="failedBidOpus">/view/bid/bid_add.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="successBid" type="redirectAction">bid!init.do</result>
+			<result name="bidDetaile">/view/bid/biddetailnew.jsp</result>
+			<result name="list">/view/bid/bid.jsp</result>
+			<result name="findListPhoto" type="redirectAction">bid!getAllAimPeople?id=${id}</result> 
+			<result name="listAim">/view/bid/invitedBid.jsp</result>
+			<result name="confirmImage">/view/bidResponseInvited/bidforOpusConfirm.jsp</result>
+			<result name="addImage">/view/bid/message.jsp</result>
+			<result name="allImage">/view/bidResponseInvited/bidforOpusResponse.jsp</result>
+			<result name="add">/view/bid/bid_add.jsp</result>
+			<result name="edit">/view/bid/bid_edit.jsp</result>
+			<result name="input">/view/bid/bid_{1}.jsp</result>
+			<result name="login">/view/frontend/login.jsp</result>
+			 -->
+		</action>
+	
+	
+	
+	
+	
+	<!--  -->
+	
+	
+	
+		<action name="buyHistory*" class="buyHistoryAction">
+			<result name="list">/view/buyHistory/buyHistory.jsp</result>
+			<result name="add">/view/buyHistory/buyHistory_add.jsp</result>
+			<result name="edit">/view/buyHistory/buyHistory_edit.jsp</result>
+			<result name="input">/view/buyHistory/buyHistory_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="movesuccess">/view/buyHistory/buyHistory_move.jsp</result>
+		</action>
+		
+		<action name="buyCommoditiesHistory*" class="buyCommoditiesHistoryAction">
+			<result name="list">/view/buyCommoditiesHistory/buyCommoditiesHistory.jsp</result>
+			<result name="add">/view/buyCommoditiesHistory/buyCommoditiesHistory_add.jsp</result>
+			<result name="edit">/view/buyCommoditiesHistory/buyCommoditiesHistory_edit.jsp</result>
+			<result name="input">/view/buyCommoditiesHistory/buyCommoditiesHistory_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="buyAccountOperationHistory*" class="buyAccountOperationHistoryAction">
+			<result name="list">/view/buyAccountOperationHistory/buyAccountOperationHistory.jsp</result>
+			<result name="add">/view/buyAccountOperationHistory/buyAccountOperationHistory_add.jsp</result>
+			<result name="edit">/view/buyAccountOperationHistory/buyAccountOperationHistory_edit.jsp</result>
+			<result name="input">/view/buyAccountOperationHistory/buyAccountOperationHistory_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="buyCartDeal*" class="buyCartDealAction">
+			<result name="list">/view/buyCartDeal/buyCartDeal.jsp</result>
+			<result name="add">/view/buyCartDeal/buyCartDeal_add.jsp</result>
+			<result name="edit">/view/buyCartDeal/buyCartDeal_edit.jsp</result>
+			<result name="input">/view/buyCartDeal/buyCartDeal_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="shopsuc">/newbuycart/shoppingcart.jsp</result>
+			<result name="confrimorder">/newbuycart/confirmOrder.jsp</result>
+			<result name="confirmmoney">/newbuycart/confirmMoney.jsp</result>
+			<result name="delCart">/view/frontend/cart.jsp</result>
+			<result name="tradesuc">/newbuycart/sucessPay.jsp</result>
+			<result name="confirmorder">/newbuycart/confirmMoney.jsp</result>
+			<result name="sendToJsp">/newbuycart/confirmOrder.jsp</result>
+			
+		</action>
+		
+		
+	    <action name="buyCommodities*" class="buyCommoditiesAction">
+			<result name="list">/view/buyCommodities/buyCommodities.jsp</result>
+			<result name="add">/view/buyCommodities/buyCommodities_add.jsp</result>
+			<result name="edit">/view/buyCommodities/buyCommodities_edit.jsp</result>
+			<result name="input">/view/buyCommodities/buyCommodities_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+            <result name="buyRecordAdmin">/back/admin/buyRecordAdmin.jsp</result>
+			<result name="buyPhoto">/view/publish/tupianzhengji.jsp</result>
+
+			<result name="downpublish" type="redirect">user!cartend.do?orderId=${downId}</result>
+
+		</action>
+		<action name="buyAccountOperation*" class="buyAccountOperationAction">
+			<result name="list">/view/buyAccountOperation/buyAccountOperation.jsp</result>
+			<result name="add">/view/buyAccountOperation/buyAccountOperation_add.jsp</result>
+			<result name="edit">/view/buyAccountOperation/buyAccountOperation_edit.jsp</result>
+			<result name="input">/view/buyAccountOperation/buyAccountOperation_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="buyTrade">/view/accountWithdraw/buyTradeHistory.jsp</result>
+			<result name="sellTrade">/view/accountWithdraw/sellTradeHistory.jsp</result>
+		</action>
+		
+		<!-- bid -->
+		<action name="bidDetail*" class="bidDetailAction">
+			<result name="list">/view/bidDetail/bidDetail.jsp</result>
+			<result name="add">/view/bidDetail/bidDetail_add.jsp</result>
+			<result name="edit">/view/bidDetail/bidDetail_edit.jsp</result>
+			<result name="input">/view/bidDetail/bidDetail_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="bidAimPerson*" class="bidAimPersonAction">
+		  
+			<result name="list">
+			/view/bidAimPerson/bidAimPerson.jsp</result>
+			<result name="add">/view/bidAimPerson/bidAimPerson_add.jsp</result>
+			<result name="edit">/view/bidAimPerson/bidAimPerson_edit.jsp</result>
+			<result name="invite">
+			<param name="">
+			
+			</param>
+			
+			/view/bidAimPerson/user_photo.jsp?bidId=${bidId}</result>
+			<result name="input">/view/bidAimPerson/bidAimPerson_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="bidResponseInvited*" class="bidResponseInvitedAction">
+			<result name="list">/view/bidResponseInvited/bidResponseInvited.jsp</result>
+			<result name="add">/view/bidResponseInvited/bidResponseInvited_add.jsp</result>
+			<result name="edit">/view/bidResponseInvited/bidResponseInvited_edit.jsp</result>
+			<result name="input">/view/bidResponseInvited/bidResponseInvited_{1}.jsp</result>
+			<result name="publishInvited">/view/bidResponseInvited/publishbid.jsp?type=${type}</result>
+			<result name="isResponseIvitedList">/view/bidResponseInvited/bidIsResponseInvited.jsp</result>
+			<result name="mybidResponse">/view/bidResponseInvited/mybidResponse.jsp</result>
+			<result name="cancelBidList">/view/bid/cancelBid.jsp</result>
+			
+			<result name="inviteSucess" type="redirectAction">bidResponseInvited!checkInvitedUser</result>
+			<result name="readOnlybidMark">/back/bidMarkOnly.jsp</result>
+			
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="bidAccountOperation*" class="bidAccountOperationAction">
+			<result name="list">/view/bidAccountOperation/bidAccountOperation.jsp</result>
+			<result name="add">/view/bidAccountOperation/bidAccountOperation_add.jsp</result>
+			<result name="edit">/view/bidAccountOperation/bidAccountOperation_edit.jsp</result>
+			<result name="input">/view/bidAccountOperation/bidAccountOperation_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="getCountBidDeal">/back/admin/bidRecordAdmin.jsp</result>
+		</action>
+		<action name="bidReceiverConfirmChange*" class="bidReceiverConfirmChangeAction">
+			<result name="list">/view/bidReceiverConfirmChange/bidReceiverConfirmChange.jsp</result>
+			<result name="add">/view/bidReceiverConfirmChange/bidReceiverConfirmChange_add.jsp</result>
+			<result name="edit">/view/bidReceiverConfirmChange/bidReceiverConfirmChange_edit.jsp</result>
+			<result name="input">/view/bidReceiverConfirmChange/bidReceiverConfirmChange_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		<action name="bidForOpus*" class="bidForOpusAction">
+			<result name="list">/view/bidForOpus/bidForOpus.jsp</result>
+			<result name="add">/view/bidForOpus/bidForOpus_add.jsp</result>
+			<result name="edit">/view/bidForOpus/bidForOpus_edit.jsp</result>
+			<result name="input">/view/bidForOpus/bidForOpus_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		
+	
+	</package>
+	
+	
+	<package name="struts3.1" extends="struts-default" namespace="/test">
+		<action name="register" class="com.prograssbar.Register">
+			<result name="register">showregister.jsp</result>
+			<result name="input">register.jsp</result>
+		</action>
+
+		<action name="getState" class="com.prograssbar.GetState">
+		
+		
+		</action>
+
+	</package>
+
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="GhyJakartaMultiPartRequestRef"
+		class="com.prograssbar.GhyJakartaMultiPartRequest" scope="default" />
+
+	<constant name="struts.multipart.handler" value="GhyJakartaMultiPartRequestRef" />
+
+	<constant name="struts.ui.theme" value="simple"></constant>
+	
+	
+		
+</struts>

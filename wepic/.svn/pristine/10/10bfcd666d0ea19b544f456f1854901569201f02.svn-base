@@ -1,0 +1,131 @@
+$(function () {
+	
+	//表格奇偶数行背景颜色
+	tableOddEvenBackground('#tableWithdrawDeposit'); 
+	
+	tabControl('#userAccountBar','#allRecord');
+	
+		
+	achieveBelowIncord("divdropDownIncome","divdropDownViewIncome")					/*获取下拉框值并隐藏	拍摄类别*/
+	
+	SubstringDemo(38);
+	});
+function SubstringDemo(lengthstr){
+	var str = $("#nopassCon").html();
+	if(len(str) > lengthstr){
+		str = str.substring(0, lengthstr) + '...';
+		$("#nopassCon").html(str);
+		}
+   	
+}
+
+	
+
+function clooseNoPassReason(){
+	cloosePopBox('noPassReason');
+	$("#noPassReason").find("textarea").val('');
+	}		
+
+function submitNoPassReason(){
+	var val = $("#noPassReason").find("textarea").val();
+	if(val == null || val =='' ){
+		alert('请输入不通过原因');
+		}
+	else{
+		$("#noPassReason").find("textarea").val('');
+		window.location = 'withdrawPassedList.html';
+		cloosePopBox('noPassReason');
+		}
+	}	
+
+
+function achieveBelowIncord(bolewDiv,showValue){
+	var bolewDivSpan=$("#"+bolewDiv).find("span");
+
+	
+	$(bolewDivSpan).each(function() {
+		$(this).click(
+			function(){
+				$("#txtBeginDate").val('');
+				$("#txtEndDate").val('');
+				
+				$("#"+showValue).html(this.innerHTML);
+				$("#"+bolewDiv).hide();
+				
+				var thisV = trim(this.innerHTML);
+				if(thisV == '全部收入类型' ){
+					$("#tableWithdrawDeposit").show();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '项目收入' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").show();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '出售作品' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").show();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '推广收入' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").show();
+					}
+				});
+	
+		});	
+	$(".divdropDown").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".dropDownBoxValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+	
+	$(".editSelect").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".belowValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+}
+/*获取下拉框值并隐藏*/
+function tabControl(tag,detail){
+	var cardLi=$(tag).find("li");
+	var oDivSon = $(detail).children();
+	var iframeObj;
+	
+        for(var i=0;i<cardLi.length;i++){  
+            cardLi[i].index=i; //input[0].index=0 index是自定义属性
+            cardLi[i].onclick=function(){
+               for(var i=0;i<cardLi.length;i++){  //循环遍历去掉button样式和把div隐藏
+                  cardLi[i].className='';
+                  oDivSon[i].style.display='none';
+               };
+			   
+               this.className='active';  //当前按钮添加样式
+               oDivSon[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+			   
+           };
+         };
+		 
+		 
+	 
+}

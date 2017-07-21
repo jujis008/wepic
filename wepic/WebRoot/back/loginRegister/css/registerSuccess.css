@@ -1,0 +1,131 @@
+*{margin:0;padding:0;}
+
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	color:#848484;
+  	font-family:微软雅黑 ,Arial, Verdana, 宋体;
+  	font-size:12px;
+	}
+/*------------------------------------------------------------*/
+
+/*公共元素控制*/
+img{
+	border:0;
+	}
+ul{
+	list-style:none;
+	}
+a{
+  /*color:#A5A5A5;*/
+  text-decoration:none;
+}
+
+/*公共元素控制*/
+/*------------------------------------------------------------*/
+
+
+/*网页整体布局*/
+
+
+/*topbarRegisterLogin.css */
+
+/*header.css */
+
+
+
+#container{
+	position:relative;
+	top:0;
+	left:0;
+	width:100%;
+	margin:0 auto;
+	background:#f9f9f9;
+	}
+#divRegisterSuccess{
+	border:1px solid #eaeaea;
+	width:942px;
+	height:390px;
+	margin:23px auto;
+	background:#FFFFFF;
+	}
+/*网页整体布局*/
+
+
+
+/*	注册内容开始*/
+
+#divRegisterSuccessTitle{
+	position:relative;
+	margin:0 auto;
+	width:880px;
+	height:92px;
+	border-bottom:1px solid #eaeaea;
+	}
+#divRegisterSuccessTitle span{
+	font-size:26px;
+	font-weight:normal;
+	font-family:"微软雅黑";
+	color:#3c3c3c;
+	position:absolute;
+	top:40px;
+	left:400px;
+	}
+
+	
+#activationEmail{
+	width:480px;
+	height:200px;
+	margin:50px auto;
+	text-align:left;
+	font-family:"宋体";
+	}
+#activationEmail p{
+	color:#595758;
+	font-size:12px;
+	line-height:22px;
+	}	
+#activationEmail span{
+	font-size:14px;
+	color:red;
+	}
+#divButtonactivationEmail{
+	margin-top:38px;
+	text-align:center;
+	}
+#buttonactivationEmail{
+	cursor:position;
+	font-size:16px;
+	color:#FFFFFF;
+	font-family:"微软雅黑";
+	width:166px;
+	height:36px;
+	cursor:pointer;
+	border:0px;
+	/*background:#c24749;
+	border:1px solid #c82260;
+	border-radius: 5px 5px 5px 5px;*/
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0px -954px;
+	}
+#buttonactivationEmail:hover{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0px -990px;
+	}
+#buttonactivationEmail:active{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0px -1026px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	}
+#divButtonactivationEmail p{
+	margin-top:28px;
+	}
+#divButtonactivationEmail a {
+    font-size: 12px;
+	color: #0099F3;
+	text-decoration:underline;
+	}
+#divButtonactivationEmail a:hover {
+  	text-decoration:none;
+	}
+	
+/*	注册内容结束*/

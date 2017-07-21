@@ -1,0 +1,32 @@
+package com.wetuo.wepic.core.service ;
+ 
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.criterion.DetachedCriteria;
+ 
+import com.wetuo.wepic.core.beans.Message;
+import com.wetuo.wepic.common.hibernate.Pager;
+ 
+public interface MessageService {
+ 
+ 	List<Message> findAll();
+ 	List<Message> findPart(String strFields,String[] strArrValues);
+ 	
+	public Pager list(int pageSize, int pageNo)  ;
+	public Pager list(String username, int pageSize, int pageNo) ;
+	public Pager listByStatu(String username, int pageSize, int pageNo) ;
+	public Pager list(Map<String,Object>  mapSqlParam, int pageSize, int pageNo) ;
+	public Pager findbyDetachedCriteria(DetachedCriteria detachedCriteria,int pageNo,int pageSize);
+   	public Message select(Integer id);
+   	public Message select(Integer userId,String s);
+	public Integer insert(Message record);
+	public boolean update(Message record);
+   	public boolean delete(Message record);
+	public boolean delete(Integer id) ;
+	public List<Message> allMessagesByUser(Integer userId);
+	public Message selectBySequence(Integer userId);
+	public Message selectBySequence2(Integer userId);
+	public Message selectBySequence3(Integer userId);
+	public Message selectBySequence4(Integer userId);
+}//end class

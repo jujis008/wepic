@@ -1,0 +1,328 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="<%=basePath %>public/images/logoSmall.ico"/>
+
+<title>wepic管理-个人中心-我的作品库-发布作品-选择发布作品类型</title>
+
+<script type="text/javascript" src="<%=basePath %>public/js/jquery.js"></script>
+</head>
+
+<script>
+$(document).ready(function() {
+	var htmlWidth = document.body.clientWidth;
+	var htmlHeight = document.body.clientHeight;
+	var borwerViewWidth =  document.documentElement.clientWidth;
+	var borwerViewHeight =  document.documentElement.clientHeight;
+	
+	
+	var getwidth = parseInt($("#divChoseUser").css("width"));
+	var getheight = parseInt($("#divChoseUser").css("height"));
+	
+	var topWidth = (borwerViewWidth - getwidth)/2;
+	var topHeight = (borwerViewHeight - getheight)/ 2;
+	
+	$("#divChoseUser").css({ "position": "absolute","z-index":"10000","top":200 + "px" , "left": topWidth+"px"});
+     
+}); 
+	
+	
+function cloosePopBox(){
+	if (confirm("您确定要关闭本页吗？")){
+		window.open('','_parent','');
+  		window.close(); 
+	}
+}	
+
+
+
+
+/*打开图片作品*/
+function relPicWork(){
+	openPopUpBox('chooseWork');
+	
+	window.frames['childPic'].document.getElementById('hiddenv').value = "relPicWork";			//传值给 iframe text
+	}
+/*打开图片作品*/
+
+/*打开故事作品*/
+function relStoryWork(){
+	openPopUpBox('chooseStory');
+	
+	window.frames['childStory'].document.getElementById('hiddenv').value = "relStoryWork";			//传值给 iframe text
+	}
+/*打开故事作品*/
+
+
+
+
+
+
+//隐藏本身
+function closeOwnBox(obj){
+	
+	$("#greybackground").remove();
+	$("#"+obj).hide();
+	}
+//隐藏本身
+
+
+
+	
+//显示发布图片页面
+
+function showPicRel(url){
+	//location.href = "../personalCentr/myworklib/relPic.html";
+	$("#divChoseUser").hide();									//隐藏选择大类
+	$("html,body").css({ "overflow": "hidden"});
+	$("#divrelpic").show();										//显示编辑并发布图片作品
+	$("#divrelpic").css({ "position": "absolute","z-index":"10000","top": "0px" , "left": "0px"});
+	
+	
+	var url1 ="${pageContext.request.contextPath}/back/pubimg/"+url; 							//把选择的图片路径传过去
+	
+	
+	
+	var obj = window.frames['childPicRel'].document.getElementById("divChangeHead");
+	
+	$(obj).find("img").attr("src",url1);
+	}
+//显示发布图片页面
+	
+
+	
+//显示发布故事页面
+
+function showStoryRel(url){
+	//location.href = "../personalCentr/myworklib/relPic.html";
+	$("#divChoseUser").hide();									//隐藏选择大类
+	$("html,body").css({ "overflow": "hidden"});
+	$("#divrelStory").show();										//显示编辑并发布图片作品
+	$("#divrelStory").css({ "position": "absolute","z-index":"10000","top": "0px" , "left": "0px"});
+	
+	
+	var url1 ="${pageContext.request.contextPath}/back/pubimg/"+url; 							//把选择的图片路径传过去
+	
+	
+	
+	var obj = window.frames['childStoryRel'].document.getElementById("divChangeHead");
+	
+	$(obj).find("img").attr("src",url1);
+	}
+//显示发布故事页面
+
+
+		
+/*弹出层*/
+function openPopUpBox(divPopUpBox){
+	var htmlWidth = document.body.clientWidth;
+	var htmlHeight = document.body.clientHeight;
+	var borwerViewWidth =  document.documentElement.clientWidth;
+	var borwerViewHeight =  document.documentElement.clientHeight;
+	
+	var popUpBox = document.getElementById(divPopUpBox);
+	
+	var getw =$(popUpBox).css("width")
+	var geth = $(popUpBox).css("height");
+	
+	
+	if(getheight == '' || getheight == null){
+		getheight = 0;
+		}
+		
+	var getwidth = parseInt(getw);
+	var getheight = parseInt(geth);
+	
+	
+		
+	var topWidth = (borwerViewWidth - getwidth)/2;
+	var topHeight = (borwerViewHeight - getheight)/ 2;
+	
+	
+	
+		
+	if(topHeight <= 0){
+		topHeight = 10;
+		}
+	/*else{
+		document.body.style.overflow=*/
+	$("#greybackground").remove();
+	$("body").prepend('<div id="greybackground" style="position:absolute; z-index:9999;background:black;display:none"></div>');
+	$("html,body").animate({ scrollTop:0},0);
+	//$("html,body").css({ "overflow": "hidden"});
+	$("#greybackground").css({ "opacity": "0.8", "height": htmlHeight+"px","display":"block","width": htmlWidth+"px","background":"black","top":"0px","left":"0px"});
+	$("#greybackground").show();
+	
+	$("#"+divPopUpBox).show();
+	$("#"+divPopUpBox).css({ "position": "absolute","z-index":"10000","top":topHeight + "px" , "left": topWidth+"px"});
+	
+	/*var qq = $("#greybackground").css("z-index");
+	alert(qq);*/
+	/*window.scrollTo(0,$(document).scrollTop());*/
+	
+}	
+
+function cloosePopBox(obj){
+window.location.href='<%=request.getHeader("REFERER")%>'
+}
+
+
+</script>
+
+<style type="text/css">
+body{
+	background:#333333;
+	}
+*{padding:0;margin:0;}
+.userBox{
+	left: 0;
+    position: relative;
+    top: 0;
+	width:876px;
+	height:370px;
+	background:#ffffff;
+	}
+.userBox .top {
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 56px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 876px;
+}
+.userBox .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 56px;
+    line-height: 56px;
+    padding-left: 30px;
+    width: 500px;
+	text-align:left;
+	}
+.userBox .top a {
+    background:url(${pageContext.request.contextPath}/public/images/closeBox.png) no-repeat 0 0;
+    height: 56px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.userBox .top a:hover{
+	background:url(${pageContext.request.contextPath}/public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.userBox .top a:active{
+	background:url(${pageContext.request.contextPath}/public/images/closeBox.png) no-repeat 0 -116px;
+	}
+.userBox .ico {
+    height: 314px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 876px;
+}
+.userBox .ico .icoa{
+    width: 290px;
+	text-align:center;
+	margin:0 auto;
+	margin-top:45px;
+	float:left;
+	}
+.userBox .ico .icoa p{
+	font-family:"微软雅黑";
+	color:#595959;
+	margin-top:20px;
+	}
+.userBox .ico a{
+    width: 115px;
+    height: 115px;
+	display:inline-block;
+	cursor:pointer;
+	}
+.userBox .ico .pic{
+	background:url(${pageContext.request.contextPath}/back/pubimg/images/chooseRelWork.png) 0 0 no-repeat;
+	}
+.userBox .ico .pic:hover{
+	background:url(${pageContext.request.contextPath}/back/pubimg/images/chooseRelWork.png) 0 -357px no-repeat;
+	}
+.userBox .ico .story{
+	background:url(${pageContext.request.contextPath}/back/pubimg/images/chooseRelWork.png) 0 -119px no-repeat;
+	}
+.userBox .ico .story:hover{
+	background:url(${pageContext.request.contextPath}/back/pubimg/images/chooseRelWork.png) 0 -476px no-repeat;
+	}
+.userBox .ico .newrelStory{
+	background:url(${pageContext.request.contextPath}/back/pubimg/images/chooseRelWork.png) 0 -238px no-repeat;
+	}
+.userBox .ico .newrelStory:hover{
+	background:url(${pageContext.request.contextPath}/back/pubimg/images/chooseRelWork.png) 0 -594px no-repeat;
+	}
+</style>
+<body>
+
+<!--[if lte IE 6]>
+<script src="../../../userView/public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+
+    <div class="userBox" id="divChoseUser">
+		<div class="top">
+    		<h2>选择要发布作品类型</h2>
+			<a class="closeUserBox" href="javascript:cloosePopBox();"></a>
+   	 	</div>
+    	
+    	<div class="ico">
+        	<div class="icoa">
+	    		<a class="pic" onclick="relPicWork();"></a>
+                <p>发布图片作品</p>
+            </div>
+            <div class="icoa">
+    	    	<a class="story" onclick="relStoryWork();"></a>
+                <p>发布已有摄影故事</p>
+            </div>
+            <div class="icoa">
+    	    	<a class="newrelStory" href="relWork.html"></a>
+                <p>新建并发布摄影故事</p>
+            </div>
+	    </div>
+	</div>
+    
+    <!--选择图片作品aa选图wwhttp://localhost:81/wepic/searchPublishPic!searchByTermfromMylibforPublish.dow片-->
+    <div id="chooseWork" style="width:1000px;height:800px; display:none;">
+    	<iframe name='childPic' style="border:0px;width:1000px;height:800px" src="${pageContext.request.contextPath}/searchPublishPic!searchByTermfromMylibforPublish.do"></iframe>
+    </div>
+    <!--选择图片作品选图片-->
+    
+     <!--选择后发布图片作品-->
+    <div id="divrelpic" style="width:100%;height:100%; z-index:100000000;display:none;">
+    	<iframe name='childPicRel' style="border:0px;width:100%;;height:100%;z-index:100000000" src="relPic.html"></iframe>
+    </div>
+    <!--选择后发布图片作品-->
+    
+    
+    
+     <!--选择已有摄影故事-->
+    <div id="chooseStory" style="width:1000px;height:800px; display:none;">
+    	<iframe name='childStory' style="border:0px;width:1000px;height:800px" src="${pageContext.request.contextPath}/back/pubimg/chooseHaveStoryHead.html"></iframe>
+    </div>
+    <!--选择已有摄影故事-->    
+    
+     <!--选择后发布摄影故事-->
+    <div id="divrelStory" style="width:100%;height:100%; z-index:100000000;display:none;">
+    	<iframe name='childStoryRel' style="border:0px;width:100%;;height:100%;z-index:100000000" src="relWork.html"></iframe>
+    </div>
+    <!--选择后发布摄影故事-->
+</body>
+</html>

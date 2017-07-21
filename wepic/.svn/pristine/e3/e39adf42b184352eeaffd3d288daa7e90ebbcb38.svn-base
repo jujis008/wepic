@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BuyCommoditiesHistory"
+	table="BuyCommoditiesHistory"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="publish" 
+		column="publish_" 
+		not-null="true"
+		class="com.wetuo.wepic.publish.beans.Publish" 
+		foreign-key="FK_BuyCommoditiesHistory_Publish" 
+		index="IDX_BuyCommoditiesHistory_Publish"/> 
+	
+	<property 
+		name="copyrightOrUsage"
+		type="java.lang.Integer"
+		column="copyrightOrUsage"
+		length="50"
+	/>
+	<property 
+		name="amount"
+		type="java.lang.Integer"
+		column="amount"
+		length="50"
+	/>
+	<property 
+		name="startTime"
+		type="java.sql.Timestamp"
+		column="startTime"
+		length="50"
+	/>
+	
+	<many-to-one name="buyHistory"	column="buyHistoryid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

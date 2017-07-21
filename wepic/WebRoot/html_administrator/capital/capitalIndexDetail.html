@@ -1,0 +1,327 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../public/images/logoSmall.ico"/>
+
+<title>wepic管理员_资金_总概况_详情</title>
+
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+
+
+
+
+<!--公共js-->
+
+<script type="text/javascript" src="../publicAdministrator/js/publicAdministrator.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../publicAdministrator/css/publicAdministrator.css" />
+<link type="text/css" rel="stylesheet" href="../../public/css/public.css" />
+
+
+<link type="text/css" rel="stylesheet" href="css/capitalIndexDetail.css" />
+
+<script type="text/javascript" src="js/capitalIndexDetail.js"></script>
+
+
+
+
+</head>
+
+<body>
+<div id="container">
+	
+    
+<!-- 头部结束-->
+	<!-- logo行-->
+    <div id="divTop">
+    	<div class="divtop">
+        	<div class="divLogo">
+                <a class="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+                    <img src="../../public/images/wepic_logo.png" alt="唯图网"/>
+                    <p><span class="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+                </a>
+            </div>
+            
+            <div class="divAdminSpan">
+                <span class="center">管理员中心</span>
+                <span>V.2.0.0</span>
+            </div>
+            
+            <div class="divTopPperation">
+                <div class="left">
+                	<div class="one">SuperAdmin</div>
+                	<div class="two">超级管理员</div>
+                </div>
+                <div class="configuration">
+                	<a href="javascript:">
+                    	<div class="config"></div>
+						<p>配置中心</p>
+                    </a>
+                </div>
+                <div class="divExit">
+                	<a href="javascript:">
+                    	<div class="exit"></div>
+						<p>安全退出</p>
+                    </a>
+                </div>
+            </div>
+    	</div>
+    
+                    
+   	</div>
+    <!-- logo行-->
+    
+    
+    
+    
+    <!-- 分割线-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+	
+    <!-- 导航 -->
+  	<div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="index">
+            		<a href="javascript:">首页</a>
+            	</li>
+            	<li id="user">
+            		<a href="javascript:">用户</a>
+            	</li>
+            	<li id="production">
+            		<a href="javascript:">作品</a>
+           	 	</li>
+            	<li id="project">
+            		<a href="javascript:">项目</a>
+            	</li>
+                <li id="capital" class="active">
+            		<a href="javascript:">资金</a>
+            	</li>
+            	<li id="transaction">
+            		<a href="javascript:">交易</a>
+           	 	</li>
+            	<li id="complaint">
+            		<a href="javascript:">投诉</a>
+            	</li>
+                <li id="subscription">
+            		<a href="javascript:">订阅</a>
+            	</li>
+                <li id="message">
+            		<a href="javascript:">消息</a>
+            	</li>
+        	</ul>
+            
+            <div class="onLine">
+                <span>当前在线：</span>
+                <span>423432</span>人
+            </div>
+        </div>
+        
+        
+	</div>
+    <!-- 导航  end-->
+    
+     <!-- 二级导航 -->
+  	<div id="assistantBar">
+    	<div class="twoStage" id="divTwoStage">
+       	 	<a href="capitalIndex.html"><div class='bar active'><span>资金总览</span><i></i></div></a>
+            
+        	<a href="withdrawDepositList.html"><div class='bar'><span>提现列表</span><i></i></div></a>
+            
+            <a href="stayInvoiceList.html"><div class='bar'><span>发票列表</span><i></i></div></a>
+            
+            <a href="transferOne.html"><div class='bar'><span>转账支付</span><i></i></div></a>
+            
+        </div>
+    	
+    </div>
+    <!-- 二级导航  end-->
+    
+    
+    
+    
+    
+    <!--内容-->
+    <div class="container_top">
+       <h2><span>Wooda</span>的资金详情</h2> 	
+       <input class="goBack" type="button" id="applicationDeposit" value="返回列表" onclick="window.location = 'capitalIndex.html' "/>
+        
+    </div>
+        
+    
+    <div class="user_account_info">
+    	<div class="account_info_left">
+        	
+            <div class="headImg">
+              <div class="headImgCon">
+              	  <!--默认头像--><img class="head" src="../../back/pubimg/images/defaultHead_80.png" /><!--默认头像-->
+                 <!-- <img src="../../back/pubimg/pic/3.png" class="head"/>-->
+                  <img src="../../back/pubimg/images/radHead.png" class="radius"/>
+              </div>
+            </div>
+            <div class="info">
+                <div class="name">
+                    <span>你是谁</span>
+                    <a class="approveNo" title="未实名认证"></a>
+                    <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                    <!-- <a class="approveQy" title="企业实名认证"></a>-->
+                    <a class="gradeThree"></a>
+                </div>
+                <div class="detail">
+                    <a class="userPositionNameG" title="年龄"><span>56</span>岁</a>
+                    <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                    <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                </div>
+                
+                <!--这里是企业-->
+                <!--<div class="detail">
+                    <a class="userPositionAddress" title="企业地址"><span>上海</span></a>
+                    <a class="pstype pstypeqy" title="企业类型"><div class='bar active'><span>政府机构</span><i></i></div></a>
+                </div>-->
+                <!--这里是企业-->
+            </div>
+            
+            <div class="time">
+                <span>注册时间：</span>
+                <span>2013-02-19</span>
+                <span>12:20:20</span>
+            </div>
+        </div>
+        
+    	<div class="account_info_right">
+        	<div class="div_money">
+            	<div class="div_money_con">
+                	<span>账户总额</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            	<div class="div_money_con">
+                	<span>冻结金额</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            </div>
+            
+            <div class="div_money">
+            	<div class="div_money_con">
+                	<span>他的收益</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            	<div class="div_money_con">
+                	<span>账户余额</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            </div>
+            
+            <div class="div_money">
+            	<div class="div_money_con">
+                	<span>累计成交金额</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            	<div class="div_money_con">
+                	<span>他的平台收益</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            </div>
+            
+        	<div class="div_money div_money_last">
+            	<div class="div_money_con">
+                	<span>他的收益率</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            	<div class="div_money_con">
+                	<span>本月成交额</span>
+                	<span class="money">10222012</span>
+                	<span class="yuan">元</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="user_account_bar">
+    	<ul id="userAccountBar">
+            <li class="active">
+                <a href="javascript:">充值记录</a>
+            </li>
+            <li>
+                <a href="javascript:">提现记录</a>
+            </li>
+            <li>
+                <a href="javascript:">收入记录</a>
+            </li>
+            <li>
+                <a href="javascript:">支出记录</a>
+            </li>
+        </ul>
+    </div>
+    <!--内容-->
+    
+    <div class="all_record" id="allRecord">
+    	<div class="topUpRecordOne">
+        	<iframe name='childTopUp' src="public/topUpRecordOne.html" id="childTopUp"></iframe>
+        </div>
+        
+        <div class="withdrawDepositRecordTwo">
+        	<iframe name='childWithdrawDeposit' src="public/withdrawDepositRecordTwo.html"></iframe>
+        </div>
+        
+        <div class="incomeRecordThree">
+        	<iframe name='childIncome' src="public/incomeRecordThree.html"></iframe>
+        </div>
+        
+        <div class="expenditureRecordFour">
+        	<iframe name='childExpenditure' src="public/expenditureRecordFour.html"></iframe>
+        </div>
+    	
+        
+        
+        
+        
+        
+        
+    </div>
+    
+        
+    <!--foot 开始-->
+    <div id="divFooter">
+    	<div class="divfooter">
+        	<a href="http://www.wepic.cn"  target="_blank" class="toIndex">网站首页</a>|
+        	<a href="http://www.cnzz.com"  target="_blank" class="toStation">站长统计</a>|
+            <a href="http://tongji.baidu.com/web/welcome/login"  target="_blank" class="toBaiduStation">百度站长工具</a>|
+            <a href="http://e.baidu.com" target="_blank" class="toBaiduGeneralize">百度推广</a>
+        </div>
+    </div>
+    
+    <!--foot 结束-->
+   
+	<div id="goTopBtn" style="display:none;"></div>
+</div>
+<!--[if lte IE 6]>
+<script src="../../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+</body>
+</html>

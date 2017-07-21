@@ -1,0 +1,593 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>收入记录</title>
+
+
+<script type="text/javascript" src="../../../public/js/jquery.js"></script>
+
+<!--公共js-->
+<link type="text/css" rel="stylesheet" href="../../../public/css/header.css" />
+<link type="text/css" rel="stylesheet" href="../../../public/css/public.css" />
+<link type="text/css" rel="stylesheet" href="../../../public/css/backMainBar.css" />
+
+
+
+<link type="text/css" rel="stylesheet" href="css/incomeRecord.css" />
+
+
+<link type="text/css" rel="stylesheet" href="../../../back/pubimg/css/lyz.calendar.css"/>
+<script src="../../../public/js/lyz.calendar.min.js" type="text/javascript"></script>
+<script>
+        $(function () {
+			//表格奇偶数行背景颜色
+			tableOddEvenBackground('#tableWithdrawDeposit'); 
+			tableOddEvenBackground('#tableWithdrawDeposit1'); 
+			tableOddEvenBackground('#tableWithdrawDeposit2'); 
+			tableOddEvenBackground('#tableWithdrawDeposit3'); 
+			
+			
+			
+            $("#txtBeginDate").calendar({
+                controlId: "divDate",                                       // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+                speed: 200,                                                 // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+                complement: true,                                           // 是否显示日期或年空白处的前后月的补充,默认：true
+                readonly: true,                                             // 目标对象是否设为只读，默认：true
+               	addToDiv: "choseTime"
+                
+            });
+            
+            $("#txtEndDate").calendar({
+                controlId: "divDate2",                                       // 弹出的日期控件ID，默认: $(this).attr("id") + "Calendar"
+                speed: 200,                                                 // 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000),默认：200
+                complement: true,                                           // 是否显示日期或年空白处的前后月的补充,默认：true
+                readonly: true,                                             // 目标对象是否设为只读，默认：true
+               	addToDiv: "choseTime2"
+                
+            });
+		
+		
+		achieveBelowIncord("divdropDownIncome","divdropDownViewIncome")					/*获取下拉框值并隐藏	拍摄类别*/
+		
+		});
+/*显示下拉框列表*/
+function showBelow(showDiv){
+	$("#"+showDiv).show();
+	$("#"+showDiv).parent().parent().css("z-index","200");
+	}		
+
+//去掉字符串头尾空格   
+function trim(str) {   
+    return str.replace(/(^\s*)|(\s*$)/g, "");   
+} 
+		
+//表格奇偶数行背景颜色
+function tableOddEvenBackground(id){ 
+    odd = {"background":"#F9F9F9"};				//奇数样式  
+    even = {"background":"#FFFFFF"};			//偶数样式 
+	
+    hover = {"background":"#fff8eb"};			//滑过样式 
+	
+	
+    $(id).find("tr").each(function(index,element){  
+        if(index % 2 == 1)  
+            $(this).css(odd);  
+        else  
+            $(this).css(even);  
+			
+		
+    });
+	
+	
+		
+	$(id).find("tr").each(function(index,element){ 		
+		$(this).hover(
+			function(){
+				$(this).css(hover);
+				},
+			function(){
+				if(index % 2 == 1)  
+					$(this).css(odd);  
+				else  
+					$(this).css(even); 
+				}
+		); 
+	 }); 
+} 
+	
+
+function achieveBelowIncord(bolewDiv,showValue){
+	var bolewDivSpan=$("#"+bolewDiv).find("span");
+
+	
+	$(bolewDivSpan).each(function() {
+		$(this).click(
+			function(){
+				$("#txtBeginDate").val('');
+				$("#txtEndDate").val('');
+				
+				$("#"+showValue).html(this.innerHTML);
+				$("#"+bolewDiv).hide();
+				
+				var thisV = trim(this.innerHTML);
+				if(thisV == '全部收入类型' ){
+					$("#tableWithdrawDeposit").show();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '项目收入' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").show();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '出售作品' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").show();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '推广收入' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").show();
+					}
+				});
+	
+		});	
+	$(".divdropDown").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".dropDownBoxValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+	
+	$(".editSelect").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".belowValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+}
+/*获取下拉框值并隐藏*/
+
+
+
+
+
+function query(){
+	var startTime = $("#txtBeginDate").val();
+	var endTime = $("#txtEndDate").val();
+	
+	
+	var startTimeV = parseInt(trimH(trim(startTime)));
+	var endTimeV = parseInt(trimH(trim(endTime)));
+	
+	
+	
+	if(startTime == null || startTime == ''){
+		alert("请选择开始日期");
+		return;
+		}
+	if(endTime == null || endTime == ''){
+		alert("请选择截止日期");
+		return;
+		}
+	if(endTimeV < startTimeV){
+		alert("请重新选择日期");
+		return;
+		}
+		
+	if(endTimeV >= startTimeV){
+		$(".income_cont_char").show();
+		return;
+		}
+	
+	}
+
+
+
+function gobackList(){
+	$(".income_cont_char").hide();
+	$("#txtBeginDate").val('');
+	$("#txtEndDate").val('');
+	
+}
+
+//去掉字符串头尾空格   
+function trimH(str) { 
+	var re = new RegExp("[-]", "g");			
+
+	return str=str.replace(re, "");
+  
+} 
+</script>
+
+
+</head>
+
+<body>
+<div id="container">
+	
+    
+    
+    <!--内容-->
+    <div class="withdrawDeposit_record">
+        <div class="withdrawDeposit_record_top">
+        	<table>
+            	<tr>
+                	<td class="char">收入记录</td>
+                	<td class="totalwithTTT">当前记录我的收入：<span>1212122</span>元</td>
+                	<td id="choseTime"><input class="timeInputStr" id="txtBeginDate" type="text"/>-</td>
+                	<td id="choseTime2"><input class="timeInputStr" id="txtEndDate" type="text"/></td>
+                    
+                	<td class="inquire_td"><input class="inquire" type="button" value="查询" onclick="query();"/></td>
+                    
+                    
+                	<td class="inquire_td">
+                    	<div class="divdropDown">
+                            <div class="dropDownBox" onclick="showBelow('divdropDownIncome')">
+                                <span id="divdropDownViewIncome">全部收入类型</span>
+                                <div class="dropDownBoxR"><i></i></div>
+                            </div>
+                
+                            <div class="dropDownBoxValue" id="divdropDownIncome">
+                                <span class='dropValue'>全部收入类型</span>
+                                <span class='dropValue'>项目收入</span>
+                                <span class='dropValue'>出售作品</span>
+                                <span class='dropValue'>推广收入</span>
+                            </div>
+                        </div>
+                    
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        
+        
+        <div class="withdrawDeposit_cont">
+        	<div class="withdrawDeposit_cont_char">
+            	<span>当前累计提现金额：</span><span>1212122</span>元
+            	<span class="count">当前累计提现次数：</span><span>1212122</span>次
+                <a class="gobackA" href="javascript:gobackList();">返回列表页面</a>
+                
+            </div>
+            <table id="tableWithdrawDeposit">
+            	<tr>
+                    <th class="td_one">序号</th>
+                    <th class="td_two">时间</th>
+                    <th class="td_three">收入类型</th>
+                    <th class="td_four">交易流水号</th>
+                    <th class="td_five">收入金额（元）</th>
+                    
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>项目收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                        
+                <tr>
+                    <td class="td_one">2</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>出售作品</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr><tr>
+                    <td class="td_one">3</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                      
+        	</table>
+            
+            <table id="tableWithdrawDeposit1">
+            	<tr>
+                    <th class="td_one">序号</th>
+                    <th class="td_two">时间</th>
+                    <th class="td_three">交易类型</th>
+                    <th class="td_four">交易流水号</th>
+                    <th class="td_four">项目编号</th>
+                    <th class="td_five">收入金额（元）</th>
+                    
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>项目收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                        
+                <tr>
+                    <td class="td_one">2</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>项目收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr><tr>
+                    <td class="td_one">3</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>项目收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                      
+        	</table>
+            
+            
+            <table id="tableWithdrawDeposit2">
+            	<tr>
+                    <th class="td_one">序号</th>
+                    <th class="td_two">时间</th>
+                    <th class="td_three">交易类型</th>
+                    <th class="td_four">交易流水号</th>
+                    <th class="td_four">作品编号</th>
+                    <th class="td_five">收入金额（元）</th>
+                    
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>出售作品</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><a href="javascript:"><span>1321254s52121_234234</span></a></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">2</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>出售作品</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><a href="javascript:"><span>1321254s52121_234234</span></a></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">3</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>出售作品</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><a href="javascript:"><span>1321254s52121_234234</span></a></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">4</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>出售作品</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><a href="javascript:"><span>1321254s52121_234234</span></a></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                      
+        	</table>
+            
+            
+            <table id="tableWithdrawDeposit3">
+            	<tr>
+                    <th class="td_one">序号</th>
+                    <th class="td_two">时间</th>
+                    <th class="td_three">交易类型</th>
+                    <th class="td_four">推广用户</th>
+                    <th class="td_four">流水账号</th>
+                    <th class="td_five">交易金额（元）</th>
+                    <th class="td_five">收入金额（元）</th>
+                    
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                
+                <tr>
+                    <td class="td_one">1</td>
+                    
+                    <td class="td_two"><span>2013/03/29</span><span class="time">12:12:08</span></td>
+                    
+                    <td class="td_three"><span>推广收入</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_four"><span>1321254s52121_234234</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                    
+                    <td class="td_five"><span>12000</span></td>
+                </tr>
+                      
+        	</table>
+            
+        </div>
+        
+        
+         <!--翻页-->
+        <div class="ppointPagingthis">
+            <div class="ppointPaging">            
+                <table class="tablePpointPaging">
+                    <tr>
+                        <td class="ppointPagingOne"><a href="javascript:"></a></td>
+                        <td class="ppointPagingPre"><a href="javascript:"></a></td>
+                        <td class="ppointPagingN"><a href="javascript:">1</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">2</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">3</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">4</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">5</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">6</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">7</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">8</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">9</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">10</a></td>
+                        <td class="ppointPagingNext"><a href="javascript:"></a></td>
+                        <td class="ppointPagingLast"><a href="javascript:"></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+         <!--翻页-->
+         
+         
+    </div>
+    
+    <!--内容-->
+    
+        
+        <!--<div class="noData">
+        	<div class="noDataIco"></div>
+            <div class="noDatachar">目前他/她还没有收入记录！</div>
+        </div>--> 
+    
+</div>
+</body>
+</html>

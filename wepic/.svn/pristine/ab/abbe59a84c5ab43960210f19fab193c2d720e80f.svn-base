@@ -1,0 +1,266 @@
+.container_body .div_job{
+	padding:10px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+	height:30px;
+	width:1140px;
+	margin:10px auto 10px;
+	background:#fff;
+	font-family:"微软雅黑";
+	}
+.container_body .div_job .div_left{
+	float:left;
+	height:30px;
+	width:480px;
+	color:#000;
+	text-align:left;
+	font-size:18px;
+	}
+
+.container_body .div_job .div_search{
+	float:left;
+	height:30px;
+	width:280px;
+	position:relative;
+	top:0;
+	left:0;
+	}
+
+
+.container_body .div_job .div_search .text {
+    border: 1px solid #CCCCCC;
+    color: #7f7f7f;
+	background:#efedee;
+    font-family: "微软雅黑","宋体" ;
+    font-size: 14px;
+    height: 12px;
+    padding: 5px 33px 5px 15px;
+    width: 200px;
+	border-radius:12px;
+	position: absolute;
+    top: 5px;
+	right:0px;
+	}
+
+.container_body .div_job .div_search .i_name {
+    height: 20px;
+	position: absolute;
+    top: 10px;
+	cursor:pointer;
+	right:10px;
+    width: 20px;
+	background:url(../../../public/images/search.png) no-repeat 0px -13px;
+	}
+
+.container_body .div_job .div_search .i_name:hover {
+	background:url(../../../public/images/search.png) no-repeat 0px -54px;
+	}
+
+
+
+.container_body .div_job .all_job{
+	position:relative;
+	top:0px;
+	left:0px;
+	float:left;
+	height:30px;
+	width:380px;
+	}
+.container_body .div_job .all_job .bar{
+	float:left;
+	position: relative;
+    left: 0;
+    top: 0;
+	margin-left:15px;
+	margin-top:10px;
+	height:18px;
+	padding-left:10px;
+	color:#4a4a4a;
+	font-size: 12px;
+	cursor:pointer;
+	}
+.container_body .div_job .all_job .bar:hover,
+.container_body .div_job .all_job .active{
+	background:url(../../../back/pubimg/images/background.png) 0 -67px no-repeat;
+	color:#ffffff;
+	}
+.container_body .div_job .all_job .bar i{
+	position: absolute;
+    right: -16px;
+    top: 0;
+	width:16px;
+	height:18px;
+	cursor:pointer;
+	
+	}
+.container_body .div_job .all_job .bar:hover i,
+.container_body .div_job .all_job .active i{
+	background: url(../../../back/pubimg/images/background.png) no-repeat 0px -156px;
+	}
+
+
+
+
+
+
+.container_body .div_container{
+    position: relative;
+    top: 0;
+    left: 0;
+	height:560px;
+	width:1180px;
+	margin:0 auto;
+	}
+.container_body .div_container table{
+	}
+.container_body .div_container table td{
+	padding:20px 20px;
+	}
+.container_body .div_container table .td_one{
+    position: relative;
+    top: 0;
+    left: 0;
+	width: 270px;
+	height: 88px;
+	}
+.container_body .div_container table .td_one .headImg{
+	width: 60px;
+	height: 54px;
+	float:left;
+	}
+.container_body .div_container table .td_one .headImg .headImgCon{
+	width: 40px;
+	height: 40px;
+    left: 9px;
+    position: absolute;
+    top: 7px;
+	}
+.container_body .div_container table .td_one  .headImg .headimg{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}
+.container_body .div_container table .td_one  .headImg .radius{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}	
+.container_body .div_container table .td_one  .info{
+	width: 280px;
+	height: 54px;
+    left: 80px;
+    position: absolute;
+    bottom: 2px;
+	}
+.container_body .div_container table .td_one  .info .name{
+	left: 0;
+    position: relative;
+    top: 0;
+	height: 30px;
+	width: 280px;
+	line-height: 30px;
+	color:#000;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+.container_body .div_container table .td_one  .info .name .viewInfo{
+	background:url(../../../public/images/buttonGroup02.png) 0 -57px no-repeat;
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    height: 19px;
+    width: 66px;
+	right: 0;
+    position: absolute;
+    top: 3px;
+	}
+.container_body .div_container table .td_one  .info .name .viewInfo:hover{
+	background:url(../../../public/images/buttonGroup02.png) 0 -76px no-repeat;
+	}
+.container_body .div_container table .td_one  .info .name .approveNo{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
+	background:url(../../../public/images/identity.png) 0 5px no-repeat;
+	}
+.container_body .div_container table .td_one  .info .name .approveHave{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
+	background:url(../../../public/images/identity.png) 0 -20px no-repeat;
+	}
+.container_body .div_container table .td_one  .info .name .approveQy{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
+	background:url(../../../public/images/identity.png) 0 -42px no-repeat;
+	}
+.container_body .div_container table .td_one  .info .detail{
+    left: 0;
+    position: relative;
+    top: 0;
+	}
+.container_body .div_container table .td_one  .info .detail a {
+    color: #A0A0A0;
+	text-decoration:none;
+	}
+.container_body .div_container table .td_one  .info .detail .userPositionName{
+    background:url(../../../public/images/11.png) no-repeat 0 -95px;
+    padding-left: 20px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+.container_body .div_container table .td_one  .info .detail .userPositionNameG{
+    background:url(../../../public/images/11.png) no-repeat 0 -208px;
+    padding-left: 20px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+.container_body .div_container table .td_one  .info .detail .userPositionAddress{
+    background:url(../../../public/images/11.png) no-repeat 0 -114px;
+	margin-left: 10px;
+    padding-left: 18px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+.container_body .div_container table .td_one  .info .detail .userPositionAddress .shi{
+	margin-left:8px;
+	}	
+.container_body .div_container table .td_one  .info .detail .pstype{
+    right: 0px;
+    position: absolute;
+    top: 0;
+	}
+.container_body .div_container table .td_one  .info .detail .pstype .bar {
+    color: #b09d7c;
+    float: left;
+    font-size: 12px;
+    height: 18px;
+    left: 0;
+    margin-right: 15px;
+    padding-left: 10px;
+    position: relative;
+    top: 0;
+	background:url(../../../back/pubimg/images/background.png) 0 0px no-repeat;
+	}
+.container_body .div_container table .td_one  .info .detail .pstype .bar i {
+    position: absolute;
+    right: -11px;
+    top: 0;
+	width:12px;
+	height:18px;
+	background: url(../../../back/pubimg/images/background.png) no-repeat 0px -89px;
+	}

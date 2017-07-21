@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+	<hibernate-mapping>
+	<class name="com.wetuo.wepic.deal.beans.Industry" table="Industry">
+	<id name="id" column="id" type="java.lang.Integer">
+	<generator class="native"></generator>
+	</id>
+	
+	<property
+	 name="name"
+	 type="java.lang.String" 
+	 column="name">
+	 </property>
+	 
+	 <property
+	 name="pId"
+	 type="java.lang.Integer" 
+	 column="pId">
+	 </property>
+	
+	<property 
+	name="tag"
+	column="tag"
+	type="java.lang.String">
+	</property>
+	
+	<property
+	name="icon" 
+	column="icon"
+	type="java.lang.String">
+	</property>
+	
+	<property 
+	name="url" 
+	type="java.lang.String" 
+	column="url">
+	</property>
+	
+	<property 
+	name="type" 
+	type="java.lang.String" 
+	column="type">
+	</property>
+	
+	</class>
+	</hibernate-mapping>

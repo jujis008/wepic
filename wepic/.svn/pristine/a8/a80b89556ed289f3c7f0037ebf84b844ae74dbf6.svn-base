@@ -1,0 +1,72 @@
+.generalize{
+	width:870px;
+	height:550px;
+	background:#fff;
+	text-align:left;
+	margin:5px auto;
+	font-family:"宋体";
+	}
+.generalize .top{
+	width:870px;
+	height:78px;
+	line-height:90px;
+	text-align:center;
+	color:#232323;
+	font-size:24px;
+	border-bottom:1px solid #f0f0f0;
+	font-family:"微软雅黑";
+	}
+	
+.generalize .generalizeCon{
+	width:525px;
+	height:400px;
+	margin:0px auto;
+	}
+.generalize .generalizeCon li{
+	width:525px;
+	height:400px;
+	float:left;
+	}
+.generalize .generalizeCon .generalize_one{
+	width:525px;
+	height:400px;
+	}
+.generalize .generalizeCon .generalize_one .tit{
+	height:50px;
+	line-height:60px;
+	font-family:"微软雅黑";
+	color:#232323;
+	font-size:15px;
+	}
+.generalize .generalizeCon .generalize_one .terrace{
+	}
+.generalize .generalizeCon .generalize_one .int{
+	height:26px;
+	line-height:26px;
+	}
+.generalize .generalizeCon .generalize_one .terracechar{
+	}
+.generalize .generalizeCon .generalize_one .terracechar textarea{
+	background: #FCFCFC;
+    border: 1px solid #E9E8E6;
+    color: #fcfcfc;
+    font-size: 12px;
+    height: 120px;
+    line-height: 22px;
+    padding: 10px 15px;
+    resize: none;
+    width: 400px;
+	float:left;
+	}
+.generalize .generalizeCon .generalize_one .terracechar .copy{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -182px;
+    border: 0 ;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+    text-align: center;
+    width: 86px;
+	float:left;
+	}

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<display-name>wepic</display-name>
+	
+	<welcome-file-list>
+	<!-- <welcome-file>/website/yugao.html</welcome-file> -->
+	<welcome-file>/wepic1.html</welcome-file>
+	<!-- <welcome-file>/wepic/wepic.html</welcome-file> -->
+	<!-- <welcome-file>/index3.html</welcome-file> -->
+	<!-- <welcome-file>/index2013.htm</welcome-file> -->
+	</welcome-file-list>
+	
+	<context-param>
+	<!--  
+		<param-value>/WEB-INF/classes/applicationContext.xml,		
+				/WEB-INF/classes/sessionContext.xml, 
+				 /WEB-INF/classes/daoServActionContext.xml,
+				 /WEB-INF/classes/webService.xml
+		</param-value>
+		
+		<param-value>/WEB-INF/classes/applicationContext.xml</param-value>
+		<param-value>classpath:com/qhkj/config/service/application-*.xml,</param-value>
+	-->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/application*.xml,</param-value>
+	</context-param>
+	
+	
+	
+	<!--Spring ApplicationContext load -->	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- Spring refresh Introspector to prevent memory leak
+	<listener>
+		<listener-class>
+			org.springframework.web.util.IntrospectorCleanupListener
+		</listener-class>
+	</listener>
+	<listener>
+        <listener-class>com.ibatis.jpetstore.util.SpringInit</listener-class>
+    </listener>
+其中SpringInit实现接口ServletContextListener ：
+	
+	 -->	
+	 
+
+	<!-- Hibernate Open Session In View filter,let session of hibernate exists in the whole request 
+	<filter>
+		<filter-name>osivFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>  
+  			<param-name>flushMode</param-name>  
+  			<param-value>AUTO</param-value>  
+  		</init-param>
+	</filter>	
+  	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	-->	
+
+	
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+			<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+			</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+				<param-name>forceEncoding</param-name>
+				<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!--
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>		
+	</filter>
+ 	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+	 -->
+	 <!-- 
+	 <filter>
+		<filter-name>req</filter-name>
+		<filter-class>
+			com.qhkj.goodChance.common.util.UploadFiler
+		</filter-class>
+		
+		
+		 
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	
+	</filter>	
+	<filter-mapping>
+		<filter-name>req</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>	
+		-->
+		
+		
+		
+		
+		
+		
+
+
+	
+	<filter>  
+      <display-name>BugFilter</display-name>  
+      <filter-name>BugFilter</filter-name>  
+      <filter-class>com.tools.BugFilter</filter-class>  
+    </filter>  
+    <filter-mapping>  
+      <filter-name>BugFilter</filter-name>  
+      <url-pattern>/*</url-pattern>  
+    </filter-mapping>  
+
+    
+    
+    
+   
+    
+    
+    
+  	<filter>
+		<filter-name>struts2</filter-name>
+		<!-- 
+		<filter-class>
+			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+		</filter-class>
+		-->
+		
+		 
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+		
+	</filter>	
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.do</url-pattern>
+		<url-pattern>/*</url-pattern>
+		 <dispatcher>REQUEST</dispatcher> 
+        <dispatcher>FORWARD</dispatcher> 
+	</filter-mapping>
+	 <!-- 地址重写 -->
+
+     <filter>   
+          <filter-name>UrlRewriteFilter</filter-name>   
+          <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>   
+      </filter>   
+     <filter-mapping>   
+          <filter-name>UrlRewriteFilter</filter-name>   
+          <url-pattern>/*</url-pattern>     
+         <dispatcher>FORWARD</dispatcher> 
+          <dispatcher>REQUEST</dispatcher>   
+     </filter-mapping>   
+  
+<!-- - -->	
+	<!--
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>	
+	</filter-mapping> 
+	-->
+
+		
+	<!-- session timeout def,unit is minute -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!--  
+		<servlet>
+			<servlet-name>CXFServlet</servlet-name>
+			<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>CXFServlet</servlet-name>
+			<url-pattern>/ws/*</url-pattern>
+		</servlet-mapping>
+	  <servlet>
+	    <description>This is the description of my J2EE component</description>
+	    <display-name>This is the display name of my J2EE component</display-name>
+	    <servlet-name>Image</servlet-name>
+	    <servlet-class>com.qhkj.goodChance.publish.actions.Image</servlet-class>
+	  </servlet>		
+	  <servlet-mapping>
+	    <servlet-name>Image</servlet-name>
+	    <url-pattern>/servlet/Image</url-pattern>
+	  </servlet-mapping>
+	  -->
+
+<!-- 文本编辑器 -->
+    
+
+<servlet>
+        <servlet-name>Connector</servlet-name>
+        <servlet-class>com.fredck.FCKeditor.connector.ConnectorServlet</servlet-class>
+        <init-param>
+<!-- 此为文件浏览路径 -->
+            <param-name>baseDir</param-name>
+            <param-value>/UserFiles/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SimpleUploader</servlet-name>
+        <servlet-class>com.fredck.FCKeditor.uploader.SimpleUploaderServlet</servlet-class>
+        <init-param>
+            <param-name>baseDir</param-name>
+<!-- 此为文件上传路径，需要在WebRoot 目录下新建 UserFiles 文件夹 -->
+   <!-- 根据文件的类型还需要新建相关的文件夹 Image、Flash、File、Media -->
+	<param-value>/UserFiles/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>enabled</param-name>
+  <!-- 此参数为是否开启上传功能，默认的是false改为true -->
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>AllowedExtensionsFile</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+<!-- 此参数为文件过滤，以下的文件类型都不可以上传 -->
+            <param-name>DeniedExtensionsFile</param-name>
+            <param-value>php|php3|php5|phtml|asp|aspx|ascx|jsp|cfm|cfc|pl|bat|exe|dll|reg|cgi</param-value>
+        </init-param>
+        <init-param>
+            <param-name>AllowedExtensionsImage</param-name>
+            <param-value>jpg|gif|jpeg|png|bmp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DeniedExtensionsImage</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>AllowedExtensionsFlash</param-name>
+            <param-value>swf|fla</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DeniedExtensionsFlash</param-name>
+            <param-value></param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Connector</servlet-name>
+    <url-pattern>/fckeditor/connector</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet-mapping>
+    <servlet-name>SimpleUploader</servlet-name>
+    <url-pattern>/fckeditor/simpleuploader</url-pattern>
+  </servlet-mapping> 
+  <filter>
+		<filter-name>rightControl</filter-name>
+		<filter-class>com.wgh.filter.RightControlFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>rightControl</filter-name>
+		<url-pattern> /manage.jsp</url-pattern>
+	</filter-mapping>
+	
+	<!-- 
+	<taglib>
+	<taglib-uri>oscache</taglib-uri>
+	<taglib-location>/WEB-INF/classes/oscache.tld</taglib-location>
+	</taglib> 
+	
+	 -->
+	
+	<filter> 
+
+ 
+
+<filter-name>hibernateFilter</filter-name>
+
+ 
+
+<filter-class>
+
+ 
+
+org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
+
+ 
+
+</filter-class>
+
+ 
+
+<!-- singleSession默认为true,若设为false则等于没用OpenSessionInView -->
+
+ 
+
+<init-param>
+
+ 
+
+<param-name>singleSession</param-name>
+
+ 
+
+<param-value>true</param-value> 
+
+ 
+
+</init-param> 
+
+ 
+
+</filter> 
+
+ 
+
+
+
+ 
+
+<filter-mapping>
+
+ 
+
+<filter-name>hibernateFilter</filter-name> 
+
+ 
+
+<url-pattern>*.do</url-pattern>
+
+ 
+
+</filter-mapping>
+
+<!-- 
+<error-page>
+  <error-code>401</error-code>
+  <location>/errorPage/404.jsp</location>
+</error-page>
+<error-page>
+  <error-code>402</error-code>
+  <location>/errorPage/404.jsp</location>
+</error-page>
+<error-page>
+  <error-code>403</error-code>
+  <location>/errorPage/404.jsp</location>
+</error-page>
+<error-page>
+  <error-code>404</error-code>
+  <location>/errorPage/404.jsp</location>
+</error-page>
+<error-page>
+  <error-code>500</error-code>
+  <location>/errorPage/404.jsp</location>
+</error-page>
+<error-page>
+  <exception-type>java.lang.NullPointerException</exception-type>
+  <location>/errorPage/404.jsp</location>
+</error-page> 
+ -->
+
+
+ </web-app>

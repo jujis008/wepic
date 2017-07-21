@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.UserCreditHistory"
+	table="UserCreditHistory"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="admin" 
+		column="user_" 
+		not-null="true"  
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_UserCreditHistory_Admin" 
+		index="IDX_UserCreditHistory_Admin"/> 
+	
+	<property 
+		name="startTime"
+		type="java.sql.Timestamp"
+		column="startTime"
+		length="50"
+	/>
+	<property 
+		name="endTime"
+		type="java.sql.Timestamp"
+		column="endTime"
+		length="50"
+	/>
+	<property 
+		name="punishReason"
+		type="java.lang.String"
+		column="punishReason"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="punishType"
+		type="java.lang.Integer"
+		column="punishType"
+		length="50"
+	/>
+	<!-- 
+	<property 
+		name="creditRatings"
+		type="java.lang.Integer"
+		column="creditRatings"
+		length="50"
+	/>
+	
+	<property 
+		name="totalCredits"
+		type="java.lang.Integer"
+		column="totalCredits"
+		length="50"
+	/> -->
+	<property 
+		name="fineMoney"
+		type="java.lang.Integer"
+		column="fineMoney"
+		length="50"
+	/>
+	<property 
+		name="isFineMoneyExecuted"
+		type="java.lang.Integer"
+		column="isFineMoneyExecuted"
+		length="50"
+	/>
+	<property 
+		name="moneyUnit"
+		type="java.lang.String"
+		column="moneyUnit"
+		length="50"
+	/>
+	
+	<property 
+		name="mark"
+		type="java.lang.Integer"
+		column="mark"
+		length="50"
+	/>
+	
+	<property 
+		name="addmarkreson"
+		type="java.lang.String"
+		column="addmarkreson"
+		length="250"
+	/>
+	
+	<property 
+		name="addmarkType"
+		type="java.lang.String"
+		column="addmarkType"
+		length="50"
+	/>
+	
+	<!-- 
+	<many-to-one name="user"	column="userid" not-null="true" />
+	 -->
+	
+	
+	
+	<many-to-one name="userCredit"	column="userCreditid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

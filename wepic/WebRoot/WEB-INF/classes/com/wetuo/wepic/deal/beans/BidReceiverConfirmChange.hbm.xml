@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BidReceiverConfirmChange"
+	table="BidReceiverConfirmChange"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="bidResponseInvitedFrom" 
+		column="bidResponseInvitedFrom_" 
+		not-null="true" 
+		class="com.wetuo.wepic.deal.beans.BidResponseInvited" 
+		foreign-key="FK_BidReceiverConfirmChange_BidResponseInvitedFrom" 
+		index="IDX_BidReceiverConfirmChange_BidResponseInvitedFrom"/> 
+	
+	<many-to-one name="bidResponseInvitedTo" 
+		column="bidResponseInvitedTo_" 
+		not-null="true" 
+		class="com.wetuo.wepic.deal.beans.BidResponseInvited" 
+		foreign-key="FK_BidReceiverConfirmChange_BidResponseInvitedTo" 
+		index="IDX_BidReceiverConfirmChange_BidResponseInvitedTo"/> 
+	
+	<many-to-one name="siteConfig" 
+		column="siteConfig_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.SiteConfig" 
+		foreign-key="FK_BidReceiverConfirmChange_SiteConfig" 
+		index="IDX_BidReceiverConfirmChange_SiteConfig"/> 
+	
+	<property 
+		name="changeTime"
+		type="java.sql.Timestamp"
+		column="changeTime"
+		length="50"
+	/>
+	<property 
+		name="changeReason"
+		type="java.lang.String"
+		column="changeReason"
+		length="50"
+	/>
+	<property 
+		name="changeeOpnion"
+		type="java.lang.String"
+		column="changeeOpnion"
+		length="50"
+	/>
+	
+	<many-to-one name="bid"	column="bidid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

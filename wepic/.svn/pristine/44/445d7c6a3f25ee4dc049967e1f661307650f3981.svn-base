@@ -1,0 +1,304 @@
+.container_body{
+	width:870px;
+	height:530px;
+	border-radius:5px;
+	background:#fff;
+	margin:10px auto 40px;
+	text-align:center;
+	font-family:"宋体";
+	}
+
+
+.container_body .info_top{
+	line-height:90px;
+	font-family:"微软雅黑";
+	color:#000;
+	font-size:26px;
+	height:78px;
+	width:790px;
+	margin:0px auto;
+	border-bottom:1px solid #e8e8e8;
+	}
+.container_body .info_detail{
+	width:790px;
+	height:400px;
+	margin:0px auto 10px;
+	border-bottom:1px solid #e8e8e8;
+	}
+	
+	
+/*步骤*/
+.container_body .info_detail .div_step{
+	position:relative;
+	top:0;
+	left:0;
+	width:500px;
+	height:50px;
+	margin:0px auto;
+	font-family:"微软雅黑";
+	}
+
+.container_body .info_detail .div_step .step_character div{
+	float:left;
+	width:165px;
+	text-align:center;
+	margin:0 auto;
+	}
+.container_body .info_detail .div_step .step_now_character{
+	color:#ee563e;
+	}	
+	
+	
+.container_body .info_detail .div_step .step_ico{
+	position:relative;
+	top:10px;
+	left:0;
+	margin-top:26px;
+	margin-left: 73px;
+	}
+.container_body .info_detail .div_step .step_ico div{
+	float:left;
+	}
+.container_body .info_detail .div_step .step_gey_line{
+	border-bottom:1px solid #e8eae9;
+	width:160px;
+	height:3px;
+	}
+
+.container_body .info_detail .div_step .step_ico .step_now_circle{
+	width:9px;
+	height:9px;
+	background:url(../../../pubimg/images/edit3.png) -90px -263px;
+	}
+.container_body .info_detail .div_step .step_ico .step_gey_circle{
+	width:7px;
+	height:7px;
+	background:url(../../../pubimg/images/edit3.png) -104px -263px;
+	}
+/*步骤*/	
+
+.container_body .info_detail .info_password{
+	position:relative;
+	top:0;
+	left:0;
+	width:600px;
+	height:260px;
+	margin:80px auto 0px;
+	margin-left:220px;
+	}
+	
+.container_body .info_detail .info_password table{
+	text-align:left;
+	}	
+
+.container_body .info_detail .info_password table .tr_one{
+	height:55px;
+	}
+.container_body .info_detail .info_password table .tr_two{
+	height:40px;
+	margin-bottom:40px;
+	}
+.container_body .info_detail .info_password table .tr_three{
+	height:100px;
+	vertical-align:bottom;
+	}	
+.container_body .info_detail .info_password table .tr_four{
+	height:30px;
+	vertical-align:bottom;
+	}
+.container_body .info_detail .info_password table .tr_four a{
+	margin-left:40px;
+	}			
+.container_body .info_detail .info_password .span_password{
+    font-family: "微软雅黑","宋体";
+	color:#7d7d7d;
+	font-size: 16px;
+	padding-right:10px;
+	width:186px;
+	text-align:right;
+	}
+.container_body .info_detail .info_password .input_password{
+	background:#fff;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    color: #7F7F7F;
+    font-family: "微软雅黑","宋体";
+    font-size: 16px;
+    height: 20px;
+    padding: 6px 15px 6px 15px;
+    width: 100px;
+	margin-right:20px;
+	}
+.container_body .info_detail .info_password .input_phone{
+	background:#fff;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    color: #7F7F7F;
+    font-family: "微软雅黑","宋体";
+    font-size: 16px;
+    height: 20px;
+    padding: 6px 15px 6px 15px;
+    width: 165px;
+	margin-right:20px;
+	}
+.container_body .info_detail .info_password  table a{
+	text-decoration:underline;
+	color:#0168b5;
+	}
+
+.container_body .info_detail .info_password .login_submit{
+	cursor:pointer;
+	width: 142px;
+	height:36px;
+	color:#FFFFFF;
+	border:0px;	
+	font-family:"微软雅黑";
+	font-size:18px;
+	margin-right: 120px;
+	background:url(../../../../public/images/buttonGroup01.png)  no-repeat 0 -718px;
+	}
+.container_body .info_detail .info_password .login_submit:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+.container_body .info_detail .info_password .login_submit:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -792px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}
+
+
+.container_body .info_detail .info_password .input_mobileBy{
+	background:#ededed;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    color: #7F7F7F;
+    font-family: "微软雅黑","宋体";
+    font-size: 16px;
+    height: 20px;
+    padding: 6px 15px 6px 15px;
+    width: 165px;
+	}
+
+.container_body .info_detail .info_password  table .achBut{
+	padding:1px 4px;
+	height:25px;
+	cursor:pointer;
+	border:1px solid #c3c3c3;
+	font-family:"微软雅黑";
+	color:#000;
+	border-radius:4px;
+	background:#dedede;
+	}
+
+
+
+/*修改成功*/
+.container_body .info_detail .info_password  .info_success{
+	width:350px;
+	height:50px;
+	margin:0px auto 70px;
+	}
+.container_body .info_detail .info_password  .info_success .success_ico{
+	width:32px;
+	height:32px;
+	float:left;
+	margin-top: 10px;
+	background:url(../../../pubimg/images/changeMail.png) 0 0 no-repeat;
+	}
+.container_body .info_detail .info_password  .info_success .success_right{
+	width:300px;
+	height:50px;
+	float:left;
+	margin-left:15px;
+	text-align:left;
+	}
+.container_body .info_detail .info_password  .info_success .success_right .succe{
+	height:32px;
+    color: #000;
+    font-family: "微软雅黑","宋体";
+    font-size: 20px;
+	}	
+
+
+/*修改失败*/
+.container_body .info_detail .info_password  .info_success .failed_ico{
+	width:32px;
+	height:32px;
+	float:left;
+	margin-top: 10px;
+	background:url(../../../pubimg/images/changeMail.png) 0 -37px no-repeat;
+	}
+	
+	
+
+/*手机验证*/
+
+.container_body .info_detail .info_password  table .tr_phone{
+	height:45px;
+	vertical-align:top;
+	}
+.container_body .info_detail .info_password  table .tr_coad{
+	height:55px;
+	}
+.container_body .info_detail .info_password  table .td_one{
+	padding-right:10px;
+	}
+.container_body .info_detail .info_password  table .span_phone{
+	text-align:left;
+    color: #000;
+    font-family: "微软雅黑","宋体";
+    font-size: 14px;
+	
+	}
+
+.container_body .info_detail .info_password  table .tr_a{
+	margin-top:10px;
+	text-align:left;
+	}
+.container_body .info_detail .info_password  table a {
+    color: #0168B5;
+    text-decoration: underline;
+	}
+	
+.container_body .info_detail .info_password .input_mobile{
+	background:#ededed;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    color: #7F7F7F;
+    font-family: "微软雅黑","宋体";
+    font-size: 16px;
+    height: 20px;
+    padding: 6px 15px 6px 15px;
+    width: 178px;
+	margin-right:10px;
+	}
+.container_body .info_detail .info_password  table .achBut{
+	padding:1px 4px;
+	height:25px;
+	cursor:pointer;
+	border:1px solid #c3c3c3;
+	font-family:"微软雅黑";
+	color:#000;
+	border-radius:4px;
+	margin-left:20px;
+	background:#dedede;
+	}
+	
+.container_body .info_detail .info_password .password_three {
+    margin-top: 70px;
+	text-align:left;
+	margin-left: 105px;
+	}
+
+.container_body .info_detail .info_password .password_four{
+	margin-top:20px;
+	text-align:left;
+	margin-left: 145px;
+	}
+.container_body .info_detail .info_password .password_four a{
+	text-decoration:underline;
+	color:#0168b5;
+	margin-right:10px;
+	}
+	

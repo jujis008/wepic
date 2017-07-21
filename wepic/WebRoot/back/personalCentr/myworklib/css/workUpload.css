@@ -1,0 +1,144 @@
+#divWorkLibUpLoad{
+	background:#FFFFFF;
+    height: 660px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 1178px;
+	border:1px solid #e6e6e6;
+	margin-bottom:40px;
+	margin-top:10px;
+	}
+#divWorkLibUpLoad .character{
+	position: relative;
+    top: 0;
+    left: 0;
+	color:#adadad;
+	font-size:12px;
+	font-family:"宋体";
+	text-align:left;
+	height:70px;
+	line-height:70px;
+	}
+#divWorkLibUpLoad .character .upl{
+	color:#1c1c1c;
+	font-size:18px;
+	font-family:"微软雅黑";
+	margin-left:32px;
+	}
+#divWorkLibUpLoad .character .more{
+	margin-left:17px;
+	}
+#divWorkLibUpLoad .character .sp1{
+	margin-left:250px;
+	}
+#divWorkLibUpLoad .character .hre{
+	color:#e92d00;
+	font-family:"黑体";
+	}	
+#divWorkLibUpLoad .content{
+	position: relative;
+    top: 0;
+    left: 0;
+	width:1178px;
+	height:578px;
+	background:#bdbdbd;
+	}
+
+
+#divWorkLibUpLoad .submit{
+	position: relative;
+    top: 0;
+    left: 0;
+	width:1178px;
+	height:100px;
+	z-index:100;
+	text-align:left;
+	}
+#divWorkLibUpLoad .submit .editSelect{
+	left:20px;
+	top:26px;
+	}
+#viewBelowHighestDegree {
+    padding-right:40px;
+	overflow:hidden;
+}
+#selectHighestDegreeValue{
+	width:80px;
+	overflow:hidden;
+	}
+#divSelectHighestDegreeValue {
+    max-height: 148px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 125px;
+}
+.belowValue .selectValueIn{
+	width:120px;
+	}
+#divWorkLibUpLoad .submit .char{
+	position: relative;
+    top: 37px;
+    left: 160px;
+	width:500px;
+	color:#adadad;
+	font-size:12px;
+	font-family:"宋体";
+	}
+#divWorkLibUpLoad .submit .char .glz{
+	margin-left:5px;
+	text-decoration:underline;
+	color:#adadad;
+	}
+#divWorkLibUpLoad .submit .char .glz:hover{
+	color:#000000;
+	}
+#divWorkLibUpLoad .submit .char .sp1,
+#divWorkLibUpLoad .submit .char .sp2{
+	margin-left:28px;
+	}
+#divWorkLibUpLoad .submit .char .num{
+	color:#e92d00;
+	font-family:"黑体";
+	margin-right:5px;
+	}	
+#divWorkLibUpLoad .submit .inp{
+	position: absolute;
+    right: 38px;
+    top: 30px;
+	}
+#divWorkLibUpLoad .submit .inp .inputup{
+	
+	background:url(../../../..//public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#divWorkLibUpLoad .submit .inp .inputup:hover{
+	background:url(../../../..//public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+#divWorkLibUpLoad .submit .inp .finished{
+
+	background:url(../../../..//public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#divWorkLibUpLoad .submit .inp .finished:hover{
+	background:url(../../../..//public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}

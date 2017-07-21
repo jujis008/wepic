@@ -1,0 +1,179 @@
+#divAccountEducation{
+	background:#FFFFFF;
+    height: 520px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 870px;
+	margin-bottom:40px;
+	margin-top:10px;
+	}
+
+#divAccountEducation .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:52px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:30px;
+	}
+#divAccountEducation .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	}
+
+
+
+
+
+
+
+#divAccountEducation .content{
+	text-align:left;
+	position:relative;
+	top:0px;
+	left:0px;
+	z-index:50;
+	height:330px;
+	width: 870px;
+	border-bottom:1px solid #f0f0f0;
+	}
+#divAccountEducation .content .con-t{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:40px;
+	margin-top:25px;
+	}
+#divGraduationSchool{
+	z-index:50;
+	}
+#divGraduationDate{
+	z-index:40;
+	}
+#divDepartment{
+	z-index:30;
+	}
+#divSpecialty{
+	z-index:20;
+	}
+#highestDegree{
+	z-index:10;
+	}
+#divAccountEducation .content .left{
+	width:210px;
+	height:45px;
+	line-height:40px;
+	text-align:right;
+	color: #8A8A8A;
+	display:inline-block;
+	/*border:1px solid red;*/
+	padding-right:10px;
+	font-family: "宋体";
+	}
+
+
+#divAccountEducation .content .inputT {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px 3px 3px 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 21px;
+    padding: 5px 10px;
+    width: 275px;
+	}
+#divSelectGraduationDateYear{
+	position:absolute;
+	left:225px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectGraduationDateMonth{
+	position:absolute;
+	left:325px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelecGraduationDateDay{
+	position:absolute;
+	left:425px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectGraduationDateYearValue,
+#divSelectGraduationDateDayValue{
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	}
+#divHighestDegree{
+	position:absolute;
+	left:225px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+
+/*调整select*/
+#viewBelowHighestDegree{
+	width: 95px;
+	}
+#viewBelowRightHighestDegree{
+	left: 75px;
+	}
+#divSelectHighestDegreeValue{
+	width: 105px;
+	height:148px;
+	overflow:auto;
+	overflow-x:hidden;
+	}
+#divSelectHighestDegreeValue .selectValueIn {
+	width: 95px;
+	}
+/*调整select*/
+
+
+
+
+#divAccountEducation .submit{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:130px;
+	width: 870px;
+	z-index:0;
+	}
+#divAccountEducation .submit .submit{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -718px;
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 36px;
+    letter-spacing: 15px;
+    margin-top: 23px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+	*padding-left:0;
+    text-align: center;
+    width: 142px;
+	}
+#divAccountEducation .submit .submit:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+#divAccountEducation .submit .submit:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -792px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}

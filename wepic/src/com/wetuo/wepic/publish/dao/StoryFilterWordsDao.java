@@ -1,0 +1,12 @@
+package com.wetuo.wepic.publish.dao;
+
+import java.util.List;
+
+import com.wetuo.wepic.publish.beans.StorySystemFilterWords;
+
+
+public interface StoryFilterWordsDao {
+	List<StorySystemFilterWords> findAll();
+	public Integer insert(StorySystemFilterWords record);
+
+}

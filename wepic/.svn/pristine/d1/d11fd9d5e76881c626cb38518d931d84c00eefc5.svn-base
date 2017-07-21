@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 http://www.springframework.org/schema/tx
+	 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	 http://www.springframework.org/schema/aop
+	 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	 http://www.springframework.org/schema/context 
+	 http://www.springframework.org/schema/context/spring-context-2.5.xsd"> 
+	 
+	 	<bean id="userDao"  class="com.wetuo.wepic.core.dao.UserDaoImpl" parent="daoTemplate" >  
+		<property name="userCatDao">
+			<ref bean="userCatDao" />
+		</property>  
+	</bean>
+	<bean id="userService"  class="com.wetuo.wepic.core.service.UserServiceImpl">  
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+		<property name="accountService" ref="accountService"></property>
+		<property name="blogCatService" ref="blogCatService"></property>
+		<property name="creditService" ref="userCreditService"></property>
+		<property name="contactService" ref="contactService"></property>
+		<property name="roleTagsService">
+			<ref bean="roleTagsService" />
+		</property>
+		<property name="userCreditHistoryService" ref="userCreditHistoryService"></property>
+		<property name="loginHistoryService" ref="loginHistoryService"></property>
+	</bean>
+	<bean   id="userAction" class="com.wetuo.wepic.core.actions.UserAction" scope="prototype">
+	<constructor-arg index="0" type="java.lang.String" value="com.wetuo.wepic.core.beans.User"></constructor-arg>
+	
+	<!--  
+		<property name="userCatService">
+			<ref bean="userCatService" />
+		</property>
+		<property name="userCreditService">
+			<ref bean="userCreditService"/>
+		</property>
+		<property name="contactService" >
+			<ref bean="contactService"/>
+		</property>
+		<property name="buyAccountOperationService" >
+			<ref bean="buyAccountOperationService"/>
+		</property>
+		
+		<property name="buyCartDealService" >
+			<ref bean="buyCartDealService"/>
+		</property>
+		-->
+		
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		
+		<property name="userCatService">
+			<ref bean="userCatService" />
+		</property>
+		
+		
+		
+		
+		<!-- 
+		<property name="resMenuService">
+			<ref bean="resMenuService" />
+		</property>
+		<property name="loginHistoryService" ref="loginHistoryService"></property>
+		<property name="accountService">
+			<ref bean="accountService"/>
+		</property>
+		<property name="messageService">
+		<ref bean="messageService"/>
+		</property>
+		<property name="buyCommoditiesService">
+		<ref bean="buyCommoditiesService"/>
+		</property>
+		
+		<property name="blogcatService">
+		<ref bean="blogCatService"/>
+		</property>
+		 -->
+		
+	</bean>
+	<bean id="userPowerDao" class="com.wetuo.wepic.core.dao.UserPowerDaoImp"  parent="daoTemplate"/>
+	<bean id="userPowerService" class="com.wetuo.wepic.core.service.UserPowerServiceImp">
+	<property name="powerDao" ref="userPowerDao"></property>
+	<property name="detailDao" ref="userDetailDao"></property>
+	</bean>
+	
+	<bean  id="userPowerAction" class="com.wetuo.wepic.core.actions.UserPowerAction" scope="prototype">
+	<constructor-arg index="0" type="java.lang.String" value="com.wetuo.wepic.core.beans.UserPower"></constructor-arg>
+	<property name="powerService" ref="userPowerService"></property>
+	<property name="publishService" ref="publishService"></property>
+	<property name="detailService" ref="userDetailService"></property>
+	
+	</bean>
+	
+	<bean id="configuration" class="com.wetuo.wepic.core.actions.ConfigurationAction" scope="prototype">
+	<property name="userService" ref="userService"></property>
+	<property name="userCatService" ref="userCatService"></property>
+	</bean>
+	
+	
+	
+	
+	
+	<!-- ======================================================================================================================================================================== -->
+	
+	
+	<bean id="userCreditHistoryDao"  class="com.wetuo.wepic.core.dao.UserCreditHistoryDaoImpl"  parent="daoTemplate" />  
+	
+	<bean id="userCreditHistoryService"  class="com.wetuo.wepic.core.service.UserCreditHistoryServiceImpl">  
+				<property name="userCreditHistoryDao">
+					<ref bean="userCreditHistoryDao" />
+				</property>
+			</bean>
+	<bean id="roleTagsDao"  class="com.wetuo.wepic.core.dao.RoleTagDaoImp" parent="daoTemplate" /> 
+	<bean id="roleTagsService"  class="com.wetuo.wepic.core.service.RoleTagServiceImp">  
+		<property name="roleTagDao">
+			<ref bean="roleTagsDao" />
+		</property>
+	</bean>
+	
+	<bean id="userCatDao"  class="com.wetuo.wepic.core.dao.UserCatDaoImpl" parent="daoTemplate" /> 
+	<bean id="userCatService"  class="com.wetuo.wepic.core.service.UserCatServiceImpl">  
+		<property name="userCatDao">
+			<ref bean="userCatDao" />
+		</property>
+	</bean>
+	<bean name="userCatAction" class="com.wetuo.wepic.core.actions.UserCatAction" scope="prototype">
+		<property name="userCatService">
+			<ref bean="userCatService" />
+		</property>
+	</bean>
+	        
+			
+			<bean id="userDetailDao"  class="com.wetuo.wepic.core.dao.UserDetailDaoImpl"  parent="daoTemplate">
+			<property name="userDao">
+			<ref bean="userDao"/>
+			</property>
+			</bean>  
+			<bean id="userDetailService"  class="com.wetuo.wepic.core.service.UserDetailServiceImpl">  
+				<property name="userDetailDao">
+					<ref bean="userDetailDao" />
+				</property>
+			</bean>
+			<bean name="userDetailAction" class="com.wetuo.wepic.core.actions.UserDetailAction" scope="prototype">
+		
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="userDetailService">
+					<ref bean="userDetailService" />
+				</property>
+			</bean>
+			
+			<bean id="userHistoryDao"  class="com.wetuo.wepic.core.dao.UserHistoryDaoImpl" parent="daoTemplate" /> 
+			<bean id="userHistoryService"  class="com.wetuo.wepic.core.service.UserHistoryServiceImpl">  
+				<property name="userHistoryDao">
+					<ref bean="userHistoryDao" />
+				</property>
+			</bean>
+			<bean name="userHistoryAction" class="com.wetuo.wepic.core.actions.UserHistoryAction" scope="prototype">
+						<property name="userService">
+							<ref bean="userService" />
+						</property>
+				<property name="userHistoryService">
+					<ref bean="userHistoryService" />
+				</property>
+			</bean>
+			<bean id="loginHistoryDao"  class="com.wetuo.wepic.core.dao.LoginHistoryDaoImpl"  parent="daoTemplate" >
+			<property name="dao" ref="userDao" ></property>
+			
+			</bean>  
+			<bean id="loginHistoryService"  class="com.wetuo.wepic.core.service.LoginHistoryServiceImpl">  
+				<property name="loginHistoryDao">
+					<ref bean="loginHistoryDao" />
+				</property>
+			</bean>
+			<bean name="loginHistoryAction" class="com.wetuo.wepic.core.actions.LoginHistoryAction" scope="prototype">
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="loginHistoryService">
+					<ref bean="loginHistoryService" />
+				</property>
+			</bean>
+			
+			
+			<bean name="userCreditHistoryAction" class="com.wetuo.wepic.core.actions.UserCreditHistoryAction" scope="prototype">
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="userCreditHistoryService">
+					<ref bean="userCreditHistoryService" />
+				</property>
+			</bean>
+			
+			<bean id="userCreditDao"  class="com.wetuo.wepic.core.dao.UserCreditDaoImpl"  parent="daoTemplate" />  
+			<bean id="userCreditService"  class="com.wetuo.wepic.core.service.UserCreditServiceImpl">  
+				<property name="userCreditDao">
+					<ref bean="userCreditDao" />
+				</property>
+			</bean>
+			<bean name="userCreditAction" class="com.wetuo.wepic.core.actions.UserCreditAction">
+				<property name="userCreditService">
+					<ref bean="userCreditService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+			</bean>
+			
+			
+			<bean id="brokerRelationshipDao"  class="com.wetuo.wepic.core.dao.BrokerRelationshipDaoImpl"  parent="daoTemplate" >
+				<property name="userService">
+				<ref bean="userService"/>
+				</property>
+			</bean>
+			  
+			<bean id="brokerRelationshipService"  class="com.wetuo.wepic.core.service.BrokerRelationshipServiceImpl">  
+				<property name="brokerRelationshipDao">
+					<ref bean="brokerRelationshipDao" />
+				</property>
+				<property name="userDao">
+					<ref bean="userDao"/>
+				</property>
+			</bean>
+			<bean name="brokerRelationshipAction" class="com.wetuo.wepic.core.actions.BrokerRelationshipAction" scope="prototype">
+				<property name="brokerRelationshipService">
+					<ref bean="brokerRelationshipService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="userCreditService">
+					<ref bean="userCreditService" />
+				</property>
+				<property name="contactService">
+					<ref bean="contactService" />
+				</property>
+				
+			</bean>
+			
+			<bean id="contactDao"  class="com.wetuo.wepic.core.dao.ContactDaoImpl"  parent="daoTemplate" >
+			<property name="userService">
+			<ref bean="userService"/>
+			</property>
+			</bean>
+			  
+			<bean id="contactService"  class="com.wetuo.wepic.core.service.ContactServiceImpl">  
+				<property name="contactDao">
+					<ref bean="contactDao" />
+				</property>
+				<property name="userDao">
+					<ref bean="userDao"></ref>
+				</property>
+				
+			</bean>
+			<bean name="contactAction" class="com.wetuo.wepic.core.actions.ContactAction" scope="prototype">
+				<property name="contactService">
+					<ref bean="contactService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+			</bean>
+			
+			<bean id="leaveWordDao"  class="com.wetuo.wepic.core.dao.LeaveWordDaoImpl"  parent="daoTemplate">
+			<property name="dao" ref="userDao"></property>
+			
+			</bean>  
+			<bean id="leaveWordService"  class="com.wetuo.wepic.core.service.LeaveWordServiceImpl">  
+				<property name="leaveWordDao">
+					<ref bean="leaveWordDao" />
+				</property>
+			</bean>
+			<bean name="leaveWordAction" class="com.wetuo.wepic.core.actions.LeaveWordAction" scope="prototype">
+				<property name="leaveWordService">
+					<ref bean="leaveWordService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				
+				<property name="publishService">
+					<ref bean="publishService" />
+				</property>
+			</bean>
+			
+			
+				<bean id="publishFavoriteDao"  class="com.wetuo.wepic.core.dao.PublishFavoriteDaoImpl"  parent="daoTemplate" >
+			<property name="userDao">
+			<ref bean="userDao"/>
+			</property>		
+			</bean>
+			<bean id="publishFavoriteService"  class="com.wetuo.wepic.core.service.PublishFavoriteServiceImpl">  
+				<property name="publishFavoriteDao">
+					<ref bean="publishFavoriteDao" />
+				</property>
+			</bean>
+			<bean name="publishFavoriteAction" class="com.wetuo.wepic.core.actions.PublishFavoriteAction" scope="prototype">
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="publishFavoriteService">
+					<ref bean="publishFavoriteService" />
+				</property>
+				<property name="publishService">
+					<ref bean="publishService" />
+				</property>
+			</bean>
+			
+			<bean id="accountDao"  class="com.wetuo.wepic.core.dao.AccountDaoImpl"  parent="daoTemplate" >
+			<property name="userDao">
+			<ref bean="userDao"/>
+			</property>
+			</bean>			  
+			<bean id="accountService"  class="com.wetuo.wepic.core.service.AccountServiceImpl">  
+				<property name="accountDao">
+					<ref bean="accountDao" />
+				</property>
+			</bean>
+			<bean name="accountAction" class="com.wetuo.wepic.core.actions.AccountAction" scope="prototype">
+				<property name="accountService">
+					<ref bean="accountService" />
+				</property>
+				<property name="buyaccountOperationService">
+					<ref bean="buyAccountOperationService" />
+				</property>
+				<property name="bidAccountOperationService">
+					<ref bean="bidAccountOperationService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="accountWithdrawService">
+				<ref bean="accountWithdrawService"/>
+				</property>
+			</bean>
+			<bean id="messageDao"  class="com.wetuo.wepic.core.dao.MessageDaoImpl"  parent="daoTemplate" >
+			<property name="userDao">
+			<ref bean="userDao"/>
+			</property>
+			</bean>			  
+			<bean id="messageService"  class="com.wetuo.wepic.core.service.MessageServiceImpl">  
+				<property name="messageDao">
+					<ref bean="messageDao" />
+				</property>
+			</bean>
+			<bean name="messageAction" class="com.wetuo.wepic.core.actions.MessageAction" scope="prototype">
+				<property name="messageService">
+					<ref bean="messageService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+			</bean>
+			<bean id="accountWithdrawDao"  class="com.wetuo.wepic.core.dao.AccountWithdrawDaoImpl"  parent="daoTemplate">
+			<property name="accountService">
+			<ref bean="accountService"/>
+			</property>
+			</bean>  
+			<bean id="accountWithdrawService"  class="com.wetuo.wepic.core.service.AccountWithdrawServiceImpl">  
+				<property name="accountWithdrawDao">
+					<ref bean="accountWithdrawDao" />
+				</property>
+				<property name="accountDao">
+					<ref bean="accountDao" />
+				</property>
+				<property name="userDao">
+					<ref bean="userDao"/>
+				</property>
+			</bean>
+			<bean name="accountWithdrawAction" class="com.wetuo.wepic.core.actions.AccountWithdrawAction" scope="prototype">
+		
+				<property name="accountService">
+					<ref bean="accountService" />
+				</property>
+				<property name="accountWithdrawService">
+					<ref bean="accountWithdrawService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+			</bean>
+			
+			<bean id="accountRechargeDao"  class="com.wetuo.wepic.core.dao.AccountRechargeDaoImpl"  parent="daoTemplate">
+			<property name="userDao" ref="userDao"></property>
+			<property name="accountService">
+			<ref bean="accountService"/>
+			</property>
+			</bean>  
+			<bean id="accountRechargeService"  class="com.wetuo.wepic.core.service.AccountRechargeServiceImpl">  
+				<property name="accountRechargeDao">
+					<ref bean="accountRechargeDao" />
+				</property>
+				
+				
+				
+			</bean>
+			<bean name="accountRechargeAction" class="com.wetuo.wepic.core.actions.AccountRechargeAction" scope="prototype">
+		
+				<property name="accountService">
+					<ref bean="accountService" />
+				</property>
+				<property name="accountRechargeService">
+					<ref bean="accountRechargeService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+			</bean>
+			
+			
+	<bean id="siteConfigDao"  class="com.wetuo.wepic.core.dao.SiteConfigDaoImpl" parent="daoTemplate" /> 
+	<bean id="siteConfigService"  class="com.wetuo.wepic.core.service.SiteConfigServiceImpl">  
+		<property name="siteConfigDao">
+			<ref bean="siteConfigDao" />
+		</property>
+	</bean>
+	<bean name="siteConfigAction" class="com.wetuo.wepic.core.actions.SiteConfigAction" scope="prototype">
+		<property name="siteConfigService">
+			<ref bean="siteConfigService" />
+		</property>
+	</bean>
+	
+			
+		
+			<bean id="chatMsgDao"  class="com.wetuo.wepic.core.dao.ChatMsgDaoImpl"  parent="daoTemplate" />  
+			<bean id="chatMsgService"  class="com.wetuo.wepic.core.service.ChatMsgServiceImpl">  
+				<property name="chatMsgDao">
+					<ref bean="chatMsgDao" />
+				</property>
+			</bean>
+			<bean name="chatMsgAction" class="com.wetuo.wepic.core.actions.ChatMsgAction" scope="prototype">
+				<property name="chatMsgService">
+					<ref bean="chatMsgService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="userCatService">
+				<ref bean="userCatService"/>
+				</property>
+			</bean>
+			<bean name="chatAction" class="com.wetuo.wepic.core.actions.ChatAction" scope="prototype"/>
+			
+			<!-- 保存访客信息 -->
+			<bean id="accessInfoDao" class="com.wetuo.wepic.core.dao.StoreAccessInfoDaoImpl" parent="daoTemplate" />
+			<bean id="accessService" class="com.wetuo.wepic.core.service.StoreAccessInfoServiceImpl">
+			    <property name="accessInfoDao">
+			      <ref bean="accessInfoDao"/>
+			    </property>
+			</bean>
+			<bean id="storAccessInfoAction" class="com.wetuo.wepic.core.actions.StoreAcessInfoAction" scope="prototype">
+			    <property name="accessService">
+			       <ref bean="accessService" />
+			    </property>
+			</bean>
+			
+				<bean id="resMenuDao"  class="com.wetuo.wepic.core.dao.ResMenuDaoImpl" parent="daoTemplate" /> 
+			<bean id="resMenuService"  class="com.wetuo.wepic.core.service.ResMenuServiceImpl">  
+				<property name="resMenuDao">
+					<ref bean="resMenuDao" />
+				</property>
+			</bean>
+			<bean name="resMenuAction" class="com.wetuo.wepic.core.actions.ResMenuAction" scope="prototype">
+				
+						<property name="userCatService">
+							<ref bean="userCatService" />
+						</property>
+				<property name="resMenuService">
+					<ref bean="resMenuService" />
+				</property>
+			</bean>
+	
+			<bean id="resMenuItemDao"  class="com.wetuo.wepic.core.dao.ResMenuItemDaoImpl"  parent="daoTemplate" >
+				<property name="resMenuDao">
+					<ref bean="resMenuDao" />
+				</property>  
+			</bean>
+			<bean id="resMenuItemService"  class="com.wetuo.wepic.core.service.ResMenuItemServiceImpl">  
+				<property name="resMenuItemDao">
+					<ref bean="resMenuItemDao" />
+				</property>
+			</bean>
+			<bean name="resMenuItemAction" class="com.wetuo.wepic.core.actions.ResMenuItemAction">
+		
+				<property name="resMenuService">
+					<ref bean="resMenuService" />
+				</property>
+				<property name="resMenuItemService">
+					<ref bean="resMenuItemService" />
+				</property>
+			</bean>
+			
+			<bean id="resLeftSideItemDao"  class="com.wetuo.wepic.core.dao.ResLeftSideItemDaoImpl"  parent="daoTemplate" >  
+				<property name="resMenuDao">
+					<ref bean="resMenuDao" />
+				</property>  
+			</bean>
+			<bean id="resLeftSideItemService"  class="com.wetuo.wepic.core.service.ResLeftSideItemServiceImpl">  
+				<property name="resLeftSideItemDao">
+					<ref bean="resLeftSideItemDao" />
+				</property>
+			</bean>
+			<bean name="resLeftSideItemAction" class="com.wetuo.wepic.core.actions.ResLeftSideItemAction">
+		
+				<property name="resMenuItemService">
+					<ref bean="resMenuItemService" />
+				</property>
+		
+				<property name="resMenuService">
+					<ref bean="resMenuService" />
+				</property>
+				<property name="resLeftSideItemService">
+					<ref bean="resLeftSideItemService" />
+				</property>
+			</bean>
+			
+			<bean id="readOnlySpaceAction" class="com.wetuo.wepic.core.actions.ReadOnlySpace" scope="prototype">
+
+               <property name="userCatService">
+			<ref bean="userCatService" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		
+		<property name="publishService" >
+			<ref bean="publishService" />
+		</property>
+		<property name="bidService">
+			<ref bean="bidService" />
+		</property>
+		<property name="publishSpecialCatService">
+		<ref bean="publishSpecialCatService"/>
+		</property>
+		<property name="creditService">
+		<ref bean="userCreditService"/>
+		</property>
+		<property name="contactService">
+		<ref bean="contactService"/>
+		</property>
+		<property name="blogService" ref="blogService"></property>
+		<property name="blogCatService" ref="blogCatService"></property>
+
+ </bean>
+ 
+ <bean id="blogCatDao" class="com.wetuo.wepic.core.dao.BlogCatDAOImp" parent="daoTemplate">
+ </bean>
+<bean id="blogCatService" class="com.wetuo.wepic.core.service.BlogCatServiceImp">
+<property name="blogCatDao" ref="blogCatDao"></property>
+</bean>
+<bean id="blogCatAction" class="com.wetuo.wepic.core.actions.BlogCatAction" scope="prototype">
+<constructor-arg index="0"  type="java.lang.String" value="com.wetuo.wepic.core.beans.BlogCat" ></constructor-arg>
+<property name="blogCatService" ref="blogCatService"></property>
+<property name="blogService" ref="blogService"></property>
+</bean>
+<bean id="blogDao" class="com.wetuo.wepic.core.dao.BlogDAOImp" parent="daoTemplate">
+</bean>
+<bean id="blogService" class="com.wetuo.wepic.core.service.BlogServiceImp">
+			<property name="dao" ref="blogDao"></property>
+			</bean>
+<bean id="blogAction" class="com.wetuo.wepic.core.actions.BlogAction" scope="prototype">
+<constructor-arg index="0"  type="java.lang.String" value="com.wetuo.wepic.core.beans.Blog"></constructor-arg>
+<property name="blogService" ref="blogService"></property>
+<property name="blogCatService" ref="blogCatService"></property>
+<property name="userService" ref="userService"></property>
+</bean>			
+	<bean id="billDao" class="com.wetuo.wepic.core.dao.BillDaoImp" parent="daoTemplate">
+	</bean>
+	
+	<bean id="billService" class="com.wetuo.wepic.core.service.BillServiceImp">
+	<property name="dao" ref="billDao"></property>
+	</bean>
+	
+	<bean id="billAction" class="com.wetuo.wepic.core.actions.BillAction" scope="prototype">
+	<property name="userService" ref="userService"></property>
+	<property name="bidService" ref="bidService"></property>
+	<property name="billService" ref="billService"></property>
+	<property name="buyCartDealService" ref="buyCartDealService"></property>
+	
+	</bean>
+	
+			<bean id="userwepicAction" class="com.wetuo.wepic.core.actions.UserWepicAction" scope="prototype">
+			
+			</bean>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	 </beans>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BidAimPerson"
+	table="BidAimPerson"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<property 
+		name="type"
+		type="java.lang.Integer"
+		column="type"
+		length="50"
+	/>
+	
+	<property 
+		name="workPlace"
+		type="java.lang.String"
+		column="workPlace"
+		length="50"
+	/>
+	<property 
+		name="money"
+		type="java.lang.Double"
+		column="money"
+		length="50"
+	/>
+	<property 
+		name="startTime"
+		type="java.sql.Timestamp"
+		column="startTime"
+		length="50"
+	/>
+	<property 
+		name="period"
+		type="java.lang.Integer"
+		column="period"
+		length="50"
+	/>
+	<property 
+		name="publicOrPrivate"
+		type="java.lang.Integer"
+		column="publicOrPrivate"
+		length="50"
+	/>
+	<property 
+		name="demand"
+		type="java.lang.String"
+		column="demand"
+		length="50"
+	/>
+	
+	<many-to-one name="bid"	column="bidid" not-null="true" lazy="false"/>
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

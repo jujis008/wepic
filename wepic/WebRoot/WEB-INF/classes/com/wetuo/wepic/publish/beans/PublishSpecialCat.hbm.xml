@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.PublishSpecialCat"
+	table="PublishSpecialCat"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="false" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_PublishSpecialCat_User" 
+		index="IDX_PublishSpecialCat_User" lazy="false"/> 
+	<property 
+		name="pid"
+		type="java.lang.Integer"
+		column="pid"
+		length="50"
+	/>
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="50"
+	/>
+	<property 
+		name="enName"
+		type="java.lang.String"
+		column="enName"
+		length="50"
+	/>
+	<property 
+		name="discription"
+		type="java.lang.String"
+		column="discription"
+		length="50"
+	/>
+	<property 
+		name="type"
+		type="java.lang.String"
+		column="type"
+		length="50"
+	/>
+	<property 
+		name="title"
+		type="java.lang.String"
+		column="title"
+		length="50"
+	/>
+	<property 
+		name="url"
+		type="java.lang.String"
+		column="url"
+		length="50"
+	/>
+	<property 
+		name="target"
+		type="java.lang.String"
+		column="target"
+		length="50"
+	/>
+	<property 
+		name="icon"
+		type="java.lang.String"
+		column="icon"
+		length="50"
+	/>
+	<property 
+		name="iconOpen"
+		type="java.lang.String"
+		column="iconOpen"
+		length="50"
+	/>
+	<property 
+		name="checkboxId"
+		type="java.lang.String"
+		column="checkboxId"
+		length="50"
+	/>
+	
+	<property 
+		name="uploadTime"
+		type="java.sql.Timestamp"
+		column="uploadTime"
+		length="50"
+	/>
+	<!-- 
+	<set name="publishSet" inverse="true">
+		<key column="publishSpecialCatid"/>
+		<one-to-many class="com.wetuo.wepic.publish.beans.Publish"/>
+	</set>
+	 -->
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

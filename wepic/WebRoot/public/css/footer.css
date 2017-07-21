@@ -1,0 +1,247 @@
+body{
+	 behavior: url(../public/css/hover.htc);
+	}
+#footer{
+	padding-top:20px;
+	position:relative;
+	top:0;
+	left:0;
+	width:100%;
+	height:204px;
+	background:#E4E4E4;
+	border-top:2px solid #CFCFCF;
+	}
+#footCenter{
+	margin:0px auto;
+	width:1180px;
+	}
+
+
+/* footer start*/
+
+/*左边链接*/	
+#footServer{
+	text-align:left;
+	margin-top:3px;
+	float:left;
+	width:505px;
+	height:157px;
+	border-right:1px solid #CFCFCF;
+	}
+.footServerCon{
+	margin-left:32px;
+	float:left;
+	width:60px;
+	}
+.footServerCon p{
+	font-size:12px;
+	font-family:"宋体";
+	height:24px;
+	}
+.footServerCon a{
+	color:#A5A5A5;
+	}
+.footServerCon a:hover{
+	color:#000000;
+	}
+#aboutOur{
+	margin-left:20px;
+	}
+#rechargeDefray{
+	}	
+#personnelRecruitment{
+	}
+#legalColumn{
+	}
+#footProblem{
+	margin-left:50px;
+	}
+	
+/*左边链接*/	
+
+
+
+#footCopyright{
+	float:left;
+	width:320px;
+	height:157px;
+	border-right:1px solid #CFCFCF;
+	}
+#footCustom{
+	margin-left:15px;
+	float:left;
+	width:330px;
+	height:200px;
+	}
+
+
+
+.serverConStr{
+	
+	font-size:14px;
+	font-family:"微软雅黑";
+	height:30px;
+	font-weight:bold;
+	}
+.serverConStr a{
+	color:#4A4A4A;
+	}
+.serverConStr a:hover{
+	color:#000000;
+	}
+
+#footCopyright{
+	text-align:left;
+	
+	}
+#serverConStrid{
+	margin-left:26px;
+	}
+#footCopyright p{
+	margin-left:26px;
+	font-size:12px;
+	font-family:"宋体";
+	height:24px;
+	}
+	
+	
+#twoDimensionCode{
+	float:left;
+	width:157px;
+	height:181px;
+	}
+#twoDimensionCode img{
+	width:156px;
+	height:156px;
+	}
+#twoDimensionCode p{
+	letter-spacing:10px;
+	text-align:center;
+	width:156px;
+	font-size:13px;
+	color:#565656;
+	font-family:"微软雅黑";
+	}
+#DimensionCodeServer{
+	margin-left:10px;
+	text-align:left;
+	float:left;
+	width:160px;
+	height:181px;
+	}
+#DimensionCodeServer .serverConStr{
+	margin-top:4px;
+	margin-bottom:-10px;
+	}
+#serverPhone{
+	font-family:"微软雅黑";
+	color:#E12826;
+	font-size:18px;
+	margin-bottom:2px;
+	}
+#serverShare{
+	margin-top:14px;
+	position:relative;
+	width:140px;
+	height:70px;
+	}
+#serverShare li{
+	position:relative;
+	margin-left:2px;
+	margin-top:2px;
+	width:30px;
+	height:30px;
+	float:left;	
+	}
+#serverShare li a{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:30px;
+	height:30px;
+	}
+#shareSina{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+	}
+#shareQqzone{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-30px 0px;
+	}
+#shareQqblog{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-60px 0px;
+	}
+#shareTwitter{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-90px 0px;
+	}
+#shareFacebook{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-120px 0px;
+	}
+#shareRenren{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-150px 0px;
+	}
+#shareDouban{
+	background:url(../../public/images/share.png);	
+	background-repeat:no-repeat;
+	background-position:-180px 0px;
+	}
+#serverShare .active .shareSina{
+	background-position:0px -30px;
+	}
+#serverShare .active .shareQqzone{
+	background-position:-30px -30px;
+	}
+#serverShare .active .shareQqblog{
+	background-position:-60px -30px;
+	}
+#serverShare .active .shareTwitter{
+	background-position:-90px -30px;
+	}
+#serverShare .active .shareFacebook{
+	background-position:-120px -30px;
+	}
+#serverShare .active .shareRenren{
+	background-position:-150px -30px;
+	}
+#serverShare .active .shareDouban{
+	background-position:-180px -30px;
+	}
+/* footer end*/
+
+
+/*回顶部*/
+#goTopBtn {
+	position: fixed; 
+	text-align: center; 
+	line-height: 30px; 
+	width: 45px; 
+	bottom: 80px; 
+	height: 45px; 
+	font-size: 12px; 
+	cursor: pointer; 
+	left:50%; 
+	margin-left:600px;
+	background:url(../images/top/Totop_01.png) no-repeat 0 0;
+	
+	_position:absolute;
+	_bottom:80px;
+	_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+	}
+#goTopBtn:hover {
+	background:url(../images/top/Totop_02.png) no-repeat 0 0;
+	}
+#goTopBtn:active {
+	background:url(../images/top/Totop_03.png) no-repeat 0 0;
+	}
+/*回顶部*/
+

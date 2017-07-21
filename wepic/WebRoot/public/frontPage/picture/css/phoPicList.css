@@ -1,0 +1,153 @@
+.phoPicCon{
+	position:relative;
+	top:0px;
+	left:0;
+	text-align:left;
+	width:1180px;
+	margin:10px auto 40px;
+	}
+
+
+
+/*内容开始*/
+.phoPicCon a{
+	_cursor:pointer;
+	}
+.phoPicCon ul{
+	position:relative;
+	top:0;
+	left:0;
+	margin-left: -13px;
+    margin-top: -10px;
+	}
+.phoPicCon li{
+	margin-left:13px;
+	#margin-left:10px;
+	_margin-left:5px;
+	margin-top:10px;
+	float:left;
+	}
+.phoPicCon .pic-item{
+	position:relative;
+	top:0;
+	left:0;
+	width:285px;
+	height:285px;
+	background:#FFFFFF;
+	}
+.phoPicCon .pic-item .pic-img img{
+	width:285px;
+	height:285px;
+	}
+	
+
+.behind-slide .side-con .head{
+	height:40px;
+	color:#d5d5d5;
+	font-family:"微软雅黑";
+	font-size:18px;
+	line-height:45px;
+	padding:0 25px;
+	border-bottom:1px solid #7f7f7f;
+	white-space: nowrap;      
+ 	text-overflow: ellipsis;        /* for IE */
+	-o-text-overflow:  ellipsis ;      /* for Opera */
+	overflow: hidden;
+	}
+.behind-slide .side-con .num{
+	height:20px;
+	margin-top:8px;
+	color:#8a8987;
+	padding:0 25px;
+	}
+
+.behind-slide .side-con .num .picnum{
+    float: left;
+	margin-left:8px;
+	}
+.behind-slide .side-con .num .picnum span{
+	margin-left:5px;
+	}
+
+.behind-slide .side-con .view{
+	height:135px;
+	position:relative;
+	left:0;
+	top:0;
+	}
+.behind-slide .side-con .view a{
+	display:block;
+	height:135px;
+	width:285px;
+	}	
+.behind-slide .side-con .view a i{
+	display:block;
+	height:90px;
+	width:90px;
+	position:relative;
+	left:97px;
+	top:25px;
+	background:url(../../../images/view.png) 0 0 no-repeat;
+	}	
+.behind-slide .side-con .view a i:hover{
+	background:url(../../../images/view.png) 0 -93px no-repeat;
+	}		
+	
+.behind-slide .side-con .info{
+	height:20px;
+	line-height:20px;
+	color:#8a8987;
+	padding:0 25px;
+	}
+.behind-slide .side-con .info .span{
+	margin-left:5px;
+	}
+.behind-slide .side-con .money{
+	height:28px;
+	line-height:28px;
+	color:#a3a5a4;
+	padding:0 25px;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+.behind-slide .side-con .money label{
+	margin-right:20px;
+	}
+.behind-slide .side-con .money .span{
+	font-size:16px;
+	}
+	
+	
+.behind-slide .side-con .operate{
+	height:30px;
+	padding-top:5px;
+	font-size:12px;
+	font-family:"宋体";
+	color:#8c8887;
+	text-align:center;
+	border-top:1px solid #7f7f7f;
+	}
+.behind-slide .side-con .operate font{
+	color:#9c9c9a;
+    margin-right: 5px;
+    padding-left: 20px;
+	}
+.behind-slide .side-con .operate .view{
+    background:url(../../../images/11.png) no-repeat 0 -2px;
+	}
+.behind-slide .side-con .operate .collect{
+    background:url(../../../images/11.png) no-repeat 0 -21px;
+	}
+.behind-slide .side-con .operate .good{
+    background:url(../../../images/11.png) no-repeat 0 -40px;
+	}
+.behind-slide .side-con .operate .buy{
+    background:url(../../../images/11.png) no-repeat 0 -191px;
+	}
+/*内容结束*/
+
+
+
+.ppointPagingN {
+    border: 1px solid #F4F4F4;
+	}

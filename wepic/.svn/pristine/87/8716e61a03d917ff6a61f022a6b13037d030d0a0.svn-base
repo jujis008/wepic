@@ -1,0 +1,123 @@
+.topUp_chooseBlank{
+	width:870px;
+	height:600px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	}
+
+
+
+
+.topUp_chooseBlank .topUp_top{
+	width:870px;
+	height:78px;
+	text-align:center;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	}
+.topUp_chooseBlank .topUp_top h2{
+	font-weight:normal;
+	color:#000;
+	font-size:24px;
+	line-height:78px;
+	font-family:"微软雅黑";
+	}
+	
+	
+
+.topUp_chooseBlank .table_transfer{
+	width:500px;
+	height:120px;
+	margin-left:260px;
+	margin-top:50px;
+	}
+.topUp_chooseBlank .table_transfer .td_one{
+	vertical-align:top;
+	padding-right:20px;
+	}
+.topUp_chooseBlank .table_transfer .td_one .ico{
+	width:40px;
+	height:40px;
+	background:url(../../../../public/images/yuepaiicon02.png) 0 -104px no-repeat;
+	}
+.topUp_chooseBlank .table_transfer .td_two .twodiv{
+	border-bottom: 1px solid #E8E8E8;
+	padding-bottom: 30px;
+	}
+
+.topUp_chooseBlank .table_transferTwo{
+	width:500px;
+	height:160px;
+	margin-left:320px;
+	}
+.topUp_chooseBlank .table_transferTwo .td_one{
+	width:65px;
+	text-align:left;
+	}
+.topUp_chooseBlank .table_transferTwo .td_one .phone{
+    color: #e12927;
+    font-family: "微软雅黑";
+    font-size: 18px;
+	}
+.topUp_chooseBlank .table_transferTwo .td_two{
+	width:400px;
+	text-align:left;
+    color: #000000;
+    font-family: "微软雅黑";
+    font-size: 15px;
+	}
+
+
+
+.topUp_chooseBlank .topUp_submit{
+	width:870px;
+	height:120px;
+	margin:50px auto;
+	text-align:center;
+	}
+
+
+.topUp_chooseBlank .topUp_submit .applicationDeposit {
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:25px;
+    text-align: center;
+    width: 116px;
+	}
+
+.topUp_chooseBlank .topUp_submit .applicationDeposit:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.topUp_chooseBlank .topUp_submit .applicationDeposit:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+
+.topUp_chooseBlank .topUp_submit .recharge{
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+
+.topUp_chooseBlank .topUp_submit .recharge:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.topUp_chooseBlank .topUp_submit .recharge:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+
+

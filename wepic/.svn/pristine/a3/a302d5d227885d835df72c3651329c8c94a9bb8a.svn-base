@@ -1,0 +1,787 @@
+package com.wetuo.wepic.core.service ;
+ 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.swing.ImageIcon;
+
+import net.coobird.thumbnailator.Thumbnails;
+
+import org.apache.struts2.ServletActionContext;
+import com.qq.connect.javabeans.qzone.UserInfoBean;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.util.MD5Code;
+import com.wetuo.wepic.common.util.SendEmail;
+import com.wetuo.wepic.core.beans.Account;
+import com.wetuo.wepic.core.beans.BlogCat;
+import com.wetuo.wepic.core.beans.LoginHistory;
+import com.wetuo.wepic.core.beans.RoleTags;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.beans.UserCredit;
+import com.wetuo.wepic.core.beans.UserDetail;
+import com.wetuo.wepic.core.beans.UserInfoBeans;
+import com.wetuo.wepic.core.dao.UserDao;
+import com.wetuo.wepic.core.tools.Level;
+import com.wetuo.wepic.deal.beans.UserMess;
+ 
+public class UserServiceImpl implements UserService {
+	UserDao domainDao;
+	private AccountService accountService;
+	private BlogCatService blogCatService;
+	private UserCreditService creditService;
+	private ContactService contactService;
+	private RoleTagService roleTagsService;
+	private UserCreditHistoryService userCreditHistoryService;
+	private LoginHistoryService loginHistoryService;
+	public String initUserMustInfoForWepic(String username, String id) {
+		
+		try{
+			 MD5Code code = new MD5Code("leemenz");
+			String usernamede=code.decrypt(username);
+			String idde=code.decrypt(id);
+			User user=domainDao.select(usernamede);
+			if(user.getId()==null&&user.getId()==0){
+				return "notfinduser";
+			}
+			if(!idde.trim().equals(user.getId()+"".trim())){
+				return "error";
+			}
+			 if(user.getStatu()==1){
+				 
+				return user.getUsername();
+			 }
+			 if( user.getStatu()==0){
+				 
+				 List list= blogCatService.findByPagerBlogCat(1, 4, user.getId()).getResultList();
+				 if(list.size()<=0){
+					 BlogCat blogCat=new BlogCat();
+					 blogCat.setBlogCat("我的博客");
+					 blogCat.setUser(user);
+					 blogCatService.save(blogCat);
+				 }
+			    
+				Account account = new Account();
+				account.setUser(user);
+				account.setAccountID(user.getUsername() + "_"
+						+ AccountSave());
+				account.setTotalMoney(new BigDecimal(0));
+				account.setRemainingMoney(new BigDecimal(0));
+				//account.set
+				UserCredit userCredit=new UserCredit();
+		 		userCredit.setBidBadRemarkNum(0);
+		 		userCredit.setBidConfirmedNum(0);
+		 		userCredit.setBidGetMoney(0);
+		 		userCredit.setBidGiveMoney(0);
+		 		userCredit.setBidNum(0);
+		 		userCredit.setBidGoodRemarkNum(0);
+		 		userCredit.setBuyPicMoney(0);
+		 		userCredit.setDealMoney(0);
+		 		userCredit.setDiamond(0);
+		 		userCredit.setProductsNum(0);
+		 		userCredit.setSellPicMoney(0);
+		 		userCredit.setStar(0);
+		 		userCredit.setTotalMark(0);
+		 		//userCredit.setSellPicMoney(sellPicMoney)
+		 		userCredit.setTotalMark(0);
+		 		userCredit.setUser(user);
+		 		creditService.insert(userCredit);
+				int nid = this.getAccountService().insert(account);
+			 }
+			
+			 domainDao.update(user);
+			 username=user.getUsername();
+			 
+			 return usernamede;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			 return "fail";
+		}	
+		
+	}
+	
+	
+	public LoginHistoryService getLoginHistoryService() {
+		return loginHistoryService;
+	}
+
+
+	public void setLoginHistoryService(LoginHistoryService loginHistoryService) {
+		this.loginHistoryService = loginHistoryService;
+	}
+
+
+	public boolean login(String username, String password) {
+		User record = domainDao.select(username);
+		if (record == null) {
+				return false;
+		} else {
+				String pwd = record.getPassword();
+				String md5pwd = null;
+    		   
+				 try {
+					 MD5Code code = new MD5Code("leemenz");
+					md5pwd = code.encrypt(password);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if ( pwd != null && pwd.equals(md5pwd) ) {
+					return true;
+				} else {
+					return false;
+				}//end else
+		}//end else
+	}//end login() 
+	
+	
+	
+	
+	
+	 public String AccountSave(){
+			SimpleDateFormat format=new SimpleDateFormat("yyyyMMddHHmmssSS");
+			return format.format(new Date());
+	 }	
+	 
+	
+	
+	public List<User> findAll(){ 
+		return domainDao.findAll();
+	}
+	
+	
+	
+	public Pager list(Map<String,Object> mapSqlParam, int pageSize, int pageNo)  {
+		return domainDao.list(mapSqlParam,pageSize,pageNo);
+	}//end list()
+	
+	/////insert///
+	public Integer insert(User user) {
+		MD5Code des;
+		try {
+			des = new MD5Code("leemenz");
+		
+		user.setNickName(user.getUsername());
+		//user.setChineseRole(chinaRole);
+		user.setIfIdentityTrue(0);//没有经过实名认证
+		user.setRegTime(new Date());
+		user.setStatu(0);//账户未激活
+		user.setPassword(des.encrypt(user.getPassword()));
+		user.setNewhip("0");
+		
+		return domainDao.insert(user) ;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return 0;
+		}
+	}//end insert()
+			
+	/////delete///
+	public boolean delete(User record)  {
+		return domainDao.delete(record);
+	}//end delete()
+			
+	public boolean delete(Integer id)  {
+		return domainDao.delete(id);
+	}//end delete()
+	
+	/////update///
+	public boolean update(User record)  {
+		return domainDao.update(record);
+	}//end update()
+			
+	/////select///
+	public User selectById(Integer id)  {
+		return domainDao.selectById(id);
+	}
+	
+	public boolean sendEmail(int id,String url) {
+		try {
+		MD5Code des =new MD5Code("leemenz");
+		User userMsg = domainDao.selectById(id);
+		String username=des.encrypt(userMsg.getUsername());
+		String codes=des.encrypt(id+"");
+		String content1 = "您好！<br/><br/><br/>";
+		content1 += "感谢你注册唯图网。<br/><br/>";
+		content1 += "你的注册邮箱为：" +userMsg.getEmail() + "。请点击以下链接激活帐号<br/>";
+		content1 += "<a href=http://"+url+"/user!useravailable.do?registerId="
+				+ username
+				+ "&imgcode="
+				+ codes
+				+ ">http://"+url+"/user!initUserMustInfoForWepic.do?registerId="
+				+ username + "&imgcode=" + codes + "</a><br/>";
+		content1 += "如果以上链接无法点击，请将上面的地址复制到你的浏览器(如IE)的地址栏进入唯图网。（该链接在48小时内有效，48小时后需要重新注册）<br/><br/>";
+		content1 += "<img src=\"cid:a00000001\">keyyang<br/><br/>";
+		content1 += "唯图网客服经理<br/>";
+		content1 += "key@wepic.cn";
+		Map<String, String> map = new HashMap<String, String>();
+
+		// 邮件服务器主机名(smtp服务器地址)
+		// 如：qq的smtp服务器地址：smtp.qq.com
+		map.put("smtp", "smtp.qq.com");
+		// 邮件传输协议：如smtp
+		map.put("protocol", "smtp");
+		// 登录邮箱的用户名
+		map.put("username", "message@wepic.cn");
+		// 登录邮箱的密码
+		map.put("password", "wepic20070804");
+		// 发送人的帐号
+		map.put("from", "message@wepic.cn");
+		// 接收人的帐号，多个以","号隔开
+		map.put("to", userMsg.getEmail());
+		// 邮件主题
+		map.put("subject", "恭喜您！注册唯图网成功");
+		// 邮件内容
+		map.put("body", content1);
+
+		// 内嵌了多少张图片，如果没有，则new一个不带值的Map
+		Map<String, String> image = new HashMap<String, String>();
+		String path = ServletActionContext.getRequest().getRealPath(
+				"/back/pubimg/118.jpg");
+		image.put("a00000001", path);
+
+		// 附件的绝对路径,不发附件则new一个不带值的List
+		List<String> list = new ArrayList<String>();
+		SendEmail sendEmail = new SendEmail(map, list, image);
+	
+			sendEmail.send();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+		
+		
+	}
+	
+	
+	public boolean isExist(String username)  {
+		User record = domainDao.select(username);
+		if (record == null) {
+				return true;
+		} else {
+				return false;
+		}
+	}//end function
+	
+	public boolean isEmailExist(String email)  {
+		Map<String,Object> map=new HashMap<String, Object>();
+		map.put("email", email);
+		List list = domainDao.list(map, 1, 1).getResultList();
+		if (list.size()>0) {
+				return false;
+		} else {
+				return true;
+		}
+	}//end fu
+	
+
+	
+	public User select(String username) {
+		// TODO Auto-generated method stub
+		return domainDao.select(username);
+	}
+	public UserInfoBeans getUserInfoBeans(int userId){
+		User user=domainDao.selectById(userId);
+		UserInfoBeans bean=new UserInfoBeans();
+		bean.setNickName(user.getNickName());
+		bean.setPortrait(user.getPortrait());
+		bean.setWorkPlace(user.getWorkPlace());
+		bean.setOccupation(user.getChineseRole());
+		Account account=accountService.select(user.getId(),"");
+		bean.setMoeny(account.getRemainingMoney()+"");
+		bean.setSex(user.getSex());
+		UserCredit userCredit=this.getCreditService().selectByUser(user);
+	    int totalMark=(int)userCredit.getTotalMark();
+	       int[] leavel=Level.levelforUser(totalMark);
+	       bean.setStar(leavel[1]);
+	       bean.setJewel(leavel[1]);
+	       int goodRemark=userCredit.getBidGoodRemarkNum();
+	       int badRemark=userCredit.getBidBadRemarkNum();
+	       int attentionNumber=this.getContactService().findAttentionNumber(user);
+	      // int System.out.println(attentionNumber+"******************");
+	       int fansNumber=this.getContactService().findFansNumber(user);
+	        UserMess userMess=new UserMess();
+		    userMess.setBadRemark(badRemark);
+		    userMess.setGoodRemark(goodRemark);
+		    userMess.setFansNumber(fansNumber);
+		    userMess.setAttentionNumber(attentionNumber);
+		    userMess.setTotalMark(totalMark);
+		    bean.setUserMess(userMess);
+		
+		return bean;
+	}
+	
+	
+	
+	public UserInfoBeans getFistPageUserInfoBeans(int userId){
+		User user=domainDao.selectById(userId);
+		UserInfoBeans bean=new UserInfoBeans();
+		bean.setNickName(user.getNickName());
+		bean.setPortrait(user.getPortrait());
+		bean.setWorkPlace(user.getWorkPlace());
+		bean.setOccupation(user.getChineseRole());
+		bean.setPersonOrCompany(user.getPersonOrCompany()+"");
+		Account account=accountService.select(user.getId(),"");
+		//bean.setMoeny(account.getRemainingMoney()+"");
+		bean.setAccount(account);
+		bean.setChinerole(user.getUserTag());
+		bean.setContext(user.getContext());
+		bean.setSex(user.getSex());
+		bean.setIfIdentityTrue(user.getIfIdentityTrue());
+		bean.setPersonOrCompany(user.getPersonOrCompany()+"");
+		UserCredit userCredit=this.getCreditService().selectByUser(user);
+	    int totalMark=(int)userCredit.getTotalMark();
+	       int[] leavel=Level.levelforUser(totalMark);
+	       bean.setStar(leavel[1]);
+	       bean.setJewel(leavel[1]);
+	       int allmark=(bean.getJewel()*1000)+(bean.getStar()*200)+200;
+	       int degee=bean.getJewel()*5+bean.getStar();
+	       bean.setDegee(degee);//等级
+	       int getallmark=(int)userCredit.getTotalMark();
+	       bean.setNextDegeeMark(allmark-getallmark);//升到下一集所需要的积分
+	       
+	       int goodRemark=userCredit.getBidGoodRemarkNum();
+	       int badRemark=userCredit.getBidBadRemarkNum();
+	       int attentionNumber=this.getContactService().findAttentionNumber(user);
+	      // int System.out.println(attentionNumber+"******************");
+	       int fansNumber=this.getContactService().findFansNumber(user);
+	        UserMess userMess=new UserMess();
+		    userMess.setBadRemark(badRemark);
+		    userMess.setGoodRemark(goodRemark);
+		    userMess.setFansNumber(fansNumber);
+		    userMess.setAttentionNumber(attentionNumber);
+		    userMess.setTotalMark(totalMark);
+		    bean.setUserMess(userMess);
+		    LoginHistory loginHistory=new LoginHistory();
+		    loginHistory.setLoginTime(getcurrent());
+		    loginHistory.setUser(user);
+		    this.getLoginHistoryService().insert(loginHistory);
+		return bean;
+	}
+	public Timestamp getcurrent() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String a=df.format(new Date());
+		Timestamp ts = new Timestamp(System.currentTimeMillis());  
+		ts.valueOf(a);
+		return ts;
+	}
+	public LoginHistory recentHistory() {
+		return this.getLoginHistoryService().recentlylogininfo();
+	}
+	public UserInfoBeans getgradUserInfoBeans(int userId){
+		User user=domainDao.selectById(userId);
+		UserInfoBeans bean=new UserInfoBeans();
+		bean.setNickName(user.getNickName());
+		bean.setPortrait(user.getPortrait());
+		
+		bean.setIfIdentityTrue(user.getIfIdentityTrue());
+		UserCredit userCredit=this.getCreditService().selectByUser(user);
+	    int totalMark=(int)userCredit.getTotalMark();
+	     int[] leavel=Level.levelforUser(totalMark);
+	       bean.setStar(leavel[1]);
+	       bean.setJewel(leavel[1]);
+	       int yu=0;
+	       String baif="";
+	       if(totalMark%200==0){
+	    	   baif="100%";
+	    	   if(totalMark==0){
+	    		   
+	    		   baif="0%";
+	    	   }
+	    	   
+	       }else{
+	    	 float i=totalMark%200;
+	    	 baif=(i/200)*100+"%";   
+	       }
+	       bean.setBaif(baif);
+	       int allmark=(bean.getJewel()*1000)+(bean.getStar()*200)+200;
+	       int degee=bean.getJewel()*5+bean.getStar();
+	       bean.setDegee(degee);//等级
+	       int getallmark=(int)userCredit.getTotalMark();
+	        bean.setNextDegeeMark(allmark-getallmark);//升到下一集所需要的积分
+	        UserMess userMess=new UserMess();
+		    userMess.setTotalMark(totalMark);
+		    bean.setUserMess(userMess);
+		   return bean;
+	}
+	
+	
+	public Pager getUsergetMarkHistory(int id,int nowPage,int pageSize){
+		
+		Map<String, Object> map=new HashMap<String, Object>();
+		User user=new User();
+		user.setId(id);
+		map.put("admin", user);
+		return userCreditHistoryService.list(map, pageSize, nowPage);
+	}
+	
+	public String uploadPubimg(File file,String path,String basePath,String uploadPath){
+		 String resPath = "";
+			try{
+				InputStream is = new FileInputStream(file);
+				//String uploadPath = ServletActionContext.getServletContext().getRealPath("/userInfoImg");
+				
+				HttpServletRequest request = ServletActionContext.getRequest();
+				
+				Date date = new Date();
+				DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+				String name1 = format.format(date);
+				
+				//String baseName =    //getRandomStr();
+				//String picType = fileName.substring(fileName.lastIndexOf(".")+1);
+				String picName = name1+".jpg";
+				
+				File toFile = new File(uploadPath,picName);
+				System.out.println("-------------uploadPath---------- : "+uploadPath);
+				OutputStream os = new FileOutputStream(toFile);
+				byte[] b = new byte[1024];
+				int len = 0;
+				while((len = is.read(b)) != -1){
+					os.write(b, 0, len);
+				}
+				is.close();
+				os.close();
+				ImageIcon img= new ImageIcon(uploadPath+"/"+picName);
+				int picWidth= img.getIconWidth();
+				int picHeight= img.getIconHeight();
+				if ((picWidth>500 || picHeight>500)||(picWidth>500 && picHeight>500)) {
+					Thumbnails.of(uploadPath+"/"+picName)
+			        .size(470,500)
+				        .keepAspectRatio(true) //默认是true,按比例缩小
+				        .outputFormat("JPEG")
+				        .toFile(uploadPath+"/"+picName);//如果为宽图片，生成的宽度为指定的宽度，高度自适应
+				}
+				resPath = basePath+"userInfoImg/"+picName;
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+			return resPath;
+	}
+	
+	//企业头像上传
+	public String enterpeiceuploadPubimg(File file,String path,String basePath,String uploadPath){
+		 String resPath = "";
+		 String resPath80 = "";
+			try{
+				InputStream is = new FileInputStream(file);
+				//String uploadPath = ServletActionContext.getServletContext().getRealPath("/userInfoImg");
+				
+				HttpServletRequest request = ServletActionContext.getRequest();
+				
+				Date date = new Date();
+				DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+				String name1 = format.format(date);
+				
+				//String baseName =    //getRandomStr();
+				//String picType = fileName.substring(fileName.lastIndexOf(".")+1);
+				String picName = name1+".jpg";
+				
+				File toFile = new File(uploadPath,picName);
+				System.out.println("-------------uploadPath---------- : "+uploadPath);
+				OutputStream os = new FileOutputStream(toFile);
+				byte[] b = new byte[1024];
+				int len = 0;
+				while((len = is.read(b)) != -1){
+					os.write(b, 0, len);
+				}
+				is.close();
+				os.close();
+				ImageIcon img= new ImageIcon(uploadPath+"/"+picName);
+				int picWidth= img.getIconWidth();
+				int picHeight= img.getIconHeight();
+				if(picWidth!=150&&picHeight!=150){
+				File file2=new File(uploadPath+"/"+picName);
+				if(file2.exists()){
+					file2.delete();
+					return "errorSize";
+					
+					
+				}
+					
+				}
+					Thumbnails.of(uploadPath+"/"+picName)
+			        .size(150,150)
+				        .keepAspectRatio(true) //默认是true,按比例缩小
+				        .outputFormat("JPEG")
+				        .toFile(uploadPath+"/"+picName);//如果为宽图片，生成的宽度为指定的宽度，高度自适应
+					
+					Thumbnails.of(uploadPath+"/"+picName)
+			        .size(80,80)
+				        .keepAspectRatio(true) //默认是true,按比例缩小
+				        .outputFormat("JPEG")
+				        .toFile(uploadPath+"/80x"+picName);//如果为宽图片，生成的宽度为指定的宽度，高度自适应
+					
+					
+				
+				resPath = basePath+"userInfoImg/"+picName;
+				resPath80 = basePath+"userInfoImg/80x"+picName;
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+			String res=resPath+","+resPath80;
+			return res;
+	}
+	
+	
+	public String  cutImgForUSer(Map<String, Object> map){
+		String tempPicName=(String) map.get("tempPicName");
+	    User user2=domainDao.selectById(Integer.parseInt(map.get("userId")+""));
+		String path=(String) map.get("path");
+		int x=Integer.parseInt(map.get("x")+"");
+		int y=Integer.parseInt(map.get("y")+"");
+		int w=Integer.parseInt(map.get("w")+"");
+		int h=Integer.parseInt(map.get("h")+"");
+        int index=tempPicName.indexOf("userInfoImg");
+        
+        String newName=tempPicName.substring(index,tempPicName.length());
+        int a=newName.indexOf("/");
+        
+        String b=newName.substring(a+1,newName.length());//文件名称
+        
+        int position=b.lastIndexOf(".");
+        
+        String type = b.substring(b.lastIndexOf(".")+1);
+        String endPath=b.substring(0,position)+"."+type;
+        String c=path+"/"+b;	   //原来图片路径
+        String currentPath=path+"/"+endPath;
+        try {
+			Thumbnails.of(c)
+			.sourceRegion(x,y,w, h)
+			.size(w,h)
+			.keepAspectRatio(true) //默认是true,按比例缩小
+			    .outputFormat("JPEG")
+			    .toFile(c);
+			
+			Thumbnails.of(c)
+			.size(150,150)
+			.keepAspectRatio(true) //默认是true,按比例缩小
+			    .outputFormat("JPEG")
+			    .toFile(c);
+			Thumbnails.of(c)
+			.size(80,80)
+			.keepAspectRatio(true) //默认是true,按比例缩小
+			    .outputFormat("JPEG")
+			    .toFile(c+"80x80");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        user2.setPortrait(tempPicName);
+        domainDao.update(user2);   
+        return "createPicSucess";
+	}
+	
+	/*
+	public String saveTags(){
+	     //  String str[]={"时装摄影师","广告摄影师 ","人像摄影师" ,"产品摄影师" ,"建筑室内摄影师","场景摄","影师" ,"新闻摄影师","广告片摄像师","时尚摄影师 ","摄像师"};
+	       
+		//String str[]={"平面影视模特","产品形象模特","T台走秀模特","礼仪模特","车模","服装试穿模特","内衣模特" ,"表演模特","人体模特","局部模特（脸模 眼模  手模  耳模  腿模  脚模）","中老年模特", "少儿模特（由监护人代理注册）"};
+		//String  str[]={"模特经纪","摄影师经纪","用户经纪" ,"艺术经纪", "演艺经纪"};
+		//String  str[]={"IT互联网","服装","网店店主","广告/设计","策划","经纪","产品品牌","餐饮","交通/运输","美容/护理" ,"媒体/传媒","教育/培训","出版/印刷","文化/艺术"};
+		//String  str[]={"主持人","音乐人 ","演员","导演","音效师","化妆师","后期制作"};
+		//String str[]={"平面设计师","服装设计师","建筑设计师","产品设计师","网页设计师","室内设计师 ","展览设计师","造型设计师","动画设计师","游戏设计师"};
+		//String str[]={"商业摄影","婚纱摄影","儿童摄影","摄影协会 "};
+		//String str[]={ "广告设计","平面设计","室内设计","展览设计","建筑设计","工业设计","服装设计","网站设计","包装设计","园林设计","道具设计","饰品设计"};
+		//String str[]={"媒体广告","平面广告","影视广告","互联网广告","会议策划","活动策划","路演策划","新品发布","品牌策划","市场营销"};
+		//String str[]={"影视动画","游戏","卡通","动漫产品"};
+		//String str[]={"互联网","淘宝","天猫","电商平台","网络店铺"};
+		String str[]={"出版社","网络文学","编辑","书城"};
+		for (String string : str) {
+			
+		
+	       RoleTags tags=new RoleTags();
+	       tags.setRole("printing");
+	       tags.setTag(string.trim());
+	       roleTagsService.insert(tags);
+	       }
+	       return "" ;
+	}
+	*/
+	public List<RoleTags> selectTagByRole(String role){
+		
+		
+		
+		return roleTagsService.findByRole(role);
+		
+	}
+	
+public List<RoleTags> nextRadomTagByRole(){
+	int siz=12;
+	List<Integer> listradom=new ArrayList<Integer>();
+	for (int i = 0; i <siz; i++) {
+		int ra=new Random().nextInt(100);
+		if(listradom.contains(ra)){
+			siz++;
+		}else{
+		listradom.add(ra);
+		}
+	}
+	List<RoleTags> roleTagses=new ArrayList<RoleTags>();
+	for (int i = 0; i < listradom.size(); i++) {
+		RoleTags roleTags=roleTagsService.findByRoleId(listradom.get(i));
+		if(roleTags!=null){
+			roleTagses.add(roleTags);
+			
+		}
+	}
+      return roleTagses;		
+	}
+	
+	
+	public ContactService getContactService() {
+		return contactService;
+	}
+	public void setContactService(ContactService contactService) {
+		this.contactService = contactService;
+	}
+	public UserDao getUserDao() {
+		return domainDao;
+	}//
+	public void setUserDao(UserDao  domainDao) {
+		this.domainDao = domainDao;
+	}
+	
+	
+	
+	
+	
+	public UserCreditHistoryService getUserCreditHistoryService() {
+		return userCreditHistoryService;
+	}
+
+
+	public void setUserCreditHistoryService(
+			UserCreditHistoryService userCreditHistoryService) {
+		this.userCreditHistoryService = userCreditHistoryService;
+	}
+
+
+	public AccountService getAccountService() {
+		return accountService;
+	}
+	public void setAccountService(AccountService accountService) {
+		this.accountService = accountService;
+	}
+	public BlogCatService getBlogCatService() {
+		return blogCatService;
+	}
+	public void setBlogCatService(BlogCatService blogCatService) {
+		this.blogCatService = blogCatService;
+	}
+	public UserCreditService getCreditService() {
+		return creditService;
+	}
+	public void setCreditService(UserCreditService creditService) {
+		this.creditService = creditService;
+	}
+	
+	
+	
+	
+	public RoleTagService getRoleTagsService() {
+		return roleTagsService;
+	}
+
+
+	public void setRoleTagsService(RoleTagService roleTagsService) {
+		this.roleTagsService = roleTagsService;
+	}
+
+
+	////2.0方法//////////////////////////////////////////////////////////////////////////////////////////////////////
+	public Integer register(User record)  {
+		User user = domainDao.select(record.getUsername());
+		if (user != null) {
+			return null;
+		} else {
+			return domainDao.insert(record);
+		}
+	}//end register()
+	
+	public Pager moelorPotolist(String type, int pageSize, int pageNo,int userId,String aimId, String workPalce) {
+		
+		return domainDao.moelorPotolist(type, pageSize, pageNo,userId,aimId,workPalce);
+	}
+	public Pager checkInvitedUser(String id) {
+		
+		return domainDao.checkInvitedUser(id);
+	}
+	
+	public List<UserDetail> listUserDetails(Integer userId) {
+		
+		return domainDao.findUserDetails(userId);
+	}
+	public Pager addBrokerShip(int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return domainDao.addBrokerShip(pageSize,pageNo);
+	}
+	public Pager addbrokerscustomer(int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return domainDao.addbrokerscustomer(pageSize,pageNo);
+	}
+	public Pager listUnderCat(Integer catId, int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return domainDao.listUnderCat(catId, pageSize, pageNo);
+	}
+	public Pager getAllPohtoOrModel(String role, int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		return domainDao.getAllPohtoOrModel(role, pageNo, pageSize);
+	}
+	public Pager searchPhotoOrModel(int pageSize, int pageNo, String position,
+			String searchNick, String searchType) {
+		// TODO Auto-generated method stub
+		return domainDao.searchPhotoOrModel(pageSize, pageNo, position, searchNick, searchType);
+	}
+	public Pager userStatistics(final int pageSize,final int pageNo){
+		return domainDao.userStatistics(pageSize, pageNo);
+	}
+	public List getAllPohtoOrModelByShowLeft(String role) {
+		// TODO Auto-generated method stub
+		return domainDao.getAllPohtoOrModelByShowLeft(role);
+	}
+		
+	public List<User> findnoactiveuser(){
+		return domainDao.findnoactiveuser();
+	}
+	public List<User> findPart(String strFields, String[] arrStrValues){ 
+		return domainDao.findPart(strFields,arrStrValues);
+	}
+	
+	public Pager list(int pageSize, int pageNo)  {
+		return domainDao.list(pageSize,pageNo);
+	}//end list()
+	public Pager getListParamter(Integer paramter, int pageSize, int pageNo)  {
+		return domainDao.getListByParameter(paramter, pageSize, pageNo);
+	}//end list()
+	
+	public Pager list(String username, int pageSize, int pageNo)  {
+		return domainDao.list(username,pageSize,pageNo);
+	}//end list()
+
+
+	public String saveTags() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}//end class

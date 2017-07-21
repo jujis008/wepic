@@ -1,0 +1,45 @@
+$(function(){
+	
+	
+	
+	judgeLi("divListOneUl",16);	//达到图片数显示分页
+	judgeLi("divListTwoUl",16);	//达到图片数显示分页
+	judgeLi("divListThreeUl",16);	//达到图片数显示分页
+	judgeLi("divListFourUl",16);	//达到图片数显示分页
+	
+	
+	xuan();				//选项卡
+	
+	clock();				//倒计时
+	
+	
+	objscroll("divApointProjectRight",260);
+	});
+	
+
+
+var flag = 0;
+function xuan(){
+        var cardLi=$("#recruitCameristTimelyStateCard").find("li");
+		var oDivSon =$(".divStateCardCon").find(".divList");
+		
+		
+        for(var i=0;i<cardLi.length;i++){  
+            cardLi[i].index=i; //input[0].index=0 index是自定义属性
+            cardLi[i].onclick=function(){
+               for(var i=0;i<cardLi.length;i++){  //循环历遍去掉button样式和把div隐藏
+                  cardLi[i].className='';
+                  oDivSon[i].style.display='none';
+               };
+               this.className='active';  //当前按钮添加样式
+               oDivSon[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+           };
+         };
+		 
+		 
+		 $("#div1").fadeIn();
+       }
+	
+
+
+

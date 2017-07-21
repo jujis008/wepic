@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.LeaveWord"
+	table="LeaveWord"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="member" 
+		column="member" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_LeaveWord_Member" 
+		index="IDX_LeaveWord_Member"/> 
+	
+	<many-to-one name="admin" 
+		column="admin" 
+		not-null="false" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_LeaveWord_Admin" 
+		index="IDX_LeaveWord_Admin"/> 
+	
+	<property 
+		name="content"
+		type="java.lang.String"
+		column="content"
+		length="550"
+	/>
+	
+	<property 
+		name="detailContent"
+		type="java.lang.String"
+		column="detailContent"
+		length="550"
+	/>
+	
+	<property 
+		name="messageReply"
+		type="java.lang.String"
+		column="messageReply"
+		length="50"
+	/>
+	
+	<property 
+		name="title"
+		type="java.lang.String"
+		column="title"
+		length="50"
+	/>
+		<property 
+		name="adtype"
+		type="java.lang.String"
+		column="adtype"
+		length="50"
+	/>
+	
+	<property 
+		name="resultStat"
+		type="java.lang.String"
+		column="resultStat"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="tel"
+		type="java.lang.String"
+		column="tel"
+		length="50"
+	/>
+	<property 
+		name="email"
+		type="java.lang.String"
+		column="email"
+		length="50"
+	/>
+	
+	<property 
+		name="qq"
+		type="java.lang.String"
+		column="qq"
+		length="50"
+	/>
+	
+		<property 
+		name="proofurl"
+		type="java.lang.String"
+		column="proofurl"
+		length="550"
+	/>
+	
+	<many-to-one name="publish" 
+		column="publish"
+		class="com.wetuo.wepic.publish.beans.Publish" 
+		foreign-key="FK_LeaveWord_publish" 
+		index="IDX_LeaveWord_publish"/> 
+	
+	
+	<property 
+		name="reason"
+		type="java.lang.String"
+		column="reason"
+		length="100"
+	/>
+	
+	<property 
+		name="whoseContent"
+		type="java.lang.Integer"
+		column="whoseContent"
+		length="50"
+	/>
+	<property 
+		name="time"
+		type="java.sql.Timestamp"
+		column="time"
+		length="50"
+	/>
+	<property 
+		name="step"
+		type="java.lang.String"
+		column="step"
+		length="50"
+	/>
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

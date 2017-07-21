@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.Bid"
+	table="Bid"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_Bid_User" 
+		index="IDX_Bid_User"
+		
+		
+		/> 
+	
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="50"
+	/>
+	<property 
+		name="imgSum"
+		type="java.lang.Integer"
+		column="imgSum"
+		length="50"
+	/>
+	
+	<property 
+		name="numFont"
+		type="java.lang.String"
+		column="numFont"
+		length="50"
+	/>
+	
+	<property 
+		name="totalMoney"
+		type="java.lang.Double"
+		column="totalMoney"
+		length="50"
+	/>
+	<property 
+		name="workPlace"
+		type="java.lang.String"
+		column="workPlace"
+		length="500"
+	/>
+	
+	<property 
+		name="appendix"
+		type="java.lang.String"
+		column="appendix"
+		length="500"
+	/>
+	
+	
+	<property 
+		name="recruitNum"
+		type="java.lang.Integer"
+		column="recruitNum"
+		length="50"
+	/>
+	<property 
+		name="startTime"
+		type="java.sql.Timestamp"
+		column="startTime"
+		length="50"
+	/>
+	
+	<property 
+		name="workStartTime"
+		type="java.lang.String"
+		column="workStartTime"
+		length="50"
+	/>
+	<property 
+		name="workEndTime"
+		type="java.lang.String"
+		column="workEndTime"
+		length="50"
+	/>
+	
+	<property 
+		name="worksspecifications"
+		type="java.lang.String"
+		column="worksspecifications"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="workPrecision"
+		type="java.lang.String"
+		column="workPrecision"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="workPrecisionWidth"
+		type="java.lang.String"
+		column="workPrecisionWidth"
+		length="50"
+	/>
+	
+	<property 
+		name="workPrecisionHeight"
+		type="java.lang.String"
+		column="workPrecisionHeight"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="isCopyright"
+		type="java.lang.String"
+		column="isCopyright"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="fileType"
+		type="java.lang.String"
+		column="fileType"
+		length="50"
+	/>
+	
+	<property 
+		name="period"
+		type="java.lang.String"
+		column="period"
+		length="50"
+	/>
+	<property 
+		name="bidType"
+		type="java.lang.Integer"
+		column="bidType"
+		length="50"
+	/>
+	<property 
+		name="publicOrPrivate"
+		type="java.lang.Integer"
+		column="publicOrPrivate"
+		length="50"
+	/>
+	<property 
+		name="refresh"
+		type="java.lang.Integer"
+		column="refresh"
+		length="50"
+	/>
+	<property 
+		name="status"
+		type="java.lang.Integer"
+		column="status"
+		length="50"
+	/>
+	<property 
+		name="bidderAssess"
+		type="java.lang.String"
+		column="bidderAssess"
+		length="50"
+	/>
+	<property 
+		name="payTime"
+		type="java.sql.Timestamp"
+		column="payTime"
+		length="50"
+	/>
+	<property 
+		name="ifTaskFinished"
+		type="java.lang.Integer"
+		column="ifTaskFinished"
+		length="50"
+	/>
+	<property 
+		name="autoFinishPeriod"
+		type="java.lang.Integer"
+		column="autoFinishPeriod"
+		length="50"
+	/>
+	<property 
+		name="numChangeWorker"
+		type="java.lang.Integer"
+		column="numChangeWorker"
+		length="50"
+	/>
+	
+	<property 
+		name="type"
+		type="java.lang.Integer"
+		column="type"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="ifAskPrice"
+		type="java.lang.Integer"
+		column="ifAskPrice"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="tag"
+		type="java.lang.String"
+		column="tag"
+		length="250"
+	/>
+	
+	<property 
+		name="content"
+		type="java.lang.String"
+		column="content"
+		length="750"
+	/>
+	
+	<property 
+		name="contextHtml"
+		type="java.lang.String">
+		<column name="contextHtml" sql-type="longtext"></column>
+		
+		</property>
+	<property 
+		name="shootingEnvironment"
+		type="java.lang.String">
+		<column name="shootingEnvironment" ></column>
+		
+		</property>
+		<property 
+		name="isHaveModel"
+		type="java.lang.String">
+		<column name="isHaveModel" ></column>
+		
+		</property>
+		<property 
+		name="sumProdct"
+		type="java.lang.Integer">
+		<column name="sumProdct" ></column>
+		
+		</property>
+		
+		<property 
+		name="sumProductPhoto"
+		type="java.lang.Integer">
+		<column name="sumProductPhoto" ></column>
+		
+		</property>
+		<property 
+		name="unitpriceProduct"
+		type="java.lang.Double">
+		<column name="unitpriceProduct" ></column>
+		
+		</property>
+	
+	
+	<property 
+		name="unitpriceType"
+		type="java.lang.Integer">
+		<column name="unitpriceType" ></column>
+		</property>
+		<property name="photoType" type="java.lang.String">
+		<column name="photoType"></column>
+		</property>
+		<property 
+		name="attachmentUrl"
+		type="java.lang.String">
+		<column name="attachmentUrl" ></column>
+		</property>
+		
+		<property 
+		name="bidView"
+		type="java.lang.Integer">
+		<column name="bidView" ></column>
+		
+		</property>
+		
+		<property 
+		name="bidGood"
+		type="java.lang.Integer">
+		<column name="bidGood" ></column>
+		
+		</property>
+		
+		<property 
+		name="saveFrarite"
+		type="java.lang.Integer">
+		<column name="saveFrarite" >
+		</column>
+		</property>
+		
+		
+		<property 
+		name="sjProjectVI"
+		type="java.lang.String">
+		<column name="sjProjectVI" >
+		</column>
+		</property>
+		
+		
+		
+		
+		
+		<property 
+		name="viApplication"
+		type="java.lang.String">
+		<column name="viApplication" >
+		</column>
+		</property>
+		
+		
+		
+		
+		
+		<property 
+		name="copyRighyt"
+		type="java.lang.String">
+		<column name="copyRighyt" >
+		</column>
+		</property>
+		
+		
+		
+		
+			<property 
+		name="workHour"
+		type="java.lang.String">
+		<column name="workHour" >
+		</column>
+		</property>
+		
+		
+	<property 
+		name="modeType"
+		type="java.lang.String">
+		<column name="modeType" >
+		</column>
+		</property>
+		
+		<property 
+		name="modelStyle"
+		type="java.lang.String">
+		<column name="modelStyle" >
+		</column>
+		</property>
+		
+		
+		<property 
+		name="isAgeRequest"
+		type="java.lang.String">
+		<column name="isAgeRequest" >
+		</column>
+		</property>
+		
+		
+		<property 
+		name="isSexRequest"
+		type="java.lang.String">
+		<column name="isSexRequest" >
+		</column>
+		</property>
+		
+		<property 
+		name="photoTerm"
+		type="java.lang.String">
+		<column name="photoTerm" >
+		</column>
+		</property>
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		
+<!--	<set name="bidDetailSet" inverse="true">-->
+<!--		<key column="bidid"/>-->
+<!--		<one-to-many class="com.wetuo.wepic.deal.beans.BidDetail"/>-->
+<!--	</set>
+	
+	<set name="bidAimPersonSet" inverse="true">
+		<key column="bidid"/>
+		<one-to-many class="com.wetuo.wepic.deal.beans.BidAimPerson"/>
+	</set>
+	
+	
+	 <one-to-one name="bidAimPerson" constrained="true" lazy="false"></one-to-one>  
+	-->
+<!--	<set name="bidResponseInvitedSet" inverse="true">-->
+<!--		<key column="bidid"/>-->
+<!--		<one-to-many class="com.wetuo.wepic.deal.beans.BidResponseInvited"/>-->
+<!--	</set>-->
+	
+<!--	<set name="bidAccountOperationSet" inverse="true">-->
+<!--		<key column="bidid"/>-->
+<!--		<one-to-many class="com.wetuo.wepic.deal.beans.BidAccountOperation"/>-->
+<!--	</set>-->
+	
+<!--	<set name="bidReceiverConfirmChangeSet" inverse="true">-->
+<!--		<key column="bidid"/>-->
+<!--		<one-to-many class="com.wetuo.wepic.deal.beans.BidReceiverConfirmChange"/>-->
+<!--	</set>
+	
+	<set name="bidForOpusSet" inverse="true">
+		<key column="bidid"/>
+		<one-to-many class="com.wetuo.wepic.deal.beans.BidForOpus"/>
+	</set>
+	-->
+<!-- @#$% -->
+
+
+<many-to-one name="bidStatus" class="com.wetuo.wepic.deal.beans.BidStatus" unique="true" column="bidStatus"></many-to-one>
+
+
+</class>
+</hibernate-mapping>

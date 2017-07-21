@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+    <package name="com.wetuo.wepic.core.actions.ConfigurationActionofConfigrue"
+		extends="larry-default">
+		<action name="configure*" class="configuration">
+		    <!-- 配置中心 -->
+			<result name="configuration">/back/configurationCentre/accountSecurity/accountInfo/changeEmailByPassword.jsp</result>
+			<result name="changesteptwo">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepTwo.jsp</result>
+			<result name="sendregemail">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepThree.jsp</result>
+			<result name="checkmailfail">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepFailed.jsp</result>
+			<result name="modifysuc">/back/configurationCentre/accountSecurity/accountInfo/changeEmailStepSuccess.jsp</result>
+			<result name="securityIndex">/back/configurationCentre/accountSecurity/securityIndex.jsp</result>
+			<result name="mobilevalidate"> /back/configurationCentre/accountSecurity/accountInfo/changeEmailByPhone.jsp</result>
+			
+			
+			<!-- 修改手机 -->
+			<result name="modifymobile">/back/configurationCentre/accountSecurity/accountInfo/changePhoneByPassword.jsp</result>	
+			<result name="changephonesteptwo">/back/configurationCentre/accountSecurity/accountInfo/changePhoneTwo.jsp</result>
+			<result name="changephonesuc">/back/configurationCentre/accountSecurity/accountInfo/changePhoneSuccess.jsp</result>
+			<result name="changephonebycurrentemail">/back/configurationCentre/accountSecurity/accountInfo/changephonebyemail.jsp</result>
+			<result name="changephonefail">/back/configurationCentre/accountSecurity/accountInfo/changePhoneFailed.jsp</result>
+			
+			<!-- 修改密码 -->
+			<result name="modifypassword">/back/configurationCentre/accountSecurity/accountInfo/changePassword.jsp</result>
+			<result name="modifypwdsuc">/back/configurationCentre/accountSecurity/accountInfo/changePasswordSuccess.jsp</result>
+		</action>
+	</package>
+</struts>

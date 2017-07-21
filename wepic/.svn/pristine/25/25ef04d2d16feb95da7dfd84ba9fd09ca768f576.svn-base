@@ -1,0 +1,1026 @@
+package com.wetuo.wepic.core.actions ;
+ 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.annotations.JSON;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.struts.Constants;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.util.MailSend;
+import com.wetuo.wepic.common.util.SendEmail;
+import com.wetuo.wepic.core.beans.Account;
+import com.wetuo.wepic.core.beans.AccountRecharge;
+import com.wetuo.wepic.core.beans.AccountWithdraw;
+import com.wetuo.wepic.core.beans.MoneyInfo;
+import com.wetuo.wepic.core.beans.MoneyRecharge;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.service.AccountService;
+import com.wetuo.wepic.core.service.AccountWithdrawService;
+import com.wetuo.wepic.core.service.UserService;
+import com.wetuo.wepic.deal.beans.BuyCommodities;
+import com.wetuo.wepic.publish.beans.Publish;
+import com.sms.util.SendSMS;
+public class AccountWithdrawAction extends PageAction {
+		
+	private AccountService accountService;
+	public AccountService getAccountService() {
+		return accountService;
+	}
+	public void setAccountService(AccountService accountService) {
+		this.accountService = accountService;
+	}
+		
+ 
+ 
+	/////instantce variable//////
+	private static final long serialVersionUID = 1L;
+	protected String id = null ; 
+ 	private AccountWithdrawService accountWithdrawService;
+	protected String userId = null ;
+	private UserService userService;
+	private int nowPage=1;
+	private MoneyInfo moneyInfo;
+	private int endPage;
+	
+	
+	public int getNowPage() {
+		return nowPage;
+	}
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+	public MoneyInfo getMoneyInfo() {
+		return moneyInfo;
+	}
+	public void setMoneyInfo(MoneyInfo moneyInfo) {
+		this.moneyInfo = moneyInfo;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	protected String accountId = null ; 
+	protected String withdrawMoney = null ; 
+	protected String withdrawTime = null ; 
+	protected String withdrawCode = null ; 
+	protected String isWithdrawSuccess = null ; 
+	protected String ifDemandWithdraw = null ; 
+	protected String demandWithdrawTime = null ; 
+	protected String ifConfirmWithdrawed = null ; 
+	protected String username = null; 
+	protected String email = null;
+	private String codePwd;
+	private String message;
+	private String failreason;
+	public String getFailreason() {
+		return failreason;
+	}
+	public void setFailreason(String failreason) {
+		this.failreason = failreason;
+	}
+
+
+
+	private Integer tradeId;
+	private BigDecimal totalMoney;
+	private List cashList;
+	private Account account;
+	private AccountWithdraw accountWithdraw;
+	private List tempList;
+	public List getTempList() {
+		return tempList;
+	}
+	public void setTempList(List tempList) {
+		this.tempList = tempList;
+	}
+	public Integer getTradeId() {
+		return tradeId;
+	}
+	public void setTradeId(Integer tradeId) {
+		this.tradeId = tradeId;
+	}
+	//???????????��????
+	public void validate() {
+		
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		String queryString = getRequestPath();
+		if (queryString.indexOf("accountWithdrawadd!insert") != -1 || queryString.indexOf("accountWithdrawedit!update") != -1) {
+		
+			if (userId == null || userId.equals("")) {
+				addFieldError("userId", "userId must be inputed");
+			}//end if null
+			if (accountId == null || accountId.equals("")) {
+				addFieldError("AccountID", "AccountID must be inputed");
+			}//end if null
+			if (withdrawMoney == null || withdrawMoney.equals("")) {
+				addFieldError("withdrawMoney", "withdrawMoney must be inputed");
+			}//end if null
+			if (withdrawTime == null || withdrawTime.equals("")) {
+				addFieldError("withdrawTime", "withdrawTime must be inputed");
+			}//end if null
+			if (withdrawCode == null || withdrawCode.equals("")) {
+				addFieldError("withdrawCode", "withdrawCode must be inputed");
+			}//end if null
+			if (isWithdrawSuccess == null || isWithdrawSuccess.equals("")) {
+				addFieldError("isWithdrawSuccess", "isWithdrawSuccess must be inputed");
+			}//end if null
+			if (ifDemandWithdraw == null || ifDemandWithdraw.equals("")) {
+				addFieldError("ifDemandWithdraw", "ifDemandWithdraw must be inputed");
+			}//end if null
+			if (demandWithdrawTime == null || demandWithdrawTime.equals("")) {
+				addFieldError("demandWithdrawTime", "demandWithdrawTime must be inputed");
+			}//end if null
+			if (ifConfirmWithdrawed == null || ifConfirmWithdrawed.equals("")) {
+				addFieldError("ifConfirmWithdrawed", "ifConfirmWithdrawed must be inputed");
+			}//end if null
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+		}//end if
+	}//end validate()
+	/*
+	@JSON(serialize=false)
+	public String msgvalidateCode() {
+		String code=getRandomStr();
+		SendSMS ss = new SendSMS();//您的实名认证手机验证码是:"+code+",验证码有效时长为10分钟,请输入后进行验证。【维图网】
+		ss.setUsername("639198");//
+
+		ss.setPassword("8df7ed01c3e41c43cbd9d9df75eb99c3");
+		ss.setMessage("您好,您的唯图网手机验证码为："+code+",【唯图网】");
+		ss.setMobiles(mobile);
+		ss.setServicesRequestAddRess("http://sms.c8686.com/Api/BayouSmsApiEx.aspx");
+		ss.setSmstype(0);
+		ss.setTimerid("0");
+		ss.setTimertype(0);
+		Map<String, String> map = ss.sendSMS();
+		int sendflag=Integer.valueOf(map.get("errorcode").toString());
+		HttpSession ses =ServletActionContext.getRequest().getSession();
+		if (sendflag==0) {
+			msgFlag=1;
+			System.out.println(code);
+			ses.setAttribute("msgcode", code);
+			ses.setMaxInactiveInterval(10*60);
+		}
+		
+		return "msgvalidateCode";
+	}
+	*/
+	public void sendTradeCode(String username, String code) throws Exception {
+		User userMsg = this.getUserService().select(username);
+		String content1 = "您好！<br/><br/><br/>";
+		content1 += "感谢你注册唯图网。<br/><br/>";
+		content1 += "你的注册邮箱为：" + userMsg.getEmail() + "。请点击以下链接激活帐号<br/>";
+		content1 += "<a href=http://www.wepic.cn/user!active.do?username="
+				+ userMsg.getUsername()
+				+ "&imgcode="
+				+ code
+				+ ">http://www.wepic.cn/user!active.do?username="
+				+ userMsg.getUsername() + "&imgcode=" + code + "</a><br/>";
+		content1 += "如果以上链接无法点击，请将上面的地址复制到你的浏览器(如IE)的地址栏进入唯图网。（该链接在48小时内有效，48小时后需要重新注册）<br/><br/>";
+		content1 += "<img src=\"cid:a00000001\">keyyang<br/><br/>";
+		content1 += "唯图网客服经理<br/>";
+		content1 += "key@wepic.cn";
+		Map<String, String> map = new HashMap<String, String>();
+
+		// 邮件服务器主机名(smtp服务器地址)
+		// 如：qq的smtp服务器地址：smtp.qq.com
+		map.put("smtp", "smtp.qq.com");
+		// 邮件传输协议：如smtp
+		map.put("protocol", "smtp");
+		// 登录邮箱的用户名
+		map.put("username", "message@wepic.cn");
+		// 登录邮箱的密码
+		map.put("password", "wepic20070804");
+		// 发送人的帐号
+		map.put("from", "message@wepic.cn");
+		// 接收人的帐号，多个以","号隔开
+		map.put("to", userMsg.getEmail());
+		// 邮件主题
+		map.put("subject", "恭喜您！注册唯图网成功");
+		// 邮件内容
+		map.put("body", content1);
+
+		// 内嵌了多少张图片，如果没有，则new一个不带值的Map
+		Map<String, String> image = new HashMap<String, String>();
+		String path = ServletActionContext.getRequest().getRealPath(
+				"/images/118.jpg");
+		image.put("a00000001", path);
+
+		// 附件的绝对路径,不发附件则new一个不带值的List
+		List<String> list = new ArrayList<String>();
+		SendEmail sendEmail = new SendEmail(map, list, image);
+		sendEmail.send();
+	}
+	public String init() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		
+		// ???????????
+		super.pager = this.getAccountWithdrawService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_ACCOUNTWITHDRAW, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end init()
+		
+	public String list() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ???????????
+		super.pager = this.getAccountWithdrawService().list(super.getLoginUsername(), super.pageSize, super.pageNo);	
+		
+		// ?????????
+		setSession(Constants.PAGER_ACCOUNTWITHDRAW, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end list()
+		
+	public String add() throws Exception {
+		System.out.println("F2 add getParameter of oneId: "+ServletActionContext.getRequest().getParameter("oneId"));
+		
+		if(ServletActionContext.getRequest().getParameter("from") != null && ServletActionContext.getRequest().getParameter("from") != ""){
+			if(ServletActionContext.getRequest().getParameter("from").indexOf("accountWithdraw") > -1){
+				ServletActionContext.getResponse().sendRedirect("account!init.do");
+			}
+		}
+		ServletActionContext.getRequest().setAttribute("oneId", ServletActionContext.getRequest().getParameter("oneId"));
+		// ?????????
+		clearErrorsAndMessages();
+		
+		
+		// ?????????
+		reset();
+		return Constants.ADD_KEY;
+	}//end add()
+	private void reset() {
+		setId(null);
+		setUserId(null);
+		setAccountId(null);
+		setWithdrawMoney(null);
+		setWithdrawTime(null);
+		setWithdrawCode(null);
+		setIsWithdrawSuccess(null);
+		setIfDemandWithdraw(null);
+		setDemandWithdrawTime(null);
+		setIfConfirmWithdrawed(null);
+	}//end reset()
+		// ?????��??
+	private void bean2Form(AccountWithdraw accountWithdraw) {
+		setId(accountWithdraw.getId().toString());
+		//setAdmin(accountWithdraw.getAdmin().getId().toString());
+		//setAccountID(accountWithdraw.getAccountID());
+		setWithdrawMoney(accountWithdraw.getWithdrawMoney().toString()      );
+		setWithdrawTime(accountWithdraw.getWithdrawTime().toString()      );
+		setWithdrawCode(accountWithdraw.getWithdrawCode());
+		//setIsWithdrawSuccess(accountWithdraw.getIsWithdrawSuccess().toString()      );
+		setIfDemandWithdraw(accountWithdraw.getIfDemandWithdraw().toString()      );
+		setDemandWithdrawTime(accountWithdraw.getDemandWithdrawTime().toString()      );
+		//setIfConfirmWithdrawed(accountWithdraw.getIfConfirmWithdrawed().toString()      );
+	}//end bean2Form()
+	public String edit() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// id???????????
+		if (this.getId() == null) {
+			saveActionError("accountWithdraw.message.edit.notexist");
+			return Constants.LIST_KEY;
+		} else {
+			// ???????
+			AccountWithdraw accountWithdraw = this.getAccountWithdrawService().select(Integer.valueOf(id));
+			
+			// ??????????????
+			if (accountWithdraw == null) {
+				saveActionError("accountWithdraw.message.edit.notexist");
+				return Constants.LIST_KEY;
+			} else {
+				// ?????��??
+				bean2Form(accountWithdraw);
+				return Constants.EDIT_KEY;
+			}
+		}//end if
+		
+	}//end edit()
+		
+	public String insert() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		Integer nid = null ;
+		
+		try{
+			
+		//
+		AccountWithdraw accountWithdraw = new AccountWithdraw();
+			//accountWithdraw.setUser(this.getUserService().select(userId));  
+			
+		//accountWithdraw.setAccountID(this.getAccountID());
+		BigDecimal bigDecimal=new BigDecimal(this.getWithdrawMoney());
+		accountWithdraw.setWithdrawMoney(bigDecimal);
+		accountWithdraw.setWithdrawTime(java.sql.Timestamp.valueOf(this.getWithdrawTime() ));
+		accountWithdraw.setWithdrawCode(this.getWithdrawCode());
+		//accountWithdraw.setIsWithdrawSuccess(Integer.valueOf(this.getIsWithdrawSuccess() ));
+		accountWithdraw.setIfDemandWithdraw(Integer.valueOf(this.getIfDemandWithdraw() ));
+		accountWithdraw.setDemandWithdrawTime(java.sql.Timestamp.valueOf(this.getDemandWithdrawTime() ));
+		//accountWithdraw.setIfConfirmWithdrawed(Integer.valueOf(this.getIfConfirmWithdrawed() ));
+		String strOneId = ServletActionContext.getRequest().getParameter("oneId");
+		System.out.println("F2 insert getParameter  of oneId:"+strOneId);
+		Account oneInstance = this.getAccountService().select(Integer.parseInt(strOneId));
+		accountWithdraw.setAccount(oneInstance);
+		
+		nid = this.getAccountWithdrawService().insert(accountWithdraw);
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_ACCOUNTWITHDRAW);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+		//????????????
+		super.pager = this.getAccountWithdrawService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		// ?????????
+		if (nid != null) {
+			saveActionMessage("accountWithdraw.message.add.success");
+			return Constants.LIST_KEY;
+		} else {
+			saveActionError("accountWithdraw.message.add.failed");
+			return Constants.ADD_KEY;
+		}
+	}//end insert()
+	public String update() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		
+		try{
+			// 
+			AccountWithdraw accountWithdraw = this.getAccountWithdrawService().select(new Integer(id));
+//			accountWithdraw.setUser(userInstance);   
+			//accountWithdraw.setUser(this.getUserService().select(userId));  
+			
+			//accountWithdraw.setAccountID(this.getAccountID());
+			BigDecimal bigDecimal=new BigDecimal(this.getWithdrawMoney());
+			accountWithdraw.setWithdrawMoney(bigDecimal);
+			accountWithdraw.setWithdrawTime(java.sql.Timestamp.valueOf(this.getWithdrawTime() ));
+			accountWithdraw.setWithdrawCode(this.getWithdrawCode());
+			//accountWithdraw.setIsWithdrawSuccess(Integer.valueOf(this.getIsWithdrawSuccess() ));
+			accountWithdraw.setIfDemandWithdraw(Integer.valueOf(this.getIfDemandWithdraw() ));
+			accountWithdraw.setDemandWithdrawTime(java.sql.Timestamp.valueOf(this.getDemandWithdrawTime() ));
+			//accountWithdraw.setIfConfirmWithdrawed(Integer.valueOf(this.getIfConfirmWithdrawed() ));
+		this.getAccountWithdrawService().update(accountWithdraw);
+		
+		bean2Form(accountWithdraw);	
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_ACCOUNTWITHDRAW);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+			// ????????????
+			super.pager = this.getAccountWithdrawService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			saveActionMessage("accountWithdraw.message.edit.success");
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		return Constants.LIST_KEY;
+	}//end update() 
+	public String delete() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		try{
+			// id???????????
+			if (this.getId() == null) {
+				saveActionError("accountWithdraw.message.edit.notexist");
+			} else {
+				// ??????
+				this.getAccountWithdrawService().delete(Integer.valueOf(id));
+				saveActionMessage("accountWithdraw.message.delete.success");
+			}
+			
+			// ???????????
+			super.pager = this.getAccountWithdrawService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2("Please delete child first");
+			return Constants.ERROR_KEY;
+		}
+		return Constants.LIST_KEY;
+		
+	}//end delete()
+	
+	public String apply() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		if(codePwd!=null && !"".equals(codePwd)){
+			if(codePwd.equals(this.getSession("codePwd"))){
+				Account account = accountService.select(Integer.valueOf(accountId));
+				AccountWithdraw accountWithdraw = new AccountWithdraw();
+				
+				accountWithdraw.setAccount(account);
+				accountWithdraw.setDemandWithdrawTime(new Timestamp((new Date()).getTime()));
+				accountWithdraw.setWithdrawCode(codePwd);
+				accountWithdraw.setIfDemandWithdraw(0);
+				BigDecimal bigDecimal=new BigDecimal(this.getWithdrawMoney());
+				accountWithdraw.setWithdrawMoney(bigDecimal);
+				
+				BigDecimal bd=new BigDecimal(withdrawMoney);
+				account.setRemainingMoney(account.getRemainingMoney().subtract(bd));
+				
+				if(accountWithdrawService.accountWithdrawApplay(accountWithdraw, account)){
+					return "applay";
+				}
+			}
+		}
+		this.setMessage("动态密码输入有误！");
+		return "codePwdFail";
+	}
+	
+	public String accountWithdrawList() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user = userService.selectById(userId);
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		super.pager = accountWithdrawService.list(userId, pageSize, pageNo);
+		
+		ActionContext.getContext().put("user", user);
+		return "accountWithdrawList";
+	}
+	/**
+	 * 验证用户输入的动态密码
+	 * @return
+	 */
+	public String validatepwd() {
+		String pwd=this.getCodePwd();
+		System.out.println(pwd);
+		return "inputpwd";
+	}
+	public String yanZhengPwd() {
+		return "";
+	}
+	//allApply
+	
+	
+	/****管理员查询所有客户提现申请****/
+	public String applyList() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		clearErrorsAndMessages();
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		super.pager =this.getAccountWithdrawService().list(pageSize, pageNo);
+		return "applayList";
+	}
+	public String accountHistory() {
+		return "accountHistory";
+	}
+	public String mainTradeHistory() {
+		return "mainTradeHistory";
+	}
+	public String leftTradeHistory() {
+		String id=ServletActionContext.getRequest().getParameter("id");
+		ServletActionContext.getRequest().getSession().setAttribute("id",id);
+		return "leftTradeHistory";
+	}
+	/**
+	 * 管理员允许提现
+	 * @return
+	 * @throws Exception
+	 */
+	public String permitWithdraw() throws Exception {
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user = userService.selectById(userId);
+		int accountWithdrawId=Integer.valueOf(this.getId());
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(accountWithdrawId);
+		accountWithdraw.setStatus(2);
+		accountWithdraw.setAdmin(user);
+		accountWithdraw.setWithdrawCode(dynamicPwd());
+		this.getAccountWithdrawService().update(accountWithdraw);
+		return applyList();
+	}
+	private String validateRes;
+	public String getValidateRes() {
+		return validateRes;
+	}
+	public void setValidateRes(String validateRes) {
+		this.validateRes = validateRes;
+	}
+	@JSON(serialize=false)
+	public String validateIsPermit() {
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(tradeId);
+		if (accountWithdraw.getStatus()==5) {
+			validateRes="1";//可以允许
+		}else {
+			validateRes="0";//不能允许
+		}
+		return "validateIsPermit";
+	}
+	/**
+	 * 生产动态密码
+	 * @return
+	 */
+	public String dynamicPwd() {
+		Random random = new Random();
+		String baseStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		StringBuffer buffer = new StringBuffer();
+		for(int i=0;i<6;i++){
+		int num = random.nextInt(baseStr.length());
+		buffer.append(baseStr.charAt(num));
+		}
+		return buffer.toString();
+	}
+	/**
+	 * 管理员不允许提现(不允许提现就将本次提现的金额再加到当前账户的余额上！！！)
+	 * @return
+	 * @throws Exception
+	 */
+	public String unallowedWithdraw() throws Exception {
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user=this.getUserService().selectById(userId);
+		int accountWithdrawId=Integer.valueOf(this.getId());
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(accountWithdrawId);
+		accountWithdraw.setStatus(3);
+		accountWithdraw.setAdmin(user);
+		this.getAccountWithdrawService().update(accountWithdraw);
+		Account account=accountWithdraw.getAccount();
+		account.setRemainingMoney(account.getRemainingMoney().add(accountWithdraw.getWithdrawMoney()));
+		this.getAccountService().update(account);
+		return applyList();
+	}
+	/**
+	 * 获取当前时间
+	 * @return
+	 */
+	@SuppressWarnings("static-access")
+	public Timestamp getcurrent() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String a=df.format(new Date());
+		Timestamp ts = new Timestamp(System.currentTimeMillis());  
+		ts.valueOf(a);
+		return ts;
+	}
+	/*****生成提现单******/
+	public String produceApplyForm() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		if(!accountWithdrawService.productApplyForm(Integer.valueOf(id), userId)){
+			saveActionMessage("accountWithdraw.message.produceApplyForm.fail");
+		}
+		return "produceApplyForm";
+	}
+	
+	/***查询体现单列表*****/
+	public String ifEnsureApplyList() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		super.pager = accountWithdrawService.ifEnsureApplyList(pageSize, pageNo);
+		return "ifEnsureApplyList";
+	}
+ 
+	/****订单确认****/
+	public String confirmApply() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		if(id==null || accountId==null)
+			return "confirmApply";
+		if(!accountWithdrawService.confirmApply(Integer.valueOf(id),Integer.valueOf(accountId),2)){
+			saveActionMessage("accountWithdraw.message.confirmApply.fail");
+		}
+		return "confirmApply";
+	}
+	
+	/*****订单取消******/
+	public String cancelApply() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		if(id==null || accountId==null)
+			return "cancelApply";
+		if(!accountWithdrawService.confirmApply(Integer.valueOf(id),Integer.valueOf(accountId),3)){
+			saveActionMessage("accountWithdraw.message.cancelApply.fail");
+		}
+		return "cancelApply";
+	}
+	@JSON(serialize=false)
+	public String searchTradeHistory() {
+		int id=getTradeId();
+		ActionContext.getContext().getSession().put("tradeId",id);
+		return "searchTradeHistory";
+	}
+	
+	/**
+	 * 指定账户的提现记录
+	 * @return
+	 * @throws Exception
+	 */
+	public String cashResult()throws Exception {
+		int id=this.getTradeId();
+		List<AccountWithdraw> accountWithdraws=this.getAccountWithdrawService().findByAccount(id);
+		cashList=new ArrayList();
+		totalMoney=new BigDecimal(0);
+		for (AccountWithdraw accountWithdraw:accountWithdraws) {
+			cashList.add(accountWithdraw);
+			totalMoney=totalMoney.add(accountWithdraw.getWithdrawMoney());
+		}
+	return "cashResult";	
+	}
+	/**
+	 * 生成付款清单
+	 * @return
+	 */
+	@JSON(serialize=false)
+	public String createPayBill() throws Exception {
+		int id=this.getTradeId();
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(id);
+		Account account=accountWithdraw.getAccount();
+		this.account=account;
+		this.accountWithdraw=accountWithdraw;
+		tempList=new ArrayList();
+		tempList.add(account.getUser().getRealName());
+		tempList.add(account.getUser().getId());
+		tempList.add(account.getAccountID());
+		tempList.add(account.getOpeningBank());
+		tempList.add(account.getBankAccount());
+		tempList.add(accountWithdraw.getWithdrawMoney());
+		return "createPayBill";
+	}
+	/**
+	 * 确认打款，给客户发送短信(确认已经打款将该账户的总金额扣除)
+	 * @return
+	 */
+	public String verifybill()throws Exception {
+		int userId=Integer.parseInt(ServletActionContext.getRequest().getSession().getAttribute("id").toString());
+		User user = userService.selectById(userId);
+		int id=this.getTradeId();
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(id);
+		accountWithdraw.setStatus(6);
+		accountWithdraw.setWithdrawTime(getcurrent());
+		accountWithdraw.setAdmin(user);
+		this.getAccountWithdrawService().update(accountWithdraw);		
+		Account account=accountWithdraw.getAccount();
+		account.setTotalMoney(account.getTotalMoney().subtract(accountWithdraw.getWithdrawMoney()));
+		//account.setRemainingMoney(account.getRemainingMoney().subtract(accountWithdraw.getWithdrawMoney()));
+		//account.setTotalMoney(account.getTotalMoney().subtract(accountWithdraw.getWithdrawMoney()));
+		this.getAccountService().update(account);
+		SendSMS sendmsg=new SendSMS();
+		sendmsg.setUsername("639198");//
+		sendmsg.setPassword("8df7ed01c3e41c43cbd9d9df75eb99c3");
+		sendmsg.setMessage("尊敬的"+account.getUser().getRealName()+"您好,您本次提现金额为："+accountWithdraw.getWithdrawMoney()+"已转账成功,请查收。【唯图网】");
+		sendmsg.setMobiles(account.getUser().getMobile());
+		sendmsg.setServicesRequestAddRess("http://sms.c8686.com/Api/BayouSmsApiEx.aspx");
+		sendmsg.setSmstype(0);
+		sendmsg.setTimerid("0");
+		sendmsg.setTimertype(0);
+		Map<String, String> map = sendmsg.sendSMS();
+		return applyList();
+	}
+	/**
+	 * 付款失败(将此次提现的金额再加到该账户的剩余金额)
+	 * @return
+	 * @throws Exception
+	 */
+	@JSON(serialize=false)
+	public String payfail()throws Exception {
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user = userService.selectById(userId);
+		int id=this.getTradeId();
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(id);
+		accountWithdraw.setStatus(7);
+		accountWithdraw.setAdmin(user);		
+		this.getAccountWithdrawService().update(accountWithdraw);
+		Account account=accountWithdraw.getAccount();
+		//account.setTotalMoney(account.getTotalMoney().add(accountWithdraw.getWithdrawMoney()));
+		account.setRemainingMoney(account.getRemainingMoney().add(accountWithdraw.getWithdrawMoney()));
+		this.getAccountService().update(account);
+		if (this.getTradeId()!=null) {
+			return "payfail";
+		}else {
+			return null;
+		}
+//		Account account=accountWithdraw.getAccount();
+//		account.setRemainingMoney(account.getRemainingMoney().subtract(accountWithdraw.getWithdrawMoney()));
+//		account.setTotalMoney(account.getTotalMoney().subtract(accountWithdraw.getWithdrawMoney()));
+//		this.getAccountService().update(account);
+//		MailSend mail = new MailSend();
+//		String content="尊敬的："+account.getUser().getUsername()+"您好:<br/>您本次提现金额为："+accountWithdraw.getWithdrawMoney()+"<br/>恭喜您本次提现成功！！";
+//		String userEmail=account.getUser().getEmail();
+//		mail.sendEndRes(content,userEmail);
+	}
+	public String writeReason()throws Exception {
+		int id=this.getTradeId();
+		String reason=this.getFailreason();
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(id);
+		accountWithdraw.setFailreason(reason);
+		this.getAccountWithdrawService().update(accountWithdraw);
+		MailSend mail = new MailSend();
+		String content="尊敬的："+accountWithdraw.getAccount().getUser().getUsername()+"您好:您本次提现失败！！<br/>失败原因为："+accountWithdraw.getFailreason();
+		String userEmail=accountWithdraw.getAccount().getUser().getEmail();
+		mail.sendEndFailReason(content,userEmail);
+		return applyList();
+	}
+	/////getter////setter//////
+	public String getId(){
+		return  id;
+	}
+	public void  setId(String id){
+		this.id = id ;
+	}
+	 
+	public AccountWithdrawService getAccountWithdrawService() {
+		return accountWithdrawService;
+	}
+	public void setAccountWithdrawService(AccountWithdrawService accountWithdrawService) {
+		this.accountWithdrawService = accountWithdrawService;
+	}
+	
+	public String getUserId(){
+		return  userId;
+	}
+	public void  setUserId(String userId){
+		this.userId = userId ;
+	}
+	 
+
+	 
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+	public String getWithdrawMoney(){
+		return  withdrawMoney;
+	}
+	public void  setWithdrawMoney(String withdrawMoney){
+		this.withdrawMoney = withdrawMoney ;
+	}
+	 
+	public String getWithdrawTime(){
+		return  withdrawTime;
+	}
+	public void  setWithdrawTime(String withdrawTime){
+		this.withdrawTime = withdrawTime ;
+	}
+	 
+	public String getWithdrawCode(){
+		return  withdrawCode;
+	}
+	public void  setWithdrawCode(String withdrawCode){
+		this.withdrawCode = withdrawCode ;
+	}
+	 
+	public String getIsWithdrawSuccess(){
+		return  isWithdrawSuccess;
+	}
+	public void  setIsWithdrawSuccess(String isWithdrawSuccess){
+		this.isWithdrawSuccess = isWithdrawSuccess ;
+	}
+	 
+	public String getIfDemandWithdraw(){
+		return  ifDemandWithdraw;
+	}
+	public void  setIfDemandWithdraw(String ifDemandWithdraw){
+		this.ifDemandWithdraw = ifDemandWithdraw ;
+	}
+	 
+	public String getDemandWithdrawTime(){
+		return  demandWithdrawTime;
+	}
+	public void  setDemandWithdrawTime(String demandWithdrawTime){
+		this.demandWithdrawTime = demandWithdrawTime ;
+	}
+	 
+	public String getIfConfirmWithdrawed(){
+		return  ifConfirmWithdrawed;
+	}
+	public void  setIfConfirmWithdrawed(String ifConfirmWithdrawed){
+		this.ifConfirmWithdrawed = ifConfirmWithdrawed ;
+	}
+	 
+	 public String getUsername() {
+	 	return username;
+	 }
+	 public void setUsername(String username) {
+	 	this.username = username;
+	 }
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCodePwd() {
+		return codePwd;
+	}
+	public void setCodePwd(String codePwd) {
+		this.codePwd = codePwd;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public BigDecimal getTotalMoney() {
+		return totalMoney;
+	}
+	public void setTotalMoney(BigDecimal totalMoney) {
+		this.totalMoney = totalMoney;
+	}
+	public List getCashList() {
+		return cashList;
+	}
+	public void setCashList(List cashList) {
+		this.cashList = cashList;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+	public AccountWithdraw getAccountWithdraw() {
+		return accountWithdraw;
+	}
+	public void setAccountWithdraw(AccountWithdraw accountWithdraw) {
+		this.accountWithdraw = accountWithdraw;
+	}
+	 //用户体现记录
+	public String writhdraString(){
+		pageSize=14;
+		String userlog=super.getLoginUsername();
+		if(userlog==null&&userlog.length()==0){
+			return "login";
+		}
+		User user=userService.select(userlog);
+		Account account=accountService.select(user.getId(),"");
+		 BigDecimal allmoney=new BigDecimal(0);
+		 account=accountService.select(user.getId(),"");
+		 moneyInfo=accountService.countselect(account.getId());
+		 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("account", accountService.select(user.getId(),""));
+		map.put("status", 6);
+		
+		Pager pager1=accountWithdrawService.list(map, pageSize, nowPage);
+		 List<AccountWithdraw> accountWithdraws=(List<AccountWithdraw>) pager1.getResultList();
+		 
+		 List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+		 for (AccountWithdraw accountWithdraw : accountWithdraws) {
+				MoneyRecharge moneyRecharge=new MoneyRecharge();
+				moneyRecharge.setMoney(accountWithdraw.getWithdrawMoney()+"");
+				moneyRecharge.setDateTime(accountWithdraw.getWithdrawTime());
+				moneyRecharge.setSelerId(accountWithdraw.getWithdrawCode());
+				moneyRecharges.add(moneyRecharge);
+			}
+		super.pager=new Pager(pageSize, nowPage, pager1.getRowCount(), moneyRecharges);
+		endPage=pager.getLastPageNo();
+		
+		return "writhdraString";
+	}
+	
+
+	 //管理员查看用户提现记录
+	public String adminwrithdraString(){
+		pageSize=14;
+		String userlog=username;
+		if(userlog==null&&userlog.length()==0){
+			return "login";
+		}
+		
+		
+		User user=userService.selectById(Integer.parseInt(userlog));
+		Account account=accountService.select(user.getId(),"");
+		 BigDecimal allmoney=new BigDecimal(0);
+		 account=accountService.select(user.getId(),"");
+		 moneyInfo=accountService.countselect(account.getId());
+		 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("account", accountService.select(user.getId(),""));
+		map.put("status", 6);
+		
+		Pager pager1=accountWithdrawService.list(map, pageSize, nowPage);
+		 List<AccountWithdraw> accountWithdraws=(List<AccountWithdraw>) pager1.getResultList();
+		 
+		 List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+		 for (AccountWithdraw accountWithdraw : accountWithdraws) {
+				MoneyRecharge moneyRecharge=new MoneyRecharge();
+				moneyRecharge.setMoney(accountWithdraw.getWithdrawMoney()+"");
+				moneyRecharge.setDateTime(accountWithdraw.getWithdrawTime());
+				moneyRecharge.setSelerId(accountWithdraw.getWithdrawCode());
+				moneyRecharges.add(moneyRecharge);
+			}
+		super.pager=new Pager(pageSize, nowPage, pager1.getRowCount(), moneyRecharges);
+		endPage=pager.getLastPageNo();
+		
+		return "adminwrithdraString";
+	}
+	
+	
+	public String checkWithdraw(){
+		
+		
+		
+		
+		return "checkWithdraw";
+	}
+	
+	
+}//end class

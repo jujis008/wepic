@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.UserHistory"
+	table="UserHistory"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<property 
+		name="residenceAddress"
+		type="java.lang.String"
+		column="residenceAddress"
+		length="50"
+	/>
+	<property 
+		name="livingAddress"
+		type="java.lang.String"
+		column="livingAddress"
+		length="50"
+	/>
+	<property 
+		name="job"
+		type="java.lang.String"
+		column="job"
+		length="50"
+	/>
+	<property 
+		name="startTime"
+		type="java.sql.Date"
+		column="startTime"
+		length="50"
+	/>
+	<property 
+		name="endTime"
+		type="java.sql.Date"
+		column="endTime"
+		length="50"
+	/>
+	<property 
+		name="mobile"
+		type="java.lang.Integer"
+		column="mobile"
+		length="50"
+	/>
+	<property 
+		name="phone"
+		type="java.lang.Integer"
+		column="phone"
+		length="50"
+	/>
+	<property 
+		name="deliveryPlace"
+		type="java.lang.String"
+		column="deliveryPlace"
+		length="50"
+	/>
+	
+	<many-to-one name="user"	column="userid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

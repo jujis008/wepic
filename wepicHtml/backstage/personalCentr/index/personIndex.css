@@ -1,0 +1,1478 @@
+#divPersonIndex {
+    position: relative;
+    left: 0;
+    margin: 5px auto 5px;
+    text-align: left;
+    top: 0;
+    width: 1180px;
+	}
+
+
+#divPersonIndex .personl-left{
+    float: left;
+    text-align: left;
+    width: 860px;
+	}
+
+
+#divPersonIndex .personl-right{
+    float: left;
+    margin-left: 8px;
+    width: 312px;
+	}
+	
+	
+	
+	
+	
+/*左部*/	
+#divPersonIndex .personl-left .divHead{
+	background:#FFFFFF;
+    height: 190px;
+    width: 860px;
+    position: relative;
+    left: 0;
+    top: 0;
+	}
+#divPersonIndex .personl-left .divHead .active .headChange{
+	
+	}
+#divPersonIndex .personl-left .divHead .head{
+	position: absolute;
+    left: 0;
+    top: 0;
+	margin-left:28px;
+	margin-top:18px;
+	width: 150px;
+	height: 150px;
+	overflow:hidden;
+	}
+	
+#divPersonIndex .personl-left .divHead .head .change{
+	position: absolute;
+    left: 0;
+    bottom: 0px;
+	width: 150px;
+	height: 35px;
+	opacity: 0; 
+	filter:alpha(opacity=0);
+	}
+#divPersonIndex .personl-left .divHead .head .change .bg{
+	
+	width: 150px;
+	height: 35px;
+	background:#000000;
+	opacity: 0.3; 
+	filter:alpha(opacity=30);
+	}
+#divPersonIndex .personl-left .divHead .head .change .bgc{
+	position: absolute;
+    left: 0;
+    bottom: 0;
+	color:#ffffff;
+	width: 150px;
+	font-size:16px;
+	height: 35px;
+	line-height: 35px;
+	text-align:center;
+	}		
+#divPersonIndex .personl-left .divHead .head img{
+	position: absolute;
+    left: 0;
+    top: 0px;
+	width: 150px;
+	height: 150px;
+	}
+#divPersonIndex .personl-left .divHead .headInf{
+	position: absolute;
+    left: 210px;
+    top: 0;
+	width: 650px;
+	height: 190px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one{
+	position: relative;
+    left: 0;
+    top: 0;
+	margin-top:18px;
+	width: 600px;
+	height: 45px;
+	}	
+#divPersonIndex .personl-left .divHead .headInf .one h2{
+	float: left;
+	font-size:28px;
+	font-family:"微软雅黑";
+	color:#000000;
+	font-weight:normal;
+	padding-right:10px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divIden{
+	float: left;
+	height: 25px;
+	margin-top:15px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divIden .iden{
+	width:20px;
+	height: 20px;
+	padding-left:20px;
+	background:url(../../public/images/identity.png) no-repeat 0 -22px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divIden .collect{
+	width:20px;
+	height: 20px;
+	margin-left:5px;
+	padding-bottom:5px;
+	padding-left:20px;
+	margin-right:10px;
+	background:url(../../public/images/identity.png) no-repeat 0 -70px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divGrade {
+	float: left;
+	height: 25px;
+	margin-top:20px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divGrade span{
+	font-family:"宋体";
+	color:#bbbbbb;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divGrade .grade{
+	font-family:"宋体";
+	color:#b7cfe9;
+	text-decoration:underline;
+	margin-left:8px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divGrade .grade:hover{
+	text-decoration:none;
+	}
+#divPersonIndex .personl-left .divHead .headInf .one .divGrade .next{
+	margin-left:15px;
+	}
+
+
+
+#divPersonIndex .personl-left .divHead .headInf .two{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 600px;
+	height: 40px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 650px;
+	height: 100px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left{
+	float:left;
+	width:360px;
+	height:80px;
+	border:1px solid #f0f0f0;
+	background:#fcfcfc;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right{
+	float:left;
+	width:240px;
+	height:80px;
+	border:1px solid #f0f0f0;
+	background:#fcfcfc;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left .is{
+	width:160px;
+	height:80px;
+	border-right:1px solid #f0f0f0;
+	float:left;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left .is div{
+	height:26px;
+	line-height:26px;
+	font-family:"宋体";
+	color:#aaaaaa;
+	}	
+#divPersonIndex .personl-left .divHead .headInf .three .left .is div span{
+	margin-left:14px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left .ye{
+	width:160px;
+	height:80px;
+	padding-left:20px;
+	float:left;
+	}	
+#divPersonIndex .personl-left .divHead .headInf .three .left .ye1{
+	height:30px;
+	line-height:30px;
+	color:#747474;
+	font-family:"宋体";
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left .ye2{
+	margin-top:5px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left .ye3{	
+	color:#404040;
+	font-size:34px;
+	font-family:"微软雅黑";
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .left .ye4{	
+	color:#404040;
+	font-size:20px;
+	font-family:"微软雅黑";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+#divPersonIndex .personl-left .divHead .headInf .three .right .de{
+	margin-top:10px;
+	margin-left:20px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .detaily{
+	font-family:"宋体";
+	color:#0082c6;
+	text-decoration:underline;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .detaily:hover{
+	text-decoration:none;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .op{
+	margin-top:10px;
+	margin-left:20px;
+	}
+	
+#divPersonIndex .personl-left .divHead .headInf .three .right .deY{
+	width:110px;
+	height:80px;
+	float:left;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .deY input{
+	margin-left:20px;
+	}	
+
+#divPersonIndex .personl-left .divHead .headInf .three .right .opY{
+	width:60px;
+	height:80px;
+	float:left;
+	margin-left:10px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .opY a{
+	display:inline-block;
+	color: #0082C6;
+    text-decoration: underline;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .opY .onea{
+	margin-top:35px;
+	margin-bottom:5px;
+	}	
+#divPersonIndex .personl-left .divHead .headInf .three .right input{
+	border: 0;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    text-align: center;
+    width: 87px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .pay {
+    background: url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -273px;
+    color: #FFFFFF;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .pay:hover {
+    background: url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -300px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .wi {
+    background: url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -182px;
+    color: #000000;
+	margin-left:20px;
+	}
+#divPersonIndex .personl-left .divHead .headInf .three .right .wi:hover {
+    background: url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -209px;
+	}
+	
+#divPersonIndex .personl-left .divContent{
+	background:#FFFFFF;
+    width: 860px;
+    position: relative;
+	margin-top:5px;
+	min-height:500px;
+    left: 0;
+    top: 0;
+	padding-bottom:50px;
+	}
+#divPersonIndex .personl-left .divContent .bar{
+	background:#FFFFFF;
+    width: 860px;
+    position: relative;
+	height:46px;
+    left: 0;
+    top: 0;
+	border-bottom:1px solid  #f1f1f1;
+	}	
+#divPersonIndex .personl-left .divContent .bar div{
+	border-radius: 9px 9px 9px 9px;
+    cursor: pointer;
+    float: left;
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+    margin-left: 5px;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+	}
+#divPersonIndex .personl-left .divContent .bar a{
+    color: #5b5b5b;
+	}
+#divPersonIndex .personl-left .divContent .bar .active,
+#divPersonIndex .personl-left .divContent .bar div:hover{
+	color: #ffffff;
+	background:#aaaaaa;
+	}
+	
+	
+	
+#divPersonIndex .personl-left .divContent .shareMyWord{
+    width: 808px;
+    position: relative;
+	height:510px;
+    left: 0;
+    top: 0;
+	padding-left:25px;
+	margin-top:10px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordTop{
+	width: 808px;
+    position: relative;
+	height:43px;
+	line-height:43px;
+    left: 0;
+    top: 0;
+	font-family: "宋体";
+    font-size: 12px;
+	color: #8a8a8a;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordTop .name{
+	font-family: "微软雅黑";
+    font-size: 20px;
+	color: #585657;
+	margin-right:10px;
+	}	
+	
+	
+	
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon{
+	width: 795px;
+    position: relative;
+	height:438px;
+    left: 0;
+    top: 0;
+	background:#f9f9f9;
+	padding-left:15px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon h2{
+	height:45px;
+	line-height:45px;
+	font-size:20px;
+	font-family:"微软雅黑";
+	color:#3e3a39;
+	font-weight:normal;
+	}
+
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .introduce{
+	height:40px;
+	width: 780px;
+	line-height:20px;
+	overflow:hidden;
+	font-family: "宋体";
+	color: #8a8a8a;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image{
+	position: relative;
+	left: 0;
+    top: 0;
+	width:285px;
+	height:285px;
+	margin-top:10px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .three{
+	float:left;
+	width:94px;
+	height:94px;
+	margin-left:1px;
+	position: relative;
+	left: 0px;
+    top: 0px;
+	cursor:pointer;
+	}
+
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .goodCoSh{
+	display:none;
+	position: absolute;
+	left: 0;
+    top: 0;
+	width:285px;
+	height:95px;
+	}	
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .active .goodCoSh{
+	display:block;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image  .ico{
+	
+	width:94px;
+	height:94px;
+	margin:0 auto;
+	text-align:center;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image  .bj{
+	position: absolute;
+	left: 0;
+    top: 0;
+	width:94px;
+	height:94px;
+	background:#000000;
+	opacity: 0.8; 
+	filter:alpha(opacity=80);
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .three:hover .bj{
+	background:#811919;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .good .ico .icoImg{
+	background:url(../../../userView/public/images/yuepaiicon.png) no-repeat 0 -90px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .collect .ico .icoImg{
+	background:url(../../../userView/public/images/yuepaiicon.png) no-repeat 0 -45px;
+	}	
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .share .ico .icoImg{
+	background:url(../../../userView/public/images/yuepaiicon.png) no-repeat 0 -320px;
+	}		
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image .ico .icoImg{
+	position: relative;
+	left: 0px;
+    top: 15px;
+	margin-left:25px;
+	width:50px;
+	height:40px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image  .ico .character{
+	position: relative;
+	left: 0px;
+    top: 15px;
+	margin-top:10px;
+	color:#a1a1a3;
+	}	
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .image image{
+	width:285px;
+	height:285px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .keyword {
+    font-family: "宋体";
+    height: 55px;
+    left: 0;
+    line-height: 55px;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+	}
+
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordCon .keyword a {
+    color: #0081C3;
+    margin-left: 10px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordBot{
+	width: 808px;
+    position: relative;
+	height:29px;
+    left: 0;
+    top: 0;
+	font-family: "宋体";
+	color:#b7b7b7;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordBot .p1{
+	position: absolute;
+	left:0;
+	top:5px;
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordBot .p2{
+	position: absolute;
+	right:0;
+	top:5px;
+	font-family: "微软雅黑";
+	}
+#divPersonIndex .personl-left .divContent .shareMyWord .shareMyWordBot .p2 .span2{
+	margin-left:8px;
+	}
+	
+	
+	
+	
+	/*被收藏*/
+#divPersonIndex .personl-left .divContent .collectMyProject{
+	width: 808px;
+    position: relative;
+	height:150px;
+    left: 0;
+    top: 0;
+	margin-top:10px;
+	padding-left:25px;
+	}	
+	
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop{
+	width: 808px;
+    position: relative;
+	height:43px;
+	line-height:43px;
+    left: 0;
+    top: 0;
+	font-family: "宋体";
+    font-size: 12px;
+	color: #8a8a8a;
+	}
+	
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .name{
+	font-family: "微软雅黑";
+    font-size: 20px;
+	color: #585657;
+	margin-right:10px;
+	}	
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare{
+	width:324px;
+	height:30px;
+	line-height:30px;
+	position:absolute;
+	top:13px;
+	right:0px;
+	background: #676767;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare a{
+	margin-left:15px;
+	padding-left:30px;
+	color:#c4c4c4;
+	padding-top:5px;
+	padding-bottom:5px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare div{
+	float:left;
+	height:30px;
+	width:108px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare .good{
+	background:url(../../../userView/public/images/collectshare_z.png) no-repeat 0 -156px;
+	}
+
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare div:hover{
+	background: #eb6263;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare .collect{
+	background:url(../../../userView/public/images/collectshare_z.png) no-repeat 0 0px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectTop .goodCollectShare .share{
+	background:url(../../../userView/public/images/collectshare_z.png) no-repeat 0 -26px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon{
+    position: relative;
+    left: 0;
+    top: 0;
+	background: #F9F9F9;
+    border: 1px solid #E3E3E3;
+    font-family: "宋体";
+    height: 76px;
+    width: 807px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListLogo{
+	position:absolute;
+	top:14px;
+	left:0px;
+	width:93px;
+	height:50px;
+	background:url(../../../userView/commercePhotography/images/subscribe.png) no-repeat 28px -407px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle{
+	border-left:1px solid #e3e3e3;
+	border-right:1px solid #e3e3e3;
+	position:absolute;
+	top:5px;
+	left:100px;
+	padding-left:20px;
+	width:500px;
+	height:66px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle .divMainListTitleIco{
+	position:absolute;
+	top:8px;
+	left:270px;
+	width:220px;
+	height:20px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle .divMainListTitleIco a{
+	padding-left:20px;
+	margin-right:15px;
+	color:#9b9b9b;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle .divMainListTitleIco .divMainListTitleIcoOne{
+	background:url(../../../userView/public/images/11.png) no-repeat 0 -2px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle .divMainListTitleIco .divMainListTitleIcoTwo{
+	background:url(../../../userView/public/images/11.png) no-repeat 0 -21px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle .divMainListTitleIco .divMainListTitleIcoThree{
+	background:url(../../../userView/public/images/11.png) no-repeat 0 -40px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitle h2{
+	font-weight:normal;
+	height:28px;
+	color:#000000;
+	width:250px;
+	font-family:"微软雅黑";
+	*font-size:18px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPersonCollectShare{
+	display:none;
+	position:absolute;
+	top:0px;
+	left:531px;
+	width:110px;
+	height:78px;
+	background:#000000;
+	filter:alpha(opacity=60);    /* IE 4-7 */
+    opacity: 0.6;              /* Firefox, Safari(WebKit), Opera */
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPerson{
+	position:absolute;
+	top:5px;
+	border-right:1px solid #e3e3e3;
+	left:620px;
+	width:63px;
+	height:66px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPrice{
+	position:absolute;
+	top:5px;
+	left:680px;
+	width:100px;
+	height:66px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTime{
+	position:absolute;
+	top:80px;
+	left:680px;
+	width:140px;
+	text-align:right;
+	height:20px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPersonCollect{
+	padding-top:5px;
+	padding-left:15px;
+	width:90px;
+	height:34px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPersonCollect a{
+	padding-left:28px;
+	padding-top:10px;
+	_padding-top:00px;
+	padding-bottom:10px;
+	_padding-bottom:00px;
+	height:30px;
+	line-height:30px;
+	background:url(../../../userView/public/images/collectshare.png) no-repeat 0 5px;
+	color:#c4c4c4;}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPersonCollectShare a:hover{
+	color:#FFFFFF;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPersonShare{
+	padding-top:5px;
+	padding-left:15px;
+	width:90px;
+	height:34px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPersonShare a{
+	padding-left:28px;
+	padding-top:5px;
+	_padding-top:00px;
+	padding-bottom:10px;
+	_padding-bottom:00px;
+	height:30px;
+	line-height:25px;
+	background:url(../../../userView/public/images/collectshare.png) no-repeat 0 -25px;
+	color:#c4c4c4;}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListTitleInfo{
+	color:#9b9b9b;
+	}
+#divPersonIndex .tableMainListTitleInfo td{
+	height:18px;
+	line-height:18px;
+	}
+#divPersonIndex .divMainListTitleInfoSpan1{
+	width:120px;
+	}
+#divPersonIndex .divMainListPersonA{
+	position:absolute;
+	top:5px;
+	left:25px;
+	background:url(../../../userView/public/images/11.png) no-repeat 0 -55px;
+	width:20px;
+	height:20px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPerson p{
+	position:absolute;
+	top:30px;
+	left:0px;
+	width:63px;
+	text-align:center;
+	color:#e90022;
+	font-size:30px;
+	font-family:"Arial";
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPriceA{
+	position:absolute;
+	top:5px;
+	left:25px;
+	background:url(../../../userView/public/images/11.png) no-repeat 0 -75px;
+	width:20px;
+	height:20px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPriceA i{
+	position:absolute;
+	top:0px;
+	left:20px;
+	width:60px;
+	height:30px;
+	background:url(../../../userView/public/images/yuepaiicon02.png) no-repeat 0 -82px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectCon .divMainListPrice p{
+	position:absolute;
+	top:30px;
+	left:0px;
+	width:63px;
+	text-align:center;
+	color:#e90022;
+	font-size:30px;
+	font-family:"Arial";
+	}
+
+
+
+
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectBot{
+	width: 808px;
+    position: relative;
+	height:29px;
+    left: 0;
+    top: 0;
+	font-family: "宋体";
+	color:#b7b7b7;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectBot .p1{
+	position: absolute;
+	left:0;
+	top:5px;
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectBot .p2{
+	position: absolute;
+	right:0;
+	top:5px;
+	font-family: "微软雅黑";
+	}
+#divPersonIndex .personl-left .divContent .collectMyProject .collectMyProjectBot .p2 .span2{
+	margin-left:8px;
+	}
+/*左部*/	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*右部*/
+#divPersonIndex .personl-right .myWork{
+	background:#FFFFFF;
+    height: 160px;
+    width: 312px;
+    position: relative;
+    left: 0;
+    top: 0;
+	}
+#divPersonIndex .personl-right .myProject{
+	background:#FFFFFF;
+    height: 160px;
+    width: 312px;
+    position: relative;
+    left: 0;
+    top: 0;
+	margin-top: 5px;
+	}
+#divPersonIndex .personl-right .commission{
+	background:#FFFFFF;
+    height: 300px;
+    width: 312px;
+    position: relative;
+    left: 0;
+    top: 0;
+	margin-top: 5px;
+	}
+	
+
+#divPersonIndex .personl-right .myWork .head{
+	position: relative;
+    left: 0;
+    top: 0;
+	height: 45px;
+	line-height: 45px;
+	border-bottom:1px solid #e0e0e0;
+	}
+#divPersonIndex .personl-right .myWork .head span{
+	font-size:18px;
+	color:#595758;
+	font-family:"微软雅黑";
+	padding-left:30px;
+	}
+#divPersonIndex .personl-right .myWork .head a{
+	position: absolute;
+    right: 15px;
+    top: 5px;
+	font-size:12px;
+	color:#0082c8;
+	font-family:"宋体";
+	text-decoration:underline;
+	}
+
+#divPersonIndex .personl-right .myWork .info .info1{
+	margin-top:10px;
+	}
+#divPersonIndex .personl-right .myWork .info span{
+	font-size:12px;
+	color:#a0a0a0;
+	font-family:"微软雅黑";
+	}
+#divPersonIndex .personl-right .myWork .info .span1{
+	margin-left:30px;
+	}
+#divPersonIndex .personl-right .myWork .info .spans{
+	margin-left:20px;
+	color:#5d5d5d;
+	}
+#divPersonIndex .personl-right .myWork .info .span3{
+	margin-left:40px;
+	}
+
+#divPersonIndex .personl-right .myWork .opt{
+	margin-top:20px;
+	}
+#divPersonIndex .personl-right .myWork .opt a{
+	padding-left:26px;
+	color:#838383;
+	font-family:"宋体";
+	padding-top:5px;
+	}
+#divPersonIndex .personl-right .myWork .opt .uoload{
+	background:url(../../public/images/edit2.png) no-repeat 0 3px;
+	margin-left:30px;
+	}
+#divPersonIndex .personl-right .myWork .opt .issue{
+	background:url(../../public/images/edit2.png) no-repeat 0 -20px;
+	margin-left:50px;
+	
+	}
+
+
+
+#divPersonIndex .personl-right .myProject .head{
+	position: relative;
+    left: 0;
+    top: 0;
+	height: 45px;
+	line-height: 45px;
+	border-bottom:1px solid #e0e0e0;
+	}
+#divPersonIndex .personl-right .myProject .head span{
+	font-size:18px;
+	color:#595758;
+	font-family:"微软雅黑";
+	padding-left:30px;
+	}
+#divPersonIndex .personl-right .myProject .head a{
+	position: absolute;
+    right: 15px;
+    top: 5px;
+	font-size:12px;
+	color:#0082c8;
+	font-family:"宋体";
+	text-decoration:underline;
+	}
+
+#divPersonIndex .personl-right .myProject .info .info1{
+	margin-top:10px;
+	}
+#divPersonIndex .personl-right .myProject .info span{
+	font-size:12px;
+	color:#a0a0a0;
+	font-family:"微软雅黑";
+	}
+#divPersonIndex .personl-right .myProject .info .span1{
+	margin-left:30px;
+	}
+#divPersonIndex .personl-right .myProject .info .spans{
+	margin-left:20px;
+	color:#5d5d5d;
+	}
+#divPersonIndex .personl-right .myProject .info .span3{
+	margin-left:40px;
+	}
+
+#divPersonIndex .personl-right .myProject .opt{
+	margin-top:20px;
+	}
+#divPersonIndex .personl-right .myProject .opt a{
+	padding-left:26px;
+	color:#838383;
+	font-family:"宋体";
+	padding-top:5px;
+	}
+#divPersonIndex .personl-right .myProject .opt .uoload{
+	background:url(../../public/images/edit2.png) no-repeat 0 -20px;
+	margin-left:30px;
+	}
+#divPersonIndex .personl-right .myProject .opt .issue{
+	background:url(../../public/images/edit2.png) no-repeat 0 -41px;
+	margin-left:50px;
+	
+	}
+
+/*右部*/
+
+
+/*选择框*/
+.userBox{
+	width:692px;
+	height:342px;
+	background:#ffffff;
+	}
+.userBox .top {
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 692px;
+}
+.userBox .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+    width: 500px;
+	text-align:left;
+	}
+
+.userBox .top a {
+    background: url(../../../userView/public/images/closeBox.png) no-repeat 0 0;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.userBox .top a:hover{
+	background:url(../../../userView/public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.userBox .top a:active{
+	background:url(../../../userView/public/images/closeBox.png) no-repeat 0 -116px;
+	}
+.userBox .characterPart{
+    height: 73px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+	}
+.userBox .characterPart h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    font-weight: normal;
+    height: 73px;
+    line-height: 73px;
+    padding-left: 30px;
+    width: 500px;
+	text-align:left;
+	}
+.userBox .ico {
+    height: 151px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+    background:#F6F6F6;
+	}
+.userBox .ico .user{
+	position: absolute;
+    left: 153px;
+    top: 21px;
+    height: 115px;
+    width: 115px;
+	cursor:pointer;
+	background:url(../../public/images/indexico.png) 0 0 no-repeat;
+	}
+.userBox .ico .user:hover{
+	background:url(../../public/images/indexico.png) 0 -232px no-repeat;
+	}
+.userBox .ico .enterprise{
+	position: absolute;
+    right: 173px;
+    top: 21px;
+    height: 115px;
+    width: 115px;
+	cursor:pointer;
+	background:url(../../public/images/indexico.png) -115px 0 no-repeat;
+	}
+.userBox .ico .enterprise:hover{
+	background:url(../../public/images/indexico.png) -115px -232px no-repeat;
+	}
+
+
+
+
+
+
+.userBox .characterPart{
+	height: 62px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+	}
+.userBox .character h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    font-weight: normal;
+    height: 62px;
+    line-height: 62px;
+    padding-left: 30px;
+    width: 500px;
+	text-align:left;
+	}
+.userBox .ico .icoPart{
+	position: absolute;
+    height: 80px;
+	line-height: 75px;
+    width: 80px;
+	font-size:19px;
+	font-family: "微软雅黑";
+	color: #ffffff;
+	cursor:pointer;
+	}
+.userBox .ico .photograph{
+    left: 96px;
+    top: 32px;
+	background:url(../../public/images/indexico.png) 0 -133px no-repeat;
+	}
+.userBox .ico .icoPart:hover{
+	background:url(../../public/images/indexico.png) -240px -265px no-repeat;
+	color:#000000;
+	}
+
+.userBox .ico .model{
+    left: 200px;
+    top: 32px;
+	background:url(../../public/images/indexico.png) -80px -133px no-repeat;
+	}
+
+.userBox .ico .agent{
+    left: 304px;
+    top: 32px;
+	background:url(../../public/images/indexico.png) -160px -133px no-repeat;
+	}
+
+.userBox .ico .inter{
+    left: 408px;
+    top: 32px;
+	background:url(../../public/images/indexico.png) -240px -133px no-repeat;
+	}
+.userBox .ico .design{
+    left: 512px;
+    top: 32px;
+	background:url(../../public/images/indexico.png) -320px -133px no-repeat;
+	}
+	
+	
+	
+.userBox .enterpriseico{
+    height: 151px;
+    position: relative;
+    left: 0;
+    top: 0;
+	text-align:left;
+    background:#F6F6F6;
+	padding-left:20px;
+	padding-right:50px;
+	}		
+.userBox .enterpriseico a{
+	display:inline-block;
+	height:26px;
+	line-height:26px;
+	border-radius:3px 3px 3px 3px;
+	color:#ffffff;
+	font-size:14px;
+	text-align:center;
+    font-family: "微软雅黑";
+	margin-left:13px;
+	margin-top:12px;
+	padding-left:16px;
+	padding-right:16px;
+	cursor:pointer;
+	}	
+.userBox .enterpriseico .pho{
+	background:#4e8ad2;
+	}	
+.userBox .enterpriseico .model{
+	background:#e0c84c;
+	}	
+.userBox .enterpriseico .cy{
+	background:#e461a7;
+	}		
+.userBox .enterpriseico .ad{
+	background:#dea74c;
+	}		
+.userBox .enterpriseico .ys{
+	background:#cec17d;
+	}		
+.userBox .enterpriseico .wh{
+	background:#b7a748;
+	}		
+.userBox .enterpriseico .dm{
+	background:#86483d;
+	}		
+.userBox .enterpriseico .yy{
+	background:#e48e55;
+	}		
+.userBox .enterpriseico .it{
+	background:#74a6e5;
+	}		
+.userBox .enterpriseico .cm{
+	background:#bf6766;
+	}		
+.userBox .enterpriseico .edu{
+	background:#59479b;
+	}		
+.userBox .enterpriseico .fz{
+	background:#8b60a7;
+	}
+.userBox .enterpriseico a:hover{
+	color:#000000;
+	background:#ffffff;
+	}		
+/*选择标签*/
+.formPersonEn,
+.formEnterpriseEn{
+	display:none;
+	position:relative;
+	top:0;
+	left:0;
+	width:692px;
+	}
+.chooseTag{
+	position:relative;
+	top:0;
+	left:0;
+	margin:0 auto;
+	width:692px;
+	background:#ffffff;
+	}
+.chooseTag .top {
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 692px;
+}
+.chooseTag .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+    width: 500px;
+	text-align:left;
+	}
+
+.chooseTag .top a {
+    background: url(../../../userView/public/images/closeBox.png) no-repeat 0 0;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.chooseTag .top a:hover{
+	background:url(../../../userView/public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.chooseTag .top a:active{
+	background:url(../../../userView/public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+.chooseTag .characterPart{
+	height: 50px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+	}
+.chooseTag .character h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    font-weight: normal;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+    width: 500px;
+	text-align:left;
+	}
+	
+.chooseTag .choosed{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+	padding-top:10px;
+	padding-bottom:20px;
+    background:#F6F6F6;
+	}
+.chooseTag .choosed .one{
+	text-align:left;
+    padding-left: 30px;
+    font-family: "宋体";
+	height:20px;
+	color:#8e8e8e;
+	}
+.chooseTag  .con{
+	padding-left:40px;
+	padding-right:40px;
+	/*border:1px solid red;*/
+	}
+.chooseTag .con .tag,
+.chooseTag .con .retag{
+	float:left;
+	position: relative;
+    left: 0;
+    top: 0;
+	margin-left:18px;
+	margin-top:10px;
+	height:16px;
+	padding-left:10px;
+	padding-right:10px;
+	}
+.chooseTag .con .tagDe{
+	float:left;
+	position: relative;
+    left: 0;
+    top: 0;
+	margin-left:18px;
+	margin-top:10px;
+	height:16px;
+	padding-left:10px;
+	padding-right:5px;
+	}
+.chooseTag .choosed .con .tag,
+.chooseTag .choosed .con .retag,
+.chooseTag .choosed .con .tagDe{
+	background:url(../../public/images/background.png) 0 0 no-repeat;
+	color:#7d6535;
+	}
+.chooseTag .chooseCon .con .retag{
+	background:url(../../public/images/background.png) 0 -21px no-repeat;
+	color:#606060;
+	}
+.chooseTag  .con .tag a,
+.chooseTag .con .retag a{
+	position: absolute;
+    right: -10px;
+    top: 0;
+	width:16px;
+	height:16px;
+	cursor:pointer;
+	}
+.chooseTag .con .tagDe a{
+	position: absolute;
+    right: -9px;
+    top: 0;
+	width:10px;
+	height:16px;
+	}
+.chooseTag .choosed .con .tag a,
+.chooseTag .choosed .con .retag a{
+	background:url(../../public/images/background.png) -14px -89px no-repeat;
+	}
+.chooseTag .choosed .con .tagDe a{
+	background:url(../../public/images/background.png) 0px -89px no-repeat;
+	}	
+.chooseTag .choosed .con .tag a:hover,
+.chooseTag .choosed .con .retag a:hover{
+	background:url(../../public/images/background.png) -35px -89px no-repeat;
+	}
+	
+.chooseTag .chooseCon .con .retag a{
+	background:url(../../public/images/background.png) -14px -110px no-repeat;
+	}
+.chooseTag .chooseCon .con .retag a:hover{
+	background:url(../../public/images/background.png) -35px -110px no-repeat;
+	}
+.chooseTag .chooseCon{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+	padding-top:10px;
+	padding-bottom:20px;
+	}
+
+.chooseTag .chooseCon .one{
+	text-align:left;
+    padding-left: 30px;
+    font-family: "宋体";
+	height:30px;
+	}
+.chooseTag .addProf{
+    position: relative;
+    left: 0;
+    top: 0;
+	height:50px;
+	padding-left:65px;
+	text-align:left;
+	border-bottom:1px solid #efefef;
+	}
+.chooseTag .addProf .inputaddProf{
+	background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px 3px 3px 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 21px;
+    padding: 5px 10px;
+    width: 126px;
+	}	
+.chooseTag .addProf .inputaddProfTag{
+	background:url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.chooseTag .addProf .inputaddProfTag:hover{
+	background:url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}	
+.chooseTag .addProf .spanintro{
+    font-family: "宋体";
+	margin-left:12px;
+	}
+.chooseTag .submit{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 692px;
+	height:92px;
+	border-bottom:1px solid #efefef;
+	}
+.userBox .submit{
+	position: relative;
+    left: 0;
+    top: 0;
+	}
+.userBox .submit a{
+	position: absolute;
+    right: 65px;
+    top: 17px;
+	text-decoration:underline;
+	color:#4e91c6;
+	font-family: "宋体";
+	}
+.chooseTag .submit .reChose,
+.userBox .submit .reChose{
+	position: absolute;
+    left: 38px;
+    top: 17px;
+	background:url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.chooseTag .submit .reChose:hover,
+.userBox .submit .reChose:hover{
+	background:url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}	
+.chooseTag .submit .sure{
+	position: absolute;
+    right: 29px;
+    top: 17px;
+	background:url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.chooseTag .submit .sure:hover{
+	background:url(../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.chooseTag .introdut{
+    position: relative;
+    left: 0;
+    top: 0;
+	height:66px;
+	line-height:50px;
+	text-align:left;
+    font-family: "宋体";
+	color: #b1b1b1;
+	padding-left:30px;
+	}
+.chooseTag .introdut .span1{
+    font-family: "微软雅黑";
+    font-size: 13px;
+	color: #666666;
+	}
+/*选择标签*/
+
+.userBox,#formPersonTag,#formEnterpriseTag{
+	display:none;
+	}
+/*选择框*/
+
+

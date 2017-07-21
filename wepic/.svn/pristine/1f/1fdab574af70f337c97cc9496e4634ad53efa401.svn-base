@@ -1,0 +1,489 @@
+.TW_chooseBlank{
+	width:870px;
+	height:700px;
+	background:#fff;
+	margin:10px auto 50px;
+	text-align:left;
+	font-family:"宋体";
+	}
+
+
+
+
+.TW_chooseBlank .topUp_top{
+	width:870px;
+	height:78px;
+	position:relative;
+	top:0;
+	left:0;
+	text-align:center;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	}
+.TW_chooseBlank .topUp_top a{
+	position:absolute;
+	right:20px;
+	bottom:10px;
+	color: #727272;
+    text-decoration: underline;
+	}
+.TW_chooseBlank .topUp_top h2{
+	font-weight:normal;
+	color:#000;
+	font-size:24px;
+	line-height:78px;
+	font-family:"微软雅黑";
+	}
+	
+
+
+
+.TW_chooseBlank .table_TW{
+	width:580px;
+	height:180px;
+	margin:0px auto;
+	text-align:center;
+	margin-top:36px;
+	}
+.TW_chooseBlank .table_TW .td_one{
+	width:80px;
+	height:60px;
+	}
+
+.TW_chooseBlank .table_TW .td_two{
+	width:500px;
+	text-align:left;
+	color:#5b5b5b;
+	}
+	
+.TW_chooseBlank .table_TW .td_two .usable_balance,
+.TW_chooseBlank .table_TW .td_two .yuan{
+	color:#000;
+	font-size:12px;
+	margin-right:10px;
+	font-family:"微软雅黑";
+	
+	}
+
+.TW_chooseBlank .table_TW .td_two .dije{
+	margin-left:15px;
+	}
+
+.TW_chooseBlank .table_TW .td_two .money_deposit{
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 110px;
+	margin-right:10px;
+	}
+
+
+.TW_chooseBlank .table_TW .td_two .addCard {
+    color: #0084C7;
+    text-decoration: underline;
+	margin-left: 40px;
+	margin-top:10px;
+	display: inline-block;
+    margin-top: 15px;
+	}
+
+.TW_chooseBlank .table_TW .td_two .divdropDown{
+	width:380px;
+	cursor: pointer;
+	}
+.TW_chooseBlank .table_TW .td_two .dropDownBox{
+	width:100%;
+    height: 36px;
+	padding: 0 30px 0 0;
+	}
+.TW_chooseBlank .table_TW .td_two .dropDownBox div,
+.TW_chooseBlank .table_TW .td_two .selectBlankList .selectblankDiv div{
+	float:left;
+	}	
+.TW_chooseBlank .table_TW .td_two .dropDownBox .blankValue,
+.TW_chooseBlank .table_TW .td_two .selectBlankList .blankValue{
+    height: 36px;
+	line-height:36px;
+	font-size:14px;
+	width:120px;
+	margin-left:10px;
+	}
+.TW_chooseBlank .table_TW .td_two .dropDownBox .tailNumber,
+.TW_chooseBlank .table_TW .td_two .selectBlankList .tailNumber{
+    height: 36px;
+	line-height:36px;
+	font-family:'宋体';
+	}
+
+
+
+.TW_chooseBlank .table_TW .td_two .selectBlankList{
+    background:  #FFFFFF;
+    border: 1px solid #E8E8E6;
+	border-top:0;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 38px;
+	color: #535353;
+    font-family: "微软雅黑";
+    width: 100%;
+	max-height:300px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	}
+.TW_chooseBlank .table_TW .td_two .selectBlankList .selectblankDiv{
+	width:100%;
+	height:36px;
+	}
+.TW_chooseBlank .table_TW .td_two .selectBlankList .selectblankDiv:hover{
+	color:#000000;
+	background:#F0F0F0;
+	}
+
+	
+.TW_chooseBlank .table_TW .td_two .dropDownBox .dropDownBoxR {
+    height: 26px;
+	}
+.TW_chooseBlank .table_TW .td_two .dropDownBox .dropDownBoxR i {
+    top: 11px;
+	}
+	
+.TW_chooseBlank .table_TW .td_two .dropDownBoxValue {
+	width: 210px;
+	top: 38px;
+	}
+.TW_chooseBlank .table_TW .td_two .dropDownBoxValue div{
+    width: 210px;
+	margin:0;
+	padding-left:12px;
+	}
+.TW_chooseBlank .table_TW .td_two .dropDownBoxValue div:hover{
+	background-color:#f0f0f0;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*中国银行*/
+.bank_ico_bc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -139px no-repeat;
+	}
+/*中国银行*/
+	
+/*农业银行*/
+.bank_ico_abc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -277px no-repeat;
+	}
+/*农业银行*/
+	
+/*工商银行*/
+.bank_ico_icbc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -184px no-repeat;
+	}
+/*工商银行*/
+	
+/*建设银行*/
+.bank_ico_cbc{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -231px no-repeat;
+	}
+/*建设银行*/
+	
+/*招商银行*/
+.bank_ico_cmb{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -322px no-repeat;
+	}
+/*招商银行*/
+	
+/*交通银行*/
+.bank_ico_bcm{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -370px no-repeat;
+	}
+/*交通银行*/
+	
+/*中信银行*/
+.bank_ico_ccb{
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -414px no-repeat;
+	}
+/*中信银行*/
+
+
+
+.TW_chooseBlank .topUp_submit{
+	width:580px;
+	height:80px;
+	margin:40px auto 20px;
+	text-align:center;
+	padding-bottom:20px;
+	padding-top:40px;
+	border-top: 1px solid #E8E8E8;
+	}
+
+
+.TW_chooseBlank .topUp_submit .recharge{
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+
+.TW_chooseBlank .topUp_submit .recharge:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.TW_chooseBlank .topUp_submit .recharge:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+
+.TW_chooseBlank .topUp_submit .submit_cancel{
+	margin-top:20px;
+	}
+.TW_chooseBlank .topUp_submit a {
+    color: #0084C7;
+    text-decoration: underline;
+	}
+
+
+
+
+
+
+
+	
+.TW_chooseBlank .withdrawIntro{
+	border-top: 1px solid #E8E8E8;
+	padding:25px;
+	}
+.TW_chooseBlank .withdrawIntro h2{
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 14px;
+	font-weight:normal;
+	height:30px;
+	line-height:30px;
+	}
+.TW_chooseBlank .withdrawIntro .child{
+	padding:0 30px;
+	line-height:22px;
+	}
+
+
+
+
+
+
+
+
+
+
+/*添加提现银行卡*/
+
+.add_withdraw_deposit{
+	width:560px;
+	height:550px;
+	background:#ffffff;
+	display:none;
+	}
+.add_withdraw_deposit .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width:560px;
+	}
+.add_withdraw_deposit .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.add_withdraw_deposit .top a {
+    background:url(../../../../public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.add_withdraw_deposit .top a:hover{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.add_withdraw_deposit .top a:active{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+
+
+	
+.add_withdraw_deposit .table_con{
+    height: 280px;
+    width: 560px;
+	margin-top:30px;
+	}
+.add_withdraw_deposit .table_con .td_one{
+    width: 145px;
+	padding-right:15px;
+	text-align:right;
+	height:50px;
+	}
+.add_withdraw_deposit .table_con .td_two{
+	text-align:left;
+	}
+.add_withdraw_deposit .table_con .td_two .open_name,
+.add_withdraw_deposit .table_con .td_two .input_remark{
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 114px;
+	}
+.add_withdraw_deposit .table_con .td_two .open_blank,
+.add_withdraw_deposit .table_con .td_two .blank_number{
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 254px;
+	}
+
+
+.add_withdraw_deposit .submit{
+	margin-top:50px;
+	}
+.add_withdraw_deposit .submit .save {
+    background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -718px;
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 17px;
+    height: 36px;
+    width: 143px;
+	letter-spacing: 15px;
+    padding-left: 20px;
+	}
+.add_withdraw_deposit .submit .save:hover{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+.add_withdraw_deposit .submit .save:active{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat 0 -790px;
+	color: #D6D6D6;
+	text-shadow: 1px 1px 1px black;
+	}
+
+
+.add_withdraw_deposit .tr_remind{
+	heigth:20px;
+	text-align:left;
+	color:#ff0000;
+	display:none;
+	}
+
+.add_withdraw_deposit .table_con .dropDownBox{
+    height: 36px;
+	padding: 0 40px 0 0;
+	}
+
+.add_withdraw_deposit .table_con .dropDownBox .dropDownBoxR {
+    height: 26px;
+	}
+
+.add_withdraw_deposit .table_con .dropDownBox .dropDownBoxR i {
+    top: 11px;
+	}
+	
+
+.add_withdraw_deposit .table_con .dropDownBoxValue {
+	width: 210px;
+	top: 38px;
+	}
+
+.add_withdraw_deposit .table_con .dropDownBoxValue div{
+    width: 210px;
+	margin:0;
+	padding-left:12px;
+	}
+.add_withdraw_deposit .table_con .dropDownBoxValue div:hover{
+	background-color:#f0f0f0;
+	}
+	
+	
+	
+	

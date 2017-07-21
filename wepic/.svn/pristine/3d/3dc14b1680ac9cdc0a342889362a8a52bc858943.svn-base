@@ -1,0 +1,313 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../public/images/logoSmall.ico"/>
+
+<title>wepic管理员_资金_发票列表_已开发票详情</title>
+
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+
+
+
+
+<!--公共js-->
+
+<script type="text/javascript" src="../publicAdministrator/js/publicAdministrator.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../publicAdministrator/css/publicAdministrator.css" />
+<link type="text/css" rel="stylesheet" href="../../public/css/public.css" />
+
+
+
+
+
+<style>
+.container_top{
+	width:1180px;
+	height:48px;
+	background:#fff;
+	margin:5px auto 5px;
+	text-align:left;
+	font-family:"微软雅黑";
+	border:1px solid #e6e6e6;
+	}
+
+.container_top h2{
+	width:1000px;
+	height:48px;
+	line-height:48px;
+	float:left;
+	padding-left:24px;
+	font-weight:normal;
+	color:#000;
+	font-size:20px;
+	}
+.container_top h2 span{
+	margin-right:8px;
+	}
+.container_top .goBack{
+	float:left;
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:20px;
+	margin-top:6px;
+    text-align: center;
+    width: 116px;
+	}
+	
+.container_top .goBack:hover{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.container_top .goBack:active{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+.withdrawDeposit_cont table td {
+    padding: 8px 30px;
+	}
+
+
+.invoice_div{
+	width:1180px;
+	height:125px;
+	padding-top:5px;
+	background:#fff;
+	margin:0px auto 20px;
+	text-align:left;
+	font-family:"宋体";
+	border:1px solid #e6e6e6;
+	}
+.invoice_div p{
+	height:30px;
+	line-height:30px;
+	color:#000;
+	}
+.invoice_div p .time{
+	margin-left:5px;
+	}
+.invoice_div label{
+	margin-left:40px;
+	margin-right:10px;
+	color:#777777;
+	}
+.invoice_div .one{
+	width:330px;
+	height:125px;
+	float:left;
+	border-right:1px solid #e6e6e6;
+	}
+.invoice_div .two{
+	width:360px;
+	height:125px;
+	float:left;
+	border-right:1px solid #e6e6e6;
+	}
+.invoice_div .three{
+	width:460px;
+	height:125px;
+	float:left;
+	}
+
+
+</style>
+</head>
+
+<body>
+<div id="container">
+	
+    
+<!-- 头部结束-->
+	<!-- logo行-->
+    <div id="divTop">
+    	<div class="divtop">
+        	<div class="divLogo">
+                <a class="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+                    <img src="../../public/images/wepic_logo.png" alt="唯图网"/>
+                    <p><span class="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+                </a>
+            </div>
+            
+            <div class="divAdminSpan">
+                <span class="center">管理员中心</span>
+                <span>V.2.0.0</span>
+            </div>
+            
+            <div class="divTopPperation">
+                <div class="left">
+                	<div class="one">SuperAdmin</div>
+                	<div class="two">超级管理员</div>
+                </div>
+                <div class="configuration">
+                	<a href="javascript:">
+                    	<div class="config"></div>
+						<p>配置中心</p>
+                    </a>
+                </div>
+                <div class="divExit">
+                	<a href="javascript:">
+                    	<div class="exit"></div>
+						<p>安全退出</p>
+                    </a>
+                </div>
+            </div>
+    	</div>
+    
+                    
+   	</div>
+    <!-- logo行-->
+    
+    
+    
+    
+    <!-- 分割线-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+	
+    <!-- 导航 -->
+  	<div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="index">
+            		<a href="javascript:">首页</a>
+            	</li>
+            	<li id="user">
+            		<a href="javascript:">用户</a>
+            	</li>
+            	<li id="production">
+            		<a href="javascript:">作品</a>
+           	 	</li>
+            	<li id="project">
+            		<a href="javascript:">项目</a>
+            	</li>
+                <li id="capital" class="active">
+            		<a href="javascript:">资金</a>
+            	</li>
+            	<li id="transaction">
+            		<a href="javascript:">交易</a>
+           	 	</li>
+            	<li id="complaint">
+            		<a href="javascript:">投诉</a>
+            	</li>
+                <li id="subscription">
+            		<a href="javascript:">订阅</a>
+            	</li>
+                <li id="message">
+            		<a href="javascript:">消息</a>
+            	</li>
+        	</ul>
+            
+            <div class="onLine">
+                <span>当前在线：</span>
+                <span>423432</span>人
+            </div>
+        </div>
+        
+        
+	</div>
+    <!-- 导航  end-->
+    
+     <!-- 二级导航 -->
+  	<div id="assistantBar">
+    	<div class="twoStage" id="divTwoStage">
+       	 	<a href="capitalIndex.html"><div class='bar'><span>资金总览</span><i></i></div></a>
+            
+        	<a href="withdrawDepositList.html"><div class='bar'><span>提现列表</span><i></i></div></a>
+            
+            <a href="stayInvoiceList.html"><div class='bar active'><span>发票列表</span><i></i></div></a>
+            
+            <a href="transferOne.html"><div class='bar'><span>转账支付</span><i></i></div></a>
+            
+        </div>
+    	
+        <div id="divThreeStage">
+        
+            <div class="threeStage">
+                <a href="stayInvoiceList.html"><div class='bar'><span>待开发票</span><i></i></div></a>
+                
+                <a href="InvoicedList.html"><div class='bar active'><span>已开发票</span><i></i></div></a>
+                
+                <a href="postList.html"><div class='bar'><span>发票邮寄表</span><i></i></div></a>
+                
+            </div>
+        </div>
+    </div>
+    <!-- 二级导航  end-->
+    
+    
+    
+    <div class="container_top">
+       <h2><span>刘德华</span>发票详情</h2> 	
+       <input class="goBack" type="button" id="applicationDeposit" value="返回列表" onclick="window.location = 'InvoicedList.html' "/>
+    </div>
+    
+    
+    
+    <!--内容-->
+    <div class="invoice_div">     
+        <div class="one">
+        	<p><label>申请用户</label><span>刘德华</span></p>
+        	<p><label>申请时间</label><span>2013-02-15</span><span class="time">12:12:12</span></p>
+        	<p><label>交易金额</label><span>12145</span></p>
+        	<p><label>发票类型</label><span>普通发票</span></p>
+        </div>
+      
+        
+        <div class="two">
+        	<p><label>发票抬头</label><span>上海人民政府</span></p>
+        	<p><label>发票内容</label><span>12121</span></p>
+        	<p><label>收件人</label><span>王莉味</span></p>
+        	<p><label>联系电话</label><span>15012120124</span></p>
+        </div>
+        
+        <div class="three">
+        	<p><label>邮寄地址</label><span>上海市嘉定区</span></p>
+        </div>
+        
+        
+    </div>
+        
+    <!--内容-->
+    
+    
+    
+    
+    <!--foot 开始-->
+    <div id="divFooter">
+    	<div class="divfooter">
+        	<a href="http://www.wepic.cn"  target="_blank" class="toIndex">网站首页</a>|
+        	<a href="http://www.cnzz.com"  target="_blank" class="toStation">站长统计</a>|
+            <a href="http://tongji.baidu.com/web/welcome/login"  target="_blank" class="toBaiduStation">百度站长工具</a>|
+            <a href="http://e.baidu.com" target="_blank" class="toBaiduGeneralize">百度推广</a>
+        </div>
+    </div>
+    
+    <!--foot 结束-->
+   
+	<div id="goTopBtn" style="display:none;"></div>
+</div>
+<!--[if lte IE 6]>
+<script src="../../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+</body>
+</html>

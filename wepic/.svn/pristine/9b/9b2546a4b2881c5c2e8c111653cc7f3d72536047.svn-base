@@ -1,0 +1,17 @@
+//第一步验证
+function nextOne(password,remind){
+	var pass = $("#"+password).val();
+	$("#"+remind).html("");
+	var mypass = "wepic";
+	if(pass == '' || pass == null){
+		$("#"+remind).html("请输入当前密码");
+		$("#"+remind).css("color","#FF0000");
+		}
+	else if(pass != mypass){
+		$("#"+remind).html("密码输入错误");
+		$("#"+remind).css("color","#FF0000");
+		}
+	else{
+		window.location = "changePhoneTwo.html";
+		}
+}

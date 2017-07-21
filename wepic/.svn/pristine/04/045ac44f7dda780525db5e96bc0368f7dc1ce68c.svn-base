@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class name="com.wetuo.wepic.deal.beans.BidStatus" table="BidStatus" >
+<id name="statuId" type="java.lang.String">
+<column name="statuId">
+</column>
+<generator class="uuid"></generator>
+</id>
+
+<property name="publishBid" type="java.lang.String" column="publishBid"></property>
+<property name="working" type="java.lang.String" column="working"></property>
+<property name="cancelBid" type="java.lang.String" column="cancelBid"></property>
+<property name="endBid" type="java.lang.String" column="endBid"></property>
+<property name="adminCheckNotPass" type="java.lang.String" column="adminCheckNotPass"></property>
+<property name="adminChecked" type="java.lang.String" column="adminChecked"></property>
+<property name="selectPerson" type="java.lang.String" column="selectPerson"></property>
+
+
+</class>
+
+
+
+
+
+
+</hibernate-mapping>

@@ -1,0 +1,430 @@
+$(function(){
+	
+	
+	
+	judgeLi("divListOneUl",16);	//达到图片数显示分页
+	judgeLi("divListTwoUl",16);	//达到图片数显示分页
+	judgeLi("divListThreeUl",16);	//达到图片数显示分页
+	judgeLi("divListFourUl",16);	//达到图片数显示分页
+	
+	
+	/* 选列表*/
+	xuan();
+	
+	//clock();				//倒计时
+	
+	
+	objscroll("divApointProjectRight",260);
+	/* 切换荣誉 代表作品*/
+	divLiBarClickCollect();
+	
+	
+	allPrevNext();
+	
+	divLiBarClickSmall();
+	
+	
+	
+	/*开具发票*/
+	document.getElementById("formInvoice").reset();
+	$("#inputInvoiceTitle").attr("disabled","disabled");
+	/*开具发票*/
+	
+	
+	
+	/*结款评价*/
+	document.getElementById("formPayment").reset();
+	
+	evaluate();
+	/*结款评价*/
+	
+	
+	/*投诉*/
+	achieveBelow("divdropDownPartType","divdropDownViewPartType");
+	/*投诉*/	
+	});
+
+
+/*追加评论*/
+function submitaddToComment(){
+	var neirong = $("#addToCommentarea").val();
+	
+	if(neirong == "" || neirong== null){
+		alert("请输入追加评论内容");
+		return;
+		}
+	else{
+		cloosePopBox('addToComment');
+		}
+
+}
+/*追加评论*/
+
+
+/*投诉*/
+function submitComplaint(){
+	var num = $("#inputWorkNum").val();
+	var numtextarea= $("#textareacomplaint").val();
+	
+	if(num == "请输入作品编号"){
+		alert("请输入作品编号");
+		return;
+		}
+	if(numtextarea == "" || numtextarea== null){
+		alert("请输入投诉原因");
+		return;
+		}
+	else{
+		cloosePopBox('divComplaint');
+		openPopUpBox('divComplaint2');
+		}
+
+}
+
+
+
+function submitComplaint2(){
+	var Linkman = $("#inputComplaintLinkman").val();
+	var Phone= $("#inputComplaintPhone").val();
+	var Address= $("#inputComplaintAddress").val();
+	
+	if(Linkman == "" || Linkman== null){
+		alert("请输入联系人");
+		return;
+		}
+	if(Phone == "" || Phone== null){
+		alert("请输入联系电话");
+		return;
+		}
+	if(Address == "" || Address== null){
+		alert("请输入联系地址");
+		return;
+		}
+	else{
+		alert("成功");
+		}
+
+}
+
+/*投诉*/
+
+
+function evaluate(){
+	var imgSrc = '../../../../public/images/grade/star0.png';
+	var imgSrc2 = '../../../../public/images/grade/star.png';
+	
+	var allUL = $(".startUL");
+	$(allUL).each(function(indexX, element) {
+		var imgArray = $(this).find("img");
+	var noeI;
+	
+	$(imgArray).each(function(index, element) {
+		$(this).mouseover(
+			function(){
+				for(var i = 0;i < index+1;i++){
+					imgArray[i].src = imgSrc2;
+					}
+				
+				for(var j = index+1;j < imgArray.length;j++){
+					imgArray[j].src = imgSrc;
+					}
+			}
+		) 
+		
+    });
+		
+		});
+	
+   		
+}
+
+
+function submitPayment(){
+	var tear = $("#textareaevaluate").html();
+	var num = $("#inputnumber").val();
+	
+	if(tear == "写点对他的评价吧"){
+		$("#textareaevaluate").html('');
+		}
+	if(num == "请输入验证码"){
+		alert("请输入验证码");
+		}
+	}
+/*结款评价*/
+
+
+/*开具发票*/
+function submitInvoice(){
+	var title = $("#inputInvoiceTitle").attr("disabled");
+	var titleV = $("#inputInvoiceTitle").val();
+	var addressV = $("#inputReceiptAddress").val();
+	var recipientsV = $("#inputRecipients").val();
+	var phoneV = $("#inputContactPhone").val();
+	
+	
+	if(title != 'disabled'){
+		if(titleV == '' || titleV == null){
+			alert("请输入企业名");
+			return;
+		}
+	}
+
+	if(addressV == '' || addressV == null){
+		alert("请输入发票邮寄地址");
+		return;
+	}
+	
+	if(recipientsV == '' || recipientsV == null){
+		alert("请输入收件人");
+		return;
+	}
+	
+	if(phoneV == '' || phoneV == null){
+		alert("请输入联系电话");
+		return;
+	}
+	
+	alert("chenggong");
+	cloosePopBox('divInvoice');
+
+}
+
+
+
+function invoiceT(obj){
+	var val = $(obj).val();
+	if(val == '个人'){
+		$("#inputInvoiceTitle").attr("disabled","disabled");
+		}
+	if(val == '企业'){
+		$("#inputInvoiceTitle").removeAttr("disabled");
+		}
+	}
+/*开具发票*/	
+	
+	
+
+/* click 动作		jquery*/
+function divLiBarClickSmall(divName){
+	var allMainBarLiOne=$(".recruitCameristSmall_one").children();
+	var allMainBarLiTwo=$(".recruitCameristSmall_two").children();
+	var allMainBarLiThree=$(".recruitCameristSmall_three").children();
+	var allMainBarLiFour=$(".recruitCameristSmall_four").children();
+	
+	$(allMainBarLiOne).each(function(){
+			$(this).click(function(){
+				var allMainBarLi=$(".recruitCameristSmall_one").children().each(function() {$(this).removeClass("actives");});
+				$(this).addClass("actives");
+			});	
+    });
+	
+	$(allMainBarLiTwo).each(function(){
+			$(this).click(function(){
+				var allMainBarLi=$(".recruitCameristSmall_two").children().each(function() {$(this).removeClass("actives");});
+				$(this).addClass("actives");
+			});	
+    });
+	$(allMainBarLiThree).each(function(){
+			$(this).click(function(){
+				var allMainBarLi=$(".recruitCameristSmall_three").children().each(function() {$(this).removeClass("actives");});
+				$(this).addClass("actives");
+			});	
+    });
+	$(allMainBarLiFour).each(function(){
+			$(this).click(function(){
+				var allMainBarLi=$(".recruitCameristSmall_four").children().each(function() {$(this).removeClass("actives");});
+				$(this).addClass("actives");
+			});	
+    });
+}
+
+
+
+/* 切换荣誉 代表作品*/
+function divLiBarClickCollect(divName){
+	var allMainDB=$(".topdb");
+	$(allMainDB).each(function(indexDB, elementDB){
+		
+		// alltopLi 选择选项卡top
+		var alltopLi = $(elementDB).find("ul").children();
+		var allConDiv = $(elementDB).next().children();
+		
+		
+		$(alltopLi).each(function(indexTopLi, elementTopLi) {
+			alltopLi[indexTopLi].index = indexTopLi; 
+            $(alltopLi).click(function(){
+				//加选中样式
+					
+				$(alltopLi).each(function( i , ele) {
+					$(ele).removeClass("active");
+					allConDiv[i].style.display = 'none';
+				});
+				
+				$(this).addClass("active");
+				allConDiv[this.index].style.display = 'block';
+				
+				
+				
+				
+				});
+        });
+    });	
+	
+	
+	
+}
+
+
+var flag = 0;			//
+function xuan(){
+	var scrollTop = getScrollTop();
+        var cardLi=$("#recruitCameristTimelyStateCard").find("li");
+		var oDivSon = $(".divStateCardCon").find(".divList");
+		var CameristSmall = $("#recruitCameristSmall").children();
+		
+        for(var i=0;i<cardLi.length;i++){  
+            cardLi[i].index=i; //input[0].index=0 index是自定义属性
+            cardLi[i].onclick=function(){
+               for(var i=0;i<cardLi.length;i++){  //循环历遍去掉button样式和把div隐藏
+                  cardLi[i].className='';
+                  oDivSon[i].style.display='none';
+				  CameristSmall[i].style.display='none';
+               };
+			   
+			 if(flag == 0){
+				$("#divStageTop").slideUp();
+				$("#divFold").slideUp();
+				$("#rightDetail").hide();
+				$("#rightFiltrate").show();
+				$("#stateCardBackDetail").show();
+				
+   				window.scrollTo((0), (90));
+				flag = 1;
+				 }
+				 
+               this.className='active';  //当前按钮添加样式
+               oDivSon[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+               CameristSmall[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+           };
+         };
+		 
+       }
+	
+function showDetail(){
+	 if(flag == 0){
+		$("#divStageTop").slideUp();
+		$("#divFold").slideUp();
+		$("#rightDetail").hide();
+		$("#rightFiltrate").show();
+		$("#stateCardBackDetail").show();
+		flag = 1;
+   		window.scrollTo((0), (90));
+		return;
+	}
+	
+	
+	if(flag == 1){
+		$("#divStageTop").slideDown();
+		$("#divFold").slideDown();
+		$("#rightDetail").show();
+		$("#rightFiltrate").hide();
+		$("#stateCardBackDetail").hide();
+		flag = 0;
+		return;
+	}		 
+	
+}
+
+
+
+
+function allPrevNext(){
+	var allPrev = $(".slider_next");				//下一张向左移动
+	var allNext = $(".slider_prev");				//上一张向右移动
+	
+	/*var options = $.extend( defaults, opt );
+	var dir = options.direction;
+	
+	var data1 = {}, data2 = {};
+		data1[dir] = -$iSteep;
+		data2[dir] = 0;*/
+	
+	$(allPrev).each(function(index, element) {
+		var $item,$iSteep;
+		var $sliderMove = $(this).next().children();		//获取所要对象
+		
+		$item = $sliderMove.children();					//所有孩子
+		$iSteep = $item.outerWidth();					//孩子的宽度
+		
+		$sliderMove.css('width',$item.length * $iSteep +'px' );
+						
+    });
+		
+		//上一张向右移动
+	$(allPrev).each(function(index, element) {
+		
+		var $sliderMove = $(this).next().children();		//获取所要对象
+		
+		var $item,$iSteep;
+		var $sliderMove = $(this).next().children();		//获取所要对象
+	
+		$item = $sliderMove.children();					//所有孩子
+		$iSteep = $item.outerWidth();					//孩子的宽度
+		
+        $(this).click(function(){
+			
+			
+			//先把最后一个放第一个排序
+			$sliderMove.css( "left", -$iSteep+'px').children().last().prependTo( $sliderMove );
+			//向右移动
+			$sliderMove.animate({left:"0px"});
+			});
+						//滚动
+    });
+	
+	
+	
+	
+	$(allNext).each(function(index, element) {
+		var $sliderMove = $(this).prev().children();		//获取所要对象
+		
+		
+		var $item,$iSteep;
+		var $sliderMove = $(this).prev().children();		//获取所要对象
+	
+		$item = $sliderMove.children();					//所有孩子
+		$iSteep = $item.outerWidth();					//孩子的宽度
+        $(this).click(function(){
+			$sliderMove.animate({left:-$iSteep+'px'},function(){
+			
+				$sliderMove.css( "left" , 0 ).children().first().appendTo( $sliderMove );
+			});	
+			
+			});
+		
+    });
+	
+	
+	
+	}
+	
+	
+
+
+function viewcontact(obj){
+	$(obj).next().show();
+	$(obj).remove();
+	
+	}
+
+function openPopUpBoxRe(){
+	$("#divChooseRe").html('<iframe src="reChoose.html" style="width:860px;height:1150px;"></iframe>');
+	openPopUpBox('divChooseRe');
+	}
+
+function cloceReChoose(){
+	cloosePopBox('divChooseRe');
+	$("#divChooseRe").html('');
+	}
+
+

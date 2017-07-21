@@ -1,0 +1,1445 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="StoryAction" extends="json-default">
+         <action name="userstory_*" method="{1}" class="storyAction">
+         <result name="changeSpecialPic" type="json">
+                 <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">mylist.*</param>
+         </result>
+            <result name="uploadimg" type="json">
+                 <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">msg.*,publishId,flag</param>
+			</result>
+			<result name="cutcover" type="json">
+			     <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">msg.*</param>
+			</result>
+			<result name="findstorybyCountBySpecialCat" type="json">
+			     <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">count.*</param>
+			</result>
+			<result name="storyprenext" type="json">
+			     <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">stories.*</param>
+			</result>
+			<result name="storychecksucprenext" type="json">
+			     <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">stories.*</param>
+			</result>
+			<result name="storychecksucprenext" type="json">
+			     <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">stories.*</param>
+			</result>
+						
+		
+			
+         </action>
+    </package>
+    <package name="com.wetuo.wepic.publish.actions.PublishAction2" extends="json-default">
+         <action name="jsonpublish_*" method="{1}" class="publishAction">
+                 <result name="worklibrary" type="json">
+                 <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">imgChangeList.*</param>
+                 </result>
+                 <result name="findthumbnailbyId" type="json">
+                 <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">resMsg.*</param>
+                 </result>
+                 <result name="findthumbnailbyId2" type="json">
+                 <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">resMsg.*</param>
+                 </result>
+                 
+                 
+                  <result name="uploadOpus" type="json">
+                 <param name="root">reback</param>
+                 </result>
+                 <result type="json" name="findbyCountBySpecialCat">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">count.*</param>
+			</result>
+			
+			 <result name="uploadSimpleSamll" type="json">
+                 <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">path.*</param>
+                 </result>
+                 
+                  <result name="changeSpecialPic" type="json">
+                 <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">resMsg.*</param>
+                 </result>
+                 
+			
+			 <result type="json" name="uploadAccessories">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">httpurl.*</param>
+			</result>
+			
+			<result name="updateLogo" type="json">
+                 <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">path.*</param>
+                 </result>
+			
+            
+            
+			<result name="picInfo" type="json">
+                  <param name="ignoreHierarchy">false</param> 
+				 <param name="includeProperties">publishTest.*</param>
+                 </result>
+			
+			     
+         </action>
+              
+    </package>
+    
+    
+    
+    	<package name="com.qhkj.goodChance.publish.actions.PublishSpecialCatAction" extends="json-default">
+		<action name="specialcat_*" method="{1}" class="publishSpecialCatAction">
+		
+		<result type="json" name="getpublishSpecialCats">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishSpecialCats.*</param>
+			</result>
+			
+			<result type="json" name="getpublishSpecialCats2">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishSpecialCats.*</param>
+			</result>
+			
+			<result type="json" name="saveSpecial">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">specialCat.*</param>
+			</result>
+			<result type="json" name="savestoryspecial">
+			<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">specialCat.*</param>
+			</result>
+			
+			
+		<!-- 
+		    <result type="json" name="modifyspecialSuc">
+					<param name="ignoreHierarchy">false</param> 
+					<param name="includeProperties">modifySucFlag.*</param>
+			</result>
+			<result type="json" name="modifySpecialCat">
+					<param name="ignoreHierarchy">false</param> 
+					<param name="includeProperties">tempInfoList.*</param>
+			</result>
+			<result type="json" name="AlbumnBySpeical">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">myResList.*</param>
+			</result>
+			<result type="json" name="newAlbumn">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">addRes.*</param>
+			</result>
+			<result type="json" name="getSpecialCatList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">myUnderCatList.*</param>
+			</result>
+			<result type="json" name="countlogin">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">myres.*</param>
+			</result>
+			 <result type="json" name="AllTypePager">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			<result type="json" name="specialCatPublishList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishSpecialCatImglist.*</param>
+			</result>
+			<result type="json" name="cameraAlbum">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishBySpecial.*</param>
+			</result>
+			<result type="json" name="delAlbumn">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">delRes.*</param>
+			</result>
+			
+			<result type="json" name="delSecondLevelAlbumn">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">delFlag.*</param>
+			</result>
+			<result type="json" name="delFirStory">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">delNum1.*</param>
+			</result>
+			
+			<result type="json" name="delSecStory">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">delNum2.*</param>
+			</result>
+			<result type="json" name="PersonalAlbum1">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishBySpecial.*</param>
+			</result>
+			<result type="json" name="AlbumnBySpeicalId1">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">detailMap.*</param>
+			</result>
+			<result type="json" name="virtualDel">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">delRes.*</param>
+			</result>
+			<result type="json" name="delPublishByAlbumn">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">delFlag.*</param>
+			</result>
+			
+			<result type="json" name="publishByAlbumn">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">allPublishsByUser.*</param>
+			</result>
+			 -->
+			
+		</action>
+		
+	</package>
+	<package name="com.wetuo.wepic.core.actions.AccountBankWithdraw" extends="json-default">
+		<action name="accountbank_*" method="{1}" class="bankwithdrawaction">
+		<result name="changedefault" type="json">
+		        <param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">state.*</param>
+		</result>
+		<result name="bankwithdrawadd" type="json">
+		        <param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">state.*</param>
+		</result>
+		</action>
+	</package>
+	
+	<package name="com.wetuo.wepic.core.actions.ConfigurationAction" extends="json-default">
+		<action name="configurajson_*" method="{1}" class="configuration">
+		<result name="govermentprenext" type="json">
+		<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">users.*</param>
+		</result>
+		<result name="userprenext" type="json">
+		<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">users.*</param>
+		</result>
+		<result name="validateloginpwd" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatemail" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatecode" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="sendmobilecode" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatemobilecode" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatemobilecode2" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatepwd" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifysucpwd" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="sendEmil" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">msgFlag.*</param>
+			</result>
+			<result name="sendemail" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="changephonebyemailvalidate" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="sendmobilecodeofmodifyemail" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="uploadimg" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			  <param name="includeProperties">param.*,uploadres</param>
+			</result>
+			<result name="uploadlicense" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			  <param name="includeProperties">param.*,uploadres</param>
+			</result>
+			<result name="uploadletters" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			  <param name="includeProperties">param.*,uploadres</param>
+			</result>
+			<result name="uploadgoverregister" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			  <param name="includeProperties">param.*,uploadres</param>
+			</result>
+			<result name="uploadmediaregister" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			  <param name="includeProperties">param.*,uploadres</param>
+			</result>
+			
+			
+			<result name="modifyphonevalidatesuc" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="updatephonesuc" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifyaddr" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifytel" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifyqq" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifyduty" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifycompanyAddr" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifybusinessScope" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="modifycompanyaddr" type="json">
+			<param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+		</action>    
+    </package>
+	<package name="com.qhkj.goodChance.core.actions.UserAction" extends="json-default">
+		<action name="frontlogin_*" method="{1}" class="userAction">
+		<result name="checkReusername" type="json">
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">message.*</param>
+			</result>
+			<result name="checkEmail" type="json">
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">message.*</param>
+			</result>
+			<result name="getUserInfo" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">userInfoBeans.*</param>
+			</result>
+			
+			<result name="autoUpload" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">message.*</param>
+			</result>
+			
+			<result name="ajaxgetRandomRoleTag" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">roleTags.*</param>
+			</result>
+			<result name="validateloginpwd" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatemail" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatecode" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="sendmobilecode" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			<result name="validatemobilecode" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			<param name="includeProperties">state.*</param>
+			</result>
+			
+			<result name="checkedUserVlidate" type="json">
+			  <param name="ignoreHierarchy">false</param> 
+			  <param name="includeProperties">message.*</param>
+			</result>
+			
+			
+			
+			<!-- 
+		<result type="json" name="repetitioncmt">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">repetFlag.*</param>
+			</result>
+		<result type="json" name="autoUpload">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="contentType">text/html</param>  
+				<param name="includeProperties">uploadName.*</param>
+			</result>
+		<result type="json" name="modifymobile">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyFlag.*</param>
+			</result>
+		<result type="json" name="uploaduserinfo">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">user2.*</param>
+			</result>
+			<result type="json" name="userlogin">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">myres.*</param>
+			</result>
+			
+			<result type="json" name="updateduty">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyFlag.*</param>
+			</result>
+			<result type="json" name="updatecompanyaddr">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyFlag.*</param>
+			</result>
+			<result type="json" name="updatemobile">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyFlag.*</param>
+			</result>
+			<result type="json" name="updateqq">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyFlag.*</param>
+			</result>
+			<result type="json" name="updateaddr">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyFlag.*</param>
+			</result>
+			<result type="json" name="userjson">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">user2.*</param>
+			</result>
+			<result type="json" name="countlogin">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">myres.*</param>
+			</result>
+			
+			<result name="applyY" type="redirectAction">user!admin_applyPhoto.do</result> -->
+			<!-- 
+			<result name="applyY" type="json" >
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">mesg.*</param>
+			</result>
+			<result type="json" name="edit_notverify1">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">user2.*</param>
+			</result>
+			
+			<result type="json" name="sendEmailPasajax">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">msgFlag.*</param>
+			</result>
+			
+			<result type="json" name="userPic1">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">user2.*</param>
+			</result>
+			<result type="json" name="pwdedit1">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">user2.*</param>
+			</result>
+			<result type="json" name="changerole2">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">roleMap.*</param>
+			</result>
+			
+			<result type="json" name="uservalidate1">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">user2.*</param>
+			</result>
+			<result name="usermes" type="json" >
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">userBean.*</param>
+			</result>
+			<result name="initData" type="json" >
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">initDataMap.*</param>
+			</result>
+			<result name="initAdmin" type="json" >
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			<result name="initAdmin1" type="json" >
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			<result name="msgvalidateCode" type="json">
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msgFlag.*</param>
+			</result>
+			<result name="validateMsgCode" type="json">
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">validateRes.*</param>
+			</result>
+			<result name="sendEmil" type="json">
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msgFlag.*</param>
+			</result>
+			
+			
+			<result name="uploadPubimgnew" type="json">
+			 <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">param.*</param>
+				   <param name="contentType">text/html</param>
+			</result>
+			
+			
+			<result name="savespecificUrl" type="json">
+			 <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">param.*</param>
+			</result>
+			
+			-->
+		</action>
+	</package>
+
+<package name="com.qhkj.goodChance.core.actions.UserPowerJson" extends="json-default">
+ <action name="userPower_*" class="userPowerAction" method="{1}">
+ <result type="json" name="getByUserPoweId">
+    <param name="ignoreHierarchy">false</param> 
+     <param name="includeProperties">userPower.*</param>
+ </result>
+ <result type="json" name="getediteUserPoweId">
+ <param name="ignoreHierarchy">false</param> 
+     <param name="includeProperties">userPower.*</param>
+ </result>
+
+ </action>
+</package>
+
+<package name="com.qhkj.goodChance.deal.action.BidAction" extends="json-default">
+  <action name="bidAction_*" class="bidAction" method="{1}">
+   <result name="uploadAccessories" type="json">
+  <param name="ignoreHierarchy">false</param> 
+  <param name="includeProperties">httpurl.*</param>
+   </result>
+
+   <result name="deleteFiled" type="json">
+  <param name="ignoreHierarchy">false</param> 
+  <param name="includeProperties">mes.*</param>
+   </result>
+  </action>
+
+
+<action name="bidCatAction_*" class="bidCatAction" method="{1}">
+<result name="addpersonCat" type="json">
+ <param name="ignoreHierarchy">false</param> 
+  <param name="includeProperties">backMsg.*</param>
+</result>
+
+
+<result name="deletepersonCat" type="json">
+ <param name="ignoreHierarchy">false</param> 
+  <param name="includeProperties">backMsg.*</param>
+</result>
+
+
+
+
+</action>
+
+</package>
+
+
+
+
+    <!--违章  交通信号控制   汽车交通诱导    事故   特勤线路维护-->
+	<package name="com.qhkj.goodChance.publish.actions.PublishCatAction" extends="json-default">
+		<default-action-ref name="singleNodeTree_*"></default-action-ref>
+		<!-- 
+		<action name="singleNodeTree_*" method="{1}" class="com.qhkj.goodChance.publish.actions.PublishCatAction">
+		    <result name="getsingleNodeTreeList">Police/illegal.jsp</result>
+			<result name="getTreeNodeSeclect">Police/illegalinfo.jsp</result>
+			<result name="getTreeNodesignalList">Police/signal.jsp</result>
+			<result name="getTreeNodecarinduceList">Police/carInduce.jsp</result>
+			<result name="getTreeNodetrackList">Police/track.jsp</result>
+			<result name="getTreeNodeaccidentList">Police/accident.jsp</result>
+			<result name="getTreeNodemaintainList">Police/maintain.jsp</result>
+		</action>
+		-->
+		<action name="projectCat_*" method="{1}" class="publishCatAction">
+		    <result type="json" name="getPublisCatList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishCatlist.*</param>
+			</result>
+			
+			<result type="json" name="typecatOfStory">
+			<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishChiledCats.*</param>
+			</result>
+			<result type="json" name="getPublishCatListJustUnderProjectCat">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">justUnderTopProjectCatPublishCatlist.*</param>
+			</result>
+			<result type="json" name="getPublishCatMapUnderProjectCat">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">mapCatCats.*</param>
+			</result>
+			<result type="json" name="getPublishCatLevel2listUnderCat">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishCatLevel2list.*</param>
+			</result>
+			
+			
+			<result type="json" name="getUnderCatList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">myUnderCatList.*</param>
+			</result>
+			
+			<result type="json" name="photoCatList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishCatlist.*</param>
+			</result>
+			<result type="json" name="photoCatImgList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishCatImglist.*</param>
+			</result>
+			
+			<result type="json" name="publisCatchildList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">getPublisCatchildList.*</param>
+			</result>
+			
+			
+			<!--========================================================================================jim  ========  ==========-->
+			<result name="getTypeCat" type="json">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">publishChiledCats.*</param>
+			</result>
+			
+			<result name="getTypeCatTags" type="json">
+			<param name="ignoreHierarchy">false</param> 
+		    <param name="includeProperties">catTagsList.*</param>
+			</result>
+			
+			
+			
+			
+			
+			
+		</action>
+		
+		<!-- dingjiankai   
+		<action name="infoBoard_*" method="{1}" class="wsn.wsntravl.action.PoliceSecretAction">
+		    <result type="json" name="deletePoliceSecret">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">policeSecretList.*</param>
+			</result>
+		    <result name="getPoliceSecret">Police/maintain.jsp</result>
+			<result name="setPoliceNewSecret">Police/SetPoliceNewSecret.jsp</result>
+		</action>
+		begin-->
+		
+	</package>
+	
+	
+<!-- ============================================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<package name="com.qhkj.goodChance.core.actions.AccountAction" extends="json-default">
+	
+	
+	<action name="cash_*" method="{1}" class="accountAction">
+	         <result name="refresh" type="json">
+		        <param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">accountBankWithdraws.*</param>
+		</result>
+		
+		
+		<!-- 
+		<result name="uploadimg" type="json">
+                 <param name="ignoreHierarchy">false</param>
+				 <param name="includeProperties">msg.*,publishId,flag</param>
+			</result>
+		 -->
+		
+		<result name="defaultandrefresh" type="json">
+		        <param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">accountBankWithdraws.*,defaultAccountBankWithdraw.*</param>
+		</result>
+	          <result type="json" name="addNewAccount">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyRes.*</param>
+			</result>	
+	          <result type="json" name="validateTempCode">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">validateRes.*</param>
+			</result>	
+	        <result type="json" name="modifyUserAccount">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msgFlag.*</param>
+			</result>	
+	        <result type="json" name="modifyAccount">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">modifyRes.*</param>
+			</result>
+	        <result type="json" name="userOfAccount">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">tempInfoList.*</param>
+			</result>
+			<result type="json" name="validateInputCash">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">resMap.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="validateDynamicPwd">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">resMap.*</param>
+			</result>
+			<result type="json" name="receivePwd">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">codePwd.*</param>
+			</result>
+			
+		</action>
+	</package>
+	
+	
+	<!-- jingjiren -->
+	<package name="brokeRelation" extends="json-default">
+	<action name="brokeRelation_*" method="{1}" class="brokerRelationshipAction">
+	<result type="json" name="applyBymeBroke">
+	<param name="ignoreHierarchy">false</param> 
+		<param name="includeProperties">pager.*</param>
+	
+	</result>
+	<result type="json" name="pagerBoke">
+	<param name="ignoreHierarchy">false</param> 
+		<param name="includeProperties">pager.*</param>
+	
+	</result>
+	
+		<result type="json" name="cancelBroke">
+	<param name="ignoreHierarchy">false</param> 
+		<param name="includeProperties">flag.*</param>
+	
+	</result>
+	
+	
+	
+	
+	</action>
+	</package>
+	
+	<package name="AccountWithdrawAction" extends="json-default">
+	<action name="withdrawHistory_*" method="{1}" class="accountWithdrawAction">
+			<result name="validateInputCash" type="json">
+			    <param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">resMap.*</param>
+			</result>
+			<result type="json" name="validateIsPermit">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">validateRes.*</param>
+			</result>
+			<result type="json" name="searchTradeHistory">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">tradeId.*</param>
+			</result>
+			<result type="json" name="buyTrade">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">tradeId.*</param>
+			</result>
+			<result type="json" name="sellTrade">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">tradeId.*</param>
+			</result>
+			<result type="json" name="createPayBill">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">tempList.*</param>
+			</result>
+			<result type="json" name="payfail">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">tradeId.*</param>
+			</result>
+			<result type="json" name="accorddate">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+		</action>
+	</package>
+
+	
+	
+	<package name="com.qhkj.goodChance.core.actions.UserCatAction" extends="json-default">
+		<default-action-ref name="singleNodeTree_*"></default-action-ref>		
+		<action name="jsonUserCat_*" method="{1}" class="userCatAction">
+		    <result type="json" name="getUserCatJsonList">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">userCatlist.*</param>
+			</result>
+			
+			<result type="json" name="registerRole">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">verifyCat.*</param>
+			</result>
+			
+			
+		</action>
+		
+		
+		
+	</package>
+	
+	
+	
+	<package name="com.qhkj.goodChance.publish.actions.PublishAction" extends="json-default">
+	<action name="projectCommend_*" method="{1}" class="publishAction">
+	
+			<result type="json" name="pagration">
+						<param name="ignoreHierarchy">false</param> 
+						<param name="includeProperties">pager.*</param>
+					</result>
+			<result type="json" name="recommendByFirImage">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishFirImagelist.*</param>
+			</result>
+		<result type="json" name="recommendByName">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishNamelist.*</param>
+			</result>
+		<result type="json" name="recommendBySecImage">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishSecImagelist.*</param>
+			</result>
+			<result type="json" name="recommendCatByName">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">catNameList.*</param>
+			</result>
+			
+			<result type="json" name="recommendCatByImg">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">catImgList.*</param>
+			</result>
+			
+			
+			<result type="json" name="ImgChange">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			<result type="json" name="ImgChangeByCat">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+		
+		
+		<result type="json" name="getAllchild">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">listSpecial.*</param>
+			</result>
+			
+			
+			<result type="json" name="getallTags">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">allChildlist.*</param>
+			</result>
+			
+			<result type="json" name="showSmall">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">small.*</param>
+			</result>
+			
+			<result type="json" name="workById">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">workMap.*</param>
+			</result>
+			
+			<result type="json" name="addnewInitData">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">initDataList.*</param>
+			</result>
+			<result type="json" name="insertNotVerify">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">insertRes.*</param>
+			</result>
+			<result type="json" name="listAdmin1">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			<result type="json" name="publishById1">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">searchPublish.*</param>
+			</result>
+			<result type="json" name="changestatu">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">changeStatuResMap.*</param>
+			</result>
+			<result type="json" name="workEditById">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">workMap.*</param>
+			</result>
+			<result type="json" name="addNotRes">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">resMap.*</param>
+			</result>
+			<result type="json" name="indexImg">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">small.*</param>
+			</result>
+			<result type="json" name="cutIndexImage1">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">cutFlag.*</param>
+			</result>
+			
+			<result type="json" name="personalPhotoShow">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">mainList.*</param>
+			</result>
+			<result type="json" name="personalPhotoShow2">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="deletePublish">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">indexFlag.*</param>
+			</result>
+			
+			
+			<result type="json" name="personspecial">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">publishSpecialCatList.*</param>
+			</result>
+			<result type="json" name="personalReadOnlyPhotoShow">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">mainList.*</param>
+			</result>
+			
+		</action>
+		
+	</package>
+	
+	
+	
+	
+	<package name="com.qhkj.goodChance.core.actions.PublishFavoriteAction" extends="json-default">
+	<action name="mypublishFavorite_*" method="{1}" class="publishFavoriteAction">
+			<result type="json" name="myfavorite">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msg.*</param>
+			</result>
+		</action>
+	</package>
+
+	
+	
+	
+
+	
+	
+	<package name="bidAimAction" extends="json-default">
+		
+		<action name="BidAimlist_*" method="{1}" class="bidAimPersonAction">
+			<result type="json" name="allBid">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">bidAimList.*</param>
+			</result>
+			<result type="json" name="inviteBidPerson">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pager.*</param>
+			
+			</result>
+			<result type="json" name="resultList">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">result.*</param>
+			</result>
+			                                                
+		</action>
+		
+		
+		
+		<action name="responseInvited_*" method="{1}" class="bidResponseInvitedAction">
+			<result type="json" name="responseInvited">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msg.*</param>
+			</result>
+			<!-- //选为待定 -->
+			<result type="json" name="undetermined">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">message.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="bidRemark">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">complainFalgString.*</param>
+			</result>
+			
+			<result type="json" name="compain">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">complainFalgString.*</param>
+			</result>
+			
+			<result type="json" name="publishInvited">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			
+			<result type="json" name="countBid">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="tousuChuli">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			<result type="json" name="payBidMoney">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">sendMeString.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="yanchitousu">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msg.*</param>
+			</result>
+			<result type="json" name="chulichenggong">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msg.*</param>
+			</result>
+			
+			<result type="json" name="getPeopleOrModel">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			
+			<result type="json" name="iniShouyaoshtlist">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="publicResponseInvited">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">msg1.*</param>
+			</result>
+			
+			<result type="json" name="replyInvited">
+			<param name="ignoreHierarchy">false</param>
+			<param name="includeProperties">pager.*</param>
+			</result>
+			
+			<result type="json" name="isResponseIvitedList">
+			<param name="ignoreHierarchy">false</param>
+			<param name="includeProperties">listPagers.*</param>
+			</result>
+			
+			<result type="json" name="confirmInvited">
+			<param name="ignoreHierarchy">false</param>
+			<param name="includeProperties">list1.*</param>
+			</result>
+			
+			<result type="json" name="cancelBid">
+			<param name="ignoreHierarchy">false</param>
+			<param name="includeProperties">message.*</param>
+			</result>
+			
+			<result type="json" name="confirmImag">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			
+			
+			<result type="json" name="confirmTaskFinished">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">sendMeString.*</param>
+			</result>
+			
+			<!-- -我的约拍回复 -->
+				<result type="json" name="isResponseBidajax">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			<result type="json" name="pagerConfirmImag">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			<result type="json" name="confirmChecked">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">mesString.*</param>
+			</result>
+			
+			<!-- 管理员审核       -->
+			<result type="json" name="checkedBid">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			<result type="json" name="checkedBidOk">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">bidflag.*</param>
+			</result>
+			
+			<!-- //应约记录 -->
+			<result type="json" name="getwodeyingImg">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">pager.*</param>
+			</result>
+			
+			</action>
+		
+		
+	
+<action name="workerbidChange_*"  method="{1}"  class="bidReceiverConfirmChangeAction">
+	
+	
+	<result type="json" name="chage">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">changeMesg.*</param>
+			</result>
+	</action>
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+	
+		
+		
+	</package>
+	
+	
+	
+	<!-- -<package name="com.qhkj.goodChance.deal.actions.BidReceiverConfirmChangeAction" extends="json-default">
+	
+	
+	<result type="json" name="chage">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">changeMesg.*</param>
+			</result>
+	</action>
+	
+
+	</package>
+		 -->
+	<package name="com.qhkj.goodChance.common.util.ShopCart" extends="json-default">
+	<action name="myshopcart_*" method="{1}" class="com.qhkj.goodChance.common.util.ShopCart">
+			<result type="json" name="del">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">shopCart.*</param>
+			</result>
+		</action>
+	</package>
+	
+	
+	<package name="com.qhkj.goodChance.deal.actions.BuyCartDealAction" extends="json-default">
+	<action name="mytrade_*" method="{1}" class="buyCartDealAction">
+			<!-- <result type="json" name="fail">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">trademsg.*</param>
+			</result>
+			 -->
+			<result type="json" name="updateStatu">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">trademsg.*</param>
+			</result>
+			<result type="json" name="myTradeExist">
+				<param name="ignoreHierarchy">false</param> 
+				<param name="includeProperties">flag.*</param>
+			</result>
+		</action>
+	</package>
+	<!-- publishspecialcat -->
+
+	 
+	<!--  前台开始  -->
+	
+	<package name="com.qhkj.goodChance.publish.actions.FrontendAction" extends="json-default">
+		<!--  
+		<action name="homePageMainPicJson"   class="com.qhkj.goodChance.publish.actions.FrontendAction " method="homePageMainPic"> 
+			<result  name="homePageMainPic" type="json">
+				 <param name="includeProperties">  
+				 	mainPublish\.id,mainPublish\.name,userInfo\.biggerPic 
+				 </param>  
+			 </result>    
+		</action>  
+		-->
+		
+		<action name="frontPage_*" method="{1}" class="frontPage">
+			<!--  
+			<result  name="homePageMainPic" type="json">
+				 <param name="includeProperties">  
+				 	mainPublish\.id,mainPublish\.name,userInfo\.biggerPic 
+				 </param>  
+			 </result>   
+			-->  
+			<result type="json" name="homePageMainPics">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">mainPublishs.*</param>
+			</result>
+			
+			<result type="json" name="initFrontFistPage">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">publishlist.*</param>
+			</result>
+			
+			
+			<result type="json" name="initUserInfo">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">userlist.*</param>
+			</result>
+			
+			
+			<result type="json" name="initBidFrontPage">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">listbid.*</param>
+			</result>
+			
+			<result type="json" name="nextBidFrontPage">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">pager.*</param>
+			</result>
+			
+			<result type="json" name="citylist">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">citylist.*</param>
+			</result>
+			
+			<result type="json" name="getUserLoginName">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">userName.*</param>
+			</result>
+			<result type="json" name="initModelWork">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">modelWorkList.*</param>
+			</result>
+			
+			<result type="json" name="initPhotographyWork">
+				<param name="ignoreHierarchy">false</param> 
+			    <param name="includeProperties">photographyList.*</param>
+			</result>
+			
+		</action>
+	</package>
+	
+	
+	<!--    前台结束- -->
+	<package name="uplodePrograss" extends="json-default">
+	<action name="getPrograss" class="bidForOpusAction" method="getprograss">
+	<result type="json">
+	</result>
+	
+	
+	</action>
+	
+	<action name="getbidImg" method="getbidImg" class="bidForOpusAction" >
+	<result type="json" name="getbidImg">
+	<param name="ignoreHierarchy">false</param> 
+    <param name="includeProperties">pager.*</param>
+	</result>
+	</action>
+	
+	<action name="getbidPic" method="getbidPic" class="bidForOpusAction" >
+	<result type="json" name="getbidPic">
+	<param name="ignoreHierarchy">false</param> 
+    <param name="includeProperties">bidOpus.*</param>
+	</result>
+	</action>
+	
+	<action name="daiding" method="daiding" class="bidForOpusAction" >
+	<result type="json" name="daiding">
+	<param name="ignoreHierarchy">false</param> 
+    <param name="includeProperties">meString.*</param>
+	</result>
+	</action>
+	
+	</package>
+	<!--关注操作 -->
+	<package name="com.qhkj.goodChance.core.actions.ContactAction" extends="json-default">
+		<action name="contact_*" method="{1}" class="contactAction">
+			<result type="json" name="addNewAttention">
+			<param name="ignoreHierarchy">false</param> 
+    		<param name="includeProperties">res.*</param>
+			</result>
+			<result type="json" name="cancelAttention">
+			<param name="ignoreHierarchy">false</param> 
+    		<param name="includeProperties">res.*</param>
+			</result>
+			<result type="json" name="attentionList">
+			<param name="ignoreHierarchy">false</param> 
+    		<param name="includeProperties">pager.*,username,resultList.*,loginUser</param>
+			</result>
+			<result type="json" name="fansList">
+			<param name="ignoreHierarchy">false</param>
+    		<param name="includeProperties">pager.*,username,resultList.*,loginUser</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="blog" extends="json-default">
+	<action name="blogCatAction_*" method="{1}" class="blogCatAction">
+	<result name="findByPagerBlogCat" type="json" >
+	<param name="ignoreHierarchy">false</param>
+	<param name="includeProperties">pager.*,msg</param>
+	</result>
+	
+    <result name="findAllCat" type="json" >
+	<param name="root">action</param>
+	<param name="includeProperties">list.*,msg.*</param>
+	</result>
+	
+	
+	<result name="saveBlogCat" type="json">
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	<result name="deleteBlogCat" type="json">
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	
+	<result name="updateBlocat" type="json">
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	</action>
+
+
+
+
+	
+
+	<action name="blogAction_*" method="{1}" class="blogAction">
+	<result name="saveBlog" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+     
+    <result name="saveBlog" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	 <result name="transportBlog" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	 <result name="updateBlog" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	<result name="deleteBlog" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	
+	<result name="uploadimg" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	<param name="contentType">text/html</param>  
+	</result>
+	
+	<result name="blogLogin" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg1.*</param>
+	</result>
+	
+	<result name="zhuanzai" type="json"> 
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*</param>
+	</result>
+	
+	
+	</action>
+	</package>
+	<package name="readonly" extends="json-default">
+	
+	<action name="readonlyAction_*" class="readOnlySpaceAction" method="{1}">
+	
+	<result name="findByCatlistPage" type="json" >
+	<param name="ignoreHierarchy">false</param>
+	<param name="includeProperties">pager.*</param>
+	</result>
+	
+	
+	
+	
+	</action>
+	
+	
+	</package>
+	<package name="leaveWord" extends="json-default">
+	<action name="leaveWordaction_*" class="leaveWordAction" method="{1}">
+	
+	<result name="profileUpload" type="json">
+	<param name="root">action</param>
+	<param name="includeProperties">msg.*,proofurl.*</param>
+	<param name="contentType">text/html</param>  
+	</result>
+	</action>
+	<action name="billActionJson_*" class="billAction" method="{1}">
+	<result name="billShowbyId" type="json">
+	<param name="ignoreHierarchy">false</param>
+	<param name="includeProperties">bills.*</param>
+	</result>
+	
+	
+	
+	</action>
+	
+	
+	</package>
+	
+	
+	
+	
+	
+</struts>

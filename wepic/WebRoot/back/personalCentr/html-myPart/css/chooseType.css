@@ -1,0 +1,104 @@
+#chooseType{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 1180px;
+	height:400px;
+	margin-top:5px;
+	margin-bottom:40px;
+	background:#fff;
+	}
+
+
+#chooseType .divHead{
+    color: #686868;
+    font-family: "微软雅黑";
+    height: 60px;
+    left: 0;
+    position: relative;
+    text-align: left;
+    top: 0;
+    width: 1180px;
+	border-bottom:1px solid #e5e5e5;
+	}
+
+
+#chooseType .divHead p{
+    font-size: 20px;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 30px;
+	}
+
+
+
+
+#chooseType .content {
+    color: #696969;
+    font-family: "宋体";
+    height: 300px;
+	width:980px;
+    left: 0;
+    position: relative;
+    text-align: left;
+    top: 0;
+    padding-left:100px;
+	}
+
+#chooseType .content .title{
+	height: 65px;
+	margin-top:25px;
+	
+	}
+#chooseType .content .title .na {
+    font-family: "微软雅黑";
+    color: #000;
+    font-size: 20px;
+	margin-right:20px;
+	}
+#chooseType .content .title .titleinput {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    font-family: "微软雅黑";
+    color: #535353;
+    font-size: 16px;
+    height: 27px;
+    padding: 5px 10px;
+    width: 540px;
+	}
+#chooseType .content .title .inputtext{
+	border:0;
+	background:none;
+    color: #696969;
+    font-family: "宋体";
+	}	
+#chooseType .content .divspan{
+	height: 30px;
+    font-family: "宋体";
+    font-size: 14px;
+	}
+#chooseType .content .divType{
+	height: 160px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+	}
+#chooseType .content .divType ul li{
+	float:left;
+	/*display:inline-block;*/
+	width:174px;
+	height:46px;
+	line-height:46px;
+	text-align:center;
+	cursor:pointer;
+	background:#f9f9f9;
+	border:1px solid #e3e3e3;
+	color:#000;
+	margin-right:30px;
+	margin-top:20px;
+	}
+#chooseType .content .divType ul li:hover{
+	background:#fff;
+	color:#f00;
+	}

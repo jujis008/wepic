@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.StoryDetail"
+	table="storyDetail"
+>
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<property 
+		name="detailContext"
+		type="java.lang.String"
+		column="detailContext"
+		length="3000"
+	/>
+	
+	<many-to-one name="story"	column="storyid" not-null="true" />
+	<property 
+		name="publishId"
+		type="java.lang.Integer"
+		column="publishId"
+		length="50"
+	/>
+	 <property 
+		name="width"
+		type="java.lang.Integer"
+		column="width"
+		length="50"
+	/>
+	<property 
+		name="height"
+		type="java.lang.Integer"
+		column="height"
+		length="50"
+	/>
+	 <property 
+		name="samllPic"
+		type="java.lang.String"
+		column="samllPic"
+		length="500"
+	/>
+	<property 
+		name="thumbnailUrl"
+		type="java.lang.String"
+		column="thumbnailUrl"
+		length="500"
+	/>
+	<property 
+		name="specialwords"
+		type="java.lang.String"
+		column="specialwords"
+		length="500"
+	/>
+	
+</class>
+</hibernate-mapping>

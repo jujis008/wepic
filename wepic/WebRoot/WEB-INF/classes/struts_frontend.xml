@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="frontend" extends="larry-default">
+		<action name="frontend*" class="com.qhkj.goodChance.publish.actions.FrontendAction" >		
+		
+			<result name="frontCatTree">/secondLevelCat.jsp</result>
+			<result name="leftFrontCatTree">/view/frontend/leftFrontCatTree.jsp</result>
+			<result name="listFrontPublish">/view/frontend/listFrontProductsUnderCat.jsp</result>
+		
+			<result name="createResult">/view/result/myRes.jsp </result>
+			
+		</action>
+		
+	
+
+		 <!--  -->
+	</package>
+	
+	<package name="frontend1" extends="struts-default" namespace="/frontend">
+	
+		<action name="frontPage*" class="frontPage" >	
+			<result name="success">/view/user/login.jsp</result>
+			<result name="mainManage">/back/index.jsp</result>
+		    	
+			<result name="initPaishePage">
+			/view/frontend/teyuepaishe.jsp
+			
+			</result>
+			<result name="initPhotoPage">
+			/view/frontend/photography.jsp
+			
+			</result>
+			
+				<result name="initModelPage">
+			/view/frontend/model.jsp
+			
+			</result>
+			<result name="initsearch">/view/frontend/teyuepaisheSearch.jsp</result>
+			<result name="searchbid">/view/frontend/teyuepaisheSearch.jsp</result>
+			
+			<result name="searchModel">/view/frontend/searchPhotoOrModel.jsp</result>
+			<result name="searchphotographer">/view/frontend/searchPhotoOrModel.jsp</result>
+			
+		</action>
+		 <!--  -->
+	</package>
+	
+	
+	
+
+	
+</struts>

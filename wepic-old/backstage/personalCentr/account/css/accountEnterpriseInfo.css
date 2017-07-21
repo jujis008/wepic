@@ -1,0 +1,188 @@
+#divtEnterpriseInfo{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:870px;
+	height:600px;
+	background:#ffffff;
+	margin:0 auto; 
+	margin-top:10px;
+	margin-bottom:26px;
+	}
+#divtEnterpriseInfo .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:52px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:20px;
+	
+	}
+#divtEnterpriseInfo .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	}
+
+#divtEnterpriseInfo .content{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:410px;
+	text-align:left;
+	}
+
+#divtEnterpriseInfo .content .left{
+	width:150px;
+	height:45px;
+	line-height:40px;
+	text-align:right;
+	color:#8c8c8c;
+	display:inline-block;
+	/*border:1px solid red;*/
+	padding-right:10px;
+	font-family: "宋体";
+	}
+#divtEnterpriseInfo .content .trade{
+	position:relative;
+	top:0px;
+	left:0px;
+	z-index:200;
+	} 
+
+	/*写出下拉框*/
+#divSelectEstablishYear{
+	left:620px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+#divSelectEstablishMonth{
+	left:720px;
+	top:6px;
+	width:85px;
+	height:27px;
+	}
+	
+
+#divSelectEstablishYearValue{
+	height:300px;
+	overflow:auto;
+	overflow-x:hidden;
+	}
+
+	/*写出下拉框*/
+	
+#divtEnterpriseInfo .content .trade .establishTime{
+	margin-left:50px;
+	font-family: "宋体";
+	color:#8c8c8c;
+	}
+#divtEnterpriseInfo .content .address{
+	z-index:10;
+	}
+#divtEnterpriseInfo .content .abstract{
+	position:relative;
+	top:0px;
+	left:0px;
+	z-index:1;
+	width:870px;
+	height:140px;
+	}
+#divtEnterpriseInfo .content .leftabstract{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:150px;
+	height:45px;
+	line-height:40px;
+	text-align:right;
+	color:#8c8c8c;
+	display:inline-block;
+	padding-right:10px;
+	font-family: "宋体";
+	}
+#divtEnterpriseInfo .content .abstract textarea{
+	position:absolute;
+	top:0px;
+	left:160px;
+	width:590px;
+	height:140px;
+	resize:none;
+	background:#fffdf1; 
+	font-size: 12px;
+	border:1px solid #e9e8e6;
+	}
+#divtEnterpriseInfo .content .userName .name{
+	font-size:15px;
+	}
+#divtEnterpriseInfo .content .inputT{
+	width:323px;
+	height:21px;
+	
+	background:#fcfcfc;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px 3px 3px 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+	}
+
+#divtEnterpriseInfo .preserve{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:41px;
+	width:726px;
+	border-top:1px solid #f0f0f0;
+	margin:0 auto;
+	}
+#divtEnterpriseInfo .preserve input{
+	background: url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -718px;
+	border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 36px;
+    padding-bottom: 2px;
+    width: 142px;
+	margin-top:23px;
+	letter-spacing:15px; 
+	text-align:center;
+	padding-left:20px;
+	*padding-left:0px;
+	}
+#divtEnterpriseInfo .preserve input:hover{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+#divtEnterpriseInfo .preserve input:active{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -792px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

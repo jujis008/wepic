@@ -1,0 +1,516 @@
+#appointContent{
+	position:relative;
+	top0px;
+	left:0;
+	text-align:left;
+	width:1180px;
+	margin:5px auto 50px;
+	min-height:800px;
+	}
+
+
+
+#appointContent .divMainList{
+	position:relative;
+	top:0px;
+	left:0;
+	width:817px;
+	min-height:610px;
+	background:#FFFFFF;
+	border:1px solid #fde6e0;
+	padding:15px 20px;
+	}
+	
+	
+	
+/*排序*/
+#appointContent .divMainList .filterWrapperSort{
+	height:50px;
+	width:817px;
+	position:relative;
+	top:0px;
+	left:0px;
+	}
+#appointContent .divMainList .filterWrapperSort ul{
+	height:35px;
+	width:340px;
+	border:1px solid #e7e7e5;
+	border-right:0;
+	}
+#appointContent .divMainList .filterWrapperSort li{
+	float:left;
+	position:relative;
+	top:0px;
+	left:0px;
+	width:78px;
+	color:#595758;
+	font-size:12px;
+	font-family:"宋体";
+	cursor:pointer;
+	border-right:1px solid #e7e7e5;
+	text-align:center;
+	height:35px;
+	line-height:35px;
+	padding-left:6px;
+	}
+
+#appointContent .divMainList .filterWrapperSort li i{
+	position:absolute;
+	top:10px;
+	left:0px;
+	width:20px;
+	height:15px;
+	background:url(../../../images/sort.png) no-repeat 5px 2px;
+	}
+#appointContent .divMainList .filterWrapperSort .active,
+#appointContent .divMainList .filterWrapperSort li:hover{
+	background:#FFF5E8;
+	}
+#appointContent .divMainList .filterWrapperSort li:hover i,
+#appointContent .divMainList .filterWrapperSort .active i{
+	background:url(../../../images/sort.png) no-repeat 5px -34px;
+	}
+	
+	
+	
+	
+#appointContent .divMainList .filterWrapperSortRR{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:220px;
+	height:60px;
+	font-family:"微软雅黑";
+	color:#585858;
+	font-size:16px;
+	}
+#appointContent .divMainList .filterWrapperSortRR .textMoney{
+	background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 60px;
+	}
+#appointContent .divMainList .filterWrapperSortRR .textsure{
+	position:absolute;
+	bottom:0px;
+	right:20px;
+	display:none;
+	}
+/*排序*/
+
+
+
+#appointContent .divMainList .div_allShoot{
+	width:817px;
+	}
+
+#appointContent .divMainList .div_allShoot li{
+	position:relative;	
+	top:0px;
+	left:0px;
+	width:817px;
+	height:106px;
+	margin-top:20px;
+	}
+
+#appointContent .divMainList .div_allShoot .option{
+	position:relative;
+	top:0px;
+	left:548px;
+	width:270px;
+	height:30px;
+	background:#676767;
+	font-family:"宋体";
+	display:none;
+	}
+#appointContent .divMainList .div_allShoot .option a{
+	display:inline-block;
+	width:60px;
+	height:20px;
+	line-height:20px;
+	padding:5px 0 5px 25px;
+	color:#c2c2c2;
+	float:left;
+	margin-left:5px;
+	}
+#appointContent .divMainList .div_allShoot .option .opt_good{
+	background:url(../../../images/collectshare_z.png) 0 -153px no-repeat;
+	}
+#appointContent .divMainList .div_allShoot .option .opt_collect{
+	background:url(../../../images/collectshare_z.png) 0 3px no-repeat;
+	}
+#appointContent .divMainList .div_allShoot .option .opt_share{
+	background:url(../../../images/collectshare_z.png) 0 -23px no-repeat;
+	}
+#appointContent .divMainList .div_allShoot .option a:hover{
+	background-color:#ea6262;
+	}
+
+
+
+
+
+
+
+#appointContent .divMainList .div_allShoot .divMainListCon{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	width:817px;
+	height:76px;
+	background:#f9f9f9;
+	font-family:"宋体";
+	border:1px solid #e3e3e3;
+	}
+#appointContent .divMainList .div_allShoot .active .divMainListCon {
+	background:#fffcf7;
+	}
+#appointContent .divMainList .div_allShoot .active .option {
+	display:block;
+	}	
+		
+#appointContent .divMainList .div_allShoot .divMainListCon_ico{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:75px;
+	height:66px;
+	margin-top:5px;
+	float:left;
+	border-right:1px solid #e3e3e3;
+	}	
+
+#appointContent .divMainList .div_allShoot .divMainListCon_ico div{
+	position:absolute;
+	top:10px;
+	left:15px;
+	width:46px;
+	height:46px;
+	}
+	
+/*商业拍摄*/
+#appointContent .divMainList .div_allShoot .divMainListCon_ico .shoot{
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px 0px;
+	}
+/*商业拍摄*/	
+
+/*征集图片*/
+#appointContent .divMainList .div_allShoot .divMainListCon_ico .picCollect{
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px -153px;
+	}
+/*征集图片*/
+
+/*模特*/
+#appointContent .divMainList .div_allShoot .divMainListCon_ico .model{
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px -102px;
+	}
+/*模特*/	
+
+/*外拍*/
+#appointContent .divMainList .div_allShoot .divMainListCon_ico .outShoot{
+	background:url(../../../../back/pubimg/images/projectType.png) no-repeat 0px -51px;
+	}
+/*外拍*/	
+
+	
+#appointContent .divMainList .div_allShoot .divMainListCon_info{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:635px;
+	height:66px;
+	margin-top:5px;
+	float:left;
+	border-right:1px solid #e3e3e3;
+	}		
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:625px;
+	height:40px;
+	padding-left:10px;
+	}
+
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .title{
+	font-family:"微软雅黑";
+	font-size:18px;
+	color:#000000;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .spanBG{
+	border-radius: 2px;
+    color: #FFFFFF;
+    /*display: inline-block;*/
+    margin-left: 10px;
+    padding: 2px 5px;
+	}
+
+
+/*商业拍摄*/
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .spanshootBG{
+	background: #a5726e;
+	}
+/*商业拍摄*/	
+
+/*征集图片*/
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .spanCollectBG{
+	background: #8ea571;
+	}
+/*征集图片*/
+
+/*模特*/
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .spanmodelBG{
+	background: #7189a3;
+	}
+/*模特*/	
+
+/*外拍*/
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .spanoutShootBG{
+	background: #bd9550;
+	}
+/*外拍*/	
+
+
+
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .divMainListCon_info_top_ico{
+	position:absolute;
+	top:8px;
+	right:0px;
+	width:220px;
+	height:20px;
+	}
+
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .divMainListCon_info_top_ico a{
+	padding-left:20px;
+	margin-left:10px;
+	color:#9b9b9b;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .divMainListCon_info_top_ico .view{
+	background:url(../../../images/11.png) no-repeat 0 -2px;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .divMainListCon_info_top_ico .collect{
+	background:url(../../../images/11.png) no-repeat 0 -21px;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_top .divMainListCon_info_top_ico .good{
+	background:url(../../../images/11.png) no-repeat 0 -40px;
+	}
+	
+	
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_bottom{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:625px;
+	height:30px;
+	padding-left:10px;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_bottom .time{
+	margin-right:30px;
+	}	
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_bottom .type{
+	margin-right:50px;
+	}
+	
+#appointContent .divMainList .div_allShoot .divMainListCon_info .divMainListCon_info_bottom_r{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:100px;
+	height:20px;
+	}
+	
+	
+
+#appointContent .divMainList .div_allShoot .divMainListCon_money{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100px;
+	height:66px;
+	margin-top:5px;
+	float:left;
+	}
+
+
+
+
+#appointContent .divMainList .div_allShoot .divMainListCon_money .divMainListCon_money_ico{
+	position:absolute;
+	top:5px;
+	left:10px; 
+	background:url(../../../images/11.png) no-repeat 0 -75px;
+	width:20px;
+	height:20px;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_money .divMainListCon_money_bj{
+	position:absolute;
+	top:5px;
+	left:40px; 
+	width:46px;
+	text-align:center;
+	height:17px;
+	line-height:17px;
+	color:#fff;
+	background:#ffbc47;
+	}
+#appointContent .divMainList .div_allShoot .divMainListCon_money p{
+	position:absolute;
+	top:30px;
+	left:0px;
+	width:100px;
+	text-align:left;
+	padding-left:10px;
+	color:#e90022;
+	font-size:25px;
+	font-family:"Arial";
+	}
+.ppointPagingthis{
+	margin-top:20px;
+	width: 817px;
+	}
+
+.ppointPaging {
+	background: #fff;
+	}	
+
+
+
+
+
+
+
+
+#appointContent .divMainListRight{
+	position:absolute;
+	top:0px;
+	left:870px;
+	width:300px;
+	height:1100px;
+	}
+	
+/*发布需求*/
+#appointContent .divMainListRight .divMainListRight_rel{
+	position:relative;
+	top:0px;
+	left:0;
+	width:310px;
+	height:70px;
+	background:#fff;
+	margin:0px auto;
+	text-align:center;
+	border:1px solid #e2e2e2;
+	}
+#appointContent .divMainListRight .divMainListRight_rel .red_button{
+
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+	margin:20px auto;
+    width: 116px;
+	}
+#appointContent .divMainListRight .divMainListRight_rel .red_button:hover{
+	background:url(../../../images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+/*发布需求*/	
+
+
+
+/*日程*/	
+#appointContent .divMainListRight .appointUserProgramme{
+	position:relative;
+	top:0px;
+	left:0;
+	margin-top:5px;
+	width:310px;
+	height:295px;
+	border:1px solid #e2e2e2;
+	background:#fcfcfc;
+	border-radius:4px 4px 4px 4px;
+	}
+/*日程*/		
+
+
+
+
+
+
+
+
+/*约拍推荐项目开始*/
+
+#appointContent .divMainListRight .appointProjectRecom{
+	position:relative;
+	top:0px;
+	left:0;
+	width:310px;
+	margin-top:5px;
+	min-height:150px;
+	padding-bottom: 10px;
+	border:1px solid #e2e2e2;
+	}
+#appointContent .divMainListRight .appointProjectHumanQi{
+	position:relative;
+	top:0px;
+	left:0;
+	margin-top:5px;
+	width:310px;
+	min-height:160px;
+	padding-bottom: 10px;
+	border:1px solid #e2e2e2;
+	}
+	
+#appointContent .divMainListRight .appointProjectRecom_top{
+	padding-left:15px;
+	width:295px;
+	height:40px;
+	line-height:40px;
+	background:#ffffff;
+	border-bottom:1px solid #e3e3e3;
+	font-size:17px;
+	color:#242424;
+	}
+#appointContent .divMainListRight .appointProjectBottomCon{
+	padding-left:20px;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon{
+	line-height:27px;
+	color:red;
+	font-weight:bold;
+	_line-height:22px;
+	_margin-top:17px;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon .td_one{
+	width:210px;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon a{
+	padding-left:28px;
+	color:#000;
+	width:150px;
+	height:10px;
+	font-weight:normal;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon .shoot{
+	background:url(../../../images/11.png) no-repeat 0 -132px;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon .model{
+	background:url(../../../images/11.png) no-repeat 0 -248px;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon .collect{
+	background:url(../../../images/11.png) no-repeat 0 -269px;
+	}
+#appointContent .divMainListRight .tableAppointProjectBottomCon .outShoot{
+	background:url(../../../images/11.png) no-repeat 0 -230px;
+	}	
+
+
+/*约拍推荐项目开始end*/

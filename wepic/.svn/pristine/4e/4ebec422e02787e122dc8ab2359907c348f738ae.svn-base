@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+
+	
+	
+	<!-- Add packages here -->
+	<package name="model" extends="larry-default">
+	<!--
+		<interceptors>
+			<interceptor name="authority" class="com.qhkj.goodChance.struts2.util.AuthorizationInterceptor" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault" />
+	-->
+		<global-results>
+		   <result name="login" type="redirect">/back/loginRegister/login.jsp</result>
+		</global-results>
+		
+		<action name="logout" class="userAction" method="logout">
+       <result name="logout" type="redirect">/back/loginRegister/login.jsp</result>
+		</action>
+		
+		<action name="register" class="userAction" method="newregisterWepic">
+		<result name="registerWepicSucess" type="redirectAction">
+		  <param name="actionName">user!SendEmial.do</param>
+          <param name="id">${id}</param>
+		</result>
+	    <result name="input">/back/loginRegister/register.jsp</result>
+		</action>
+		<action name="user*" class="userAction">
+		<result name="SendEmial">/back/loginRegister/registerSuccess.jsp</result>
+		<result name="initUserMustInfoForWepicSucess" type="redirectAction">
+		  <param name="actionName">user!checkEmailLogin.do</param>
+          <param name="id">${name}</param>
+		</result>
+		<result name="initUserMustInfoForWepicFailt">/back/errorPage/404.jsp</result>
+		<result name="checkEmailLogin">/back/loginRegister/registerSuccessful.jsp</result>
+		<result name="loginbyQQ" type="redirect">/back/loginRegister/register.jsp</result>
+		<result name="wepicloginSucess" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="createPicSucess" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="getFistPageUserInfo">/back/personalCentr/user/userDynamics.jsp</result>
+		<result name="updateuserInfoByDegreeSucess" type="redirectAction">user!getByEducation.do</result>
+		<result name="login">/back/loginRegister/login.jsp</result>
+		<result name="addUserRole" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="saveEnterpriseImg" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="getRoleTags">/back/personalCentr/user/accountMyPart.jsp</result>
+		<result name="saveUserTag" type="redirectAction">user!findroleTagsbyrole.do</result>
+		<result name="getGradUserInfo">/back/personalCentr/user/personalGrade.jsp</result>
+		
+		<result name="companyPage">/back/personalCentr/user/showaccountEnterpriseInfo.jsp</result>
+		<result name="allrolePage">/back/personalCentr/user/showaccountPersonInfo.jsp</result>
+		<result name="modelPage">/back/personalCentr/user/showaccountPersonInfoModel.jsp</result>
+		
+		<result name="editecompanyPage">/back/personalCentr/user/accountEnterpriseInfo.jsp</result>
+		<result name="editemodelPage">/back/personalCentr/user/accountPersonInfoModel.jsp</result>
+		<result name="editeallrolePage">/back/personalCentr/user/accountPersonInfo.jsp</result>
+		<result name="updetaUserBaseInfo" type="redirectAction">
+		<param name="actionName">user!user!baseUseInfo.do</param>
+          <param name="message">${message}</param>
+	</result>
+	<result name="editeEducation">/back/personalCentr/user/accountEducation.jsp</result>
+	<result name="showPageEducation">/back/personalCentr/user/showaccountEducation.jsp</result>
+	<result name="loginadminsuc" >/administrator/production/story/shootStoryAuthstrList.jsp</result>
+		</action>
+		
+		
+		
+		<action name="usperPower*" class="userPowerAction" >
+		<result name="addUserPower" type="redirectAction">
+		usperPower!getAllUserPowerInfo.do
+		</result>
+		<result name="getAllUserPowerInfo">
+		/back/personalCentr/user/strengthProve.jsp
+		</result>
+		<result name="deleteUserPower" type="redirectAction">
+		usperPower!getAllUserPowerInfo.do
+		</result>
+		
+		<result name="updateUserPower" type="redirectAction">
+		usperPower!getAllUserPowerInfo.do
+		</result>
+		
+		
+		
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+		
+		<action name="userCat*" class="userCatAction">
+			<result name="list">/view/userCat/userCat.jsp</result>
+			<result name="add">/view/userCat/userCat_add.jsp</result>
+			<result name="edit">/view/userCat/userCat_edit.jsp</result>
+			<result name="input">/view/userCat/userCat_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="reg">/view/user/registerRe.jsp</result>
+		</action>
+		
+		<action name="resMenuItem*" class="resMenuItemAction">
+			<result name="list">/view/resMenuItem/resMenuItem.jsp</result>
+			<result name="add">/view/resMenuItem/resMenuItem_add.jsp</result>
+			<result name="edit">/view/resMenuItem/resMenuItem_edit.jsp</result>
+			<result name="input">/view/resMenuItem/resMenuItem_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="resLeftSideItem*" class="resLeftSideItemAction">
+			<result name="list">/view/resLeftSideItem/resLeftSideItem.jsp</result>
+			<result name="add">/view/resLeftSideItem/resLeftSideItem_add.jsp</result>
+			<result name="edit">/view/resLeftSideItem/resLeftSideItem_edit.jsp</result>
+			<result name="input">/view/resLeftSideItem/resLeftSideItem_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="resMenu*" class="resMenuAction">
+			<result name="list">/view/resMenu/resMenu.jsp</result>
+			<result name="add">/view/resMenu/resMenu_add.jsp</result>
+			<result name="edit">/view/resMenu/resMenu_edit.jsp</result>
+			<result name="input">/view/resMenu/resMenu_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+	
+	
+		
+	
+		<action name="userDetail*" class="userDetailAction">
+			<result name="list">/view/userDetail/userDetail.jsp</result>
+			<result name="listAdmin">/view/userDetail/userDetailAdmin.jsp</result>			
+			<result name="userDetailList">/view/userDetail/userDetailAdmin.jsp</result>
+			<result name="add">/view/userDetail/userDetail_edit_notverify.jsp</result>
+			<result name="add_key_notverify">/view/userDetail/userDetail_add_notverify.jsp</result>
+			<result name="edit">/view/userDetail/userDetail_edit_notverify.jsp</result>
+			<result name="detailEdit">/view/userDetail/userDetailAdmin_edit.jsp</result>
+			<result name="input">/view/userDetail/userDetail_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		
+		<!--  -->
+		<action name="chatMsg*" class="chatMsgDao">		    
+			<result name="list">/view/chatMsg/chatMsg.jsp</result>
+			<result name="add">/view/chatMsg/chatMsgr_add.jsp</result>
+			<result name="edit">/view/chatMsg/chatMsg_edit.jsp</result>
+			<result name="input">/view/chatMsg/chatMsg_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="userHistory*" class="userHistoryAction">
+			<result name="list">/view/userHistory/userHistory.jsp</result>
+			<result name="add">/view/userHistory/userHistory_add.jsp</result>
+			<result name="edit">/view/userHistory/userHistory_edit.jsp</result>
+			<result name="input">/view/userHistory/userHistory_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="hhxtest">suc.jsp</result>
+		</action>
+		<action name="loginHistory*" class="loginHistoryAction">
+			<result name="list">/view/loginHistory/loginHistory.jsp</result>
+			<result name="add">/view/loginHistory/loginHistory_add.jsp</result>
+			<result name="edit">/view/loginHistory/loginHistory_edit.jsp</result>
+			<result name="input">/view/loginHistory/loginHistory_{1}.jsp</result>
+			<result name="list_notverify">/view/loginHistory/loginHistory_notverify.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="userCreditHistory*" class="userCreditHistoryAction">
+			<result name="list">/view/userCreditHistory/userCreditHistory.jsp</result>
+			
+			<result name="add">/view/userCreditHistory/userCreditHistory_add.jsp</result>
+			<result name="edit">/view/userCreditHistory/userCreditHistory_edit.jsp</result>
+			<result name="input">/view/userCreditHistory/userCreditHistory_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		<action name="userCredit*" class="userCreditAction">
+			<result name="list">/view/userCredit/userCredit.jsp</result>
+			<result name="add">/view/userCredit/userCredit_add.jsp</result>
+			<result name="edit">/view/userCredit/userCredit_edit.jsp</result>
+			<result name="input">/view/userCredit/userCredit_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+	
+		<action name="brokerRelationship*" class="brokerRelationshipAction">
+			<result name="list">/view/brokerRelationship/brokerRelationship.jsp</result>
+			<result name="initAdmin">/view/brokerRelationship/brokerRelationship_listAllForAdmin.jsp</result>
+			
+			<result name="add">/view/brokerRelationship/brokerRelationship_add.jsp</result>
+			<result name="edit">/view/brokerRelationship/brokerRelationship_edit.jsp</result>
+			<result name="input">/view/brokerRelationship/jinjiren.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="photoOrmodeljingjiren">/view/brokerRelationship/jinjiren.jsp</result>
+			<result name="applyBymeBroke">/view/brokerRelationship/applyBymeBroke.jsp</result>
+			<result name="brokerRelationshipList">/view/brokerRelationship/brokerRelationship_list.jsp</result>
+			<result name="relationshipChoose" type="redirectAction">brokerRelationship!brokerRelationshipList.do</result>
+			<result name="brokerAddPage">/view/brokerRelationship/brokerRelationship_broker_add.jsp</result>
+			<result name="viewOthers">/view/brokerRelationship/viewOtherpage.jsp</result>
+		
+			
+		</action>
+		<action name="contact*" class="contactAction">
+			<!-- 查看用户的关注列表 -->
+			<result name="attentionList">/view/contact/contact_allAttention.jsp</result>
+			<!-- 查看用户的未关注列表 -->
+			<result name="inattentionList">/view/contact/contact_allInattention.jsp</result>
+			<!-- 添加关注 -->
+			<result name="addAttention" type="redirectAction">contact!attentionList.do</result>
+			<!-- 查找非好友用户 -->
+			<result name="findNotFriend">/view/contact/contact_notFriend.jsp</result>
+			<!-- 申请加为好友 -->
+			<result name="applyFriend" type="redirectAction">contact!findNotFriend.do</result>
+			<!-- 查看用户的好友申请 -->
+			<result name="findFriendApply">/view/contact/contact_applyFriend.jsp</result>
+			<!-- 查看邀请用户的好友申请 -->
+			<result name="findFriendBeApply">/view/contact/contact_beApplyFriend.jsp</result>
+			<!-- 用户邀请的处理 -->
+			<result name="acceptApply" type="redirectAction">contact!findFriendBeApply.do</result>
+			<!-- 查看用户好友 -->
+			<result name="findFriend">/view/contact/contact_allFriend.jsp</result>
+			<result name="list">/view/contact/contact.jsp</result>
+			<result name="adminList">/view/contact/contactAdmin.jsp</result>
+			<result name="add">/view/contact/contact_add.jsp</result>
+			<result name="edit">/view/contact/contact_edit.jsp</result>
+			<result name="input">/view/contact/contact_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		<action name="leaveWord*" class="leaveWordAction">
+			<result name="list">/view/leaveWord/leaveWord.jsp</result>
+			<result name="listparamter">/view/leaveWord/leaveWordType.jsp</result>
+			<result name="list_notverify">/view/leaveWord/leaveWord_notverify.jsp</result>
+			<result name="adminList">/view/leaveWord/leaveWordAdmin.jsp</result>
+			<result name="add">/view/leaveWord/leaveWord_add.jsp</result>
+			<result name="edit">/view/leaveWord/leaveWord_edit.jsp</result>
+			<result name="input">/view/leaveWord/leaveWord_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		   <result name="login">/view/user/login.jsp</result>
+		   <result name="initleaveWord">/view/leaveWord/myAdvice.jsp</result>
+		   <result name="initleaveWordcomplain">/view/leaveWord/leaveWordcomplain.jsp</result>
+		    <result name="inputPager">/view/leaveWord/leaveWordcomplain.jsp</result>
+			<result name="sucess" type="redirectAction">leaveWord!init_notverify.do</result>
+			<result name="list_remsg" type="redirectAction">leaveWord!initAdmin.do</result>
+			<result name="saveadvice">/view/leaveWord/leaveWordsu.jsp</result>
+			<result name="findByPage">/view/leaveWord/userComplainList.jsp</result>
+			<result name="getAllCOmplainforPhoto">/back/admin/wordsComplainManager.jsp</result>
+			
+			
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		<action name="accountWithdraw*" class="accountWithdrawAction">
+			<result name="list">/view/accountWithdraw/accountWithdraw.jsp</result>
+			<result name="add">/view/accountWithdraw/accountWithdraw_add.jsp</result>
+			<result name="edit">/view/accountWithdraw/accountWithdraw_edit.jsp</result>
+			<result name="input">/view/accountWithdraw/accountWithdraw_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="inputpwd">/view/accountWithdraw/inputpwd.jsp</result>
+			<result name="applay" type="redirectAction">accountWithdraw!accountWithdrawList.do</result>
+			<result name="accountWithdrawList">/view/accountWithdraw/accountWithdraw_applyList.jsp</result>
+			<result name="writhdraString">/view/account/tixianMoney.jsp</result>
+			<result name="adminwrithdraString">/view/account/admintixianMoney.jsp</result>
+			
+			<result name="codePwdFail" type="redirectAction">
+				<param name="actionName">account!init_apply.do</param>
+				<param name="message">${message}</param>
+			</result>
+			
+			
+			<result name="applayList">/view/accountWithdraw/accountWithdrawAdmin_applyList.jsp</result>
+			<result name="accountHistory">view/accountWithdraw/tradeHistory.jsp</result>
+			<result name="mainTradeHistory">view/accountWithdraw/mainTradeHistory.jsp</result>
+			<result name="leftTradeHistory">view/accountWithdraw/leftTradeHistory.jsp</result>
+			<result name="produceApplyForm" type="redirectAction">accountWithdraw!applyList.do</result>
+			<result name="ifEnsureApplyList">/view/accountWithdraw/accountWithdrawAdmin_confirmApplyList.jsp</result>
+			<result name="confirmApply" type="redirectAction">accountWithdraw!ifEnsureApplyList.do</result>
+			<result name="cancelApply" type="redirectAction">accountWithdraw!ifEnsureApplyList.do</result>
+			<result name="cashResult">/view/accountWithdraw/cashHistory.jsp</result>
+			<result name="createPayBill">/view/accountWithdraw/test.jsp</result>			
+			<!-- 查看申请提现状况 -->
+			
+		     <result name="checkWithdraw">/back/admin/checkMoneyDraw.jsp</result>	
+			
+			
+			
+		</action>
+		<action name="accountRecharge*" class="accountRechargeAction">
+			<result name="list">/view/accountRecharge/accountRecharge.jsp</result>
+			<result name="add">/view/accountRecharge/accountRecharge_add.jsp</result>
+			<result name="edit">/view/accountRecharge/accountRecharge_edit.jsp</result>
+			<result name="input">/view/accountRecharge/accountRecharge_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="list_notverify">/view/accountRecharge/accountRecharge_notverify.jsp</result>
+			<result name="adminCheckRecharge">/view/accountRecharge/accountRecharge_admin.jsp</result>
+			<result name="rechargeResult">/view/accountWithdraw/rechargeHistory.jsp</result>
+			<result name="userRecharge">/view/account/ReschageMoney.jsp</result>
+			<result name="adminuserRecharge">/view/account/adminReschageMoney.jsp</result>
+			
+		</action>
+		<action name="account*" class="accountAction">
+			<result name="list">/view/account/account.jsp</result>
+			<result name="adminCheckedAcount">/view/account/adminCheckaccount.jsp</result>
+			<result name="adminList">/view/account/accountAdmin.jsp</result>
+			<result name="add">/view/account/account_add.jsp</result>
+			<result name="edit">/view/account/account_edit.jsp</result>
+			<result name="input">/view/account/account_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="login">/view/frontend/login.jsp</result>
+		    <result name="payMoneyInfo">/view/account/payMoney.jsp</result>
+		 <result name="wStringMoneyInfo">/view/account/defrayMoney.jsp</result>
+		     <result name="adminpayMoneyInfo">/view/account/adminpayMoney.jsp</result>
+		 <result name="adminwStringMoneyInfo">/view/account/admindefrayMoney.jsp</result>
+		  <result name="findAcountByPager">/back/admin/useraccontInfo.jsp</result>
+		
+			<result name="chongzhi">/view/accountRecharge/chongzhi.jsp</result>
+			<result name="chongzhiye">/alipay/index.jsp</result>
+			<!-- /view/accountWithdraw/accountwithdrawcash.jsp -->
+			<result name="init_applay">/back/capital/withdraw.jsp</result>
+			<result name="accountFail" type="redirectAction">account!init_apply.do?message=${message}</result>
+			<result name="accountWithdrawValidate">/view/accountWithdraw/accountWithdraw_codeValidate.jsp</result>
+		</action>
+		
+		<action name="siteConfig*" class="siteConfigAction">
+			<result name="list">/view/siteConfig/siteConfig.jsp</result>
+			<result name="add">/view/siteConfig/siteConfig_add.jsp</result>
+			<result name="edit">/view/siteConfig/siteConfig_edit.jsp</result>
+			<result name="input">/view/siteConfig/siteConfig_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+		</action>
+		
+		<action name="accountRechargeMoney" class="accountRechargeAction" method="updateAcount">
+		
+	</action>
+	
+<!-- @#$% -->
+	</package>
+		<package name="readOnlySpace11" extends="larry-default">
+	<action name="ReadOnlySpace*" class="readOnlySpaceAction">
+	<result name="userInfoShow">
+	
+	/back/user/userInfoshow.jsp
+	</result>
+
+	<result name="userInfoShow2">
+	
+	/back/user/userInfoshow.jsp
+	</result>
+	
+	<!-- blog -->
+	<result name="readonliyBlogList">
+	/view/blog/readuserBloglist.jsp
+	</result>
+   <result name="readOnliyFindById" >
+	/view/blog/readblogContext.jsp
+	</result>
+	
+	<result name="readOnliyFindBuyBlogCat">
+	/view/blog/readBlogCatlist.jsp
+	</result>
+	
+	
+	
+	
+	
+	
+	
+	
+	</action>
+	
+	
+	
+	</package>
+	<package name="blogAct" extends="larry-default">
+	<action name="blogActions*" class="blogAction">
+	<result name="findByPager">
+	/view/blog/userBloglist.jsp
+	</result>
+   <result name="finByblog" >
+	/view/blog/blogContext.jsp
+	</result>
+	
+	<result name="findByCatPager">
+	/view/blog/userBlogCatlist.jsp
+	</result>
+	
+	</action>
+	
+	
+	</package>
+	
+	<package name="billOption" extends="larry-default">
+	<action name="billAction*" class="billAction">
+	<result name="findByPage">
+	
+	/back/admin/billByAdmin.jsp
+	</result>
+	
+	<result name="saveBillByBid" type="redirect">
+	/alertDiv/sucess.jsp
+	
+	
+	</result>
+	
+	<result name="input">
+	/alertDiv/inputreceipt.jsp
+	
+	
+	</result>
+	
+	
+	</action>
+	<!-- 
+	<action name="userwepic*" class="userwepicAction" >
+	
+	</action>
+	 -->
+	
+		
+	</package>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</struts>

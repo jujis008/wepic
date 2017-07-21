@@ -1,0 +1,146 @@
+.content{
+    width: 770px;
+    min-height: 300px;
+    left: 0;
+    position: relative;
+    top: 0;
+	background: #FFFFFF;
+    margin: 5px auto;
+    text-align: left;
+	padding:10px 50px;
+	font-family:"宋体";
+	padding-bottom:80px;
+	}
+
+.content .new{
+    width: 770px;
+	min-height: 90px;
+	border-bottom: 1px solid #E6E6E6;
+	}
+.content .new .one{
+	height: 50px;
+	line-height: 60px;
+	}
+.content .new .two{
+	height: 45px;
+	}
+
+.content .new .two .name{
+	height: 26px;
+	float:left;
+	color: #000000;
+    font-family: '微软雅黑' ;
+    font-size: 17px;
+	margin-left:10px;
+	margin-right:30px;
+	cursor:pointer;
+	line-height:30px;
+	}
+.content .new .two .nameView{
+	height: 26px;
+	float:left;
+	color: #9a9a9a;
+    font-family: '微软雅黑' ;
+    font-size: 17px;
+	margin-left:10px;
+	margin-right:30px;
+	cursor:pointer;
+	line-height:30px;
+	}
+.content .new .two .name:hover{
+	text-decoration:underline;
+	}
+.content .new .two .time{
+	height: 26px;
+	float:left;
+	color: #b5b5b5;
+	line-height:36px;
+	}
+
+.content .newC{
+	padding-top:12px;
+	padding-bottom:30px;
+    width: 700px;
+	margin:0 auto;
+	min-height: 120px;
+	border-top: 1px solid #E6E6E6;
+	}
+
+.content .newC .imgHead{
+	width:80px;
+	height: 80px;
+	margin-right:20px;
+	margin-bottom:12px;
+	float:left;
+	}
+.content .newC .imgHead img{
+	width:80px;
+	height: 80px;
+	}
+
+.content .new .two .zhongIco{
+	width:26px;
+	height: 26px;
+	float:left;
+	margin-left:10px;
+	background:url(../../pubimg/images/new.png) 0 0 no-repeat;
+	}
+
+.content .new .two .pingIco{
+	width:26px;
+	height: 26px;
+	float:left;
+	margin-left:10px;
+	background:url(../../pubimg/images/new.png) 0 -31px no-repeat;
+	}
+.content .new .two .yingIco{
+	width:26px;
+	height: 26px;
+	float:left;
+	margin-left:10px;
+	background:url(../../pubimg/images/new.png) 0 -62px no-repeat;
+	}
+.content .new .two .kuanIco{
+	width:26px;
+	height: 26px;
+	float:left;
+	margin-left:10px;
+	background:url(../../pubimg/images/new.png) 0 -93px no-repeat;
+	}
+.content .new .two .yaoIco{
+	width:26px;
+	height: 26px;
+	float:left;
+	margin-left:10px;
+	background:url(../../pubimg/images/new.png) 0 -124px no-repeat;
+	}
+
+
+.ppointPagingthis{
+	width:770px;
+	}
+.ppointPaging {
+    background:#ffffff;
+	}
+
+
+
+
+
+/*无人应约*/
+.nobody{
+	width:100%;
+	margin:0px auto;
+	padding:100px 0;
+	text-align:center;
+	background:#fff;
+	}
+.nobody .ico{
+	width:40px;
+	height:40px;
+	margin:0 auto;
+	margin-bottom:20px;
+	background:url(../../../public/images/yuepaiicon02.png) 0 -104px no-repeat;
+	}
+
+/*无人应约*/

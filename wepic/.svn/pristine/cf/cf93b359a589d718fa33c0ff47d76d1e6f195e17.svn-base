@@ -1,0 +1,636 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../public/images/logoSmall.ico"/>
+
+<title>wepic管理员_作品_摄影故事_单个查看未通过审核</title>
+
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+
+
+
+
+<!--公共js-->
+
+<script type="text/javascript" src="../publicAdministrator/js/publicAdministrator.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../publicAdministrator/css/publicAdministrator.css" />
+<link type="text/css" rel="stylesheet" href="../../public/css/public.css" />
+
+
+
+<script type="text/javascript" src="js/shootStoryNoPassView.js"></script>
+
+<link type="text/css" rel="stylesheet" href="css/shootStoryNoPassView.css" />
+
+
+<style>
+#phoStroyDetail .phoStroyDetailLeft .divDescribe .edit,
+#phoStroyDetail .phoStroyDetailLeft .divDescribe .edit .bj ,
+#phoStroyDetail .phoStroyDetailLeft .divDescribe .edit .bjc{
+	width:220px;
+	}
+
+</style>
+</head>
+
+<body>
+<div id="container">
+	
+    
+<!-- 头部结束-->
+	<!-- logo行-->
+    <div id="divTop">
+    	<div class="divtop">
+        	<div class="divLogo">
+                <a class="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+                    <img src="../../public/images/wepic_logo.png" alt="唯图网"/>
+                    <p><span class="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+                </a>
+            </div>
+            
+            <div class="divAdminSpan">
+                <span class="center">管理员中心</span>
+                <span>V.2.0.0</span>
+            </div>
+            
+            <div class="divTopPperation">
+                <div class="left">
+                	<div class="one">SuperAdmin</div>
+                	<div class="two">超级管理员</div>
+                </div>
+                <div class="configuration">
+                	<a href="javascript:">
+                    	<div class="config"></div>
+						<p>配置中心</p>
+                    </a>
+                </div>
+                <div class="divExit">
+                	<a href="javascript:">
+                    	<div class="exit"></div>
+						<p>安全退出</p>
+                    </a>
+                </div>
+            </div>
+    	</div>
+    
+                    
+   	</div>
+    <!-- logo行-->
+    
+    
+    
+    
+    <!-- 分割线-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+	
+    <!-- 导航 -->
+  	<div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="index">
+            		<a href="javascript:">首页</a>
+            	</li>
+            	<li id="user">
+            		<a href="javascript:">用户</a>
+            	</li>
+            	<li id="production" class="active">
+            		<a href="javascript:">作品</a>
+           	 	</li>
+            	<li id="project">
+            		<a href="javascript:">项目</a>
+            	</li>
+                <li id="capital">
+            		<a href="javascript:">资金</a>
+            	</li>
+            	<li id="transaction">
+            		<a href="javascript:">交易</a>
+           	 	</li>
+            	<li id="complaint">
+            		<a href="javascript:">投诉</a>
+            	</li>
+                <li id="subscription">
+            		<a href="javascript:">订阅</a>
+            	</li>
+                <li id="message">
+            		<a href="javascript:">消息</a>
+            	</li>
+        	</ul>
+            
+            <div class="onLine">
+                <span>当前在线：</span>
+                <span>423432</span>人
+            </div>
+        </div>
+        
+        
+	</div>
+    <!-- 导航  end-->
+    
+     <!-- 二级导航 -->
+  	<div id="assistantBar">
+    	<div class="twoStage" id="divTwoStage">
+        	<a href="picWorkAuthstrList.html"><div class='bar'><span>图片作品</span><i></i></div></a>
+            
+            <a href="shootStoryAuthstrList.html"><div class='bar active'><span>摄影故事</span><i></i></div></a>
+            
+        </div>
+        
+    	<div id="divThreeStage">
+        
+            <div class="threeStage">
+                <a href="shootStoryAuthstrList.html"><div class='bar'><span>待审核作品</span><i></i></div></a>
+                
+                <a href="shootStoryPassedList.html"><div class='bar'><span>作品列表</span><i></i></div></a>
+                
+                <a href="shootStoryNoPassList.html"><div class='bar active'><span>未通过审核作品</span><i></i></div></a>
+            
+            <a href="shootStorySoldOutList.html"><div class='bar'><span>被下架列表</span><i></i></div></a>
+                
+            </div>
+        </div>
+    </div>
+    <!-- 二级导航  end-->
+    
+    
+    
+    
+    
+    <!--内容-->
+    <div id="divContent">
+        
+        <!--排序-->
+        <div class="sort">
+            <table>
+                <tr>
+                    <td class="td1">筛选：</td>
+                    <td class="td2">
+                        <div class="divdropDown">
+                            <div class="dropDownBox" onclick="showBelow('divdropDownCategory')">
+                                <span id="divdropDownViewCategory">所有类别</span>
+                                <div class="dropDownBoxR"><i></i></div>
+                            </div>
+                
+                            <div class="dropDownBoxValue" id="divdropDownCategory">
+                                <span class='dropValue'>类别类别类别1</span>
+                                <span class='dropValue'>类别类别类别2</span>
+                                <span class='dropValue'>类别类别类别1</span>
+                                <span class='dropValue'>类别类别2</span>
+                                <span class='dropValue'>类别类别1</span>
+                                <span class='dropValue'>类别2</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td>
+                        <div class="divdropDown">
+                            <div class="dropDownBox" onclick="showBelow('divdropDownType')">
+                                <span id="divdropDownViewType">所有类型</span>
+                                <div class="dropDownBoxR"><i></i></div>
+                            </div>
+                
+                            <div class="dropDownBoxValue" id="divdropDownType">
+                                <span class='dropValue'>类型类型类型1</span>
+                                <span class='dropValue'>类型类型类型类型2</span>
+                                <span class='dropValue'>类型类型类型1</span>
+                                <span class='dropValue'>类型类类型2</span>
+                                <span class='dropValue'>类类型类型型1</span>
+                                <span class='dropValue'>类类型类型型2</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
+            <div class="operation">
+            	<input class="backToPrevious" type="button" value="返回上一页"/>
+            
+            </div>
+        </div>
+        <!--排序-->
+    	
+    	
+        <!--摄影故事内容-->
+        <div id="phoStroyDetail">
+        	<div class="phoStroyDetailLeft"  id="phoStroyDetailLeft">
+        		<div class="divHead">
+                	<div class="name" title="这里是标题全称">摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题摄影故事标题</div>
+                </div>
+                
+                <div class="divDescribe">
+                	<div class="edit" id="editzpgs">
+                    	<div class="bj"></div>
+                    	<div class="bjc">
+                        	
+                            <div class="right">
+                            	<a href="javascript:" class="dowload">
+                            		<div class="backimg"></div>
+									<p>下载故事</p>
+                            	</a>
+                            	<a href="javascript:" class="delete">
+                            		<div class="backimg"></div>
+									<p>删除作品</p>
+                           		</a>
+                            </div>
+                        	
+                        </div>
+                    </div>
+                	<div class="character">故事描述：</div>
+                    <div class="dec">父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、求知、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作用、<em>相互制约</em>，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、求知、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作用、相互制约，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、求知、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作用、相互制约，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、<em>求知</em>、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作用、相互制约，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、求知、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作</div>
+                </div>
+                
+                <div class="storyzw">故事正文：</div>
+                <div class="divContent">
+                    <div class="picStory"><img src="../../public/pic/pho.png" /></div>
+                	<div class="char">图片尺寸：<span>1221</span>*<span>2321</span>px</div>
+                    <div class="info">良好的习惯是一个人做人、做事、<em>求知</em>、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作用、相互制约，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、求知、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的、相互作用、<em>相互制约</em>，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。</div>
+                </div>
+                
+                <div class="divContent">
+                    <div class="picStory"><img src="../../public/pic/pho.png" /></div>
+                	<div class="char">图片尺寸：<span>1221</span>*<span>2321</span>px</div>
+                    <div class="info">良好的习惯是一个人做人、做事、<em>求知</em>、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，包含着家庭教育、社会教育、集体教育，三者相互影响、相互作用、相互制约，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。良好的习惯是一个人做人、做事、求知、共处的根本。若想要孩子养成良好的习惯就要让孩子有良好的教育。人的教育是一项系统的教育工程，<em>包含</em>着家庭教育、社会教育、集体教育，三者相互影响、相互作用、相互制约，在这项系统工程之中，家庭教育是一切教育的基础。父母的力量决定孩子的一切。因此，父母从小就要注意培养孩子良好的行为习惯，使其终身受益。</div>
+                </div>
+            </div>
+        
+        <!--右部内容-->
+         	<div class="phoStroyDetailRight" id="phoStroyDetailRight">
+        		<form id="formPhoStroyDetail">
+                
+                       
+                <div class="storyCon">
+                
+                    <div id="storyConScrollTop">
+                        <div class="characterSM">
+                            <span class="name">不通过原因</span>
+                        </div>
+                         <!--不通过原因-->
+                        <div class="noPassReason" id="noPassReason">
+                            <div class="editNoPass">
+                                <table id="tablePass">
+                                    <tr>
+                                        <td class="td1"><input id="checkzjwt" type="checkbox" disabled="disabled"/></td>
+                                        <td><label for="checkzjwt">您上传的证件不清晰</label></td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td class="td1"><input id="checkzjgd" type="checkbox" disabled="disabled"/></td>
+                                        <td><label for="checkzjgd">证件照片有改动</label></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="td1"><input id="checksfz" type="checkbox" disabled="disabled"/></td>
+                                        <td><label for="checksfz">您提交的身份信息不正确</label></td>
+                                    </tr>
+                                    
+                                    <tr class="other">
+                                        <td class="td1" valign="top"><input id="checkqit" type="checkbox" disabled="disabled" checked="checked"/></td>
+                                        <td class="otherCon"><label for="checkqit">其他</label><textarea disabled="disabled">345353534</textarea></td>
+                                    </tr>
+                                    <tr class="huifu">
+                                        <td class="td1"><a class="directDel" href="javascript:">通过审核</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!--不通过原因-->
+                    </div>
+                    
+                    
+                	<div class="photographyStoryInfo">
+                    	<div class="divTop">作者：</div>
+                        <div class="headImg">
+                        	<div class="headImgCon">
+                            	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                              	<img src="../../back/pubimg/images/radHead.png" class="radius"/>
+                               
+                          	</div>
+                         </div>
+                         <div class="info">
+                            <div class="name">
+                            	<span>咱们结婚吧</span>
+                            	<!--<a class="approveNo" title="未实名认证"></a>-->
+                                <a class="approveHave" title="个人实名认证"></a>
+                                <!-- <a class="approveQy" title="企业实名认证"></a>-->
+                                <a class="gradeFour"></a>
+                                <input type="button" value="看资料" class="viewInfo"/>
+                            </div>
+                            <div class="detail">
+                            	<!--男--><a class="userPositionNameG" title="年龄"><span>56</span>岁</a>
+                                <!--<a class="userPositionName" title="年龄"><span>56</span>岁</a>-->
+                                <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                                <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                            </div>
+                        </div>
+                    </div>
+                                
+                	<div class="head">
+                    	<div class="char">故事封面</div>
+                        <div class="pic" id="divChangeHead">
+                        	<img src="../../public/pic/10.png" />
+                        	<div class="nowtop" id="divViewHead">
+                        		<div class="bj"></div>
+                        		<div class="bjc">
+                        			<div class="sp1"><a onclick="changeHeadStory('cropHead');">更换故事封面</a></div>
+                                	<div class="sp2">故事封面仅供故事展示使用</div>
+                            	</div>
+                        	</div>
+                        </div>
+                        
+                        <div class="storyInfo">
+                        	<table>
+                            	<tr>
+                                	<td><span class="character">作品编号：</span></td>
+                                    <td class="td2"><span>4542121454521</span></td>
+                                    <td><span class="character">创建时间：</span></td>
+                                    <td><span>2012-12-23</span></td>
+                                </tr>
+                            	
+                                <tr>
+                                	<td><span class="character">图片张数：</span></td>
+                                    <td><span>3</span>张</td>
+                                    <td><span class="character">字数：</span></td>
+                                    <td><span>3431</span>字</td>
+                                </tr>
+                            </table>
+                        		
+                        	
+                        </div>
+                    </div>
+                    
+                    <div class="typeone">
+                    		<table>
+                            	<tr>
+                                	<td class="td1 character">作品类别</td>
+                                    <td class="td2">摄影图片</td>
+                                	<td class="td3 character">所属专辑</td>
+                                    <td class="td4">默认专辑</td>
+                                    <td class="td5"><a href="javascript:" onclick="openPopUpBox('moveTozj');">移动到</a></td>
+                                </tr>
+                            	
+                                <tr>
+                                	<td class="td1 character">作品状态</td>
+                                    <td class="td2">未发布</td>
+                                    <td class="td3 character">发布时间</td>
+                                    <td class="td4">2012-12-20</td>
+                                </tr>
+                                
+                                <tr>
+                                	<td class="td1 character">作品说明</td>
+                                </tr>
+                                <tr>
+                                	<td class="tds" colspan="5">作品说明作品说明作品说品说明作品说明作品说明作品说明作品说明作品说明作品说明作品说明</td>
+                                </tr>
+                            </table>
+                    </div>
+                    
+                    
+                    <div class="gjctd"> 
+                        <div class="chaa">作品类型</div>
+                        <div class="type">
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            <div class="retag">
+                                <span>时装摄影师</span>
+                                <a onclick="deleteProModel(this);" title="删除"></a>
+                            </div>
+                            
+                            
+                            <div style="clear:both;"></div>
+                            
+                        </div>
+                        
+                        <div class="chaa">关键词</div>
+                        <div class="keyword">
+                            <a href="javascript:">焦点</a>
+                            <a href="javascript:">焦点</a>
+                            <a href="javascript:">焦点</a>
+                            <a href="javascript:">焦点</a>
+                            <a href="javascript:">焦点</a>
+                            <a href="javascript:">焦点</a>
+                        </div>
+                    </div>
+                    
+                    
+                     <div class="property">
+                            <table>
+                                <tr>
+                                    <td class="td1">版权属性</td>
+                                    <td class="tda" colspan="3">
+                                        <a>有肖像权许可</a>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="td1">商业用途</td>
+                                    <td class="tdp" colspan="3">仅用于传媒，不可英语其他商业用途</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="td1">授权区域</td>
+                                    <td class="td2">中国大陆</td>
+                                </tr>
+                                <tr>
+                                    <td class="td1">出售使用权</td>
+                                    <td class="td2">￥<span>12</span></td>
+                                    <td class="td3">授权期限</td>
+                                    <td class="td4"><span>1</span>年</td>
+                                </tr>
+                                <tr>
+                                    <td class="td1">出售版权</td>
+                                    <td class="td2">￥<span>120</span></td>
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+                
+                
+                </form>   
+            </div>
+       <!--右部内容-->
+        
+        
+        </div>
+        
+        
+        
+        
+        <!--摄影故事内容-->
+    </div>
+   
+        
+    <!--内容-->
+    
+    
+        
+    <!--foot 开始-->
+    <div id="divFooter">
+    	<div class="divfooter">
+        	<a href="http://www.wepic.cn" target="_blank" class="toIndex">网站首页</a>|
+        	<a href="http://www.cnzz.com" target="_blank" class="toStation">站长统计</a>|
+            <a href="http://tongji.baidu.com/web/welcome/login"  target="_blank" class="toBaiduStation">百度站长工具</a>|
+            <a href="http://e.baidu.com" target="_blank" class="toBaiduGeneralize">百度推广</a>
+        </div>
+    </div>
+    
+    <!--foot 结束-->
+    
+    <div id="chooseWork" style="width:1000px;height:800px; display:none;">
+    	<iframe name='child' style="border:0px;width:1000px;height:800px" src="../../public/chooseHead.html"></iframe>
+    </div>
+    
+    <div id="cropHead" style="width:1130px;height:900px; z-index:100000000;display:none;overflow:hidden;">
+    	<iframe name='child2' style="border:0px;width:1200px;height:900px;overflow:hidden;z-index:100000000" src="../../public/cropHead.html"></iframe>
+    </div>
+    
+    
+    <div id="moveTozj">
+    	<div class="top">
+    		<h2>选择专辑</h2>
+			<a href="javascript:cloosePopBox('moveTozj');"></a>
+    	</div>
+        
+    	<div class="zhuanji" id="zhuanjiadd">
+        	<ul>
+            	<li>
+                	<div class="special">
+						<div class="tone tone1"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone2"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone3"></div>
+						<div class="name">最炫名族风</div>
+                        
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone4"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                <li>
+                	<div class="special">
+						<div class="tone tone2"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone3"></div>
+						<div class="name">最炫名族风</div>
+                        
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone4"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                <li>
+                	<div class="special">
+						<div class="tone tone2"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone3"></div>
+						<div class="name">最炫名族风</div>
+                        
+					</div>
+                </li>
+                
+                <li>
+                	<div class="special">
+						<div class="tone tone4"></div>
+						<div class="name">最炫名族风</div>
+					</div>
+                </li>
+                
+            </ul>
+    		
+            
+            <div class="divAddSpecial">
+				<a href="manageSpecial.html">管理专辑</a>
+			</div>
+    	</div>
+        
+        <div class="tijaio">
+        	<input class="reset" type="button" value="取消"  onclick="cloosePopBox('moveTozj');"/>
+			<input class="sub" type="button" value="确定" onclick="cloosePopBox('moveTozj');"/>
+    	</div>
+    </div>
+</div>
+	<div id="goTopBtn" style="display:none;"></div>
+<!--[if lte IE 6]>
+<script src="../../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+</body>
+</html>

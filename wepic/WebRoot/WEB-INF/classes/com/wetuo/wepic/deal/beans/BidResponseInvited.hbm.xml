@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BidResponseInvited"
+	table="BidResponseInvited"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_BidResponseInvited_User" 
+		index="IDX_BidResponseInvited_User"
+		   lazy="false"/> 
+	
+	<many-to-one name="bidAimPerson" 
+		column="bidAimPerson_" 
+		not-null="false" 
+		class="com.wetuo.wepic.deal.beans.BidAimPerson" 
+		foreign-key="FK_BidResponseInvited_BidAimPerson" 
+		index="IDX_BidResponseInvited_BidAimPerson"
+		 lazy="false"/> 
+	
+	<property 
+		name="isResponse"
+		type="java.lang.Integer"
+		column="isResponse"
+		length="50"
+	/>
+	<property 
+		name="reponseTime"
+		type="java.sql.Timestamp"
+		column="reponseTime"
+		length="50"
+	/>
+	
+	<property 
+		name="waitingPeople"
+		type="java.lang.String"
+		column="waitingPeople"
+		length="50"
+	/>
+	
+	
+	<property 
+		name="reponseMoney"
+		type="java.lang.Double"
+		column="reponseMoney"
+		length="50"
+	/>
+	<property 
+		name="reponseContent"
+		type="java.lang.String"
+		column="reponseContent"
+		length="50"
+	/>
+	<property 
+		name="isInvited"
+		type="java.lang.Integer"
+		column="isInvited"
+		length="50"
+	/>
+	<property 
+		name="inviteTime"
+		type="java.sql.Timestamp"
+		column="inviteTime"
+		length="50"
+	/>
+	<property 
+		name="isConfirmed"
+		type="java.lang.Integer"
+		column="isConfirmed"
+		length="50"
+	/>
+	<property 
+		name="confirmedTime"
+		type="java.sql.Timestamp"
+		column="confirmedTime"
+		length="50"
+	/>
+	<property 
+		name="coonfirmMoney"
+		type="java.lang.Double"
+		column="coonfirmMoney"
+		length="50"
+	/>
+	<property 
+		name="bidderRemark"
+		type="java.lang.String"
+		column="bidderRemark"
+		length="50"
+	/>
+	
+	<many-to-one name="bid"	column="bidid" not-null="true" 
+	 lazy="false"/>
+		<property 
+		name="taskFinished"
+		type="java.lang.Integer"
+		column="taskFinished"
+		length="50"
+	/>
+	
+	
+	<property 
+	name="bidderRemarkTime" 
+	column="bidderRemarkTime"
+	type="java.lang.String"
+	length="50"/>
+	 <property name="bidRemarkType"
+	 column="bidRemarkType"
+	 length="50"
+	 type="java.lang.Integer"
+	 />
+	 <property 
+	name="complain" 
+	column="complain"
+	type="java.lang.String"
+	length="500"/>
+	
+	 <property 
+	name="complainTime" 
+	column="complainTime"
+	type="java.lang.String"
+	length="50"/>
+	
+	
+	
+	<property 
+	name="complainHandle" 
+	column="complainHandle"
+	type="java.lang.String"
+	length="550"/>
+		
+	<property 
+	name="complainHandleTime" 
+	column="complainHandleTime"
+	type="java.lang.String"
+	length="50"/>
+	
+	<property 
+	name="complainHandler" 
+	column="complainHandler"
+	type="java.lang.String"
+	length="50"/>
+	
+	<property 
+	name="complainHandleResulet" 
+	column="complainHandleResulet"
+	type="java.lang.String"
+	length="550"/>
+	<property 
+	name="complainstatus" 
+	column="complainstatus"
+	type="java.lang.String"
+	length="50"
+	/>
+	
+	<property 
+	name="isCheck" 
+	column="isCheck"
+	type="java.lang.Integer"
+	length="50"
+	/>
+	
+	
+	
+	<!-- 
+	
+	private String bidderRemarkTime;
+	private String ;
+	private String ;
+	private String complainTime;
+	private String complainHandle;
+	private String complainHandleTime;
+	private String complainHandler;
+	private String complainHandleResulet;
+	
+	
+
+	
+	 -->
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

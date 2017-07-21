@@ -1,0 +1,31 @@
+$(function(){
+	hoverAddClass("divMainListUL");   //list内容显示收藏
+	
+	divLiBar2("mainbar","mainbarCenterLi2");   //主导航背景底边框
+	
+
+	divLiBarClick("filterWrapperSort");   //排序
+	
+	//确定按钮
+	filterSure();
+	
+	});
+	
+	
+function filterSure(){
+	$("#filterWrapperSortRR").hover(
+		function(){$("#sureMoneySubmit").show();},
+		function(){$("#sureMoneySubmit").hide();}
+	);
+}
+
+function suerSubmit(minMoney,maxMoney){
+	minVal = $("#"+minMoney).val();
+	maxVal = $("#"+maxMoney).val();
+	
+	if(minVal > maxVal){
+		$("#"+minMoney).val(maxVal);
+		$("#"+maxMoney).val(minVal);
+		}
+	
+}

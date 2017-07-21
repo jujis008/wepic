@@ -1,0 +1,449 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../public/images/logoSmall.ico"/>
+
+<title>wepic管理员_资金_发票列表_邮寄列表</title>
+
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+
+
+
+
+<!--公共js-->
+
+<script type="text/javascript" src="../publicAdministrator/js/publicAdministrator.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../publicAdministrator/css/publicAdministrator.css" />
+<link type="text/css" rel="stylesheet" href="../../public/css/public.css" />
+
+
+<link type="text/css" rel="stylesheet" href="css/withdrawDepositList.css" />
+
+
+
+
+ <link type="text/css" rel="stylesheet" href="../../back/pubimg/css/lyz.calendar.css"  />
+    <script src="../../public/js/lyz.calendar.min.js" type="text/javascript"></script>
+<script>
+        $(function () {
+			//表格奇偶数行背景颜色
+			tableOddEvenBackground('#tableWithdrawDeposit'); 
+			
+			
+			hoverFail();
+		});
+
+
+
+function hoverFail(){
+	var allFail = $(".div_fail").find(".ysb");
+	$(allFail).each(function(index, element) {
+		$(this).hover(function(){
+			$(element).next().show();
+			},
+		function(){
+			$(element).next().hide();
+			}
+		);
+	});
+}	
+
+
+function openPopUpBoxNoPass(obj){
+	openPopUpBox('noPassReason');
+	$("#hiddenPop").val($(obj).parents("tr").attr('id'));
+	
+	}
+function clooseNoPassReason(){
+	cloosePopBox('noPassReason');
+	$("#noPassReason").find("textarea").val('');
+	}
+		
+function submitNoPassReason(){
+	var val = $("#noPassReason").find("textarea").val();
+	var hidd = $("#hiddenPop").val();
+	var opt = '<div class="div_fail">'+
+				  '<a class="ysb" href="">已失败</a>'+
+				  '<div class="fail_reason">'+
+					  '<div class="sanjiao"></div>'+
+					  '<p class="tit">失败原因：</p>'+
+					  '<p>'+ val +'</p>'+
+				  '</div>'+
+			  '</div>';
+	if(val == null || val =='' ){
+		alert('请输入不通过原因');
+		}
+	else{
+		
+		$("#noPassReason").find("textarea").val('');
+		$("#"+hidd).find("td:last-child").html(opt);
+		hoverFail();
+		
+		cloosePopBox('noPassReason');
+		
+		}
+	}
+
+
+</script>
+
+<style>
+.container_top{
+	width:1180px;
+	height:48px;
+	background:#fff;
+	margin:5px auto 5px;
+	text-align:left;
+	font-family:"微软雅黑";
+	}
+
+.container_top h2{
+	width:1000px;
+	height:48px;
+	line-height:48px;
+	float:left;
+	padding-left:24px;
+	font-weight:normal;
+	color:#000;
+	font-size:20px;
+	}
+.container_top h2 span{
+	margin-right:8px;
+	}
+.container_top .goBack{
+	float:left;
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:20px;
+	margin-top:6px;
+    text-align: center;
+    width: 116px;
+	}
+	
+.container_top .goBack:hover{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.container_top .goBack:active{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+.withdrawDeposit_cont table td {
+    padding: 8px 30px;
+	}
+</style>
+</head>
+
+<body>
+<div id="container">
+	
+    
+<!-- 头部结束-->
+	<!-- logo行-->
+    <div id="divTop">
+    	<div class="divtop">
+        	<div class="divLogo">
+                <a class="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+                    <img src="../../public/images/wepic_logo.png" alt="唯图网"/>
+                    <p><span class="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+                </a>
+            </div>
+            
+            <div class="divAdminSpan">
+                <span class="center">管理员中心</span>
+                <span>V.2.0.0</span>
+            </div>
+            
+            <div class="divTopPperation">
+                <div class="left">
+                	<div class="one">SuperAdmin</div>
+                	<div class="two">超级管理员</div>
+                </div>
+                <div class="configuration">
+                	<a href="javascript:">
+                    	<div class="config"></div>
+						<p>配置中心</p>
+                    </a>
+                </div>
+                <div class="divExit">
+                	<a href="javascript:">
+                    	<div class="exit"></div>
+						<p>安全退出</p>
+                    </a>
+                </div>
+            </div>
+    	</div>
+    
+                    
+   	</div>
+    <!-- logo行-->
+    
+    
+    
+    
+    <!-- 分割线-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+	
+    <!-- 导航 -->
+  	<div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="index">
+            		<a href="javascript:">首页</a>
+            	</li>
+            	<li id="user">
+            		<a href="javascript:">用户</a>
+            	</li>
+            	<li id="production">
+            		<a href="javascript:">作品</a>
+           	 	</li>
+            	<li id="project">
+            		<a href="javascript:">项目</a>
+            	</li>
+                <li id="capital" class="active">
+            		<a href="javascript:">资金</a>
+            	</li>
+            	<li id="transaction">
+            		<a href="javascript:">交易</a>
+           	 	</li>
+            	<li id="complaint">
+            		<a href="javascript:">投诉</a>
+            	</li>
+                <li id="subscription">
+            		<a href="javascript:">订阅</a>
+            	</li>
+                <li id="message">
+            		<a href="javascript:">消息</a>
+            	</li>
+        	</ul>
+            
+            <div class="onLine">
+                <span>当前在线：</span>
+                <span>423432</span>人
+            </div>
+        </div>
+        
+        
+	</div>
+    <!-- 导航  end-->
+    
+     <!-- 二级导航 -->
+  	<div id="assistantBar">
+    	<div class="twoStage" id="divTwoStage">
+       	 	<a href="capitalIndex.html"><div class='bar'><span>资金总览</span><i></i></div></a>
+            
+        	<a href="withdrawDepositList.html"><div class='bar'><span>提现列表</span><i></i></div></a>
+            
+            <a href="stayInvoiceList.html"><div class='bar active'><span>发票列表</span><i></i></div></a>
+            
+            <a href="transferOne.html"><div class='bar'><span>转账支付</span><i></i></div></a>
+            
+        </div>
+    	
+        <div id="divThreeStage">
+        
+            <div class="threeStage">
+                <a href="stayInvoiceList.html"><div class='bar'><span>待开发票</span><i></i></div></a>
+                
+                <a href="InvoicedList.html"><div class='bar'><span>已开发票</span><i></i></div></a>
+                
+                <a href="postList.html"><div class='bar active'><span>发票邮寄表</span><i></i></div></a>
+                
+            </div>
+        </div>
+    </div>
+    <!-- 二级导航  end-->
+    
+    
+    <div class="container_top">
+       <h2>邮寄单详情：</h2> 	
+       <input class="goBack" type="button" id="applicationDeposit" value="返回列表" onclick="window.location = 'postList.html' "/>
+        
+    </div>
+    
+    
+    <!--内容-->
+    <div class="withdrawDeposit_record">
+        <div class="withdrawDeposit_name">
+        	<span>邮寄单名称：</span>
+            <span>201210210210</span>
+        </div>
+        
+        <div class="withdrawDeposit_cont">
+            <table id="tableWithdrawDeposit">
+            	<tr>
+                    <th>序号</th>
+                    <th>发票编号</th>
+                    <th>发票抬头</th>
+                    <th>发票内容</th>
+                    <th>发票金额</th>
+                    <th>收件人</th>
+                    <th>联系电话</th>
+                    <th>邮寄地址</th>
+                    <th>备注</th>
+                    
+                </tr>
+                
+                <tr>
+                    <td>1</td>
+                    
+                    <td><span>21212121_12</span></td>
+                    
+                    <td><span>个人</span></td>
+                    
+                    <td><span>产品拍摄</span></td>
+                    
+                    <td><span>1200</span></td>
+                    
+                    <td><span>王莉味</span></td>
+                    
+                    <td><span>15212021201</span></td>
+                    
+                    <td><span>嘉定区江桥</span></td>
+                    
+                    <td><span>备注备注备注备注</span></td>
+                </tr>
+                
+                
+                <tr>
+                    <td>1</td>
+                    
+                    <td><span>21212121_12</span></td>
+                    
+                    <td><span>个人</span></td>
+                    
+                    <td><span>产品拍摄</span></td>
+                    
+                    <td><span>1200</span></td>
+                    
+                    <td><span>王莉味</span></td>
+                    
+                    <td><span>15212021201</span></td>
+                    
+                    <td><span>嘉定区江桥</span></td>
+                    
+                    <td><span>备注备注备注备注</span></td>
+                </tr>
+                
+                <tr>
+                    <td>1</td>
+                    
+                    <td><span>21212121_12</span></td>
+                    
+                    <td><span>个人</span></td>
+                    
+                    <td><span>产品拍摄</span></td>
+                    
+                    <td><span>1200</span></td>
+                    
+                    <td><span>王莉味</span></td>
+                    
+                    <td><span>15212021201</span></td>
+                    
+                    <td><span>嘉定区江桥</span></td>
+                    
+                    <td><span>备注备注备注备注</span></td>
+                </tr>
+                
+                <tr>
+                    <td>1</td>
+                    
+                    <td><span>21212121_12</span></td>
+                    
+                    <td><span>个人</span></td>
+                    
+                    <td><span>产品拍摄</span></td>
+                    
+                    <td><span>1200</span></td>
+                    
+                    <td><span>王莉味</span></td>
+                    
+                    <td><span>15212021201</span></td>
+                    
+                    <td><span>嘉定区江桥</span></td>
+                    
+                    <td><span>备注备注备注备注</span></td>
+                </tr>
+        	</table>
+        </div>
+        
+        <div class="productTable">
+        	<input type="button" value="下载"  onclick=""/>
+        </div>
+        
+         <!--翻页-->
+        <div class="ppointPagingthis">
+            <div class="ppointPaging">            
+                <table class="tablePpointPaging">
+                    <tr>
+                        <td class="ppointPagingOne"><a href="javascript:"></a></td>
+                        <td class="ppointPagingPre"><a href="javascript:"></a></td>
+                        <td class="ppointPagingN"><a href="javascript:">1</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">2</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">3</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">4</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">5</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">6</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">7</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">8</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">9</a></td>
+                        <td class="ppointPagingN"><a href="javascript:">10</a></td>
+                        <td class="ppointPagingNext"><a href="javascript:"></a></td>
+                        <td class="ppointPagingLast"><a href="javascript:"></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+         <!--翻页-->
+         
+         
+    </div>
+        
+    
+    
+    
+    <!--内容-->
+    
+    
+        
+    <!--foot 开始-->
+    <div id="divFooter">
+    	<div class="divfooter">
+        	<a href="http://www.wepic.cn"  target="_blank" class="toIndex">网站首页</a>|
+        	<a href="http://www.cnzz.com"  target="_blank" class="toStation">站长统计</a>|
+            <a href="http://tongji.baidu.com/web/welcome/login"  target="_blank" class="toBaiduStation">百度站长工具</a>|
+            <a href="http://e.baidu.com" target="_blank" class="toBaiduGeneralize">百度推广</a>
+        </div>
+    </div>
+    
+    <!--foot 结束-->
+   
+	<div id="goTopBtn" style="display:none;"></div>
+</div>
+<!--[if lte IE 6]>
+<script src="../../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+</body>
+</html>

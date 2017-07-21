@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.wetuo.wepic.core.beans.AccountWithdraw"
+		table="AccountWithdraw">
+
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="native" />
+		</id>
+
+		<many-to-one name="admin" column="admin_id"
+			class="com.wetuo.wepic.core.beans.User" foreign-key="FK_AccountWithdraw_User"
+			index="IDX_AccountWithdraw_User" />
+
+
+		<property name="withdrawMoney" type="java.math.BigDecimal"
+			column="withdrawMoney" length="50" />
+		<property name="withdrawTime" type="java.sql.Timestamp"
+			column="withdrawTime" length="50" />
+		<property name="withdrawCode" type="java.lang.String" column="withdrawCode"
+			length="50" />
+		<property name="status" type="java.lang.Integer" column="status"
+			length="50" />
+		<property name="ifDemandWithdraw" type="java.lang.Integer"
+			column="ifDemandWithdraw" length="50" />
+		<property name="demandWithdrawTime" type="java.sql.Timestamp"
+			column="demandWithdrawTime" length="500" />
+
+		<property name="failreason" type="java.lang.String" column="failreason"
+			length="1000" />
+		<property name="printflag" type="java.lang.Integer"
+			column="printflag" length="50" />	
+		<many-to-one name="account" column="account_id" not-null="true"
+			lazy="false" />
+
+
+
+		<!-- @#$% -->
+	</class>
+</hibernate-mapping>

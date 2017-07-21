@@ -1,0 +1,277 @@
+.work_deal{
+	width:1180px;
+	height:120px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	padding-bottom:50px;
+	/*display:none;*/
+	}
+
+
+
+
+.work_deal .work_deal_top{
+	width:100%;
+	height:40px;
+	text-align:left;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	padding-top: 10px;
+	}
+	
+.work_deal .work_deal_top table{
+	height:35px;
+	}	
+.work_deal .work_deal_top table td{
+	vertical-align:center;
+	}
+.work_deal .work_deal_top table .char{
+	font-weight:normal;
+	color:#000;
+	font-size:18px;
+	font-family:"微软雅黑";
+	padding:0 20px;
+	vertical-align:top;
+	}
+.work_deal .work_deal_top table .totalwith{
+	padding-right:40px;
+	}
+.work_deal .work_deal_top table .totalwithTTT{
+	width:800px;
+	padding-right:40px;
+	}
+
+
+.work_deal .work_deal_top_con{
+	width:100%;
+	height:110px;
+	text-align:left;
+	margin:0px auto;
+	padding-top: 20px;
+	}
+	
+.work_deal .work_deal_top_con table{
+	height:80px;
+	margin:0 auto;
+	color:#676767;
+	}	
+	
+.work_deal .work_deal_top_con table .td_one{
+	width:65px;
+	
+	}
+.work_deal .work_deal_top_con table .td_two{
+	width:230px;
+	
+	}
+.work_deal .work_deal_top_con table td{
+	vertical-align:center;
+	}	
+
+
+.work_deal_top_con table .time{
+	margin-left:10px;
+	}
+
+
+
+
+
+
+
+
+
+.work_deal_list{
+	width:1180px;
+	height:248px;
+	background:#fff;
+	margin:5px auto 50px;
+	text-align:left;
+	font-family:"宋体";
+	padding-bottom:40px;
+	color: #676767;
+	}
+.work_deal_list .div_tit{
+	height:40px;
+	line-height:40px;
+	font-family:"微软雅黑";
+	padding-left:50px;
+	font-size:15px;
+	color: #1d1d1d;
+	}
+
+
+
+
+
+
+/*开具发票*/
+
+.add_invoice{
+	width:510px;
+	height:550px;
+	background:#ffffff;
+	display:none;
+	}
+.add_invoice .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width:510px;
+	}
+.add_invoice .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.add_invoice .top a {
+    background:url(../../../../public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.add_invoice .top a:hover{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.add_invoice .top a:active{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+
+
+	
+.add_invoice .table_con{
+    height: 350px;
+    width: 510px;
+	margin-top:30px;
+	}
+.add_invoice .table_con .td_one{
+    width: 115px;
+	padding-right:15px;
+	text-align:right;
+	height:50px;
+	color:#535353;
+	}
+.add_invoice .table_con .td_two{
+	text-align:left;
+	}
+.add_invoice .table_con .td_two .yuan{
+	color:#e60120;
+	font-size:14px;
+    font-family: "宋体";
+	}
+.add_invoice .table_con .td_two .money{
+	color:#e60120;
+	font-size:16px;
+	margin-right:10px;
+    font-family: "宋体";
+	
+	}
+.add_invoice .table_con .td_two label{
+	margin-right:10px;
+	
+	}
+.add_invoice .table_con .input_invoice_title {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 214px;
+	}	
+	
+.add_invoice .table_con .td_twoDe label{
+	margin-left:3px;
+	}
+
+	
+.add_invoice .table_con .postAddress {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 300px;
+	}
+.add_invoice .table_con .recipients {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 100px;
+	}
+.add_invoice .table_con .contactPhone {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 150px;
+	}
+
+
+
+
+
+.add_invoice .submit{
+	margin-top:30px;
+	}
+	
+.white_button{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.white_button:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.red_button{
+
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.red_button:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.AssessComplaint"
+	table="AssessComplaint"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="complainantAssessor" 
+		column="complainantAssessor_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_AssessComplaint_ComplainantAssessor" 
+		index="IDX_AssessComplaint_ComplainantAssessor"/> 
+	
+	<many-to-one name="admin" 
+		column="admin_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_AssessComplaint_Admin" 
+		index="IDX_AssessComplaint_Admin"/> 
+	
+	<property 
+		name="complaint"
+		type="java.lang.String"
+		column="complaint"
+		length="50"
+	/>
+	<property 
+		name="complaintType"
+		type="java.lang.Integer"
+		column="complaintType"
+		length="50"
+	/>
+	<property 
+		name="assess"
+		type="java.lang.String"
+		column="assess"
+		length="50"
+	/>
+	<property 
+		name="assessType"
+		type="java.lang.String"
+		column="assessType"
+		length="50"
+	/>
+	<property 
+		name="handleType"
+		type="java.lang.Integer"
+		column="handleType"
+		length="50"
+	/>
+	<property 
+		name="handleOpinion"
+		type="java.lang.String"
+		column="handleOpinion"
+		length="50"
+	/>
+	
+	<many-to-one name="publish"	column="publishid" not-null="true"/>
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

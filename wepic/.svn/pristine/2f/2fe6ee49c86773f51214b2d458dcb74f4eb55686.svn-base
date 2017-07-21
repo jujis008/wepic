@@ -1,0 +1,663 @@
+#shootProduct{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 1180px;
+	min-height:800px;
+	margin-top:5px;
+	margin-bottom:40px;
+	background:#fff;
+	}
+
+.shootWayCon li{
+	position:relative;
+	left:0px;
+	top:0;
+	float:left;
+    font-family: "微软雅黑";
+	height:23px;
+	line-height:23px;
+	cursor:pointer;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:10px;
+	
+	color:#000;
+	border:1px solid #e8e8e8;
+	background:#fcfcfc;
+	}
+
+.shootWayCon li i{
+	display:none;
+	position:absolute;
+	right:0px;
+	bottom:0;
+	width:11px;
+	height:10px;
+	}
+.shootWayCon .active i{
+	display:block;
+	}
+#shootProduct .divHead{
+    color: #686868;
+    font-family: "微软雅黑";
+    height: 60px;
+    left: 0;
+    position: relative;
+    text-align: left;
+    top: 0;
+    width: 1180px;
+	border-bottom:1px solid #e5e5e5;
+	}
+
+
+#shootProduct .divHead p{
+    font-size: 20px;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 30px;
+	}
+
+
+
+
+#shootProduct .content {
+    color: #696969;
+    font-family: "宋体";
+    min-height: 745px;
+	width:1180px;
+    left: 0;
+    position: relative;
+    text-align: left;
+    top: 0;
+	}
+
+#shootProduct .content .title{
+	margin-left:90px;
+	height: 65px;
+	margin-top:25px;
+	
+	}
+#shootProduct .content .title .na {
+    font-family: "微软雅黑";
+    color: #000;
+    font-size: 20px;
+	margin-right:20px;
+	}
+#shootProduct .content .title .titleinput {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    font-family: "微软雅黑";
+    color: #535353;
+    font-size: 16px;
+    height: 27px;
+    padding: 5px 10px;
+    width: 540px;
+	}
+#shootProduct .content .title .inputtext{
+	border:0;
+	background:none;
+    color: #696969;
+    font-family: "宋体";
+	}	
+#shootProduct .content .divChooseCon{
+	position:relative;
+	left:0;
+	right:0;
+	width: 1140px;
+	margin:15px auto;
+    min-height: 670px;
+	}
+#shootProduct .content .divChooseCon .shootBar{
+	height: 188px;
+	width:176px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+	border-bottom:1px solid #e3e3e3;
+	}
+#shootProduct .content .divChooseCon .shootBar ul li{
+	/*display:inline-block;*/
+	width:174px;
+	height:46px;
+	line-height:46px;
+	text-align:center;
+	cursor:pointer;
+	background:#f9f9f9;
+	border:1px solid #e3e3e3;
+	border-bottom:0;
+	color:#000;
+	}
+#shootProduct .content .divChooseCon .shootBar ul li:hover,
+#shootProduct .content .divChooseCon .shootBar ul .active{
+	background:#fff;
+	color:#f00;
+	}
+	
+	
+	
+	
+	
+/*右边模块*/
+
+/*第一行*/
+#shootProduct .content .divChooseCon  .divInfo{
+	position:absolute;
+	left:175px;
+	top:0;
+	width: 860px;
+    min-height: 500px;
+	border:1px solid #e3e3e3;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productType{
+	position:relative;
+	left:0;
+	top:0;
+	width: 860px;
+    min-height: 100px;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productType .characterl{
+   	display:inline-block;
+	float:left;
+	width:80px;
+	height:50px;
+	line-height:50px;
+	text-align:right;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .proType{
+	float:left;
+	margin-left: 30px;
+	padding-bottom:20px;
+	width:750px;
+    min-height: 100px;
+	
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .proType li{
+	position:relative;
+	left:0px;
+	top:0;
+	float:left;
+    font-family: "微软雅黑";
+	height:23px;
+	line-height:23px;
+	cursor:pointer;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:10px;
+	margin-top:14px;
+	
+	color:#000;
+	border:1px solid #e8e8e8;
+	background:#fcfcfc;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .proType li i{
+	display:none;
+	position:absolute;
+	right:0px;
+	bottom:0;
+	width:11px;
+	height:10px;
+	background:url(../../../pubimg/images/relprocolor.png) 0 0 no-repeat;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productType .proType li a{
+	display:none;
+	position:absolute;
+	top:-6px;
+	right:-6px;
+	width:16px;
+	height:16px;
+	background:url(../../../pubimg/images/background.png) -98px -110px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .proType .active{
+	color:#ed9f23;
+	border:1px solid #ed9f23;
+	background:#fff9ef;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .proType .active i{
+	display:block;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .proType li:hover{
+	
+	color:#ed9f23;
+	border:1px solid #ed9f23;
+	background:#fff9ef;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productType .proType li:hover a{
+	display:block;
+	}
+
+/*第一行*/	
+
+
+
+/*作品征集增加自定义*/
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi{
+	float:left;
+	position:relative;
+	top:0;
+	left:0;
+    margin-top: 14px;
+	margin-right:10px;
+	}
+
+
+
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi .addF{
+	background:#FCFCFC;
+    border: 1px dashed #dbd3ac;
+    color: #8c8c8c;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    height: 23px;
+    line-height: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
+	}
+	
+
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi .custom{
+	width: 180px;
+    height: 78px;
+	position:absolute;
+	top:30px;
+	left:-20px;
+	z-index:1000;
+	background:#fff;
+	padding:0 20px;
+    border: 1px solid #d8d8d8;
+	display:none;
+	}
+	
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi .custom .sanjiao{
+	position:absolute;
+	top:-8px;
+	left:30px;
+	width:12px;
+	height:8px;
+	background:url(../../../../public/images/bubbleTriangle.png) 0 0 no-repeat;
+	}
+		
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi  .custom .character{
+	text-align:left;
+    height: 26px;
+	width: 220px;
+	margin-top:10px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi  .custom .addCustom{
+	height: 48px;
+	width: 220px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi  .custom .addCustom .addinput{
+    background:#FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 17px;
+    padding: 5px 10px;
+    width: 99px;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productType .addCustomLi  .custom .addCustom .surebut{
+	border:0;
+	background:#C73F41;
+	color:#fff;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    width: 55px;
+    height: 29px;
+	cursor:pointer;
+	}
+
+
+
+/*作品征集增加自定义*/
+
+
+
+
+
+
+
+/*第二行*/	
+#shootProduct .content .divChooseCon  .divInfo .shootWay{
+	width: 860px;
+    height: 120px;
+	position:relative;
+	left:0;
+	top:0;
+	}	
+
+
+#shootProduct .content .divChooseCon  .divInfo .shootWay .left .character{
+   	display:inline-block;
+	width:80px;
+	height:80px;
+	line-height:15px;
+	text-align:right;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootWay  .num{
+   	position:absolute;
+	right:00px;
+	bottom:20px;
+	}	
+#shootProduct .content .divChooseCon  .divInfo .shootWay textarea {
+	position:absolute;
+	right:76px;
+	top:0;
+	width:750px;
+    border: 1px solid #E9E8E6;
+    height: 90px;
+    line-height: 18px;
+    overflow: auto;
+    padding: 5px;
+    resize: none;
+    width: 660px;
+	font-size:13px;
+	background:#fcfcfc;
+	}	
+
+#shootProduct .content .divChooseCon  .divInfo .shootWay .inputtext {
+    background: none ;
+    border: 0 none;
+    color: #696969;
+    font-family: "宋体";
+	width:25px;
+	}
+/*第二行*/
+		
+
+/*第三行*/	
+#shootProduct .content .divChooseCon  .divInfo .shootTime{
+	width: 860px;
+    height: 100px;
+	border-bottom:1px solid #e3e3e3;
+	} 
+#shootProduct .content .divChooseCon  .divInfo .shootTime .td1{
+	width:88px;
+	text-align:right;
+	padding-right:20px;
+    height: 48px;
+    line-height: 48px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .workStandard{
+	width:220px;
+    height: 40px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .workStandard .numinput {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    height: 17px;
+    padding: 5px 8px;
+    width: 35px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .td3{
+	width:100px;
+	text-align:right;
+	padding-right:20px;
+    height: 48px;
+    line-height: 48px;
+	}
+
+
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum{
+	height:40px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .numinput {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 17px;
+    padding: 5px 10px;
+    width: 30px;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .nums{
+	margin-left:10px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .subtract {
+	background:url(../../../pubimg/images/changeNum.png) 0 0 no-repeat;
+    border: 0 none;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .subtract:hover {
+	background:url(../../../pubimg/images/changeNum.png) 0 -20px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .subtract:active {
+	background:url(../../../pubimg/images/changeNum.png) 0 -40px no-repeat;
+	}
+	
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .plus {
+	background:url(../../../pubimg/images/changeNum.png) -21px 0 no-repeat;
+    border: 0 none;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .plus:hover {
+	background:url(../../../pubimg/images/changeNum.png) -21px -20px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .divNum .plus:active {
+	background:url(../../../pubimg/images/changeNum.png) -21px -40px no-repeat;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .shootTime .time{
+	height:50px;
+	position:relative;
+	top:0px;
+	left:0;
+	z-index:10;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .timeInputStr {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 21px;
+    padding: 3px 10px;
+    width: 120px;
+	}
+	
+
+/*创意图片*/
+#shootProduct .content .divChooseCon  .divInfo .shootTime .shootSourceFileFormat{
+	width:280px;
+    height: 48px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .workStandardcytp{
+	width:100px;
+    height: 48px;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .shootTime .shootSourceFileFormat li i{
+	background:url(../../../pubimg/images/relprocolor.png) 0 -60px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .shootTime .shootSourceFileFormat .active,
+#shootProduct .content .divChooseCon  .divInfo .shootTime .shootSourceFileFormat li:hover{
+	color:#584b5c;
+	border:1px solid #584b5c;
+	background:#eef2fe;
+	}
+/*创意图片*/
+
+
+/*第三行*/
+
+
+
+
+
+/*第四行*/
+#shootProduct .content .divChooseCon  .divInfo .productNum{
+	width: 860px;
+    height: 200px;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productNum .td1{
+	width:88px;
+	text-align:right;
+	padding-right:20px;
+    height: 48px;
+    line-height: 48px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .tdone{
+	width:88px;
+	text-align:right;
+	padding-right:20px;
+    height: 20px;
+    line-height: 20px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .shootWayCon{
+	height:40px;
+	width:180px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .priceinput {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 17px;
+    padding: 5px 10px;
+    width: 100px;
+	}
+
+#shootProduct .content .divChooseCon  .divInfo .productNum .shootCopyright li i{
+	background:url(../../../pubimg/images/relprocolor.png) 0 -30px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .shootCopyright .active,
+#shootProduct .content .divChooseCon  .divInfo .productNum .shootCopyright li:hover{
+	color:#64373c;
+	border:1px solid #64373c;
+	background:#fff1f4;
+	}
+	
+	
+#shootProduct .content .divChooseCon  .divInfo .productNum .invitationType li i{
+	background:url(../../../pubimg/images/relprocolor.png) 0 -120px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .invitationType .active,
+#shootProduct .content .divChooseCon  .divInfo .productNum .invitationType li:hover{
+	background: none repeat scroll 0 0 #FDE6FA;
+    border: 1px solid #B33C9A;
+    color: #B33C9A;
+	}
+
+
+/*#shootProduct .content .divChooseCon  .divInfo .productNum .shootWayjijia li i{
+	background:url(../../../pubimg/images/relprocolor.png) 0 -105px no-repeat;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .shootWayjijia .active,
+#shootProduct .content .divChooseCon  .divInfo .productNum .shootWayjijia li:hover{
+	color:#b89723;
+	border:1px solid #b89723;
+	background:#fffae8;
+	}*/
+	
+#shootProduct .content .divChooseCon  .divInfo .productNum .invitation .inputinvit{
+	background: #f9f9f9;
+    border: 0;
+    cursor: pointer;
+	border:1px solid #e2e2e2;
+    height: 22px;
+    width: 100px;
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .invitation a{
+	text-decoration:underline;
+	color:#0067b8;
+	
+	}
+#shootProduct .content .divChooseCon  .divInfo .productNum .yqhy{
+	color:#FF0000;
+	}
+/*第四行*/
+
+#shootProduct .content .divChooseCon .divInfo .divChoose{
+    height: 50px;
+	border-top: 1px solid #E3E3E3;
+	}
+#shootProduct .content .divChooseCon .divInfo .divChoose .character {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: right;
+    width: 80px;
+	margin-right: 25px;
+	}
+
+#shootProduct .content .divChooseCon .divInfo  .divChoose .chooseIn{
+	display:inline-block;
+    font-family: "微软雅黑";
+	height:23px;
+	line-height:23px;
+	cursor:pointer;
+	padding-left:10px;
+	padding-right:10px;
+	color:#000;
+	border:1px solid #e8e8e8;
+	background:#fcfcfc;
+	}
+
+
+
+
+
+#shootProduct .content .submit {
+    height: 80px;
+    right: 0;
+    position: absolute;
+    bottom: 20px;
+    width: 1000px;
+	}
+#shootProduct .content .submit .finished{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    margin-left: 12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	right: 90px;
+    position: absolute;
+    bottom: 0;
+	}
+#shootProduct .content .submit .finished:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+#shootWayConSpanYQ,#collectTotalValue{
+	display:none;
+	}
+#choseTime{
+	position:relative;
+	top:0;
+	left:0;
+	z-index:100;
+	}
+#choseTime2{
+	position:relative;
+	top:0;
+	left:0;
+	z-index:99;
+	}

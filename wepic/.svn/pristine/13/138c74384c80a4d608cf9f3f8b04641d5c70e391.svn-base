@@ -1,0 +1,794 @@
+package com.wetuo.wepic.publish.actions;
+
+import java.awt.Stroke;
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
+
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.annotations.JSON;
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import sun.print.resources.serviceui;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.org.apache.regexp.internal.recompile;
+import com.sun.xml.internal.bind.v2.runtime.Name;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.struts.Constants;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.util.ConvertChinese;
+import com.wetuo.wepic.common.util.HtmlToDoc;
+import com.wetuo.wepic.common.util.OperateImage;
+import com.wetuo.wepic.common.util.PropertiesRead;
+import com.wetuo.wepic.common.util.UploadUtils;
+import com.wetuo.wepic.common.util.zipcompression;
+
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.service.UserService;
+import com.wetuo.wepic.publish.beans.Publish;
+import com.wetuo.wepic.publish.beans.PublishCat;
+import com.wetuo.wepic.publish.beans.PublishCat_Story;
+import com.wetuo.wepic.publish.beans.PublishSpecialCat;
+import com.wetuo.wepic.publish.beans.Story;
+import com.wetuo.wepic.publish.beans.StoryDetail;
+import com.wetuo.wepic.publish.service.PublishCatService;
+import com.wetuo.wepic.publish.service.PublishCat_StorySevice;
+import com.wetuo.wepic.publish.service.PublishService;
+import com.wetuo.wepic.publish.service.PublishSpecialCatService;
+import com.wetuo.wepic.publish.service.StoryDetailService;
+import com.wetuo.wepic.publish.service.StoryService;
+@SuppressWarnings({ "unchecked", "serial" ,"unused"})
+public class StoryAction extends PageAction{
+	private StoryService storyService;
+	private File mycover; 
+	private String mycoverFileName; 
+	private String mycoverContentType;
+	private String msg;
+	private Integer publishId;
+	private Story story;
+	private List<PublishCat> publishCats;
+	private List<PublishSpecialCat> specialCats;
+	private List<Story> stories;
+	private Integer x1;
+	private Integer y1;
+	private Integer x2;
+	private Integer y2;
+	private Integer picNum;
+	private Integer textNum;
+	private List<StoryDetail> storyDetails;
+	private PublishSpecialCat specialCat;
+	private List<PublishCat_Story> publishCatStories;
+	private Integer flag;
+	private Integer storyId;
+	private List storytags;
+	private String downFileName;
+	private String copyrightuseprice;
+	private String copyrightcopyrightprice;
+	private Integer totalRes;
+	private String[] count;
+	private int publishSpecialCatId;
+	private int storystatu;
+	private Integer toolStory;
+	private Integer publishedStory;
+	private List<Story> stroys;
+	private Integer specialId;
+	
+	private OutputStream res;
+	private ZipOutputStream zos;
+	
+	
+	///////////////////////管理员审核///////////////////////////////
+	public String waitcheck() {
+		DetachedCriteria criteria1=DetachedCriteria.forClass(Story.class);
+		criteria1.createAlias("publishStatus", "publishStatus");
+		criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.onOffer",1), Restrictions.ne("publishStatus.pass",1)));
+		criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.unreleased",0),Restrictions.ne("publishStatus.awaitingReview",0)));
+//		criteria1.add(Restrictions.ne("publishStatus.awaitingReview",0));
+//		criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.unreleased",0), Restrictions.or(Restrictions.ne("publishStatus.awaitingReview",0)
+//				,Restrictions.or(Restrictions.ne("publishStatus.onOffer",1), Restrictions.ne("publishStatus.pass",1)))));
+		super.pager=this.getStoryService().findbyDetachedCriteria(criteria1, pageNo,5);
+		//super.pager=this.getStoryService().listofstatu(5,pageNo);
+		return "waitcheck";
+	}
+	
+	public String adminsearch() {
+		story=this.getStoryService().select(storyId);
+		return "adminsearch";
+	}
+	/**
+	 * 管理员删除
+	 * @return
+	 */
+	public String admindelchecking() {
+		this.getStoryService().admindelchecking(storyId);
+		
+		return "admindelchecking";
+	}
+	
+	public String adminchecksuc() {
+		this.getStoryService().adminchecksuc(storyId);
+		return "adminchecksuc";
+	}
+	public String adminchecksucsearch() {
+		story=this.getStoryService().select(storyId);
+		return "adminchecksucsearch";
+	}
+	public String adminedit() {
+		story=this.getStoryService().select(storyId);
+		return "adminedit";
+	}
+	public String checksuclist() {
+		DetachedCriteria criteria1=DetachedCriteria.forClass(Story.class);
+		criteria1.createAlias("publishStatus", "publishStatus");
+		criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.onOffer",0), Restrictions.ne("publishStatus.pass",0)));
+		super.pager=this.getStoryService().findbyDetachedCriteria(criteria1, pageNo,5);
+		//super.pager=this.getStoryService().listofstatu(5,pageNo);
+		return "checksuclist";
+	}
+	
+	
+    ///////////////////////管理员审核///////////////////////////////
+	public InputStream getInputStream() throws Exception{
+		/*下载原图*/
+		story=this.getStoryService().select(storyId);
+		List<StoryDetail> storyDetails=this.getStoryService().findDetailsById(storyId);
+		String tag="cut285175";
+		String cut285175=story.getCover().substring(story.getCover().indexOf(tag)+1+tag.length(),story.getCover().length());
+		String currentAbsoulutePath=Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        PropertiesRead readPro = new PropertiesRead(currentAbsoulutePath+"picpath.properties");//相对路径
+        String cut = readPro.getValue(tag)+"/"+cut285175;
+        String downdir=readPro.getValue("downloaddir");
+        
+		File file=new File(cut);
+		File file2=new File(downdir+"/"+"download");
+		if (!file2.exists()) {
+			file2.mkdir();
+		}
+		File targetFile=new File(file2.getAbsoluteFile()+"/"+file.getName());
+		UploadUtils.copyFile(file,targetFile);
+		for (int i = 0; i < storyDetails.size(); i++) {
+			Publish publish=this.getStoryService().selectPublish(storyDetails.get(i).getPublishId());
+			String originalpic=publish.getOriginalPic();
+			File tempFile=new File(originalpic);
+			File targetFile2=new File(file2.getAbsoluteFile()+"/"+tempFile.getName());
+			UploadUtils.copyFile(tempFile,targetFile2);
+		}
+		String targetDirectory = ServletActionContext.getRequest().getRealPath("/back/personalCentr/myworklib/storydownload.html");
+//		System.out.println(ServletActionContext.getRequest().getRealPath("/back/personalCentr/myworklib/storydownload.html"));
+		new HtmlToDoc().writeWordFile(targetDirectory,file2.getAbsolutePath(),currenttime());//,file2.getAbsolutePath(),currenttime()
+		downFileName=currenttime()+".zip";
+		File file3=new File("d:\\"+downFileName);
+		zipcompression myzip=new zipcompression();
+		myzip.zip(file2.getAbsolutePath(),file3.getPath());
+		return new FileInputStream(file3.getAbsolutePath());
+	}
+	public String currenttime() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyyMMddHHmm");
+    	return df.format(new Date());	
+	}
+	public String downloadstory() throws Exception {
+		String currentAbsoulutePath=Thread.currentThread().getContextClassLoader().getResource("").getPath();
+		PropertiesRead readPro = new PropertiesRead(currentAbsoulutePath+"picpath.properties");//相对路径
+		String downdir=readPro.getValue("downloaddir");
+		File file2=new File(downdir+"/"+"download");
+		new UploadUtils().deleteFile(file2);
+		int id=super.getLonginUserId();
+		if(id==0){
+			return "login";
+		}
+		return "downloadstory";
+	}
+	
+	public Object getModel() {
+		if (story == null) {
+			story = new Story();
+		}
+		return story;
+	}
+	/**
+	 * 获得摄影故事列表
+	 * @return
+	 */
+	public String storylist() {
+		publishCats=this.getStoryService().publishCats();
+		specialCats=this.getStoryService().specialCats();
+		int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+		super.pager = this.getStoryService().storylist(uId,16,pageNo);
+		toolStory=pager.getRowCount();
+		DetachedCriteria criteria1=DetachedCriteria.forClass(Story.class);
+		criteria1.createAlias("publishStatus", "publishStatus");
+		criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.pass",0), Restrictions.ne("publishStatus.onOffer",0)));
+		String fabutotal=storyService.findbyCountBySpecialCat(criteria1);
+		publishedStory=Integer.valueOf(fabutotal);
+		return "storylist";
+	}
+	@JSON(serialize=false)
+	 public String findstorybyCountBySpecialCat(){
+		   int id=super.getLonginUserId();
+		   if(id==0){
+			   return "findstorybyCountBySpecialCat";  
+			   
+		   }
+		   
+		   
+		   DetachedCriteria criteria=DetachedCriteria.forClass(Story.class);
+		   criteria.createAlias("publishSpecialCat", "publishSpecialCat");
+		   if (publishSpecialCatId != 0) {
+			   criteria.add(Restrictions.eq("publishSpecialCat.id", publishSpecialCatId));
+		   }		   
+		   String total=storyService.findbyCountBySpecialCat(criteria);
+		   
+		   
+		   DetachedCriteria criteria1=DetachedCriteria.forClass(Story.class);
+		   criteria1.createAlias("publishSpecialCat", "publishSpecialCat");
+		   criteria1.createAlias("publishStatus", "publishStatus");
+		   criteria1.add(Restrictions.eq("publishSpecialCat.id", publishSpecialCatId));
+		   if (storystatu == 0) {
+		       criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.unreleased", 1), Restrictions.or(Restrictions.ne("publishStatus.pass", 0),
+		    		   Restrictions.or(Restrictions.ne("publishStatus.onOffer", 0), Restrictions.or(Restrictions.ne("publishStatus.copyrightBuyout", 0),
+		    		   Restrictions.or(Restrictions.ne("publishStatus.userSoldout", 0), Restrictions.ne("publishStatus.adminSoldout", 0)))))));
+		   }else if (storystatu == 1) {
+			   criteria1.add(Restrictions.ne("publishStatus.unreleased",1));
+		   }else if (storystatu == 2) {
+			   criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.pass",0), Restrictions.ne("publishStatus.onOffer",0)));
+		   }else if (storystatu == 3) {
+			   criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.copyrightBuyout", 0), Restrictions.or(Restrictions.ne("publishStatus.userSoldout", 0),Restrictions.ne("publishStatus.adminSoldout", 0))));
+		   }
+		   String fabutotal=storyService.findbyCountBySpecialCat(criteria1);
+		   count=new String[]{total,fabutotal};
+		   return "findstorybyCountBySpecialCat";
+	   }
+	/**
+	 * 摄影故事封面裁剪效果
+	 * @return
+	 * @throws Exception
+	 */
+	@JSON(serialize=false)
+	public String cutcover() throws Exception {
+		List tempList=new ArrayList();
+		tempList=this.getStoryService().cutcover(publishId,x1,x2,y1,y2);
+		msg=tempList.get(0).toString();
+		publishId=Integer.valueOf(tempList.get(1).toString());
+		return "cutcover";
+	}
+	/**
+	 * 上传摄影故事封面
+	 * @return
+	 */
+	@JSON(serialize=false)
+	public String uploadimg() {
+//		msg=publish.gett;
+			int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+			List tempList=null;
+			
+			BufferedImage bufferedImage = null;
+			try {
+				bufferedImage = ImageIO.read(mycover);
+				String coverpath=mycover.getAbsolutePath();
+				String covertype=mycoverFileName.substring(mycoverFileName.lastIndexOf(".")+1);
+				if (covertype.equalsIgnoreCase("jpg") || covertype.equalsIgnoreCase("tif") || covertype.equalsIgnoreCase("tiff")) {
+					if (bufferedImage.getWidth() >3000 || bufferedImage.getHeight() >3000) {
+						tempList=this.getStoryService().uploadimg(uId, mycover, mycoverFileName,mycoverContentType);
+						flag=1;//成功
+						publishId=Integer.valueOf(tempList.get(0).toString());
+						Publish publish=this.getStoryService().selectPublish(publishId);
+						msg=publish.getSmallDrawCut();
+					}else {
+						flag=0;//图片太小
+						publishId=0;
+						msg="fail";
+					}
+				}else {
+					flag=2;// 图片格式不对
+					publishId=0;
+					msg="fail";
+				}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+		return "uploadimg";
+	}
+	
+	/**
+	 * 保存摄影故事初始化数据
+	 * @return
+	 */
+	public String initdata() {
+		publishCats=this.getStoryService().publishCats();
+		specialCats=this.getStoryService().specialCats();
+		return "initdata";
+	}
+	/**
+	 * 准备发布 保存摄影故事
+	 * @return
+	 * @throws Exception
+	 */
+	public String savestory() throws Exception {
+		////flag 为1 发布摄影故事           0 保存摄影故事
+		int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+		int coverId=Integer.valueOf(ServletActionContext.getRequest().getParameter("coverId"));
+		String mytags[]=ServletActionContext.getRequest().getParameterValues("mytags");
+		String specialId=ServletActionContext.getRequest().getParameter("special");
+		String publishCats[]=ServletActionContext.getRequest().getParameterValues("temppublishcat");//摄影故事类别
+		String publishIds[]=ServletActionContext.getRequest().getParameterValues("temppublish");//作品库
+		String storycxts[]=ServletActionContext.getRequest().getParameterValues("storycxt");//故事详细内容
+		if (flag==0) {
+			int res=this.getStoryService().savestory(story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts);
+			return "insertsuc";
+		}else if (flag==1) {
+			storyId=this.getStoryService().savestory(story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts);
+			return "startpubish";
+		} 
+		return null;
+		
+	}
+	
+	
+	/**
+	 * 编辑摄影故事
+	 * @return
+	 */
+	public String editstory() {
+		int mystoryid=storyId;
+		int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+		int coverId=Integer.valueOf(ServletActionContext.getRequest().getParameter("coverId"));
+		String mytags[]=ServletActionContext.getRequest().getParameterValues("mytags");
+		String specialId=ServletActionContext.getRequest().getParameter("special");
+		String publishCats[]=ServletActionContext.getRequest().getParameterValues("temppublishcat");//摄影故事类别
+		String publishIds[]=ServletActionContext.getRequest().getParameterValues("temppublish");//作品库
+		String storycxts[]=ServletActionContext.getRequest().getParameterValues("storycxt");//故事详细内容
+		//flag 0 修改未发布的摄影故事成功    1 将未发布的摄影故事发布
+		if (flag==0) {
+			int res=this.getStoryService().editunpublishedstory(storyId,story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts);
+			return "editsuc";
+		}else if (flag==1) {
+			storyId=this.getStoryService().editunpublishedstory(storyId,story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts);
+			return "startpubish";
+		} 
+		return "";
+	}
+	/**
+	 * 开始发布摄影故事
+	 * @return
+	 */
+	public String startpublish2() {
+		publishCats=this.getStoryService().publishCats();
+		specialCats=this.getStoryService().specialCats();
+		story=this.getStoryService().select(storyId);
+		storyDetails=this.getStoryService().findDetailsById(storyId);
+		publishCatStories=this.getStoryService().findStoryCat(storyId);
+		specialCat=story.getPublishSpecialCat();
+		picNum=this.getStoryService().picNumber(storyId);
+		textNum=this.getStoryService().textNumber(storyId);
+		storytags=new ArrayList();
+		String []a=story.getTags().split(" ");
+		for (int i = 0; i < a.length; i++) {
+			storytags.add(a[i]);
+		}
+		
+		
+		
+		return "startpublish2";
+	}	
+	/**
+	 * 查看摄影故事详情
+	 * @return
+	 */
+	public String searchStoryunpublish(){
+		int id=Integer.parseInt(ServletActionContext.getRequest().getParameter("id"));
+		story=this.getStoryService().findbyStory(id);
+		storyDetails=this.getStoryService().findDetailsById(id);
+		publishCatStories=this.getStoryService().findStoryCat(id);
+		specialCat=story.getPublishSpecialCat();
+		int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+		super.pager=this.getStoryService().findStoryByUserAndSpecial(uId,specialCat.getId(),1,pageNo);
+		toolStory=pager.getRowCount();
+		DetachedCriteria criteria1=DetachedCriteria.forClass(Story.class);
+		criteria1.createAlias("publishStatus", "publishStatus");
+		criteria1.add(Restrictions.or(Restrictions.ne("publishStatus.pass",0), Restrictions.ne("publishStatus.onOffer",0)));
+		String fabutotal=storyService.findbyCountBySpecialCat(criteria1);
+		publishedStory=Integer.valueOf(fabutotal);
+		return "searchStoryunpublish";
+	}
+	
+	@JSON(serialize=false)
+	public String storyprenext() {
+		int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+		
+		stories=this.getStoryService().storybyuserandspecial(uId,specialId);
+		return "storyprenext";
+	}
+	/**
+	 * 查看已发布的摄影故事详情
+	 * @return
+	 */
+	public String searchStorypublish(){
+		int id=Integer.parseInt(ServletActionContext.getRequest().getParameter("id"));
+		story=this.getStoryService().findbyStory(id);
+		storyDetails=this.getStoryService().findDetailsById(id);
+		picNum=this.getStoryService().picNumber(id);
+		textNum=this.getStoryService().textNumber(id);
+		publishCatStories=this.getStoryService().findStoryCat(id);
+		return "searchStorypublish";
+	}
+	/**
+	 * 编辑未发布的摄影故事
+	 * @return
+	 */
+	public String editunpublishedstory() {
+		publishCats=this.getStoryService().publishCats();
+		specialCats=this.getStoryService().specialCats();
+		story=this.getStoryService().select(storyId);
+		storyDetails=this.getStoryService().findDetailsById(storyId);
+		publishCatStories=this.getStoryService().findStoryCat(storyId);
+		specialCat=story.getPublishSpecialCat();
+		picNum=this.getStoryService().picNumber(storyId);
+		textNum=this.getStoryService().textNumber(storyId);
+		storytags=new ArrayList();
+		String []a=story.getTags().split(" ");
+		for (int i = 0; i < a.length; i++) {
+			storytags.add(a[i]);
+		}
+		return "editunpublishedstory";
+	}
+	
+	public String editpublishedstory() {
+		publishCats=this.getStoryService().publishCats();
+		specialCats=this.getStoryService().specialCats();
+		story=this.getStoryService().select(storyId);
+		storyDetails=this.getStoryService().findDetailsById(storyId);
+		publishCatStories=this.getStoryService().findStoryCat(storyId);
+		specialCat=story.getPublishSpecialCat();
+		picNum=this.getStoryService().picNumber(storyId);
+		textNum=this.getStoryService().textNumber(storyId);
+		storytags=new ArrayList();
+		String []a=story.getTags().split(" ");
+		for (int i = 0; i < a.length; i++) {
+			storytags.add(a[i]);
+		}
+		return "editpublishedstory";
+	}
+	
+	
+	/**
+	 * 删除摄影故事
+	 * @return
+	 */
+	public String delstory() {
+		this.getStoryService().delstorydetailofstory(storyId);
+		this.getStoryService().delcatstory(storyId);
+		this.getStoryService().delete(storyId);
+		return "delstory";
+	}
+	/**
+	 * 已发布的摄影故事下架
+	 * @return
+	 */
+	public String offsale() {
+		this.getStoryService().storyoffsale(storyId);
+		return "offsale";
+	}
+	
+	
+	public String preparepublishstory() {
+		int mystoryid=storyId;
+		int uId=Integer.parseInt(ActionContext.getContext().getSession().get("id").toString());
+		int coverId=Integer.valueOf(ServletActionContext.getRequest().getParameter("coverId"));
+		String mytags[]=ServletActionContext.getRequest().getParameterValues("mytags");
+		String specialId=ServletActionContext.getRequest().getParameter("special");
+		String publishCats[]=ServletActionContext.getRequest().getParameterValues("temppublishcat");//摄影故事类别
+		String publishIds[]=ServletActionContext.getRequest().getParameterValues("temppublish");//作品库
+		String storycxts[]=ServletActionContext.getRequest().getParameterValues("storycxt");//故事详细内容
+		String copyres=story.getCopyrightres();
+		if (copyres.contains("0") && (!copyres.contains("1"))) {
+			storyId=this.getStoryService().publishstorysucofusecopyright(storyId,story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts,copyrightuseprice);
+		}else if ((!copyres.contains("0")) && copyres.contains("1")) {
+			storyId=this.getStoryService().publishstorysucofcopyright(storyId,story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts,copyrightcopyrightprice);
+		}else {
+			storyId=this.getStoryService().publishstorysucofboth(storyId,story,uId,coverId, mytags, specialId, publishCats, publishIds, storycxts,copyrightcopyrightprice,copyrightuseprice);
+		}
+		return "publishstorysuc";
+	}
+	
+	
+	
+	public String publishstory() {
+		return "publishstory";
+	}
+	
+	public StoryService getStoryService() {
+		return storyService;
+	}
+	public void setStoryService(StoryService storyService) {
+		this.storyService = storyService;
+	}
+	public File getMycover() {
+		return mycover;
+	}
+
+	public void setMycover(File mycover) {
+		this.mycover = mycover;
+	}
+
+	public String getMycoverFileName() {
+		return mycoverFileName;
+	}
+
+	public void setMycoverFileName(String mycoverFileName) {
+		this.mycoverFileName = mycoverFileName;
+	}
+
+	public String getMycoverContentType() {
+		return mycoverContentType;
+	}
+
+	public void setMycoverContentType(String mycoverContentType) {
+		this.mycoverContentType = mycoverContentType;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public Story getStory() {
+		return story;
+	}
+
+	public void setStory(Story story) {
+		this.story = story;
+	}
+
+	public List<PublishCat> getPublishCats() {
+		return publishCats;
+	}
+
+	public void setPublishCats(List<PublishCat> publishCats) {
+		this.publishCats = publishCats;
+	}
+
+	public List<PublishSpecialCat> getSpecialCats() {
+		return specialCats;
+	}
+
+	public void setSpecialCats(List<PublishSpecialCat> specialCats) {
+		this.specialCats = specialCats;
+	}
+	public Integer getPublishId() {
+		return publishId;
+	}
+	public void setPublishId(Integer publishId) {
+		this.publishId = publishId;
+	}
+	public Integer getX1() {
+		return x1;
+	}
+	public void setX1(Integer x1) {
+		this.x1 = x1;
+	}
+	public Integer getY1() {
+		return y1;
+	}
+	public void setY1(Integer y1) {
+		this.y1 = y1;
+	}
+	public Integer getX2() {
+		return x2;
+	}
+	public void setX2(Integer x2) {
+		this.x2 = x2;
+	}
+	public Integer getY2() {
+		return y2;
+	}
+	public void setY2(Integer y2) {
+		this.y2 = y2;
+	}
+	public List<Story> getStories() {
+		return stories;
+	}
+	public void setStories(List<Story> stories) {
+		this.stories = stories;
+	}
+	public Integer getPicNum() {
+		return picNum;
+	}
+	public void setPicNum(Integer picNum) {
+		this.picNum = picNum;
+	}
+	public Integer getTextNum() {
+		return textNum;
+	}
+	public void setTextNum(Integer textNum) {
+		this.textNum = textNum;
+	}
+	public List<StoryDetail> getStoryDetails() {
+		return storyDetails;
+	}
+	public void setStoryDetails(List<StoryDetail> storyDetails) {
+		this.storyDetails = storyDetails;
+	}
+	public PublishSpecialCat getSpecialCat() {
+		return specialCat;
+	}
+	public void setSpecialCat(PublishSpecialCat specialCat) {
+		this.specialCat = specialCat;
+	}
+	public List<PublishCat_Story> getPublishCatStories() {
+		return publishCatStories;
+	}
+	public void setPublishCatStories(List<PublishCat_Story> publishCatStories) {
+		this.publishCatStories = publishCatStories;
+	}
+	
+	public Integer getFlag() {
+		return flag;
+	}
+	public void setFlag(Integer flag) {
+		this.flag = flag;
+	}
+	public Integer getStoryId() {
+		return storyId;
+	}
+	public void setStoryId(Integer storyId) {
+		this.storyId = storyId;
+	}
+	public List getStorytags() {
+		return storytags;
+	}
+	public void setStorytags(List storytags) {
+		this.storytags = storytags;
+	}
+	
+	public String getDownFileName() {
+		return downFileName;
+	}
+	public void setDownFileName(String downFileName) {
+		this.downFileName = downFileName;
+	}
+	public String getCopyrightuseprice() {
+		return copyrightuseprice;
+	}
+	public void setCopyrightuseprice(String copyrightuseprice) {
+		this.copyrightuseprice = copyrightuseprice;
+	}
+	public String getCopyrightcopyrightprice() {
+		return copyrightcopyrightprice;
+	}
+	public void setCopyrightcopyrightprice(String copyrightcopyrightprice) {
+		this.copyrightcopyrightprice = copyrightcopyrightprice;
+	}
+	public Integer getTotalRes() {
+		return totalRes;
+	}
+	public void setTotalRes(Integer totalRes) {
+		this.totalRes = totalRes;
+	}
+	public String[] getCount() {
+		return count;
+	}
+	public void setCount(String[] count) {
+		this.count = count;
+	}
+	public int getPublishSpecialCatId() {
+		return publishSpecialCatId;
+	}
+	public void setPublishSpecialCatId(int publishSpecialCatId) {
+		this.publishSpecialCatId = publishSpecialCatId;
+	}
+	public int getStorystatu() {
+		return storystatu;
+	}
+	public void setStorystatu(int storystatu) {
+		this.storystatu = storystatu;
+	}
+	public Integer getToolStory() {
+		return toolStory;
+	}
+	public void setToolStory(Integer toolStory) {
+		this.toolStory = toolStory;
+	}
+	public Integer getPublishedStory() {
+		return publishedStory;
+	}
+	public void setPublishedStory(Integer publishedStory) {
+		this.publishedStory = publishedStory;
+	}
+	public OutputStream getRes() {
+		return res;
+	}
+	public void setRes(OutputStream res) {
+		this.res = res;
+	}
+	public ZipOutputStream getZos() {
+		return zos;
+	}
+	public void setZos(ZipOutputStream zos) {
+		this.zos = zos;
+	}
+	public List<Story> getStroys() {
+		return stroys;
+	}
+	public void setStroys(List<Story> stroys) {
+		this.stroys = stroys;
+	}
+	public Integer getSpecialId() {
+		return specialId;
+	}
+	public void setSpecialId(Integer specialId) {
+		this.specialId = specialId;
+	}
+	public static void main(String[] args) throws Exception {
+		//new HtmlToDoc().writeWordFile("D:\\Java\\apache-tomcat-6.0.26\\webapps\\wepic\\back\\personalCentr\\myworklib\\storydownload.html");//,file2.getAbsolutePath(),currenttime()
+//		String temp[]={"aaa","sssssssss","eee","bbbb","xxxxx"};
+//		List a=new ArrayList();
+//		for (int i = 0; i < temp.length; i++) {
+//			a.add(temp[i]);
+//		}
+//		String abc="";
+//		for (int i = 0; i < a.size(); i++) {
+//			abc+=a.get(i)+" ";
+//		}
+//		System.out.println(abc);
+//		String b=a.toString();
+//		String s[]=b.split(" ,");
+//		System.out.println(s);
+//		String myArray[]={"aa","bb","cc","dd","ee","ff","gg","hh","abc"};
+//		String pre="";
+//		String next="";
+//		for(int i=0; i<myArray.length;i++){
+//	  	      //alert(i+"**********************");  	  	  
+//	  	      if(i==0){
+//	  	        pre=myArray[0];
+//	  	        next=myArray[i+1];
+//	  	        }
+//	  	        else{
+//	  	  	      if(myArray[i].equals("ee")){
+//	  	  	          pre=myArray[i-1];
+//	  	  	          next=myArray[i+1];
+//	  	  	      }else if((i+1) == (myArray.length-1)){
+//	  	  	      pre=myArray[i-1];
+//	  	  	          next=myArray[i];
+//	  	  	      }
+//	  	      }  	  	  
+//	  	  }
+		
+		
+	}
+}

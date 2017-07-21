@@ -1,0 +1,223 @@
+*{margin:0;padding:0;}
+
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	color:#848484;
+  	font-family:微软雅黑 ,Arial, Verdana, 宋体;
+  	font-size:12px;
+	background:#F9F9F9;
+	}
+/*------------------------------------------------------------*/
+
+/*公共元素控制*/
+img{
+	border:0;
+	}
+ul{
+	list-style:none;
+	}
+a{
+  /*color:#A5A5A5;*/
+  text-decoration:none;
+}
+
+/*公共元素控制*/
+/*------------------------------------------------------------*/
+
+
+
+/*网页整体布局*/
+
+
+/*topbarRegisterLogin.css */
+
+/*header.css */
+
+#container{
+	position:relative;
+	top:0;
+	left:0;
+	width:100%;
+	margin:0 auto;
+	}
+#divLogin{
+	width:100%;
+	height:400px;
+	margin:50px auto;
+	}
+#divLoginContent{
+	margin:0px auto;
+	width:405px;
+	height:397px;
+	border:1px solid #eaeaea;
+	background:#FFFFFF;
+	}
+
+
+/* 登录内容开始 */
+#divRegisterTitle{
+	position:relative;
+	top:0;
+	left:0;
+	margin:0 auto;
+	width:363px;
+	height:92px;
+	line-height:92px;
+	border-bottom:1px solid #eaeaea;
+	}
+#divRegisterTitle span{
+	font-size:26px;
+	font-weight:normal;
+	font-family:"微软雅黑";
+	color:#3c3c3c;
+	}
+#divUserName{
+	position:relative;
+	top:0;
+	left:0;
+	margin-top:30px;
+	height: 60px;
+	}
+#divUserPassword{
+	position:relative;
+	top:0;
+	left:0;
+	}
+#divLoginContent .text {
+    border: 1px solid #CCCCCC;
+    color: #7f7f7f;
+	background:#efedee;
+    font-family: "微软雅黑","宋体" ;
+    font-size: 14px;
+    height: 20px;
+    padding: 10px 33px 10px 15px;
+    width: 200px;
+	border-radius:3px 3px 3px 3px;
+}
+
+#divLoginContent .i-name {
+    height: 20px;
+	position: absolute;
+    top: 12px;
+	right:90px;
+    width: 20px;
+}
+
+#i-name{
+	background: url("../images/register.png") no-repeat scroll 0 -30px transparent;
+	}
+#i-password{
+	background: url("../images/register.png") no-repeat scroll 0 -57px transparent;
+	}
+
+#divLoginSubmit{
+	position:relative;
+	top:0;
+	left:0;
+	margin-top:35px;
+	}
+#divLoginSubmitA{
+	margin:0px auto;
+	width: 163px;	
+	}
+#loginSubmit{
+	cursor:pointer;
+	width: 142px;
+	height:36px;
+	color:#FFFFFF;
+	border:0px;	
+	/*border-radius: 4px 4px 4px 4px;*/
+	font-family:"微软雅黑";
+	font-size:18px;
+	padding-bottom:2px;
+	}
+#loginSubmit{
+	background:url(../../public/images/buttonGroup01.png)  no-repeat scroll 0 -718px transparent;
+	}
+#loginSubmit:hover{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+#loginSubmit:active{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -792px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}
+	
+#divSecrchPassword{
+	margin-top:15px;
+	}
+#divSecrchPassword a{
+	text-decoration:underline;
+	color:#009af2;
+	font-family:"宋体";
+	}
+#divSecrchPassword .regedit{
+	margin-left:15px;
+	}
+#divSecrchPassword a:hover{
+	text-decoration:none;
+	}
+	
+	
+#quickLogin{
+	margin:0 auto;
+	}
+#quickLogin .qq{
+	cursor:pointer;
+	position:relative;
+	left:0;
+	top:0;
+	float:left;
+	margin-top:25px;
+	margin-left:78px;
+	width:110px;
+	height:30px;
+	line-height:30px;
+	border:1px solid #e8e8e6;
+	background:#fcfcfc;
+	}
+#quickLogin .qq:hover{
+	background:#FFFDF1;
+	}
+#quickLogin .qq i{
+	position:absolute;
+	top:0px;
+	left:5px;
+	width:26px;
+	height:26px;
+	background:url(../images/quickLogin.png) no-repeat 0 0;
+	}
+#quickLogin .qq span{
+	margin-left:25px;
+	}
+#quickLogin .sina{
+	cursor:pointer;
+	position:relative;
+	left:0;
+	top:0;
+	float:left;
+	margin-top:25px;
+	margin-left:5px;
+	width:120px;
+	height:30px;
+	line-height:30px;
+	border:1px solid #e8e8e6;
+	background:#fcfcfc;
+	}
+#quickLogin .sina:hover{
+	background:#FFFDF1;
+	}
+#quickLogin .sina i{
+	position:absolute;
+	top:0px;
+	left:5px;
+	width:26px;
+	height:26px;
+	background:url(../images/quickLogin.png) no-repeat 0 -28px;
+	}
+#quickLogin .sina span{
+	margin-left:25px;
+	}

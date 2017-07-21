@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+	"> 
+	
+	<!-- jdbcTransactionTemplate -->
+	<bean id="jdbcDataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"
+            value="com.mysql.jdbc.Driver" />
+        <property name="url"
+            value="jdbc:mysql://localhost:3319/photography?useUnicode=true" />
+        <property name="username" value="root" />
+        <property name="password" value="" />
+    </bean>
+
+    <bean id="jdbcTransactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="jdbcDataSource" />
+    </bean>
+	
+	<bean id="jdbcTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate" >
+		<property name="transactionManager" ref="jdbcTransactionManager" />
+	</bean>
+	
+	<bean id="transferAccountTransactionalJdbcImpl" class="com.qhkj.goodChance.core.dao.TransferAccountTransactionalJdbcImpl">
+		<property name="dataSource" ref="jdbcDataSource"></property>
+		<property name="transactionTemplate" ref="jdbcTransactionTemplate"></property>
+	</bean>
+	 
+	<!-- jdbcTransactionTemplate -->
+	<bean id="transferAccountTransactionalRealJdbcImpl" class="com.qhkj.goodChance.core.dao.TransferAccountTransactionalRealJdbcImpl">
+		<property name="dataSource" ref="jdbcDataSource"></property>
+	</bean>
+		  
+		
+	
+			
+<!-- //@#$% -->
+</beans>

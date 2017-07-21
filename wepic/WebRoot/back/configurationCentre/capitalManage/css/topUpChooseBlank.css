@@ -1,0 +1,241 @@
+.topUp_chooseBlank{
+	width:870px;
+	height:840px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	}
+
+
+
+
+.topUp_chooseBlank .topUp_top{
+	width:870px;
+	height:78px;
+	text-align:center;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	}
+.topUp_chooseBlank .topUp_top h2{
+	font-weight:normal;
+	color:#000;
+	font-size:24px;
+	line-height:78px;
+	font-family:"微软雅黑";
+	}
+	
+	
+	
+.topUp_chooseBlank .topUp_money{
+	width:770px;
+	height:50px;
+	text-align:left;
+	margin:0px auto;
+	padding-top:40px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #E8E8E8;
+	}
+
+.topUp_chooseBlank .topUp_money .username{
+    font-family: "微软雅黑";
+    font-size: 14px;
+	color:#000;
+	margin-left:10px;
+	margin-right:60px;
+	}
+.topUp_chooseBlank .topUp_money .topUpMoney{
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 114px;
+	margin-left:10px;
+	margin-right:5px;
+	}
+	
+
+
+
+.topUp_chooseBlank .topUp_blank{
+	width:768px;
+	height:400px;
+	margin:0px auto;
+	background:#f9f9f9;
+	}
+.topUp_chooseBlank .topUp_blank .blank {
+    float: left;
+    height: 100px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 256px;
+	}
+
+.topUp_chooseBlank .topUp_blank .blank div{
+    float: left;
+	}
+.topUp_chooseBlank .topUp_blank .blank .bank_radio{
+    width: 15px;
+    height: 15px;
+	margin-top: 42px;
+	margin-left:20px;
+	background:url(../../../pubimg/images/radio.png) 0 -40px no-repeat;
+	}
+/*.topUp_chooseBlank .topUp_blank .blank:hover .bank_radio{
+	background:url(../../../pubimg/images/radio.png) 0 -20px no-repeat;
+	}*/
+.topUp_chooseBlank .topUp_blank .active .bank_radio{
+	background:url(../../../pubimg/images/radio.png) 0 0px no-repeat;
+	}
+
+.topUp_chooseBlank .topUp_blank .blank .bank_radio input{
+	display:none;
+	}
+
+.topUp_chooseBlank .topUp_submit{
+	width:870px;
+	height:120px;
+	margin:50px auto;
+	text-align:center;
+	}
+
+
+.topUp_chooseBlank .topUp_submit .recharge{
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+
+.topUp_chooseBlank .topUp_submit .recharge:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.topUp_chooseBlank .topUp_submit .recharge:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+
+.topUp_chooseBlank .topUp_submit .submit_cancel{
+	margin-top:20px;
+	}
+.topUp_chooseBlank .topUp_submit a {
+    color: #0084C7;
+    text-decoration: underline;
+	}
+
+
+
+
+/*支付宝*/
+.bank_ico_zfb{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 2px no-repeat;
+	}
+/*支付宝*/
+
+/*中国银联*/
+.bank_ico_cup{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -45px no-repeat;
+	}
+/*中国银联*/
+
+/*转账支付*/
+.bank_ico_zz{
+	margin-top: 32px;
+	height:40px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -92px no-repeat;
+	}
+/*转账支付*/
+
+
+
+
+/*中国银行*/
+.bank_ico_bc{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -139px no-repeat;
+	}
+/*中国银行*/
+	
+/*农业银行*/
+.bank_ico_abc{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -277px no-repeat;
+	}
+/*农业银行*/
+	
+/*工商银行*/
+.bank_ico_icbc{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -184px no-repeat;
+	}
+/*工商银行*/
+	
+/*建设银行*/
+.bank_ico_cbc{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -231px no-repeat;
+	}
+/*建设银行*/
+	
+/*招商银行*/
+.bank_ico_cmb{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -322px no-repeat;
+	}
+/*招商银行*/
+	
+/*交通银行*/
+.bank_ico_bcm{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -370px no-repeat;
+	}
+/*交通银行*/
+	
+/*中信银行*/
+.bank_ico_ccb{
+	margin-top: 32px;
+	height:36px;
+	width:159px;
+	margin-left:12px;
+	background:url(../../../pubimg/images/blank.png) 0 -414px no-repeat;
+	}
+/*中信银行*/

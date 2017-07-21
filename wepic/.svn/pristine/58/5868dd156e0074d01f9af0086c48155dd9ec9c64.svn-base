@@ -1,0 +1,884 @@
+package com.wetuo.wepic.publish.service;
+
+import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.ServletActionContext;
+import org.hibernate.criterion.DetachedCriteria;
+
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.util.PropertiesRead;
+import com.wetuo.wepic.common.util.UploadUtils;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.service.UserService;
+import com.wetuo.wepic.publish.beans.Publish;
+import com.wetuo.wepic.publish.beans.PublishCat;
+import com.wetuo.wepic.publish.beans.PublishCat_Story;
+import com.wetuo.wepic.publish.beans.PublishSpecialCat;
+import com.wetuo.wepic.publish.beans.PublishStatus;
+import com.wetuo.wepic.publish.beans.Story;
+import com.wetuo.wepic.publish.beans.StoryDetail;
+import com.wetuo.wepic.publish.dao.StoryDao;
+@SuppressWarnings("unchecked")
+public class StoryServiceImpl implements StoryService{
+	private StoryDao storyDao;
+	
+	/////////////////////wepic2.0///////////////////
+	private UserService userService;
+	private PublishService publishService;
+	private PublishCat_StorySevice publishCatStorySevice;
+	private StoryDetailService storyDetailService;
+	private PublishCatService publishCatService;
+	private PublishSpecialCatService publishSpecialCatService; 
+	private PublishStatusService publishStatusService;
+	private StoryFilterWordsService storyFilterWordsService;
+	
+	public StoryDao getStoryDao() {
+		return storyDao;
+	}
+
+	public void setStoryDao(StoryDao storyDao) {
+		this.storyDao = storyDao;
+	}
+	///////////////////////////wepic2.0  getter setter//////////////////////////////
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public PublishService getPublishService() {
+		return publishService;
+	}
+
+	public void setPublishService(PublishService publishService) {
+		this.publishService = publishService;
+	}
+
+	public PublishCat_StorySevice getPublishCatStorySevice() {
+		return publishCatStorySevice;
+	}
+
+	public void setPublishCatStorySevice(
+			PublishCat_StorySevice publishCatStorySevice) {
+		this.publishCatStorySevice = publishCatStorySevice;
+	}
+
+	public StoryDetailService getStoryDetailService() {
+		return storyDetailService;
+	}
+
+	public void setStoryDetailService(StoryDetailService storyDetailService) {
+		this.storyDetailService = storyDetailService;
+	}
+
+	public PublishCatService getPublishCatService() {
+		return publishCatService;
+	}
+
+	public void setPublishCatService(PublishCatService publishCatService) {
+		this.publishCatService = publishCatService;
+	}
+
+	public PublishSpecialCatService getPublishSpecialCatService() {
+		return publishSpecialCatService;
+	}
+
+	public void setPublishSpecialCatService(
+			PublishSpecialCatService publishSpecialCatService) {
+		this.publishSpecialCatService = publishSpecialCatService;
+	}
+
+	
+	
+	
+	
+   ///////////////////////////wepic2.0 method//////////////////////////////
+	public void storyoffsale(Integer storyid) {
+		Story story=this.storyDao.select(storyid);
+		PublishStatus publishStatus=story.getPublishStatus();
+		publishStatus.setUserSoldout(1);
+		publishStatus.setOnOffer(0);
+		publishStatus.setPass(0);
+		this.getPublishStatusService().updatePublishStatus(publishStatus);
+	}
+	
+	public PublishStatusService getPublishStatusService() {
+		return publishStatusService;
+	}
+
+	public void setPublishStatusService(PublishStatusService publishStatusService) {
+		this.publishStatusService = publishStatusService;
+	}
+
+	public StoryFilterWordsService getStoryFilterWordsService() {
+		return storyFilterWordsService;
+	}
+
+	public void setStoryFilterWordsService(
+			StoryFilterWordsService storyFilterWordsService) {
+		this.storyFilterWordsService = storyFilterWordsService;
+	}
+
+	public List<PublishCat> publishCats() {
+	return	publishCatService.allstorycats();
+	}
+	public List<PublishSpecialCat> specialCats() {
+		return publishSpecialCatService.specialCatOfStory();
+	}
+	public List uploadimg(Integer uid,File mycover,String mycoverFilename,String mycoverFiletype){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		List tempList=new LinkedList();
+		try{
+			User user=new User();
+			user.setId(uid);
+			Publish publish=new Publish();
+			publish.setUser(user);
+			PublishSpecialCat publishSpecialCat=new PublishSpecialCat();
+		    publishSpecialCat.setId(8);
+			publish.setPublishSpecialCat(publishSpecialCat);
+			String path=publishService.uploadOpusOfStory(request, mycover,mycoverFilename,publish);
+			tempList.add(publish.getId());
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		return tempList;
+	}
+	
+	
+	public List cutcover(Integer publishId,Integer x1,Integer x2,Integer y1,Integer y2){
+		List temList=new LinkedList();
+		Publish publish=this.getPublishService().select(publishId);
+		publish.setId(publishId);
+		String tempPicName=publish.getSmallDrawCut();
+		String tag="cut285175";
+		String cut285175=tempPicName.substring(tempPicName.indexOf(tag)+1+tag.length(),tempPicName.length());
+		String currentAbsoulutePath=Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        PropertiesRead readPro = new PropertiesRead(currentAbsoulutePath+"picpath.properties");//相对路径
+        String cut = readPro.getValue(tag)+"/"+cut285175;
+		File file=new File(cut);
+		UploadUtils uploadUtils=new UploadUtils();
+		String cutcover="";
+		try {
+			cutcover = uploadUtils.cutcomplete(file,x1,x2,y1,y2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		publish.setSmallDrawCut(cutcover);
+		publishService.updateCut(publish);
+		temList.add(cutcover);
+		temList.add(publish.getId());
+		return temList;
+		
+	}
+	public int publishstorysucofboth(Integer storyId,Story story2,Integer uid,Integer publishId,String mytags[],String special,String temppublishcat[],String publish[],String cxt[],String copyrightprice,String useprice) {
+		Story story=this.storyDao.select(storyId);
+		User user1=new User();
+		user1.setId(uid);
+		Publish tempPublish=this.getPublishService().select(publishId);
+		story.setUser(user1);
+		story.setCover(tempPublish.getSmallDrawCut());
+		story.setPublishid(tempPublish.getId());//封面引用的publish
+		story.setTitle(story2.getTitle());
+		story.setStorydescription(story2.getStorydescription().trim().replaceAll("\t*", ""));
+//		story.setUploadTime(story2.getUploadTime());
+		story.setPublishTime(getcurrent());
+		story.setHit(story.getHit()+1);
+	    story.setStatu(1);	
+	    story.setTags("");
+		List tagList=new ArrayList();
+		for (int i = 0; i < mytags.length; i++) {
+			tagList.add(mytags[i]);
+		}
+		String temptag="";
+		for (int i = 0; i < tagList.size(); i++) {
+			temptag+=tagList.get(i)+" ";
+		}
+		story.setTags(temptag);
+		PublishSpecialCat specialCat=this.getPublishSpecialCatService().select(Integer.parseInt(special));
+		story.setPublishSpecialCat(specialCat);
+		delstorydetailofstory(storyId);
+		delcatstory(storyId);
+		story.setCopyrightPrice(Integer.valueOf(copyrightprice));
+		story.setUsagePrice(Integer.valueOf(useprice));
+		story.setCopyrightres("2");
+		story.setCopyrightProperty(story2.getCopyrightProperty());
+		story.setMoneyType(story2.getMoneyType());
+		story.setCopyrightArea(story2.getCopyrightArea());
+		String str="ep0";
+		int tempNum=10000;
+		tempNum=tempNum+storyId;
+		story.setRemark(str+""+tempNum);
+		this.storyDao.update(story);
+		PublishStatus publishStatus=story.getPublishStatus();
+		publishStatus.setUnreleased(1);
+		publishStatus.setAwaitingReview(1);
+		this.getPublishStatusService().updatePublishStatus(publishStatus);
+	    List tempList=new ArrayList();
+		for (int i = 0; i < temppublishcat.length; i++) {
+			tempList.add(temppublishcat[i].replaceAll("\\s*", ""));
+		}
+		for(int i=0;i<tempList.size();i++){
+			PublishCat oneInstance2 = this.getPublishCatService().selectOfName(tempList.get(i).toString());
+			PublishCat_Story catstory=new PublishCat_Story();
+			catstory.setStory(story);
+			catstory.setPublishCat(oneInstance2);
+			publishCatStorySevice.insert(catstory);
+		}
+		List publishList=new LinkedList();
+		for (int i = 0; i < publish.length; i++) {
+			publishList.add(publish[i]);
+		}
+		
+		List cxtList=new LinkedList();
+		for (int i = 0; i < cxt.length; i++) {
+			cxtList.add(cxt[i]);
+		}
+		for (int i = 0; i < publishList.size(); i++) {
+			StoryDetail storyDetail=new StoryDetail();
+			int tempid=Integer.valueOf(publishList.get(i).toString());
+			Publish publish2=this.getPublishService().select(tempid);
+			storyDetail.setPublishId(tempid);
+			storyDetail.setDetailContext(cxtList.get(i).toString().trim().replaceAll("\t*", ""));
+			storyDetail.setStory(story);
+			storyDetail.setWidth(publish2.getWidth());
+			storyDetail.setHeight(publish2.getHeight());
+			storyDetail.setSamllPic(publish2.getSmallPic());
+			storyDetail.setThumbnailUrl(publish2.getThumbnailUrl());
+			this.storyDetailService.insert(storyDetail);
+		}
+		return storyId;
+	}
+	public int publishstorysucofcopyright(Integer storyId,Story story2,Integer uid,Integer publishId,String mytags[],String special,String temppublishcat[],String publish[],String cxt[],String copyrightuseprice) {
+		Story story=this.storyDao.select(storyId);
+		User user1=new User();
+		user1.setId(uid);
+		Publish tempPublish=this.getPublishService().select(publishId);
+		story.setUser(user1);
+		story.setCover(tempPublish.getSmallDrawCut());
+		story.setPublishid(tempPublish.getId());//封面引用的publish
+		story.setTitle(story2.getTitle());
+		story.setStorydescription(story2.getStorydescription().trim().replaceAll("\t*", ""));
+//		story.setUploadTime(story2.getUploadTime());
+		story.setPublishTime(getcurrent());
+		story.setHit(story.getHit()+1);
+	    story.setStatu(1);	
+	    story.setTags("");
+		List tagList=new ArrayList();
+		for (int i = 0; i < mytags.length; i++) {
+			tagList.add(mytags[i]);
+		}
+		String temptag="";
+		for (int i = 0; i < tagList.size(); i++) {
+			temptag+=tagList.get(i)+" ";
+		}
+		story.setTags(temptag);
+		PublishSpecialCat specialCat=this.getPublishSpecialCatService().select(Integer.parseInt(special));
+		story.setPublishSpecialCat(specialCat);
+		delstorydetailofstory(storyId);
+		delcatstory(storyId);
+		story.setCopyrightPrice(Integer.valueOf(copyrightuseprice));
+		story.setCopyrightres("1");
+		story.setCopyrightProperty(story2.getCopyrightProperty());
+		story.setMoneyType(story2.getMoneyType());
+		story.setCopyrightArea(story2.getCopyrightArea());
+		String str="ep0";
+		int tempNum=10000;
+		tempNum=tempNum+storyId;
+		story.setRemark(str+""+tempNum);
+		this.storyDao.update(story);
+		PublishStatus publishStatus=story.getPublishStatus();
+		publishStatus.setUnreleased(1);
+		publishStatus.setAwaitingReview(1);
+		this.getPublishStatusService().updatePublishStatus(publishStatus);
+	    List tempList=new ArrayList();
+		for (int i = 0; i < temppublishcat.length; i++) {
+			tempList.add(temppublishcat[i].replaceAll("\\s*", ""));
+		}
+		for(int i=0;i<tempList.size();i++){
+			PublishCat oneInstance2 = this.getPublishCatService().selectOfName(tempList.get(i).toString());
+			PublishCat_Story catstory=new PublishCat_Story();
+			catstory.setStory(story);
+			catstory.setPublishCat(oneInstance2);
+			publishCatStorySevice.insert(catstory);
+		}
+		List publishList=new LinkedList();
+		for (int i = 0; i < publish.length; i++) {
+			publishList.add(publish[i]);
+		}
+		
+		List cxtList=new LinkedList();
+		for (int i = 0; i < cxt.length; i++) {
+			cxtList.add(cxt[i]);
+		}
+		for (int i = 0; i < publishList.size(); i++) {
+			StoryDetail storyDetail=new StoryDetail();
+			int tempid=Integer.valueOf(publishList.get(i).toString());
+			Publish publish2=this.getPublishService().select(tempid);
+			storyDetail.setPublishId(tempid);
+			storyDetail.setDetailContext(cxtList.get(i).toString().trim().replaceAll("\t*", ""));
+			storyDetail.setStory(story);
+			storyDetail.setWidth(publish2.getWidth());
+			storyDetail.setHeight(publish2.getHeight());
+			storyDetail.setSamllPic(publish2.getSmallPic());
+			storyDetail.setThumbnailUrl(publish2.getThumbnailUrl());
+			this.storyDetailService.insert(storyDetail);
+		}
+		return storyId;
+	}
+	public int publishstorysucofusecopyright(Integer storyId,Story story2,Integer uid,Integer publishId,String mytags[],String special,String temppublishcat[],String publish[],String cxt[],String copyrightuseprice) {
+		Story story=this.storyDao.select(storyId);
+		User user1=new User();
+		user1.setId(uid);
+		Publish tempPublish=this.getPublishService().select(publishId);
+		story.setUser(user1);
+		story.setCover(tempPublish.getSmallDrawCut());
+		story.setPublishid(tempPublish.getId());//封面引用的publish
+		story.setTitle(story2.getTitle());
+		story.setStorydescription(story2.getStorydescription().trim().replaceAll("\t*", ""));
+//		story.setUploadTime(story2.getUploadTime());
+		story.setPublishTime(getcurrent());
+		story.setHit(story.getHit()+1);
+	    story.setStatu(1);	
+	    story.setTags("");
+		List tagList=new ArrayList();
+		for (int i = 0; i < mytags.length; i++) {
+			tagList.add(mytags[i]);
+		}
+		String temptag="";
+		for (int i = 0; i < tagList.size(); i++) {
+			temptag+=tagList.get(i)+" ";
+		}
+		story.setTags(temptag);
+		PublishSpecialCat specialCat=this.getPublishSpecialCatService().select(Integer.parseInt(special));
+		story.setPublishSpecialCat(specialCat);
+		delstorydetailofstory(storyId);
+		delcatstory(storyId);
+		story.setUsagePrice(Integer.valueOf(copyrightuseprice));
+		story.setCopyrightres("0");
+		story.setCopyrightProperty(story2.getCopyrightProperty());
+		story.setMoneyType(story2.getMoneyType());
+		story.setCopyrightArea(story2.getCopyrightArea());
+		String str="ep0";
+		int tempNum=10000;
+		tempNum=tempNum+storyId;
+		story.setRemark(str+""+tempNum);
+		this.storyDao.update(story);
+		PublishStatus publishStatus=story.getPublishStatus();
+		publishStatus.setUnreleased(1);
+		publishStatus.setAwaitingReview(1);
+		this.getPublishStatusService().updatePublishStatus(publishStatus);
+	    List tempList=new ArrayList();
+		for (int i = 0; i < temppublishcat.length; i++) {
+			tempList.add(temppublishcat[i].replaceAll("\\s*", ""));
+		}
+		for(int i=0;i<tempList.size();i++){
+			PublishCat oneInstance2 = this.getPublishCatService().selectOfName(tempList.get(i).toString());
+			PublishCat_Story catstory=new PublishCat_Story();
+			catstory.setStory(story);
+			catstory.setPublishCat(oneInstance2);
+			publishCatStorySevice.insert(catstory);
+		}
+		List publishList=new LinkedList();
+		for (int i = 0; i < publish.length; i++) {
+			publishList.add(publish[i]);
+		}
+		
+		List cxtList=new LinkedList();
+		for (int i = 0; i < cxt.length; i++) {
+			cxtList.add(cxt[i]);
+		}
+		for (int i = 0; i < publishList.size(); i++) {
+			StoryDetail storyDetail=new StoryDetail();
+			int tempid=Integer.valueOf(publishList.get(i).toString());
+			Publish publish2=this.getPublishService().select(tempid);
+			storyDetail.setPublishId(tempid);
+			storyDetail.setDetailContext(cxtList.get(i).toString().trim().replaceAll("\t*", ""));
+			storyDetail.setStory(story);
+			storyDetail.setWidth(publish2.getWidth());
+			storyDetail.setHeight(publish2.getHeight());
+			storyDetail.setSamllPic(publish2.getSmallPic());
+			storyDetail.setThumbnailUrl(publish2.getThumbnailUrl());
+			this.storyDetailService.insert(storyDetail);
+		}
+		return storyId;
+	}
+	public int publishstorysuc(Integer storyId,Story story2,Integer uid,Integer publishId,String mytags[],String special,String temppublishcat[],String publish[],String cxt[]) {
+		Story story=this.storyDao.select(storyId);
+		User user1=new User();
+		user1.setId(uid);
+		Publish tempPublish=this.getPublishService().select(publishId);
+		story.setUser(user1);
+		story.setCover(tempPublish.getSmallDrawCut());
+		story.setPublishid(tempPublish.getId());//封面引用的publish
+		story.setTitle(story2.getTitle());
+		story.setStorydescription(story2.getStorydescription().trim().replaceAll("\t*", ""));
+		story.setUploadTime(story2.getUploadTime());
+		story.setPublishTime(getcurrent());
+		story.setHit(story.getHit()+1);
+	    story.setStatu(1);	
+	    story.setTags("");
+		List tagList=new ArrayList();
+		for (int i = 0; i < mytags.length; i++) {
+			tagList.add(mytags[i]);
+		}
+		String temptag="";
+		for (int i = 0; i < tagList.size(); i++) {
+			temptag+=tagList.get(i)+" ";
+		}
+		story.setTags(temptag);
+		PublishSpecialCat specialCat=this.getPublishSpecialCatService().select(Integer.parseInt(special));
+		story.setPublishSpecialCat(specialCat);
+		delstorydetailofstory(storyId);
+		delcatstory(storyId);
+//		String copyres=story2.getCopyrightres();
+//		if (copyres.contains("0") && (!copyres.contains("1"))) {
+//			story.setUsagePrice(story2.getUsagePrice());
+//			story.setCopyrightres("0");
+//		}else if ((!copyres.contains("0")) && copyres.contains("1")) {
+//			story.setCopyrightPrice(story2.getCopyrightPrice());
+//			story.setCopyrightres("1");
+//		}else {
+//			story.setUsagePrice(story2.getUsagePrice());
+//			story.setCopyrightPrice(story2.getCopyrightPrice());
+//			story.setCopyrightres("2");
+//		}
+//		story.setCopyright(story2.getCopyright());
+//		story.setUsagePrice(story2.getUsagePrice());
+		story.setCopyrightProperty(story2.getCopyrightProperty());
+		story.setMoneyType(story2.getMoneyType());
+		story.setCopyrightArea(story2.getCopyrightArea());
+		String str="ep0";
+		int tempNum=10000;
+		tempNum=tempNum+storyId;
+		story.setRemark(str+""+tempNum);
+		this.storyDao.update(story);
+		
+	    List tempList=new ArrayList();
+		for (int i = 0; i < temppublishcat.length; i++) {
+			tempList.add(temppublishcat[i].replaceAll("\\s*", ""));
+		}
+		for(int i=0;i<tempList.size();i++){
+			PublishCat oneInstance2 = this.getPublishCatService().selectOfName(tempList.get(i).toString());
+			PublishCat_Story catstory=new PublishCat_Story();
+			catstory.setStory(story);
+			catstory.setPublishCat(oneInstance2);
+			publishCatStorySevice.insert(catstory);
+		}
+		List publishList=new LinkedList();
+		for (int i = 0; i < publish.length; i++) {
+			publishList.add(publish[i]);
+		}
+		
+		List cxtList=new LinkedList();
+		for (int i = 0; i < cxt.length; i++) {
+			cxtList.add(cxt[i]);
+		}
+		for (int i = 0; i < publishList.size(); i++) {
+			StoryDetail storyDetail=new StoryDetail();
+			int tempid=Integer.valueOf(publishList.get(i).toString());
+			Publish publish2=this.getPublishService().select(tempid);
+			storyDetail.setPublishId(tempid);
+			storyDetail.setDetailContext(cxtList.get(i).toString().trim().replaceAll("\t*", ""));
+			storyDetail.setStory(story);
+			storyDetail.setWidth(publish2.getWidth());
+			storyDetail.setHeight(publish2.getHeight());
+			storyDetail.setSamllPic(publish2.getSmallPic());
+			storyDetail.setThumbnailUrl(publish2.getThumbnailUrl());
+			this.storyDetailService.insert(storyDetail);
+		}
+		return storyId;
+	}
+	public int editunpublishedstory(Integer storyId,Story story2,Integer uid,Integer publishId,String mytags[],String special,String temppublishcat[],String publish[],String cxt[]) {
+		Story story=this.storyDao.select(storyId);
+		User user1=new User();
+		user1.setId(uid);
+		Publish tempPublish=this.getPublishService().select(publishId);
+		story.setUser(user1);
+		story.setCover(tempPublish.getSmallDrawCut());
+		story.setPublishid(tempPublish.getId());//封面引用的publish
+		story.setTitle(story2.getTitle());
+		story.setStorydescription(story2.getStorydescription().trim().replaceAll("\t*", ""));
+		//story.setUploadTime(getcurrent());
+		story.setHit(story.getHit()+1);
+	    story.setStatu(0);	
+	    story.setTags("");
+		List tagList=new ArrayList();	
+		for (int i = 0; i < mytags.length; i++) {
+			tagList.add(mytags[i]);
+		}
+		String temptag="";
+		for (int i = 0; i < tagList.size(); i++) {
+			temptag+=tagList.get(i)+" ";
+		}
+		story.setTags(temptag);
+		PublishSpecialCat specialCat=this.getPublishSpecialCatService().select(Integer.parseInt(special));
+		story.setPublishSpecialCat(specialCat);
+		delstorydetailofstory(storyId);
+		delcatstory(storyId);
+		
+		String str="ep0";
+		int tempNum=10000;
+		tempNum=tempNum+storyId;
+		story.setRemark(str+""+tempNum);
+		this.storyDao.update(story);
+		
+	    List tempList=new ArrayList();
+		for (int i = 0; i < temppublishcat.length; i++) {
+			tempList.add(temppublishcat[i].replaceAll("\\s*", ""));
+		}
+		for(int i=0;i<tempList.size();i++){
+			PublishCat oneInstance2 = this.getPublishCatService().selectOfName(tempList.get(i).toString());
+			PublishCat_Story catstory=new PublishCat_Story();
+			catstory.setStory(story);
+			catstory.setPublishCat(oneInstance2);
+			publishCatStorySevice.insert(catstory);
+		}
+		List publishList=new LinkedList();
+		for (int i = 0; i < publish.length; i++) {
+			publishList.add(publish[i]);
+		}
+		
+		List cxtList=new LinkedList();
+		for (int i = 0; i < cxt.length; i++) {
+			cxtList.add(cxt[i]);
+		}
+		for (int i = 0; i < publishList.size(); i++) {
+			StoryDetail storyDetail=new StoryDetail();
+			int tempid=Integer.valueOf(publishList.get(i).toString());
+			Publish publish2=this.getPublishService().select(tempid);
+			storyDetail.setPublishId(tempid);
+			storyDetail.setDetailContext(cxtList.get(i).toString().trim().replaceAll("\t*", ""));
+			storyDetail.setStory(story);
+			storyDetail.setWidth(publish2.getWidth());
+			storyDetail.setHeight(publish2.getHeight());
+			storyDetail.setSamllPic(publish2.getSmallPic());
+			storyDetail.setThumbnailUrl(publish2.getThumbnailUrl());
+			this.storyDetailService.insert(storyDetail);
+		}
+		return storyId;
+	}
+	public void adminchecksuc(Integer storyid) {
+		Story story=storyDao.select(storyid);
+		PublishStatus publishStatus=story.getPublishStatus();
+		publishStatus.setPass(1);//审核通过
+		publishStatus.setOnOffer(1);//销售中
+		this.getPublishStatusService().updatePublishStatus(publishStatus);
+		story.setCheckTime(getcurrent());//审核通过时间
+		storyDao.update(story);
+	}
+	public void admindelchecking(Integer storyid){
+		this.delstorydetailofstory(storyid);
+		this.delcatstory(storyid);
+//		this.delete(storyid);
+		Story story=this.getStoryDao().select(storyid);
+//		PublishStatus publishStatus2=story.getPublishStatus();
+		PublishStatus publishStatus=this.getPublishStatusService().findById(storyid);
+		this.getPublishStatusService().deletePublishStatues(publishStatus);
+		storyDao.delete(story);
+	}
+	public int savestory(Story story,Integer uid,Integer publishId,String mytags[],String special,String temppublishcat[],String publish[],String cxt[]) {
+		User user1=new User();
+		user1.setId(uid);
+		Publish tempPublish=this.getPublishService().select(publishId);
+		PublishStatus publishStatus=tempPublish.getPublishStatus();
+		publishStatus.setPublishToStroy(1);
+		this.getPublishStatusService().updatePublishStatus(publishStatus);//用作摄影故事封面
+		story.setUser(user1);
+		story.setCover(tempPublish.getSmallDrawCut());
+		story.setPublishid(tempPublish.getId());//封面引用的publish
+		story.setTitle(story.getTitle());
+		story.setStorydescription(story.getStorydescription().trim().replaceAll("\t*", ""));
+		story.setUploadTime(getcurrent());
+		story.setHit(0);
+	    story.setStatu(0);	
+		List tagList=new ArrayList();
+		for (int i = 0; i < mytags.length; i++) {
+			tagList.add(mytags[i]);
+		}
+		String temptag="";
+		for (int i = 0; i < tagList.size(); i++) {
+			temptag+=tagList.get(i)+" ";
+		}
+		story.setTags(temptag);
+		
+		PublishSpecialCat specialCat=this.getPublishSpecialCatService().select(Integer.parseInt(special));
+		story.setPublishSpecialCat(specialCat);
+		int res=this.storyDao.insert(story);
+		System.out.println(res);
+		String str="ep0";
+		int tempNum=10000;
+		tempNum=tempNum+story.getId();
+		story.setRemark(str+""+tempNum);
+		this.storyDao.update(story);
+	    List tempList=new ArrayList();
+		for (int i = 0; i < temppublishcat.length; i++) {
+			tempList.add(temppublishcat[i].replaceAll("\\s*", ""));
+		}
+		for(int i=0;i<tempList.size();i++){
+			PublishCat oneInstance2 = this.getPublishCatService().selectOfName(tempList.get(i).toString());
+			PublishCat_Story catstory=new PublishCat_Story();
+			catstory.setStory(story);
+			catstory.setPublishCat(oneInstance2);
+			publishCatStorySevice.insert(catstory);
+		}
+		List publishList=new LinkedList();
+		for (int i = 0; i < publish.length; i++) {
+			publishList.add(publish[i]);
+		}
+		
+		List cxtList=new LinkedList();
+		for (int i = 0; i < cxt.length; i++) {
+			cxtList.add(cxt[i]);
+		}
+		for (int i = 0; i < publishList.size(); i++) {
+			StoryDetail storyDetail=new StoryDetail();
+			int tempid=Integer.valueOf(publishList.get(i).toString());
+			Publish publish2=this.getPublishService().select(tempid);
+			//更新图片状态为用作摄影故事
+			PublishStatus publishStatus2=publish2.getPublishStatus();
+			publishStatus2.setPublishToStroy(1);
+			this.getPublishStatusService().updatePublishStatus(publishStatus2);
+			storyDetail.setPublishId(tempid);
+			storyDetail.setDetailContext(cxtList.get(i).toString().trim().replaceAll("\t*", ""));
+			storyDetail.setStory(story);
+			storyDetail.setWidth(publish2.getWidth());
+			storyDetail.setHeight(publish2.getHeight());
+			storyDetail.setSamllPic(publish2.getSmallPic());
+			storyDetail.setThumbnailUrl(publish2.getThumbnailUrl());
+			this.storyDetailService.insert(storyDetail);
+		}
+		
+		
+		List<StoryDetail> storyDetails=this.storyDetailService.showThePublishofdetais(story.getId());
+		int num=0;
+		int txtNum=0;
+		for (int i = 0; i < storyDetails.size(); i++) {
+			txtNum+=storyDetails.get(i).getDetailContext().length();
+			Publish publish2=this.getPublishService().select(storyDetails.get(i).getPublishId());
+			if (publish2 != null) {
+				num++;
+			}
+		}
+		story.setDetailpicNum(num);
+		story.setDetailtextNum(txtNum);
+		
+		
+		PublishStatus publishStatus2=new PublishStatus();
+		publishStatus2.setUnreleased(0);
+		publishStatus2.setAwaitingReview(0);
+		publishStatus2.setNoPass(0);
+		publishStatus2.setJustShow(0);
+		publishStatus2.setOnOffer(0);
+		publishStatus2.setCopyrightBuyout(0);
+		publishStatus2.setUserSoldout(0);
+		publishStatus2.setAdminSoldout(0);
+		publishStatus2.setPublishToStroy(0);
+		publishStatus2.setUserDelete(0);
+		publishStatus2.setAdminDelete(0);
+		publishStatus2.setPublishorstory(1);
+		publishStatusService.savePublishStatus(publishStatus2);
+		story.setPublishStatus(publishStatus2);
+		this.storyDao.update(story);
+		
+		return story.getId();
+	}
+	public Pager storylist(Integer uid,Integer pageSize,Integer pageNo){
+		 User user=new User();
+		 user.setId(uid);
+		 return this.storyDao.findStoryByUser(user, pageSize, pageNo);
+	}
+	public Pager findStoryByUserAndSpecial(Integer user,Integer publishSpecialCat, int pageNo, int pageSize){
+		User user2=new User();
+		user2.setId(user);
+		 PublishSpecialCat publishSpecialCat2=new PublishSpecialCat();
+		 publishSpecialCat2.setId(publishSpecialCat);
+		 return this.storyDao.findStoryByUserAndSpecial(user2,publishSpecialCat2,pageSize,pageNo);
+	}
+	public Pager searchbyspecial(Integer uid,Integer specialId,Integer pageSize,Integer pageNo){
+		User user=new User();
+        user.setId(uid);
+        PublishSpecialCat specialCat=new PublishSpecialCat();
+        specialCat.setId(specialId);
+		return this.storyDao.searchbyspecial(user, specialCat, pageSize, pageNo);
+	}
+	
+	public Integer total(Integer uId) {
+		return this.storyDao.total(uId);
+	}
+	public String getRandomStr(){
+		Random random = new Random();
+		String baseStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		StringBuffer buffer = new StringBuffer();
+		for(int i=0;i<10;i++){
+			int num = random.nextInt(baseStr.length());
+			buffer.append(baseStr.charAt(num));
+		}
+		return buffer.toString();
+	}
+	public Timestamp getcurrent() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String a=df.format(new Date());
+		Timestamp ts = new Timestamp(System.currentTimeMillis());  
+		ts.valueOf(a);
+		return ts;
+	}
+	public int picNumber(Integer id){
+		List<StoryDetail> storyDetail=storyDetailService.showThePublishofdetais(id);
+		int num=0;
+		for (int i = 0; i < storyDetail.size(); i++) {
+			Publish publish=this.getPublishService().select(storyDetail.get(i).getPublishId());
+			if (publish != null) {
+				num++;
+			}
+		}
+		return num;
+	}
+	public int textNumber(Integer id){
+		int txtNum=0;
+		Story story=storyDao.select(id);
+		txtNum=story.getStorydescription().length();
+		List<StoryDetail> storyDetail=storyDetailService.showThePublishofdetais(id);
+		for (int i = 0; i < storyDetail.size(); i++) {
+			txtNum+=storyDetail.get(i).getDetailContext().length();
+		}
+	    return txtNum;	
+	}
+	
+	public Story findbyStory(Integer id){
+		Story story=this.storyDao.select(id);
+		return story;
+	}
+	public List<StoryDetail> findDetailsById(Integer id){
+		List<StoryDetail> storyDetails=this.storyDetailService.showThePublishofdetais(id);
+		return storyDetails;
+	}
+	
+	public List<PublishCat_Story> findStoryCat(Integer id){
+		return publishCatStorySevice.list(id);
+	}
+	public void delstorydetailofstory(int id) {
+		Story story=this.storyDao.select(id);
+		List<StoryDetail> storyDetails=this.getStoryDetailService().showThePublishofdetais(story.getId());
+		for (int i = 0; i < storyDetails.size(); i++) {
+			Publish publish=this.getPublishService().select(storyDetails.get(i).getPublishId());
+			PublishStatus publishStatus=publish.getPublishStatus();
+			publishStatus.setPublishToStroy(0);
+			this.getPublishStatusService().updatePublishStatus(publishStatus);
+			this.getStoryDetailService().delete(storyDetails.get(i));
+		}
+		
+	}
+	
+	public void delcatstory(int id) {
+		List<PublishCat_Story> storycat=this.getPublishCatStorySevice().list(id);
+		for (int i = 0; i < storycat.size(); i++) {
+			this.getPublishCatStorySevice().delete(storycat.get(i));
+		}
+		
+	}
+	public void delstoryofcat(int catid,int storyId){
+		List<PublishCat_Story> storycat=this.getPublishCatStorySevice().list(storyId);
+		for (int i = 0; i < storycat.size(); i++) {
+			if (storycat.get(i).getPublishCat().getId() == catid) {
+				this.getPublishCatStorySevice().delete(storycat.get(i));
+			}
+		}
+	}
+	public Publish selectPublish(Integer id) {
+		return publishService.select(id);
+	}
+	
+	
+	
+     public Pager findbyDetachedCriteria(DetachedCriteria detachedCriteria,int pageNo,int pageSize){		 
+		 
+		 return storyDao.findbyDetachedCriteria(detachedCriteria,pageNo,pageSize);
+	 }
+	
+     
+public String findbyCountBySpecialCat(DetachedCriteria detachedCriteria){
+		 
+		 
+		 
+		 return storyDao.findbyCountBySpecialCat(detachedCriteria);
+		 
+	 }
+	///////////////////////////////////wepic 1.0//////////////////////////
+	
+	public boolean delete(Story record) {
+		// TODO Auto-generated method stub
+		return storyDao.delete(record);
+	}
+
+	public boolean delete(Integer id) {
+		// TODO Auto-generated method stub
+		return storyDao.delete(id);
+	}
+
+	public List<Story> findAll() {
+		// TODO Auto-generated method stub
+		return storyDao.findAll();
+	}
+
+	public List<Story> findPart(String strFields, String[] strArrValues) {
+		// TODO Auto-generated method stub
+		return storyDao.findPart(strFields, strArrValues);
+	}
+
+	public Pager findStoryByUser(User user, int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return storyDao.findStoryByUser(user, pageSize, pageNo);
+	}
+
+	public Integer insert(Story record) {
+		// TODO Auto-generated method stub
+		return storyDao.insert(record);
+	}
+
+	public Pager list(int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return storyDao.list(pageSize, pageNo);
+	}
+
+	public Pager list(String username, int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return storyDao.list(username, pageSize, pageNo);
+	}
+
+	public Pager list(Map<String, Object> mapSqlParam, int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return storyDao.list(mapSqlParam, pageSize, pageNo);
+	}
+
+	public Story select(Integer id) {
+		// TODO Auto-generated method stub
+		return storyDao.select(id);
+	}
+
+	public boolean update(Story record) {
+		// TODO Auto-generated method stub
+		return storyDao.update(record);
+	}
+
+	public List<Story> storybyuserandspecial(Integer uid, Integer specialId) {
+		// TODO Auto-generated method stub
+		return storyDao.storybyuserandspecial(uid, specialId);
+	}
+	public Pager listofstatu(final int pageSize,final int pageNo){
+		return storyDao.listofstatu(pageSize, pageNo);
+		
+	}
+
+}

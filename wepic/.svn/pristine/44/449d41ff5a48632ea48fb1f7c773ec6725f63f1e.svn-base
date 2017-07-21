@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="backend" extends="larry-default">
+		<action name="backend_*" class="com.qhkj.goodChance.publish.actions.BackendAction" >		
+			<!-- <result name="adminCommonPublish">/view/backend/frame.jsp</result> -->
+			<result name="adminCommonUserInfo">/view/backend/userInfo.jsp</result>
+			<!-- 未验证用户的用户信息 -->
+			<result name="adminCommonUserInfo_notverify">/view/backend/userInfo_notverify.jsp</result>
+			<!-- 验证用户的用户信息 -->
+			<result name="adminCommonUserInfo_verify">/view/backend/userInfo_verify.jsp</result>
+			
+			<result name="adminCommonCommunication">/view/backend/communication.jsp</result>
+			<!-- 未验证用户的通讯管理 -->
+				<result name="adminCommonCommunication_notverify">/view/backend/communication_notverify.jsp</result>
+				
+				<!-- 已验证用户的通讯管理 -->
+				<result name="adminCommonCommunication_verify">/view/backend/communication_verify.jsp</result>
+				
+			<result name="adminCommonMySpace">/view/backend/mySpace.jsp</result>
+			<!-- 未验证用户的空间管理 -->
+				<result name="adminCommonMySpace_notverify">/view/backend/mySpace_notverify.jsp</result>
+			
+			
+			<result name="adminCommonAccountInfo">/view/backend/accountInfo.jsp</result>
+			<!-- 未验证用户的账户管理 -->
+			<result name="adminCommonAccountInfo_notverify">/view/backend/accountInfo_notverify.jsp</result>
+			
+			<!-- 验证用户的账户管理 -->
+			<result name="adminCommonAccountInfo_verify">/view/backend/accountInfo_verify.jsp</result>
+			
+			<result name="adminCommonPublish">/view/backend/publish.jsp</result>
+			<!-- 未验证用户的发布管理 -->
+			<result name="adminCommonPublish_notverify">/view/backend/publish_notverify.jsp</result>
+			
+			<!-- 验证用户的发布管理 -->
+			<result name="adminCommonPublish_verify">/view/backend/publish_verify.jsp</result>
+			
+			<result name="adminCommonBuy">/view/backend/buy.jsp</result>
+			<result name="adminCommonInvite">/view/backend/invite.jsp</result>
+			<!-- 图片买卖 -->
+			<result name="buypoto_verify">/view/backend/buypoto_verify.jsp</result>
+			
+            	
+			
+			<!--  <result name="adminPublishTree">/view/backend/projectCatAdmin.jsp</result>   -->
+			<result name="commonPublishTree">/view/backend/projectCatCommon.jsp</result>
+			
+			<!-- 验证用户的空间管理 -->
+			<result name="adminCommonMySpace_verify">/view/backend/mySpace_verify.jsp</result>
+			
+			<!-- 验证用户的角色空间管理 -->
+			<result name="roleSpaceVerified">/view/backend/roleSpaceVerified.jsp</result>
+			<!-- 验证空间的提取现金管理 -->
+			<result name="accountWithdraw_verify">/view/backend/accountWithdraw_verify.jsp</result>
+			
+				
+				
+				
+				
+				<!--摄影师空间管理 -->
+			<result name="adminCommonMySpace_photo">/view/backend/mySpace_photo.jsp</result>
+<!--			摄影师约拍管理-->
+			<result name="bid_photo">/view/backend/bid_photo.jsp</result>
+			<!-- 摄影师图片买卖 -->
+			<result name="buypoto_photo">/view/backend/buypoto_photo.jsp</result>
+			<!-- 摄影师的账户管理 -->
+			<result name="adminCommonAccountInfo_photo">/view/backend/accountInfo_photo.jsp</result>
+			<!-- 摄影师的用户信息 -->
+			<result name="adminCommonUserInfo_photo">/view/backend/userInfo_photo.jsp</result>
+			<!-- 摄影师的通讯管理 -->
+			<result name="adminCommonCommunication_photo">/view/backend/communication_photo.jsp</result>
+			
+			
+			
+			
+			
+				<!--model空间管理 -->
+			<result name="adminCommonMySpace_model">/view/backend/mySpace_model.jsp</result>
+			<!-- model图片买卖 -->
+			<result name="buypoto_model">/view/backend/buypoto_model.jsp</result>
+			<!-- model的账户管理 -->
+			<result name="adminCommonAccountInfo_model">/view/backend/accountInfo_model.jsp</result>
+			<!-- model的用户信息 -->
+			<result name="adminCommonUserInfo_model">/view/backend/userInfo_model.jsp</result>
+			<!-- model的通讯管理 -->
+			<result name="adminCommonCommunication_model">/view/backend/communication_model.jsp</result>
+			<!-- model的邀请评价管理 -->
+			<result name="invite_model">/view/backend/invite_model.jsp</result>
+		
+			
+			
+			
+				
+				
+				<!-- 经纪人管理界面 -->
+				<result name="adminCommonUserInfo_broker">/view/backend/userInfo_broker.jsp</result>
+				<result name="adminCommonCommunication_broker">/view/backend/communication_broker.jsp</result>
+				<result name="adminCommonMySpace_broker">/view/backend/mySpace_broker.jsp</result>
+				<result name="adminCommonAccountInfo_broker">/view/backend/accountInfo_broker.jsp</result>
+				<result name="buypoto_broker">/view/backend/buypoto_broker.jsp</result>
+				<result name="adminCommonPublish_broker">/view/backend/publish_broker.jsp</result>
+				
+				<!-- 超级管理员管理界面 -->
+				<result name="adminCommonUserInfo_admin">/view/backend/userInfo_admin.jsp</result>
+				<result name="adminCommonCommunication_admin">/view/backend/communication_admin.jsp</result>
+				<result name="adminCommonMySpace_admin">/view/backend/mySpace_admin.jsp</result>
+				<result name="adminCommonAccountInfo_admin">/view/backend/accountInfo_admin.jsp</result>
+				<result name="adminCommonPublish_admin">/view/backend/publish_admin.jsp</result>
+				<result name="adminPublishTree">/view/backend/projectCatAdmin.jsp</result>
+				<result name="userCatTreeAdmin">/view/backend/userCatTreeAdmin.jsp</result>
+			
+				<result name="adminCommonSpace_adminspace">/view/backend/adminspace_admin.jsp</result>
+				<result name="adminCommonAccountWithdraw_admin">/view/backend/accountWithdraw_admin.jsp</result>
+				
+		</action>
+		 <!--  -->
+	</package>
+	
+
+
+	
+</struts>

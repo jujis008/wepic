@@ -1,0 +1,162 @@
+.container_body{
+	width:870px;
+	height:530px;
+	border-radius:5px;
+	background:#fff;
+	margin:10px auto 40px;
+	text-align:left;
+	font-family:"宋体";
+	}
+	
+
+.container_body .info_top{
+	line-height:70px;
+	font-family:"微软雅黑";
+	color:#4a4a4a;
+	height:52px;
+	padding-left:26px;
+	border-bottom:1px solid #e8e8e8;
+	}
+
+
+
+.container_body .info_detail{
+	width:740px;
+	height:180px;
+	margin:20px auto 10px;
+	border-bottom:1px solid #e8e8e8;
+	font-family:"宋体";
+	}
+.container_body .info_detail table{
+	width:550px;
+	}
+.container_body .info_detail table .tr_bottom{
+	height:10px;
+	}
+.container_body .info_detail table .td_valueMicro{
+	font-family:"微软雅黑";
+	color:#4b4b4b;
+	}
+
+
+.container_body .info_detail table .td_img{
+	width:30%;
+	height:150px;
+	background:url(../../../pubimg/images/defaultHead_150.png) 0 0 no-repeat;
+	} 
+.container_body .info_detail table .td_char{
+	width:14%;
+	font-family:"微软雅黑";
+	color:#4b4b4b;
+	}
+.container_body .info_detail table .td_value{
+	width:40%;
+	}
+.container_body .info_detail table .td_value .approveNo{
+	width:100px;
+	height:20px;
+	padding-left:24px;
+	background:url(../../../pubimg/images/identity.png) 0 -1px no-repeat;
+	}
+.container_body .info_detail table .td_value .approveHave{
+	width:100px;
+	height:20px;
+	padding-left:24px;
+	background:url(../../../pubimg/images/identity.png) 0 -24px no-repeat;
+	}
+.container_body .info_detail table .td_value .approveQy{
+	width:100px;
+	height:20px;
+	padding-left:24px;
+	background:url(../../../pubimg/images/identity.png) 0 -48px no-repeat;
+	}
+.container_body .info_detail table .td_value .password_red{
+	width:37px;
+	height:8px;
+	background:#eb8787;
+	margin-right:-4px;
+	display:inline-block;
+	}
+.container_body .info_detail table .td_value .password_gry{
+	width:37px;
+	height:8px;
+	background:#dbdbdb;
+	margin-right:-4px;
+	display:inline-block;
+	}
+.container_body .info_detail table .td_opt{
+	width:16%;
+	}
+.container_body .info_detail table .td_opt a{
+	text-decoration:underline;
+	color:#848484;
+	}
+.container_body .info_detail table .td_opt a:hover{
+	color:#0267b7;
+	}
+
+
+.container_body .info_autonymIntro{
+	width:720px;
+	height:50px;
+	margin:0px auto;
+	}
+
+
+.container_body .binding_ico{
+	width:660px;
+	height:60px;
+	margin:35px auto;
+	}
+.container_body .binding_ico .left_ico{
+	float:left;
+	width:320px;
+	height:60px;
+	}
+.container_body .binding_ico .qq_ico{
+	float:left;
+	width:60px;
+	height:60px;
+	/*background:url(../../../pubimg/images/bindingTerrace.png) 0 0 no-repeat;*/				/*已绑定*/
+	background:url(../../../pubimg/images/bindingTerrace.png) 0 -65px no-repeat;				/*未绑定*/
+	}
+.container_body .binding_ico .ico_con{
+	float:left;
+	width:250px;
+	height:35px;
+	padding-top:23px;
+	padding-left:10px;
+	}
+.container_body .binding_ico .ico_con .ico_one{
+	height:20px;
+	}
+.container_body .binding_ico .ico_con .ico_one .span_bing{
+	font-family:"微软雅黑";
+	margin-right:15px;
+	}
+.container_body .binding_ico .ico_con .ico_one .accut_bing{
+	font-family:"微软雅黑";
+	margin-right:30px;
+	}
+.container_body .binding_ico .ico_con .ico_one a{
+	color: #848484;
+    text-decoration: underline;
+	}
+.container_body .binding_ico .ico_con .ico_one a:hover{
+	color:#0267b7;
+	}
+.container_body .binding_ico .ico_con .ico_time .hour{
+	margin-left:5px;
+	}
+.container_body .binding_ico .right_ico{
+	float:left;
+	width:320px;
+	height:60px;
+	}
+.container_body .binding_ico .sina_ico{
+	float:left;
+	width:60px;
+	height:60px;
+	/*background:url(../../../pubimg/images/bindingTerrace.png) -65px 0 no-repeat;*/				/*已绑定*/
+	background:url(../../../pubimg/images/bindingTerrace.png) -65px -65px no-repeat;				/*未绑定*/
+	}

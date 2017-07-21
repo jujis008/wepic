@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.AccountBankWithdraw"
+	table="accountbankwithdraw"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	<property 
+		name="bankwithdrawopenaccount"
+		type="java.lang.String"
+		column="bankwithdrawopenaccount"
+		length="255"
+	/>
+	<property 
+		name="bankwithdrawbelongbank"
+		type="java.lang.String"
+		column="bankwithdrawbelongbank"
+		length="255"
+	/>
+	<property 
+		name="bankwithdrawopenbankname"
+		type="java.lang.String"
+		column="bankwithdrawopenbankname"
+		length="255"
+	/>
+	<property 
+		name="bankwithdrawaccountNumber"
+		type="java.lang.String"
+		column="bankwithdrawaccountNumber"
+		length="255"
+	/>
+	<property 
+		name="bankwithdrawremark"
+		type="java.lang.String"
+		column="bankwithdrawremark"
+		length="500"
+	/>
+	<property name="withdrawnumber" type="java.lang.Integer" column="withdrawnumber" length="50" />
+	<property name="isdefault" type="java.lang.Integer" column="isdefault" length="50" />
+	<many-to-one name="account"	column="account_id" not-null="true"/>
+	<set name="accountWithdraws" inverse="true" cascade="all">
+		<key column="accountbankwithdraw_id"/>
+		<one-to-many class="com.wetuo.wepic.core.beans.AccountWithdraw"/>
+	</set>
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

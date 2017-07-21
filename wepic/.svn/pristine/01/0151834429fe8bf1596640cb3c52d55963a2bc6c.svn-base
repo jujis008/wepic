@@ -1,0 +1,150 @@
+package com.wetuo.wepic.deal.actions;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.deal.beans.BidCat;
+import com.wetuo.wepic.deal.service.BidCatservice;
+
+public class BidCatAction extends PageAction {
+    private BidCatservice bidCatservice; 
+    private List<BidCat> bidcats;
+    private BidCat bidCat;
+    private List<BidCat> parentBid; 
+	public BidCatAction(String className) {
+		try{
+	model=Class.forName(className).newInstance();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		}
+	
+	public String saveBidCat(){
+		String string="摄像作品、动画作品、影视片头、微镜头";
+		String[] strings=string.split("、");
+		for(int i=0;i<strings.length;i++){
+			BidCat bidCat=new BidCat();
+			//bidCat.setId(id)
+			bidCat.setName(strings[i]);
+			bidCat.setpId(32);
+			bidCat.setType("childnode");
+			bidCatservice.savebidCat(bidCat);
+			
+		}
+		//bidCatservice.savebidCat((BidCat)model); 
+		
+		
+		
+		return "saveBidCat";
+	}
+	
+	
+	
+	public String updateBidCat(){
+		
+		bidCatservice.updateBidCat((BidCat)model);
+		
+		
+		
+		return "updateBidCat";
+	}
+	
+	
+	public String deleteBidCat(){
+		bidCatservice.deleteBidCat(((BidCat)model).getId());		
+		return "deleteBidCat";
+	}
+
+	public String findByDetacheCriteria(){
+		DetachedCriteria detachedCriteria=DetachedCriteria.forClass(BidCat.class);
+		bidcats=bidCatservice.findDetaCheCriteria(detachedCriteria);
+		return "findByDetacheCriteria";
+	}
+
+	
+	public String findByrootType(){
+		DetachedCriteria detachedCriteria=DetachedCriteria.forClass(BidCat.class);
+		detachedCriteria.add(Restrictions.eq("type", "root"));
+		bidcats=bidCatservice.findDetaCheCriteria(detachedCriteria);
+		return "findByrootType";
+	}
+     public String findByParentId(){
+    	 BidCat bidCat= (BidCat)model;
+    	 DetachedCriteria detachedCriteria=DetachedCriteria.forClass(BidCat.class);
+ 		detachedCriteria.add(Restrictions.eq("pId", bidCat.getId()));
+ 		bidcats=bidCatservice.findDetaCheCriteria(detachedCriteria);
+    	 
+    	 
+ 		return "findByParentId";
+     }
+	
+	public String publishBid(){
+		BidCat cat=(BidCat)model;
+		 bidCat=bidCatservice.findById(cat.getId());
+		 bidCat.setBidName(covetString(cat.getBidName()));
+		 DetachedCriteria detachedCriteria=DetachedCriteria.forClass(BidCat.class);
+	 	 detachedCriteria.add(Restrictions.eq("pId", bidCat.getId()));
+	 	 bidcats=bidCatservice.findDetaCheCriteria(detachedCriteria);
+	 	 DetachedCriteria detachedCriteria2=DetachedCriteria.forClass(BidCat.class);
+	 	 detachedCriteria2.add(Restrictions.eq("pId", bidCat.getpId()));
+	 	 parentBid=bidCatservice.findDetaCheCriteria(detachedCriteria2);
+		 return bidCat.getDiscription().trim();
+	}
+	
+	public String covetString(String str){
+		String string = "";
+		try {
+			string=new String(str.getBytes("iso-8859-1"), "gbk");
+		//	String string2=new String(str.getBytes("utf-8"), "gbk");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return string;
+	}
+	
+	
+	
+	public BidCatservice getBidCatservice() {
+		return bidCatservice;
+	}
+
+	public void setBidCatservice(BidCatservice bidCatservice) {
+		this.bidCatservice = bidCatservice;
+	}
+
+	public List<BidCat> getBidcats() {
+		return bidcats;
+	}
+
+	public void setBidcats(List<BidCat> bidcats) {
+		this.bidcats = bidcats;
+	}
+
+	public BidCat getBidCat() {
+		return bidCat;
+	}
+
+	public void setBidCat(BidCat bidCat) {
+		this.bidCat = bidCat;
+	}
+
+	public List<BidCat> getParentBid() {
+		return parentBid;
+	}
+
+	public void setParentBid(List<BidCat> parentBid) {
+		this.parentBid = parentBid;
+	}
+	
+	
+	
+	
+}

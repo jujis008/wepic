@@ -1,0 +1,722 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>选择VI设计项目</title>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/js/jquery.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/back/js/ViType.js"></script>
+
+<style>
+/*我的代表作弹出框*/
+*{margin:0;padding:0;}
+li{list-style: none;}
+img{border:0;}
+body{
+	background:#000;}
+#divChooseWorkPop{
+	width:974px;
+	min-height:700px;
+	margin:0 auto;
+	color:#575757;
+	font-size:12px;
+	}
+
+.rework{
+	background:#ffffff;
+	/*padding-bottom:90px;*/
+	}
+.rework .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 974px;
+	}
+.rework .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.rework .top a {
+    background:url(${pageContext.request.contextPath}/public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.rework .top a:hover{
+	background:url(${pageContext.request.contextPath}/public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.rework .top a:active{
+	background:url(${pageContext.request.contextPath}/public/images/closeBox.png) no-repeat 0 -116px;
+	}
+	
+	
+.rework .character_basis{
+    height: 55px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 500px;
+    color: #878787;
+    font-family: "微软雅黑";
+    font-size: 14px;
+	}
+
+.rework .character_basis .basis {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.rework .content_basis{
+	width:934px;
+	min-height:151px;
+	margin:0 auto;
+    color: #010101;
+    font-family: "微软雅黑";
+    font-size: 15px;
+	border-top:1px solid #f0f0f0;
+	border-left:1px solid #f0f0f0;
+	}
+.rework .content_basis .active{
+	background:#f0f0f0;
+	}
+.rework .content_basis li{
+	float:left;
+	cursor:pointer;
+	width:310px;
+	height:49px;
+	line-height:49px;
+	border-right:1px solid #f0f0f0;
+	border-bottom:1px solid #f0f0f0;
+	position:relative;
+	top:0;
+	left:0;
+	}
+.rework .content_basis li .chaMain{
+	margin-left:25px;
+	}
+.rework .content_basis li .number{
+	position:absolute;
+	top:10px;
+	right:8px;
+	height:18px;
+	line-height:18px;
+	background:#e54b65;
+	padding:0px 13px;
+	color:#fff;
+    font-size: 14px;
+	border-radius:8px;
+	}
+	
+.rework .content_basis li:hover{
+	background:#f0f0f0;
+	}
+	
+.rework .divSubmit{
+	width:900px;
+	height:50px;
+	margin:50px auto 0px;
+	text-align:right;
+    position: relative;
+    top: 0;
+    left: 0;
+	}
+
+	
+.rework .divSubmit .reset{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:20px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.rework .divSubmit .reset:hover{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.rework .divSubmit  .sub{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.rework .divSubmit  .sub:hover{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.rework .chooseViChild{
+    height: 700px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 950px;
+    color: #585858;
+    font-size: 12px;
+	background:#f3f3f3;
+	display:none;
+	}
+.rework .chooseViChild .top_characyer{
+    height: 37px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 950px;
+    color: #585858;
+    font-size: 12px;
+	background:#fff;
+	}
+.rework .chooseViChild .top_characyer .top_left{
+	float:left;
+	width:400px;
+	height:20px;
+	margin-top:10px;
+	}
+.rework .chooseViChild .top_characyer .chooseAllChild{
+	margin-left:20px;
+	}
+.rework .chooseViChild .top_characyer .have_chooseNumL{
+	margin-left:30px;
+	}
+.rework .chooseViChild .top_characyer .have_chooseNum{
+	color:#a40200;
+	}
+	
+	
+	
+.rework .chooseViChild .top_characyer .divSubmitChild{
+	float:right;
+	width:250px;
+	height:35px;
+    left: 0;
+    position: relative;
+    top: 2px;
+	}
+.rework .chooseViChild .top_characyer .divSubmitChild .reset{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+.rework .chooseViChild .top_characyer.divSubmitChild .reset:hover{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.rework .chooseViChild .top_characyer .divSubmitChild  .sub{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.rework .chooseViChild .top_characyer.divSubmitChild  .sub:hover{
+	background:url(${pageContext.request.contextPath}/public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.rework .chooseViChild ul{
+	margin-top:20px;
+	
+	 
+	}
+.rework .chooseViChild ul li{
+    
+	float:left;
+	width:230px;
+	height:28px;
+	position:relative;
+	top:0;
+	left:10;
+   text-align: left;
+   margin-left: 20px;
+	
+	}
+</style>
+
+
+<script>
+$(document).ready(function() {
+	document.getElementById("formChooseWorkPop").reset();
+	
+	//给child加默认事件
+	
+	initCheckChlid();
+	
+	 mainBasisUL();
+	 countSelct();
+});
+
+
+/*关闭弹出框*/
+function cloosePopBox(){
+	window.parent.closeOwnBox("iframeChooseIndustryVI");
+}
+/*关闭弹出框*/
+/*
+var bigProject = new Array();
+bigProject[0] = new Array('企业标志设计','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[1] = new Array('企业标准字体','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[2] = new Array('企业标准色（色彩计划）','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[3] = new Array('企业造型（吉祥物）','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[4] = new Array('企业象征图形','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[5] = new Array('企业专用印刷字体','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[6] = new Array('基本要素组合规范','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+
+
+bigProject[7] = new Array('办公事物用品设计','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[8] = new Array('公共关系赠品设计','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[9] = new Array('员工服装、服饰规范','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[10] = new Array('企业车体外观设计','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[11] = new Array('标志符号指示系统','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[12] = new Array('销售店面标识系统 ','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[13] = new Array('企业商品包装识别系统','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[14] = new Array('企业广告宣传规范','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[15] = new Array('展览指示系统','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+bigProject[16] = new Array('再生工具','企业标志及标志创意说明','标志墨稿','标志反白效果图','标志标准化制图','标志方格坐标制图','标志预留空间与最小比例限定','标志特定色彩效果展示');
+
+alert(bigProject[0][1]);
+*/
+function initCheckChlid(){
+	var allCheckedBox = $("#chooseULChild").find("input");
+	
+	$(allCheckedBox).each(function() {
+            $(this).click(
+				function(){
+					var arrChecked = 0;
+					$(allCheckedBox).each(function() {
+						if($(this).is(':checked')){									//判断是否选中
+						//选中状态
+						arrChecked++;							//选中的计数
+						}    
+					});
+				
+				alert(arrChecked); 	
+				});
+        });
+		
+		
+	}
+
+
+
+//VI基础设计系统点击显示子项
+function mainBasisUL(){
+	   
+	var allBasisLi = $("#mainBasisUL").find("li");
+	
+	$(allBasisLi).each(function() {
+            $(this).click(
+				function(){
+					$(allBasisLi).each(function() {$(this).removeClass("active");});
+					$(this).addClass("active");
+					var chaMain=$(this).find(".chaMain").text();
+					$("#chooseAllChild").removeAttr("checked");  
+                  var allchild=sortArrayss(chaMain);
+                 // alert(fdffallchild);
+					
+					openPopUpBox("chooseViChildA");
+				
+				});
+        });
+
+
+
+	$("#viApplication").find("li").each(function() {
+        $(this).click(
+			function(){
+				$(allBasisLi).each(function() {$(this).removeClass("active");});
+				$(this).addClass("active");
+				var chaMain=$(this).find(".chaMain").text();
+
+              var allchild=sortArrayssApplication(chaMain);
+             // alert(allchild);
+				$("#chooseAllChild").removeAttr("checked");  
+				openPopUpBox("chooseViChildA");
+			
+			});
+    });
+
+
+
+
+    
+	}
+
+
+
+function submitPopBox(){
+  var insertht="";
+  if($.trim($("#totlaChoosed1").html())!=0){
+	  insertht+="VI基础设计系统:已选择"+$("#totlaChoosed1").html()+"项&nbsp;&nbsp;"
+	  }
+  if($.trim($("#totlaChoosed2").html())!=0){
+	  insertht+= "VI应用设计系统:已选择"+$("#totlaChoosed2").html()+" 项 ";
+	  }
+	  
+	$("#chooseIndustryValueVI",parent.document.body).html(insertht);
+
+	/*
+	var allInput = $("#choosedUl").find("li");
+	var choosed = '';
+	
+	
+	$(allInput).each(function() {
+		if(choosed != ""){
+			choosed += ","+$(this).val();		//已经有值
+			}
+		else{
+			choosed = $(this).val();			//赋第一个值
+			}
+				
+    });
+	if(choosed == ''){
+		alert("请选择行业");
+		return;
+		}
+		*/
+		cloosePopBox();
+	// window.parent.closeOwnBox("iframeChooseIndustry");
+	
+	// window.parent.submitBox(choosed);	
+}
+
+
+
+
+function chooseAllOrNot(obj){
+	
+	var allCheckedBox = $("#chooseULChild").find("input");			//获取下面选中所有checked
+	
+	if($(obj).is(':checked')){									//判断是否选中
+		//选中状态
+		$(allCheckedBox).each(function() {
+            $(this).attr("checked","checked");
+        });
+	}
+	else{
+		//取消选中状态
+		$(allCheckedBox).each(function() {
+            $(this).removeAttr("checked");
+        });
+		}
+	 $("#haveChooseChild").html( $("#chooseULChild").find("input:checked").length);
+	
+}
+
+
+
+
+/*弹出层*/
+function openPopUpBox(divPopUpBox){
+	var htmlWidth = document.body.clientWidth;
+	var htmlHeight = document.body.clientHeight;
+	var borwerViewWidth =  document.documentElement.clientWidth;
+	var borwerViewHeight =  document.documentElement.clientHeight;
+	
+	var scrollTop = getScrollTop();
+	
+	
+	var getw =$("#"+divPopUpBox).width();
+	var geth = $("#"+divPopUpBox).height();
+	
+	if(getheight == '' || getheight == null){
+		getheight = 0;
+		}
+		
+	var getwidth = parseInt(getw);
+	var getheight = parseInt(geth);
+	
+	var topWidth = (borwerViewWidth - getwidth)/2;
+	var topHeight = (borwerViewHeight - getheight)/ 2;
+	
+	$("#greybackground").remove();
+	$("body").prepend('<div id="greybackground" style="position:absolute; z-index:9999;background:black;display:none"></div>');
+	$("#greybackground").css({ "opacity": "0.8", "height": htmlHeight+"px","display":"block","width": htmlWidth+"px","background":"black","top":"0px","left":"0px"});
+	$("#greybackground").show();
+	
+	$("#"+divPopUpBox).show();
+	$("#"+divPopUpBox).css({ "position": "absolute","z-index":"10000","top": scrollTop+40 + "px" , "left": topWidth+"px"});
+	
+	
+}
+
+
+function getScrollTop(){
+	if(document.documentElement.scrollTop)
+		{return document.documentElement.scrollTop;}
+	else	
+		{return document.body.scrollTop}
+}
+
+
+function cloosePopBoxChild(){
+	$("#greybackground").remove();
+	$("#chooseViChildA").hide();
+	}
+  function countCheck(){
+	  //alert($('input:checked').length);
+  $("#chooseULChild").find("li").each(function(){
+	  $(this).click(function(){
+		  $("#haveChooseChild").html($("#chooseULChild").find("input:checked").length);
+		  
+
+		  })
+
+
+	  });
+	  }    //submitPopBoxChild
+  function submitPopBoxChild(){
+	  
+	var ids=$("#selectParent").val();
+  // alert($("#"+ids).length>0);
+    if($("#"+ids).length==0){
+   var heml="<div id='"+$("#selectParent").val()+"'></div>";
+   if($("#selectParentType").val()==1){
+   $("#selecteCheck").append(heml);
+   }else{
+	   $("#applicationVis").append(heml);
+   }
+    }
+   var selectEd="";
+    $("#chooseULChild").find("input:checked").each(function(){
+    	selectEd+="<li>"+$(this).parent().html()+"</li>";
+        });
+    $("#"+ids).html(selectEd);
+    $("#greybackground").remove();
+	$("#chooseViChildA").hide();
+	countSelct();
+	  }
+   function countSelct(){
+	  // alert("少时诵诗书");
+	  
+	  $("#totlaChoosed1").html($("#selecteCheck").find("li").length);
+
+	  $("#totlaChoosed2").html($("#applicationVis").find("li").length);
+   $("#mainBasisUL").find("li").each(function(){
+	//   alert("sssssssss");
+	   var ids=$.trim($(this).find(".chaMain").text());
+	   if($("#"+ids).length>0){
+		  $(this).html($(this).html()+'<span class="number">'+$("#"+ids).find("li").length+'</span>');
+		//  $(this).find(".number").html();
+		   }
+	   else{
+			   $(this).find(".number").remove();
+			   }
+	   });
+
+
+   $("#viApplication").find("li").each(function(){
+		
+		   var ids=$.trim($(this).find(".chaMain").text());
+		   if($("#"+ids).length>0){
+			  $(this).html($(this).html()+'<span class="number">'+$("#"+ids).find("li").length+'</span>');
+              
+
+ 
+
+
+
+			  
+			//  $(this).find(".number").html();
+			   }
+		   else{
+				   $(this).find(".number").remove();
+				   }
+		   });
+
+
+   
+
+
+
+	   }
+
+
+
+</script>
+</head>
+
+<body>
+
+
+ <!--选择行业-->
+    <div class="rework" id="divChooseWorkPop">
+    <form id="formChooseWorkPop">
+    
+     
+    
+    
+    
+    
+    	<div class="chooseMain">
+            <div class="top">
+                <h2>选择行业</h2>
+                <a href="javascript:cloosePopBox();"></a>
+            </div>    
+            
+            <div class="character_basis">
+                <span class="basis">VI基础设计系统：</span>
+                <font>共已选</font>
+                <span id="totlaChoosed1">0</span>
+                <font>项</font>
+                
+            </div>  
+            
+            <div class="content_basis">
+                <ul id="mainBasisUL">
+                    <li><span class="chaMain">企业标志设计</span></li>
+                    <li><span class="chaMain">企业标准字体</span></li>
+                    <li><span class="chaMain">企业标准色（色彩计划）</span></li>
+                    <li><span class="chaMain">企业造型（吉祥物）</span></li>
+                    <li><span class="chaMain">企业象征图形</span></li>
+                    <li><span class="chaMain">企业专用印刷字体</span></li>
+                    <li><span class="chaMain">基本要素组合规范</span></li>
+                    <div style="clear:both;"></div>
+                </ul>
+            </div>
+                   
+                   
+            
+            
+            <div class="character_basis">
+                <span class="basis">VI应用设计系统：</span>
+                <font>共已选</font>
+                <span id="totlaChoosed2">0</span>
+                <font>项</font>
+                
+            </div>  
+            
+            <div class="content_basis">
+                <ul id="viApplication">
+                    <li><span class="chaMain">办公事物用品设计</span></li>
+                    <li><span class="chaMain">公共关系赠品设计</span></li>
+                    <li><span class="chaMain">员工服装、服饰规范</span></li>
+                    <li><span class="chaMain">企业车体外观设计</span></li>
+                    <li><span class="chaMain">标志符号指示系统</span></li>
+                    <li><span class="chaMain">销售店面标识系统</span></li>
+                    <li><span class="chaMain">企业商品包装识别系统</span></li>
+                    <li><span class="chaMain">企业广告宣传规范</span></li>
+                    <li><span class="chaMain">展览指示系统</span></li>
+                    <li><span class="chaMain">再生工具</span></li>
+                    <div style="clear:both;"></div>
+                    
+                </ul>
+                    <div style="clear:both;"></div>
+            </div>
+            
+            
+                    
+            <div class="divSubmit">
+                <input class="reset" type="button" value="取消"  onclick="cloosePopBox();"/>
+                <input class="sub" type="button" value="保存" onclick="submitPopBox();"/>
+            </div>
+            
+    	</div>
+        
+        
+        
+    	<div class="chooseViChild" id="chooseViChildA">
+        	<div class="top_characyer">
+            	<div class="top_left">
+                    <input type="checkbox"  class="chooseAllChild" id="chooseAllChild" onclick = "chooseAllOrNot(this);"/>
+                    <label class="chooseAllChildLabel" for="chooseAllChild">全选/全不选</label>
+                    
+                                    
+                    <span class="have_chooseNumL">当前已选</span>
+                    <span class="have_chooseNum" id="haveChooseChild">1221</span>
+                    <span>项</span>
+                </div>
+                <div class="divSubmitChild">
+                    <input class="reset" type="button" value="取消"  onclick="cloosePopBoxChild();"/>
+                    <input class="sub" type="button" value="完成" onclick="submitPopBoxChild();"/>
+                    <input type="hidden" value="" id="selectParent"  />
+                     <input type="hidden" value="" id="selectParentType"  />
+                  
+                </div>
+            </div>
+            
+        	<ul id="chooseULChild">
+            	<li>
+                	<input type="checkbox"  class="childIndustryValueCheck" value="互联网/电子商务"/>
+                    <span class="childIndustryValueSpan">互联网/电子商务</span>
+                </li>
+            	
+                
+            </ul>
+        
+        </div>
+        
+      
+ <div style="display: none;" id="selecteCheck">
+        
+        
+        
+        
+        </div>
+        
+        
+        
+        
+        
+         <div style="display: none;" id="applicationVis">
+        
+        
+        
+        
+        </div>
+        
+        
+        
+ 	</form>     
+    </div>
+    
+</body>
+</html>

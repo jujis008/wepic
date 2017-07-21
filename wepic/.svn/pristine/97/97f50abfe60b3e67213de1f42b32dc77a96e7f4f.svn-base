@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 要调用的工作类 -->
+	<!-- 自动发短信提示中标者申请付款  -->
+	<bean id="bidWarningPay" class="com.wepic.common.quartz.BidWarningPay">
+	<property name="bidService" ref="bidService"></property>
+	<property name="bidResponseInvitedService" ref="bidResponseInvitedService"></property>
+	</bean>
+	<!--  中标者 申请付款后每隔两天发短信提示发表者  -->
+	<bean id="autoSendMSM" class="com.wepic.common.quartz.AutoSendMSM">
+	<property name="bidService" ref="bidService"></property>
+	<property name="bidResponseInvitedService" ref="bidResponseInvitedService"></property>
+	</bean>
+	
+	
+	<!-- 七天后自动结款 -->
+	<bean id="autoPayMoneyforBid" class="com.wepic.common.quartz.AutoPayMoneyForBid">
+	<property name="bidService" ref="bidService"></property>
+	<property name="bidtransactionService" ref="bidtransaction"></property>
+	<property name="bidResponseInvitedService" ref="bidResponseInvitedService"></property>
+	
+	
+	
+	</bean>
+	
+	<bean id="quartzUser" class="com.common.spring.quartz.UserQuartz">
+	<property name="userService" ref="userService"></property>
+	<property name="accountService" ref="accountService"></property>
+	<property name="userCreditService" ref="userCreditService"></property>
+	</bean>
+	<bean id="quartzPublish" class="com.common.spring.quartz.PublishQuartz">
+	<property name="publishService" ref="publishService"></property>
+	<property name="buyCommoditiesService" ref="buyCommoditiesService"></property>
+	<property name="publishFavoriteService" ref="publishFavoriteService"></property>
+	</bean>
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="jobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="bidWarningPay"/>
+		</property>
+
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>waringPay</value>
+		</property>
+
+	</bean>
+	<!--   -->
+	<bean id="autoSendMSMJobTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="autoSendMSM"/>
+		</property>
+
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>AutoSendMsg</value>
+		</property>
+
+	</bean>
+	
+	<!-- 定义触发时间 -->
+	<bean id="AutoPayMoneyjobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="autoPayMoneyforBid" />
+		</property>
+
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>AutoPayMoney</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="userjobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="quartzUser" />
+		</property>
+
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>delnoactiveuser</value>
+		</property>
+	</bean>
+	<bean id="publishjobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="quartzPublish" />
+		</property>
+
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>delpublish</value>
+		</property>
+	</bean>
+	<bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobtask" />
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>00 13 10 * * ?</value>
+		</property>
+
+
+	</bean>
+
+     
+     <bean id="doTimeautoSendMSM" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="autoSendMSMJobTask" />
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>00 16 11 * * ?</value>
+		</property>
+
+
+	</bean>
+	
+
+	<bean id="doTime2" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="AutoPayMoneyjobtask" />
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>00 46 09 * * ?</value>
+		</property>
+
+
+	</bean>
+	
+	<bean id="executiontime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="userjobtask" />
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 0 0 * * ?</value>
+		</property>
+
+
+	</bean>
+	
+		<bean id="publishjobtime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="publishjobtask" />
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			<value>0 30 23 * * ?</value>
+		</property>
+
+
+	</bean>
+	
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="doTime" />
+				<ref bean="doTime2" />
+				<ref bean="executiontime"/>
+				<ref bean="publishjobtime"/>
+				<ref bean="doTimeautoSendMSM"/>
+			</list>
+		</property>
+	</bean>
+
+</beans>

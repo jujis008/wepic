@@ -1,0 +1,547 @@
+package com.wetuo.wepic.deal.dao ;
+ 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.ArrayList;
+ 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.cxf.binding.corba.wsdl.Exception;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.wetuo.wepic.deal.beans.Bid;
+import com.wetuo.wepic.deal.beans.BidAimPerson;
+import com.wetuo.wepic.deal.beans.BidResponseInvited;
+import com.wetuo.wepic.common.hibernate.HibernateSessionFactory;
+import com.wetuo.wepic.common.hibernate.XgHibernateCommonDao;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.util.UUIDGenerator;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.service.UserService;
+
+import org.springframework.orm.hibernate3.HibernateCallback;
+import java.sql.SQLException;
+ 
+public class BidResponseInvitedDaoImpl extends XgHibernateCommonDao implements BidResponseInvitedDao {
+	private static Log log = LogFactory.getLog(BidResponseInvitedDaoImpl.class);
+	private static int rowCount = 0;
+	private UserService userService;
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	//////////////common crud//////////////////////////////////////////////
+	public List<BidResponseInvited> findAll(DetachedCriteria detachedCriteria){ 
+		return (List<BidResponseInvited>)getHibernateTemplate().findByCriteria(detachedCriteria);
+	}
+	
+	public List<BidResponseInvited> findPart(String strFields, String[] arrStrValues){ 
+		return (List<BidResponseInvited>)getHibernateTemplate().find("from BidResponseInvited where "+strFields, arrStrValues);
+	}
+	
+	
+	public List<BidResponseInvited> getOrderConfirm( String aimPersonId){ 
+		return (List<BidResponseInvited>)getHibernateTemplate().find("SELECT b FROM BidResponseInvited b WHERE b.bidAimPerson='"+aimPersonId+"' AND b.isConfirmed=1  GROUP BY b.user HAVING COUNT(*)>=1");
+	}
+	
+public Pager list(final int pageSize,final int pageNo)  {	
+	Pager pager = null;	
+	//??????HibernateCallback????4??��??
+	List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+		public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			//???Hibernate??????
+			//List result = session.createQuery(hql).setParameter(0, value).setFirstResult(offset).setMaxResults(pageSize).list();
+			Criteria criteria = session.createCriteria(BidResponseInvited.class);
+			BidResponseInvitedDaoImpl.rowCount = ((Integer) criteria.setProjection( Projections.rowCount()).uniqueResult()).intValue();
+			criteria.setProjection(null);
+			criteria.setFirstResult(pageSize * (pageNo - 1));
+			criteria.setMaxResults(pageSize);
+			List<?> result = criteria.list();
+			return result;
+		}
+	});
+	pager = new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+	return pager;
+	
+	}//end list()
+public Pager list(final String username,final int pageSize,final int pageNo)  {	
+	Pager pager = null;	
+	//??????HibernateCallback????4??��??
+	List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+		public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			//???Hibernate??????
+			//List result = session.createQuery(hql).setParameter(0, value).setFirstResult(offset).setMaxResults(pageSize).list();
+			Criteria criteria = session.createCriteria(BidResponseInvited.class);
+			criteria.add(Restrictions.eq("user", userService.select(username)));
+			BidResponseInvitedDaoImpl.rowCount = ((Integer) criteria.setProjection( Projections.rowCount()).uniqueResult()).intValue();
+			
+			criteria.setProjection(null);
+			criteria.setFirstResult(pageSize * (pageNo - 1));
+			criteria.setMaxResults(pageSize);
+			List<?> result = criteria.list();
+			return result;
+		}
+	});
+	pager = new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+	return pager;
+	
+	}//end list()
+
+
+
+
+
+@SuppressWarnings("unchecked")
+public List listConfirm(final User user,final BidAimPerson aimPerson,final int pageSize,final int pageNo)  {	
+	//Pager pager = null;	
+	//??????HibernateCallback????4??��??
+	List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+		public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			//???Hibernate??????
+			//List result = session.createQuery(hql).setParameter(0, value).setFirstResult(offset).setMaxResults(pageSize).list();
+			Criteria criteria = session.createCriteria(BidResponseInvited.class);
+		//	System.out.println(userService.select(19).getAddress()+"==============");
+			criteria.add(Restrictions.eq("user",user));
+			criteria.add(Restrictions.eq("bidAimPerson", aimPerson));
+			//BidResponseInvitedDaoImpl.rowCount = ((Integer) criteria.setProjection( Projections.rowCount()).uniqueResult()).intValue();
+			
+			criteria.setProjection(null);
+//			criteria.setFirstResult(pageSize * (pageNo - 1));
+//			criteria.setMaxResults(pageSize);
+			List<?> result = criteria.list();
+			return result;
+		}
+	});
+	//pager = new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+	return list;
+	
+	}//end list()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public Pager listInvited(final Map<String,Object> mapSqlParam,final int pageSize,final int pageNo)  {
+	Pager pager = null;
+	//??????HibernateCallback????4??��??
+	List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+	//???HibernateCallback?????????????
+		@SuppressWarnings("unchecked")
+		public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			Set setKeyOfMap = new HashSet();
+			setKeyOfMap = mapSqlParam.keySet();
+			//
+			Iterator itKey = setKeyOfMap.iterator();
+			String strWhereParam = "";
+			int intIWhere = 0;
+			while(itKey.hasNext()){
+				String strKeyI = (String)itKey.next();
+				if(intIWhere == 0){
+				strWhereParam = strWhereParam + " a." + strKeyI + " = ? " ;
+				}else strWhereParam = strWhereParam + " and a." + strKeyI + " = ? " ; 
+				intIWhere++;
+			}//end while
+			//???Hibernate??????
+			int intSerial = 0;
+			Query q = session.createQuery("select count(*) from  BidResponseInvited  a where " + strWhereParam );
+			Iterator itKey2 = setKeyOfMap.iterator();
+			while(itKey2.hasNext()){
+				String strKeyI2 = (String)itKey2.next();
+				q.setParameter(intSerial,mapSqlParam.get(strKeyI2)); 
+				intSerial++;
+			}
+			Object count = q.uniqueResult();
+			// Integer.parseInt(count.toString());
+			//
+			intSerial = 0;
+			q = session.createQuery("select a from BidResponseInvited a where " + strWhereParam +"Group By b.user_  Having Count(*)>=1");
+		
+			Iterator itKey3 = setKeyOfMap.iterator();
+			while(itKey3.hasNext()){
+				String strKeyI3 = (String)itKey3.next();
+				q.setParameter(intSerial,mapSqlParam.get(strKeyI3)); 
+				intSerial++;
+			}
+			BidResponseInvitedDaoImpl.rowCount =q.list().size();
+			q.setMaxResults(pageSize);
+			q.setFirstResult((pageNo - 1) * pageSize);
+			List<?> resultList = q.list();
+			return resultList;
+			}
+	});
+       return		pager = new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+	
+}//end list()
+
+
+
+
+
+
+	public Pager list(final Map<String,Object> mapSqlParam,final int pageSize,final int pageNo)  {
+		Pager pager = null;
+		//??????HibernateCallback????4??��??
+		List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+			@SuppressWarnings("unchecked")
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				Set setKeyOfMap = new HashSet();
+				setKeyOfMap = mapSqlParam.keySet();
+				//
+				Iterator itKey = setKeyOfMap.iterator();
+				String strWhereParam = "";
+				int intIWhere = 0;
+				while(itKey.hasNext()){
+					String strKeyI = (String)itKey.next();
+					if(intIWhere == 0){
+					strWhereParam = strWhereParam + " a." + strKeyI + " = ? " ;
+					}else strWhereParam = strWhereParam + " and a." + strKeyI + " = ? " ; 
+					intIWhere++;
+				}//end while
+				//???Hibernate??????
+				int intSerial = 0;
+				Query q = session.createQuery("select count(*) from  BidResponseInvited  a where " + strWhereParam );
+				Iterator itKey2 = setKeyOfMap.iterator();
+				while(itKey2.hasNext()){
+					String strKeyI2 = (String)itKey2.next();
+					q.setParameter(intSerial,mapSqlParam.get(strKeyI2)); 
+					intSerial++;
+				}
+				Object count = q.uniqueResult();
+				BidResponseInvitedDaoImpl.rowCount = Integer.parseInt(count.toString());
+				//
+				intSerial = 0;
+				q = session.createQuery("select a from BidResponseInvited a where " + strWhereParam );
+				Iterator itKey3 = setKeyOfMap.iterator();
+				while(itKey3.hasNext()){
+					String strKeyI3 = (String)itKey3.next();
+					q.setParameter(intSerial,mapSqlParam.get(strKeyI3)); 
+					intSerial++;
+				}
+				q.setMaxResults(pageSize);
+				q.setFirstResult((pageNo - 1) * pageSize);
+				List<?> resultList = q.list();
+				return resultList;
+				}
+		});
+           return		pager = new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+		
+	}//end list()
+	
+	
+	
+	
+		
+	/////insert///
+	public String insert(BidResponseInvited record) {
+		/*
+		Session session = null;
+		Transaction tx = null;
+		Integer id = null;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.save(record);
+			id = record.getId();
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			throw e;
+			//return record.getId();
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return id;
+		*/
+		String integerRet = null; 
+		return (String)getHibernateTemplate().save(record);
+	}//end insert()
+			
+	/////get max(id)///
+	public int getMaxShowIndex(final String strEntityName,final String strFieldName ) {  
+		List list = null; 
+		int maxShowIndex = 1;   
+		HibernateCallback callback = new HibernateCallback() {
+			public Object doInHibernate(Session session)  throws HibernateException { 
+				Query q = session.createQuery("select max("+strFieldName+") from "+strEntityName+""); 
+				return q.list(); 
+			} 
+		};
+		list = (List) getHibernateTemplate().execute(callback); 
+		if (list != null){ 
+			if (list.size() == 1) {
+				if (list.get(0)!=null) ///���û�����,����᷵��һ��null 
+					maxShowIndex = ((Integer) list.get(0)).intValue(); 
+			}//end if 
+		}//end if 
+		return maxShowIndex; 
+	}//end  getMaxShowIndex() 
+	
+	/////delete///
+	public boolean delete(BidResponseInvited record)  {
+		/*
+		Session session = null;
+		Transaction tx = null;
+		boolean b = true;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.delete(record);
+			tx.commit();
+		} catch (HibernateException e) {
+			b = false;
+			throw e;
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return b;
+		*/
+		getHibernateTemplate().delete(record);
+		return true;
+	}//end delete()
+			
+	public boolean delete(String id)  {
+		/*
+		BidResponseInvited record = select(id);
+		Session session = null;
+		Transaction tx = null;
+		boolean b = true;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.delete(record);f
+			tx.commit();
+		} catch (HibernateException e) {
+			b = false;
+			throw e;
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return b;
+		*/
+		Object obj = getHibernateTemplate().load(BidResponseInvited.class,new String(id));
+		getHibernateTemplate().delete(obj);
+		return true;
+	}//end delete()
+			
+	/////update///
+	public boolean update(BidResponseInvited record)  {
+		/*
+		Session session = null;
+		Transaction tx = null;
+		boolean b = true;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.update(record);
+			tx.commit();
+		} catch (HibernateException e) {
+			b = false;
+			throw e;
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return b;
+		*/
+		getHibernateTemplate().update(record);
+		return true;
+		
+	}//end update()
+			
+	/////select///
+	public BidResponseInvited select(String id)  {
+		/*
+		Session session = null;
+		BidResponseInvited record = null;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			Query query = session.createQuery("from BidResponseInvited where id=?");
+			query.setInteger(0, id);
+			record = (BidResponseInvited) query.uniqueResult();
+			query = null;
+			
+		} catch (HibernateException e) {
+			throw e;
+		} finally {
+			HibernateSessionFactory.closeSession();
+		}
+		
+		return record;
+		*/
+		
+		return (BidResponseInvited) getHibernateTemplate().get(BidResponseInvited.class, new String(id));
+		
+		
+	}//end select()
+	
+	/////main///
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	}
+
+	@SuppressWarnings("unchecked")
+	public Pager getReplyPhoto(final String aimPersonId, final int pageSize, final int pageNo,final String tags,final String username) {
+		
+ 		List list = getHibernateTemplate().executeFind( new HibernateCallback() {
+			public Object doInHibernate(Session session)  throws HibernateException { 
+				 String str=" ";
+				if(tags.equals("changeDiv")){
+					str=" AND  b.isResponse=1 and b.isConfirmed<1 and u.id!='"+username+"'";			
+				}else if("allconfirm".equals(tags)){
+					str=" AND  b.isConfirmed=1 and taskFinished=0";	
+					
+					
+				}
+				Query q = session.createSQLQuery("SELECT b.user_ ,u.username , u.realName ,u.address , u.portrait , u.sex ,b.isInvited,  " +
+						                           "b.isResponse, b.isConfirmed, b.taskFinished , b.id, b.inviteTime,b.confirmedTime," +
+						                           "b.bidderRemark,b.complain,b.complainHandle,b.bidRemarkType,b.complainHandleResulet,b.taskFinished ,b.bidid,b.reponseContent" +
+						                         " ,u.nickName FROM user u left join BidResponseInvited  b ON u.id = b.user_" +
+						                         " WHERE b.bidAimPerson_='"+aimPersonId+"'"   +str+
+						                         "  AND u.id IN(SELECT user_  FROM BidResponseInvited   " +
+						                         "WHERE bidAimPerson_='"+aimPersonId+"') Group By u.id Having Count(*)>=1 ORDER BY b.inviteTime DESC"); 
+				BidResponseInvitedDaoImpl.rowCount = q.list().size();
+				q.setMaxResults(pageSize).
+				setFirstResult((pageNo - 1) * pageSize);
+				List<?> resultList = q.list();
+				return resultList;
+			} 
+		});
+		return new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public Pager getReplyPhotoFratend(final String aimPersonId, final int pageSize, final int pageNo,final String username) {
+		
+ 		List list = getHibernateTemplate().executeFind( new HibernateCallback() {
+			public Object doInHibernate(Session session)  throws HibernateException { 
+				 String str=" ";
+				
+				Query q = session.createSQLQuery("SELECT b.user_ ,u.username , u.realName ,u.address , u.pic , u.sex ,b.isInvited,  b.isResponse, b.isConfirmed, b.taskFinished , b.id,b.inviteTime " +
+						                         "FROM user u left join BidResponseInvited  b ON u.id = b.user_" +
+						                         " WHERE b.bidAimPerson_='"+aimPersonId+"'"   +str+
+						                         "  AND u.id IN(SELECT user_  FROM BidResponseInvited   " +
+						                         "WHERE bidAimPerson_='"+aimPersonId+"') and b.isResponse=1 Group By u.id Having Count(*)>=1 ORDER BY  b.inviteTime DESC"); 
+				BidResponseInvitedDaoImpl.rowCount = q.list().size();
+				q.setMaxResults(pageSize).
+				setFirstResult((pageNo - 1) * pageSize);
+				List<?> resultList = q.list();
+				return resultList;
+			} 
+		});
+		return new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+	}
+
+	
+	
+	public List listAllConfirm(final Bid bid, int pageSize, int pageNo) {
+		//Pager pager = null;	
+		//??????HibernateCallback????4??��??
+		List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+			//???HibernateCallback?????????????
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				//???Hibernate??????
+				Query q = session.createSQLQuery("SELECT * " +
+                        "FROM user u left join BidResponseInvited b ON u.id = b.user_" +
+                        " WHERE    b.isConfirmed=1  and  u.id IN(SELECT user_  FROM BidResponseInvited  " +
+                        "WHERE bidid='"+bid.getId()+"') Group By u.id Having Count(*)>=1").addEntity(BidResponseInvited.class); 
+
+               List<?> resultList = q.list();
+			
+				return resultList;
+			}
+		});
+		return list;
+	}
+	
+	
+	public Pager findtousuList(final int pageSize,final int pageNo)  {	
+		Pager pager = null;	
+		//??????HibernateCallback????4??��??
+		List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+			//???HibernateCallback?????????????
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				//???Hibernate??????
+				//List result = session.createQuery(hql).setParameter(0, value).setFirstResult(offset).setMaxResults(pageSize).list();
+				Criteria criteria = session.createCriteria(BidResponseInvited.class);
+				
+		        criteria.add(Restrictions.isNotNull("complain"));
+		      //  criteria.add(Restrictions.eq("publicOrPrivate", 1));
+		        BidResponseInvitedDaoImpl.rowCount = ((Integer) criteria.setProjection( Projections.rowCount()).uniqueResult()).intValue();
+				criteria.setProjection(null);
+				criteria.setFirstResult(pageSize * (pageNo - 1));
+				criteria.setMaxResults(pageSize);
+				List<?> result = criteria.list();
+				return result;
+			}
+		});
+		pager = new Pager(pageSize, pageNo, BidResponseInvitedDaoImpl.rowCount, list);
+		return pager;
+		
+		}//end list()
+	@SuppressWarnings("unchecked")
+	public Pager findByDetachedCriteria(DetachedCriteria detachedCriteria,int nowPage,int pageSize){
+		   
+		List<BidResponseInvited> list=super.getHibernateTemplate().findByCriteria(detachedCriteria, (nowPage-1)*pageSize, pageSize);
+		Pager pager=new Pager(pageSize, nowPage, getrowCountR(detachedCriteria), list);
+		
+		return pager;
+	}
+	public int getrowCountR(DetachedCriteria criteria){
+		
+		int rowCount= (Integer)super.getHibernateTemplate().findByCriteria(criteria.setProjection(Projections.rowCount()),0,1).get(0);
+		return rowCount;
+	}
+	
+	
+	
+	
+	
+	
+	
+}//end class

@@ -1,0 +1,134 @@
+.content{
+    width: 770px;
+    min-height: 300px;
+    left: 0;
+    position: relative;
+    top: 0;
+	background: #FFFFFF;
+    margin: 5px auto;
+    text-align: left;
+	padding:10px 50px;
+	font-family:"宋体";
+	padding-bottom:80px;
+	}
+
+.content .new{
+    width: 770px;
+	min-height: 40px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #E6E6E6;
+	position:relative;
+	top:0;
+	left:0;
+	}
+.content .new table{
+	height:50px;
+	}
+
+.content .new table .tdoneB{
+	color: #000000;
+    font-family: '微软雅黑';
+    font-size: 14px;
+	padding-right:10px;
+	}
+.content .new .info{
+	color: #000000;
+    font-family: '微软雅黑' ;
+    font-size: 14px;
+	margin-right:30px;
+	cursor:pointer;
+	width:650px;
+	}
+
+.content .new .delDiv{
+	height:50px;
+	line-height:50px;
+	}
+.content .new .newViewInfo{
+	color: #8b8b8b;
+    font-size: 12px;
+    font-family: '宋体' ;
+	}
+.content .new .info .nameWork{
+	color: #0168b7;
+	margin-left:5px;
+	margin-right:5px;
+	cursor:pointer;
+	}
+
+.content .new .info .nameWorkX{
+	color: #0168b7;
+	margin-left:5px;
+	margin-right:5px;
+	cursor:pointer;
+	}
+.content .new .info .nameWorkX:hover{
+	text-decoration:underline;
+	}
+.content .new .info .nameWorkM{
+	color: #0168b7;
+	margin-left:5px;
+	margin-right:5px;
+	}
+.content .new .info .name{
+	margin-left:5px;
+	margin-right:5px;
+	cursor:pointer;
+	}
+
+.content .new .time{
+	position:absolute;
+	bottom:0;
+	right:0;
+	height: 50px;
+	float:left;
+	color: #b5b5b5;
+	line-height:65px;
+	}
+	
+.ppointPagingthis{
+	width:770px;
+	}
+.ppointPaging {
+    background:#ffffff;
+	}
+
+.content .newC{
+	padding-top:12px;
+	padding-bottom:30px;
+    width: 700px;
+	margin:0 auto;
+	min-height: 120px;
+	}
+
+.content .newC .imgHead{
+	width:80px;
+	height: 80px;
+	margin-right:20px;
+	margin-bottom:12px;
+	float:left;
+	}
+.content .newC .imgHead img{
+	width:80px;
+	height: 80px;
+	}
+
+
+
+/*无人应约*/
+.nobody{
+	width:100%;
+	margin:0px auto;
+	padding:100px 0;
+	text-align:center;
+	background:#fff;
+	}
+.nobody .ico{
+	width:40px;
+	height:40px;
+	margin:0 auto;
+	margin-bottom:20px;
+	background:url(../../../public/images/yuepaiicon02.png) 0 -104px no-repeat;
+	}
+
+/*无人应约*/

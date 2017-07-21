@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="larry-default" extends="struts-default" abstract="true" >
+        <interceptors>
+	        <!-- define rights interceptor -->
+	        <interceptor name="authority" class="com.wetuo.wepic.core.actions.AuthorizationInterceptor"/>       
+	        <interceptor name="fileUpload" class="org.apache.struts2.interceptor.FileUploadInterceptor"/>
+	        <!-- define interceptor stack 包含权限控制 -->
+	        <interceptor-stack name="mydefault">
+	              <interceptor-ref name="defaultStack" />
+	              <interceptor-ref name="authority" />
+	              <interceptor-ref name="fileUpload">
+		       		<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,audio/mpeg,</param>
+		       		<param name="maximumSize">20480</param>
+		    	  </interceptor-ref>
+	        </interceptor-stack>
+        </interceptors>	
+        
+        <!--定义默认拦截器 ,一旦在某个包下定义了默认拦截器栈，
+        	在该包下的所有action都会使用此拦截器栈。
+        	对于那些不想使用些拦截器栈的action，则应该将它放置在其它的包下        	
+        -->
+        	
+        <default-interceptor-ref name="mydefault" />    
+        
+        <global-results>
+            <result name="index">index.html</result>
+			<result name="login">/back/loginRegister/login.jsp</result>
+			<result name="error">/view/myError.jsp</result>            
+			<result name="mainManage">/back/index.jsp</result>
+			<result name="mymsg">/back/index.jsp</result>	
+			<!-- <result name="success">/welcome.jsp</result> -->	
+			<result name="input" type="redirect">/back/loginRegister/login.jsp</result>
+			<result name="logout" type="redirect">/back/loginRegister/login.jsp</result>
+        </global-results>	
+        
+        <action name="">
+			<result>.</result>
+			<!-- 使用拦截器,一般配置在result之后， -->
+			<!-- 引用系统默认的拦截器
+			<interceptor-ref name="defaultStack"/> -->
+            <!--如果为Action指定了一个拦截器，则系统默认的拦截器栈将会失去作用
+            <interceptor-ref name="拦截器名或拦截器栈名"/> -->
+		</action>	
+		
+    </package>
+    <package name="cart" extends="larry-default" namespace="/">
+
+	    <action name="shopcart*" class="shopCartAction" >
+	    <result name="cart">/view/frontend/cart.jsp</result>
+		</action> 
+
+    <action name="shopcart*" class="shopCartAction" >
+    <result name="cart">/view/frontend/cart.jsp</result>
+    <result name="del">/view/frontend/cart.jsp</result>
+    <result name="cancel">/view/frontend/confirmOrder.jsp</result>
+	</action> 
+	<action name="allmessage*" class="messageAction">
+			<result name="list">/dynamic/dynamic.jsp</result>
+			<result name="add">/view/userCat/userCat_add.jsp</result>
+			<result name="edit">/view/userCat/userCat_edit.jsp</result>
+			<result name="input">/view/userCat/userCat_{1}.jsp</result>
+			<result name="error">/view/error.jsp</result>
+			<result name="reg">/view/user/register0.jsp</result>
+		</action>
+    </package>
+	<!--
+	<package name="pkg" extends="struts-default" abstract="true"> 
+		<global-results>	
+		</global-results>
+		<global-exception-mappings>	
+ 	 	</global-exception-mappings>
+	</package> 
+	<package name="test" namespace="/test" extends="pkg"> 
+	</package>	
+	实现拦截器类：
+	所有的Struts 2的拦截器都直接或间接实现接口com.opensymphony.xwork2.interceptor.Interceptor。该接口提供了三个方法：
+	1)      void init(); 在该拦截器被初始化之后，在该拦截器执行拦截之前，系统回调该方法。
+	对于每个拦截器而言，此方法只执行一次。
+	2)      void destroy();该方法跟init()方法对应。在拦截器实例被销毁之前，系统将回调该方法。
+	3)      String intercept(ActionInvocation invocation) throws Exception; 
+	该方法是用户需要实现的拦截动作。该方法会返回一个字符串作为逻辑视图。
+	除此之外，继承类com.opensymphony.xwork2.interceptor.AbstractInterceptor是更简单的一种实现拦截器类的方式，因为此类提供了init()和destroy()方法的空实现，这样我们只需要实现intercept方法。
+	-->
+	
+	
+</struts>

@@ -1,0 +1,133 @@
+$(function () {
+	
+	//表格奇偶数行背景颜色
+	tableOddEvenBackground('#tableWithdrawDeposit'); 
+	
+	tabControl('#userAccountBar','#allRecord');
+	
+	
+	
+		
+	achieveBelowIncord("divdropDownIncome","divdropDownViewIncome")					/*获取下拉框值并隐藏	拍摄类别*/
+	});
+	
+
+
+
+function achieveBelowIncord(bolewDiv,showValue){
+	var bolewDivSpan=$("#"+bolewDiv).find("span");
+
+	
+	$(bolewDivSpan).each(function() {
+		$(this).click(
+			function(){
+				$("#txtBeginDate").val('');
+				$("#txtEndDate").val('');
+				
+				$("#"+showValue).html(this.innerHTML);
+				$("#"+bolewDiv).hide();
+				
+				var thisV = trim(this.innerHTML);
+				if(thisV == '全部收入类型' ){
+					$("#tableWithdrawDeposit").show();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '项目收入' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").show();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '出售作品' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").show();
+					$("#tableWithdrawDeposit3").hide();
+					}
+				else if(thisV == '推广收入' ){
+					$("#tableWithdrawDeposit").hide();
+					
+					$("#tableWithdrawDeposit1").hide();
+					$("#tableWithdrawDeposit2").hide();
+					$("#tableWithdrawDeposit3").show();
+					}
+				});
+	
+		});	
+	$(".divdropDown").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".dropDownBoxValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+	
+	$(".editSelect").each(function() {
+        $(this).hover(
+		function(){
+			//$(this).find(".belowValue").show();
+		},
+		function(){
+			$(this).find(".belowValue").hide();
+			$(this).parent().css("z-index","0");
+		});
+    });
+}
+/*获取下拉框值并隐藏*/
+function tabControl(tag,detail){
+	var cardLi=$(tag).find("li");
+	var oDivSon = $(detail).children();
+	var iframeObj;
+	
+        for(var i=0;i<cardLi.length;i++){  
+            cardLi[i].index=i; //input[0].index=0 index是自定义属性
+            cardLi[i].onclick=function(){
+               for(var i=0;i<cardLi.length;i++){  //循环遍历去掉button样式和把div隐藏
+                  cardLi[i].className='';
+                  oDivSon[i].style.display='none';
+               };
+			   
+               this.className='active';  //当前按钮添加样式
+               oDivSon[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+			   
+			   
+			   if(this.index == 0){
+				   iframeObj = window.frames['childTopUp'].document.getElementById('container');	
+				   var height = $(iframeObj).children().height();
+				   $("#childTopUp").css("height", height+"px");
+				   return;
+				   }
+			 	if(this.index == 1){
+				   iframeObj = window.frames['childWithdrawDeposit'].document.getElementById('container');	
+				   var height1 = $(iframeObj).children().height();
+				   alert(height1);
+				   $("#childWithdrawDeposit").css("height", height1+"px");
+				   return;
+				   }
+			 	if(this.index == 2){
+				   iframeObj = window.frames['childIncome'].document.getElementById('container');	
+				   var height2 = $(iframeObj).children().height();
+				   $("#childIncome").css("height", height2+"px");
+				   return;
+				   }
+			 	if(this.index == 3){
+				   iframeObj = window.frames['childExpenditure'].document.getElementById('container');	
+				   var height3 = $(iframeObj).children().height();
+				   $("#childExpenditure").css("height", height3+"px");
+				   return;
+				   }
+			   
+           };
+         };
+		 
+		 
+	 
+}

@@ -1,0 +1,1006 @@
+package com.wetuo.wepic.core.actions ;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.qq.connect.QQConnectException;
+import com.qq.connect.api.OpenID;
+import com.qq.connect.javabeans.AccessToken;
+import com.qq.connect.oauth.Oauth;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import com.weibo.login.weibo4j.model.WeiboException;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.util.MD5Code;
+import com.wetuo.wepic.common.util.SendEmail;
+import com.wetuo.wepic.core.beans.LoginHistory;
+import com.wetuo.wepic.core.beans.RoleTags;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.beans.UserCat;
+import com.wetuo.wepic.core.beans.UserDetalfor;
+import com.wetuo.wepic.core.beans.UserInfoBeans;
+import com.wetuo.wepic.core.service.UserCatService;
+import com.wetuo.wepic.core.service.UserService;
+import com.wetuo.wepic.core.tools.ModelDriverReflect;
+ 
+
+public class UserAction extends PageAction {
+
+	private Integer userId;
+	public UserAction(String className) {
+		  try{
+			  model=Class.forName(className).newInstance();
+			  
+		  }catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@SuppressWarnings("unused")
+	public String newregisterWepic(){
+	  User user=(User)model;       
+	  if(!user.getPassword().equals(rePassword)){
+		super.addFieldError("password", "二次输入的密码不一致");
+		return "input";
+	   }
+	  else if(!userService.isEmailExist(((User)model).getEmail())){
+		super.addFieldError("email", "邮箱已被注册,请重新输入");
+		return "input";
+	   }
+	 else if(!userService.isExist(((User)model).getUsername())){
+		super.addFieldError("username", "用户名被注册,请重新输入");
+		return "input";
+	  }
+	     String regEx = "[\u4e00-\u9fa5]";
+ 	     Pattern pat = Pattern.compile(regEx);
+ 	     Matcher matcher = pat.matcher(((User)model).getUsername());
+ 	     if (matcher.find()){
+ 	    	super.addFieldError("username","用户名只能是数字字母");
+			return "input";
+ 	    }
+ 	     String openId=super.getSession2().getAttribute("openID")+"";
+ 	    if(openId!=null&&openId.trim().length()>0){
+ 	    	user.setQqOpenId(openId);	
+ 	    }else{
+ 	    	
+ 	    	String weiboopenId=super.getSession2().getAttribute("weiboOpenId")+"";
+ 	    	  if(weiboopenId!=null&&weiboopenId.trim().length()>0){
+ 	    	user.setWeiboOpenId(weiboopenId);	
+ 	    	  }
+ 	    }
+ 	    user.setNickName(user.getUsername());
+ 	     int i=userService.insert(user);
+		  id=user.getId();
+		return "registerWepicSucess";
+	}
+	//发送邮件===
+	public String SendEmial(){
+		HttpServletRequest request=super.getRequest();
+		String path = request.getContextPath();
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		
+		user=userService.selectById(((User)model).getId());
+		userService.sendEmail(user.getId(),basePath);
+		return "SendEmial";
+		
+		
+	}
+	
+	//激活账户
+	public String  initUserMustInfoForWepic(){
+		
+		String flag=userService.initUserMustInfoForWepic(registerId, imgcode);
+		
+		if(!flag.equals("fail")){
+			user=userService.select(flag);
+			id=user.getId();
+			ActionContext.getContext().put("name", id);
+			return "initUserMustInfoForWepicSucess";
+			
+		}else{
+			return "initUserMustInfoForWepicFailt";	
+		}
+	}
+	
+	
+	public String checkEmailLogin(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String path=request.getRequestURI();
+		
+		 
+		user=userService.selectById(((User)model).getId());
+		if(user.getStatu()==1){
+			return "login";	
+		}
+		user.setStatu(1);//激活邮箱
+		userService.update(user);
+		super.getSession2().setAttribute("id", user.getId());
+    	super.getSession2().setAttribute("username",user.getUsername());
+    	super.getSession2().setAttribute("nickName",user.getNickName());
+    	super.getSession2().setAttribute("role",user.getRole());
+    	super.getSession2().setAttribute("personOrCompany",user.getPersonOrCompany());
+    	
+	// super.getLoginUsername()
+		return "checkEmailLogin";
+	}
+	
+	
+	public String checkReusername(){
+		if(userService.isExist(((User)model).getUsername())){
+			message="ok";	
+		}else{
+			message="error";
+			
+			
+		}
+			return "checkReusername";
+		}
+	
+	public String checkEmail(){
+		
+		if(userService.isEmailExist(((User)model).getEmail())){
+			message="ok";	
+		}else{
+			message="error";
+			
+			
+		}
+			return "checkEmail";
+		}
+	
+     public String afterQQlogin() throws QQConnectException{
+    	 
+    	 HttpServletRequest request=super.getRequest();
+    	 
+    	 System.out.println(request.getParameter("code"));
+    	  AccessToken accessTokenObj = (new Oauth()).getAccessTokenByRequest(request);
+    	    String accessToken   = null,
+    	     openID        = null;
+    	    long tokenExpireIn = 0L;
+    	  accessToken = accessTokenObj.getAccessToken();
+          tokenExpireIn = accessTokenObj.getExpireIn();
+
+          // 利用获取到的accessToken 去获取当前用的openid -------- start
+          OpenID openIDObj =  new OpenID(accessToken);
+          openID = openIDObj.getUserOpenID();
+          super.getSession2().setAttribute("openID", openID);
+          Map<String ,Object> map=new HashMap<String, Object>();
+          map.put("qqOpenId", openID);
+          
+          List list= userService.list(map, 1, 1).getResultList();
+          if(list!=null&&list.size()>0){
+        	User user=(User) list.get(0);
+        	super.getSession2().setAttribute("id", user.getId());
+        	super.getSession2().setAttribute("username",user.getUsername());
+        	super.getSession2().setAttribute("nickName",user.getNickName());
+        	super.getSession2().setAttribute("role",user.getRole());
+        	super.getSession2().setAttribute("personOrCompany",user.getPersonOrCompany());
+        	return "wepicloginSucess";
+  
+          }
+          int id=super.getLonginUserId();
+          if(id==0){
+        	  return "loginbyQQ";
+          }
+          return "loginbyQQ";
+     }
+	public String loginform(){
+		user=(User) model;
+		String string=(String)super.getSession("loginValidateCode");
+		errorMap=new HashMap<String, String>();
+		if(string==null||!string.equals(vlidateCode)){
+			errorMap.put("vlidateCode", "验证码填写错误");
+			
+			return "loginbyQQ";
+		}
+		
+		
+		
+		
+		
+		if(userService.login(user.getUsername(), user.getPassword())){
+			//user
+			//String super.getLonginUserId();
+			User loginuser=userService.select(user.getUsername());
+			String openId=(String) super.getSession2().getAttribute("openID");
+			if(openId!=null&&openId.trim().length()>0){
+				loginuser.setQqOpenId(openId);
+				userService.update(loginuser);
+			}else{
+				
+				String weiboopenId=super.getSession2().getAttribute("weiboOpenId")+"";
+	 	    	  if(weiboopenId!=null&&weiboopenId.trim().length()>0){
+	 	    		 loginuser.setWeiboOpenId(weiboopenId);
+	 	    	   userService.update(loginuser);
+	 	    	  }
+				
+			}
+			super.getSession2().setAttribute("id", loginuser.getId());
+        	super.getSession2().setAttribute("username",loginuser.getUsername());
+        	super.getSession2().setAttribute("nickName",loginuser.getNickName());
+        	super.getSession2().setAttribute("role",loginuser.getRole());
+        	super.getSession2().setAttribute("personOrCompany",loginuser.getPersonOrCompany());
+        	return "wepicloginSucess";
+		}else{
+			
+			errorMap.put("userError", "用户名或密码错误");
+			return "loginbyQQ";
+		}
+	}
+	
+	
+	public String loginadmin(){
+		user=(User) model;
+		if(userService.login(user.getUsername(), user.getPassword())){
+			//user
+			//String super.getLonginUserId();
+			User loginuser=userService.select(user.getUsername());
+			super.getSession2().setAttribute("id", loginuser.getId());
+        	super.getSession2().setAttribute("username",loginuser.getUsername());
+        	super.getSession2().setAttribute("nickName",loginuser.getNickName());
+        	super.getSession2().setAttribute("role",loginuser.getRole());
+        	super.getSession2().setAttribute("personOrCompany",loginuser.getPersonOrCompany());
+        	return "loginadminsuc";
+		}else{
+			return "loginbyQQ";
+		}
+	}
+	
+	//新浪微博登录
+ public String afterWeibologin()  {
+	
+	    com.weibo.login.weibo4j.Oauth oauth = new com.weibo.login.weibo4j.Oauth();
+	    try {
+	    	//String 
+			com.weibo.login.weibo4j.http.AccessToken takecod=oauth.getAccessTokenByCode(code);
+			String tocken=takecod.getAccessToken();
+			  String access_token =tocken;
+              String openID =takecod.getUid();
+              super.getSession2().setAttribute("weiboOpenId", openID);
+              Map<String ,Object> map=new HashMap<String, Object>();
+              map.put("weiboOpenId", openID);
+              
+              List list= userService.list(map, 1, 1).getResultList();
+              if(list!=null&&list.size()>0){
+            	User user=(User) list.get(0);
+            	super.getSession2().setAttribute("id", user.getId());
+            	super.getSession2().setAttribute("username",user.getUsername());
+            	super.getSession2().setAttribute("nickName",user.getNickName());
+            	super.getSession2().setAttribute("role",user.getRole());
+            	super.getSession2().setAttribute("personOrCompany",user.getPersonOrCompany());
+            	
+            	return "wepicloginSucess";
+              }
+              int id=super.getLonginUserId();
+              if(id==0){
+            	  return "loginbyQQ";
+              }else{
+            	  return "wepicloginSucess";  
+
+            	  
+              }
+		} catch (WeiboException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+        return "error";
+     }
+  
+ 
+    public String updateuserInfoByDegree(){
+    	User newuser=(User) model;
+    	int id=super.getLonginUserId();
+    	if(id==0){
+    		
+    		return "login";
+    	}
+    	User olduser=userService.selectById(id);
+    	olduser.setHighestDegreeSchool(newuser.getHighestDegreeSchool());
+    	olduser.setHighestDegreeDate(newuser.getHighestDegreeDate());
+    	olduser.setMajor(newuser.getMajor());
+    	olduser.setBachelorSchool(newuser.getBachelorSchool());//院系
+    	olduser.setHighestDegree(newuser.getHighestDegree());
+    	userService.update(olduser);
+    	return "updateuserInfoByDegreeSucess";
+    	
+    	
+    }
+    
+    public String getUserInfo(){
+    	int userId=super.getLonginUserId();
+    	userInfoBeans= userService.getUserInfoBeans(userId);
+    	return "getUserInfo";
+    }
+                 //updetaUserBaseInfo
+    public String updetaUserBaseInfo(){
+    	User newUser=(User)model;
+    	int id=super.getLonginUserId();
+    	if(id==0){
+    		return "login";
+    	}
+    	User oldUser=userService.selectById(id);
+    	ModelDriverReflect driverReflect=new ModelDriverReflect();
+		User out=(User)driverReflect.Reflect("com.wetuo.wepic.core.beans.User",oldUser ,newUser);
+		super.getSession2().setAttribute("nickName", out.getNickName());
+		out.setIsediteuserInfo("1");
+    	userService.update(out);
+    	if(oldUser.getRole()!=null&&oldUser.getRole()!=""){
+    		if(oldUser.getRole().equals("model")){
+    			message="model";
+    			
+    		}else{
+    			message="all";
+    			
+    		}
+    	}
+    	if(oldUser.getPersonOrCompany()!=null&&oldUser.getPersonOrCompany()==2){
+    		message="enpr";
+    		
+    	}
+    	
+    	return "updetaUserBaseInfo";
+    }
+    //企业信息修改
+    public String updetaEnterPiserBaseInfo(){
+    	User newUser=(User)model;
+    	int id=super.getLonginUserId();
+    	if(id==0){
+    		return "login";
+    	}              //  message
+    	message="enpr";
+    	User oldUser=userService.selectById(id);
+    	ModelDriverReflect driverReflect=new ModelDriverReflect();
+		User out=(User)driverReflect.Reflect("com.wetuo.wepic.core.beans.User",oldUser ,newUser);
+		super.getSession2().setAttribute("nickName", out.getNickName());
+		out.setIsediteuserInfo("1");
+    	userService.update(out);
+    	return "updetaUserBaseInfo";
+    }
+    public String autoUpload(){
+    	String uploadPath = ServletActionContext.getServletContext().getRealPath("/userInfoImg");
+		HttpServletRequest request = ServletActionContext.getRequest();
+    	String path = request.getContextPath();
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		message=userService.uploadPubimg(portraitFile, path,basePath,uploadPath);
+    	return "autoUpload";
+    }
+    //企业头像上传
+    public String enterpriseHeadautoUpload(){
+    	String uploadPath = ServletActionContext.getServletContext().getRealPath("/userInfoImg");
+		HttpServletRequest request = ServletActionContext.getRequest();
+    	String path = request.getContextPath();
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		//portraitFile.getH
+		message=userService.enterpeiceuploadPubimg(portraitFile, path,basePath,uploadPath);
+    	return "autoUpload";
+    }
+    
+    
+    public String updateUserTag(){
+    	int id=super.getLonginUserId();
+    	User modelUser=(User)model;
+    	User record1=userService.selectById(id);
+    	record1.setUserTag(modelUser.getUserTag());
+    	record1.setPersonTag(modelUser.getPersonTag());
+    	userService.update(record1);
+    	
+    	return "saveUserTag";
+    	
+    }
+    public String findroleTagsbyrole(){
+    	int id=super.getLonginUserId();
+    	 user=userService.selectById(id);
+    	if(user.getUserTag()!=null&&user.getUserTag()!=""){
+    		String usetaglist[]=user.getUserTag().split(" ");
+    		super.getRequest().setAttribute("usetaglist", usetaglist);
+    	}
+    	if(user.getPersonTag()!=null&&user.getPersonTag()!=""){
+    		String persontaglist[]=user.getPersonTag().split(" ");
+    		super.getRequest().setAttribute("persontaglist", persontaglist);
+    	}
+    	String role=user.getRole();
+    	if(role.equals("model")){
+    		user.setChineseRole("模特");
+    		
+    	}else if(role.equals("photography")){
+    		user.setChineseRole("摄影师");
+    	}else if(role.equals("photography")){
+    		user.setChineseRole("摄影师");
+    	}
+    	else if(role.equals("broker")){
+    		user.setChineseRole("经纪人");
+    	}
+    	else if(role.equals("art")){
+    		user.setChineseRole("艺人");
+    	}
+    	else if(role.equals("designer")){
+    		user.setChineseRole("设计师");
+    	}
+    	else if(role.equals("photoEnterprise")){
+    		user.setChineseRole("摄影");
+    	}
+    	else if(role.equals("designEnterprise")){
+    		user.setChineseRole("创意设计");
+    	}
+    	else if(role.equals("Planning")){
+    		user.setChineseRole("广告/策划");
+    	}
+    	else if(role.equals("manga")){
+    		user.setChineseRole("动漫");
+    	}
+    	else if(role.equals("performance")){
+    		user.setChineseRole("演艺");
+    	}
+    	else if(role.equals("cultureandart")){
+    		user.setChineseRole("文化艺术");
+    	}
+    	else if(role.equals("it")){
+    		user.setChineseRole("IT/互联网");
+    	}
+    	else if(role.equals("printing")){
+    		user.setChineseRole("出版/印刷");
+    	}
+    	else if(role.equals("media")){
+    		user.setChineseRole("传媒/媒体");
+    	}
+    	else if(role.equals("training")){
+    		user.setChineseRole("教育/培训");
+    	}
+    	else if(role.equals("clothingbrand")){
+    		user.setChineseRole("服装品牌");
+    	}
+    	else if(role.equals("other")){
+    		user.setChineseRole("其他");
+    	}
+    	else if(role.equals("modelbrokeEnterprise")){
+    		user.setChineseRole("模特经纪");
+    	}
+    	
+    	List<RoleTags> roleTags2=userService.selectTagByRole(role);
+    	List<RoleTags> roleTags3=userService.nextRadomTagByRole();
+    	super.getRequest().setAttribute("roleTags2", roleTags2);
+    	super.getRequest().setAttribute("roleTags3", roleTags3);
+    	
+    	return "getRoleTags";
+    }
+    
+    public String ajaxgetRandomRoleTag(){
+    	
+    	roleTags=userService.nextRadomTagByRole();
+
+    	return "ajaxgetRandomRoleTag";
+    }
+    
+    
+    public String reloadCreatePic() throws Exception {
+    	
+    	int userId=super.getLonginUserId();
+    	if(userId==0){
+    		
+    		return "login";
+    	}
+    	Map<String, Object> map=new HashMap<String, Object>();
+		String path=ServletActionContext.getRequest().getRealPath("userInfoImg");
+		map.put("path", path);
+		map.put("userId", userId);
+		map.put("tempPicName", tempPicName);
+		map.put("x", x);
+		map.put("y", y);
+		map.put("w", w);
+		map.put("h", h);
+		return userService.cutImgForUSer(map);
+	}
+    /*
+    public String userInfoAcount(){
+    	String roles=super.getSession2().getAttribute("role");
+    	if(roles.equals("model")){
+    		return "";
+    	}else if(roles){	
+    	}
+    	
+    	
+    	
+    	
+    	return "";
+    }*/
+	public String addUserRole(){
+		int userId=super.getLonginUserId();
+		 if(userId==0){
+			return "login";
+		 }
+	  User modelUser=(User)model;
+	  String roles=modelUser.getRole();
+	  List<UserCat> list=userCatService.find(roles);
+	  if(list.size()<=0){
+		return "login";
+	   }
+	   UserCat userCat=list.get(0);
+	   User users=userService.selectById(userId);
+	   users.setUserCat(userCat);
+	   users.setRole(modelUser.getRole());
+	   users.setUserTag(modelUser.getUserTag());
+	   users.setPersonOrCompany(modelUser.getPersonOrCompany());
+	   userService.update(users);
+	   return "addUserRole";
+	}
+	
+	
+	
+	public String saveEnterpriseImg(){
+		int id=super.getLonginUserId();
+		User datauser=userService.selectById(id);
+		User users=(User) model;
+		datauser.setPortrait(users.getPortrait());
+		users.setSmallportrait(users.getSmallportrait());
+		userService.update(datauser);
+		return "saveEnterpriseImg";
+	}
+	
+	public String getFistPageUserInfo(){
+		int userId=super.getLonginUserId();
+		 if(userId==0){
+				return "login";
+			 }
+    	userInfoBeans= userService.getFistPageUserInfoBeans(userId);
+    	return "getFistPageUserInfo";	
+	}
+	 public String logout() throws Exception {//ActionContext.getContext().getSession()
+	  Map<String,Object> session = ActionContext.getContext().getSession();
+ 	  session.put("cat", null);
+ 	  session.remove("cat");
+ 	  session.put("role", null);
+ 	  session.remove("role");
+ 	  session.put("validate", null);
+ 	  session.remove("validate");
+ 	  session.put("msg", null);
+ 	  session.remove("msg");
+// 	ActionContext.getContext().getSession().put("cat",  userCat );
+//	ActionContext.getContext().getSession().put("id",id);
+	session.put("id", null);
+	session.remove("id");
+ 
+ 	session.remove("id");
+ 	session.clear();
+ 	return "logout";	
+ 	
+}
+	 
+		public String getGradUserInfo(){
+			int userId=super.getLonginUserId();
+			 if(userId==0){
+			    return "login";
+    }
+	    	userInfoBeans= userService.getgradUserInfoBeans(userId);
+	    	super.pager=userService.getUsergetMarkHistory(userId,pageNo,20);
+	    	return "getGradUserInfo";	
+		}
+		
+		public String baseUseInfo(){
+			
+	        int id=super.getLonginUserId();
+	        user =userService.selectById(id);
+	        String resturnS="error";
+			if(message.equals("model")){
+				if(user.getRole().contains("model")){
+					if(user.getIsediteuserInfo()!=null&&user.getIsediteuserInfo().equals("1")){
+					resturnS="modelPage";
+					}else{
+						resturnS="editemodelPage";	
+						
+					}
+				}
+			}
+			else if(message.equals("enpr")){
+			  if(user.getPersonOrCompany()==2){
+				  if(user.getIsediteuserInfo()!=null&&user.getIsediteuserInfo().equals("1")){
+						resturnS="companyPage";
+						}else{
+							resturnS="editecompanyPage";	
+							
+						}
+			   }	 
+			}else if(message.equals("all")){
+				if(user.getIsediteuserInfo()!=null&&user.getIsediteuserInfo().equals("1")){
+					resturnS="allrolePage";
+					}else{
+						resturnS="editeallrolePage";	
+						
+					}
+					}
+			return resturnS;
+			
+			
+			
+		}
+		
+		public String editeUserInfo(){
+			int id=super.getLonginUserId();
+			if(id==0){
+				
+				return "login";
+			}
+			user=userService.selectById(id);
+			String resturn="";
+			
+			if(message.equals("um")){
+				UserDetalfor adress=UserDetalfor.chaifenAdress(user.getWorkPlace(), "");
+				UserDetalfor detalfor=UserDetalfor.chaifenr(user.getBirthday(), user.getHomeTown(), "-");
+				ActionContext.getContext().put("adress", adress);
+				ActionContext.getContext().put("detalfor", detalfor);
+				resturn="editemodelPage";
+			}
+			
+			
+			if(message.equals("roleall")){
+				UserDetalfor adress=UserDetalfor.chaifenAdress(user.getWorkPlace(), "");
+				UserDetalfor detalfor=UserDetalfor.chaifenr(user.getBirthday(), user.getHomeTown(), "-");
+				ActionContext.getContext().put("adress", adress);
+				ActionContext.getContext().put("detalfor", detalfor);
+				resturn="editeallrolePage";
+			}
+			
+			if(message.equals("enpr")){
+				UserDetalfor detalfor=UserDetalfor.chaifenr(user.getCompanyBuildDate(), user.getCompanyAddr(), "-");
+				ActionContext.getContext().put("detalfor", detalfor);
+				resturn="editecompanyPage";
+			}
+			
+			
+			
+			return resturn;
+		}
+		
+		
+		public String getByEducation(){
+			
+			String ret="showPageEducation";
+			int userId=super.getLonginUserId();
+			if(userId==0){
+				
+				return "login";
+			}
+			user=userService.selectById(userId);
+			if(user.getBachelorSchool()==null||user.getBachelorSchool()==""){
+				
+				return "editeEducation";
+			}
+			if(message!=null&&message.equals("ed")){
+				UserDetalfor detalfor=UserDetalfor.chaifenr(user.getHighestDegreeDate(), null, "-");
+				ActionContext.getContext().put("detalfor", detalfor);
+				return "editeEducation";
+			}
+			return ret;
+		}
+		
+		
+		
+		//登陆验证码
+		private int width=57;//图像宽度
+		private int height=21;//图像高度 
+		public String validateCode() throws Exception{
+			this.getReponse().setContentType("image/jpeg");//定义输出格式
+			ServletOutputStream out = this.getReponse().getOutputStream();
+			BufferedImage bimg = new BufferedImage(width,height,BufferedImage.TYPE_INT_BGR);//准备缓冲图像,不支持表单
+			Random random = new Random();
+			//获取图形上下文环境
+			Graphics gc = bimg.getGraphics();
+			//设定背景色并进行填充
+			gc.setColor(getRandColor(200, 250));
+			gc.fillRect(0, 0, width, height);
+			//设置图形上下文环境字体
+			gc.setFont(new Font("Times New Roman",Font.PLAIN,18));
+			//随机产生200条干扰线条，使图像中的认证码不易被其他分析程序探测到
+			gc.setColor(getRandColor(160, 200));
+			for(int i=0;i<200;i++){
+				int x1 = random.nextInt(width);
+				int y1 = random.nextInt(height);
+				int x2 = random.nextInt(15);
+				int y2 = random.nextInt(15);
+				gc.drawLine(x1, y1, x1+x2,y1+y2 );
+			}
+			//随机产生100个干扰点，使图像中的验证码不易被其他分析程序探测到
+			gc.setColor(getRandColor(120, 240));
+			for(int i=0;i<100;i++){
+				int x = random.nextInt(width);
+				int y = random.nextInt(height);
+				gc.drawOval(x, y, 0, 0);
+			}
+			//随机产生4个数字的验证码
+			String rs="";
+			String rn="";
+			for(int i=0;i<4;i++){
+				rn = String.valueOf(random.nextInt(10));
+				rs+=rn;
+				gc.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nextInt(110)));
+				gc.drawString(rn, 13*i+1, 16);
+			}
+			//释放图形上下文环境
+			gc.dispose();
+			setSession("loginValidateCode", rs);
+			JPEGImageEncoder codee = JPEGCodec.createJPEGEncoder(out);
+			codee.encode(bimg);
+			out.flush();
+			out.close();
+			return null;
+		}
+		public Color getRandColor(int fc,int bc){
+			Random random = new Random();
+			if(fc>255) fc = 255;
+			if(bc>255) bc = 255;
+			int red = fc+random.nextInt(bc - fc);
+			int green = fc+random.nextInt(bc - fc);
+			int blue = fc+random.nextInt(bc -fc);
+			return new Color(red,green,blue);
+		}
+		
+		
+    
+    private UserService userService;
+	private String message;
+	private User user;
+	private int id;
+	private String rePassword;
+	private String registerId;
+	private String imgcode;
+	private String code;
+	private String state;
+	private UserInfoBeans userInfoBeans;
+	private File portraitFile;
+	private String tempPicName;
+	private int x;
+	private int y;
+	private int w;
+	private int h;
+	private UserCatService userCatService;
+    private List<RoleTags> roleTags;
+	private String vlidateCode;//这个是用户登录的验证码
+
+	private LoginHistory loginHistory;
+	public UserCatService getUserCatService() {
+		return userCatService;
+	}
+
+
+	public void setUserCatService(UserCatService userCatService) {
+		this.userCatService = userCatService;
+	}
+
+
+	
+
+
+	//private
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+
+	public String getRePassword() {
+		return rePassword;
+	}
+
+
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public String getRegisterId() {
+		return registerId;
+	}
+
+
+	public void setRegisterId(String registerId) {
+		this.registerId = registerId;
+	}
+
+
+	public String getImgcode() {
+		return imgcode;
+	}
+
+
+	public void setImgcode(String imgcode) {
+		this.imgcode = imgcode;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getCode() {
+		return code;
+	}
+
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+
+	public String getState() {
+		return state;
+	}
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+	public UserInfoBeans getUserInfoBeans() {
+		return userInfoBeans;
+	}
+
+
+	public void setUserInfoBeans(UserInfoBeans userInfoBeans) {
+		this.userInfoBeans = userInfoBeans;
+	}
+
+
+	public File getPortraitFile() {
+		return portraitFile;
+	}
+
+
+	public void setPortraitFile(File portraitFile) {
+		this.portraitFile = portraitFile;
+	}
+
+
+	public String getTempPicName() {
+		return tempPicName;
+	}
+
+
+	public void setTempPicName(String tempPicName) {
+		this.tempPicName = tempPicName;
+	}
+
+
+	public int getX() {
+		return x;
+	}
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+
+	public int getW() {
+		return w;
+	}
+
+
+	public void setW(int w) {
+		this.w = w;
+	}
+
+
+	public int getH() {
+		return h;
+	}
+
+
+	public void setH(int h) {
+		this.h = h;
+	}
+
+
+	public List<RoleTags> getRoleTags() {
+		return roleTags;
+	}
+
+
+	public void setRoleTags(List<RoleTags> roleTags) {
+		this.roleTags = roleTags;
+	}
+
+
+	public String getVlidateCode() {
+		return vlidateCode;
+	}
+
+	public void setVlidateCode(String vlidateCode) {
+		this.vlidateCode = vlidateCode;
+	}
+
+
+	public int getWidth() {
+		return width;
+	}
+
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+
+	public int getHeight() {
+		return height;
+	}
+
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public LoginHistory getLoginHistory() {
+		return loginHistory;
+	}
+
+
+	public void setLoginHistory(LoginHistory loginHistory) {
+		this.loginHistory = loginHistory;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+}
+	
+

@@ -1,0 +1,567 @@
+/*顶部样式*/
+
+/*整体布局*/
+#topBar{
+	height:40px;
+	}
+#topbar{
+	position:fixed;
+	top:0;
+	left:0;
+	height:40px;
+	z-index:100000;
+	width:100%;
+	background-color: #222222;
+	border-bottom: 1px solid #D6D6D6;
+	_position:absolute;
+    _bottom:auto;
+    _top:expression(eval(document.documentElement.scrollTop));
+	}         
+
+#topcenterbar{
+	position:relative;
+	width:1180px;
+	margin:0 auto;
+	height:40px;
+	z-index:20;
+	
+	}
+
+/* 修正IE6振动bug */
+*html,*html body{
+	background-image:url(about:blank);
+	background-attachment:fixed;
+	}
+
+/*shortcart start */
+
+#topcenterbar a{
+	color: #B4B4B4;
+	}
+#topbar-collect{
+	font-size: 14px;
+	position:absolute;
+	top:10px;
+	left:0;
+	left:0;
+	color: #B4B4B4;
+	width:85px;
+	height:30px;
+	}
+#topcollect{
+	position:absolute;
+	left:10px;
+	width:85px;
+	background-image:url(../../public/images/collect.png);
+	background-repeat: no-repeat;
+	background-position:0 1px;
+	padding-left: 26px;
+	z-index:20;
+	}	
+#topcollect:hover{
+	background-image:url(../../public/images/collect.png);
+	background-repeat: no-repeat;
+	background-position:0 -47px;
+	}
+#topcollect span{
+	margin-left:-35px;
+	}
+
+#topbar-toolbar{
+	position:relative;
+	left:356px;
+	*left:266px;
+	top:0px;
+	width:825px;
+	*width:1000px;
+	height:40px;
+	z-index:20;
+	}
+
+/* 头部隐藏开始*/
+
+
+#divTopBarUesr{
+	position:absolute;
+	left:0px;
+	top:0px;
+	height: 40px;
+    line-height: 40px;
+    width: 103px
+	}
+#topBarUser{
+	position:absolute;
+	left:0;
+	border-top: 3px solid #000000;
+	width:103px;
+	height:40px;
+	line-height:35px;
+	}
+
+#divTopBarUesr .active1{
+	border-top: 3px solid #E92D00;
+	background:#FFFFFF;
+	}
+#topBarUser a{
+	width:40px;
+	height:40px;
+	}
+#topBarUser i{
+	position:absolute;
+	right:0;
+	top:12px;
+	width:15px;
+	height:15px;
+	background-image:url(../../public/images/topBarIcon.png);
+	background-position:0px -136px;
+	background-repeat: no-repeat;
+	}
+
+#topBarUser a span{
+	text-align:center;
+	font-family:微软雅黑 ,Arial, Verdana, 宋体;
+	font-size:14px;
+	font-weight:normal;
+	color:#9B9B9B;
+	}
+#topBarUserDetailed{
+	display:none;
+	position:absolute;
+	top:40px;
+	left:0;
+	width:380px;
+	height:244px;
+	background:#FFFFFF;
+	 filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/
+    -moz-box-shadow: 6px 21px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 6px 12px 10px #909090;/*safari或chrome*/
+    box-shadow:6px 2px 10px #909090;/*opera或ie9*/
+	box-shadow: 0 1px 10px #909090;;
+	}
+#topBarUserOne{
+	position:relative;
+	top:0;
+	left:0;
+	height:103px;
+	}
+#topBarUserTwo{
+	position:relative;
+	top:103px;
+	height:74px;
+	border-top:1px solid #EAEAEA;
+	border-bottom:1px solid #EAEAEA;
+	}
+#topBarUserThree{
+	height:65px;
+	position:relative;
+	top:103px;
+	left:0;
+	}
+#topBarUserOneHead{
+	position:absolute;
+	width:103px;
+	height:103px;
+	line-height:103px;
+	}
+#topBarUserOneHeadChange{
+	display:none;
+	position:relative;
+	top:71px;
+	left:11px;
+	width:80px;
+	height:20px;
+	background:black;
+	filter:alpha(opacity=70);    /* IE 4-7 */
+    -moz-opacity:0.5;  
+    -khtml-opacity: 0.5;  
+    opacity: 0.7;  
+	z-index:9;
+	}
+#topBarUserOneHeadChange div{
+	height:20px;
+	position:absolute;
+	top:-40px;
+	left:13px;
+	z-index:10;
+	font-size:13px;
+	}
+#topBarUserOneHeadChange div a{
+	color:#FFFFFF;
+	text-decoration:none;
+	}
+#topBarUserOneHead img{
+	position:absolute;
+	top:11px;
+	left:11px;
+	width:80px;
+	height:80px;
+	}
+#topBarUserOneDetailed{
+	text-align:left;
+	position:absolute;
+	left:100px;
+	top:0;
+	width:280px;
+	height:103px;
+	
+	}	
+	
+#topBarUserOneDetailedOne{
+	
+	line-height:38px;
+	height:26px; 
+	_padding-top:10px;
+	}	
+#topBarUserOneDetailedimg{
+	margin-left:10px;
+	}
+#topBarUserDetailed a{
+	color:#4495D7;
+	text-decoration:underline;
+	}	
+#topBarUserOneComeZom{
+	margin-left:36px;
+	}
+#topBarUserOneExit{
+	margin-left:10px;
+	}
+#topBarUserOneDetailedTwo{
+	height:74px;
+	}
+	
+#topBarUserInfo{
+	padding-left:6px;
+	height:25px;
+	line-height:30px;
+	_height:20px;
+	_line-height:20px;
+	}	
+#topBarUserInfo span{
+	margin-left:7px;
+	font-size:12px;
+	}	
+#topBarUserAccountYE{
+	color:#E50021;
+	}	
+#topBarUserAccount{
+	padding-left:12px;
+	height:25px;
+	line-height:25px;
+	}	
+#topBarUserAccountcz{
+	margin-left:23px;
+	margin-right:6px;
+	}	
+#topBarUserPart{
+	padding-left:8px;
+	height:25px;
+	line-height:25px;
+	}
+#topBarUserPart span{
+	margin-left:4px;
+	font-size:12px;
+	}	
+	
+#topBarUserTwo .topBarUserTwo{
+	width:91px;
+	float:left;
+	
+	}
+#topBarUserFollowed,#topBarUserFollower,#topBarUserGoodDiscuss{
+	border-right:1px solid #EAEAEA;
+	}
+#topBarUserTwo .topBarUserTwo p{
+	letter-spacing:1px;
+	}
+#topBarUserTwo .topBarUserTwo .topBarUserTwoPOne{
+	height:32px;
+	line-height:56px;
+	_line-height:36px;
+	/*font-weight:bold;*/
+	color:#5B5B5B;
+	font-size:13px;
+	font-family:"微软雅黑";
+	}	
+#topBarUserTwo .topBarUserTwo .topBarUserTwoPTwo{
+	height:42px;
+	line-height:42px;
+	_line-height:32px;
+	}		
+	
+#topBarUserThreeInOutCome{
+	float:left;
+	width:180px;
+	}	
+#topBarUserThreeInOutCome .topBarUserThreeInOutComeNum{
+	position:absolute;
+	left:100px;
+	text-align:center;
+	color: #5B5B5B;
+	font-size: 13px;
+	font-family: "微软雅黑";
+	}
+#topBarUserThreeInOutCome .topBarUserThreeInOutComeAtt{
+	position:absolute;
+	left:0;
+	width:80px;
+	text-align:center;
+	}
+#topBarUserThreeInOutCome p{
+	height:25px;
+	line-height:33px;
+	}
+#topBarUserThreePersonalManagement{
+	float:left;
+	width:180px;
+	}	
+#topBarUserThreePersonalManagement input{
+	margin-top:12px;
+	cursor:pointer;
+	height:36px;
+	width:126px;
+	}	
+	
+/*  购物车开始*/
+	
+#divTopBarShopping{
+	position:absolute;
+	left:0;
+	left:140px;
+	width:103px;
+	height:40px;
+	}
+#divTopBarShopping .active1{
+	border-top: 3px solid #E92D00;
+	background:#FFFFFF;
+	}
+#topBarShopping{
+	position:absolute;
+	left:0;
+	width:118px;
+	height:40px;
+	line-height:40px;
+	_line-height:22px;
+	}
+#topBarShopping span{
+	color:red;
+	}
+#topBarShopping a {
+	background-image:url(../../public/images/topBarIcon.png);
+	background-repeat: no-repeat;
+	background-position:0 2px;
+	padding-left:24px;
+	width:80px;
+	height:20px;
+	text-align:center;
+	font-family:微软雅黑 ,Arial, Verdana, 宋体;
+	font-size:14px;
+	font-weight:normal;
+	color:#9B9B9B;
+	_overflow:hidden;
+	_display:inline-block;
+	_margin-top:7px;
+	}	
+
+#topBarShoppingDetailed{
+	background:#FFFFFF;
+	display:none;
+	position:relative;
+	top:40px;
+	width:350px;
+	height:248px;
+	
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/
+	-moz-box-shadow: 6px 21px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 6px 12px 10px #909090;/*safari或chrome*/
+	box-shadow:0 2px 10px #909090;/*opera或ie9*/
+	}
+#topBarShoppingDetailed ul .active .topBarShoppingDetailedHead{
+	background:#F5F5F5;
+	}
+#topBarShoppingDetailed ul .active .topBarShoppingDetailedOpert{
+	background:#F5F5F5;
+	}
+#topBarShoppingDetailed img{
+	/*padding-left:11px;*/
+	margin-top:8px;
+	width:50px;
+	height:50px;
+	}
+.topBarShoppingDetailedHead{
+	border-bottom:1px solid #F5F5F5;
+	float:left;
+	width:66px;
+	height:66px;
+	}	
+	
+.topBarShoppingDetailedOpert{
+	border-bottom:1px solid #F5F5F5;
+	text-align:left;
+	width:284px;
+	height:66px;
+	float:left;
+	}
+#topBarShoppingDetailed .topBarShoppingDetailedOpertPOne{
+	color:#B4B4B4;
+	font-size:14px;
+	font-family:"微软雅黑";
+	height:35px;
+	line-height:35px;
+	margin-left:10px;
+	}	
+	
+#topBarShoppingDetailed .topBarShoppingDetailedOpertPTwo{
+	color:#9C9C9C;
+	font-size:13px;
+	font-family:"微软雅黑";
+	height:35px;
+	line-height:25px;
+	margin-left:10px;
+	}		
+#topBarShoppingDetailed .topBarShoppingDetailedOpertPOneExit{
+	position:absolute;
+	right:20px;
+	cursor:pointer;
+	}
+#topBarShoppingDetailed .topBarShoppingDetailedOpertPOneExit{
+	position:absolute;
+	right:20px;
+	cursor:pointer;
+	}	
+#topBarShoppingDetailed .topBarShoppingDetailedOpertPTwoPice{
+	float:right;
+	margin-right:20px;
+	}	
+#topBarShoppingDetailedFoot{
+	float:left;
+	height:43px;
+	width:350px;
+	}
+#topBarShoppingDetailedFoot input{
+	float:right;
+	margin-right:10px; 
+	margin-top:6px;
+	width:120px;
+	height:32px;
+	}	
+	
+	
+	
+	
+#divTopBarContainer ul .active .topBarDetailed{
+	display:block;
+	
+	}
+#divTopBarContainer ul .active .topBarContainer{
+	border-top: 3px solid #E92D00;
+	background:#FFFFFF;	
+	
+	}
+#divTopBarContainer ul .active .topBarContainer a{
+	margin-bottom:30px;
+	}
+#divTopBarContainer{
+	position:absolute;
+	width:600px;
+	height:40px;
+	left:266px;
+	top:0;
+	}	
+#divTopBarContainer ul{
+	position:absolute;
+	top:0;
+	left:0;
+	}
+#divTopBarContainer li{
+	position:relative;
+	float:left;
+	}
+#divTopBarContainer .topBarContainer{
+	width:115px;
+	height:40px;
+	line-height:35px;
+	_height:20px;
+	_line-height:22px;
+	border-top: 3px solid #222222;
+	}
+#divTopBarContainer li p{
+	height:32px;
+	line-height:32px;
+	text-align:left;
+	padding-left:40px;
+	font-size:13px;
+	}
+#divTopBarContainer li p:hover{
+	background:#F0F0F0;
+	}
+#divTopBarContainer .topBarContainer a{
+	background-image:url(../../public/images/topBarIcon.png);
+	background-repeat: no-repeat;
+	padding-left:24px;
+	width:65px;
+	_width:65px;
+	height:40px;
+	_height:20px;
+	_margin-top:7px;
+	/*border:1px solid red;*/
+	text-align:center;
+	font-family:微软雅黑 ,Arial, Verdana, 宋体;
+	font-size:14px;
+	font-weight:normal;
+	color:#9B9B9B;	
+	_display:inline-block;
+	_overflow:hidden;
+	}	
+#topBarWorks a{
+	background-position:0 -18px;
+	}	
+#topBarPats a{
+	background-position:0 -38px;
+	}	
+#topBarInform a{
+	background-position:0 -57px;
+	}	
+#topBarInform a i{
+	position:absolute;
+	top:10px;
+	left:30px;
+	_top:0px;
+	_left:12px;
+	background-image:url(../../public/images/topBarIcon.png);
+	background-repeat: no-repeat;
+	background-position:0 -120px;
+	
+	width:10px;
+	height:10px;
+	_height:2px;
+	
+	}
+#topBarUpload a{
+	background-position:0 -76px;
+	}	
+#topBarPublish a{
+	background-position:0 -97px;
+	}	
+#divTopBarContainer .topBarDetailed{
+	height:auto;
+	display:none;
+	position:absolute;
+	top:40px;
+	width:167px;
+	background:#FFFFFF;
+	
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/
+    -moz-box-shadow: 6px 21px 10px #909090;/*firefox*/
+    -webkit-box-shadow: 6px 12px 10px #909090;/*safari或chrome*/
+    box-shadow:6px 2px 10px #909090;/*opera或ie9*/
+	box-shadow: 0 1px 10px #909090;
+	border:1px solid #E2E2E2;
+	}	
+#divTopBarPublishDetailed{
+	left:-52px;
+	}
+	
+
+
+ /*shortcart end */
+

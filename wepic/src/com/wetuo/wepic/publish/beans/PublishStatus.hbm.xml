@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.PublishStatus"
+	table="PublishStatus"
+>
+
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+	
+		<generator class="native" />
+	</id>
+	<property 
+		name="unreleased"
+		type="java.lang.Integer"
+		column="unreleased"
+		length="50"
+	/>
+	
+	<property 
+		name="awaitingReview"
+		type="java.lang.Integer"
+		column="awaitingReview"
+		length="50"
+	/>
+	<property 
+		name="noPass"
+		type="java.lang.Integer"
+		column="noPass"
+		length="50"
+	/>
+	 <property 
+		name="pass"
+		type="java.lang.Integer"
+		column="passsuc"
+		length="50"
+	/>
+	 
+	<property 
+		name="justShow"
+		type="java.lang.Integer"
+		column="justShow"
+		length="50"
+	/>
+	<property 
+		name="onOffer"
+		type="java.lang.Integer"
+		column="onOffer"
+		length="50"
+	/>
+	<property 
+		name="copyrightBuyout"
+		type="java.lang.Integer"
+		column="copyrightBuyout"
+		length="50"
+	/>
+	<property 
+		name="userSoldout"
+		type="java.lang.Integer"
+		column="userSoldout"
+		length="50"
+	/>
+	<property 
+		name="adminSoldout"
+		type="java.lang.Integer"
+		column="adminSoldout"
+		length="50"
+	/>
+	<property 
+		name="publishToStroy"
+		type="java.lang.Integer"
+		column="publishToStroy"
+		length="50"
+	/>
+	<property 
+		name="userDelete"
+		type="java.lang.Integer"
+		column="userDelete"
+		length="50"
+	/>
+	
+	<property 
+		name="adminDelete"
+		type="java.lang.Integer"
+		column="adminDelete"
+		length="50"
+	/>
+	
+	<property 
+		name="publishorstory"
+		type="java.lang.Integer"
+		column="publishorstory"
+		length="50"
+	/>
+	
+	
+</class>
+</hibernate-mapping>

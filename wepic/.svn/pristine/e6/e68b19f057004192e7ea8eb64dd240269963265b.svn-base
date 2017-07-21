@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+	"> 
+	<bean id="storySystemFilterWordsDao" class="com.wetuo.wepic.publish.dao.StoryFilterWordsDaoImpl" parent="daoTemplate"></bean>
+	<bean id="storySystemFilterWordsService" class="com.wetuo.wepic.publish.service.StoryFilterWordsServiceImpl">
+	<property name="storyFilterWordsDao" ref="storySystemFilterWordsDao"></property>
+	</bean>
+	       <bean id="publishStatusDao" class="com.wetuo.wepic.publish.dao.PublishStatusDaoImp" parent="daoTemplate"/>
+	       <bean id="publishStatusService" class="com.wetuo.wepic.publish.service.PublishStatusServiceImp"> 
+	       <property name="publishStatusDao" ref="publishStatusDao"></property>
+	       </bean>
+	       
+	     
+            <bean id="storyDao"  class="com.wetuo.wepic.publish.dao.StoryDaoImpl"  parent="daoTemplate" >  
+				<property name="userDao" ref="userDao">
+				</property>
+				<property name="publishCatDao">
+					<ref local="publishCatDao" />
+				</property>
+				<property name="publishCat_storyDao" ref="publishCat_StoryDAO"></property>
+				<property name="publishSpecialCatDao" ref="publishSpecialCatDao"></property>
+			</bean>
+			
+			
+			
+			<bean id="storyService"  class="com.wetuo.wepic.publish.service.StoryServiceImpl">  
+				<property name="storyDao">
+					<ref local="storyDao" />
+				</property>
+				<property name="storyDetailService" ref="storyDetailService"></property>
+			   <property name="userService" ref="userService">
+			    </property>
+			    <property name="publishService">
+			     <ref local="publishService"/>
+			    </property>
+			    <property name="publishCatService">
+			     <ref local="publishCatService"/>
+			    </property>
+			    
+			    <property name="publishSpecialCatService">
+					<ref bean="publishSpecialCatService" />
+				</property>
+				
+				<property name="publishCatStorySevice" ref="publishCat_StoryService"/>
+				<property name="publishStatusService" ref="publishStatusService"/>
+				<property name="storyFilterWordsService" ref="storySystemFilterWordsService"></property>
+			</bean>
+			
+			
+			
+			<bean id="storyAction" class="com.wetuo.wepic.publish.actions.StoryAction" scope="prototype">
+			    <property name="storyService" ref="storyService"></property>
+			</bean>
+	
+	
+	
+	<bean id="storyDetailDao"  class="com.wetuo.wepic.publish.dao.StoryDetailDaoImpl"  parent="daoTemplate" >  
+				<property name="storyDao">
+					<ref local="storyDao" />
+				</property>		
+				<property name="userDao" ref="userDao">
+				</property>	
+			</bean>
+			<bean id="storyDetailService"  class="com.wetuo.wepic.publish.service.StoryDetailServiceImpl">  
+				<property name="storyDetailDao">
+					<ref local="storyDetailDao" />
+				</property>
+			</bean>
+			<bean name="storyDetailAction" class="com.wetuo.wepic.publish.actions.StoryDetailAction" scope="prototype">
+		
+				<property name="publishService">
+					<ref local="publishService" />
+				</property>
+				<property name="storyDetailService">
+					<ref local="publishDetailService" />
+				</property>
+				<property name="storyService">
+				<ref local="storyService"/>
+				</property>
+				<property name="publishCatService">
+				<ref local="publishCatService"/>
+				</property>
+			</bean>		
+	
+	
+	<bean name="publishAction" class="com.wetuo.wepic.publish.actions.PublishAction" scope="prototype">
+	<constructor-arg index="0" value="com.wetuo.wepic.publish.beans.Publish" type="java.lang.String"></constructor-arg>
+			    <property name="publishService">
+					<ref bean="publishService" />
+				</property>
+				<property name="publishCatService">
+					<ref bean="publishCatService" />
+				</property>
+				<property name="publishCatPublishService" ref="publishCat_PublishService"></property>
+			</bean>
+	
+	<bean id="searchPublishPic" class="com.wetuo.wepic.publish.actions.PublishPicSearchByTermAction" scope="prototype">
+	<constructor-arg index="0" value="com.wetuo.wepic.publish.beans.PublishPicSearchByTerm" type="java.lang.String"></constructor-arg>
+		<property name="picSearchByTermService" ref="searchPublishPicService"></property>
+		<property name="publishSpecialCatService">
+		<ref local="publishSpecialCatService"/>
+		</property>	    
+	</bean>
+	
+	<bean id="searchPublishPicService" class="com.wetuo.wepic.publish.service.PublishPicSearchByTermServiceImp">
+	<property name="publishService">
+					<ref bean="publishService" />
+				</property>
+				<property name="publishCatService">
+					<ref bean="publishCatService" />
+				</property>
+				<property name="publishCatPublishService" ref="publishCat_PublishService"></property>
+	<property name="publishStatusService">
+		<ref local="publishStatusService"/>
+		</property>
+		<property name="storyService">
+		 <ref local="storyService"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="publishCatDao"  class="com.wetuo.wepic.publish.dao.PublishCatDaoImpl" parent="daoTemplate" /> 
+	<bean id="publishCatService"  class="com.wetuo.wepic.publish.service.PublishCatServiceImpl">  
+		<property name="publishCatDao">
+			<ref bean="publishCatDao" />
+		</property>
+	</bean>
+	<bean id="publishCatAction" class="com.wetuo.wepic.publish.actions.PublishCatAction" scope="prototype">
+		<property name="publishCatService">
+			<ref bean="publishCatService" />
+		</property>
+		<property name="publishService">
+		    <ref bean="publishService" />
+		</property>
+		<property name="userService">
+		    <ref bean="userService" />
+		</property>
+	</bean>
+	<bean id="publishSpecialCatDao"  class="com.wetuo.wepic.publish.dao.PublishSpecialCatDaoImpl" parent="daoTemplate" /> 
+	<bean id="publishSpecialCatService"  class="com.wetuo.wepic.publish.service.PublishSpecialCatServiceImpl">  
+		<property name="publishSpecialCatDao">
+			<ref bean="publishSpecialCatDao" />
+		</property>
+	</bean>
+	<bean id="publishSpecialCatAction" class="com.wetuo.wepic.publish.actions.PublishSpecialCatAction" scope="prototype">
+	<constructor-arg index="0" type="java.lang.String" value="com.wetuo.wepic.publish.beans.PublishSpecialCat"></constructor-arg>
+		<property name="publishSpecialCatService">
+			<ref bean="publishSpecialCatService" />
+		</property>
+		<property name="userService">
+		<ref bean="userService"/>
+		</property>
+		<property name="publishService">
+		<ref bean="publishService"/>
+		</property>
+		<property name="contactService">
+		<ref bean="contactService"/>
+		</property>
+		<property name="userCreditService">
+			<ref bean="userCreditService"/>
+		</property>
+		
+		
+		<property name="storyService">
+				<ref local="storyService"/>
+				</property>
+	</bean>
+			<bean id="publishDao"  class="com.wetuo.wepic.publish.dao.PublishDaoImpl"  parent="daoTemplate" >  
+				<property name="userDao">
+					<ref bean="userDao" />
+				</property>
+				<property name="publishCatDao">
+					<ref bean="publishCatDao" />
+				</property>
+				<property name="publishCat_PublishDao" ref="publishCat_PublishDAO"></property>
+				<property name="publishSpecialCatDao" ref="publishSpecialCatDao"></property>
+			
+				
+			</bean>
+			<bean id="publishService"  class="com.wetuo.wepic.publish.service.PublishServiceImpl">  
+				<property name="publishDao">
+					<ref bean="publishDao" />
+				</property>
+				<property name="messageService">
+		            <ref bean="messageService"/>
+		        </property>
+				<property name="publishCatService">
+					<ref bean="publishCatService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="catPublishService">
+					<ref bean="publishCat_PublishService" />
+				</property>
+				<property name="creditService">
+					<ref bean="userCreditService" />
+				</property>
+				<property name="publishSpecialCatService">
+					<ref bean="publishSpecialCatService" />
+				</property>
+				 <property name="assessComplaintService">
+					<ref bean="assessComplaintService" />
+				</property>
+				<property name="siteConfigService">
+				<ref bean="siteConfigService"/>
+				</property>
+				<property name="userCatService">
+			<ref bean="userCatService" />		
+		</property>
+		<property name="publishStatusService">
+		<ref local="publishStatusService"/>
+		</property>
+		
+		<property name="buyCommoditiesService">
+			<ref bean="buyCommoditiesService" />
+		</property>
+		
+		<property name="buyAccountOperationService">
+			<ref bean="buyAccountOperationService" />
+		</property>
+		
+		<property name="buyCartDealService">
+			<ref bean="buyCartDealService" />
+		</property>
+				
+				
+			</bean>
+			
+			    
+	 
+	 
+			
+			
+			<bean id="publishDetailDao"  class="com.wetuo.wepic.publish.dao.PublishDetailDaoImpl"  parent="daoTemplate" >  
+				<property name="publishDao">
+					<ref bean="publishDao" />
+				</property>		
+				<property name="userDao">
+					<ref bean="userDao" />
+				</property>	
+			</bean>
+			<bean id="publishDetailService"  class="com.wetuo.wepic.publish.service.PublishDetailServiceImpl">  
+				<property name="publishDetailDao">
+					<ref bean="publishDetailDao" />
+				</property>
+			</bean>
+			<bean name="publishDetailAction" class="com.wetuo.wepic.publish.actions.PublishDetailAction" scope="prototype">
+		
+				<property name="publishService">
+					<ref bean="publishService" />
+				</property>
+				<property name="publishDetailService">
+					<ref bean="publishDetailService" />
+				</property>
+				<property name="userService">
+				<ref bean="userService"/>
+				</property>
+				<!-- 
+				<property name="publishCatAction">
+				    <ref bean="publishCatAction"/>
+				</property>
+				-->
+				<property name="publishCatService">
+				<ref bean="publishCatService"/>
+				</property>
+			</bean>
+			<bean id="publishCat_PublishService" class="com.wetuo.wepic.publish.service.PublishCat_PublishServiceImpl">
+			<property name="publishCat_PublishDao" ref="publishCat_PublishDAO"></property>
+			</bean>
+			
+			<bean id="publishCat_StoryService" class="com.wetuo.wepic.publish.service.PublishCat_StorySeviceImpl">
+			<property name="publishCatStoryDao" ref="publishCat_StoryDAO"></property>
+			</bean>
+			<bean id="publishCat_PublishDAO" class="com.wetuo.wepic.publish.dao.PublishCat_PublishDaoImpl" parent="daoTemplate"></bean>
+			<bean id="publishCat_StoryDAO" class="com.wetuo.wepic.publish.dao.PublishCat_StoryDaoImpl" parent="daoTemplate"></bean>
+			
+			<bean id="publishGuestInfoDao"  class="com.wetuo.wepic.publish.dao.PublishGuestInfoDaoImpl"  parent="daoTemplate">
+				<property name="userDao">
+				<ref bean="userDao"/>
+				</property>
+			</bean>  
+			<bean id="publishGuestInfoService"  class="com.wetuo.wepic.publish.service.PublishGuestInfoServiceImpl">  
+				<property name="publishGuestInfoDao">
+					<ref bean="publishGuestInfoDao" />
+				</property>
+			</bean>
+			<bean name="publishGuestInfoAction" class="com.wetuo.wepic.publish.actions.PublishGuestInfoAction" scope="prototype">
+				<property name="publishGuestInfoService">
+					<ref bean="publishGuestInfoService" />
+				</property>
+				<property name="publishService">
+					<ref bean="publishService" />
+				</property>
+				<property name="publishDetailService">
+					<ref bean="publishDetailService" />
+				</property>
+				<property name="userService">
+				<ref bean="userService"/>
+				</property>
+			</bean>
+			
+			
+		
+			
+			<bean id="assessComplaintDao"  class="com.wetuo.wepic.publish.dao.AssessComplaintDaoImpl"  parent="daoTemplate" />  
+			<bean id="assessComplaintService"  class="com.wetuo.wepic.publish.service.AssessComplaintServiceImpl">  
+				<property name="assessComplaintDao">
+					<ref bean="assessComplaintDao" />
+				</property>
+			</bean>
+			<bean name="assessComplaintAction" class="com.wetuo.wepic.publish.actions.AssessComplaintAction" scope="prototype">
+				<property name="assessComplaintService">
+					<ref bean="assessComplaintService" />
+				</property>
+				<property name="userService">
+					<ref bean="userService" />
+				</property>
+				<property name="publishService">
+					<ref bean="publishService" />
+				</property>
+			</bean>
+				<bean id="frontPage" class="com.wetuo.wepic.publish.actions.FrontendAction" scope="prototype" >
+				<property name="bidService" ref="bidService"></property>
+				<property name="publishService" ref="publishService"></property>
+				<property name="userService" ref="userService"></property>
+				<property name="contactService" ref="contactService"></property>
+				<property name="userCreditService" ref="userCreditService"></property>
+				<property name="cacheOperation" ref="cacheOperation"></property>
+				<property name="fillCache" ref="publishFilleCacheImp"></property>
+			
+			</bean>
+	</beans>

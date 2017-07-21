@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+
+	
+	
+	<!-- Add packages here -->
+	<package name="model" extends="larry-default">
+	<!--
+		<interceptors>
+			<interceptor name="authority" class="com.qhkj.goodChance.struts2.util.AuthorizationInterceptor" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault" />
+	-->
+		<global-results>
+		   <result name="login" type="redirect">/back/loginRegister/login.jsp</result>
+		</global-results>
+		
+		<action name="logout" class="userAction" method="logout">
+       <result name="logout" type="redirect">/back/loginRegister/login.jsp</result>
+		</action>
+		
+		<action name="register" class="userAction" method="newregisterWepic">
+		<result name="registerWepicSucess" type="redirectAction">
+		  <param name="actionName">user!SendEmial.do</param>
+          <param name="id">${id}</param>
+		</result>
+	    <result name="input">/back/loginRegister/register.jsp</result>
+		</action>
+		<action name="user*" class="userAction">
+		<result name="SendEmial">/back/loginRegister/registerSuccess.jsp</result>
+		<result name="initUserMustInfoForWepicSucess" type="redirectAction">
+		  <param name="actionName">user!checkEmailLogin.do</param>
+          <param name="id">${name}</param>
+		</result>
+		<result name="initUserMustInfoForWepicFailt">/back/errorPage/404.jsp</result>
+		<result name="checkEmailLogin">/back/loginRegister/registerSuccessful.jsp</result>
+		<result name="loginbyQQ">/back/loginRegister/login.jsp</result>
+		<result name="wepicloginSucess" type="redirectAction">user!getFistPageUserInfo.do</result>
+	    <result name="wepicloginSucessUrl" type="redirectAction">${url}
+	    <param name="actionName">${url}</param>
+	    <param name="id">${param}</param>
+	    
+	    
+	    </result>
+		<result name="createPicSucess" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="getFistPageUserInfo">/back/personalCentr/user/userDynamics.jsp</result>
+		<result name="updateuserInfoByDegreeSucess" type="redirectAction">user!getByEducation.do</result>
+		<result name="login">/back/loginRegister/login.jsp</result>
+		<result name="addUserRole" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="saveEnterpriseImg" type="redirectAction">user!getFistPageUserInfo.do</result>
+		<result name="getRoleTags">/back/personalCentr/user/accountMyPart.jsp</result>
+		<result name="saveUserTag" type="redirectAction">user!findroleTagsbyrole.do</result>
+		<result name="getGradUserInfo">/back/personalCentr/user/personalGrade.jsp</result>
+		
+		<result name="companyPage">/back/personalCentr/user/showaccountEnterpriseInfo.jsp</result>
+		<result name="allrolePage">/back/personalCentr/user/showaccountPersonInfo.jsp</result>
+		<result name="modelPage">/back/personalCentr/user/showaccountPersonInfoModel.jsp</result>
+		
+		<result name="editecompanyPage">/back/personalCentr/user/accountEnterpriseInfo.jsp</result>
+		<result name="editemodelPage">/back/personalCentr/user/accountPersonInfoModel.jsp</result>
+		<result name="editeallrolePage">/back/personalCentr/user/accountPersonInfo.jsp</result>
+		<result name="updetaUserBaseInfo" type="redirectAction">
+		<param name="actionName">user!baseUseInfo.do</param>
+          <param name="message">${message}</param>
+	</result>
+	<result name="editeEducation">/back/personalCentr/user/accountEducation.jsp</result>
+	<result name="showPageEducation">/back/personalCentr/user/showaccountEducation.jsp</result>
+	<result name="loginadminsuc" >/administrator/production/story/shootStoryAuthstrList.jsp</result>
+	
+		</action>
+		
+		
+		
+		<action name="usperPower*" class="userPowerAction" >
+		<result name="addUserPower" type="redirectAction">
+		usperPower!getAllUserPowerInfo.do
+		</result>
+		<result name="getAllUserPowerInfo">
+		/back/personalCentr/user/strengthProve.jsp
+		</result>
+		<result name="deleteUserPower" type="redirectAction">
+		usperPower!getAllUserPowerInfo.do
+		</result>
+		
+		<result name="updateUserPower" type="redirectAction">
+		usperPower!getAllUserPowerInfo.do
+		</result>
+		</action>
+		
+		<action name="accountWithdraw*" class="accountWithdrawAction">
+		        <result name="applywithdraw">/back/configurationCentre/capitalManage/applywithdraw.jsp</result>
+		        <result name="userwithdrawlist">/back/configurationCentre/capitalManage/applywithdrawuserlist.jsp</result>
+		        <result name="adminwithdrawlist">/administrator/capital/applywithdrawadminlist.jsp</result>
+		        <result name="adminwaitingwithdrawlist">/administrator/capital/applywithdrawwaitadminlist.jsp</result>
+		</action>
+		<action name="accountRecharge*" class="accountRechargeAction">
+			<result name="recharge">/back/configurationCentre/capitalManage/recharge.jsp</result>
+			<result name="rechargeing" type="redirect">accountRecharge!rechargesuc.do?rechargeId=${rechargeId}</result>
+			<result name="rechargesuc">/back/configurationCentre/capitalManage/transfersuc.jsp</result>
+			
+		</action>
+		<action name="bankwithdraw*" class="bankwithdrawaction">
+		     <result name="addwithdrawbank" type="redirect">account!cashoverview.do</result>
+		     <result name="delbankwithdraw" type="redirect">account!cashoverview.do</result>
+		</action>
+		<action name="account*" class="accountAction">
+			<result name="cashoverview">/back/configurationCentre/capitalManage/cashoverview.jsp</result>
+			<result name="userrecharge">/back/configurationCentre/capitalManage/recharge.jsp</result>
+			<result name="confirmtransfer">/back/configurationCentre/capitalManage/transferinfo.jsp</result>
+			<result name="transfer">/back/configurationCentre/capitalManage/transfer.jsp</result>
+		</action>
+		
+		<action name="searchaboutaccount*" class="accountsearchAction">
+		<result name="searchaccountwithdrawbydate">/back/configurationCentre/capitalManage/applywithdrawuserlist.jsp</result>
+		</action>
+		<action name="accountRechargeMoney" class="accountRechargeAction" method="updateAcount">
+		
+	</action>
+	
+<!-- @#$% -->
+	</package>
+</struts>

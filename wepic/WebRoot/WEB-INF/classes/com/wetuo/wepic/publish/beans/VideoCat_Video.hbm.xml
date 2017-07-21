@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.VideoCat_Video"
+	table="goodChance_video_videocat_video"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	
+	<many-to-one name="videoCat" 
+		column="videoCat" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.VideoCat" 
+		foreign-key="FK_MEM_VideoCat" 
+		index="IDX_MEM_VideoCat"/> 
+	
+	<many-to-one name="video" 
+		column="video" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.Video" 
+		foreign-key="FK_MEM_Video" 
+		index="IDX_MEM_Video"/> 
+	
+	<property name="relation" column="relation" /> 
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

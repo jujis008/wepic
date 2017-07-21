@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.wetuo.wepic.publish.beans.Video" table="Video">
+  <id column="id" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <many-to-one class="com.wetuo.wepic.core.beans.User"
+   column="user_" foreign-key="FK_Publish_User" index="IDX_Publish_User"
+   lazy="false" name="user" not-null="true"/>
+  <many-to-one class="com.wetuo.wepic.core.beans.User"
+   column="admin_" foreign-key="FK_Publish_Admin"
+   index="IDX_Publish_Admin" name="admin" not-null="false"/>
+  <property column="type" generated="never" lazy="false" length="50"
+   name="type" type="java.lang.Integer"/>
+  <property column="name" generated="never" lazy="false" length="50"
+   name="name" type="java.lang.String"/>
+  <property column="oldVideoUrl" generated="never" lazy="false"
+   length="1000" name="oldVideoUrl" type="java.lang.String"/>
+  <property column="newVideoUrl" generated="never" lazy="false"
+   length="1000" name="newVideoUrl" type="java.lang.String"/>
+  <property column="picUrl" generated="never" lazy="false" length="1000"
+   name="picUrl" type="java.lang.String"/>
+  <property column="size" generated="never" lazy="false" length="50"
+   name="size" type="java.lang.Integer"/>
+  <property column="collectNum" generated="never" lazy="false"
+   length="50" name="collectNum" type="java.lang.Integer"/>
+  <property column="content" generated="never" lazy="false"
+   length="2000" name="content" type="java.lang.String"/>
+  <property column="logo" generated="never" lazy="false" length="50"
+   name="logo" type="java.lang.String"/>
+  <property column="resolutionRatio" generated="never" lazy="false"
+   length="500" name="resolutionRatio" type="java.lang.String"/>
+  <property column="usage" generated="never" lazy="false" length="50"
+   name="usage" type="java.lang.String"/>
+  <property column="format" generated="never" lazy="false" length="50"
+   name="format" type="java.lang.String"/>
+  <property column="shootingTime" generated="never" lazy="false"
+   length="255" name="shootingTime" type="java.lang.String"/>
+  <property column="publishTime" generated="never" lazy="false"
+   length="50" name="publishTime" type="java.sql.Timestamp"/>
+  <property column="tags" generated="never" lazy="false" length="1000"
+   name="tags" type="java.lang.String"/>
+  <property column="QRCode" generated="never" lazy="false" length="1000"
+   name="QRCode" type="java.lang.String"/>
+  <property column="hit" generated="never" lazy="false" length="50"
+   name="hit" type="java.lang.Integer"/>
+  <property column="copyright" generated="never" lazy="false"
+   length="50" name="copyright" type="java.lang.Integer"/>
+  <property column="copyrightArea" generated="never" lazy="false"
+   length="1000" name="copyrightArea" type="java.lang.String"/>
+  <property column="copyrightPrice" generated="never" lazy="false"
+   length="50" name="copyrightPrice" type="java.lang.Integer"/>
+  <property column="authorization" generated="never" lazy="false"
+   length="50" name="authorization" type="java.lang.Integer"/>
+  <property column="usageBuyNum" generated="never" lazy="false"
+   length="50" name="usageBuyNum" type="java.lang.Integer"/>
+  <property column="usagePrice" generated="never" lazy="false"
+   length="50" name="usagePrice" type="java.lang.Integer"/>
+  <property column="usagePeriod" generated="never" lazy="false"
+   length="50" name="usagePeriod" type="java.lang.Double"/>
+  <property column="moneyUnit" generated="never" lazy="false"
+   length="50" name="moneyUnit" type="java.lang.String"/>
+  <property column="status" generated="never" lazy="false" length="50"
+   name="status" type="java.lang.Integer"/>
+  <property column="ifPermitPublish" generated="never" lazy="false"
+   length="50" name="ifPermitPublish" type="java.lang.Integer"/>
+  <property column="violationReason" generated="never" lazy="false"
+   length="1000" name="violationReason" type="java.lang.String"/>
+  <property column="violationPunish" generated="never" lazy="false"
+   length="50" name="violationPunish" type="java.lang.Integer"/>
+  <property column="violationPunishTime" generated="never" lazy="false"
+   length="50" name="violationPunishTime" type="java.sql.Timestamp"/>
+  <property column="qualityLevel" generated="never" lazy="false"
+   length="50" name="qualityLevel" type="java.lang.Integer"/>
+  <property column="videoStatus" generated="never" lazy="false"
+   length="50" name="videoStatus" type="java.lang.Integer"/>
+  <many-to-one class="com.wetuo.wepic.publish.beans.VideoSpecialCat"
+   column="videoSpecialCatId" foreign-key="FK_Publish_User"
+   index="IDX_Publish_User" lazy="false" name="videoSpecialCat" not-null="true"/>
+  <!-- <many-to-one name="publishSpecialCat"	column="publishSpecialCatid" /> 
+ @#$% -->
+ </class>
+</hibernate-mapping>

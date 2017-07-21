@@ -1,0 +1,429 @@
+#divPersonalGrade{
+	background:#FFFFFF;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 1116px;
+    margin:0 auto;
+	margin-top:10px;
+	font-size:12px;
+	font-family:"SimSun";
+	color:#a2a2a2;
+	}
+
+#divPersonalGrade .divhead{
+	position: relative;
+    top: 0;
+    left: 0;
+    width: 1116px;
+    height: 203px;
+	text-align:left;
+	border-bottom:1px solid #e9e9e9;
+	}
+
+#divPersonalGrade .divhead .headLeft{
+	position: absolute;
+    top: 32px;
+    left: 32px;
+    width: 150px;
+    height: 150px;
+	}
+#divPersonalGrade .divhead .headCon{
+	position: absolute;
+    top: 32px;
+    left: 200px;
+    width: 570px;
+    height: 143px;
+	border-right:1px solid #e9e9e9;
+	
+	}
+	
+#divPersonalGrade .divhead .headCon .one{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 570px;
+	height: 45px;
+	}
+#divPersonalGrade .divhead .headCon .one h2{
+	float: left;
+	font-size:28px;
+	font-family:"微软雅黑";
+	color:#000000;
+	font-weight:normal;
+	padding-right:10px;
+	}
+#divPersonalGrade .divhead .headCon .one .divIden{
+	float: left;
+	height: 25px;
+	margin-top:15px;
+	}
+#divPersonalGrade .divhead .headCon .one .divIden .iden{
+	width:20px;
+	height: 20px;
+	padding-left:20px;
+	padding-bottom:4px;
+	background:url(../../../pubimg/images/identity.png) no-repeat 0 -22px;
+	}
+#divPersonalGrade .divhead .headCon .one .divIden .collect{
+	width:20px;
+	height: 20px;
+	margin-left:5px;
+	padding-bottom:5px;
+	padding-left:20px;
+	margin-right:10px;
+	background:url(../../../pubimg/images/identity.png) no-repeat 0 -70px;
+	}
+	
+#divPersonalGrade .divhead .headCon .two{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 570px;
+	height: 30px;
+	/*background:#339;*/
+	}
+#divPersonalGrade .divhead .headCon .two .divGrade img{
+	margin-left:-3px;
+	}
+#divPersonalGrade .divhead .headCon .two .divGrade .now,
+#divPersonalGrade .divhead .headCon .two .divGrade .next{
+	margin-left:12px;
+	margin-right:-8px;
+	}
+	
+#divPersonalGrade .divhead .headCon .three{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 570px;
+	height: 30px;
+	/*background:#339;*/
+	}
+#divPersonalGrade .divhead .headCon .gradeBox{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 350px;
+	height: 18px;
+	background:#fcfcfc;
+	border:1px solid #e6e6e6;
+	border-radius:4px 4px 4px 4px;
+	}
+#divPersonalGrade .divhead .headCon .gradeBox .nowGrade{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 60%;
+	height: 18px;
+	background:#ff7271;
+	border-radius:4px 4px 4px 4px;
+	
+	}
+#divPersonalGrade .divhead .headCon .five{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 350px;
+	height: 30px;
+	margin-top:10px;
+	/*background:#339;*/
+	}
+#divPersonalGrade .divhead .headCon .five .ng{
+	margin-left:10px;
+	}
+#divPersonalGrade .divhead .headCon .five .nextg{
+	position: absolute;
+    right: 0;
+    top: 0;
+	}
+#divPersonalGrade .divhead .headRight{
+	position: absolute;
+    top: 32px;
+    right: 0px;
+    width: 330px;
+    height: 143px;
+	
+	}
+#divPersonalGrade .divhead .headRight .one{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 330px;
+	height: 90px;
+	}
+#divPersonalGrade .divhead .headRight .one a{
+	text-decoration:underline;
+	color:#a3a3a3;
+	}
+#divPersonalGrade .divhead .headRight .two{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 330px;
+	height: 20px;
+	}
+#divPersonalGrade .divhead .headRight .paim{
+	position: relative;
+    left: 0;
+    top: 0;
+	width: 330px;
+	height: 50px;
+	}
+#divPersonalGrade .divhead .headRight .paim span{
+	font-size:32px;
+	color:#7b7b7b;
+	font-family:"微软雅黑";
+	}
+
+/*记录开始*/
+#divPersonalGrade .divGradeRecord{
+	position: relative;
+    top: 0;
+    left: 0;
+    width: 1116px;
+	text-align:left;
+	border-bottom:1px solid #e9e9e9;
+	padding-bottom:35px;
+	}
+
+#divPersonalGrade .divGradeRecord .divRecord{
+	float:left;
+    width: 765px;
+	position: relative;
+    top: 0;
+    left: 0;
+	padding-bottom:70px;
+	}
+
+#divPersonalGrade .divGradeRecord .divRecord .character{
+	height:28px;
+	line-height:28px;
+	color:black;
+	margin-left:33px;
+	margin-top:20px;
+	border-right:1px solid #e9e9e9;
+	}
+#divPersonalGrade .divGradeRecord .divRecord .divTableR{
+	margin-left:33px;
+	border-right:1px solid #e9e9e9;
+	}	
+	
+#tableR{
+	color:#959595;
+	text-align:center;
+	border-spacing:0;
+	border-top:1px solid #e9e9e9;
+	border-left:1px solid #e9e9e9;
+	}
+#tableR tr{
+	height:39px;
+	line-height:39px;
+	}
+#tableR .top{
+	background:#e9e9e9;
+	height:32px;
+	color:#6a6a6a;
+	}
+#tableR td{
+	border-bottom:1px solid #e9e9e9;
+	border-right:1px solid #e9e9e9;
+	}	
+#tableR .td1{
+	width:153px;
+	}
+#tableR .td1 .spanHo{
+	margin-left:12px;
+	}	
+#tableR .td2{
+	width:139px;
+	}	
+#tableR .td3{
+	width:300px;
+	}	
+#tableR .td4{
+	width:105px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+#divPersonalGrade .divGradeRecord .divGoodFriend{
+	float:left;
+    width: 340px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .character{
+	height:28px;
+	line-height:28px;
+	margin-left:26px;
+	margin-top:20px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .character .good{
+	color:#555555;
+	font-size:14px;
+	font-family:"微软雅黑";
+	margin-right:12px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend{
+	margin-left:26px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend{
+	width:300px;
+	height:80px;
+	margin-top:17px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .num{
+	float:left;
+    width: 38px;
+	height:80px;
+	position: relative;
+    top: 0;
+    left: 0;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .num .qt{
+	position: absolute;
+    top: 26px;
+    left: 0;
+	width: 29px;
+	height:29px;
+	line-height:28px;
+	text-align:center;
+	background:url(../../../public/images/rankbj.png) 0 0 no-repeat;
+	font-size:16px;
+	font-family:"微软雅黑";
+	color:#ffffff;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .num .hm{
+	position: absolute;
+    top: 26px;
+    left: 0;
+	width: 29px;
+	height:29px;
+	line-height:28px;
+	text-align:center;
+	background:url(../../../pubimg/images/rankbj.png) 0 -33px no-repeat;
+	font-size:16px;
+	font-family:"微软雅黑";
+	color:#ffffff;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .he{
+	float:left;
+    width: 80px;
+	height:80px;
+	margin-right:12px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .he img{
+    width: 80px;
+	height:80px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co{
+	float:left;
+    width: 160px;
+	height:80px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .one{
+    width: 180px;
+	height: 23px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .one h2{
+	height: 23px;
+	font-family: "微软雅黑";
+	font-weight:normal;
+    font-size: 15px;
+	color: #656565;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .two{
+    width: 180px;
+	height: 23px;
+	
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .two .iden {
+    background: url(../../../pubimg/images/identity.png) no-repeat 0 -22px;
+    height: 20px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    width: 20px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .two .collect {
+    background: url(../../../pubimg/images/identity.png) no-repeat 0 -70px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    width: 20px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .three .divGrade{
+	height:18px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .three .divGrade img{
+	margin-left: -4px;
+	}
+#divPersonalGrade .divGradeRecord .divGoodFriend .allGoodFriend .divfriend .co .three .divGrade .now{
+	margin-right:10px;
+	}
+
+.ppointPaging{
+	border-right: 1px solid #E9E9E9;
+	bottom: 10px;
+	}
+#divPersonalGrade .intro{
+	position: relative;
+    top: 0;
+    left: 0;
+    width: 1116px;
+	text-align:left;
+	padding-bottom:100px;
+	}
+#divPersonalGrade .intro .privilegeLevel{
+	margin-top:20px;
+	}
+#divPersonalGrade .intro .cha{
+	height:30px;
+	line-height:30px;
+	color:#000000;
+	padding-left:33px;
+	}
+#divPersonalGrade .intro .charact{
+	height:20px;
+	line-height:20px;
+	padding-left:33px;
+	}
+	
+	/*身份未验证*/
+
+#divPersonalGrade .divhead .headCon .one .divIden .idenw{
+	width:20px;
+	height: 20px;
+	padding-left:20px;
+	background:url(../../../pubimg/images/identity.png) no-repeat 0 -0px;
+	}
+/*身份已验证*/
+
+#divPersonalGrade .divhead .headCon .one .divIden .iden{
+	width:20px;
+	height: 20px;
+	padding-left:20px;
+	background:url(../../../pubimg/images/identity.png) no-repeat 0 -22px;
+	}
+/*企业身份*/
+
+#divPersonalGrade .divhead .headCon .one .divIden .idenwq{
+	height: 20px;
+	padding-left:20px;
+	background:url(../../../pubimg/images/identity.png) no-repeat 0 -46px;
+	}
+	
+	

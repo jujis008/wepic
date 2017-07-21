@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.wetuo.wepic.core.beans.Contact" table="Contact">
+  <id column="id" name="id" type="java.lang.Integer">
+   <generator class="native"/>
+  </id>
+  <many-to-one class="com.wetuo.wepic.core.beans.User"
+   column="fromUser" foreign-key="FK_Contact_fromUser"
+   index="IDX_Contact_FromUser" lazy="false" name="fromUser" not-null="true"/>
+  <many-to-one class="com.wetuo.wepic.core.beans.User"
+   column="toUser" foreign-key="FK_Contact_toUser"
+   index="IDX_Contact_ToUser" name="toUser" not-null="true"/>
+  <property column="action" generated="never" lazy="false" length="50"
+   name="action" type="java.lang.Integer"/>
+  <property column="accept" generated="never" lazy="false" length="50"
+   name="accept" type="java.lang.Integer"/>
+  <property column="eachAttention" generated="never" lazy="false" length="50"
+   name="eachAttention" type="java.lang.Integer"/>
+  <property column="startTime" generated="never" lazy="false"
+   length="50" name="startTime" type="java.sql.Timestamp"/>
+  <property column="acceptTime" generated="never" lazy="false"
+   length="50" name="acceptTime" type="java.sql.Timestamp"/>
+  <!-- @#$% -->
+ </class>
+</hibernate-mapping>

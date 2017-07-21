@@ -1,0 +1,1287 @@
+         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>约拍项目-作品征集</title>
+<link rel="shortcut icon" href="../public/images/logoSmall.ico"/>
+
+<link type="text/css" rel="stylesheet" href="css/worksCollect.css" />
+
+<script type="text/javascript" src="../public/js/jquery.js"></script>
+<script type="text/javascript" src="js/worksCollect.js"></script>
+<!--公共js-->
+
+<script type="text/javascript" src="../public/js/public.js"></script>
+<script type="text/javascript" src="../public/js/topBar.js"></script>
+<script type="text/javascript" src="../public/js/header.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../public/css/public.css" />
+<link type="text/css" rel="stylesheet" href="../public/css/topBarMain.css" />
+<link type="text/css" rel="stylesheet" href="../public/css/header.css" />
+<link type="text/css" rel="stylesheet" href="../public/css/mainBar.css" />
+<link type="text/css" rel="stylesheet" href="../public/css/footer.css" />
+
+</head>
+
+<body>
+
+<div id="container">
+	<div id="topBar">
+	<div id="topbar">
+    	<div id="topcenterbar">
+    		<div id="topbar-collect">
+    			<a id="topcollect" href="javascript:addToFavorite('http://www.wepic.cn/','唯图网_商业拍摄 原创商业图片交易平台')">
+                	<span>收藏唯图</span>			
+        		</a>
+       		</div>
+        	<div id="topbar-toolbar">
+    			
+                <div id="divTopBarUesr">
+                	<div id="topBarUser">
+                    	<a href="javascript:"><span>你是WHO</span><i></i></a>
+                    </div>
+                    
+                	<div id="topBarUserDetailed">
+                    	<div id="topBarUserOne">
+                        	<div id="topBarUserOneHead">
+                            	<img src="../public/images/pic/topUser.jpg" />
+                                <div id="topBarUserOneHeadChange">
+                                	<div><a href="javascript:">更改头像</a></div>
+                                </div>
+                            </div>
+                            <div id="topBarUserOneDetailed">
+                            	<div id="topBarUserOneDetailedOne">
+                                	<img id="topBarUserOneDetailedimg" src="../public/images/grade/uesrLogo.png"/>
+                                    <img src="../public/images/grade/diamond.png"/>
+                                    <img src="../public/images/grade/diamond.png"/>
+                                    <img src="../public/images/grade/star.png"/>
+                                    <img src="../public/images/grade/star.png"/>
+                                    <img src="../public/images/grade/star.png"/>
+                                    <a href="javascript:" id="topBarUserOneComeZom">进入空间</a>
+                                    <a href="javascript:" id="topBarUserOneExit">退出登录</a>
+                                </div>
+                                <div id="topBarUserOneDetailedTwo">
+                                	<div id="topBarUserInfo">
+                                    	<span>男</span>&nbsp;&nbsp;|<span>中国</span><span>上海</span><span>嘉定</span>
+                                    </div>
+                                    <div id="topBarUserAccount">
+                                    	<span>余额：</span>&nbsp;&nbsp;
+                                        <span is="topBarUserAccountYE">888888888</span>
+                                        <a href="javascript:" id="topBarUserAccountcz">充值</a>
+                                        <a href="javascript:" id="topBarUserAccounttx">提现</a>
+                                    </div>
+                                    <div id="topBarUserPart">
+                                    	<span>用户</span>&nbsp;|
+                                        <span>摄影师</span>&nbsp;|
+                                        <span>模特</span>&nbsp;|
+                                        <span>经纪人</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="topBarUserTwo">
+                            	<div class="topBarUserTwo" id="topBarUserFollowed">
+                                	<p class="topBarUserTwoPOne">4546544</p>
+                                    <p class="topBarUserTwoPTwo">已关注</p>
+                                </div>
+                                <div class="topBarUserTwo" id="topBarUserFollower">
+                                	<p class="topBarUserTwoPOne">87987987</p>
+                                    <p class="topBarUserTwoPTwo">粉丝</p>
+                                </div>
+                                <div class="topBarUserTwo" id="topBarUserGoodDiscuss">
+                                	<p class="topBarUserTwoPOne">666666</p>
+                                    <p class="topBarUserTwoPTwo">好评</p>
+                                </div>
+                                <div class="topBarUserTwo" id="topBarUserBadDiscuss">
+                                	<p class="topBarUserTwoPOne">7777777</p>
+                                    <p class="topBarUserTwoPTwo">差评</p>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div id="topBarUserThree">
+                                	<div id="topBarUserThreeInOutCome">
+                                    	<p><span class="topBarUserThreeInOutComeAtt">收入排名</span><span class="topBarUserThreeInOutComeNum">454545</span></p>
+                                        <p><span class="topBarUserThreeInOutComeAtt">支出排名</span><span class="topBarUserThreeInOutComeNum">4545</span></p>
+                                    </div>
+                                    <div id="topBarUserThreePersonalManagement">
+                                    	<input type="button" value="个人管理中心" />
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            	<div id="divTopBarShopping">    
+                    	<div id="topBarShopping">
+                    		<a href="#" id="topshopping">购物车<span>888</span>件<i></i></a>
+                    	</div>
+                        
+                        <div id="topBarShoppingDetailed">
+                        	<ul>
+                            <li>
+                            	<div class="topBarShoppingDetailedHead">
+                            		<img src="../public/images/pic/topUser.jpg"/>
+                           		</div>
+                            
+                            	<div class="topBarShoppingDetailedOpert">
+                                	<p class="topBarShoppingDetailedOpertPOne">
+                                    	<span>作品标题锦屏1</span>
+                                        <b class="topBarShoppingDetailedOpertPOneExit" onclick="topBarShoppingDetailedOpertPOneExit(this)">×</b>
+                                    </p>
+                                    <p class="topBarShoppingDetailedOpertPTwo">编号：
+                                    	<span>4445454464564</span>
+                                        <span class="topBarShoppingDetailedOpertPTwoPice">21221</span>
+                                    </p>
+                                </div>
+                            </li>
+                            
+                            <li>
+                            	<div class="topBarShoppingDetailedHead">
+                            		<img src="../public/images/pic/topUser.jpg"/>
+                           		</div>
+                            
+                            	<div class="topBarShoppingDetailedOpert">
+                                	<p class="topBarShoppingDetailedOpertPOne">
+                                    	<span>作品标题锦屏2</span>
+                                        <b class="topBarShoppingDetailedOpertPOneExit" onclick="topBarShoppingDetailedOpertPOneExit(this)">×</b>
+                                    </p>
+                                    <p class="topBarShoppingDetailedOpertPTwo">编号：
+                                    	<span>4445454464564</span>
+                                        <span class="topBarShoppingDetailedOpertPTwoPice">21221</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="topBarShoppingDetailedHead">
+                            		<img src="../public/images/pic/topUser.jpg"/>
+                           		</div>
+                            
+                            	<div class="topBarShoppingDetailedOpert">
+                                	<p class="topBarShoppingDetailedOpertPOne">
+                                    	<span>作品标题锦屏3</span>
+                                        <b class="topBarShoppingDetailedOpertPOneExit" onclick="topBarShoppingDetailedOpertPOneExit(this)">×</b>
+                                    </p>
+                                    <p class="topBarShoppingDetailedOpertPTwo">编号：
+                                    	<span>4445454464564</span>
+                                        <span class="topBarShoppingDetailedOpertPTwoPice">21221</span>
+                                    </p>
+                                </div>
+                            </li>
+                            <!--<li><img src="images/pic1/topUser.jpg"/></li>
+                            <li><img src="images/pic1/topUser.jpg"/></li>-->
+                            </ul>
+                            
+                            <div id="topBarShoppingDetailedFoot">
+                            	<input type="button" value="查看购物车">
+                            </div>
+                        </div>     
+                </div>
+                
+                <div id="divTopBarContainer"> 
+                	<ul>
+                    	<li>
+                        	<div id="divTopBarWorks">
+                            	<div id="topBarWorks" class="topBarContainer">
+                                	<a href="javascript:"><span>我的作品</span></a>
+                                </div>
+                            	
+                                <div id="divTopBarWorksDetailed" class="topBarDetailed">
+                                	<p><a href="javascript:">我的作品库</a></p>
+                                    <p><a href="javascript:">我买到的作品</a></p>
+                                    <p><a href="javascript:">我出售的作品</a></p>                                   
+                                </div>
+                            </div> 
+                        </li>
+                        
+                        
+                        <li>
+                        	<div id="divTopBarPats">
+                            	<div id="topBarPats" class="topBarContainer">
+                                	<a href="javascript:"><span>我的约拍</span></a>
+                                </div>
+                            	
+                                <div id="divTopBarPatsDetailed" class="topBarDetailed">
+                                	<p><a href="javascript:">新约拍项目</a></p>
+                                    <p><a href="javascript:">我发布的约拍</a></p>
+                                    <p><a href="javascript:">应约中的约拍</a></p>  
+                                    <p><a href="javascript:">约拍日程</a></p>
+                                    <p><a href="javascript:">约拍记录</a></p>                                 
+                                </div>
+                            </div> 
+                        </li>
+                        
+                        <li>
+                        	<div id="divTopBarInform">
+                            	<div id="topBarInform" class="topBarContainer">
+                                	<a href="javascript:"><span>消息中心</span>
+                                    	<i></i>
+                                    </a>
+                                </div>
+                            	
+                                <div id="divTopBarInformDetailed" class="topBarDetailed">
+                                	<p><a href="javascript:">查看粉丝</a></p>
+                                    <p><a href="javascript:">查看评价</a></p>
+                                    <p><a href="javascript:">交易提醒</a></p>  
+                                    <p><a href="javascript:">日程提醒</a></p>
+                                    <p><a href="javascript:">被邀提醒</a></p> 
+                                    <p><a href="javascript:">有新应约者</a></p>  
+                                    <p><a href="javascript:">经纪人申请</a></p>
+                                    <p><a href="javascript:">系统通知</a></p>                                
+                                </div>
+                            </div> 
+                        </li>
+                        
+                        
+                        <li>
+                        	<div id="divTopBarUpload">
+                            	<div id="topBarUpload" class="topBarContainer">
+                                	<a href="javascript:"><span>上传作品</span></a>
+                                </div>
+                            	
+                                <div id="divTopBarUploadDetailed" class="topBarDetailed">
+                                	<p><a href="javascript:">上传到作品库</a></p>
+                                    <p><a href="javascript:">发布图片</a></p>
+                                    <p><a href="javascript:">发布摄影故事</a></p>  
+                                    <p><a href="javascript:">发布视频</a></p>                                
+                                </div>
+                            </div> 
+                        </li>
+                        
+                        
+                        <li>
+                        	<div id="divTopBarPublish">
+                            	<div id="topBarPublish" class="topBarContainer">
+                                	<a href="javascript:"><span>发布约拍</span></a>
+                                </div>
+                            	
+                                <div id="divTopBarPublishDetailed" class="topBarDetailed">
+                                	<p><a href="javascript:">发布约拍的项目</a></p>
+                                    <p><a href="javascript:">招募摄影师</a></p>
+                                    <p><a href="javascript:">招募模特</a></p>  
+                                    <p><a href="javascript:">发布征集作品项目</a></p>                                
+                                </div>
+                            </div> 
+                        </li>
+                    </ul>
+                </div>
+            	<!--<a href="#" id="topworks">我的作品</a>
+            	<a href="#" id="toppats">我的约拍</a>
+           	 	<a href="#" id="topinform">消息中心</a>
+            	<a href="#" id="topupload">上传作品</a>
+            	<a href="#" id="toppublish">发布约拍</a>-->
+        	</div>
+        </div>
+    </div> 
+	</div>
+    
+<!-- 头部结束-->
+	<div id="header">
+    	<div id="headerCenter">
+        	<div id="divlogo">
+    			<a id="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+    				<img src="../public/images/wepic_logo.png" alt="唯图网"/>
+        			<p><span id="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+   				</a>
+    		</div>
+            <div id="divKeyWord">
+                    	<input id="inputkeyword" type="text" value="搜索" 
+                    		onfocus="searchonfocus();" onblur="searchonblur()"/>
+            </div>
+                   
+            <div id="divSelect">
+                    <input  type="text" value="选择类型"  onclick="hide('selectValue')" 
+                    		id="inputselect" class="inputselect" readonly="value"/>
+                           
+                    <div id="selectValue" style="display:none;" class="selectValue" onmouseout="hidemouseout('selectValue')" onmouseover="hidemouseover('selectValue')">
+  						<span id="a1" onclick="pick('测试一','inputselect','selectValue')" onmouseover="bgcolor('a1')" 
+                        	onMouseOut="nocolor('a1')" class="cur">测试一</span> 
+  						<span id="a2" onclick="pick('测试二','inputselect','selectValue')" onMouseOver="bgcolor('a2')" 
+                        	onMouseOut="nocolor('a2')" class="cur">测试二</span> 
+  						<span id="a3" onclick="pick('测试三','inputselect','selectValue')" onMouseOver="bgcolor('a3')" 
+                        	onMouseOut="nocolor('a3')" class="cur">测试三</span> 
+  						<span id="a4" onclick="pick('测试四','inputselect','selectValue')" onMouseOver="bgcolor('a4')" 
+                       		onMouseOut="nocolor('a4')" class="cur">测试四</span> 
+ 						<span id="a5" onclick="pick('测试五','inputselect','selectValue')" onMouseOver="bgcolor('a5')" 
+                        	onMouseOut="nocolor('a5')" class="cur">测试五</span> 
+ 	    				<span id="a6" onclick="pick('测试六','inputselect','selectValue')" onMouseOver="bgcolor('a6')" 
+                        	onMouseOut="nocolor('a6')" class="cur">测试六</span>            
+ 					</div>
+                    
+            </div>
+            
+            <div id="divButtonSecrch">
+            	<div id="buttonsearch"></div>
+            </div>
+            
+            <div id="divSeniorSecrch">
+            	<input type="button" value="高级搜索" id="higtsearch"/>
+            </div>
+          <!--    <div id="divButSearch">
+                    	
+                  		
+            </div>-->
+
+       <!-- <div style="clear:both;"></div>-->
+       </div>
+	</div>
+    
+    <div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="liindex">
+            		<a href="javascript:void(0)">首页</a>
+            	</li>
+            	<li class="active" id="mainbarCenterLi2">
+            		<a href="javascript:void(0)">商业拍摄</a>
+            	</li>
+            	<li>
+            		<a href="javascript:void(0)">摄影图片</a>
+           	 	</li>
+            	<li>
+            		<a href="javascript:void(0)">创意图片</a>
+            	</li>
+            	<li>
+            		<a href="javascript:void(0)">摄影故事</a>
+            	</li>
+            	<li>
+            		<a href="javascript:void(0)">摄影师</a>
+            	</li>
+            	<li>
+            		<a href="javascript:void(0)">模特</a>
+            	</li>
+        	</ul>
+        </div>
+	</div>
+    
+  
+	
+        <!-- 分割线 					样式在	registerLogin.css-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+
+	<!-- 标题 -->
+      
+  	<div id="worksCollectTitle">
+    	<div id="worksCollectTitleTop">
+        	<table id="tableWorksCollectTitleTop">
+            	<tr>
+                	<td id="worksCollectTitleTopName"><span>约拍项约拍项目标题目</span></td>
+                    <td id="worksCollectTitleTopAdd"><a href="javascript:"></a></td>
+                    <td id="worksCollectTitleTopQuotedPrice"><a href="javascript:"></a></td>
+                    <td id="worksCollectTitleTopNum"><span>项目编号：</span></td>
+                    <td id="worksCollectTitleTopNumV"><span>5454556446432132465465431654654634</span></td>
+                    
+                    
+                </tr>
+            </table>
+            <div id="worksCollectTitleTopIco">
+                    	<a id="worksCollectTitleTopIcoOne" href="javascript:"><span>54545</span></a>
+                    	<a id="worksCollectTitleTopIcoTwo" href="javascript:"><span>3453</span></a>
+                        <a id="worksCollectTitleTopIcoThree" href="javascript:"><span>35354</span></a>    
+            </div>
+        </div>
+        
+        <div id="worksCollectTitleBottom">
+        	<a id="worksCollectTitleBottomType" href="javascript:">产品摄影</a>
+            <span>发布时间：</span>
+            <span>35</span>
+            <span class="classTitleBottom">分钟</span>
+            <span>前</span>
+            
+            <span class="spanProjectTitleBottomTime">应约时间：</span>
+            <span class="classTitleBottom">剩余</span>
+            
+            	<form name="formnow" id="daojishi">
+        		<input value="" name="dd" size="1" type="text" class="daojishi1" >
+       				 <!--<span name="dd"></span>-->
+        			天
+        		<input value="" name="hh" size="1" type="text" class="daojishiT">
+        			小时
+       			<input value="" name="mm" size="1" type="text" class="daojishiT">
+        			分
+        		<input value="" name="ss" size="1" type="text" class="daojishiT">
+        		秒 
+  				</form>
+            <!--<span>2</span>
+            <span class="classTitleBottom">天</span>
+            <span>5</span>
+            <span class="classTitleBottom">小时</span>
+            <span>25</span>
+            <span class="classTitleBottom">分钟</span>
+            <span>25</span>
+            <span class="classTitleBottom">秒</span>-->
+        </div>
+        
+        <div id="worksCollectTitleRight"></div>
+        
+   	</div>
+    
+    <!-- 标题 -->
+    
+    
+    <div id="worksCollectCon">
+    <!--中间内容-->
+    	<div id="worksCollectConInfo">
+         	<!--阶段-->
+        	<div id="worksCollectConInfoStage">
+            	<div id="worksCollectConInfoStageTop">
+                	<span class="worksCollectConInfoStageTop1">征集中</span>
+                    <span>筛选中</span>
+                    <span>已结束</span>
+                </div>
+                <div id="worksCollectConInfoStageBottom">
+                	<div id="worksCollectConInfoStageBottom1"></div>
+                    <div id="worksCollectConInfoStageBottom2"></div>
+                    <div id="worksCollectConInfoStageBottom3"></div>
+                    <div id="worksCollectConInfoStageBottom4"></div>
+                    <div id="worksCollectConInfoStageBottom5"></div>
+                    <div id="worksCollectConInfoStageBottom6"></div>
+                </div>
+            </div>
+            <!--阶段-->
+            
+            <!--招标-->
+            <div id="worksCollectConInfoInviteBids">
+            	<table id="tableworksCollectConInfoInviteBids">
+                	<tr>
+                    	<td rowspan="2" class="td1"><div id="worksCollectConInfoInviteBidsIco1"></div></td>
+                    	<td class="td2"><span>招标截止：</span></td>
+                        <td class="td3"></td>
+                        
+                    	<td rowspan="2" class="td4"><div id="worksCollectConInfoInviteBidsIco2"></div></td>
+                    	<td class="td5"><span>中标酬金</span></td>
+                        <td class="td6"><a href="javascript:"></a></td>
+                        <td class="td7"></td>
+                        
+                    	<td rowspan="2" class="td8"><div id="worksCollectConInfoInviteBidsIco3"></div></td>
+                    	<td class="td9"><span>征集作品：</span></td>
+                        <td class="td10"></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                    	<td class="td2"><span id="tableworksCollectConInfoInviteBidsClosingDate">2013/05/12</span></td>
+                        <td class="td3"></td>
+                        
+                        
+                        <td class="td5"><span id="tableworksCollectConInfoInviteBidsWinPrice">4564</span></td>
+                    	<td class="td6">每件：<span id="tableworksCollectConInfoInviteBidsperPag">5353</span></td>
+                        <td class="td7"></td>
+                        
+                        <td class="td9"><span id="tableworksCollectConInfoInviteBidsCollect">52</span></td>
+                        <td class="td10"></td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <!--招标-->
+            
+            
+            <!--项目描述-->
+            <div id="worksCollectConInfoProjectDescribe">
+            	<p class="worksCollectConInfoProjectDescribeTitle">项目描述</p>
+                <p>1.自备相关摄影器材设备</p>
+                <p>2.自备相关摄影器材设备</p>
+                
+            </div>
+            <!--项目描述-->
+            
+            <!--应约要求-->
+            <div id="worksCollectConInfoAcceptReq">
+            	<p class="worksCollectConInfoProjectDescribeTitle">应约要求</p>
+                
+                <p>1.自备相关摄影器材设备</p>
+            </div>
+            <!--应约要求-->
+            
+            <!--附件-->
+           
+            <div id="worksCollectConInfoAppendix">
+            	<table id="tableworksCollectConInfoAppendix">
+                	<tr>
+                    	<td class="td1"><span>附件</span></td>
+                        <td class="td2"><a href="javascript:"><i></i>附件fd.附件一.一.pdf(56.KB)</a></td>
+                        <td class="td3"><a href="javascript:"><i></i>附件附件一.一.pdf(56.KB)</a></td>
+                        <td class="td4"><a href="javascript:"><i></i>附件一.pdf(56.KB)</a></td>
+                        <td class="td2"><a href="javascript:"><i></i>附件fd.附件一.一.pdf(56.KB)</a></td>
+                        <td class="td3"><a href="javascript:"><i></i>附件附件一.一.pdf(56.KB)</a></td>
+                        <td class="td4"><a href="javascript:"><i></i>附件一.pdf(56.KB)</a></td>
+                        
+                    </tr>
+                </table>
+            </div>
+            <!--附件-->
+            
+            <!--提交-->
+            <div id="worksCollectConInfoSubmit">
+            	<div id="worksCollectConInfoSubmitLink">
+                	<a id="worksCollectConInfoSubmitLinkShare" href="javascript:">分享</a>
+                    <a id="worksCollectConInfoSubmitLinkJubao" href="javascript:">举报</a>
+                </div>
+                
+                <div id="worksCollectConInfoSubmitBut">
+                	<input type="button" id="worksCollectConInfoSubmitBut1" value="我要应约"/>
+                    <input type="button" id="worksCollectConInfoSubmitBut2" value="我来报价"/>
+                </div>
+            </div>
+            <!--提交-->
+            <div id="worksCollectConInfoBottom">
+            	<p>中标酬金为发布人支付给应约中标者的所有费用总额，包含但不仅限于人员差旅费&nbsp;模特酬薪&nbsp;设备耗损费&nbsp;交通运输费&nbsp;模特肖像权费&nbsp;场地费等</p>
+            </div>
+        </div>
+        
+        
+        
+        <div id="worksCollectTimelyState">
+        	<div id="worksCollectTimelyStateCard">
+        		<ul>
+                	<li class="worksCollectTimelyStateCard1 active"><a href="javascript:">应约作品列表</a></li>
+                    <li class="worksCollectTimelyStateCard2"><a href="javascript:">发布人邀请记录</a></li>
+                    <li class="worksCollectTimelyStateCard3"><a href="javascript:">中标作品列表</a></li>
+            	</ul>
+            </div>
+            
+            <div id="worksCollectTimelyStateCardCon">
+            <div id="worksCollectTimelyStateCardAT" class="worksCollectTimelyStateCardConSon">
+            	<ul>
+                	<li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/33.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/44.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/55.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/55.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/66.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/44.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/33.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/22.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                    	<a href="javascript:">
+                    		<img src="../public/images/pic1/11.png"/>
+                            <div class="worksCollectTimelyStateCardATPriceBj">
+                            </div>
+                           	<div class="worksCollectTimelyStateCardATPrice">
+                            	<p class="bj">报价：</p>
+                                <p class="bj2">￥<span>576675765</span></p>
+                            </div>
+                        </a>
+                        
+                    </li>
+            	</ul>
+                
+         <!--翻页-->
+        <div class="ppointPaging">            
+            <table class="tablePpointPaging">
+                	<tr>
+                    	<td class="ppointPagingOne"><a href="javascript:"></td>
+                        <td class="ppointPagingPre"><a href="javascript:"></td>
+                    	<td class="ppointPagingN"><a href="javascript:">1</td>
+                        <td class="ppointPagingN"><a href="javascript:">2</td>
+                    	<td class="ppointPagingN"><a href="javascript:">3</td>
+                        <td class="ppointPagingN"><a href="javascript:">4</td>
+                    	<td class="ppointPagingN"><a href="javascript:">5</td>
+                        <td class="ppointPagingN"><a href="javascript:">6</td>
+                    	<td class="ppointPagingN"><a href="javascript:">7</td>
+                        <td class="ppointPagingN"><a href="javascript:">8</td>
+                    	<td class="ppointPagingN"><a href="javascript:">9</td>
+                        <td class="ppointPagingN"><a href="javascript:">10</td>
+                    	<td class="ppointPagingNext"><a href="javascript:"></td>
+                        <td class="ppointPagingLast"><a href="javascript:"></td>
+                    </tr>
+                </table>
+        </div>
+        <!--翻页-->
+            </div>
+            
+            <div id="worksCollectTimelyStateCardCon2" class="worksCollectTimelyStateCardConSon">
+            	<ul>
+            	</ul>
+            </div>
+            
+            <div id="worksCollectTimelyStateCardConWinBid" class="worksCollectTimelyStateCardConSon">
+            	<ul>
+                	<li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div id="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+                    <li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div class="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            		
+                                    <input type="button" value="√已关注">
+                        		</div>
+                        		<div id="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+                   <li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div class="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            		
+                        		</div>
+                        		<div id="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+                    <li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div class="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            		
+                        		</div>
+                        		<div id="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+                    <li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div class="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            		
+                        		</div>
+                        		<div id="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+                    <li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div class="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            		
+                        		</div>
+                        		<div id="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+                    
+                     <li class="">
+                			<div class="worksCollectInfoTopHeadCard"><img src="../public/images/pic/topUser.jpg" /></div>
+                    		<div class="worksCollectInfoTopInfoCard">
+                    			<div class="worksCollectInfoTopInfoOneCard">
+                        			<span class="worksCollectInfoTopInfoOneNameCard">李彦宏</span>
+                            			<img src="../public/images/grade/uesrLogo.png"/>
+                        		</div>
+                        		<div class="worksCollectInfoTopInfoTwoCard">
+                        			<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/diamond.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                           		 	<img src="../public/images/grade/star.png"/>
+                            		<img src="../public/images/grade/star.png"/>
+                        		</div>
+                       		 	<div class="worksCollectInfoTopInfoThreeCard">
+                        			<span class="worksCollectInfoTopInfoThreeProvinceCard">上海</span>
+                            		<span class="worksCollectInfoTopInfoThreeCityCard">徐汇区</span>
+                            		
+                        		</div>
+                        		<div id="worksCollectInfoTopInfoFourCard">
+                        			<span class="worksCollectInfoTopInfoFourCard1">粉丝</span>
+                            		<span class="worksCollectInfoTopInfoFourCard2">454654</span>
+                            		<span class="worksCollectInfoTopInfoFourCard3">关注</span>
+                            		<span class="worksCollectInfoTopInfoFourCard4">46587</span>
+                        		</div>
+                    		</div>
+                            <div class="worksCollectInfoBottomCard">
+                            	<p>成功约拍数：<span>545454</span></p>
+                                <p>好评率：<span>54</span><span>%</span></p>
+                            </div>
+                    </li>
+            	</ul>
+                
+        <!--翻页-->
+        <div class="ppointPaging">            
+            <table class="tablePpointPaging">
+                	<tr>
+                    	<td class="ppointPagingOne"><a href="javascript:"></td>
+                        <td class="ppointPagingPre"><a href="javascript:"></td>
+                    	<td class="ppointPagingN"><a href="javascript:">1</td>
+                        <td class="ppointPagingN"><a href="javascript:">2</td>
+                    	<td class="ppointPagingN"><a href="javascript:">3</td>
+                        <td class="ppointPagingN"><a href="javascript:">4</td>
+                    	<td class="ppointPagingN"><a href="javascript:">5</td>
+                        <td class="ppointPagingN"><a href="javascript:">6</td>
+                    	<td class="ppointPagingN"><a href="javascript:">7</td>
+                        <td class="ppointPagingN"><a href="javascript:">8</td>
+                    	<td class="ppointPagingN"><a href="javascript:">9</td>
+                        <td class="ppointPagingN"><a href="javascript:">10</td>
+                    	<td class="ppointPagingNext"><a href="javascript:"></td>
+                        <td class="ppointPagingLast"><a href="javascript:"></td>
+                    </tr>
+                </table>
+        </div>
+        <!--翻页-->
+            </div>
+            </div>
+        </div>
+        
+        <div id="divApointProjectRight">
+        	<div id="worksCollectOperate">
+            	<div id="worksCollectOperateOne">
+                	<a href="javascript:">
+                    	<div id="worksCollectOperateOneA"></div>
+                        <p>返回上一页</p>
+                    </a>
+                </div>
+                
+                <div id="worksCollectOperateTwo">
+                	<a href="javascript:">
+                    	<div id="worksCollectOperateTwoA"></div>
+                        <p>收藏项目</p>
+                    </a>
+                </div>
+                
+                <div id="worksCollectOperateThree">
+                	<a href="javascript:">
+                    	<div id="worksCollectOperateThreeA"></div>
+                        <p>推荐项目</p>
+                    </a>
+                </div>
+            </div>
+        <!--发布人信息-->
+        	<div id="worksCollectInfo">
+            	<div id="worksCollectInfoTitle">
+                	<p>发布人</p>
+                </div>
+        		<div id="worksCollectInfoTop">
+                	<div id="worksCollectInfoTopHead"><img src="../public/images/pic/topUser.jpg" /></div>
+                    <div id="worksCollectInfoTopInfo">
+                    	<div id="worksCollectInfoTopInfoOne">
+                        	<span id="worksCollectInfoTopInfoOneName">李彦宏</span>
+                            <img src="../public/images/grade/uesrLogo.png"/>
+                        </div>
+                        <div id="worksCollectInfoTopInfoTwo">
+                        	<img src="../public/images/grade/diamond.png"/>
+                            <img src="../public/images/grade/diamond.png"/>
+                            <img src="../public/images/grade/star.png"/>
+                            <img src="../public/images/grade/star.png"/>
+                            <img src="../public/images/grade/star.png"/>
+                        </div>
+                        <div id="worksCollectInfoTopInfoThree">
+                        	<span id="worksCollectInfoTopInfoThreeProvince">上海</span>
+                            <span id="worksCollectInfoTopInfoThreeCity">徐汇区</span>
+                            
+                        </div>
+                        <div id="worksCollectInfoTopInfoFour">
+                        	<span id="worksCollectInfoTopInfoFour1">粉丝</span>
+                            <span id="worksCollectInfoTopInfoFour2">454654</span>
+                            <span id="worksCollectInfoTopInfoFour3">关注</span>
+                            <span id="worksCollectInfoTopInfoFour4">46587</span>
+                        </div>
+                    </div>
+          		</div>
+          		<div id="worksCollectInfoBottom">
+                	<div id="worksCollectInfoBottomBut">
+                    	<input type="buttom" value="+&nbsp;关注"/>
+                    </div>
+                    <div id="worksCollectInfoBottomSpan">
+                    	<div><span>发布约拍项目数：</span><a href="javascript:"><span>343</span></a></div>
+                        <div><span>约拍累计支出额：</span><a href="javascript:"><span>342</span></a></div>
+                    </div>
+                </div>
+          	</div>
+            
+            <!--发布人信息 end-->
+            
+           <!-- 类似项目start-->
+            <div id="worksCollectSimilar">
+            	<div class="worksCollectTop">
+                	<p>类似项目</p>
+                </div>
+                <div class="worksCollectBottom">
+                	<div class="worksCollectBottomCon">
+                    	<table class="tableworksCollectBottomCon">
+                        	<tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                        </table>
+                    	
+                       
+                    </div>
+                    
+                </div>
+        	</div>
+            <!-- 类似项目end-->
+          
+          	<!-- 发布人的其他项目start-->
+            <div id="worksCollectOther">
+            	<div class="worksCollectTop">
+                	<p>发布人的其他项目</p>
+                </div>
+                <div class="worksCollectBottom">
+                	<div class="worksCollectBottomCon">
+                    	<table class="tableworksCollectBottomCon">
+                        	<tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="worksCollectBottomCon1"><a href="javascript:">约拍项目标题</a></td>
+                                <td class="worksCollectBottomCon2">￥<span>54545</span>元</td>
+                            </tr>
+                            
+                            
+                        </table>
+                    	
+                       
+                    </div>
+                    
+                </div>
+        	</div>
+            <!-- 发布人的其他项目end-->
+            
+            
+          </div>
+          
+          
+    </div>
+
+    <!--foot 开始-->
+    <div id="footer">
+    <div id="footCenter">
+    	<div id="footServer">
+        	<div id="aboutOur" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">关于我们</a></div>
+                <p><a href="javascript:">服务内容</a></p>
+                <p><a href="javascript:">身份注册</a></p>
+                <p><a href="javascript:">积分等级</a></p>
+                <p><a href="javascript:">交易流程</a></p>
+            </div>
+            <div id="rechargeDefray" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">充值支付</a></div>
+                <p><a href="javascript:">账户管理</a></p>
+                <p><a href="javascript:">充值方式</a></p>
+                <p><a href="javascript:">交易记录</a></p>
+                <p><a href="javascript:">充值</a></p>
+                <p><a href="javascript:">提现</a></p>
+            </div>
+            <div id="personnelRecruitment" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">人才招聘</a></div>
+                <p><a href="javascript:">人才计划</a></p>
+                <p><a href="javascript:">招聘职位</a></p>
+            </div>
+            <div id="legalColumn" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">法律专栏</a></div>
+                <p><a href="javascript:">使用条款</a></p>
+                <p><a href="javascript:">相关协议</a></p>
+                <p><a href="javascript:">版权声明</a></p>
+                <p><a href="javascript:">隐私政策</a></p>
+                <p><a href="javascript:">免责声明</a></p>
+                <p><a href="javascript:">法律知识</a></p>
+            </div>
+            <div id="footProblem" class="footServerCon">
+            	<div class="serverConStr"><a href="javascript:">疑难解答</a></div>
+            	<div class="serverConStr"><a href="javascript:">投诉建议</a></div>
+            	<div class="serverConStr"><a href="javascript:">广告服务</a></div>
+            	<div class="serverConStr"><a href="javascript:">信息中心</a></div>
+            </div>
+        </div>
+        
+        <div id="footCopyright">
+        	<div class="serverConStr" id="serverConStrid">版权声明</div>
+            <div id="footCopyrightCon">
+            	<p>所有图片及文件都受著作权保护，未经允许不得使用，</p>
+                <p>不得转载编辑</p>
+            	<p>Copyright&copy;2012-2013 wepic.cn</p>
+                <p>上海维拓网络科技有限公司</p>
+                <p>ICP备案/许可证：沪ICP备13010366号</p>
+            </div>
+        </div>
+        
+        <div id="footCustom">
+        	<div id="twoDimensionCode">
+            	<img src="../public/images/weixin.png"/>
+                <p>微信公众账号</p>
+            </div>
+            
+            <div id="DimensionCodeServer">
+            	<p class="serverConStr">客服电话</p>
+                <p id="serverPhone">400-809-9060</p>
+                <p>（周一至周五：9:00-18:00）</p>
+                <div id="serverShare">
+                	<ul>
+                    	<li><a href="javascript:" id="shareSina" class="shareSina"></a></li>
+                        <li><a href="javascript:" id="shareQqzone" class="shareQqzone"></a></li>
+                        <li><a href="javascript:" id="shareQqblog" class="shareQqblog"></a></li>
+                        <li><a href="javascript:" id="shareTwitter" class="shareTwitter"></a></li>
+                        <li><a href="javascript:" id="shareFacebook" class="shareFacebook"></a></li>
+                        <li><a href="javascript:" id="shareRenren" class="shareRenren"></a></li>
+                        <li><a href="javascript:" id="shareDouban" class="shareDouban"></a></li>
+                    </ul>
+                    	
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--foot 结束-->
+    <div id="goTopBtn" style="display:none;"></div>
+</div>
+<!--[if lte IE 6]>
+<script src="../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+</body>
+</html>

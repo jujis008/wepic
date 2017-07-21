@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.Message"
+	table="message"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_Account_User" 
+		index="IDX_Account_User"
+		lazy="false"
+		/> 
+	
+	<property 
+		name="msgTxt"
+		type="java.lang.String"
+		column="msgTxt"
+		length="100"
+		unique="false"
+	/>
+	<property 
+		name="date"
+		type="date"
+		column="msgDate"
+		length="50"
+	/>
+	<property 
+		name="statu"
+		type="java.lang.Integer"
+		column="statu"
+	/>
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

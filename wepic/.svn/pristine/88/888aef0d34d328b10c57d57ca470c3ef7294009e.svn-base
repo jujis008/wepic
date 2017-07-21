@@ -1,0 +1,980 @@
+.divStateCardCon{
+	width:860px;
+	height:1050px;
+	overflow:auto;
+	overflow-x: hidden;
+	}
+
+
+/*选项卡1*/
+#appointProjectTimelyState .divStateCardCon .divList{
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:840px;
+	}
+
+/*应约者列表*/
+#appointProjectTimelyState .divStateCardCon .divList .divList_one{
+	position:relative;
+	top:0;
+	left:0;
+	min-height:320px;
+	width:840px;
+	padding-left:20px;
+	padding-top:20px;
+	background:#FFFFFF;
+	margin-top:10px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divList_one_top{
+	position:relative;
+	top:0;
+	left:0;
+	height:240px;
+	width:820px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divPicInfoLeft{
+	position:relative;
+	top:0;
+	left:0;
+	width:400px;
+	height:100%;
+	float:left;
+	border-right: 1px solid #ECECEC;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divPicInfoLeft .yaoqing{
+	position:absolute;
+	right:10px;
+	top:10px;
+	width:52px;
+	height:52px;
+	background:url(../../../../pubimg/images/yao.png) 0 0 no-repeat;
+	}	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divTop{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:160px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .recommendeli2{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:150px;
+	height:150px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .recommendeli2 img{
+	width:150px;
+	height:150px;
+	}
+
+
+
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divImg{
+	position:relative;
+	top:0;
+	left:0;
+	width:150px;
+	height:150px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divImg .divBackGround{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:150px;
+	height:50px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divImg .divBackGround .opacity{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:150px;
+	height:50px;
+	background:#000000;
+	filter:alpha(opacity:70);
+	opacity:0.7;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divImg .divBackGround .info{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:150px;
+	height:50px;
+	color:#bfbfc1;
+	padding-left:8px;
+	font-family: "宋体";
+	font-size:13px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divImg .divBackGround .info .one{
+	height:18px;
+	line-height:24px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divImg .divBackGround .info .two{
+	color:#fcfefd;
+	font-family: "微软雅黑";
+	line-height:30px;
+	font-size:17px;
+	}
+
+
+
+
+
+
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName{
+	position:absolute;
+	top:0px;
+	left:160px;
+	width:220px;
+	height:150px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .pUserName,
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .pUserNameqy{
+	font-size:18px;
+	color:#242424;
+	font-family:"微软雅黑";
+	text-align:left;
+	padding-left:5px;
+	width:220px;
+	height:30px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .pUserNameqy .name{
+	display:inline-block;
+	max-width:140px;
+	hieght:20px;
+	white-space: nowrap;      
+ 	text-overflow: ellipsis;        /* for IE */
+	-o-text-overflow:  ellipsis ;      /* for Opera */
+	overflow: hidden;
+	}
+
+
+
+
+/*公用*/
+.age{
+	width:20px;
+	height:20px;
+	padding-left:20px;
+	margin-right:10px;
+	background:url(../../../../../public/images/11.png) 0 -97px no-repeat;
+	}
+.ageMan{
+	width:20px;
+	height:20px;
+	padding-left:20px;
+	margin-right:10px;
+	background:url(../../../../../public/images/11.png) 0 -211px no-repeat;
+	}
+.address{
+	width:50px;
+	height:22px;
+	padding-left:18px;
+	padding-bottom:2px;
+	background:url(../../../../../public/images/11.png) 0 -115px no-repeat;
+	}
+.address span{
+	margin-right:5px;
+	}
+.divUserInfo .three{
+	height:20px;
+	}
+
+.job{
+	background:url(../../../../pubimg/images/background.png) no-repeat 0 0;
+    color: #AE9E7C;
+	float:left;
+    height: 16px;
+    left: 0;
+    padding-left: 12px;
+    padding-right: 11px;
+	margin-right:10px;
+    position: relative;
+    top: 0;
+	}
+
+.job a {
+	background:url(../../../../pubimg/images/background.png) no-repeat  0px -89px;
+    height: 16px;
+    position: absolute;
+    right: -12px;
+    top: 0;
+    width: 14px;
+	}
+/*公用*/	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userPosition{
+	margin-top:10px;
+	_margin-top:0px;
+	width:220px;
+	_width:260px;
+	text-align:left;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userPosition a{
+	color:#a0a0a0;
+	font-size:12px;
+	}
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userType{
+	margin-top:10px;
+	width:220px;
+	min-height:20px;
+	text-align:left;
+	}
+
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userAppraise{
+
+	margin-top:10px;
+	width:220px;
+	height:56px;
+	text-align:left;
+	font-family:"宋体";
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userAppraise .userAppraiseOne{
+	width:53px;
+	height:54px;
+	text-align:center;
+	float:left;
+	border:1px solid #ECECEC;
+	border-right:0;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userAppraise .userAppraiseLast{
+	border-right:1px solid #ECECEC;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserName .userAppraise .userAppraiseOne .userAppraiseOneTop{
+	color:#5c5c5c;    
+	height:30px; 
+	line-height:30px; 
+	overflow:hidden;
+	}
+
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserGrade{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:65px;
+	margin:0 auto;
+	}
+
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserGrade .child{
+	width:94px;
+	height:62px;
+	text-align:center;
+	float:left;
+	border:1px solid #ECECEC;
+	border-right:0;
+	font-size:12px;
+	font-family: "微软雅黑";
+	color:#3b132d;   
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserGrade .lastchild{
+	border-right:1px solid #ECECEC;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .divUserGrade .child .number{
+	color:#868686;    
+	height:40px; 
+	line-height:40px; 
+	font-size:14px;
+	font-family: "微软雅黑";
+	overflow:hidden;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .checkPic{
+	position:relative;
+	top:0;
+	left:0;
+	width:418px;
+	height:240px;
+	float:left;
+	
+	}
+
+
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option{
+	position:relative;
+	top:0;
+	left:0;
+	height:50px;
+	padding-top:20px;
+	width:820px;
+	text-align:right;
+	border-top: 1px solid #ECECEC;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option .white_button{
+	background:url(../../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option .white_button:hover{
+	background:url(../../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}	
+	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain{
+	position:relative;
+	top:0;
+	left:0;
+	min-height:150px;
+	width:830px;
+	border-top: 1px solid #ECECEC;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_one{
+	padding-bottom: 10px;
+    margin-top: 26px;
+	border-bottom: 1px solid #ECECEC;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_one .meToYou{
+	color: #5B5B5B;
+    font-family: "微软雅黑";
+    font-size: 14px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_one .star_level_span{
+	margin-left: 20px;
+	}	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_one img{
+	margin-right: -5px;
+	}	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_two{
+	width:800px;
+	min-height:30px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	}	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_three{
+	width:800px;
+	min-height:30px;
+	padding-bottom: 10px;
+	background:#fffdf1;
+	}	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .complain .complain_three .complain_three_top{
+	height:30px;
+	line-height:30px;
+	color: #5B5B5B;
+    font-family: "微软雅黑";
+    font-size: 14px;
+	}	
+	
+	
+	
+	
+	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option .chooseNumber{
+	position:absolute;
+	bottom:10px;
+	left:20px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option input{
+	margin:0 ;
+	}	
+
+
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option .answer{
+	background: url(../../../../../public/images/edit.png) no-repeat 0 -219px;
+    color: #808080;
+    display: inline-block;
+	margin-right:30px;
+    padding: 1px 0 1px 24px;
+	}	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .option .additional_comments{
+    color: #0269B8;
+	margin-right:30px;
+	text-decoration: underline;
+	}	
+	
+
+/*评价*/
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate{
+   	position:relative;
+	top:0;
+	left:0;
+
+	width:400px;
+	height:240px;
+	float:left;
+	overflow:auto;
+	padding-left: 18px;
+	}	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate .evaluate_grade{
+	font-family: "微软雅黑";
+    font-size: 14px;
+	color:#5b5b5b;
+	height:25px;
+	border-bottom: 1px solid #ECECEC;
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate .evaluate_grade .evaluate_gradeicogood{
+	background:url(../../../../pubimg/images/googbagbj.png) 0 0 no-repeat;
+	padding-left:30px;
+	height:18px;
+	margin-left:15px;
+	}
+
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate .evaluate_grade .evaluate_gradeicobad{
+	background:url(../../../../pubimg/images/googbagbj.png) 0 -22px no-repeat;
+	padding-left:30px;
+	height:18px;
+	margin-left:15px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate .evaluate_star_level{
+	
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate .evaluate_star_level img{
+	border:0;
+	margin-right:-5px;
+	
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .div_evaluate .star_level_span{
+	margin-left:20px;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .evaluate_con{
+	width:380px;
+	min-height:30px;
+	padding:5px 0 0 10px 0;
+	line-height:18px;
+	}
+
+/*评价*/
+
+/*普通*/
+.sliderPersonal .slider_div_work{
+	display:block;
+	margin-left:20px;
+	}
+
+.sliderPersonal .slider_div_project{
+	display:none;
+	margin-left:20px;
+	}
+	
+.sliderPersonal .slider_div_honor{
+	display:none;
+	margin-left:20px;
+	}
+	
+.sliderPersonal .activery{
+	display:block;
+	}	
+/*普通*/
+
+
+
+
+
+/*模特*/
+.sliderModel .slider_div_model{
+	display:block;
+	}
+.sliderModel .slider_div_work{
+	display:none;
+	margin-left:20px;
+	}
+.sliderModel .slider_div_project{
+	display:none;
+	margin-left:20px;
+	}
+	
+.sliderModel .slider_div_honor{
+	display:none;
+	margin-left:20px;
+	}
+	
+.sliderModel .activery{
+	display:block;
+	}
+/*模特*/
+	
+	
+	
+	
+/*联系方式*/
+.sliderContactWay .slider_div_contact_way{
+	display:block;
+	margin-left:5px;
+	}
+.sliderContactWay .slider_div_model{
+	display:none;
+	}
+.sliderContactWay .slider_div_work{
+	display:none;
+	margin-left:20px;
+	}
+.sliderContactWay .slider_div_project{
+	display:none;
+	margin-left:20px;
+	}
+	
+.sliderContactWay .slider_div_honor{
+	display:none;
+	margin-left:20px;
+	}
+	
+.sliderContactWay .activery{
+	display:block;
+	}
+/*联系方式*/
+
+
+	
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .checkPic .topdb{
+	height:30px;
+	margin-left:20px;
+	}
+	
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .checkPic .topdb ul li{
+	float:left;
+	height: 26px;
+    line-height: 26px;
+    margin-right: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-align: center;
+	cursor:pointer;
+	font-family: "微软雅黑";
+    font-size: 14px;
+	color:#5b5b5b;
+	}
+#appointProjectTimelyState .divStateCardCon .divList .divList_one .checkPic .topdb ul .active{
+	border-bottom: 3px solid #ff6367;
+	color: #E92D00;
+	}
+
+
+#stateCardBackDetail{
+	position:absolute;
+	right:10px;
+	top:5px;
+	display:none;
+	}
+
+/*代表作品*/
+
+		/*水平滚动样式*/
+		.slider_box_ul{
+			position: relative;
+			top:0;
+			left:0;
+			height: 175px;
+			width: 400px;
+			margin: 0 auto;
+			margin-top:10px;
+			}
+		
+		.slider_next{
+			position:absolute;
+			top:-40px;
+			height:20px;
+			width: 20px;
+			background:url(../../../../../public/images/changePage.png) no-repeat;
+			right:50px;
+			background-position:0 -72px;
+			}
+		.slider_next:hover{
+			background-position:0 -96px;
+			}
+			
+		.slider_prev{
+			position:absolute;
+			top:-40px;
+			height:20px;
+			width: 20px;
+			background:url(../../../../../public/images/changePage.png) no-repeat;
+			right:20px;
+			background-position:0 0;
+			}
+			
+		.slider_prev:hover{
+			background-position:0 -24px;
+			}
+			
+			
+			
+/*代表作品*/
+.slider_div_work .slider-wrapper{
+	height: 100%;
+	position: relative;
+	top:0;
+	left:0;
+	width: 400px;
+	overflow:hidden;
+	}
+.slider_div_work .slider-wrapper ul{
+	position: absolute;
+	top:0;
+	left:0;
+	height: 100%;
+	width: 400px;
+	}
+.slider_div_work .slider-wrapper li{
+	float: left;
+	width:205px;
+	position: relative; 
+	top:0;
+	left:0;
+	}
+.slider_div_work .slider-wrapper li img{
+	width: 175px;
+	height: 175px;
+	border: none;
+	float: left;
+	}
+
+
+
+/*代表作品*/	
+
+	
+	
+			
+/*代表项目*/
+.slider_div_project .slider-wrapper{
+	height: 100%;
+	position: relative;
+	top:0;
+	left:0;
+	width: 400px;
+	overflow:hidden;
+	}
+.slider_div_project .slider-wrapper ul{
+	position: absolute;
+	top:0;
+	left:0;
+	height: 100%;
+	width: 400px;
+	}
+.slider_div_project .slider-wrapper li{
+	float: left;
+	width:400px;
+	position: relative; 
+	top:0;
+	left:0;
+	}
+.slider_div_project .slider-wrapper li .divimg{
+	height: 100%;
+	width: 195px;
+	float: left;
+	}
+.slider_div_project .slider-wrapper li .divimgDetail{
+	height: 100%;
+	width: 160px;
+	float: left;
+	}
+.slider_div_project .slider-wrapper li .divimgDetail div{
+	min-height: 20px;
+	padding-bottom:10px;
+	color:#5a5a5a;
+	font-family: "微软雅黑";
+	font-size:15px;
+	float: left;
+	}
+	
+.slider_div_project .slider-wrapper li img{
+	width: 175px;
+	height: 175px;
+	border: none;
+	float: left;
+	}
+
+
+
+/*代表项目*/	
+
+
+
+			
+/*他的荣誉*/
+.slider_div_honor .slider-wrapper{
+	height: 100%;
+	position: relative;
+	top:0;
+	left:0;
+	width: 400px;
+	overflow:hidden;
+	}
+.slider_div_honor .slider-wrapper ul{
+	position: absolute;
+	top:0;
+	left:0;
+	height: 100%;
+	width: 400px;
+	}
+.slider_div_honor .slider-wrapper li{
+	float: left;
+	width:400px;
+	position: relative; 
+	top:0;
+	left:0;
+	}
+.slider_div_honor .slider-wrapper li .divimg{
+	height: 100%;
+	width: 195px;
+	float: left;
+	}
+.slider_div_honor .slider-wrapper li .divimgDetail{
+	height: 100%;
+	width: 160px;
+	float: left;
+	}
+.slider_div_honor .slider-wrapper li .divimgDetail div{
+	min-height: 20px;
+	padding-bottom:10px;
+	color:#5a5a5a;
+	font-family: "微软雅黑";
+	font-size:13px;
+	float: left;
+	}
+.slider_div_honor .slider-wrapper li img{
+	width: 175px;
+	height: 175px;
+	border: none;
+	float: left;
+	}
+
+
+
+/*他的荣誉*/	
+
+
+
+
+
+
+
+/*模特信息*/	
+.slider_div_model{
+	width:100%;
+	height:210px;
+	}
+.slider_div_model .slider_div_model_top{
+	width:100%;
+	height:130px;
+	background:#e7e7e7;
+	}
+.slider_div_model .slider_div_model_top .slider_children{
+	margin-top:35px;
+	height:85px;
+	min-width:60px;
+	float:left;
+	text-align:center;
+	margin-left:15px;
+	}
+.slider_div_model .slider_div_model_top .ico_value{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color:#000;
+	margin-top: 15px;
+	}
+.slider_div_model .slider_div_model_top .slider_children .height_ico{
+	width:35px;
+	height:35px;
+	text-align:center;
+	margin:0 auto;
+	background:url(../../../../pubimg/images/modelico.png) 0 0 no-repeat;
+	}
+.slider_div_model .slider_div_model_top .slider_children .weight_ico{
+	width:35px;
+	height:35px;
+	margin:0 auto;
+	background:url(../../../../pubimg/images/modelico.png) 0 -45px no-repeat;
+	}
+.slider_div_model .slider_div_model_top .slider_children .BWH_ico{
+	width:35px;
+	height:35px;
+	margin:0 auto;
+	background:url(../../../../pubimg/images/modelico.png) 0 -92px no-repeat;
+	}
+.slider_div_model .slider_div_model_top .slider_children .xxx_ico{
+	width:35px;
+	height:35px;
+	margin:0 auto;
+	background:url(../../../../pubimg/images/modelico.png) 0 -137px no-repeat;
+	}
+.slider_div_model .slider_div_model_top .slider_children .shoe_size_ico{
+	width:35px;
+	height:35px;
+	margin:0 auto;
+	background:url(../../../../pubimg/images/modelico.png) 0 -178px no-repeat;
+	}
+.slider_div_model .slider_div_model_con{
+	width:380px;
+	height:50px;
+	padding:10px 20px;
+	font: 13px/20px "微软雅黑";
+	color:#646464;
+	overflow:hidden;
+	}
+/*模特信息*/	
+
+	
+
+/*应约者列表*/
+/*公共元素控制*/
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	background-color:#FFFFFF;
+	color:#848484;
+  	font-family:'微软雅黑' ,'宋体',Arial, Verdana ;
+  	font-size:12px;
+	}
+#container{
+	position:relative;
+	width:100%;
+	margin:0 auto;
+	background:#f4f4f4;
+	}
+img{
+	border:0;
+	}
+ul{
+	list-style:none;
+	}
+a{
+  /*color:#A5A5A5;*/
+  text-decoration:none;
+}
+table{border:0;border-collapse:collapse;border-spacing:0;}
+/*------------------------------------------------------------*/
+
+
+
+
+
+/*选项卡标签*/
+#appointProjectTimelyState .divStateCard{
+	position:relative;
+	top:0;
+	left:0;
+	min-height:40px;
+	
+	}
+#appointProjectTimelyState .divStateCard ul{
+	height:40px;
+	}
+
+#appointProjectTimelyState .divStateCard li{
+	float:left;
+	padding-left:3px;
+	padding-right:3px;
+	height:36px;
+	line-height:36px;
+	text-align:center;
+	margin-left:35px;
+	_width:100px;
+	border-bottom:3px solid #f0f0f0;
+	}
+
+#appointProjectTimelyState .divStateCard .active{
+	border-bottom:3px solid #e92d00;
+	}
+
+#appointProjectTimelyState .divStateCard li a{
+	display:block;
+	height:40px;
+	font-family: "微软雅黑";
+	color:#535353;
+	font-size:16px;
+	}
+#appointProjectTimelyState .divStateCard .active a{
+	color:#e92d00;
+	}
+/*选项卡标签*/
+
+
+
+/*弹出工作*/
+.pay_mentreChoose{
+	width:860px;
+	height:920px;
+	background:#f0f0f0;
+	display:block;
+	}
+.pay_mentreChoose .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width:860px;
+	}
+.pay_mentreChoose .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.pay_mentreChoose .top a {
+    background:url(../../../../../public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.pay_mentreChoose .top a:hover{
+	background:url(../../../../../public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.pay_mentreChoose .top a:active{
+	background:url(../../../../../public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+/*弹出工作*/
+
+
+
+	
+/*公用*/
+.approveNo{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left: 10px;
+	background:url(../../../../pubimg/images/identity.png) 0 5px no-repeat;
+	}
+.approveHave{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left: 10px;
+	background:url(../../../../pubimg/images/identity.png) 0 -20px no-repeat;
+	}
+.approveQy{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left: 10px;
+	background:url(../../../../pubimg/images/identity.png) 0 -42px no-repeat;
+	}
+/*公用*/
+
+
+#divListTwo{
+	display:none;
+	}

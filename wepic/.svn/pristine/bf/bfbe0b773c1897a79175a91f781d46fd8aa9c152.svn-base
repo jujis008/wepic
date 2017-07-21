@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.AccountRecharge"
+	table="AccountRecharge"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_AccountRecharge_User" 
+		index="IDX_AccountRecharge_User"/> 
+	
+	<property 
+		name="accountID"
+		type="java.lang.String"
+		column="accountID"
+		length="150"
+	/>
+	
+	<property 
+		name="orderId"
+		type="java.lang.String"
+		column="orderId"
+		length="150"
+	/>
+	<property 
+		name="rechargeTime"
+		type="java.sql.Timestamp"
+		column="rechargeTime"
+		length="50"
+	/>
+	<property 
+		name="rechargeMoney"
+		type="java.math.BigDecimal"
+		column="rechargeMoney"
+		length="50"
+	/>
+	<property 
+		name="ifConfirmed"
+		type="java.lang.Integer"
+		column="ifConfirmed"
+		length="50"
+	/>
+	<property 
+		name="confirmTime"
+		type="java.sql.Timestamp"
+		column="confirmTime"
+		length="50"
+	/>
+	
+	<many-to-one name="account"	column="account_id" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

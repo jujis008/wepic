@@ -1,0 +1,266 @@
+.topUp_chooseBlank{
+	width:870px;
+	height:600px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	}
+
+
+
+
+.topUp_chooseBlank .topUp_top{
+	width:870px;
+	height:78px;
+	text-align:center;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	}
+.topUp_chooseBlank .topUp_top h2{
+	font-weight:normal;
+	color:#000;
+	font-size:24px;
+	line-height:78px;
+	font-family:"微软雅黑";
+	}
+	
+	
+
+.topUp_chooseBlank .table_transfer{
+	width:500px;
+	height:120px;
+	margin-left:260px;
+	margin-top:50px;
+	}
+.topUp_chooseBlank .table_transfer .td_one{
+	vertical-align:top;
+	padding-right:20px;
+	}
+.topUp_chooseBlank .table_transfer .td_one .ico{
+	width:40px;
+	height:40px;
+	background:url(../../../../public/images/yuepaiicon02.png) 0 -104px no-repeat;
+	}
+.topUp_chooseBlank .table_transfer .td_two .twodiv{
+	border-bottom: 1px solid #E8E8E8;
+	padding-bottom: 30px;
+	}
+
+
+
+
+.topUp_chooseBlank .table_transferTwo{
+	width:500px;
+	height:160px;
+	margin-left:320px;
+	}
+.topUp_chooseBlank .table_transferTwo .td_one{
+	width:65px;
+	text-align:left;
+	}
+.topUp_chooseBlank .table_transferTwo .td_one .phone{
+    color: #e12927;
+    font-family: "微软雅黑";
+    font-size: 18px;
+	}
+.topUp_chooseBlank .table_transferTwo .td_two{
+	width:400px;
+	text-align:left;
+    color: #000000;
+    font-family: "微软雅黑";
+    font-size: 15px;
+	}
+
+
+
+/*我的转账信息*/
+
+.topUp_chooseBlank .table_transferInfo{
+	width:500px;
+	height:160px;
+	margin-top:20px;
+	margin-left: 260px;
+	}
+.topUp_chooseBlank .table_transferInfo .td_one{
+	width:95px;
+	text-align:right;
+	height:50px;
+	padding-right:20px;
+	}
+
+.topUp_chooseBlank .table_transferInfo .td_two{
+	width:400px;
+	text-align:left;
+    color: #000000;
+    font-family: "微软雅黑";
+    font-size: 15px;
+	}
+.topUp_chooseBlank .table_transferInfo .td_two input {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    font-family: "微软雅黑";
+    color: #535353;
+    font-size: 16px;
+    height: 20px;
+    padding: 5px 10px;
+	}
+.topUp_chooseBlank .table_transferInfo .td_two .spanOne {
+	color:#ff0000;
+	}
+	
+	
+.topUp_chooseBlank .table_transferInfo .td_two .transferCardNumber{    
+	width: 194px;
+	}
+.topUp_chooseBlank .table_transferInfo .td_two .blankCardName,
+.topUp_chooseBlank .table_transferInfo .td_two .transferedMoney{    
+	width: 114px;
+	}
+.topUp_chooseBlank .table_transferInfo .td_two .transferTime{    
+	width: 144px;
+	}
+/*我的转账信息*/
+
+
+
+
+
+
+
+.topUp_chooseBlank .topUp_submit{
+	width:870px;
+	height:120px;
+	margin:50px auto;
+	text-align:center;
+	}
+
+
+.topUp_chooseBlank .topUp_submit .applicationDeposit {
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:25px;
+    text-align: center;
+    width: 116px;
+	}
+
+.topUp_chooseBlank .topUp_submit .applicationDeposit:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.topUp_chooseBlank .topUp_submit .applicationDeposit:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+
+.topUp_chooseBlank .topUp_submit .recharge{
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+
+.topUp_chooseBlank .topUp_submit .recharge:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.topUp_chooseBlank .topUp_submit .recharge:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+
+
+
+
+
+
+/*修改成功*/
+.container_body{
+	width:870px;
+	height:530px;
+	border-radius:5px;
+	background:#fff;
+	margin:10px auto 40px;
+	text-align:center;
+	font-family:"宋体";
+	}
+
+
+.container_body .info_top{
+	line-height:90px;
+	font-family:"微软雅黑";
+	color:#000;
+	font-size:26px;
+	height:78px;
+	width:790px;
+	margin:0px auto;
+	border-bottom:1px solid #e8e8e8;
+	}
+.container_body .info_detail{
+	width:790px;
+	height:400px;
+	margin:0px auto 10px;
+	border-bottom:1px solid #e8e8e8;
+	}
+.container_body .info_detail .info_password  .info_success{
+	width:450px;
+	height:50px;
+	margin:50px auto 70px;
+	}
+.container_body .info_detail .info_password  .info_success .success_ico{
+	width:32px;
+	height:32px;
+	float:left;
+	margin-top: 10px;
+	background:url(../../../pubimg/images/changeMail.png) 0 0 no-repeat;
+	}
+.container_body .info_detail .info_password  .info_success .success_right{
+	width:400px;
+	height:50px;
+	float:left;
+	margin-left:15px;
+	text-align:left;
+	}
+.container_body .info_detail .info_password  .info_success .success_right .succe{
+	height:32px;
+    color: #000;
+    font-family: "微软雅黑","宋体";
+    font-size: 20px;
+	}	
+
+
+.container_body .info_detail .info_password .password_three {
+    
+	text-align:left;
+	text-align:center;
+	margin:70px auto;
+	}
+
+.container_body .info_detail .info_password .login_submit{
+	cursor:pointer;
+	width: 142px;
+	height:36px;
+	color:#FFFFFF;
+	border:0px;	
+	font-family:"微软雅黑";
+	font-size:18px;
+	background:url(../../../../public/images/buttonGroup01.png)  no-repeat 0 -718px;
+	}
+.container_body .info_detail .info_password .login_submit:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -754px;
+	}
+.container_body .info_detail .info_password .login_submit:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -792px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}

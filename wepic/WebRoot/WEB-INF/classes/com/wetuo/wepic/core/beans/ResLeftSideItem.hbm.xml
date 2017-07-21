@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.ResLeftSideItem"
+	table="ResLeftSideItem"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<property 
+		name="type"
+		type="java.lang.Integer"
+		column="type"
+		length="50"
+	/>
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="50"
+	/>
+	<property 
+		name="enName"
+		type="java.lang.String"
+		column="enName"
+		length="50"
+	/>
+	<property 
+		name="linkUrl"
+		type="java.lang.String"
+		column="linkUrl"
+		length="50"
+	/>
+	<property 
+		name="target"
+		type="java.lang.String"
+		column="target"
+		length="50"
+	/>
+	<property 
+		name="discription"
+		type="java.lang.String"
+		column="discription"
+		length="50"
+	/>
+	<property 
+		name="dianji"
+		type="java.lang.String"
+		column="dianji"
+		length="50"
+	/>
+	<many-to-one name="resMenu"	column="resMenuid" not-null="true" />
+	
+	
+	<many-to-one name="resMenuItem"	column="resMenuItemid" />
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

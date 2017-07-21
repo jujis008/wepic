@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<include file="struts_common.xml"></include> 
+	<include file="struts_json.xml"></include> 
+	<include file="struts_user_rights.xml"></include>
+	<include file="struts_user_json.xml"></include>  
+	<include file="struts_publish.xml"></include> 
+	<include file="struts_frontend.xml"></include> 
+	<include file="struts_backend.xml"></include> 
+	
+	<include file="struts_chat.xml"></include>
+	<include file="struts_deal.xml"></include>
+		
+		
+	<!-- @#$% -->
+	
+	
+</struts>

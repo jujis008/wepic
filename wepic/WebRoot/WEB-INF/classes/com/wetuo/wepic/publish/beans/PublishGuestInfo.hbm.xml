@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.PublishGuestInfo"
+	table="PublishGuestInfo"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="publish" 
+		column="publish_" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.Publish" 
+		foreign-key="FK_PublishGuestInfo_Publish" 
+		index="IDX_PublishGuestInfo_Publish"/> 
+	
+	<property 
+		name="name"
+		type="java.lang.String"
+		column="name"
+		length="50"
+	/>
+	<property 
+		name="tel"
+		type="java.lang.String"
+		column="tel"
+		length="50"
+	/>
+	<property 
+		name="mobile"
+		type="java.lang.String"
+		column="mobile"
+		length="50"
+	/>
+	<property 
+		name="address"
+		type="java.lang.String"
+		column="address"
+		length="50"
+	/>
+	<property 
+		name="email"
+		type="java.lang.String"
+		column="email"
+		length="50"
+	/>
+	<property 
+		name="postCode"
+		type="java.lang.Integer"
+		column="postCode"
+		length="50"
+	/>
+	<property 
+		name="remark"
+		type="java.lang.String"
+		column="remark"
+		length="50"
+	/>
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

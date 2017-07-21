@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BuyCommodities"
+	table="BuyCommodities"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="publish" 
+		column="publish_" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.Publish" 
+		foreign-key="FK_BuyCommodities_Publish" 
+		index="IDX_BuyCommodities_Publish"
+		lazy="false"
+		/> 
+	
+	<property 
+		name="copyrightOrUsage"
+		type="java.lang.Integer"
+		column="copyrightOrUsage"
+		length="50"
+	/>
+	<property 
+		name="amount"
+		type="java.lang.Integer"
+		column="amount"
+		length="50"
+	/>
+	<property 
+		name="startTime"
+		type="java.sql.Timestamp"
+		column="startTime"
+		length="50"
+	/>
+	
+	<many-to-one name="buyCartDeal"	column="buyCartDealid" not-null="true" />
+	
+	<property 
+		name="copyrighTotalPrice"
+		type="java.lang.Integer"
+		column="copyrighTotalPrice"
+		length="50"
+	/>
+	<property 
+		name="usgeTotalPrice"
+		type="java.lang.Integer"
+		column="usgeTotalPrice"
+		length="50"
+	/>
+	
+	<property 
+		name="copyAndUsePrice"
+		type="java.lang.Integer"
+		column="copyAndUsePrice"
+		length="50"
+	/>
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

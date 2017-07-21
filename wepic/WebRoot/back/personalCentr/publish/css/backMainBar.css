@@ -1,0 +1,471 @@
+ /*main bar*/
+ img{border:0;}
+#mainbar{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:58px;
+	margin-top:8px;
+	}
+#mainbarCenter{
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:0 auto;
+	}
+	
+	
+#mainbar li{
+	height:54px;
+	border-top:1px solid #E6E6E6;
+	border-right:1px solid #E6E6E6;
+	float:left;
+	width:109px;
+	line-height:54px;
+	list-style:none;
+	background:#f4f4f4;
+	border-bottom:3px solid #f4f4f4;
+	}
+#personalCenter{
+	border-left:1px solid #E6E6E6;
+	}
+#mainbar ul .active{
+	border-bottom:3px solid #E82D00;
+	background:#FFFFFF;
+	}
+#mainbar li a{
+	text-align:center;
+	display:block;
+	color:#232323;
+	text-decoration:none;
+	font-size:17px;
+	font-family:"微软雅黑";
+	font-weight:normal;
+	width:109px;
+	height:54px;
+	}
+#mainbar li a:hover{ 
+	color:red;
+	
+	}
+#mainbar li:hover{
+	background:#FFFFFF;
+	
+	}
+
+/*main bar end*/
+
+/*二级导航*/
+#assistantBar{
+	position:relative;
+	top:0px;
+	left:0px;
+	text-align:left;
+	width:1180px;
+	margin:0 auto;
+	margin-top:4px;
+	background:#ffffff;
+	}
+#assistantBar .twoStage{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:41px;
+	border-bottom:1px solid #f0f0f0;
+	}
+
+#assistantBar .twoStage .bar{
+	float:left;
+	position: relative;
+    left: 0;
+    top: 0;
+	margin-left:18px;
+	margin-top:10px;
+	height:22px;
+	padding-left:10px;
+	color:#4a4a4a;
+	font-size: 15px;
+	cursor:pointer;
+	}
+#assistantBar .twoStage .bar:hover,
+#assistantBar .twoStage .active{
+	background:url(../../public/images/background.png) 0 -41px no-repeat;
+	color:#ffffff;
+	}
+#assistantBar .twoStage .bar i{
+	position: absolute;
+    right: -16px;
+    top: 0;
+	width:16px;
+	height:22px;
+	cursor:pointer;
+	
+	}
+#assistantBar .twoStage .bar:hover i,
+#assistantBar .twoStage .active i{
+	background: url(../../public/images/background.png) no-repeat 0px -130px;
+	}
+	
+#divThreeStage{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:36px;
+	}
+#divThreeStage .threeStage{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:36px;
+	margin-left:10px;
+	}
+#divThreeStage .threeStage .bar{
+	float:left;
+	position: relative;
+    left: 0;
+    top: 0;
+	margin-left:18px;
+	margin-top:10px;
+	height:18px;
+	padding-left:10px;
+	color:#4a4a4a;
+	font-size: 12px;
+	cursor:pointer;
+	}
+#divThreeStage .threeStage .bar:hover,
+#divThreeStage .threeStage .active{
+	background:url(../../public/images/background.png) 0 -67px no-repeat;
+	color:#ffffff;
+	}
+#divThreeStage .threeStage .bar i{
+	position: absolute;
+    right: -16px;
+    top: 0;
+	width:16px;
+	height:18px;
+	cursor:pointer;
+	
+	}
+#divThreeStage .threeStage .bar:hover i,
+#divThreeStage .threeStage .active i{
+	background: url(../../public/images/background.png) no-repeat 0px -156px;
+	}
+
+	
+/*二级导航*/
+/* 分隔线*/	
+#divSeparation{
+	border-top:1px solid #c8c8c8;
+	}
+#divSeparation2{
+	border-top:1px solid #d2d2d2;
+	}
+#divSeparation3{
+	border-top:1px solid #dfdfdf;
+	}
+#divSeparation4{
+	border-top:1px solid #e9e9e9;
+	}
+#divSeparation5{
+	border-top:1px solid #f1f1f1;
+	}
+	
+/* 分隔线*/	
+
+
+/*写出下拉框*/
+
+.editSelect{
+	position:absolute;
+	}
+.viewBelow{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:75px;
+	height:22px;
+	cursor:pointer;
+	padding-top:5px;
+	padding-left:10px;
+	background:#fcfcfc;
+	border:1px solid #e8e8e6;
+	}
+.viewBelow:hover{
+	background:#fffdf1;
+	border:1px solid #f09494;
+	}
+.viewBelowRight{
+	position:absolute;
+	right:0px;
+	top:6px;
+	width:30px;
+	height:16px;
+	border-left:1px solid #e4e8eb;
+	}
+.viewBelowRight i{
+	position:absolute;
+	left:11px;
+	top:6px;
+	_top:-4px;
+	width:10px;
+	height:10px;
+	background:url(../../public/images/select_bi.png) no-repeat 0 0;
+	_background:url(../../public/images/select_bi.png) no-repeat 0 10px;
+	}
+.viewBelow:hover .viewBelowRight i{
+	background:url(../../public/images/select_bi.png) no-repeat 0 -10px;
+	}	
+	
+
+
+
+
+	
+.belowValue{
+	display:none;
+	position:absolute;
+	left:0px;
+	top:28px;
+	width:85px;
+	cursor:pointer;
+	background:#ffffff;
+	border:1px solid #e8e8e6;
+	}	
+.belowValue .selectValueIn{
+	cursor:pointer;
+	display:block;
+	color:#788F72;
+	width:75px;
+	height:25px;
+	line-height:22px;
+	padding-left:10px;
+	/*
+	border:1px solid red;*/
+}	
+.belowValue .selectValueIn:hover{
+	color:#000000;
+	background:#F0F0F0;
+	}
+
+/*写出下拉框*/
+
+
+
+
+/*城市联动下拉框*/
+
+.address{
+	position:relative;
+	top:0px;
+	left:0px;
+	} 
+.address .adr{
+	position:absolute;
+	top:0px;
+	left:164px;
+	display:block;
+	height:22px;
+	margin-top:5px;
+	}
+.address dl {
+	float:left;
+	position:relative;
+	top:0;
+	left:0;
+	margin-right:15px; 
+	display:inline; 
+	min-width:100px;
+	}
+.address dt:hover{
+	background:#fffdf1;
+	border:1px solid #f09494;
+	}
+.address dt { 
+	float:left;
+	z-index:5;
+    border: 1px solid #E8E8E6;
+	background:#FCFCFC;
+    cursor: pointer;
+    height: 22px;
+    left: 0;
+    padding-left: 10px;
+    padding-top: 5px;
+	padding-right:35px;
+    position: relative;
+    top: 0;
+	min-width:100px;
+	}
+.address dt span{
+	display:inline-block;
+	min-width: 100px;
+	} 
+.address dt .xl {
+    border-left: 1px solid #E4E8EB;
+    height: 16px;
+    right: 0px;
+    position: absolute;
+	z-index:4;
+    top: 6px;
+    width: 30px;
+}
+.address dt .xl i {
+    position:absolute;
+	left:11px;
+	top:6px;
+	_top:-4px;
+	width:10px;
+	height:10px;
+	background:url(../images/select_bi.png) no-repeat 0 0;
+	_background:url(../images/select_bi.png) no-repeat 0 10px;
+	}
+.address dd{ 
+	background:#FFFFFF;
+    border: 1px solid #E8E8E6;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    top: 28px;
+	width:145px;
+	display: none;
+	max-height: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	}
+.address dd span{ 
+	max-width:200px;
+	color: #788F72;
+    cursor: pointer;
+    display: block;
+    height: 25px;
+    line-height: 22px;
+    padding-left: 10px;
+	overflow-x: hidden;
+	}
+.address dd span:hover{ 
+	background:#f0f0f0;
+	color:#000000; 
+	}
+
+
+
+
+/*城市联动下拉框*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*美化下拉框 通用*/
+	
+.divdropDown{
+	/*display:inline-block;*/
+    position: relative;
+	top:0;
+	left:0;
+	float:left;
+	min-width: 137px;
+	
+	}
+
+.dropDownBox{
+	background:#fcfcfc;
+	border:1px solid #e8e8e8;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 12px;
+	color: #535353;
+	min-width:90px;
+	display:inline-block;
+    height: 16px;
+	padding:5px 40px 5px 5px;
+    left: 0;
+    position: relative;
+    top: 0;
+	}
+.dropDownBox:hover{
+	background:#fffdf1;
+	border:1px solid #f09494;
+	}
+
+.dropDownBox .dropDownBoxR{
+	border-left: 1px solid #E4E8EB;
+    height: 16px;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 30px;
+	}
+
+.dropDownBox .dropDownBoxR i {
+    background:url(../../public/images/select_bi.png) 0 0 no-repeat;
+    height: 10px;
+    left: 11px;
+    position: absolute;
+    top: 6px;
+    width: 10px;
+	_top:-4px;
+	_background:url(../public/images/select_bi.png) no-repeat 0 10px;
+	}
+.dropDownBox:hover .dropDownBoxR i{
+	background:url(../../public/images/select_bi.png) no-repeat 0 -10px;
+	}	
+
+
+
+
+.dropDownBoxValue{
+    background:  #FFFFFF;
+    border: 1px solid #E8E8E6;
+	border-top:0;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 28px;
+    width: 134px;
+	max-height:300px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	}
+.dropDownBoxValue .dropValue{
+	cursor:pointer;
+	display:block;
+	color:#788F72;
+	width:125px;
+	height:25px;
+	line-height:22px;
+	padding-left:10px;
+	overflow:hidden;
+}	
+.dropDownBoxValue .dropValue:hover{
+	color:#000000;
+	background:#F0F0F0;
+	}
+
+
+
+
+
+
+.dropDownBox:hover input{
+	background:#fffdf1;
+	}
+.dropDownBox input{
+	cursor:pointer;
+	width: 90px;
+	border:0;
+	background:#fcfcfc;
+	color: #696969;
+	font-family: "微软雅黑";
+	}
+/*美化下拉框 通用*/

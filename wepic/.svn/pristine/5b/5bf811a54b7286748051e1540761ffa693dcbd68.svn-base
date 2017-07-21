@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.ChatMsg"
+	table="ChatMsg"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_ChatMsg_User" 
+		index="IDX_ChatMsg_User"
+		lazy="false"
+		/> 
+	
+	<property 
+		name="content"
+		type="java.lang.String"
+		column="content"
+		length="20000"
+	/>
+	<property 
+		name="chatTime"
+		type="java.sql.Time"
+		column="chatTime"
+		length="8"
+	/>
+	<property 
+		name="travler"
+		type="java.lang.String"
+		column="travler"
+		length="50"
+	/>
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

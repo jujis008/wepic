@@ -1,0 +1,323 @@
+*{margin:0;padding:0;}
+
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	color:#848484;
+  	font-family:微软雅黑 ,Arial, Verdana, 宋体;
+  	font-size:12px;
+	}
+/*------------------------------------------------------------*/
+
+/*公共元素控制*/
+img{
+	border:0;
+	}
+ul{
+	list-style:none;
+	}
+a{
+  /*color:#A5A5A5;*/
+  text-decoration:none;
+}
+
+/*公共元素控制*/
+/*------------------------------------------------------------*/
+
+
+
+/*网页整体布局*/
+
+
+/*topbarRegisterLogin.css */
+
+/*header.css */
+
+
+
+#container{
+	position:relative;
+	top:0;
+	left:0;
+	width:100%;
+	margin:0 auto;
+	background:#f4f4f4;
+	}
+#divRegisterSuccessful{
+	border:1px solid #eaeaea;
+	width:942px;
+	height:764px;
+	margin:23px auto;
+	background:#FFFFFF;
+	}
+/*网页整体布局*/	
+/*------------------------------------------------------------*/
+
+
+
+
+/* 注册内容开始 */
+#divRegisterSuccessfulTitle{
+	position:relative;
+	top:0;
+	left:0;
+	margin:0 auto;
+	width:880px;
+	height:148px;
+	padding-top:40px;
+	border-bottom:1px solid #eaeaea;
+	}
+#divRegisterSuccessfulSubscribe{
+	position:relative;
+	top:0;
+	left:0;
+	margin:0 auto;
+	width:880px;
+	height:413px;
+	border-bottom:1px solid #eaeaea;
+	}
+#divRegisterSuccessfulIntruction{
+	position:relative;
+	top:35px;
+	left:0;
+	margin:0 auto;
+	width:880px;
+	height:160px;
+	}
+#successfulTitleWecom{
+	font-size:26px;
+	font-weight:normal;
+	font-family:"微软雅黑";
+	color:#3c3c3c;
+	
+	}
+#successfulTitleInfo{
+	font-family:"宋体";
+	font-size:#696969;
+	margin:40px auto;
+	width:770px;
+	text-align:left;
+	}
+#successfulTitleInfo a{
+	color: #0099F3;
+	text-decoration:underline;
+	}
+#successfulTitleInfo a:hover{
+	text-decoration:none;
+	}
+#successfulOrderTitle{
+	font-family:"微软雅黑";
+	margin-top:30px;
+	font-size:16px;
+	color:#3a3a3a;
+	}
+	
+
+
+
+
+#divRegisterSuccessfulSubscribeCon li{
+	float:left;
+	width:290px;
+	height:135px;
+	position:relative;
+	top:0;
+	left:0px;
+
+	
+	}
+#divRegisterSuccessfulSubscribeCon .divRegisterSuccessfulSubscribeIco{
+	position:absolute;
+	left:80px;
+	top:40px;
+	width:48px;
+	height:48px;
+
+	}
+#divRegisterSuccessfulSubscribeCon .divRegisterSuccessfulSubscribeSubstance{
+	position:absolute;
+	left:140px;
+	top:40px;
+	width:150px;
+	height:100px;
+	text-align:left;
+	font-family:"微软雅黑";
+	}
+#divRegisterSuccessfulSubscribeCon .divRegisterSuccessfulSubscribeSubstance .substanceTitleP{
+	
+	font-size:18px;
+	color:#3a3a3a;
+	}
+#divRegisterSuccessfulSubscribeCon .divRegisterSuccessfulSubscribeSubstance .substanceNumberP{
+	font-size:12px;
+	color:#959595;
+	margin-top:6px;
+	}
+#divRegisterSuccessfulSubscribeCon .substanceButton{
+	padding-bottom:3px;
+	margin-top:10px;
+	cursor:pointer;
+	border:0;
+	color:#FFFFFF;
+	font-family:"微软雅黑";
+	font-size:12px;
+	background:url(../../public/images/buttonGroup02.png);
+	background-repeat:no-repeat;
+	background-position: 0 -57px;
+	width:66px;
+	height:19px;
+	}
+#divRegisterSuccessfulSubscribeCon .substanceButton:hover{
+	background-position: 0 -76px;
+	}
+#divRegisterSuccessfulSubscribeCon .substanceButton:active{
+	background-position: 0 -38px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	}
+	
+	/*取消订阅*/
+#divRegisterSuccessfulSubscribeCon .substanceButtonNot{
+	padding-bottom:3px;
+	margin-top:10px;
+	cursor:pointer;
+	border:0;
+	color:#2d2d2d;
+	font-family:"微软雅黑";
+	font-size:12px;
+	background:url(../../public/images/buttonGroup02.png);
+	background-repeat:no-repeat;
+	background-position: 0 0px;
+	width:66px;
+	height:19px;
+	}
+#divRegisterSuccessfulSubscribeCon .substanceButtonNot:hover{
+	background-position: 0 -19px;
+	}
+#divRegisterSuccessfulSubscribeCon .substanceButtonNot:active{
+	background-position: 0 -38px;
+	}	
+	
+	
+#subscribeIcoOriginality{
+	background:url(../images/successfulIco.png) no-repeat 0px 0px;
+	}
+#subscribeIcoPhotograph{
+	background:url(../images/successfulIco.png) no-repeat 0px -51px;
+	}
+#subscribeIcoPhotographStory{
+	background:url(../images/successfulIco.png) no-repeat 0px -102px;
+	}
+#subscribeIcoUpToPats{
+	background:url(../images/successfulIco.png) no-repeat 0px -152px;
+	}
+#subscribeIcoRecruitPhotograph{
+	background:url(../images/successfulIco.png) no-repeat 0px -203px;
+	}
+#subscribeIcoRecruitModel{
+	background:url(../images/successfulIco.png) no-repeat 0px -254px;
+	}
+#subscribeIcoPicCollect{
+	background:url(../images/successfulIco.png) no-repeat 0px -306px;
+	}
+#subscribeIcoModelPhotographInfo{
+	background:url(../images/successfulIco.png) no-repeat 0px -357px;
+	}
+
+
+
+/*底部*/
+#divRegisterSuccessfulIntructionCon{
+	padding-left:50px;
+	width:500px;
+	height:120px;
+	float:left;
+	text-align:left;
+	font-size:12px;
+	font-family:"宋体";
+	}
+#divRegisterSuccessfulIntructionCon .divRegisterSuccessfulIntructionConP{
+	height:20px;
+	}
+	
+
+#divRegisterSuccessfulIntructionCon a {
+    color: #0099F3;
+    text-decoration: underline;
+    }
+#divRegisterSuccessfulIntructionCon a:hover {
+    text-decoration: none;
+    }
+    
+#divRegisterSuccessfulIntructionConOne{
+	height:30px;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+#divRegisterSuccessfulGoPersonCen{
+	position:relative;
+	top:0;
+	left:0;
+	width:300px;
+	height:120px;
+	float:left;
+	}
+#buttonGoPersonCen{
+	position:absolute;
+	top:18px;
+	left:200px;
+	font-size:14px;
+	cursor:pointer;
+	font-family:"微软雅黑";
+	width:128px;
+	height:36px;
+	color:#FFFFFF;
+	line-height:33px;
+	border:0;
+	/*border:1px solid #c9215f;*/
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -600px;
+	
+	}
+#buttonGoPersonCen:hover{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -636px;
+	}
+#buttonGoPersonCen:active{
+	background:url(../../public/images/buttonGroup01.png) no-repeat 0 -672px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=120, color=#000000);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

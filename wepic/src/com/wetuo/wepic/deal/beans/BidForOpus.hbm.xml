@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BidForOpus"
+	table="BidForOpus"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		lazy="false"
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_BidForOpus_User" 
+		index="IDX_BidForOpus_User"/> 
+	
+	<property 
+		name="sendTime"
+		type="java.sql.Timestamp"
+		column="sendTime"
+		length="50"
+	/>
+	
+	<property 
+		name="watermark"
+		type="java.lang.String"
+		column="watermark"
+		length="255"
+	/>
+	<property 
+		name="title"
+		type="java.lang.String"
+		column="title"
+		length="255"
+	/>
+	
+	<property 
+		name="imgCertiFicate"
+		type="java.lang.String"
+		column="imgCertiFicate"
+		length="255"
+	/>
+	
+	<property 
+		name="thumbNail_Image"
+		type="java.lang.String"
+		column="thumbNail_Image"
+		length="255"
+	/>
+	<property 
+		name="original_Drawing"
+		type="java.lang.String"
+		column="original_Drawing"
+		length="255"
+	/>
+	<property 
+		name="conetxt"
+		type="java.lang.String"
+		column="conetxt"
+		length="255"
+	/>
+	<property 
+		name="confirmTime"
+		type="java.sql.Timestamp"
+		column="confirmTime"
+		length="50"
+	/>
+	<property 
+		name="status"
+		type="java.lang.Integer"
+		column="status"
+		length="50"
+	/>
+	
+	<property 
+		name="copyRightType"
+		type="java.lang.String"
+		column="copyRightType"
+		length="150"
+	/>
+	
+	
+	<many-to-one name="bid"	column="bidid" not-null="true" lazy="false" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

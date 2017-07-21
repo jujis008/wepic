@@ -1,0 +1,394 @@
+.withdrawDeposit_record{
+	width:1180px;
+	min-height:500px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	padding-bottom:50px;
+	/*display:none;*/
+	}
+
+
+
+
+.withdrawDeposit_record .withdrawDeposit_record_top{
+	width:100%;
+	height:40px;
+	text-align:left;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	padding-top: 10px;
+	}
+	
+.withdrawDeposit_record .withdrawDeposit_record_top table{
+	height:35px;
+	}	
+.withdrawDeposit_record .withdrawDeposit_record_top table td{
+	vertical-align:center;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .char{
+	font-weight:normal;
+	color:#000;
+	font-size:18px;
+	font-family:"微软雅黑";
+	padding:0 20px;
+	vertical-align:top;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table  .totalwith{
+	padding-right:40px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table  .totalwithTTT{
+	width:400px;
+	padding-right:40px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table  .totalnt{
+	width:460px;
+	padding-right:90px;
+	}
+
+.withdrawDeposit_record .withdrawDeposit_record_top table .timeInputStr {
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-size: 12px;
+    height: 21px;
+    padding: 3px 10px;
+    width: 90px;
+	margin-left:5px;
+	margin-right:5px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .inputnum {
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-size: 12px;
+    height: 21px;
+    padding: 3px 10px;
+    width: 150px;
+	margin-left:10px;
+	margin-right:10px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .deposit_td{
+	padding-left:60px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire {
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 0px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+    text-align: center;
+    width: 65px;
+	}
+
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -27px;
+	}
+.withdrawDeposit_record .withdrawDeposit_record_top table .inquire:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -54px;
+	}
+	
+	
+	
+
+.withdrawDeposit_cont{
+	width:1180px;
+	/*min-height:75px;*/
+	text-align:center;
+	margin:20px auto 0;
+	}
+
+.withdrawDeposit_cont .withdrawDeposit_cont_char{
+	width:600px;
+	text-align:left;
+	margin:20px auto 0;
+	display:none;
+	}
+.withdrawDeposit_cont .withdrawDeposit_cont_char .count{
+	margin-left:20px;
+	}	
+
+	
+.withdrawDeposit_cont .withdrawDeposit_cont_char .gobackA{
+	color: #0084C7;
+    text-decoration: underline;
+	margin-left:100px;
+	}
+	
+	
+	
+.withdrawDeposit_cont table{
+	border:1px solid #e7e7e5;
+	text-align:center;
+	color:#676767;
+	margin:20px auto;
+	}
+.withdrawDeposit_cont table td{
+	padding:8px 15px;
+	border:1px solid #e7e7e5;
+	}
+.withdrawDeposit_cont table th{
+	height:30px;
+	font-weight:normal;
+	background:#cfe69d;
+	}
+.withdrawDeposit_cont table .time{
+	margin-left:10px;
+	}
+.withdrawDeposit_cont table .jian{
+	color:#1fad37;
+	font-family:"微软雅黑"
+	}
+.withdrawDeposit_cont table .jia{
+	color:#a94100;
+	font-family:"微软雅黑"
+	}
+.withdrawDeposit_cont table .xiangqing,
+.withdrawDeposit_cont table .weikai{
+	text-decoration:underline;
+	color:#0168b7;
+	}
+
+
+.ppointPaging{
+	background: #fff;
+	}
+
+
+
+
+
+/*没有数据*/
+.noData{
+	width:1180px;
+	min-height:300px;
+	background:#fff;
+	margin:5px auto 5px;
+	text-align:center;
+	font-family:"宋体";
+	padding-bottom:50px;
+	padding-top:100px;
+	}
+
+.noData .noDataIco {
+    background:url(../../../../public/images/yuepaiicon02.png) no-repeat 0 -104px;
+    height: 40px;
+    margin: 0px auto 30px;
+    width: 40px;
+	}
+.noData .noDatachar{
+	width:1180px;
+	height:40px;
+	}
+
+.noData .noDatabut{
+	width:1180px;
+	height:50px;
+	}
+
+.noData .noDatabut .recharge{
+    background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    text-align: center;
+    width: 116px;
+	}
+
+.noData .noDatabut .recharge:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.noData .noDatabut .recharge:active{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+.noData .noDatabut .gobackA {
+    color: #0084C7;
+    margin-right: 20px;
+    text-decoration: underline;
+	}
+/*没有数据*/
+
+
+
+
+
+
+
+
+
+/*开具发票*/
+
+.add_invoice{
+	width:510px;
+	height:550px;
+	background:#ffffff;
+	display:none;
+	}
+.add_invoice .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width:510px;
+	}
+.add_invoice .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.add_invoice .top a {
+    background:url(../../../../public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.add_invoice .top a:hover{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.add_invoice .top a:active{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+
+
+	
+.add_invoice .table_con{
+    height: 350px;
+    width: 510px;
+	margin-top:30px;
+	}
+.add_invoice .table_con .td_one{
+    width: 115px;
+	padding-right:15px;
+	text-align:right;
+	height:50px;
+	color:#535353;
+	}
+.add_invoice .table_con .td_two{
+	text-align:left;
+	}
+.add_invoice .table_con .td_two .yuan{
+	color:#e60120;
+	font-size:14px;
+    font-family: "宋体";
+	}
+.add_invoice .table_con .td_two .money{
+	color:#e60120;
+	font-size:16px;
+	margin-right:10px;
+    font-family: "宋体";
+	
+	}
+.add_invoice .table_con .td_two label{
+	margin-right:10px;
+	
+	}
+.add_invoice .table_con .input_invoice_title {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 214px;
+	}	
+	
+.add_invoice .table_con .td_twoDe label{
+	margin-left:3px;
+	}
+
+	
+.add_invoice .table_con .postAddress {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 300px;
+	}
+.add_invoice .table_con .recipients {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 100px;
+	}
+.add_invoice .table_con .contactPhone {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 150px;
+	}
+
+
+
+
+
+.add_invoice .submit{
+	margin-top:30px;
+	}
+	
+.white_button{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.white_button:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.red_button{
+
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.red_button:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}

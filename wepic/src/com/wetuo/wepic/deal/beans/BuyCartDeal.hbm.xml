@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.deal.beans.BuyCartDeal"
+	table="BuyCartDeal"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<many-to-one name="user" 
+		column="user_" 
+		not-null="true" 
+		class="com.wetuo.wepic.core.beans.User" 
+		foreign-key="FK_BuyCartDeal_User" 
+		index="IDX_BuyCartDeal_User"/> 
+	
+	<property 
+		name="totalMoney"
+		type="java.lang.Double"
+		column="totalMoney"
+		length="50"
+	/>
+	<property 
+		name="dealCode"
+		type="java.lang.String"
+		column="dealCode"
+		length="50"
+	/>
+	<property 
+		name="status"
+		type="java.lang.Integer"
+		column="status"
+		length="50"
+	/>
+	<property 
+		name="deliveryTime"
+		type="java.sql.Timestamp"
+		column="deliveryTime"
+		length="50"
+	/>
+	<property 
+		name="invoiceHead"
+		type="java.lang.String"
+		column="invoiceHead"
+		length="50"
+	/>
+	<property 
+		name="invoiceType"
+		type="java.lang.Integer"
+		column="invoiceType"
+		length="50"
+	/>
+	<property 
+		name="invoiceContent"
+		type="java.lang.String"
+		column="invoiceContent"
+		length="50"
+	/>
+	<property 
+		name="buyerAssess"
+		type="java.lang.String"
+		column="buyerAssess"
+		length="50"
+	/>
+	<property 
+		name="goodsNum"
+		type="java.lang.Integer"
+		column="goodsNum"
+		length="50"
+	/>
+	
+	<set name="buyCommoditiesSet" inverse="true" lazy="false" >
+		<key column="buyCartDealid" not-null="false"/>
+		<one-to-many class="com.wetuo.wepic.deal.beans.BuyCommodities"/>
+	</set>
+	
+	<set name="buyAccountOperationSet" inverse="true">
+		<key column="buyCartDealid" not-null="false"/>
+		<one-to-many class="com.wetuo.wepic.deal.beans.BuyAccountOperation"/>
+	</set>
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

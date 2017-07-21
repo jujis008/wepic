@@ -1,0 +1,315 @@
+#divPicWork{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 1180px;
+	margin-top:10px;
+	}
+#divPicWork .head{
+	position: relative;
+    top: 0;
+    left: 0;
+	font-size:12px;
+	text-align:left;
+    width: 1180px;
+	height:115px;
+	background:#ffffff;
+	}
+#divPicWork .head .sort{
+	position: relative;
+    top: 0;
+    left: 0;
+	font-size:12px;
+	text-align:left;
+    width: 1180px;
+	height:115px;
+	background:#ffffff;
+	}	
+	/*头部编辑*/
+#divPicWork .head .edit{
+	position: relative;
+    top: 0;
+    left: 0;
+	width:1180px;
+	height:59px;
+	border-bottom:1px solid #e6e6e6;
+	z-index:10;
+	text-align:left;
+	}
+#divdespecial{
+	left:20px;
+	top:14px;
+	}
+#viewBelowdespecial {
+    padding-right:40px;
+	overflow:hidden;
+}
+#selectdespecialValue{
+	width:80px;
+	overflow:hidden;
+	}
+#divSelectdespecialValue {
+    max-height: 148px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 125px;
+}
+.belowValue .selectValueIn{
+	width:120px;
+	}
+#divPicWork .head .edit .char{
+	position: relative;
+    top: 25px;
+    left: 160px;
+	color:#adadad;
+	font-size:12px;
+	font-family:"宋体";
+	width:600px;
+	height:30px;
+	}
+#divPicWork .head .edit .char .glz{
+	margin-left:5px;
+	text-decoration:underline;
+	color:#adadad;
+	}
+#divPicWork .head .edit .char .glz:hover{
+	color:#000000;
+	}
+#divPicWork .head .edit .char .sp1,
+#divPicWork .head .edit .char .sp2{
+	margin-left:28px;
+	}
+#divPicWork .head .edit .char .num{
+	color:#e92d00;
+	font-family:"黑体";
+	margin-right:5px;
+	}	
+#divPicWork .head .edit .inp{
+	position: absolute;
+    right: 38px;
+    top: 20px;
+	}
+#divPicWork .head .edit .inp .inputup{
+	
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#divPicWork .head .edit .inp .inputup:hover{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+#divPicWork .head .edit .inp .finished{
+
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#divPicWork .head .edit .inp .finished:hover{
+	background:url(../../../../userView/public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+
+/*头部编辑*/
+
+/*头部筛选*/
+#divPicWork .head .sort{
+	position: relative;
+    top: 0;
+    left: 0;
+	width:1180px;
+	height:54px;
+	z-index:9;
+	text-align:left;
+	}	
+#divPicWork .head .sort .sp1{
+	display:inline-block;
+	margin-top:20px;
+	margin-left:20px;
+	font-family:"宋体";
+	}
+	
+#divPicWork .head .sort .sp2{
+	display:inline-block;
+	margin-top:20px;
+	margin-left:420px;
+	font-family:"宋体";
+	}
+#divPicWork .head .sort .viewType{
+	position: absolute;
+    top: 20px;
+    right: 0;
+	width:150px;
+	height:30px;
+	font-family:"宋体";
+	}
+#divPicWork .head .sort .viewType .view1{
+	width:10px;
+	height:10px;
+	background:url(../../../public/images/21.png) 0 0 no-repeat;
+	position: absolute;
+    top: 4px;
+    left: 66px;
+	}
+#divPicWork .head .sort .viewType .view2{
+	width:10px;
+	height:10px;
+	background:url(../../../public/images/21.png) 0 0 no-repeat;
+	position: absolute;
+    top: 4px;
+    left: 90px;
+	}
+	/*控制自定义select*/
+#divCategory {
+    left: 60px;
+    top: 14px;
+	}
+#viewBelowdeCategory {
+    overflow: hidden;
+    padding-right: 40px;
+	}
+#divSelectdeCategoryValue {
+    max-height: 148px;
+    min-width: 125px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	}
+	/*控制自定义select*/
+	
+		/*控制自定义select*/
+#divType {
+    left: 200px;
+    top: 14px;
+	}
+#viewBelowdeType {
+    overflow: hidden;
+    padding-right: 40px;
+	}
+#divSelectdeTypeValue {
+    max-height: 148px;
+    min-width: 125px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	}
+	/*控制自定义select*/
+	
+	
+		/*控制自定义select*/
+#divState {
+    left: 340px;
+    top: 14px;
+	}
+#viewBelowdeState {
+    overflow: hidden;
+    padding-right: 40px;
+	}
+#divSelectdeStateValue {
+    max-height: 148px;
+    min-width: 125px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	}
+	/*控制自定义select*/
+	
+/*头部筛选*/
+
+
+
+
+
+
+
+
+
+
+
+#picContent{
+	position: relative;
+    top: 0;
+    left: 0;
+	font-size:12px;
+	color:#adafae;
+	font-family:"宋体";
+	text-align:left;
+    width: 1180px;
+	margin:0 auto;
+	}
+
+#picContent .picContentUl {
+    position:relative;
+	top:0;
+	left:0;
+	margin-left:-13px;
+	*margin-left:0px;
+	}
+
+#picContent  a{
+	_cursor:pointer;
+	}
+#picContent  ul{
+	position:relative;
+	top:0;
+	left:0;
+	}
+#picContent  li{
+	position:relative;
+	top:0;
+	left:0;
+	margin-left:13px;
+	#margin-left:10px;
+	_margin-left:5px;
+	width:285px;
+	height:285px;
+	margin-top:10px;
+	float:left;
+	background:#FFFFFF;
+	}
+#picContent  li .picContentLi img{
+	width:285px;
+	height:285px;
+	}
+	
+#picContent .picContentUl .active .nowtop{
+	display:block;
+	}	
+#picContent  li .picContentLi .nowtop{
+	display:none;
+	position: absolute;
+    bottom: 0;
+	left:0;
+	height: 285px;
+    width: 285px;
+	text-align:center;
+	}	
+#picContent  li .picContentLi .nowtop .bj{
+	position: absolute;
+    top: 0;
+	left:0;
+	height: 285px;
+    width: 285px;
+	background:#000000;
+	filter:alpha(opacity=70);    /* IE 4-7 */     
+	opacity: 0.7;              /* Firefox, Safari(WebKit), Opera */
+	}	
+#picContent  li .picContentLi .nowtop .bjc{
+	position: absolute;
+    top: 0;
+	left:0;
+	height: 285px;
+    width: 285px;
+	}

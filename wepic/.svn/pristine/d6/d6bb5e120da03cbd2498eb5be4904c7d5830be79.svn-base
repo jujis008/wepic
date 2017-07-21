@@ -1,0 +1,174 @@
+.container_body{
+	margin-bottom:40px;
+	}
+.container_body .div_job{
+	padding:10px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+	height:30px;
+	width:1140px;
+	margin:10px auto;
+	background:#fff;
+	}
+.container_body .div_job .ul_job li{
+	float:left;
+	cursor:pointer;
+	margin-top:8px;
+	padding:0px 17px;
+	font-family:"微软雅黑";
+	color:#494949;
+	}
+.container_body .div_job .ul_job .active{
+	color:#FF0000;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container_body .divStateCardCon{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:1177px;
+	margin:0px auto;
+	background:#fff;
+	text-align:left;
+	/*height:835px;*/
+	}
+	
+.container_body .divStateCardCon .divList{
+	position:relative;
+	top:0px;
+	left:0px;
+	border-left:1px solid #e2e2e2;
+	border-top:1px solid #e2e2e2;
+	}
+
+.container_body .divStateCardCon .divList li{
+	position:relative;
+	top:0;
+	left:0;
+	float:left;
+	cursor:pointer;
+	height:257px;
+	width:151px;
+	border-right:1px solid #e2e2e2;
+	border-bottom:1px solid #e2e2e2;
+	padding:30px 22px;
+	}
+.container_body .divStateCardCon .divList li:hover{
+	background:#efefef;
+	}
+.container_body .divStateCardCon .divList li .divImg{
+	position:relative;
+	top:0;
+	left:0;
+	width:150px;
+	height:150px;
+	}
+.container_body .divStateCardCon .divList li .divImg img{
+	width:150px;
+	height:150px;
+	}	
+	
+	
+	
+	
+
+.container_body .divStateCardCon .divList li .divUserInfo{
+	height:100px;
+	
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .one{
+	height:36px;
+	width:150px;
+	white-space: nowrap;      
+ 	text-overflow: ellipsis;        /* for IE */
+	-o-text-overflow: ellipsis ;      /* for Opera */
+	overflow: hidden;
+	margin-top:8px;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .one .name{
+	color: #474747;
+    font-family: "微软雅黑";
+    font-size: 16px;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .two{
+	height:28px;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .two .age{
+	width:20px;
+	height:20px;
+	padding-left:20px;
+	background:url(../../../public/images/11.png) 0 -97px no-repeat;
+	}
+
+.container_body .divStateCardCon .divList li .divUserInfo .two .ageMan{
+	width:20px;
+	height:20px;
+	padding-left:20px;
+	background:url(../../../public/images/11.png) 0 -208px no-repeat;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .two .address{
+	width:50px;
+	height:22px;
+	margin-left:10px;
+	padding-left:18px;
+	padding-bottom:2px;
+	background:url(../../../public/images/11.png) 0 -115px no-repeat;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .two .address span{
+	margin-right:5px;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .three{
+	height:24px;
+	}
+.container_body .divStateCardCon .divList li .divUserInfo .three .job{
+	background:url(../../../back/pubimg/background.png) no-repeat 0 0;
+    color: #AE9E7C;
+	float:left;
+    height: 16px;
+    left: 0;
+    padding-left: 12px;
+    padding-right: 11px;
+    position: relative;
+    top: 0;
+	}
+
+.container_body .divStateCardCon .divList li .divUserInfo .three .job a {
+	background:url(../../../back/pubimg/background.png) no-repeat  0px -89px;
+    height: 16px;
+    position: absolute;
+    right: -12px;
+    top: 0;
+    width: 14px;
+	}
+
+
+
+
+
+.ppointPagingthis {
+    width: 1100px;
+	}
+.ppointPaging{
+	background:#fff;
+	}
+#divListOne{
+	display:block;
+	}

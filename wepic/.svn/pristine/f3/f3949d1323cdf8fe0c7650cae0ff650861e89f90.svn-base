@@ -1,0 +1,591 @@
+.container_top{
+	width:1180px;
+	height:48px;
+	background:#fff;
+	margin:5px auto 5px;
+	text-align:left;
+	font-family:"微软雅黑";
+	}
+
+.container_top h2{
+	width:1000px;
+	height:48px;
+	line-height:48px;
+	float:left;
+	padding-left:24px;
+	font-weight:normal;
+	color:#000;
+	font-size:20px;
+	}
+.container_top h2 span{
+	margin-right:8px;
+	}
+.container_top .goBack{
+	float:left;
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-right:20px;
+	margin-top:6px;
+    text-align: center;
+    width: 116px;
+	}
+	
+.container_top .goBack:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.container_top .goBack:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+
+
+.user_account_info{
+	width:1180px;
+	height:100px;
+	background:#fff;
+	margin:0px auto;
+	text-align:left;
+	}
+	
+.user_account_info .account_info_left{
+	position:relative;
+	top:0;
+	left:0;
+	width: 300px;
+	height: 100px;
+	float:left;
+	}	
+	
+.user_account_info .account_info_left  .headImg{
+	width: 60px;
+	height: 54px;
+    left: 20px;
+    position: absolute;
+    top: 10px;
+	}
+.user_account_info .account_info_left .headImg .headImgCon{
+	width: 40px;
+	height: 40px;
+    left: 9px;
+    position: absolute;
+    top: 7px;
+	/*background:url(../../../back/pubimg/images/defaultHead_80.png) 0 0 no-repeat;*/
+	}
+.user_account_info .account_info_left  .headImg .head{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}
+.user_account_info .account_info_left  .headImg .radius{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}	
+.user_account_info .account_info_left  .info{
+	width: 225px;
+	height: 54px;
+    left: 80px;
+    position: absolute;
+    top: 10px;
+	}
+.user_account_info .account_info_left  .info .name{
+	height: 30px;
+	line-height: 30px;
+	color:#000;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+
+
+/*公用*/
+.approveNo{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left: 10px;
+	background:url(../../../back/pubimg/images/identity.png) 0 5px no-repeat;
+	}
+.approveHave{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left: 10px;
+	background:url(../../../pubimg/images/identity.png) 0 -20px no-repeat;
+	}
+.approveQy{
+	width:25px;
+	height:20px;
+	display:inline-block;
+	margin-left: 10px;
+	background:url(../../../pubimg/images/identity.png) 0 -42px no-repeat;
+	}
+/*公用*/
+
+
+.user_account_info .account_info_left  .info .detail{
+    left: 0;
+    position: relative;
+    top: 0;
+	}
+.user_account_info .account_info_left  .info .detail a {
+    color: #A0A0A0;
+	text-decoration:none;
+	}
+.user_account_info .account_info_left  .info .detail .userPositionName{
+    background:url(../../../public/images/11.png) no-repeat 0 -95px;
+    padding-left: 20px;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin-right: 10px;
+	}
+.user_account_info .account_info_left  .info .detail .userPositionNameG{
+    background:url(../../../public/images/11.png) no-repeat 0 -208px;
+    padding-left: 20px;
+	padding-top:2px;
+	padding-bottom:2px;
+	margin-right: 10px;
+	}
+.user_account_info .account_info_left  .info .detail .userPositionAddress{
+    background:url(../../../public/images/11.png) no-repeat 0 -114px;
+    padding-left: 18px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+.user_account_info .account_info_left  .info .detail .userPositionAddress .shi{
+	margin-left:8px;
+	}	
+.user_account_info .account_info_left  .info .detail .pstype{
+    right: 13px;
+    position: absolute;
+    top: 0;
+	}
+.user_account_info .account_info_left  .info .detail .pstypeqy{
+    right: 90px;
+    position: absolute;
+    top: 0;
+	}
+.user_account_info .account_info_left  .info .detail .pstype .bar {
+    color: #b09d7c;
+    float: left;
+    font-size: 12px;
+    height: 18px;
+    left: 0;
+    margin-right: 15px;
+    padding-left: 10px;
+    position: relative;
+    top: 0;
+	background:url(../../../back/pubimg/images/background.png) 0 0px no-repeat;
+	}
+.user_account_info .account_info_left  .info .detail .pstype .bar i {
+    position: absolute;
+    right: -11px;
+    top: 0;
+	width:12px;
+	height:18px;
+	background:url(../../../back/pubimg/images/background.png) no-repeat 0px -89px;
+	}
+.user_account_info .account_info_left .time{
+    position: absolute;
+	left: 30px;
+	top:70px;
+	}
+/*默认显示		封面*/
+
+
+.user_account_info .account_info_right{
+    position:relative;
+	top:0;
+	left:0;
+	width: 725px;
+	height: 70px;
+	float:left;
+	border:1px solid #e6e6e6;
+	margin-left:130px;
+	margin-top:15px;
+	background:#fcfcfc;
+	}
+.user_account_info .account_info_right .div_money{
+	width:180px;
+	height:40px;
+	float:left;
+	border-right:1px solid #e6e6e6;
+	padding:15px 0;
+	}
+.user_account_info .account_info_right .div_money_last{
+	border-right:0;
+	}
+.user_account_info .account_info_right .div_money .div_money_con{
+	margin-left:15px;
+	height:25px;
+	}
+.user_account_info .account_info_right .div_money .div_money_con .money{
+	color:#a64300;
+	margin-left:10px;
+	}
+.user_account_info .account_info_right .div_money .div_money_con .yuan{
+	color:#a64300;
+	}
+
+
+
+
+
+
+.user_account_bar{
+	width:1180px;
+	height:40px;
+	margin:5px auto 0px;
+	text-align:left;
+	}
+.user_account_bar ul{
+	height:38px;
+	border:1px solid #E6E6E6;
+	border-right:0;
+	width:441px;
+	}
+.user_account_bar li{
+	height:38px;
+	border-right:1px solid #E6E6E6;
+	float:left;
+	width:109px;
+	text-align:center;
+	line-height:38px;
+	list-style:none;
+	background:#f9f9f9;
+	cursor:pointer;
+	display:block;
+	}
+.user_account_bar li a{
+	width:109px;
+	height:38px;
+	color: #232323;
+    font-family: "微软雅黑";
+    font-size: 15px;
+	display:block;
+	}
+.user_account_bar .active{
+	background:#fff;
+	}	
+.user_account_bar .active a{
+	color:#e92d00;
+	}	
+	
+	
+		
+	
+	
+		
+.topUpRecordOne,.withdrawDepositRecordTwo,.incomeRecordThree,.expenditureRecordFour{
+	position:relative;
+	top:0;
+	left:0;
+	width: 1180px;
+	height:100%;
+	margin:0 auto;
+	
+	}
+.all_record{
+	margin:0 auto 5px;
+	}
+.all_record iframe{
+	width:1180px;
+	height:900px;
+	border:0;
+	overflow:hidden;
+	}	
+	
+
+	
+	
+.withdrawDepositRecordTwo,
+.incomeRecordThree,
+.expenditureRecordFour{
+	display:none;
+	}
+
+
+
+
+
+/*提现待审核*/
+.blank_account_info{
+	width:1180px;
+	height:93px;
+	margin:0 auto;
+	background:#fff;
+	border-top:1px solid #E8E8E8;
+	text-align:left;
+	}
+
+.blank_account_info .blank_account_left{
+	width:700px;
+	height:93px;
+	float:left;
+	}
+	
+.blank_account_info .blank_account_left table{
+	width:670px;
+	height:70px;
+	background:#fff8eb;
+	margin-top:10px;
+	margin-left:17px;
+	}
+.blank_account_info .blank_account_left table tr{
+	height:35px;
+	}
+.blank_account_info .blank_account_left table .td_one{
+	width:65px;
+	padding:0 13px;
+	color:#656764;
+	}
+.blank_account_info .blank_account_left table .td_three,
+.blank_account_info .blank_account_left table .td_five{
+	width:65px;
+	padding-right:10px;
+	color:#656764;
+	}
+.blank_account_info .blank_account_left table .td_two{
+	width:150px;
+	padding-right:10px;
+	color:#000000;
+	}
+.blank_account_info .blank_account_left table .td_four,
+.blank_account_info .blank_account_left table .td_six{
+	width:140px;
+	padding-right:10px;
+	color:#000000;
+	}
+	
+	
+.blank_account_info .blank_account_money{
+	width:170px;
+	height:93px;
+	float:left;
+	border-right: 1px solid #E8E8E8;
+	}
+.blank_account_info .blank_account_money .blank_account_money_top{
+	width:170px;
+	height:40px;
+	line-height:40px;
+	color:#000;
+	
+	}
+.blank_account_info .blank_account_money .blank_account_money_Num .money{
+	font-family:"微软雅黑";
+	font-size:30px;
+	color:#e80010;
+	}
+.blank_account_info .blank_account_money .blank_account_money_Num .yuan{
+	font-family:"微软雅黑";
+	font-size:20px;
+	color:#e80010;
+	}
+	
+	
+.blank_account_info .blank_account_right{
+	width:300px;
+	height:93px;
+	float:left;
+	}
+.blank_account_info .blank_account_right .option{
+	height:65px;
+	margin:0 auto;
+	text-align:center;
+	}
+.blank_account_info .blank_account_right .num{
+	margin:0 auto;
+	text-align:center;
+	}
+
+	
+.blank_account_info .blank_account_right .option .generalize {
+    background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-top:15px;
+    text-align: center;
+    width: 116px;
+	}
+
+.blank_account_info .blank_account_right .option .generalize:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.blank_account_info .blank_account_right .option .generalize:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+.blank_account_info .blank_account_right .option .recharge{
+    background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-top:15px;
+	margin-left:20px;
+    text-align: center;
+    width: 116px;
+	}
+
+.blank_account_info .blank_account_right .option .recharge:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+.blank_account_info .blank_account_right .option .recharge:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+
+/*提现待审核*/
+
+
+
+
+/*提现已审核*/
+.blank_passed_info{
+	width:1180px;
+	height:100px;
+	margin:0 auto;
+	background:#fff;
+	border-top:1px solid #E8E8E8;
+	text-align:left;
+	color:#696768;
+	}
+
+.blank_passed_info .blank_passed_left{
+	width:650px;
+	height:100px;
+	float:left;
+	}
+	
+.blank_passed_info .blank_passed_left table{
+	width:600px;
+	height:80px;
+	background:#fff8eb;
+	margin-top:10px;
+	margin-left:17px;
+	}
+.blank_passed_info .blank_passed_left table tr{
+	height:40px;
+	}
+.blank_passed_info .blank_passed_left table .td_one,
+.blank_passed_info .blank_passed_left table .td_three{
+	width:65px;
+	padding:0 13px;
+	color:#656764;
+	}
+.blank_passed_info .blank_passed_left table .td_two,
+.blank_passed_info .blank_passed_left table .td_four{
+	width:200px;
+	padding-right:10px;
+	color:#000000;
+	}
+	
+	
+.blank_passed_info .blank_passed_money{
+	width:520px;
+	height:100px;
+	float:left;
+	}
+.blank_passed_info .blank_passed_money .blank_passed_moneyT{
+	width:520px;
+	height:40px;
+	line-height:40px;	
+	}
+.blank_passed_info .blank_passed_money .blank_passed_moneyT .havePro{
+	color:#acacac;
+	margin-left:12px;
+	}
+.blank_passed_info .blank_passed_money .blank_passed_moneyT .noPro{
+	color:#b74948;
+	margin-left:12px;
+	}
+
+.blank_passed_info .blank_passed_money .blank_passed_moneyB{
+	width:520px;
+	height:60px;
+	}	
+	
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .allMoney{
+	width:250px;
+	height:60px;
+	float:left;
+	}	
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .allMoney .money{
+	color: #E80010;
+    font-family: "微软雅黑";
+    font-size: 30px;
+	}
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .allMoney .yuan{
+	color: #E80010;
+    font-family: "微软雅黑";
+    font-size: 20px;
+	}
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .timeD{
+	width:190px;
+	height:60px;
+	float:left;
+	}
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .timeD .timeD_one{
+	height:30px;
+	line-height:20px;
+	}	
+	
+
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .quxiao{
+	width:70px;
+	height:70px;
+	float:left;
+	}
+
+.blank_passed_info .blank_passed_money .blank_passed_moneyB .quxiao a {
+    color: #0084C7;
+    margin: 0 10px;
+	margin-top:30px;
+	display:inline-block;
+    text-decoration: underline;
+	}
+/*提现已审核*/
+
+
+
+
+
+	
+	
+
+
+
+
+
+.pop_box_public{
+	width:560px;
+	}
+.pop_box_public .top{
+    width:560px;
+	}
+.pop_box_public .textarea{
+    height: 240px;
+	margin:30px auto;
+	text-align:center
+	}
+.pop_box_public .textarea textarea{
+    background: #fcfcfc;
+    border: 1px solid #E9E8E6;
+    font-size: 12px;
+	line-height:15px;
+    height: 230px;
+    resize: none;
+    width: 480px;
+	}

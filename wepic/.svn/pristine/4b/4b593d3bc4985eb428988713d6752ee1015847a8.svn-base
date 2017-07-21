@@ -1,0 +1,158 @@
+$(function(){
+	
+	
+	
+	
+	/* 选列表*/
+	xuan();
+	
+	
+	
+	/* 切换荣誉 代表作品*/
+	divLiBarClickCollect();
+	
+	
+	allPrevNext();
+	
+	
+	
+	});
+
+
+function cloosePPopBox(){
+	window.parent.cloceReChoose();
+	}	
+
+/* 切换荣誉 代表作品*/
+function divLiBarClickCollect(divName){
+	var allMainDB=$(".topdb");
+	$(allMainDB).each(function(indexDB, elementDB){
+		
+		// alltopLi 选择选项卡top
+		var alltopLi = $(elementDB).find("ul").children();
+		var allConDiv = $(elementDB).next().children();
+		
+		
+		$(alltopLi).each(function(indexTopLi, elementTopLi) {
+			alltopLi[indexTopLi].index = indexTopLi; 
+            $(alltopLi).click(function(){
+				//加选中样式
+					
+				$(alltopLi).each(function( i , ele) {
+					$(ele).removeClass("active");
+					allConDiv[i].style.display = 'none';
+				});
+				
+				$(this).addClass("active");
+				allConDiv[this.index].style.display = 'block';
+				
+				
+				
+				
+				});
+        });
+    });	
+	
+	
+	
+}
+
+		
+function xuan(){
+        var cardLi=$("#recruitCameristTimelyStateCard").find("li");
+		var oDivSon = $(".divStateCardCon").find(".divList");
+		
+        for(var i=0;i<cardLi.length;i++){  
+            cardLi[i].index=i; //input[0].index=0 index是自定义属性
+            cardLi[i].onclick=function(){
+               for(var i=0;i<cardLi.length;i++){  //循环历遍去掉button样式和把div隐藏
+                  cardLi[i].className='';
+                  oDivSon[i].style.display='none';
+               };
+			   
+				 
+               this.className='active';  //当前按钮添加样式
+               oDivSon[this.index].style.display='block';  //div显示 this.index是当前div 即div[0]之类的
+           };
+         };
+		 
+       }
+	
+
+
+
+function allPrevNext(){
+	var allPrev = $(".slider_next");				//下一张向左移动
+	var allNext = $(".slider_prev");				//上一张向右移动
+	
+	/*var options = $.extend( defaults, opt );
+	var dir = options.direction;
+	
+	var data1 = {}, data2 = {};
+		data1[dir] = -$iSteep;
+		data2[dir] = 0;*/
+	
+	$(allPrev).each(function(index, element) {
+		var $item,$iSteep;
+		var $sliderMove = $(this).next().children();		//获取所要对象
+		
+		$item = $sliderMove.children();					//所有孩子
+		$iSteep = $item.outerWidth();					//孩子的宽度
+		
+		$sliderMove.css('width',$item.length * $iSteep +'px' );
+						
+    });
+		
+		//上一张向右移动
+	$(allPrev).each(function(index, element) {
+		
+		var $sliderMove = $(this).next().children();		//获取所要对象
+		
+		var $item,$iSteep;
+		var $sliderMove = $(this).next().children();		//获取所要对象
+	
+		$item = $sliderMove.children();					//所有孩子
+		$iSteep = $item.outerWidth();					//孩子的宽度
+		
+        $(this).click(function(){
+			
+			
+			//先把最后一个放第一个排序
+			$sliderMove.css( "left", -$iSteep+'px').children().last().prependTo( $sliderMove );
+			//向右移动
+			$sliderMove.animate({left:"0px"});
+			});
+						//滚动
+    });
+	
+	
+	
+	
+	$(allNext).each(function(index, element) {
+		var $sliderMove = $(this).prev().children();		//获取所要对象
+		
+		
+		var $item,$iSteep;
+		var $sliderMove = $(this).prev().children();		//获取所要对象
+	
+		$item = $sliderMove.children();					//所有孩子
+		$iSteep = $item.outerWidth();					//孩子的宽度
+        $(this).click(function(){
+			$sliderMove.animate({left:-$iSteep+'px'},function(){
+			
+				$sliderMove.css( "left" , 0 ).children().first().appendTo( $sliderMove );
+			});	
+			
+			});
+		
+    });
+	
+	
+	
+	}
+	
+
+
+
+
+

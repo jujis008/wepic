@@ -1,0 +1,463 @@
+.work_deal{
+	width:1180px;
+	height:120px;
+	background:#fff;
+	margin:10px auto 10px;
+	text-align:left;
+	font-family:"宋体";
+	padding-bottom:50px;
+	/*display:none;*/
+	}
+
+
+
+
+.work_deal .work_deal_top{
+	width:100%;
+	height:40px;
+	text-align:left;
+	margin:0px auto;
+	border-bottom: 1px solid #E8E8E8;
+	padding-top: 10px;
+	}
+	
+.work_deal .work_deal_top table{
+	height:35px;
+	}	
+.work_deal .work_deal_top table td{
+	vertical-align:center;
+	}
+.work_deal .work_deal_top table .char{
+	font-weight:normal;
+	color:#000;
+	font-size:18px;
+	font-family:"微软雅黑";
+	padding:0 20px;
+	vertical-align:top;
+	}
+.work_deal .work_deal_top table .totalwith{
+	padding-right:40px;
+	}
+.work_deal .work_deal_top table .totalwithTTT{
+	width:800px;
+	padding-right:40px;
+	}
+
+
+.work_deal .work_deal_top_con{
+	width:100%;
+	height:96px;
+	text-align:left;
+	margin:0px auto;
+	padding-top: 20px;
+	}
+	
+.work_deal .work_deal_top_con table{
+	height:80px;
+	margin:0 auto;
+	color:#676767;
+	width:86%;
+	}	
+	
+.work_deal .work_deal_top_con table .td_one{
+	width:65px;
+	
+	}
+.work_deal .work_deal_top_con table .td_two{
+	width:230px;
+	
+	}
+.work_deal .work_deal_top_con table td{
+	vertical-align:center;
+	}	
+
+
+.work_deal_top_con table .time{
+	margin-left:10px;
+	}
+.work_deal_top_con table .weikai{
+	text-decoration:underline;
+	color:#0168b7;
+	}
+
+
+
+
+
+
+
+
+.work_deal_list{
+	width:1180px;
+	min-height:240px;
+	background:#fff;
+	margin:5px auto 50px;
+	text-align:left;
+	font-family:"宋体";
+	padding-bottom:40px;
+	color: #676767;
+	}
+.work_deal_list .div_tit{
+	height:40px;
+	line-height:40px;
+	font-family:"微软雅黑";
+	padding-left:50px;
+	font-size:15px;
+	color: #1d1d1d;
+	}
+
+
+.work_deal_list .deal_list{
+	width:1138px;
+	min-height:200px;
+	margin:0 auto;
+	
+	}
+
+.work_deal_list .deal_list .deal_cont{
+	width:564px;
+	height:166px;
+	float:left;
+	border:1px solid #E8E8E8;
+	}
+
+.work_deal_list .deal_list .deal_cont .picImg{
+	width:166px;
+	height:166px;
+	float:left;
+	
+	}
+.work_deal_list .deal_list .deal_cont .picImg img{
+	width:125px;
+	height:125px;
+	margin-left:18px;
+	margin-top:18px;
+	}
+.work_deal_list .deal_list .deal_cont .picCon{
+	width:390px;
+	height:150px;
+	padding-top:12px;
+	float:left;
+	}
+.work_deal_list .deal_list .deal_cont .picCon .picTit{
+	height:32px;
+	font-family:"微软雅黑";
+	}
+.work_deal_list .deal_list .deal_cont .picCon .picTit .tit{
+	color:#3c3a3b;
+	font-size:20px;
+	}
+.work_deal_list .deal_list .deal_cont .picCon .picTit .geshi{
+	color:#a2575b;
+	font-size:14px;
+	margin-left:10px;
+	background:#f7f5f6;
+	padding:0px 10px;
+	border-radius:10px;
+	}
+	
+.work_deal_list .deal_list .deal_cont .picCon .picMoney{
+	height:45px;
+	}	
+.work_deal_list .deal_list .deal_cont .picCon .picMoney .yuan{
+	font-family:"微软雅黑";
+	color:#e5001d;
+	font-size:24px;
+	}	
+.work_deal_list .deal_list .deal_cont .picCon .picMoney .money{
+	font-family:"微软雅黑";
+	color:#e5001d;
+	font-size:34px;
+	margin-right:10px;
+	}	
+	
+.work_deal_list .deal_list .deal_cont .picCon .picMaijia{
+	height:40px;
+	}		
+.work_deal_list .deal_list .deal_cont .picCon .picMaijia .mjImg{
+	width:40px;
+	height:40px;
+	float:left;
+	border-radius:22px;
+	overflow:hidden;
+	}	
+.work_deal_list .deal_list .deal_cont .picCon .picMaijia .mjImg .imgC{
+	width:40px;
+	height:40px;
+	}
+.work_deal_list .deal_list .deal_cont .picCon .picMaijia .mjCon{
+	width:270px;
+	height:40px;
+	margin-left:10px;
+	float:left;
+	}		
+.work_deal_list .deal_list .deal_cont .picCon .picMaijia .mjCon .mjConName{	
+	font-family:"微软雅黑";
+	color:#3C3A3B;
+	font-size:14px;
+	height:24px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*相关人员*/
+
+
+.work_deal_list .deal_list{
+	width:1132px;
+	min-height:200px;
+	margin:0 auto;
+	
+	}
+
+.work_deal_list .deal_list .deal_cont_pro{
+	width:343px;
+	height:130px;
+	float:left;
+	border:1px solid #E8E8E8;
+	}
+
+.work_deal_list .deal_list .deal_cont_pro .picImg{
+	width:125px;
+	height:130px;
+	float:left;
+	
+	}
+.work_deal_list .deal_list .deal_cont_pro .picImg img{
+	width:80px;
+	height:80px;
+	margin-left:32px;
+	margin-top:23px;
+	}
+.work_deal_list .deal_list .deal_cont_pro .picCon{
+	width:210px;
+	height:110px;
+	padding-top:20px;
+	float:left;
+	}
+.work_deal_list .deal_list .deal_cont_pro .picCon .picTit{
+	height:32px;
+	font-family:"微软雅黑";
+	color:#3c3a3b;
+	font-size:20px;
+	}
+	
+.work_deal_list .deal_list .deal_cont_pro .picCon .picMoney{
+	height:45px;
+	}	
+.work_deal_list .deal_list .deal_cont_pro .picCon .picMoney .yuan{
+	font-family:"微软雅黑";
+	color:#e5001d;
+	font-size:24px;
+	}	
+.work_deal_list .deal_list .deal_cont_pro .picCon .picMoney .money{
+	font-family:"微软雅黑";
+	color:#e5001d;
+	font-size:34px;
+	margin-right:10px;
+	}	
+/*相关人员*/	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*开具发票*/
+
+.add_invoice{
+	width:510px;
+	height:550px;
+	background:#ffffff;
+	display:none;
+	}
+.add_invoice .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width:510px;
+	}
+.add_invoice .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.add_invoice .top a {
+    background:url(../../../../public/images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.add_invoice .top a:hover{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -58px;
+	}
+.add_invoice .top a:active{
+	background:url(../../../../public/images/closeBox.png) no-repeat 0 -116px;
+	}
+
+
+
+	
+.add_invoice .table_con{
+    height: 350px;
+    width: 510px;
+	margin-top:30px;
+	}
+.add_invoice .table_con .td_one{
+    width: 115px;
+	padding-right:15px;
+	text-align:right;
+	height:50px;
+	color:#535353;
+	}
+.add_invoice .table_con .td_two{
+	text-align:left;
+	}
+.add_invoice .table_con .td_two .yuan{
+	color:#e60120;
+	font-size:14px;
+    font-family: "宋体";
+	}
+.add_invoice .table_con .td_two .money{
+	color:#e60120;
+	font-size:16px;
+	margin-right:10px;
+    font-family: "宋体";
+	
+	}
+.add_invoice .table_con .td_two label{
+	margin-right:10px;
+	
+	}
+.add_invoice .table_con .input_invoice_title {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 214px;
+	}	
+	
+.add_invoice .table_con .td_twoDe label{
+	margin-left:3px;
+	}
+
+	
+.add_invoice .table_con .postAddress {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 300px;
+	}
+.add_invoice .table_con .recipients {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 100px;
+	}
+.add_invoice .table_con .contactPhone {
+    background: #FCFCFC;
+    border: 1px solid #E8E8E6;
+    border-radius: 3px;
+    color: #696969;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 20px;
+    padding: 5px 10px;
+    width: 150px;
+	}
+
+
+
+
+
+.add_invoice .submit{
+	margin-top:30px;
+	}
+	
+.white_button{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.white_button:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.red_button{
+
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.red_button:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}

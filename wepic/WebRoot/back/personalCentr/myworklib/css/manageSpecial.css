@@ -1,0 +1,513 @@
+#manageSpecial{
+	background:#FFFFFF;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 1180px;
+	min-height:584px;
+	margin-bottom:40px;
+	margin-top:10px;
+	font-size:12px;
+	font-family:"宋体";
+	color:#848484;
+	border-radius:3px 3px 3px 3px;
+	text-align:left;
+	}
+
+#manageSpecial .head{
+	position: relative;
+    top: 0;
+    left: 0;
+    width: 1090px;
+    margin:0 auto;
+	height:69px;
+	border-bottom:1px solid #f0f0f0;
+	}
+	
+#manageSpecial .head .left{
+	position: absolute;
+    bottom: 15px;
+    left: 0;
+	height:25px;
+	padding-left:22px;
+	}
+#manageSpecial .head .left .glzj{
+	font-size:20px;
+	font-family:"微软雅黑";
+	color:#000000;
+	margin-right:15px;
+	}
+#manageSpecial .head .left .num{
+	margin-left:5px;
+	margin-right:5px;
+	}
+#manageSpecial .head .inputup{
+	position:absolute;
+	bottom:13px;
+	right:30px;
+	background:url(../../../..//public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#manageSpecial .head .inputup:hover{
+	background:url(../../../..//public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+	
+#manageSpecial .editSpecial{
+	position: relative;
+    top: 0;
+    left: 0;
+    width: 1180px;
+    margin:0 auto;
+	min-height:340px;
+	
+	}
+#manageSpecial .editSpecial .divAdd{
+	margin-left:72px;
+	width:566px;
+	min-height:340px;
+	border-right:1px solid #f0f0f0;
+	}
+#manageSpecial .editSpecial .divAdd li{
+	position: relative;
+    top: 0;
+    left: 0;
+	height:42px;
+    width: 510px;
+	border-bottom:1px solid #f0f0f0;
+	}
+#manageSpecial .editSpecial .divAdd a{
+	color:#808080;
+	}
+#manageSpecial .editSpecial .default{
+	position: relative;
+    top: 0;
+    left: 0;
+	height:30px;
+    width: 510px;
+	margin-top:24px;
+	border-bottom:1px solid #f0f0f0;
+	}
+
+	
+	
+#manageSpecial .editSpecial .special{
+	position: relative;
+    top: 0;
+    left: 0;
+	height:42px;
+    width: 400px;
+	}
+#manageSpecial  .editSpecial .divAdd .edit{
+	position: absolute;
+    bottom:0px;
+    right: 0px;
+	width:110px;
+	height:42px;
+	text-align:right;
+	color:#808080;
+	}
+#manageSpecial  .editSpecial .tone{
+	position: absolute;
+    bottom: 8px;
+    left: 8px;
+	width:15px;
+	height:15px;
+	}
+	
+#manageSpecial  .editSpecial .tone1,
+#manageSpecial .editSpecial .diveddel .divCon1{
+	background:#F93;
+	}
+#manageSpecial  .editSpecial .tone2,
+#manageSpecial .editSpecial .diveddel .divCon2{
+	background:#09F;
+	}
+#manageSpecial  .editSpecial .tone3,
+#manageSpecial .editSpecial .diveddel .divCon3{
+	background:#6C6;
+	}
+#manageSpecial  .editSpecial .tone4,
+#manageSpecial .editSpecial .diveddel .divCon4{
+	background:#090;
+	}
+#manageSpecial  .editSpecial .tone5,
+#manageSpecial .editSpecial .diveddel .divCon5{
+	background:#FF6;
+	}
+#manageSpecial  .editSpecial .tone6,
+#manageSpecial .editSpecial .diveddel .divCon6{
+	background:#000;
+	}
+#manageSpecial  .editSpecial .tone7,
+#manageSpecial .editSpecial .diveddel .divCon7{
+	background:#0FF;
+	}
+#manageSpecial  .editSpecial .tone8,
+#manageSpecial .editSpecial .diveddel .divCon8{
+	background:#033;
+	}
+#manageSpecial  .editSpecial .tone9,
+#manageSpecial .editSpecial .diveddel .divCon9{
+	background:#03F;
+	}
+#manageSpecial  .editSpecial .tone10,
+#manageSpecial .editSpecial .diveddel .divCon10{
+	background:#CF0;
+	}
+#manageSpecial  .editSpecial .name{
+	position: absolute;
+    bottom: 8px;
+    left: 35px;
+	width:360px;
+	height:15px;
+	font-family:"微软雅黑";
+	color:#494949;
+	}
+
+
+#manageSpecial  .editSpecial .edit .bj{
+	position: absolute;
+    left:0px;
+    bottom: 0px;
+	display:none;
+	background:url(../../../../public/images/edit.png) 0 -130px no-repeat;
+	padding-left:22px;
+	padding-top:3px;
+	padding-bottom:3px;
+	}
+#manageSpecial  .active .edit .bj{
+	display:block;
+	}
+#manageSpecial  .editSpecial .edit .px{
+	display:none;
+	position: absolute;
+    right:0px;
+    bottom: 0px;
+	background:url(../../../pubimg/images/choosesort.png) 0 -27px no-repeat;
+	padding-left:20px;
+	}
+#manageSpecial .editSpecial .divAddSpecial{
+	margin-top:26px;
+	margin-left:5px;
+	}
+#manageSpecial .editSpecial .divAddSpecial a{
+	
+	font-family:"微软雅黑";
+	color:#0267b7;
+	}
+	
+	
+#manageSpecial .editSpecial .diveddel{
+	/*display:none;*/
+	position: absolute;
+    top:20px;
+    right: 0px;
+	width:538px;
+	min-height:340px;
+	}
+	
+#manageSpecial .editSpecial .diveddel li{
+	display:none;
+	}
+#manageSpecial .editSpecial .diveddel .divCon{
+	
+	position: relative;
+    top:0px;
+    left: 32px;
+	width:285px;
+	height:285px;
+	color:#ffffff;
+	font-family:"微软雅黑";
+	}
+#manageSpecial .editSpecial .diveddel .click{
+	display:block;
+	}
+#manageSpecial .editSpecial .diveddel .divCon .divCont{
+	position: relative;
+    top:0px;
+    left: 0px;
+	width:215px;
+	height:285px;
+	padding-left:35px;
+	padding-right:35px;
+	}
+#manageSpecial .editSpecial .diveddel .divCon .divCont h2{
+	font-weight:normal;
+	font-size:28px;
+	width:215px;
+	height:74px;
+	line-height:74px;
+	overflow:hidden;
+	}
+#manageSpecial .editSpecial .diveddel .divCon .divCont .ms{
+	width:215px;
+	height:160px;
+	line-height:20px;
+	overflow:hidden;
+	}
+
+
+
+#manageSpecial .editSpecial .diveddel .divOpt{
+	position: relative;
+    top:0px;
+    left: 32px;
+	width:285px;
+	height:40px;
+	margin-top:20px;
+	}
+
+#manageSpecial .editSpecial .diveddel .divOpt .del{
+	
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:30px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#manageSpecial .editSpecial .diveddel .divOpt .del:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+#manageSpecial .editSpecial .diveddel .divOpt .edit{
+
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#manageSpecial .editSpecial .diveddel .divOpt .edit:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+
+
+#manageSpecial .divEditZj,
+#manageSpecial .divAddZj{
+	display:none;
+	position: absolute;
+    top:0px;
+    right: 0px;
+	width:500px;
+	min-height:434px;
+	padding-left:30px;
+	}
+#manageSpecial .editSpecial .divEditZjHead{
+    font-family: "微软雅黑";
+    font-size: 20px;
+	width:320px;
+	height:40px;
+	line-height:40px;
+	color:#4b4b4b;
+	border-bottom:1px solid #f0f0f0;
+	}
+#manageSpecial .editSpecial .zjname{
+	height:40px;
+	margin-top:12px;
+	}
+
+#manageSpecial .editSpecial .zjname .inputname{
+	background: #FCFCFC;
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 21px;
+    padding: 5px 10px;
+    width: 160px;
+	}
+
+#manageSpecial .editSpecial .zjintro{
+	position: relative;
+    top:0px;
+    left: 0px;
+	height:65px;
+	}
+
+#manageSpecial .editSpecial .zjintro textarea{
+	position: absolute;
+    top:0px;
+    left: 55px;
+	border: 1px solid #E9E8E6;
+	background: #FCFCFC;
+    font-size: 12px;
+    height: 55px;
+    line-height: 14px;
+    overflow: auto;
+    padding: 5px;
+    resize: none;
+    width: 242px;
+	}
+#manageSpecial .editSpecial .zjcolor{
+	height:160px;
+	margin-top:26px;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor{
+	position: relative;
+    top:0px;
+    left: 0px;
+	width:310px;
+	height:135px;
+	margin-top:5px;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor li{
+	position: relative;
+    top:0px;
+    left: 0px;
+	width:38px;
+	height:38px;
+	float:left;
+	margin-left:5px;
+	margin-top:5px;
+	}
+	
+#manageSpecial .editSpecial .zjcolor .addColor li i{
+	display:none;
+	position: absolute;
+    right:0px;
+    bottom: 0px;
+	width:25px;
+	height:25px;
+	background:url(../../../pubimg/images/choosesort.png) 0 0 no-repeat;
+	}	
+#manageSpecial .editSpecial .zjcolor .addColor .active i{
+	display:block;
+	}	
+	
+	
+	
+#manageSpecial .editSpecial .zjcolor .addColor .color1{
+	background:#e65252;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color2{
+	background:#af4657;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color3{
+	background:#e37774;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color4{
+	background:#fdaf1b;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color5{
+	background:#ffc000;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color6{
+	background:#f6dc51;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color7{
+	background:#51a2f4;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color8{
+	background:#be5f41;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color9{
+	background:#bb6767;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color10{
+	background:#f5926b;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color11{
+	background:#7cdb01;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color12{
+	background:#00c0bd;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color13{
+	background:#56afd9;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color14{
+	background:#5774d8;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color15{
+	background:#7f6439;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color16{
+	background:#aa918d;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color17{
+	background:#d2c2a0;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color18{
+	background:#227a50;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color19{
+	background:#6282a9;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color20{
+	background:#016283;
+	}
+#manageSpecial .editSpecial .zjcolor .addColor .color21{
+	background:#012883;
+	}	
+	
+	
+	
+	
+	
+#manageSpecial .editSpecial .zjsubmit{
+	height:40px;
+	margin-top:40px;
+	
+	}
+
+#manageSpecial .editSpecial .zjsubmit .qx{
+	
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:30px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#manageSpecial .editSpecial .zjsubmit .qx:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+#manageSpecial .editSpecial .zjsubmit .bc{
+
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+#manageSpecial .editSpecial .zjsubmit .bc:hover{
+	background:url(../../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+
+.promptInf{
+	height:30px;
+	line-height:30px;
+	color:#ca6161;
+	}

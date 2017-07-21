@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.SiteConfig"
+	table="SiteConfig"
+>
+	
+	<id
+		name="id"
+		type="java.lang.String"
+		column="id"
+	>
+		<generator class="uuid" />
+	</id>
+	
+	<property 
+		name="tax"
+		type="java.lang.Double"
+		column="tax"
+		length="50"
+	/>
+	<property 
+		name="thirdPayRate"
+		type="java.lang.Double"
+		column="thirdPayRate"
+		length="50"
+	/>
+	<property 
+		name="proportionBroker"
+		type="java.lang.Double"
+		column="proportionBroker"
+		length="50"
+	/>
+	<property 
+		name="proportionSite"
+		type="java.lang.Double"
+		column="proportionSite"
+		length="50"
+	/>
+	<property 
+		name="limitChangeWorker"
+		type="java.lang.Integer"
+		column="limitChangeWorker"
+		length="50"
+	/>
+	<property 
+		name="configTime"
+		type="java.sql.Timestamp"
+		column="configTime"
+		length="50"
+	/>
+	<property 
+		name="timeLimit"
+		type="java.lang.Double"
+		column="timeLimit"
+		length="50"
+	/>
+	
+	<property 
+		name="brokerMonth"
+		type="java.lang.Integer"
+		column="brokerMonth"
+		length="50"
+	/>
+		<property 
+		name="manageTax"
+		type="java.lang.Double"
+		column="manageTax"
+		length="50"
+	/>
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

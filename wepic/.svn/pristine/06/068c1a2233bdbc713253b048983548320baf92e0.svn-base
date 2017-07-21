@@ -1,0 +1,376 @@
+package com.wetuo.wepic.deal.actions ;
+ 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.io.File;
+import java.sql.Timestamp;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import com.tools.Cleandar;
+import com.wetuo.wepic.deal.beans.Bid;
+import com.wetuo.wepic.deal.beans.BidMarkCount;
+import com.wetuo.wepic.deal.beans.BidResponseInvited;
+import com.wetuo.wepic.deal.service.BidForOpusService;
+import com.wetuo.wepic.deal.service.BidMarkCountService;
+import com.wetuo.wepic.deal.service.BidResponseInvitedService;
+import com.wetuo.wepic.deal.service.BidService;
+import com.wetuo.wepic.deal.service.BidtransactionService;
+import com.wetuo.wepic.core.beans.Account;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.beans.UserCredit;
+import com.wetuo.wepic.core.service.UserCreditService;
+import com.wetuo.wepic.core.service.UserService;
+ 
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.struts.Constants;
+import com.wetuo.wepic.common.struts.RegExpression;
+import com.wetuo.wepic.common.util.FileUploadStatus;
+import com.wetuo.wepic.common.util.MyProgressListener;
+import com.wetuo.wepic.common.util.PictureUtil;
+ 
+@SuppressWarnings("serial")  
+public class BidAction extends PageAction {
+	private static final long serialVersionUID = 1L;
+	public BidAction(String className) {
+		try{
+		model=Class.forName(className).newInstance();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+    //新增约拍
+    public String addBid() throws Exception{
+    	int id=super.getLonginUserId();
+	   if(id==0){   
+        return "login";		   
+	   }
+	   User user=new User();
+	   user.setId(id);
+	   Bid bid=(Bid)model;
+	   bid.setUser(user);
+	   bid.setStartTime(new Timestamp(new Date().getTime()));
+	   bid.setStatus(8);
+	   bid.setSaveFrarite(0);
+	   bid.setBidGood(0);
+	   bid.setBidView(0);
+	  // bidService.insert(bid);
+	   if(bid.getType()==2){
+	    if(bid.getUnitpriceType()==1){
+		  double totalMoeny=bid.getUnitpriceProduct()*bid.getSumProdct();  
+		   }
+	      else if(bid.getUnitpriceType()==2){
+			  if(bid.getTag().contains("产品拍摄")){
+		      double totalMoney=bid.getUnitpriceProduct()*bid.getSumProdct()*bid.getSumProductPhoto();  
+		      bid.setTotalMoney(totalMoney);
+		        }else{
+		      double totalMoney=bid.getUnitpriceProduct()*bid.getSumProductPhoto();  
+		      bid.setTotalMoney(totalMoney);
+		        }
+	    
+	  
+	   }
+	    else if(bid.getUnitpriceType()==3){
+			  if(bid.getTag().contains("产品拍摄")){
+		      double unicMoney=bid.getTotalMoney()/bid.getSumProdct()/bid.getSumProductPhoto(); 
+		      bid.setUnitpriceProduct(unicMoney);
+		        }else{
+		      double unicMoney=bid.getUnitpriceProduct()/bid.getSumProductPhoto(); 
+		      bid.setUnitpriceProduct(unicMoney);
+		        }
+	    
+	  
+	   }
+	   
+	   }
+	   
+	   else if(bid.getType()==1){
+		   if(bid.getUnitpriceType()==2){
+			   Map<String, Object> m=new HashMap<String, Object>();
+			   m.put("START_DATE", bid.getWorkStartTime().split(" ")[0]);
+			   m.put("END_DATE",bid.getWorkEndTime().split(" ")[0]);
+			   int day=Cleandar.TimeDay2(m);
+			   double totalMoney=bid.getUnitpriceProduct()*day*bid.getRecruitNum();
+			   bid.setTotalMoney(totalMoney);
+		       }
+		   
+		   
+		   
+	   }
+	   
+	  return "addBidSucess"; 
+	   
+   }
+    
+    //附件上传
+    public String uploadAccessories() {
+    	
+    	String savePath=ServletActionContext.getServletContext().getRealPath("/back/personalCentr/bid/accessories");
+    	
+    	HttpServletRequest request =ServletActionContext.getRequest();
+    	
+		String path = request.getContextPath();
+		
+		String httpPath =request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		
+    	try {
+			httpurl=bidService.uploadFile(accessories,savePath, httpPath,accessoriesFileName);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+    	
+	    return "uploadAccessories";
+	 
+ }
+   //删除图片
+    public String deleteFiled(){
+    	String savePath=ServletActionContext.getServletContext().getRealPath("/back/personalCentr/bid/accessories");
+    	File file=new File(savePath+"/"+fileName); 
+    	mes="faile";
+    	if(file.exists()){
+    		if(file.delete()){
+    			mes="suce";
+    			
+    		}
+    		
+    	}
+    	
+    	return "deleteFiled";
+    }
+    
+    
+    
+    public String findAllMyBid(){
+    	User user=new User();
+    	int id=super.getLonginUserId();
+    	if(id==0){
+    		
+    		return "login";
+    	}
+    	user.setId(id);
+    	DetachedCriteria criteria=DetachedCriteria.forClass(Bid.class);
+    	criteria.createAlias("user", "user");
+    	criteria.add(Restrictions.eq("user", user));
+    	super.pager=bidService.findbidList(criteria, nowPage, 12);//(criteria);
+    	DetachedCriteria detachedCriteria=DetachedCriteria.forClass(BidResponseInvited.class);
+    	detachedCriteria.createAlias("user", "user");
+    	detachedCriteria.add(Restrictions.eq("user.id", user.getId()));
+    	detachedCriteria.add(Restrictions.eq("isConfirmed", 1));
+    	int size=responseInvitedService.findAll(detachedCriteria).size();
+    	bidMarkCount=bidMarkCountService.getBidMarkCount(user);
+    	if(size!=0){
+    		bidMarkCount.setChapinl(bidMarkCount.getBadMark()/size*100);	
+    		bidMarkCount.setHaopl(bidMarkCount.getGoodMark()/size*100);
+    		bidMarkCount.setChenggonglv(size/bidMarkCount.getYingYueBidCount()*100);
+    	}else{
+    		
+    		bidMarkCount.setChapinl(0);	
+    		bidMarkCount.setHaopl(0);
+    		bidMarkCount.setChenggonglv(0);
+    	}
+    	return "findAllMyBid";
+    	
+    }
+    /*数据初始化
+     * *
+     */
+    public String findAllMyBid123(){
+    	List<User> list=  userService.findAll();
+    	for (User user : list) {
+    		BidMarkCount bidMarkCount=new BidMarkCount();
+    		bidMarkCount.setBadMark(0);
+    		bidMarkCount.setBidCount(0);
+    		bidMarkCount.setGoodMark(0);
+    		bidMarkCount.setTotalBidMoenyForShouRu(0);
+    		bidMarkCount.setTotalBidMoenyForZhichu(0);
+    		bidMarkCount.setYingYueBidCount(0);
+    		bidMarkCount.setFabuBidCount(0);
+    		bidMarkCount.setUser(user);
+    		bidMarkCountService.saveBidMarkCount(bidMarkCount);
+			
+		}
+    	
+    	return "findAllMyBid";
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private  BidService  bidService;
+	//附件
+	private File accessories;
+	private String accessoriesFileName;
+	private  String accessoriesContentType;
+	//上传文件网络路径
+	private String httpurl;
+	private UserService userService;
+	private UserCreditService creditService;
+	private BidForOpusService bidForOpusService;
+	private BidResponseInvitedService responseInvitedService;
+	private BidtransactionService bidtransaction;
+	private String fileName;
+	private String mes;
+	private int nowPage;
+    private BidMarkCountService bidMarkCountService; 
+	private BidMarkCount bidMarkCount;    
+	public BidService getBidService() {
+		return bidService;
+	}
+	
+	
+	public void setBidService(BidService bidService) {
+		this.bidService = bidService;
+	}
+	public File getAccessories() {
+		return accessories;
+	}
+	public void setAccessories(File accessories) {
+		this.accessories = accessories;
+	}
+	public String getHttpurl() {
+		return httpurl;
+	}
+	public void setHttpurl(String httpurl) {
+		this.httpurl = httpurl;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	public UserCreditService getCreditService() {
+		return creditService;
+	}
+	public void setCreditService(UserCreditService creditService) {
+		this.creditService = creditService;
+	}
+	public BidForOpusService getBidForOpusService() {
+		return bidForOpusService;
+	}
+	public void setBidForOpusService(BidForOpusService bidForOpusService) {
+		this.bidForOpusService = bidForOpusService;
+	}
+	
+	public BidResponseInvitedService getResponseInvitedService() {
+		return responseInvitedService;
+	}
+	
+	public void setResponseInvitedService(
+			BidResponseInvitedService responseInvitedService) {
+		this.responseInvitedService = responseInvitedService;
+	}
+	
+	public BidtransactionService getBidtransaction() {
+		return bidtransaction;
+	}
+	public void setBidtransaction(BidtransactionService bidtransaction) {
+		this.bidtransaction = bidtransaction;
+	}
+	
+	public String getAccessoriesFileName() {
+		return accessoriesFileName;
+	}
+	
+	public void setAccessoriesFileName(String accessoriesFileName) {
+		this.accessoriesFileName = accessoriesFileName;
+	}
+	
+	public String getAccessoriesContentType() {
+		return accessoriesContentType;
+	}
+	
+	public void setAccessoriesContentType(String accessoriesContentType) {
+		this.accessoriesContentType = accessoriesContentType;
+	}
+	
+	public String getFileName() {
+		return fileName;
+	}
+	
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
+
+	public int getNowPage() {
+		return nowPage;
+	}
+
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+
+	public BidMarkCountService getBidMarkCountService() {
+		return bidMarkCountService;
+	}
+
+	public void setBidMarkCountService(BidMarkCountService bidMarkCountService) {
+		this.bidMarkCountService = bidMarkCountService;
+	}
+
+	public BidMarkCount getBidMarkCount() {
+		return bidMarkCount;
+	}
+
+	public void setBidMarkCount(BidMarkCount bidMarkCount) {
+		this.bidMarkCount = bidMarkCount;
+	}	
+	
+	
+	
+}
+	
+	
+//end class

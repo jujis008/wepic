@@ -1,0 +1,622 @@
+package com.wetuo.wepic.publish.dao ;
+ 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.ArrayList;
+ 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.wetuo.wepic.publish.beans.Publish;
+import com.wetuo.wepic.publish.beans.PublishCat;
+import com.wetuo.wepic.publish.beans.PublishSpecialCat;
+import com.wetuo.wepic.common.hibernate.HibernateSessionFactory;
+import com.wetuo.wepic.common.hibernate.XgHibernateCommonDao;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.util.UUIDGenerator;
+import com.wetuo.wepic.core.beans.User;
+
+import org.springframework.orm.hibernate3.HibernateCallback;
+import java.sql.SQLException;
+ 
+public class PublishSpecialCatDaoImpl extends XgHibernateCommonDao implements PublishSpecialCatDao {
+	private static Log log = LogFactory.getLog(PublishSpecialCatDaoImpl.class);
+	private static int rowCount = 0;
+	
+	//////////////common crud//////////////////////////////////////////////
+	public List<PublishSpecialCat> findAll(){ 
+		return (List<PublishSpecialCat>)getHibernateTemplate().find("from PublishSpecialCat");
+	}
+	
+	public List<PublishSpecialCat> findPart(String strFields, String[] arrStrValues){ 
+		return (List<PublishSpecialCat>)getHibernateTemplate().find("from PublishSpecialCat where "+strFields, arrStrValues);
+	}
+	
+public Pager list(final int pageSize,final int pageNo)  {	
+	Pager pager = null;	
+	
+	List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+		public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			//???Hibernate??????
+			//List result = session.createQuery(hql).setParameter(0, value).setFirstResult(offset).setMaxResults(pageSize).list();
+			Criteria criteria = session.createCriteria(PublishSpecialCat.class);
+			PublishSpecialCatDaoImpl.rowCount = ((Integer) criteria.setProjection( Projections.rowCount()).uniqueResult()).intValue();
+			criteria.setProjection(null);
+			criteria.setFirstResult(pageSize * (pageNo - 1));
+			criteria.setMaxResults(pageSize);
+			List<?> result = criteria.list();
+			return result;
+		}
+	});
+	pager = new Pager(pageSize, pageNo, PublishSpecialCatDaoImpl.rowCount, list);
+	return pager;
+	
+	}//end list()
+public Pager list(final String username,final int pageSize,final int pageNo)  {	
+	Pager pager = null;	
+	//??????HibernateCallback????4??��??
+	List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+		public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			//???Hibernate??????
+			//List result = session.createQuery(hql).setParameter(0, value).setFirstResult(offset).setMaxResults(pageSize).list();
+			Criteria criteria = session.createCriteria(PublishSpecialCat.class);
+			PublishSpecialCatDaoImpl.rowCount = ((Integer) criteria.setProjection( Projections.rowCount()).uniqueResult()).intValue();
+			criteria.setProjection(null);
+			
+			criteria.setFirstResult(pageSize * (pageNo - 1));
+			criteria.setMaxResults(pageSize);
+			List<?> result = criteria.list();
+			return result;
+		}
+	});
+	pager = new Pager(pageSize, pageNo, PublishSpecialCatDaoImpl.rowCount, list);
+	return pager;
+	
+	}//end list()
+	public Pager list(final Map<String,Object> mapSqlParam,final int pageSize,final int pageNo)  {
+		Pager pager = null;
+		//??????HibernateCallback????4??��??
+		List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+		//???HibernateCallback?????????????
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				Set setKeyOfMap = new HashSet();
+				setKeyOfMap = mapSqlParam.keySet();
+				//
+				Iterator itKey = setKeyOfMap.iterator();
+				String strWhereParam = "";
+				int intIWhere = 0;
+				while(itKey.hasNext()){
+					String strKeyI = (String)itKey.next();
+					if(intIWhere == 0){
+					strWhereParam = strWhereParam + " a." + strKeyI + " = ? " ;
+					}else strWhereParam = strWhereParam + " and a." + strKeyI + " = ? " ; 
+					intIWhere++;
+				}//end while
+				//???Hibernate??????
+				int intSerial = 0;
+				Query q = session.createQuery("select count(*) from  PublishSpecialCat  a where " + strWhereParam );
+				Iterator itKey2 = setKeyOfMap.iterator();
+				while(itKey2.hasNext()){
+					String strKeyI2 = (String)itKey2.next();
+					q.setParameter(intSerial,mapSqlParam.get(strKeyI2)); 
+					intSerial++;
+				}
+				Object count = q.uniqueResult();
+				PublishSpecialCatDaoImpl.rowCount = Integer.parseInt(count.toString());
+				//
+				intSerial = 0;
+				q = session.createQuery("select a from PublishSpecialCat a where " + strWhereParam );
+				Iterator itKey3 = setKeyOfMap.iterator();
+				while(itKey3.hasNext()){
+					String strKeyI3 = (String)itKey3.next();
+					q.setParameter(intSerial,mapSqlParam.get(strKeyI3)); 
+					intSerial++;
+				}
+				q.setMaxResults(pageSize);
+				q.setFirstResult((pageNo - 1) * pageSize);
+				List<?> resultList = q.list();
+				return resultList;
+				}
+		});
+		pager = new Pager(pageSize, pageNo, PublishSpecialCatDaoImpl.rowCount, list);
+		return pager;
+		
+	}//end list()
+		
+	/////insert///
+	public Integer insert(PublishSpecialCat record) {
+		/*
+		Session session = null;
+		Transaction tx = null;
+		Integer id = null;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.save(record);
+			id = record.getId();
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			throw e;
+			//return record.getId();
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return id;
+		*/
+		Integer integerRet = null; 
+		return (Integer)getHibernateTemplate().save(record);
+	}//end insert()
+			
+	/////get max(id)///
+	public int getMaxShowIndex(final String strEntityName,final String strFieldName ) {  
+		List list = null; 
+		int maxShowIndex = 1;   
+		HibernateCallback callback = new HibernateCallback() {
+			public Object doInHibernate(Session session)  throws HibernateException { 
+				Query q = session.createQuery("select max("+strFieldName+") from "+strEntityName+""); 
+				return q.list(); 
+			} 
+		};
+		list = (List) getHibernateTemplate().execute(callback); 
+		if (list != null){ 
+			if (list.size() == 1) {
+				if (list.get(0)!=null) ///���û�����,����᷵��һ��null 
+					maxShowIndex = ((Integer) list.get(0)).intValue(); 
+			}//end if 
+		}//end if 
+		return maxShowIndex; 
+	}//end  getMaxShowIndex() 
+	
+	/////delete///
+	public boolean delete(PublishSpecialCat record)  {
+		/*
+		Session session = null;
+		Transaction tx = null;
+		boolean b = true;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.delete(record);
+			tx.commit();
+		} catch (HibernateException e) {
+			b = false;
+			throw e;
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return b;
+		*/
+		getHibernateTemplate().delete(record);
+		return true;
+	}//end delete()
+			
+	public boolean delete(Integer id)  {
+		/*
+		PublishSpecialCat record = select(id);
+		Session session = null;
+		Transaction tx = null;
+		boolean b = true;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.delete(record);
+			tx.commit();
+		} catch (HibernateException e) {
+			b = false;
+			throw e;
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return b;
+		*/
+		Object obj = getHibernateTemplate().load(PublishSpecialCat.class,new Integer(id));
+		getHibernateTemplate().delete(obj);
+		return true;
+	}//end delete()
+			
+	/////update///
+	public boolean update(PublishSpecialCat record)  {
+		/*
+		Session session = null;
+		Transaction tx = null;
+		boolean b = true;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			tx = session.beginTransaction();
+			session.update(record);
+			tx.commit();
+		} catch (HibernateException e) {
+			b = false;
+			throw e;
+		} finally {
+			if (tx != null) {
+				tx.rollback();
+			}
+			HibernateSessionFactory.closeSession();
+		}
+			
+		return b;
+		*/
+		getHibernateTemplate().update(record);
+		return true;
+		
+	}//end update()
+			
+	/////select///
+	public PublishSpecialCat select(Integer id)  {
+		/*
+		Session session = null;
+		PublishSpecialCat record = null;
+		try {
+			session = HibernateSessionFactory.currentSession();
+			Query query = session.createQuery("from PublishSpecialCat where id=?");
+			query.setInteger(0, id);
+			record = (PublishSpecialCat) query.uniqueResult();
+			query = null;
+			
+		} catch (HibernateException e) {
+			throw e;
+		} finally {
+			HibernateSessionFactory.closeSession();
+		}
+		
+		return record;
+		*/
+		
+		return (PublishSpecialCat) getHibernateTemplate().get(PublishSpecialCat.class, new Integer(id));
+		
+		
+	}//end select()
+	
+	
+	public PublishSpecialCat selectByName(String name)  {
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Transaction tx=null;
+		try {
+			tx=session.beginTransaction();
+			Criteria criteria=session.createCriteria(PublishSpecialCat.class);
+			criteria.add(Restrictions.eq("type",name));
+			List<PublishSpecialCat> publishSpecialCats=criteria.list();
+			tx.commit();
+			return (PublishSpecialCat)publishSpecialCats.get(0);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+		
+	}//end select()
+	
+	
+	public PublishSpecialCat selectBySpecilChild(String str)  {
+		
+
+		
+	return (PublishSpecialCat) getHibernateTemplate().find("from PublishSpecialCat where type='"+str+"'").get(0);
+		
+		
+	}//end select()
+	
+	
+	public List selectBySpecilChild(Integer pid)  {
+		DetachedCriteria criteria = DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.add(Expression.eq("pid",pid));
+		List<PublishSpecialCat> specialCats= getHibernateTemplate().findByCriteria(criteria);
+		return specialCats;
+		}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	}
+	@SuppressWarnings("unchecked")
+	public List<PublishSpecialCat> getPublishSpecialCatList() {
+		List<PublishSpecialCat> list=getHibernateTemplate().find("select specialcat.name,specialcat.id,specialcat.pid,specialcat.title,specialcat.target,specialcat.icon,specialcat.iconOpen From PublishSpecialCat specialcat  order by specialcat.id desc");
+		return list;
+	}
+
+	public int RootId() {
+		List<PublishSpecialCat> publishSpecialCats=this.getHibernateTemplate().find("from PublishSpecialCat special where special.type='total'");
+		int id=publishSpecialCats.get(0).getId();
+		return id;
+	}
+	public int albumnId() {
+		List<PublishSpecialCat> publishSpecialCats=this.getHibernateTemplate().find("from PublishSpecialCat special where special.type='special'");
+		int id=publishSpecialCats.get(0).getId();
+		return id;
+	}
+	public int storyPid() {
+		List<PublishSpecialCat> publishSpecialCats=this.getHibernateTemplate().find("from PublishSpecialCat special where special.type='story' and special.pid=1");
+		int id=publishSpecialCats.get(0).getId();
+		return id;
+	}
+	public List<PublishSpecialCat> specialCatOfStory() {
+		int storyid=storyPid();
+		List<PublishSpecialCat> publishSpecialCats=this.getHibernateTemplate().find("from PublishSpecialCat special where special.pid="+storyid);
+		
+		return publishSpecialCats;
+	}
+	public List allWorkSpecial(User user) {
+		int pid=albumnId();
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		   
+	    List<PublishSpecialCat> specialCats=null;
+	    Transaction tx = null;
+	    try {
+	    	tx = session.beginTransaction();
+	    	Query queryObject = session.createQuery("from PublishSpecialCat as special where special.pid="+pid+" and special.user.id = " + user.getId());
+	    	specialCats=queryObject.list();
+	    	tx.commit();
+		}catch(RuntimeException e){
+			if(tx != null){
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}finally{
+			if(session.isOpen()){ 
+				   session.close(); 
+			} 
+		}
+		return specialCats;
+	}
+	public List AllSpecialIdByUserName(User user) {
+		String ailas="specialcat";
+		int superPid=RootId();
+		DetachedCriteria criteria = DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.createAlias("user", "user");
+		criteria.add(Restrictions.eq("user",user));
+		criteria.add(Restrictions.sqlRestriction("type <> 'total'"));
+		criteria.add(Restrictions.sqlRestriction("type <> 'story'"));
+		criteria.add(Restrictions.sqlRestriction("type <> 'special'"));
+	
+		//criteria.add(Restrictions.or(Restrictions.eq("type","isDefault'")));
+		//criteria.add(Restrictions.eq("pid",superPid));
+		
+		List<PublishSpecialCat> list = this.getHibernateTemplate().findByCriteria(criteria);
+		List<PublishSpecialCat>cats= findByType("isDefault");
+		if(cats!=null&&cats.size()>0){
+			list.add(0, cats.get(0));
+		}
+//		List idList=new ArrayList();
+//		for(PublishSpecialCat publishSpecialCat:list){
+//			idList.add(publishSpecialCat.getId());			
+//		}
+		return list;
+	}
+	public List storySpecialIdByUserName(User user) {
+		String ailas="specialcat";
+		int superPid=RootId();
+		DetachedCriteria criteria = DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.createAlias("user", "user");
+		criteria.add(Restrictions.eq("user",user));
+		criteria.add(Restrictions.sqlRestriction("type <> 'total'"));
+		criteria.add(Restrictions.sqlRestriction("type <> 'special'"));
+		criteria.add(Restrictions.eq("pid",3));
+		List<PublishSpecialCat> list = this.getHibernateTemplate().findByCriteria(criteria);
+		List<PublishSpecialCat>cats= findByType("isDefault");
+		if(cats!=null&&cats.size()>0){
+			list.add(0, cats.get(0));
+		}
+//		List idList=new ArrayList();
+//		for(PublishSpecialCat publishSpecialCat:list){
+//			idList.add(publishSpecialCat.getId());			
+//		}
+		return list;
+	}
+	
+	public PublishSpecialCat defaultOfSpecial(){
+		DetachedCriteria criteria=DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.add(Expression.eq("type","isDefaultOfStory").ignoreCase());
+//		criteria.add(Expression.eq("pid",0));
+		List<PublishSpecialCat> list=this.getHibernateTemplate().findByCriteria(criteria);
+		
+		return list.get(0);
+	}
+	public List AllSpecialIdByUserName1(User user) {
+		String ailas="specialcat";
+		int superPid=RootId();
+		DetachedCriteria criteria = DetachedCriteria.forClass(PublishSpecialCat.class,ailas);
+		criteria.add(Example.create(user));
+		//select * from publishspecialcat where type <> 'total'
+		criteria.add(Restrictions.sqlRestriction("type <> 'total'"));
+		criteria.add(Restrictions.sqlRestriction("type <> 'story'"));
+		criteria.add(Expression.eq("pid",superPid));
+		
+		List<PublishSpecialCat> list = this.getHibernateTemplate().findByCriteria(criteria);
+//		List idList=new ArrayList();
+//		for(PublishSpecialCat publishSpecialCat:list){
+//			idList.add(publishSpecialCat.getId());			
+//		}
+		return list;
+	}
+	public List AllSpecialByUser(final User user) {
+		Pager pager = null;
+		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				//int superPid=RootId();
+				//String sql="select special.id,special.pid,special.name,special.type from PublishSpecialCat  special where special.user.id="+user.getId()+" and special.type <> 'story'";
+				
+				
+				Criteria criteria = session.createCriteria(PublishSpecialCat.class);
+				criteria.add(Restrictions.eq("user.id", user.getId()));// type <> 
+//				criteria.add(Restrictions.not(Restrictions.eq("type", "story")));
+//				criteria.add(Restrictions.not(Restrictions.eq("checkboxId", "1")));
+	             return  criteria.list();
+			}
+		});
+		pager = new Pager(6, 1, PublishSpecialCatDaoImpl.rowCount, list);
+		return pager.getResultList();
+	}
+	public Pager allOfType(final String username, final int pageSize,
+			final int pageNo) {
+		Pager pager = null;
+		// ??????HibernateCallback????4??��??
+		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			// ???HibernateCallback?????????????
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				// ???Hibernate??????
+				// List result = session.createQuery(hql).setParameter(0,
+				// value).setFirstResult(offset).setMaxResults(pageSize).list();
+				Criteria criteria = session
+						.createCriteria(PublishSpecialCat.class);
+				PublishSpecialCatDaoImpl.rowCount = ((Integer) criteria
+						.setProjection(Projections.rowCount()).uniqueResult())
+						.intValue();
+				criteria.setProjection(null);
+				criteria.setFirstResult(pageSize * (pageNo - 1));
+				criteria.setMaxResults(pageSize);
+				criteria.setProjection(Projections.groupProperty("type"));
+				List<?> result = criteria.list();
+
+				return result;
+			}
+		});
+		List<PublishSpecialCat> specialCats = new ArrayList<PublishSpecialCat>();
+		for (Object type : list) {
+			specialCats = findByType(type.toString());
+		}
+		pager = new Pager(pageSize, pageNo, PublishSpecialCatDaoImpl.rowCount,
+				specialCats);
+		return pager;
+
+	}
+	public Pager publishPagerBySpecialId(final Integer catId,final int pageSize,final int pageNo) {
+		Pager pager = null;	
+		//??????HibernateCallback
+		List list = getHibernateTemplate().executeFind(new HibernateCallback()	{
+			//???HibernateCallback
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String sql="select p.id,p.name,p.smallPic,p.biggerPic from Publish p where p.publishSpecialCatid="+catId+" order by p.hit desc";
+				return session.createSQLQuery(sql)
+				.setMaxResults(pageSize)
+				.setFirstResult((pageNo - 1) * pageSize)
+				.setResultTransformer(Transformers.aliasToBean(Publish.class)).list();
+			}
+		});
+		pager = new Pager(pageSize,pageNo, PublishSpecialCatDaoImpl.rowCount, list);
+		return pager;
+	}
+	
+	public List<PublishSpecialCat> findByType(String type) {
+		DetachedCriteria dc = DetachedCriteria
+				.forClass(PublishSpecialCat.class);
+		dc.add(Restrictions.eq("type", type));
+		return this.getHibernateTemplate().findByCriteria(dc);
+	}
+
+	public PublishSpecialCat findByUser(User user) {
+		// TODO Auto-generated method stub
+		int superId=RootId();
+		DetachedCriteria criteria=DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.add(Expression.eq("type","special"));
+		criteria.add(Expression.eq("pid",superId));
+		List<PublishSpecialCat> publishSpecialCats=this.getHibernateTemplate().findByCriteria(criteria);
+		if (publishSpecialCats.size()==0) {
+			return null;
+		}else {
+			PublishSpecialCat publishSpecialCat=(PublishSpecialCat)this.getHibernateTemplate().findByCriteria(criteria).get(0);
+			return publishSpecialCat;	
+		}
+		
+	}
+	public PublishSpecialCat findByUser2(User user) {
+		// TODO Auto-generated method stub
+		int superId=RootId();
+		DetachedCriteria criteria=DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.add(Expression.eq("type","story"));
+		criteria.add(Expression.eq("pid",superId));
+		List<PublishSpecialCat> publishSpecialCats=this.getHibernateTemplate().findByCriteria(criteria);
+		if (publishSpecialCats.size()==0) {
+			return null;
+		}else {
+			PublishSpecialCat publishSpecialCat=(PublishSpecialCat)this.getHibernateTemplate().findByCriteria(criteria).get(0);
+			return publishSpecialCat;	
+		}
+		
+	}
+	public PublishSpecialCat findAlbumn() {
+		DetachedCriteria criteria=DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.add(Expression.eq("type","special"));
+		List<PublishSpecialCat> list=this.getHibernateTemplate().findByCriteria(criteria);
+		
+		return list.get(0);
+		
+	} 
+	public PublishSpecialCat findAlbumn2() {
+		DetachedCriteria criteria=DetachedCriteria.forClass(PublishSpecialCat.class);
+		criteria.add(Expression.eq("type","story"));
+		List<PublishSpecialCat> list=this.getHibernateTemplate().findByCriteria(criteria);
+		
+		return list.get(0);
+		
+	} 
+	/**
+	 * String ailas="specialcat";
+		int superPid=RootId();
+		DetachedCriteria criteria = DetachedCriteria.forClass(PublishSpecialCat.class,ailas);
+		criteria.add(Expression.eq("user", user)); 
+		//select * from publishspecialcat where type <> 'total'
+		criteria.add(Restrictions.sqlRestriction("type <> 'total'"));
+		criteria.add(Restrictions.sqlRestriction("type <> 'story'"));
+		criteria.add(Expression.eq("pid",superPid));
+		List<PublishSpecialCat> list = this.getHibernateTemplate().findByCriteria(criteria);
+	 */
+
+	public List selectBySpecilChild2(Integer pid, User user) {
+		    Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		   
+		    List<PublishSpecialCat> specialCats=null;
+		    Transaction tx = null;
+		    try {
+		    	tx = session.beginTransaction();
+		    	Query queryObject = session.createQuery("from PublishSpecialCat as special where special.pid="+pid+" and special.user.id = " + user.getId());
+		    	specialCats=queryObject.list();
+		    	tx.commit();
+			}catch(RuntimeException e){
+				if(tx != null){
+					tx.rollback();
+				}
+				e.printStackTrace();
+			}finally{
+				if(session.isOpen()){ 
+					   session.close(); 
+				} 
+			}
+			return specialCats;
+			}
+	
+	
+}//end class

@@ -1,0 +1,510 @@
+#divContent .sort{
+	padding:10px 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+	z-index:100;
+	height:30px;
+	background:#fff;
+	}
+#divContent .sort table .td1{
+	padding-right:10px;
+	width:50px;
+	text-align:right;
+	}
+#divContent .sort table .td2{
+	padding-right:20px;
+	
+	}
+	
+
+
+
+
+
+
+
+
+#phoStroyContent{
+	position: relative;
+    top: 0;
+    left: 0;
+	font-size:12px;
+	color:#848484;
+	font-family:"宋体";
+	text-align:left;
+    width: 1180px;
+	/*overflow:hidden;*/
+	margin:0 auto;
+	}
+
+#phoStroyContent .phoStroyContentUl {
+    position:relative;
+	top:0;
+	left:0;
+	margin-left:-13px;
+	*margin-left:0px;
+	}
+#phoStroyContent  a{
+	_cursor:pointer;
+	}
+#phoStroyContent  li{
+	position:relative;
+	top:0;
+	left:0;
+	margin-left:13px;
+	#margin-left:10px;
+	_margin-left:5px;
+	width:285px;
+	height:340px;
+	margin-top:10px;
+	float:left;
+	background:#FFFFFF;
+	}
+
+	
+
+/*图片内容*/
+
+
+/*背景内容*/	
+
+#phoStroyContent .phoStroyContentUl .active  .nowtop{
+	display:block;
+	}
+	
+#phoStroyContent  li .phoStroyContentLi .nowtop{
+	display:none;
+	position: absolute;
+    top: 0;
+	left:0;
+	height: 285px;
+    width: 285px;
+	text-align:center;
+	}
+	
+	
+		
+#phoStroyContent  li .phoStroyContentLi .nowtop .bj{
+	position: absolute;
+    top: 0;
+	left:0;
+	height: 285px;
+    width: 285px;
+	background:#000000;
+	filter:alpha(opacity=70);    /* IE 4-7 */     
+	opacity: 0.7;              /* Firefox, Safari(WebKit), Opera */
+	}	
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc{
+	position: absolute;
+    top: 0;
+	left:0;
+	height: 285px;
+    width: 285px;
+	text-align:left;
+	color:#aeacad;
+	}
+	
+
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picName{
+	height:40px;
+	line-height:50px;
+	padding-left:20px;
+	font-family:"微软雅黑";
+	font-size:17px;
+	color:#d6d6d4;
+	}
+
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divNum{
+	height:30px;
+	line-height:30px;
+	padding-left:20px;
+	}
+
+
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divTime{
+	border-bottom:1px solid #afadae;
+	height:30px;
+	margin-top:10px;
+	padding-left:20px;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divTime .time{
+	padding-left:24px;
+	padding-top:5px;
+	padding-bottom:5px;
+	background:url(../../../public/images/topBarIcon.png) 0 -147px no-repeat;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divTime .time2{
+	padding-left:24px;
+	margin-left:40px;
+	padding-top:5px;
+	padding-bottom:5px;
+	background:url(../../../public/images/topBarIcon.png) 0 -97px no-repeat;
+	}	
+
+	
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picUser{
+	position: relative;
+    top: 0;
+	left:0;
+	height:60px;
+	width:285px;
+	}
+	
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picUser .usti{
+	position: relative;
+    top: 0px;
+	left:0;
+	height:25px;
+	line-height:25px;
+	padding-left:20px;
+	}	
+	
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picUser .usti .syq{
+	margin-left:3px;
+	margin-right:3px;
+	}	
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picUser .usti .sp2{
+	margin-left:15px;
+	}	
+	
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divShare{
+	width:260px;
+	height:20px;
+	margin-top:10px;
+	margin-left:20px;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divShare a{
+	padding-left:20px;
+	margin-right:5px;
+	color:#9b9b9b;
+	_margin-top:5px;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divShare .view{
+	background:url(../../../public/images/11.png) no-repeat 0 -2px;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divShare .collect{
+	background:url(../../../public/images/11.png) no-repeat 0 -21px;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .divShare .good{
+	background:url(../../../public/images/11.png) no-repeat 0 -40px;
+	}
+	
+	
+
+	
+
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit{
+	position: absolute;
+    bottom:15px;
+	left:0;
+	height:50px;
+	width:285px;
+	}
+
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit a{
+	display:inline-block;
+	width:42px;
+	height:42px;
+	margin-left:20px;
+	cursor:pointer;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit .xj{
+	background:url(../../../public/images/edit3.png) -45px -263px no-repeat;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit .del{
+	background:url(../../../public/images/edit3.png) 0 -525px no-repeat;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit .down{
+	background:url(../../../public/images/edit3.png) 0 -570px no-repeat;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit .edit{
+	background:url(../../../public/images/edit3.png) 0 0 no-repeat;
+	}
+#phoStroyContent  li .phoStroyContentLi .nowtop .bjc .picEdit .view{
+	background:url(../../../public/images/edit3.png) 0 -44px no-repeat;
+	}	
+/*背景内容*/
+
+
+/*图片内容*/
+
+
+#phoStroyContent .photographyStoryLiHead{
+	position:relative;
+	top:0;
+	left:0;
+	width:285px;
+	height:285px;
+	}
+
+
+	
+	
+#phoStroyContent .photographyStoryLiHead img{
+	max-width:285px;
+	max-height:285px;
+	}
+#phoStroyContent .photographyStoryLiCon{
+	position:relative;
+	top:0;
+	left:0;
+	width:285px;
+	height:110px;
+	}
+#phoStroyContent .photographyStoryLiConTitle{
+	width:285px;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	overflow:hidden;
+	}
+#phoStroyContent .photographyStoryLiConTitle span{
+	font-size:16px;
+	font-family:"微软雅黑";
+	color:#000000;
+	}
+#phoStroyContent .photographyStoryLiConInfo{
+	width:275px;
+	height:45px;
+	margin-top:5px;
+	padding-left:10px;
+	overflow:hidden;
+	color:#aeaeae;
+	line-height:23px;
+	}
+
+
+
+
+
+
+
+#phoStroyContent .photographyStoryInfo{
+	position:relative;
+	top:0;
+	left:0;
+	width: 285px;
+	height: 54px;
+	}	
+	
+#phoStroyContent .photographyStoryInfo  .headImg{
+	width: 60px;
+	height: 54px;
+    left: 0;
+    position: absolute;
+    top: 0;
+	}
+#phoStroyContent .photographyStoryInfo .headImg .headImgCon{
+	width: 40px;
+	height: 40px;
+    left: 9px;
+    position: absolute;
+    top: 7px;
+	}
+#phoStroyContent .photographyStoryInfo  .headImg .head{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}
+#phoStroyContent .photographyStoryInfo  .headImg .radius{
+	width: 40px;
+	height: 40px;
+	left: 0;
+    position: absolute;
+    top: 0;
+	}	
+#phoStroyContent .photographyStoryInfo  .info{
+	width: 225px;
+	height: 54px;
+    left: 60px;
+    position: absolute;
+    top: 0;
+	}
+#phoStroyContent .photographyStoryInfo  .info .name{
+	height: 30px;
+	line-height: 30px;
+	color:#000;
+	font-family:"微软雅黑";
+	font-size:14px;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail{
+    left: 0;
+    position: relative;
+    top: 0;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail a {
+    color: #A0A0A0;
+	text-decoration:none;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail .userPositionName{
+    background:url(../../../public/images/11.png) no-repeat 0 -95px;
+    padding-left: 20px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail .userPositionNameMan{
+    background:url(../../../public/images/11.png) no-repeat 0 -208px;
+    padding-left: 20px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail .userPositionAddress{
+    background:url(../../../public/images/11.png) no-repeat 0 -114px;
+	margin-left: 10px;
+    padding-left: 18px;
+	padding-top:2px;
+	padding-bottom:2px;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail .userPositionAddress .shi{
+	margin-left:8px;
+	}	
+#phoStroyContent .photographyStoryInfo  .info .detail .pstype{
+    right: 13px;
+    position: absolute;
+    top: 0;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail .pstype .bar {
+    color: #b09d7c;
+    float: left;
+    font-size: 12px;
+    height: 18px;
+    left: 0;
+    margin-right: 15px;
+    padding-left: 10px;
+    position: relative;
+    top: 0;
+	background:url(../../../back/pubimg/images/background.png) 0 0px no-repeat;
+	}
+#phoStroyContent .photographyStoryInfo  .info .detail .pstype .bar i {
+    position: absolute;
+    right: -11px;
+    top: 0;
+	width:12px;
+	height:18px;
+	background: url(../../../back/pubimg/images/background.png) no-repeat 0px -89px;
+	}
+
+
+/*图片内容*/
+
+
+.ppointPagingN {
+    border: 1px solid #f2f2f2;
+	}
+	
+.viewBjCon{
+	cursor:pointer;
+	}
+	
+	
+	
+	
+	
+/*不通过原因*/
+#noPassReason{
+	display:none;
+	position:relative;
+	top:0;
+	left:0;
+	width: 374px;
+	height: 330px;
+	color:#5d5d5d;
+	background:#fff;
+	text-align:left;
+	}
+#noPassReason table .td1{
+	width:60px;
+	height:35px;
+	padding-right:10px;
+	text-align:right;
+	}
+
+#noPassReason table .other .otherCon{
+	position:relative;
+	top:0;
+	left:0;
+    height: 73px;
+	width:256px;
+	display:inline-block;
+	padding-top:10px;
+	}
+#noPassReason table .other .otherCon label{
+	position:absolute;
+	top:0;
+	left:0;
+	}
+#noPassReason table textarea{
+	position:absolute;
+	top:0;
+	left:30px;
+	width:190px;
+    border: 1px solid #E9E8E6;
+    height: 60px;
+    line-height: 16px;
+    overflow: auto;
+    padding: 5px;
+    resize: none;
+	font-size:12px;
+	background:#fcfcfc;
+	}
+#noPassReason .top{
+	width: 344px;
+	height: 20px;
+	padding:12px 15px;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    color: #000000;
+	border-bottom:1px solid #ECECEC;
+	}
+#noPassReason .opeation{
+	width: 274px;
+	height: 40px;
+	padding:25px 40px;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    color: #000000;
+	}
+#noPassReason .opeation .pass {
+    background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+
+#noPassReason .opeation .pass:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+#noPassReason .opeation .pass:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	}
+#noPassReason .opeation .noPass {
+    background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+	margin-left:28px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+
+#noPassReason .opeation .noPass:hover{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+#noPassReason .opeation .noPass:active{
+	background:url(../../../public/images/buttonGroup01.png) no-repeat 0 -1136px;
+	color: #000000;
+	}
+/*不通过原因*/

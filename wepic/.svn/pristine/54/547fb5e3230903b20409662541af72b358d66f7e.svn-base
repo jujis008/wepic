@@ -1,0 +1,89 @@
+.filtrate-sort{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 1180px;
+	height:54px;
+	margin-top:5px;
+	color:#848484;
+	}
+
+.filtrate-sort .RecordHead{
+	position: relative;
+    top: 0;
+    left: 0;
+	font-size:12px;
+	font-family:"宋体";
+    width: 1180px;
+	height:55px;
+	background:#ffffff;
+	z-index:10;
+	}
+.filtrate-sort .RecordHead .tableHead{
+	position: relative;
+    top: 10px;
+	height:30px;
+	width:1180px;
+    left: 0;
+	text-align:left;
+	}
+.filtrate-sort .RecordHead .tableHead .td1{
+	width:53px;
+	text-align:center;
+	}
+.filtrate-sort .RecordHead .tableHead .td2{
+	width:150px;
+	}
+.filtrate-sort .RecordHead .tableHead .td5{
+	width:150px;
+	vertical-align:bottom;
+	}
+.filtrate-sort .RecordHead .tableHead .timeInputStr {
+    border: 1px solid #E8E8E8;
+    border-radius: 3px;
+    color: #535353;
+    font-size: 12px;
+    height: 21px;
+    padding: 3px 10px;
+    width: 70px;
+	margin-left:5px;
+	margin-right:5px;
+	}	
+.filtrate-sort .RecordHead .tableHead .inquire {
+    background:url(../../../../../public/images/buttonGroup01.png) no-repeat 0 -182px;
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 27px;
+    margin-right: 10px;
+    text-align: center;
+    width: 86px;
+	}	
+
+.filtrate-sort .RecordHead .tableHead .inquire:hover{
+	background:url(../../../../../public/images/buttonGroup01.png) no-repeat 0 -209px;
+	}
+.filtrate-sort .RecordHead .tableHead .inquire:active{
+	background:url(../../../../../public/images/buttonGroup01.png) no-repeat 0 -236px;
+	}
+	
+
+
+
+.pic-con{
+    width: 1180px;
+    margin:5px auto 40px;
+	color:#aeaeae;
+	}
+.pic-con .pic-item{
+    width: 1180px;
+	height:285px;
+    position: relative;
+    top: 0;
+    left: 0;
+	background:#fff;
+	margin-top:10px;
+	}

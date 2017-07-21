@@ -1,0 +1,10 @@
+$(function(){
+	
+	divLiBarClick("filterWrapperSort");   //排序
+	
+	
+	
+	clickAddClass("#photographyStoryUl");   //内容
+	});
+	
+	

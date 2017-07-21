@@ -1,0 +1,986 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../public/images/logoSmall.ico"/>
+
+<title>wepic管理员_用户_冻结列表</title>
+
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+
+
+
+
+<!--公共js-->
+
+<script type="text/javascript" src="../publicAdministrator/js/publicAdministrator.js"></script>
+
+<!--公共css-->
+<link type="text/css" rel="stylesheet" href="../publicAdministrator/css/publicAdministrator.css" />
+<link type="text/css" rel="stylesheet" href="../../public/css/public.css" />
+
+
+<link type="text/css" rel="stylesheet" href="css/userPersonalList.css" />
+<script type="text/javascript" src="js/userPersonalList.js"></script>
+
+</head>
+
+<body>
+<div id="container">
+	
+    
+<!-- 头部结束-->
+	<!-- logo行-->
+    <div id="divTop">
+    	<div class="divtop">
+        	<div class="divLogo">
+                <a class="imgLogo" href="http://www.wepic.cn/" target="_self" title="唯图网_商业拍摄 原创商业图片交易平台">
+                    <img src="../../public/images/wepic_logo.png" alt="唯图网"/>
+                    <p><span class="spanLogo">商业拍摄</span><span>原创商业图片交易平台</p>
+                </a>
+            </div>
+            
+            <div class="divAdminSpan">
+                <span class="center">管理员中心</span>
+                <span>V.2.0.0</span>
+            </div>
+            
+            <div class="divTopPperation">
+                <div class="left">
+                	<div class="one">SuperAdmin</div>
+                	<div class="two">超级管理员</div>
+                </div>
+                <div class="configuration">
+                	<a href="javascript:">
+                    	<div class="config"></div>
+						<p>配置中心</p>
+                    </a>
+                </div>
+                <div class="divExit">
+                	<a href="javascript:">
+                    	<div class="exit"></div>
+						<p>安全退出</p>
+                    </a>
+                </div>
+            </div>
+    	</div>
+    
+                    
+   	</div>
+    <!-- logo行-->
+    
+    
+    
+    
+    <!-- 分割线-->
+    <div id="divSeparation">
+    	<div id="divSeparation2">
+        	<div id="divSeparation3">
+            	<div id="divSeparation4">
+                	<div id="divSeparation5">
+                    </div>
+                </div>
+        	</div>
+        </div>
+    </div>
+    <!-- 分割线over -->
+    
+	
+    <!-- 导航 -->
+  	<div id="mainbar">
+    	<div id="mainbarCenter">
+    		<ul>
+        		<li id="index">
+            		<a href="javascript:">首页</a>
+            	</li>
+            	<li id="user">
+            		<a href="javascript:">用户</a>
+            	</li>
+            	<li id="production" class="active">
+            		<a href="javascript:">作品</a>
+           	 	</li>
+            	<li id="project">
+            		<a href="javascript:">项目</a>
+            	</li>
+                <li id="capital">
+            		<a href="javascript:">资金</a>
+            	</li>
+            	<li id="transaction">
+            		<a href="javascript:">交易</a>
+           	 	</li>
+            	<li id="complaint">
+            		<a href="javascript:">投诉</a>
+            	</li>
+                <li id="subscription">
+            		<a href="javascript:">订阅</a>
+            	</li>
+                <li id="message">
+            		<a href="javascript:">消息</a>
+            	</li>
+        	</ul>
+            
+            <div class="onLine">
+                <span>当前在线：</span>
+                <span>423432</span>人
+            </div>
+        </div>
+        
+        
+	</div>
+    <!-- 导航  end-->
+    
+     <!-- 二级导航 -->
+  	<div id="assistantBar">
+    	<div class="twoStage" id="divTwoStage">
+        	<a href="userSituationIndex.html"><div class='bar'><span>用户概况</span><i></i></div></a>
+            
+        	<a href="picWorkAuthstrList.html"><div class='bar active'><span>用户列表</span><i></i></div></a>
+            
+            <a href="autonymAttestationCheckPresonalList.html"><div class='bar'><span>实名认证</span><i></i></div></a>
+            
+            <a href="userDateIndex.html"><div class='bar'><span>用户数据</span><i></i></div></a>
+            
+        </div>
+    	
+        <div id="divThreeStage">
+            
+            <div class="threeStage">
+                <a href="userListPersonal.html"><div class='bar'><span>个人</span><i></i></div></a>
+                
+                <a href="userlListEnterprise.html"><div class='bar'><span>机构</span><i></i></div></a>
+                
+                <a href="userlListNoIdentity.html"><div class='bar'><span>无身份类型</span><i></i></div></a>
+                
+            	<a href="userlListFreeze.html"><div class='bar active'><span>冻结账户</span><i></i></div></a>
+                
+            	<a href="userlListBlacklist.html"><div class='bar'><span>黑名单</span><i></i></div></a>
+                
+            </div>
+            
+        </div>
+    </div>
+    <!-- 二级导航  end-->
+    
+    
+    
+    
+    
+    <!--内容-->
+    <div class="container_body">
+        <div class="div_job">
+           <div class="div_left">冻结账户列表</div>
+            
+           <div class="all_job" id="allJobFiltrate">
+              <div class='bar active'><span>全部职业</span><i></i></div>
+              
+              <div class='bar'><span>摄影师</span><i></i></div>
+              
+              <div class='bar'><span>模特</span><i></i></div>
+              
+              <div class='bar'><span>经纪人</span><i></i></div>
+              
+              <div class='bar'><span>艺人</span><i></i></div>
+              
+              <div class='bar'><span>设计师</span><i></i></div>
+              
+          </div>
+          
+        	<div class="div_search">
+                <input class="text" type="text"/>
+                <i class="i_name"></i>
+            </div>
+            
+            
+        </div>
+        
+        
+        <div class="div_container">
+        	<table id="tablePersonList">
+            <!--个人-->
+            	<tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">名字字名字</span>
+                                <a class="approveNo" title="未实名认证"></a>
+                               <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名:</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                            <!--男--><!--<a class="userPositionNameG" title="年龄"><span>56</span>岁</a>-->
+                            <a class="userPositionName" title="年龄"><span>56</span>岁</a>
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>真实姓名:</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机:</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>用户类型:</span>
+                            <span>摄影师</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>职业:</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额:</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额:</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--个人-->
+                
+                
+                <!--企业-->
+                <tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">机构名</span>
+                                <!--<a class="approveNo" title="未实名认证"></a>-->
+                                 <a class="approveQy" title="企业实名认证"></a>
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名：</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                        
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>运营者姓名：</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机：</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>机构类型：</span>
+                            <span>政府机构</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>行业：</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>模特经纪</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额：</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额：</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--企业-->
+                
+                
+            <!--个人-->
+            	<tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">名字字名字</span>
+                                <a class="approveNo" title="未实名认证"></a>
+                               <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名:</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                            <!--男--><!--<a class="userPositionNameG" title="年龄"><span>56</span>岁</a>-->
+                            <a class="userPositionName" title="年龄"><span>56</span>岁</a>
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>真实姓名:</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机:</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>用户类型:</span>
+                            <span>摄影师</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>职业:</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额:</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额:</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--个人-->
+                
+                
+                <!--企业-->
+                <tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">机构名</span>
+                                <!--<a class="approveNo" title="未实名认证"></a>-->
+                                 <a class="approveQy" title="企业实名认证"></a>
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名：</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                        
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>运营者姓名：</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机：</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>机构类型：</span>
+                            <span>政府机构</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>行业：</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>模特经纪</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额：</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额：</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--企业-->
+            <!--个人-->
+            	<tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">名字字名字</span>
+                                <a class="approveNo" title="未实名认证"></a>
+                               <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名:</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                            <!--男--><!--<a class="userPositionNameG" title="年龄"><span>56</span>岁</a>-->
+                            <a class="userPositionName" title="年龄"><span>56</span>岁</a>
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>真实姓名:</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机:</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>用户类型:</span>
+                            <span>摄影师</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>职业:</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额:</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额:</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--个人-->
+                
+                
+                <!--企业-->
+                <tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">机构名</span>
+                                <!--<a class="approveNo" title="未实名认证"></a>-->
+                                 <a class="approveQy" title="企业实名认证"></a>
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名：</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                        
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>运营者姓名：</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机：</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>机构类型：</span>
+                            <span>政府机构</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>行业：</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>模特经纪</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额：</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额：</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--企业-->
+            <!--个人-->
+            	<tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">名字字名字</span>
+                                <a class="approveNo" title="未实名认证"></a>
+                               <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名:</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                            <!--男--><!--<a class="userPositionNameG" title="年龄"><span>56</span>岁</a>-->
+                            <a class="userPositionName" title="年龄"><span>56</span>岁</a>
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>真实姓名:</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机:</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>用户类型:</span>
+                            <span>摄影师</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>职业:</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额:</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额:</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--个人-->
+                
+                
+                <!--企业-->
+                <tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">机构名</span>
+                                <!--<a class="approveNo" title="未实名认证"></a>-->
+                                 <a class="approveQy" title="企业实名认证"></a>
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名：</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                        
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>运营者姓名：</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机：</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>机构类型：</span>
+                            <span>政府机构</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>行业：</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>模特经纪</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额：</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额：</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--企业-->
+            <!--个人-->
+            	<tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">名字字名字</span>
+                                <a class="approveNo" title="未实名认证"></a>
+                               <!-- <a class="approveHave" title="个人实名认证"></a>-->
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名:</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                            <!--男--><!--<a class="userPositionNameG" title="年龄"><span>56</span>岁</a>-->
+                            <a class="userPositionName" title="年龄"><span>56</span>岁</a>
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>真实姓名:</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机:</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>用户类型:</span>
+                            <span>摄影师</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>职业:</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>摄影师</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额:</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额:</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--个人-->
+                
+                
+                <!--企业-->
+                <tr>
+                	<td class="td_one">
+                    	<div class="headImg">
+                        	<img src="../../back/pubimg/pic/3.png" class="headimg"/>
+                        </div>
+                         <div class="info">
+                            <div class="name">
+                                <span class="namechar" title="名字全称">机构名</span>
+                                <!--<a class="approveNo" title="未实名认证"></a>-->
+                                 <a class="approveQy" title="企业实名认证"></a>
+                                <a class="gradeFour"></a>
+                            </div>
+                            <div class="detail">
+                                <span>注册时间：</span>
+                                <span>2012-12-20</span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterOne">
+                    	<div class="td_div_one">
+                        	<span>用户名：</span>
+                            <span>76786876@87.com</span>
+                        </div>
+                        <div class="td_div_two">
+                        
+                            <a class="userPositionAddress" title="地址"><span>上海</span><span class="shi">嘉定</span></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterTwo">
+                    	<div class="td_div_one">
+                        	<span>运营者姓名：</span>
+                            <span>未认证</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>手机：</span>
+                            <span>13212012452</span>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterThree">
+                    	<div class="td_div_one">
+                        	<span>机构类型：</span>
+                            <span>政府机构</span>
+                        </div>
+                        <div class="td_div_two">
+                        	<span>行业：</span>
+                            <a class="pstype" title="职业"><div class='bar active'><span>模特经纪</span><i></i></div></a>
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterFour">
+                    	<div class="td_div_one">
+                        	<span>账户总额：</span>
+                            <span>23123</span>元
+                        </div>
+                        <div class="td_div_two">
+                        	<span>冻结金额：</span>
+                            <span>2312</span>元
+                        </div>
+                    </td>
+                    
+                    <td class="td_laterView">
+                    	<div class="td_div_one">
+                        	<span>查看详情</span>
+                        </div>
+                    </td>
+                </tr>
+            	<!--企业-->
+            </table>
+        
+        </div>
+        
+        
+        
+        
+         <!--翻页-->
+                <div class="ppointPagingthis">
+        <div class="ppointPaging">            
+            <table class="tablePpointPaging">
+                	<tr>
+                    	<td class="ppointPagingOne"><a href="javascript:"></td>
+                        <td class="ppointPagingPre"><a href="javascript:"></td>
+                    	<td class="ppointPagingN"><a href="javascript:">1</td>
+                        <td class="ppointPagingN"><a href="javascript:">2</td>
+                    	<td class="ppointPagingN"><a href="javascript:">3</td>
+                        <td class="ppointPagingN"><a href="javascript:">4</td>
+                    	<td class="ppointPagingN"><a href="javascript:">5</td>
+                        <td class="ppointPagingN"><a href="javascript:">6</td>
+                    	<td class="ppointPagingN"><a href="javascript:">7</td>
+                        <td class="ppointPagingN"><a href="javascript:">8</td>
+                    	<td class="ppointPagingN"><a href="javascript:">9</td>
+                        <td class="ppointPagingN"><a href="javascript:">10</td>
+                    	<td class="ppointPagingNext"><a href="javascript:"></td>
+                        <td class="ppointPagingLast"><a href="javascript:"></td>
+                    </tr>
+                </table>
+        </div>
+        		</div>
+        <!--翻页-->
+    </div>
+        
+    <!--内容-->
+    
+    
+        
+    <!--foot 开始-->
+    <div id="divFooter">
+    	<div class="divfooter">
+        	<a href="http://www.wepic.cn"  target="_blank" class="toIndex">网站首页</a>|
+        	<a href="http://www.cnzz.com"  target="_blank" class="toStation">站长统计</a>|
+            <a href="http://tongji.baidu.com/web/welcome/login"  target="_blank" class="toBaiduStation">百度站长工具</a>|
+            <a href="http://e.baidu.com" target="_blank" class="toBaiduGeneralize">百度推广</a>
+        </div>
+    </div>
+    
+    <!--foot 结束-->
+    
+	<div id="goTopBtn" style="display:none;"></div>
+</div>
+<!--[if lte IE 6]>
+<script src="../../public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a , i');
+    </script>
+<![endif]-->
+
+
+</body>
+</html>

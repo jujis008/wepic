@@ -1,0 +1,102 @@
+package com.wetuo.wepic.publish.service ;
+ 
+import java.util.*;
+
+import com.wetuo.wepic.publish.beans.PublishCat;
+import com.wetuo.wepic.publish.dao.PublishCatDao;
+import com.wetuo.wepic.common.hibernate.Pager;
+ 
+public class PublishCatServiceImpl implements PublishCatService {
+	PublishCatDao domainDao;
+	public PublishCatDao getPublishCatDao() {
+		return domainDao;
+	}//
+	public void setPublishCatDao(PublishCatDao  domainDao) {
+		this.domainDao = domainDao;
+	}//
+	
+	//////////////common crud////////////////
+	public List<PublishCat> findAll(){ 
+		return domainDao.findAll();
+	}
+	
+	public List<PublishCat> findPart(String strFields, String[] arrStrValues){ 
+		return domainDao.findPart(strFields,arrStrValues);
+	}
+	
+	public Pager list(int pageSize, int pageNo)  {
+		return domainDao.list(pageSize,pageNo);
+	}//end list()
+	
+	public Pager list(String username, int pageSize, int pageNo)  {
+		return domainDao.list(username,pageSize,pageNo);
+	}//end list()
+	
+	public Pager list(Map<String,Object> mapSqlParam, int pageSize, int pageNo)  {
+		return domainDao.list(mapSqlParam,pageSize,pageNo);
+	}//end list()
+	
+	/////insert///
+	public Integer insert(PublishCat record) {
+		return domainDao.insert(record) ;
+	}//end insert()
+			
+	/////delete///
+	public boolean delete(PublishCat record)  {
+		return domainDao.delete(record);
+	}//end delete()
+			
+	public boolean delete(Integer id)  {
+		return domainDao.delete(id);
+	}//end delete()
+	
+	/////update///
+	public boolean update(PublishCat record)  {
+		return domainDao.update(record);
+	}//end update()
+			
+	/////select///
+	public PublishCat select(Integer id)  {
+		return domainDao.select(id);
+	}//end select()
+	public List<PublishCat> getPublishCatList() {
+		// TODO Auto-generated method stub
+		return domainDao.getPublishCatList();
+	}
+	public List<PublishCat> getPublishCatListJustUnderProjectCat(int pid) {
+		// TODO Auto-generated method stub
+		return domainDao.getPublishCatListJustUnderProjectCat(pid);
+	}
+	public Map<PublishCat, List<PublishCat>> getPublishCatMapUnderProjectCat(
+			int pid) {
+		// TODO Auto-generated method stub
+		return domainDao.getPublishCatMapUnderProjectCat(pid); 
+	}
+	public List<List<PublishCat>> getLevel2PublishCatMapUnderProjectCat(int pid) {
+		// TODO Auto-generated method stub
+		return domainDao.getLevel2PublishCatMapUnderProjectCat(pid); 
+	}
+	public List<PublishCat> getPublishCatListUnderProjectCat(int pid) {
+		// TODO Auto-generated method stub
+		return domainDao.getPublishCatListUnderProjectCat(pid);
+	}
+	public List<PublishCat> getPublishCatListUnderPid(int pid) {
+		// TODO Auto-generated method stub
+		return domainDao.getPublishCatListUnderPid(pid);
+	}
+	public List<PublishCat> getPublishCatListchild(int pid) {
+		// TODO Auto-generated method stub
+		return domainDao.getPublishCatListchild(pid);
+	}
+	public PublishCat selectByName(String type) {
+		// TODO Auto-generated method stub
+		return domainDao.selectByName(type);
+	}
+	public List<PublishCat> allstorycats(){
+		return domainDao.allstorycats();
+	}
+	public PublishCat selectOfName(String name){
+		return domainDao.selectOfName(name);
+		
+	}
+}//end class

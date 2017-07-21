@@ -1,0 +1,1321 @@
+package com.wetuo.wepic.core.actions ;
+ 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.annotations.JSON;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.sms.util.SendSMS;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.struts.Constants;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.util.MailSend;
+import com.wetuo.wepic.core.beans.Account;
+import com.wetuo.wepic.core.beans.AccountWithdraw;
+import com.wetuo.wepic.core.beans.MoneyInfo;
+import com.wetuo.wepic.core.beans.MoneyRecharge;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.service.AccountRechargeService;
+import com.wetuo.wepic.core.service.AccountService;
+import com.wetuo.wepic.core.service.AccountWithdrawService;
+import com.wetuo.wepic.core.service.UserService;
+import com.wetuo.wepic.deal.beans.BidAccountOperation;
+import com.wetuo.wepic.deal.beans.BuyAccountOperation;
+import com.wetuo.wepic.deal.service.BidAccountOperationService;
+import com.wetuo.wepic.deal.service.BuyAccountOperationService;
+
+
+ 
+ 
+public class AccountAction extends PageAction {
+ 
+ 
+	/////instantce variable//////
+	private static final long serialVersionUID = 1L;
+	protected String id = null ; 
+ 	private AccountService accountService;
+	protected String userId = null ;
+	private int nowPage=1;
+	private int endPage;
+	private String selectusername;
+	private UserService userService;
+	private AccountRechargeService accountRechargeService;
+	private BidAccountOperationService bidAccountOperationService;
+	private BuyAccountOperationService buyaccountOperationService;
+	private  MoneyInfo moneyInfo;
+	protected String accountId = null ; 
+	protected BigDecimal totalMoney = null ; 
+	protected BigDecimal remainingMoney = null ; 
+	protected String bankAccount = null ; 
+	protected String openingBank = null ; 
+	protected String belongBank=null;
+	protected String username = null; 
+	private String email;
+	private String message;
+	private String withdrawMoney;
+	private User user;
+	private Account account;
+	private Integer tradeFlag;
+	private String codePwd;
+	private Map resMap=new HashMap();
+	private Integer accountWithdrawId;
+	private AccountWithdrawService accountWithdrawService;
+	public String getSelectusername() {
+		return selectusername;
+	}
+	public void setSelectusername(String selectusername) {
+		this.selectusername = selectusername;
+	}
+	public AccountRechargeService getAccountRechargeService() {
+		return accountRechargeService;
+	}
+	public void setAccountRechargeService(
+			AccountRechargeService accountRechargeService) {
+		this.accountRechargeService = accountRechargeService;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+	public int getNowPage() {
+		return nowPage;
+	}
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+
+	
+	
+	
+	public MoneyInfo getMoneyInfo() {
+		return moneyInfo;
+	}
+	public void setMoneyInfo(MoneyInfo moneyInfo) {
+		this.moneyInfo = moneyInfo;
+	}
+	public BuyAccountOperationService getBuyaccountOperationService() {
+		return buyaccountOperationService;
+	}
+	public void setBuyaccountOperationService(
+			BuyAccountOperationService buyaccountOperationService) {
+		this.buyaccountOperationService = buyaccountOperationService;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+
+	public Integer getAccountWithdrawId() {
+		return accountWithdrawId;
+	}
+	
+	public void setAccountWithdrawId(Integer accountWithdrawId) {
+		this.accountWithdrawId = accountWithdrawId;
+	}
+	public Map getResMap() {
+		return resMap;
+	}
+	public void setResMap(Map resMap) {
+		this.resMap = resMap;
+	}
+	public String getCodePwd() {
+		return codePwd;
+	}
+	public void setCodePwd(String codePwd) {	
+
+		this.codePwd = codePwd;
+	}
+
+	
+	
+	public BidAccountOperationService getBidAccountOperationService() {
+		return bidAccountOperationService;
+	}
+	public void setBidAccountOperationService(
+			BidAccountOperationService bidAccountOperationService) {
+		this.bidAccountOperationService = bidAccountOperationService;
+	}
+	public AccountWithdrawService getAccountWithdrawService() {
+		return accountWithdrawService;
+	}
+	public void setAccountWithdrawService(
+			AccountWithdrawService accountWithdrawService) {
+		this.accountWithdrawService = accountWithdrawService;
+	}
+	public Integer getTradeFlag() {
+		return tradeFlag;
+	}
+	public void setTradeFlag(Integer tradeFlag) {
+		this.tradeFlag = tradeFlag;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+	public String getBelongBank() {
+		return belongBank;
+	}
+	public void setBelongBank(String belongBank) {
+		this.belongBank = belongBank;
+	}
+	//???????????��????
+	public void validate() {
+		
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		String queryString = getRequestPath();
+		if (queryString.indexOf("accountadd!insert") != -1 || queryString.indexOf("accountedit!update") != -1) {
+		
+			
+			if (bankAccount == null || bankAccount.equals("")) {
+				addFieldError("bankAccount", "bankAccount must be inputed");
+			}//end if null
+			if (openingBank == null || openingBank.equals("")) {
+				addFieldError("openingBank", "openingBank must be inputed");
+			}//end if null
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+		}//end if
+	}//end validate()
+	public String init() throws Exception {
+		clearErrorsAndMessages();
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user=userService.selectById(userId);
+
+		super.pager = this.getAccountService().list(user.getUsername(), super.pageSize, super.pageNo);
+		setSession(Constants.PAGER_ACCOUNT, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end init()
+	public String initAdmin() throws Exception {
+		clearErrorsAndMessages();
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user=userService.selectById(userId);
+
+		super.pager = this.getAccountService().list(super.pageSize, super.pageNo);
+		setSession(Constants.PAGER_ACCOUNT, super.pager);
+		
+		return Constants.ADMINLIST_KEY;
+		
+	}//end init()
+		
+	public String list() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ???????????
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user=userService.selectById(userId);
+
+		super.pager = this.getAccountService().list(user.getUsername(), super.pageSize, super.pageNo);	
+		
+		// ?????????
+		setSession(Constants.PAGER_ACCOUNT, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end list()
+		
+	public String add() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		
+		// ?????????
+		reset();
+		return Constants.ADD_KEY;
+	}//end add()
+	private void reset() {
+		setId(null);
+		setUserId(null);
+		setAccountId(null);
+		setTotalMoney(null);
+		setRemainingMoney(null);
+		setBankAccount(null);
+		setOpeningBank(null);
+	}//end reset()
+		// ?????��??
+	private void bean2Form(Account account) {
+		setId(account.getId().toString());
+		setUserId(account.getUser().getId().toString());
+		setAccountId(account.getAccountID());
+		if (account.getTotalMoney()==null) {
+			setTotalMoney(null);
+		}else {
+			setTotalMoney(account.getTotalMoney());	
+		}
+		if (account.getRemainingMoney()==null) {
+			setRemainingMoney(null);
+		}else {
+			setRemainingMoney(account.getRemainingMoney());
+		}
+		if (account.getBankAccount()==null) {
+			setBankAccount(null);
+		}else {
+			setBankAccount(account.getBankAccount());	
+		}
+		if (account.getOpeningBank()==null) {
+			setOpeningBank(null);
+		}else {
+			setOpeningBank(account.getOpeningBank());	
+		}
+		if (account.getBelongBank()==null) {
+			setBelongBank(null);
+		}else {
+			setBelongBank(account.getBelongBank());
+		}
+		
+		
+	}//end bean2Form()
+	public String edit() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// id???????????
+		if (this.getId() == null) {
+			saveActionError("account.message.edit.notexist");
+			return Constants.LIST_KEY;
+		} else {
+			// ???????
+			Account account = this.getAccountService().select(Integer.valueOf(id));
+			user=account.getUser();
+			// ??????????????
+			if (account == null) {
+				saveActionError("account.message.edit.notexist");
+				return Constants.LIST_KEY;
+			} else {
+				// ?????��??
+				bean2Form(account);
+				return Constants.EDIT_KEY;
+			}
+		}//end if
+		
+	}//end edit()
+	public String AccountSave(){
+		SimpleDateFormat format=new SimpleDateFormat("yyyyMMddHHmmssSS");
+		return format.format(new Date());
+	}	
+	
+	
+	public String insert(){
+		clearErrorsAndMessages();
+		Integer nid = null ;
+		
+		try{
+
+		Account account = new Account();
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		User user=this.getUserService().selectById(userId);
+		account.setUser(user);  
+			
+		account.setAccountID(user.getUsername()+"_"+AccountSave());
+		account.setTotalMoney(new BigDecimal(0));
+		account.setRemainingMoney(new BigDecimal(0));
+		account.setBankAccount(this.getBankAccount());
+		account.setOpeningBank(this.getOpeningBank());
+		nid = this.getAccountService().insert(account);
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_ACCOUNT);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+		//????????????
+		super.pager = this.getAccountService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		// ?????????
+		if (nid != null) {
+			saveActionMessage("account.message.add.success");
+			return Constants.LIST_KEY;
+		} else {
+			saveActionError("account.message.add.failed");
+		return Constants.ADD_KEY;
+		}
+		
+	}//end insert()
+	private Integer modifyRes;
+	public Integer getModifyRes() {
+		return modifyRes;
+	}
+	public void setModifyRes(Integer modifyRes) {
+		this.modifyRes = modifyRes;
+	}
+	@JSON(serialize=false)
+	public String modifyAccount() {
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		User user=userService.select(loginName);
+		Account account = this.getAccountService().select(user.getId(),"");
+		account.setOpeningBank(this.getOpeningBank());
+		account.setBelongBank(this.getBelongBank());
+		account.setBankAccount(this.getBankAccount().replace(" ", ""));
+		boolean a=this.getAccountService().update(account);
+		if (a) {
+			modifyRes=1;
+		}else {
+			modifyRes=0;	
+		}
+		
+		
+		return "modifyAccount";
+	}
+	@JSON(serialize=false)
+	public String addNewAccount() {
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		User user=userService.select(loginName);
+		Account account = this.getAccountService().select(user.getId(),"");
+		account.setOpeningBank(this.getOpeningBank());
+		account.setBelongBank(this.getBelongBank());
+		account.setBankAccount(this.getBankAccount().replace(" ", ""));
+		boolean a=this.getAccountService().update(account);
+		if (a) {
+			modifyRes=1;
+		}else {
+			modifyRes=0;	
+		}
+		
+		
+		return "addNewAccount";
+	}
+	private String phoneCode;
+	private Integer msgFlag;
+	private Integer validateRes;
+	protected String mobile; 
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public Integer getValidateRes() {
+		return validateRes;
+	}
+	public void setValidateRes(Integer validateRes) {
+		this.validateRes = validateRes;
+	}
+	public Integer getMsgFlag() {
+		return msgFlag;
+	}
+	public void setMsgFlag(Integer msgFlag) {
+		this.msgFlag = msgFlag;
+	}
+	public String getPhoneCode() {
+		return phoneCode;
+	}
+	public void setPhoneCode(String phoneCode) {
+		this.phoneCode = phoneCode;
+	}
+	
+	@JSON(serialize=false)
+	public String modifyUserAccount() {
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		User user=this.getUserService().select(loginName);
+		String code=getRandomStr();
+		SendSMS ss = new SendSMS();//您的实名认证手机验证码是:"+code+",验证码有效时长为10分钟,请输入后进行验证。【维图网】
+		ss.setUsername("639198");//
+
+		ss.setPassword("8df7ed01c3e41c43cbd9d9df75eb99c3");
+		ss.setMessage("您好,您的唯图网手机验证码为："+code+",【唯图网】");
+		ss.setMobiles(user.getMobile());
+		ss.setServicesRequestAddRess("http://sms.c8686.com/Api/BayouSmsApiEx.aspx");
+		ss.setSmstype(0);
+		ss.setTimerid("0");
+		ss.setTimertype(0);
+		Map<String, String> map = ss.sendSMS();
+		int sendflag=Integer.valueOf(map.get("errorcode").toString());
+		HttpSession ses =ServletActionContext.getRequest().getSession();
+		if (sendflag==0) {
+			msgFlag=1;
+			System.out.println(code);
+			ses.setAttribute("tempmsgcode", code);
+			ses.setMaxInactiveInterval(10*60);
+		}
+		
+		return "modifyUserAccount";
+	}
+	public String validateTempCode() {
+		String code=this.phoneCode;
+		String oldCode=getSession("tempmsgcode").toString();
+		if (code.equals(oldCode)) {
+			validateRes=1;
+		}else {
+			validateRes=0;
+		}
+		return "validateTempCode";
+	}
+	public String getRandomStr(){
+		Random random = new Random();
+		String baseStr = "0123456789";
+		StringBuffer buffer = new StringBuffer();
+		for(int i=0;i<4;i++){
+		int num = random.nextInt(baseStr.length());
+		buffer.append(baseStr.charAt(num));
+		}
+		return buffer.toString();
+		} 
+	public String update() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		
+		try{
+			// 
+			Account account = this.getAccountService().select(new Integer(id));  
+			account.setBankAccount(this.getBankAccount());
+			account.setOpeningBank(this.getOpeningBank());
+			account.setBelongBank(this.getBelongBank());
+		this.getAccountService().update(account);
+		
+		bean2Form(account);	
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_ACCOUNT);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+			// ????????????
+			super.pager = this.getAccountService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			saveActionMessage("account.message.edit.success");
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		return Constants.LIST_KEY;
+	}//end update() 
+	public String delete() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		try{
+			// id???????????
+			if (this.getId() == null) {
+				saveActionError("account.message.edit.notexist");
+			} else {
+				// ??????
+				this.getAccountService().delete(Integer.valueOf(id));
+				saveActionMessage("account.message.delete.success");
+			}
+			
+			// ???????????
+			super.pager = this.getAccountService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2("Please delete child first");
+			return Constants.ERROR_KEY;
+		}
+		return Constants.LIST_KEY;
+		
+	}//end delete()
+		
+ 
+	
+	
+	//管理员查看个人账户信息
+	public String adminCheckUseAcount() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ???????????
+		int userId=Integer.parseInt(super.getRequest().getParameter("id"));
+		User user=userService.selectById(userId);
+
+		super.pager = this.getAccountService().list(user.getUsername(), super.pageSize, super.pageNo);	
+		
+		// ?????????
+		setSession(Constants.PAGER_ACCOUNT, super.pager);
+		
+		return "adminCheckedAcount";
+		
+	}//end list()
+	
+	
+	
+	
+	
+	
+	
+	private BigDecimal frozenBigDecimal;
+	
+	public BigDecimal getFrozenBigDecimal() {
+		return frozenBigDecimal;
+	}
+	public void setFrozenBigDecimal(BigDecimal frozenBigDecimal) {
+		this.frozenBigDecimal = frozenBigDecimal;
+	}
+	/***查看个人账户信息（可用余额）****/
+	public String init_apply () throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		clearErrorsAndMessages();
+		int userId=(Integer)ActionContext.getContext().getSession().get("id");
+		Account account = accountService.select(userId, null);
+		User user=userService.selectById(userId);
+		this.user=user;
+		this.account=account;
+		frozenBigDecimal=account.getTotalMoney().subtract(account.getRemainingMoney());
+		if(this.getMessage()!=null)
+			saveActionMessage("动态密码输入有误，请重新提现！");
+		return "init_applay";
+	}
+	
+	/***随机产生数字****/
+	public String validateCode(){
+		Random random = new Random();
+		String result = "";
+		for(int i=0;i<6;i++){
+			result += String.valueOf(random.nextInt(10));
+		}
+		return result;
+	}
+	
+	private List tempInfoList;
+	public List getTempInfoList() {
+		return tempInfoList;
+	}
+	public void setTempInfoList(List tempInfoList) {
+		this.tempInfoList = tempInfoList;
+	}
+	@JSON(serialize=false)
+	public String userOfAccount() {
+		tempInfoList=new LinkedList();
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		User user=userService.select(loginName);
+		Account account = this.getAccountService().select(user.getId(),"");
+		this.account=account;
+		tempInfoList.add(account.getOpeningBank());
+		tempInfoList.add(account.getBelongBank());
+		tempInfoList.add(account.getBankAccount());
+		tempInfoList.add(account.getUser().getRealName());
+		tempInfoList.add(account.getUser().getMobile());
+		return "userOfAccount";
+	}
+	
+	/**
+	 * 验证输入的提现金额
+	 * @return
+	 * @throws Exception
+	 */
+	@JSON(serialize=false)
+	public String validateInputCash() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		Account account = this.getAccountService().select(new Integer(accountId));  
+		this.account=account;
+		User user=userService.selectById(Integer.valueOf(account.getUser().getId()));
+ 		this.user=user;
+		if(withdrawMoney!=null){
+			BigDecimal bd=new BigDecimal(withdrawMoney);
+			//判断余额是否大于用户所要提现的金额
+			//tradeFlag=1(余额充足)tradeFlag=2(余额不足)tradeFlag=3(网络连接失败)tradeFlag=4(用户开户行账户为空,系统不允许提现)
+			//res=-1(tradeFlag=2时自定义的一个值)
+			int res=0;
+			int a=bd.compareTo(account.getRemainingMoney());
+			System.out.println(a+"****");
+			if(account!=null&&bd.compareTo(account.getRemainingMoney())==-1&&account.getBankAccount()!=null){
+				this.tradeFlag=1;//余额充足
+				AccountWithdraw accountWithdraw=new AccountWithdraw();
+				accountWithdraw.setAccount(account);
+				accountWithdraw.setAdmin(null);
+				accountWithdraw.setWithdrawMoney(bd);
+				accountWithdraw.setStatus(1);
+				res=this.getAccountWithdrawService().insert(accountWithdraw);
+				if (res==0) { 
+					this.tradeFlag=3;
+				}
+				String code = validateCode();
+				//发送到手机
+				SendSMS sendmsg=new SendSMS();
+				sendmsg.setUsername("639198");//
+
+				sendmsg.setPassword("8df7ed01c3e41c43cbd9d9df75eb99c3");
+				sendmsg.setMessage("您的提现动态密码为："+code+",【唯图网】");
+				sendmsg.setMobiles(user.getMobile());
+				sendmsg.setServicesRequestAddRess("http://sms.c8686.com/Api/BayouSmsApiEx.aspx");
+				sendmsg.setSmstype(0);
+				sendmsg.setTimerid("0");
+				sendmsg.setTimertype(0);
+				Map<String, String> map = sendmsg.sendSMS();
+				AccountWithdraw accountWithdraw2=this.getAccountWithdrawService().select(res);
+				System.out.println(code+"=========================================");
+			
+				accountWithdraw2.setWithdrawCode(code);
+				if (this.getAccountWithdrawService().update(accountWithdraw2)) {
+				}else {
+					this.tradeFlag=3;
+				}
+				resMap.put(res,tradeFlag);	
+				return "validateInputCash";
+			}else {
+				System.out.println(account.getBankAccount());
+				if (account.getBankAccount()==null) {
+					this.tradeFlag=4;//银行账户为空,不允许提现
+				}else{
+				this.tradeFlag=2;//余额不足
+				}
+				res=-1;
+			}
+			resMap.put(res,tradeFlag);
+		}
+		
+		return "validateInputCash";		
+	}
+	/**
+	 * 得到动态密码返回到页面
+	 * @return
+	 */
+	@JSON(serialize=false)
+	public String receivePwd() {
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(accountWithdrawId);
+		this.codePwd=accountWithdraw.getWithdrawCode();
+		return "receivePwd";
+	}
+	/**
+	 * 验证动态密码
+	 * @return
+	 */
+	@JSON(serialize=false)
+	public String validateDynamicPwd() {
+		AccountWithdraw accountWithdraw=this.getAccountWithdrawService().select(accountWithdrawId);
+		
+		if (codePwd.equalsIgnoreCase(accountWithdraw.getWithdrawCode())) {
+			
+			accountWithdraw.setStatus(5);
+			accountWithdraw.setDemandWithdrawTime(getcurrent());
+			Account account=accountWithdraw.getAccount();
+			//account.setTotalMoney(account.getTotalMoney().subtract(accountWithdraw.getWithdrawMoney()));
+			account.setRemainingMoney(account.getRemainingMoney().subtract(accountWithdraw.getWithdrawMoney()));
+			if (this.getAccountWithdrawService().update(accountWithdraw)&&this.getAccountService().update(account)) {
+				this.tradeFlag=1;
+			}else {
+				this.tradeFlag=2;
+			}
+		}else {
+			this.tradeFlag=2;
+		}
+		resMap.put(accountWithdraw.getId(), tradeFlag);
+		return "validateDynamicPwd";
+	}
+	/**
+	 * 得到当前时间
+	 * @return
+	 */
+	@SuppressWarnings("static-access")
+	public Timestamp getcurrent() {
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String a=df.format(new Date());
+		Timestamp ts = new Timestamp(System.currentTimeMillis());  
+		ts.valueOf(a);
+		return ts;
+	}
+	/**
+	 * MailSend mailSend=new MailSend();
+		String content="您的动态密码为："+accountWithdraw.getWithdrawCode();
+		Account account=this.getAccountService().select(accountWithdraw.getAccount().getId());
+		User user=account.getUser();
+		System.out.println(user.getUsername());
+		System.out.println(account.getUserId());
+		mailSend.sendDealCode(content,accountWithdraw.getAccount().getUser().getEmail());
+	 */
+	
+	
+	
+	/*****产生随机数据返回验证页面*****/
+	public String accountWithdrawValidate() throws Exception{
+		String loginName = super.getLoginUsername();
+		if(loginName == null || loginName.length()==0)
+		{
+			return "login";
+		}
+		Account account = this.getAccountService().select(new Integer(accountId));  
+		User user=userService.selectById(Integer.valueOf(userId));
+		if(withdrawMoney!=null){
+			BigDecimal bd=new BigDecimal(withdrawMoney);
+			//判断余额是否大于用户所要提现的金额
+			if(account!=null&&bd.compareTo(account.getRemainingMoney())!=1){
+				//产生随机数字
+				String code = validateCode();
+				//发送到邮箱
+				MailSend mail = new MailSend(email);
+				mail.send(code);
+				ActionContext.getContext().put("user", user);
+				ActionContext.getContext().put("account", account);
+				ActionContext.getContext().put("withdrawMoney", withdrawMoney);
+				ActionContext.getContext().getSession().put("codePwd", code);
+				return "accountWithdrawValidate";
+			}
+		}
+		this.setMessage("error");
+		return "accountFail";
+	}
+
+	
+//	//账户充值
+	public String recharge()throws Exception {
+		Object object=super.getSession("id");
+		int userId;
+		if(object==null){
+			return "login";
+		}
+		userId=Integer.parseInt(object.toString());
+		Account account=accountService.select(userId,"");
+		account.setTotalMoney(account.getTotalMoney().setScale(0, BigDecimal.ROUND_DOWN));
+		account.setRemainingMoney(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN));
+		if(account==null){
+			return "add";
+		}
+		ActionContext.getContext().put("account", account);
+	
+	    return "chongzhi";	
+	}
+	
+	
+	
+	
+	
+	
+	
+	//获得所有收入记录
+	 @SuppressWarnings("unchecked")
+	public String payMoneyInfo(){
+		 
+		
+		pageSize=8;
+		 User user=userService.select(super.getLoginUsername());
+		 try{
+	    BigDecimal allmoney=new BigDecimal(0);
+		 account=accountService.select(user.getId(),"");
+		 moneyInfo=accountService.countselect(account.getId());
+		 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+		
+		 
+		 
+		 
+		 
+		 
+		 
+		Pager pagerold= bidAccountOperationService.selectByAcoount("1", account.getId()+"", pageSize, nowPage);
+		List<BidAccountOperation> accountOperations=(List<BidAccountOperation>)pagerold.getResultList();
+		List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("account", account);
+		map.put("operationType", 3);
+		Pager pager1=buyaccountOperationService.list(map,pageSize, nowPage);
+		List<BuyAccountOperation> buyAccountOperations=(List<BuyAccountOperation>)pager1.getResultList();
+		//List<MoneyRecharge> newAccountOperations=new ArrayList<MoneyRecharge>();
+		for (BuyAccountOperation buyAccountOperation : buyAccountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			moneyRecharge.setDateTime(buyAccountOperation.getOperationTime());
+			moneyRecharge.setFlag("卖图收入");
+			moneyRecharge.setId(buyAccountOperation.getId());
+			moneyRecharge.setMoney(buyAccountOperation.getMoney()+"");
+			moneyRecharge.setSelerId(buyAccountOperation.getId());
+			allmoney=allmoney.add(buyAccountOperation.getMoney());// ;
+			moneyRecharges.add(moneyRecharge);
+			
+		}
+		
+		
+		
+		 for (BidAccountOperation bidAccountOperation : accountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			allmoney=allmoney.add(bidAccountOperation.getEntryMoney());
+			moneyRecharge.setDateTime(bidAccountOperation.getEntryTime());
+			moneyRecharge.setFlag("应约收入");
+			moneyRecharge.setId(bidAccountOperation.getId());
+			moneyRecharge.setMoney(bidAccountOperation.getEntryMoney()+"");
+			moneyRecharge.setSelerId(bidAccountOperation.getId());
+			moneyRecharges.add(moneyRecharge);
+		}
+		 
+		 pager=new Pager(moneyRecharges.size(),nowPage, pagerold.getRowCount()+pager1.getRowCount(), moneyRecharges);
+		 
+		 endPage=pager.getLastPageNo();
+		  
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		  
+		  
+		  
+		  return "payMoneyInfo";
+	  }
+	 
+		//获得所有支出记录
+	 public String wStringMoneyInfo(){
+		 pageSize=8;
+		 User user=userService.select(super.getLoginUsername());
+		 try{
+			 /*
+			  * .setScale(0,BigDecimal.ROUND_DOWN)
+			  * 
+			  * */
+		 account=accountService.select(user.getId(),"");
+		 BigDecimal allmoney=new BigDecimal(0);
+		 account=accountService.select(user.getId(),"");
+		 moneyInfo=accountService.countselect(account.getId());
+		 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+		
+		Pager pagerold= bidAccountOperationService.selectByAcoount("2", account.getId()+"", pageSize, nowPage);
+		List<BidAccountOperation> accountOperations=(List<BidAccountOperation>)pagerold.getResultList();
+		List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("account", account);
+		map.put("operationType", 4);
+		Pager pager1=buyaccountOperationService.list(map, pageSize, nowPage);
+		List<BuyAccountOperation> buyAccountOperations=(List<BuyAccountOperation>)pager1.getResultList();
+		//List<MoneyRecharge> newAccountOperations=new ArrayList<MoneyRecharge>();
+		for (BuyAccountOperation buyAccountOperation : buyAccountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			moneyRecharge.setDateTime(buyAccountOperation.getOperationTime());
+			moneyRecharge.setFlag("买图支出");
+			moneyRecharge.setId(buyAccountOperation.getId());
+			moneyRecharge.setMoney(buyAccountOperation.getMoney()+"");
+			moneyRecharge.setSelerId(buyAccountOperation.getId());
+			moneyRecharges.add(moneyRecharge);
+		}
+		
+		
+		
+		 for (BidAccountOperation bidAccountOperation : accountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			moneyRecharge.setDateTime(bidAccountOperation.getDeductionTime());
+			moneyRecharge.setFlag("发布约拍支出");
+			moneyRecharge.setId(bidAccountOperation.getId());
+			moneyRecharge.setMoney(bidAccountOperation.getDeductionMoney()+"");
+			moneyRecharge.setSelerId(bidAccountOperation.getId());
+			moneyRecharges.add(moneyRecharge);
+		}
+		 
+		 if(buyAccountOperations.size()==0||accountOperations.size()==0){
+			 pageSize=12;
+			 
+			 
+		 }
+		 pager=new Pager(moneyRecharges.size(), nowPage, pagerold.getRowCount()+pager1.getRowCount(), moneyRecharges);
+		 endPage=pager.getLastPageNo();
+		  
+		  
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		  
+		  
+		  
+		  return "wStringMoneyInfo";
+	  }
+	 
+	
+	 
+	 
+	//管理员查看用户获得所有收入记录
+	 @SuppressWarnings("unchecked")
+	public String adminpayMoneyInfo(){
+		 
+			if(!"super1".equals(super.getLoginUsername())){
+				
+				return "login";
+			}
+		pageSize=8;
+		 User user=userService.selectById(Integer.parseInt(username));
+		 try{
+	    BigDecimal allmoney=new BigDecimal(0);
+		 account=accountService.select(user.getId(),"");
+		 moneyInfo=accountService.countselect(account.getId());
+		 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+		
+		 
+		 
+		 
+		 
+		 
+		 
+		Pager pagerold= bidAccountOperationService.selectByAcoount("1", account.getId()+"", pageSize, nowPage);
+		List<BidAccountOperation> accountOperations=(List<BidAccountOperation>)pagerold.getResultList();
+		List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("account", account);
+		map.put("operationType", 3);
+		Pager pager1=buyaccountOperationService.list(map,pageSize, nowPage);
+		List<BuyAccountOperation> buyAccountOperations=(List<BuyAccountOperation>)pager1.getResultList();
+		//List<MoneyRecharge> newAccountOperations=new ArrayList<MoneyRecharge>();
+		for (BuyAccountOperation buyAccountOperation : buyAccountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			moneyRecharge.setDateTime(buyAccountOperation.getOperationTime());
+			moneyRecharge.setFlag("卖图收入");
+			moneyRecharge.setId(buyAccountOperation.getId());
+			moneyRecharge.setMoney(buyAccountOperation.getMoney()+"");
+			moneyRecharge.setSelerId(buyAccountOperation.getId());
+			allmoney=allmoney.add(buyAccountOperation.getMoney());// ;
+			moneyRecharges.add(moneyRecharge);
+			
+		}
+		
+		
+		
+		 for (BidAccountOperation bidAccountOperation : accountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			allmoney=allmoney.add(bidAccountOperation.getEntryMoney());
+			moneyRecharge.setDateTime(bidAccountOperation.getEntryTime());
+			moneyRecharge.setFlag("应约收入");
+			moneyRecharge.setId(bidAccountOperation.getId());
+			moneyRecharge.setMoney(bidAccountOperation.getEntryMoney()+"");
+			moneyRecharge.setSelerId(bidAccountOperation.getId());
+			moneyRecharges.add(moneyRecharge);
+		}
+		 
+		 pager=new Pager(moneyRecharges.size(),nowPage, pagerold.getRowCount()+pager1.getRowCount(), moneyRecharges);
+		 
+		 endPage=pager.getLastPageNo();
+		  
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		  
+		  
+		  
+		  return "adminpayMoneyInfo";
+	  }
+	//管理员查看获得所有支出记录
+	 public String adminwStringMoneyInfo(){
+		 
+			if(!"super1".equals(super.getLoginUsername())){
+				
+				return "login";
+			}
+		 pageSize=8;
+		 User user=userService.selectById(Integer.parseInt(username));
+		 try{
+			 /*
+			  * .setScale(0,BigDecimal.ROUND_DOWN)
+			  * 
+			  * */
+		 account=accountService.select(user.getId(),"");
+		 BigDecimal allmoney=new BigDecimal(0);
+		 account=accountService.select(user.getId(),"");
+		 moneyInfo=accountService.countselect(account.getId());
+		 moneyInfo.setAccountotalMoney(account.getTotalMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setRemianningMoeny(account.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN)+"");
+		 moneyInfo.setLockMOney(account.getTotalMoney().subtract(account.getRemainingMoney()).setScale(0,BigDecimal.ROUND_DOWN)+"");
+		
+		Pager pagerold= bidAccountOperationService.selectByAcoount("2", account.getId()+"", pageSize, nowPage);
+		List<BidAccountOperation> accountOperations=(List<BidAccountOperation>)pagerold.getResultList();
+		List<MoneyRecharge> moneyRecharges=new ArrayList<MoneyRecharge>();
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("account", account);
+		map.put("operationType", 4);
+		Pager pager1=buyaccountOperationService.list(map, pageSize, nowPage);
+		List<BuyAccountOperation> buyAccountOperations=(List<BuyAccountOperation>)pager1.getResultList();
+		//List<MoneyRecharge> newAccountOperations=new ArrayList<MoneyRecharge>();
+		for (BuyAccountOperation buyAccountOperation : buyAccountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			moneyRecharge.setDateTime(buyAccountOperation.getOperationTime());
+			moneyRecharge.setFlag("买图支出");
+			moneyRecharge.setId(buyAccountOperation.getId());
+			moneyRecharge.setMoney(buyAccountOperation.getMoney()+"");
+			moneyRecharge.setSelerId(buyAccountOperation.getId());
+			moneyRecharges.add(moneyRecharge);
+		}
+		
+		
+		
+		 for (BidAccountOperation bidAccountOperation : accountOperations) {
+			MoneyRecharge moneyRecharge=new MoneyRecharge();
+			moneyRecharge.setDateTime(bidAccountOperation.getDeductionTime());
+			moneyRecharge.setFlag("发布约拍支出");
+			moneyRecharge.setId(bidAccountOperation.getId());
+			moneyRecharge.setMoney(bidAccountOperation.getDeductionMoney()+"");
+			moneyRecharge.setSelerId(bidAccountOperation.getId());
+			moneyRecharges.add(moneyRecharge);
+		}
+		 
+		 if(buyAccountOperations.size()==0||accountOperations.size()==0){
+			 pageSize=12;
+			 
+			 
+		 }
+		 pager=new Pager(moneyRecharges.size(), nowPage, pagerold.getRowCount()+pager1.getRowCount(), moneyRecharges);
+		 endPage=pager.getLastPageNo();
+		  
+		  
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }
+		  
+		  
+		  
+		  return "adminwStringMoneyInfo";
+	  }
+	 //=============================================
+	 @SuppressWarnings("unchecked")
+	public String findAcountByPager(){
+		 
+		 
+		 
+		 
+		 
+		 String loginString=super.getLoginUsername();
+		 if(loginString==null||!loginString.equals("super1")){
+			 
+			return "login"; 
+			 
+			 
+		 }
+		 DetachedCriteria criteria=DetachedCriteria.forClass(Account.class);
+		 if(selectusername!=null&&selectusername.trim().length()>0){
+			 criteria.createAlias("user", "u");
+			 //criteria.add(Restrictions.like("accountID", "%p2%"));
+		//	 criteria.add(Restrictions.like("u.nickName", "%"++"%"));
+			 criteria.add(Restrictions.or(Restrictions.like("u.username", "%"+selectusername+"%"), Restrictions.like("u.nickName", "%"+selectusername+"%")));
+			 //criteria.
+		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 endPage=14;
+		Pager pager=accountService.list(20,nowPage,criteria);
+		MoneyInfo moneyInfo=accountService.admincountselect();
+		float  totalMoany=Float.parseFloat(moneyInfo.getCountTotalMoney());
+		moneyInfo.setCountTotalMoney(new DecimalFormat("#.00").format(totalMoany));
+		moneyInfo.setCountremainingMoney(new DecimalFormat("#.00").format(Float.parseFloat(moneyInfo.getCountremainingMoney())));
+		double deal=Double.parseDouble(moneyInfo.getCountdealMoney());
+		double incomingForWepic=Double.parseDouble(moneyInfo.getCountrechagerTotalmoney())-Double.parseDouble(moneyInfo.getCountwithWraTotalMoney())-Double.parseDouble(moneyInfo.getCountTotalMoney());
+		String incomingMoney=incomingForWepic+"000";
+		moneyInfo.setIncomingForWepic(incomingMoney.substring(0, incomingMoney.lastIndexOf(".")+3));
+		if(deal==0){
+			
+			moneyInfo.setIncomingForRat("0%");	
+		}else{
+			String money=(incomingForWepic/deal*100)+"";
+		    moneyInfo.setIncomingForRat(money.substring(0,money.lastIndexOf(".")+3)+"%");
+		}
+		ActionContext.getContext().put("moneyInfo", moneyInfo);
+		List<Account> list=(List<Account>) pager.getResultList();
+		
+		List listnew=new ArrayList();
+		for (Account account : list) {
+			MoneyInfo info= accountService.countselect(account.getId());
+			account.setMoneyInfo(info);
+			account.setTotalMoney(account.getTotalMoney().setScale(2,BigDecimal.ROUND_HALF_UP));
+			account.setRemainingMoney(account.getRemainingMoney().setScale(2,BigDecimal.ROUND_HALF_UP));
+			listnew.add(account);
+		}
+		Collections.sort(listnew, new Comparator() {
+
+			public int compare(Object o1, Object o2) {
+				Account info=(Account)o1;
+				Account info2=(Account)o2;
+				System.out.println(Double.parseDouble(info2.getMoneyInfo().getPayTotalMOney()));
+				
+			    if(Double.parseDouble(info2.getMoneyInfo().getPayTotalMOney())>Double.parseDouble(info.getMoneyInfo().getPayTotalMOney())){
+				return info2.getMoneyInfo().getPayTotalMOney().compareTo(info.getMoneyInfo().getPayTotalMOney());
+			    }else{
+			    	System.out.println(info2.getRemainingMoney()+"============");
+			    	
+			    	return info2.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN).toString().compareTo(info.getRemainingMoney().setScale(0,BigDecimal.ROUND_DOWN).toString());
+			    }
+				
+			}
+			
+			
+			
+		});
+		
+		
+		
+		  pager.setResultList(listnew);
+		 super.pager=pager;
+		 
+		 
+		 
+		 return "findAcountByPager";
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	public String getId(){
+		return  id;
+	}
+	public void  setId(String id){
+		this.id = id ;
+	}
+	 
+	public AccountService getAccountService() {
+		return accountService;
+	}
+	public void setAccountService(AccountService accountService) {
+		this.accountService = accountService;
+	}
+	
+	public String getUserId(){
+		return  userId;
+	}
+	public void  setUserId(String userId){
+		this.userId = userId ;
+	}
+	 
+	
+	 
+	
+	 
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+	public BigDecimal getTotalMoney() {
+		return totalMoney;
+	}
+	public void setTotalMoney(BigDecimal totalMoney) {
+		this.totalMoney = totalMoney;
+	}
+	public BigDecimal getRemainingMoney() {
+		return remainingMoney;
+	}
+	public void setRemainingMoney(BigDecimal remainingMoney) {
+		this.remainingMoney = remainingMoney;
+	}
+	public String getBankAccount(){
+		return  bankAccount;
+	}
+	public void  setBankAccount(String bankAccount){
+		this.bankAccount = bankAccount ;
+	}
+	 
+	public String getOpeningBank(){
+		return  openingBank;
+	}
+	public void  setOpeningBank(String openingBank){
+		this.openingBank = openingBank ;
+	}
+	 
+	 public String getUsername() {
+	 	return username;
+	 }
+	 public void setUsername(String username) {
+	 	this.username = username;
+	 }
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getWithdrawMoney() {
+		return withdrawMoney;
+	}
+	public void setWithdrawMoney(String withdrawMoney) {
+		this.withdrawMoney = withdrawMoney;
+	}
+	
+	
+	
+	 
+}//end class

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.core.beans.PublishFavorite"
+	table="PublishFavorite"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	<many-to-one name="publish" 
+		column="publish_" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.Publish" 
+		foreign-key="FK_PublishFavorite_Publish" 
+		index="IDX_PublishFavorite_Publish"
+		lazy="false"
+		/> 
+	
+	<property 
+		name="description"
+		type="java.lang.String"
+		column="description"
+		length="50"
+	/>
+	
+	<many-to-one name="user"	column="userid" not-null="true" />
+	
+	
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

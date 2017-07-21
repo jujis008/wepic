@@ -1,0 +1,1806 @@
+package com.wetuo.wepic.deal.actions ;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
+
+import javax.xml.crypto.Data;
+
+
+import com.alipay.util.UtilDate;
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionContext;
+import com.wetuo.wepic.deal.beans.BidForOpus;
+import com.wetuo.wepic.deal.beans.UserMess;
+
+import com.wetuo.wepic.deal.beans.BidResponseInvited;
+import com.wetuo.wepic.deal.service.BidForOpusService;
+import com.wetuo.wepic.deal.service.BidResponseInvitedService;
+import com.wetuo.wepic.deal.service.BidtransactionService;
+import com.wetuo.wepic.core.beans.User;
+import com.wetuo.wepic.core.beans.UserCredit;
+import com.wetuo.wepic.core.service.ContactService;
+import com.wetuo.wepic.core.service.MessageService;
+import com.wetuo.wepic.core.service.UserCreditService;
+import com.wetuo.wepic.core.service.UserService;
+import com.wetuo.wepic.deal.beans.BidAimPerson;
+import com.wetuo.wepic.deal.service.BidAimPersonService;
+ 
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.common.struts.PageAction;
+import com.wetuo.wepic.common.struts.Constants;
+import com.wetuo.wepic.common.util.MD5Code;
+import com.wetuo.wepic.common.util.MailSend;
+ 
+import org.apache.commons.collections.map.HashedMap;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.annotations.JSON;
+
+	import com.wetuo.wepic.deal.beans.Bid;
+import com.wetuo.wepic.deal.service.BidService;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.tools.SendMsg;
+public class BidResponseInvitedAction extends PageAction {
+		
+	private BidService bidService;
+	private BidForOpusService bidForOpusService;
+	private String beitousu;
+	private  String tousu;
+	private String chulijieguo;
+	private MessageService messageService;
+	private String param;
+	private List<User> pagerList;
+	private List newList;
+	private String nickName;
+	
+	
+	
+	
+	
+
+	
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public List getNewList() {
+		return newList;
+	}
+	public void setNewList(List newList) {
+		this.newList = newList;
+	}
+	public List<User> getPagerList() {
+		return pagerList;
+	}
+	public void setPagerList(List<User> pagerList) {
+		this.pagerList = pagerList;
+	}
+	private UserCreditService creditService;
+	private ContactService contactService;
+	
+	
+	
+	public UserCreditService getCreditService() {
+		return creditService;
+	}
+	public void setCreditService(UserCreditService creditService) {
+		this.creditService = creditService;
+	}
+	public ContactService getContactService() {
+		return contactService;
+	}
+	public void setContactService(ContactService contactService) {
+		this.contactService = contactService;
+	}
+	public String getParam() {
+		return param;
+	}
+	public void setParam(String param) {
+		this.param = param;
+	}
+	public void setMessageService(MessageService messageService) {
+		this.messageService = messageService;
+	}
+	public String getChulijieguo() {
+		return chulijieguo;
+	}
+	public void setChulijieguo(String chulijieguo) {
+		this.chulijieguo = chulijieguo;
+	}
+	public String getBeitousu() {
+		return beitousu;
+	}
+	public void setBeitousu(String beitousu) {
+		this.beitousu = beitousu;
+	}
+	public String getTousu() {
+		return tousu;
+	}
+	public void setTousu(String tousu) {
+		this.tousu = tousu;
+	}
+	//private String username;
+	private String  password="";
+	private String code;
+	private int nowPager=1;
+	
+	public int getNowPager() {
+		return nowPager;
+	}
+	public void setNowPager(int nowPager) {
+		this.nowPager = nowPager;
+	}
+	//private int nowPage=1;
+	List<Pager> listPagers=null;
+	
+	public List<Pager> getListPagers() {
+		return listPagers;
+	}
+	public void setListPagers(List<Pager> listPagers) {
+		this.listPagers = listPagers;
+	}
+	public BidForOpusService getBidForOpusService() {
+		return bidForOpusService;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public void setBidForOpusService(BidForOpusService bidForOpusService) {
+		this.bidForOpusService = bidForOpusService;
+	}
+	public BidService getBidService() {
+		return bidService;
+	}
+	public void setBidService(BidService bidService) {
+		this.bidService = bidService;
+	}
+	private BidtransactionService bidtransaction;	
+ 
+ 
+	/////instantce variable//////
+	private static final long serialVersionUID = 1L;
+	protected String id = null ; 
+ 	private BidResponseInvitedService bidResponseInvitedService;
+	protected String userId = null ;
+	private UserService userService;
+	private  int type;
+    private String tags;
+    private int nowPage=1;
+    private int bidflag;
+    //==============
+    private String bidderRemarkTime;
+	private Integer bidRemarkType;//1好评2差评
+	private String complain;
+	private String complainTime;
+	private String complainHandle;
+	private String complainHandleTime;
+	private String complainHandler;
+	private String complainHandleResulet;
+	private String complainFalgString;//ajax返回操作成功标志
+	
+	
+
+	public String getComplainFalgString() {
+		return complainFalgString;
+	}
+	public void setComplainFalgString(String complainFalgString) {
+		this.complainFalgString = complainFalgString;
+	}
+	public String getBidderRemarkTime() {
+		return bidderRemarkTime;
+	}
+	public void setBidderRemarkTime(String bidderRemarkTime) {
+		this.bidderRemarkTime = bidderRemarkTime;
+	}
+	public Integer getBidRemarkType() {
+		return bidRemarkType;
+	}
+	public void setBidRemarkType(Integer bidRemarkType) {
+		this.bidRemarkType = bidRemarkType;
+	}
+	public String getComplain() {
+		return complain;
+	}
+	public void setComplain(String complain) {
+		this.complain = complain;
+	}
+	public String getComplainTime() {
+		return complainTime;
+	}
+	public void setComplainTime(String complainTime) {
+		this.complainTime = complainTime;
+	}
+	public String getComplainHandle() {
+		return complainHandle;
+	}
+	public void setComplainHandle(String complainHandle) {
+		this.complainHandle = complainHandle;
+	}
+	public String getComplainHandleTime() {
+		return complainHandleTime;
+	}
+	public void setComplainHandleTime(String complainHandleTime) {
+		this.complainHandleTime = complainHandleTime;
+	}
+	public String getComplainHandler() {
+		return complainHandler;
+	}
+	public void setComplainHandler(String complainHandler) {
+		this.complainHandler = complainHandler;
+	}
+	public String getComplainHandleResulet() {
+		return complainHandleResulet;
+	}
+	public void setComplainHandleResulet(String complainHandleResulet) {
+		this.complainHandleResulet = complainHandleResulet;
+	}
+	public int getBidflag() {
+		return bidflag;
+	}
+	public void setBidflag(int bidflag) {
+		this.bidflag = bidflag;
+	}
+	public int getNowPage() {
+		return nowPage;
+	}
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+	public String getTags() {
+		return tags;
+	}
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+	public BidtransactionService getBidtransaction() {
+		return bidtransaction;
+	}
+	public void setBidtransaction(BidtransactionService bidtransaction) {
+		this.bidtransaction = bidtransaction;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
+	protected String bidAimPersonId = null ;
+	private BidAimPersonService bidAimPersonService;
+	public BidAimPersonService getBidAimPersonService() {
+		return bidAimPersonService;
+	}
+	public void setBidAimPersonService(BidAimPersonService bidAimPersonService) {
+		this.bidAimPersonService = bidAimPersonService;
+	}
+	
+	protected String isResponse = null ; 
+	protected String reponseTime = null ; 
+	protected String reponseMoney = null ; 
+	protected String reponseContent = null ; 
+	protected String isInvited = null ; 
+	protected String inviteTime = null ; 
+	protected String isConfirmed = null ; 
+	protected String confirmedTime = null ; 
+	protected String coonfirmMoney = null ; 
+	protected String bidderRemark = null ; 
+	protected String username = ""; 
+	private String   bidId;
+	private  String aimId;
+	private String message;
+	
+	
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getAimId() {
+		return aimId;
+	}
+	public void setAimId(String aimId) {
+		this.aimId = aimId;
+	}
+	public String getBidId() {
+		return bidId;
+	}
+	public void setBidId(String bidId) {
+		this.bidId = bidId;
+	}
+	public int getMsg1() {
+		return msg1;
+	}
+	public void setMsg1(int msg1) {
+		this.msg1 = msg1;
+	}
+	
+	
+	
+	//???????????��????
+	public void validate() {
+		
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		String queryString = getRequestPath();
+		if (queryString.indexOf("bidResponseInvitedadd!insert") != -1 || queryString.indexOf("bidResponseInvitededit!update") != -1) {
+		
+			if (userId == null || userId.equals("")) {
+				addFieldError("userId", "userId must be inputed");
+			}//end if null
+			if (bidAimPersonId == null || bidAimPersonId.equals("")) {
+				addFieldError("bidAimPersonId", "bidAimPersonId must be inputed");
+			}//end if null
+			if (isResponse == null || isResponse.equals("")) {
+				addFieldError("isResponse", "isResponse must be inputed");
+			}//end if null
+			if (reponseTime == null || reponseTime.equals("")) {
+				addFieldError("reponseTime", "reponseTime must be inputed");
+			}//end if null
+			if (reponseMoney == null || reponseMoney.equals("")) {
+				addFieldError("reponseMoney", "reponseMoney must be inputed");
+			}//end if null
+			if (reponseContent == null || reponseContent.equals("")) {
+				addFieldError("reponseContent", "reponseContent must be inputed");
+			}//end if null
+			if (isInvited == null || isInvited.equals("")) {
+				addFieldError("isInvited", "isInvited must be inputed");
+			}//end if null
+			if (inviteTime == null || inviteTime.equals("")) {
+				addFieldError("inviteTime", "inviteTime must be inputed");
+			}//end if null
+			if (isConfirmed == null || isConfirmed.equals("")) {
+				addFieldError("isConfirmed", "isConfirmed must be inputed");
+			}//end if null
+			if (confirmedTime == null || confirmedTime.equals("")) {
+				addFieldError("confirmedTime", "confirmedTime must be inputed");
+			}//end if null
+			if (coonfirmMoney == null || coonfirmMoney.equals("")) {
+				addFieldError("coonfirmMoney", "coonfirmMoney must be inputed");
+			}//end if null
+			if (bidderRemark == null || bidderRemark.equals("")) {
+				addFieldError("bidderRemark", "bidderRemark must be inputed");
+			}//end if null
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+				// ??????? 
+		}//end if
+	}//end validate()
+	public String init() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		
+		// ???????????
+		super.pager = this.getBidResponseInvitedService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end init()
+	
+	
+	//查看应约
+	@JSON(serialize=false)
+	public String isIvitedList() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("user", userService.select(super.getLoginUsername()));
+		map.put("isResponse", 1);
+		
+		Pager pager1 = this.getBidResponseInvitedService().list(map, super.pageSize, super.pageNo);
+		Map<String, Object> map2=new HashMap<String, Object>();
+		map2.put("user", userService.select(super.getLoginUsername()));
+		//map2.put("user", userService.select(super.getLoginUsername()));
+		Pager pager2=bidForOpusService.list(map2, 2,  super.pageNo);
+		List<BidForOpus> list=(List<BidForOpus>) pager2.getResultList();
+		List<BidForOpus> list2=new ArrayList<BidForOpus>();
+		String bidid1="";
+	for (BidForOpus bidForOpus : list) {
+		if(bidForOpus.getBid().getId().equals(bidid1)){
+			list2.add(bidForOpus);
+			
+		}else{
+			bidid1=bidForOpus.getBid().getId();
+			
+		}
+		
+	}
+	list.removeAll(list2);
+	pager2.setResultList(list);
+		
+		 listPagers=new LinkedList<Pager>();
+		listPagers.add(pager1);
+		listPagers.add(pager2);
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+	
+		return "isResponseIvitedList";
+		
+	}//end init()
+	public String getwodeyingImg(){
+		Map<String, Object> map2=new HashMap<String, Object>();
+		map2.put("user", userService.select(super.getLoginUsername()));
+		super.pager=bidForOpusService.list(map2, 6,  super.pageNo);
+		return "getwodeyingImg";
+	}
+	@JSON(serialize=false)
+	public String iniShouyaoshtlist() throws Exception {
+		// ?????????o
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		Map<String, Object> map=new HashMap<String, Object>();
+		System.out.println(super.getLoginUsername());
+		map.put("user", userService.select(super.getLoginUsername()));
+		map.put("isInvited", 1);
+		
+		// ???????????
+		super.pager = this.getBidResponseInvitedService().list(map, super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return "iniShouyaoshtlist";
+		
+	}//end init()
+	
+	
+	
+	
+	
+	
+	
+	//我的标的回复
+	public String isResponseBid() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+//		Map<String, Object> map=new HashMap<String, Object>();
+//		map.put("user", userService.select(super.getLoginUsername()));
+//		map.put("isResponse", 1);
+		super.pager =bidService.list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		// ???????????
+	//	super.pager = this.getBidResponseInvitedService().list(map, super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return "mybidResponse";
+		
+	}//end init()
+	
+	
+	//延迟投诉
+	public String yanchitousu(){
+		BidResponseInvited bidResponseInvited= bidResponseInvitedService.select(id);
+		bidResponseInvited.setComplainHandler(super.getLoginUsername());
+		bidResponseInvited.setComplainHandleTime(UtilDate.getDateFormatter(UtilDate.simpletime1));
+		bidResponseInvited.setComplainstatus(1+"");
+		bidResponseInvited.setComplainHandle(tousu+"___"+beitousu);
+		msg=0;
+		if(bidResponseInvitedService.update(bidResponseInvited))msg=1;
+		
+		
+		return "yanchitousu";
+	}
+	
+	//投诉处理成功
+	public String chulichenggong(){
+		BidResponseInvited bidResponseInvited= bidResponseInvitedService.select(id);
+		bidResponseInvited.setComplainHandler(super.getLoginUsername());
+		bidResponseInvited.setComplainHandleTime(UtilDate.getDateFormatter(UtilDate.simpletime1));
+		bidResponseInvited.setComplainstatus(2+"");
+		bidResponseInvited.setComplain(tousu+"___"+beitousu);
+		//1是驳回投诉2是退换资金3是折扣支付4是重新发布
+		bidResponseInvited.setComplainHandleResulet(chulijieguo);
+		msg=0;
+		if(bidResponseInvitedService.update(bidResponseInvited))msg=1;
+		
+		
+		
+		return "chulichenggong";
+	}
+	//我的标的回复
+	@JSON(serialize=false)
+	public String isResponseBidajax() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+        int  pageSize=8;
+		Pager pager1 =bidService.list(super.getLoginUsername(), pageSize, nowPage);
+		List<Bid> list=(List<Bid>) pager1.getResultList();
+		List<Bid> newlist=new ArrayList<Bid>();
+		for (Bid bid : list) {
+			List list2=bidAimPersonService.aimSelect(bid, 1, 1);
+			if(list2!=null&&list2.size()>0){
+				BidAimPerson aimPerson=(BidAimPerson) list2.get(0);
+				bid.setBidAimPerson(aimPerson);
+			}
+			newlist.add(bid);
+			
+		}//_.do
+		super.pager=new Pager(pageSize, nowPage, pager1.getPageCount(), newlist);
+		// ???????????
+	//	super.pager = this.getBidResponseInvitedService().list(map, super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return "isResponseBidajax";
+		
+	}//end init()
+		
+	
+	@JSON(serialize=false)
+	public String checkedBid() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		super.pager =bidService.checkedBid( 4,nowPage,param);
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return "checkedBid";
+		
+	}//end init()
+		
+	
+	
+	
+		
+	public String list() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ???????????
+		super.pager = this.getBidResponseInvitedService().list(super.getLoginUsername(), super.pageSize, super.pageNo);	
+		
+		// ?????????
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return Constants.LIST_KEY;
+		
+	}//end list()
+		
+	public String add() throws Exception {
+		System.out.println("F2 add getParameter of oneId: "+ServletActionContext.getRequest().getParameter("oneId"));
+		
+		if(ServletActionContext.getRequest().getParameter("from") != null && ServletActionContext.getRequest().getParameter("from") != ""){
+			if(ServletActionContext.getRequest().getParameter("from").indexOf("bidResponseInvited") > -1){
+				ServletActionContext.getResponse().sendRedirect("bid!init.do");
+			}
+		}
+		ServletActionContext.getRequest().setAttribute("oneId", ServletActionContext.getRequest().getParameter("oneId"));
+		// ?????????
+		clearErrorsAndMessages();
+		
+		
+		// ?????????
+		reset();
+		return Constants.ADD_KEY;
+	}//end add()
+	private void reset() {
+		setId(null);
+		setUserId(null);
+		setBidAimPersonId(null);
+		setIsResponse(null);
+		setReponseTime(null);
+		setReponseMoney(null);
+		setReponseContent(null);
+		setIsInvited(null);
+		setInviteTime(null);
+		setIsConfirmed(null);
+		setConfirmedTime(null);
+		setCoonfirmMoney(null);
+		setBidderRemark(null);
+	}//end reset()
+		// ?????��??
+	private void bean2Form(BidResponseInvited bidResponseInvited) {
+//		setId(bidResponseInvited.getId().toString());
+		setUserId(bidResponseInvited.getUser().getId().toString());
+		setBidAimPersonId(bidResponseInvited.getBidAimPerson().getId().toString());
+		setIsResponse(bidResponseInvited.getIsResponse().toString()      );
+		setReponseTime(bidResponseInvited.getReponseTime().toString()      );
+		setReponseMoney(new Double(bidResponseInvited.getReponseMoney()).toString());
+		setReponseContent(bidResponseInvited.getReponseContent());
+		setIsInvited(bidResponseInvited.getIsInvited().toString()      );
+		setInviteTime(bidResponseInvited.getInviteTime().toString()      );
+		setIsConfirmed(bidResponseInvited.getIsConfirmed().toString()      );
+		setConfirmedTime(bidResponseInvited.getConfirmedTime().toString()      );
+		setCoonfirmMoney(new Double(bidResponseInvited.getCoonfirmMoney()).toString());
+		setBidderRemark(bidResponseInvited.getBidderRemark());
+	}//end bean2Form()
+	public String edit() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// id???????????
+		if (this.getId() == null) {
+			saveActionError("bidResponseInvited.message.edit.notexist");
+			return Constants.LIST_KEY;
+		} else {
+			// ???????
+			BidResponseInvited bidResponseInvited = this.getBidResponseInvitedService().select(id); 
+			
+			// ??????????????
+			if (bidResponseInvited == null) {
+				saveActionError("bidResponseInvited.message.edit.notexist");
+				return Constants.LIST_KEY;
+			} else {
+				// ?????��??
+				bean2Form(bidResponseInvited);
+				return Constants.EDIT_KEY;
+			}
+		}//end if
+		
+	}//end edit()
+		
+	public String insert() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		String nid = null ;
+		
+		try{
+			
+		//
+		BidResponseInvited bidResponseInvited = new BidResponseInvited();
+		bidResponseInvited.setUser(this.getUserService().selectById(Integer.parseInt(this.getUserId())));    
+		bidResponseInvited.setBidAimPerson(this.getBidAimPersonService().select(this.getBidAimPersonId()));  
+		bidResponseInvited.setIsResponse(Integer.valueOf(this.getIsResponse() ));
+		bidResponseInvited.setReponseTime(java.sql.Timestamp.valueOf(this.getReponseTime() ));
+		bidResponseInvited.setReponseMoney(Double.valueOf(this.getReponseMoney() ));
+		bidResponseInvited.setReponseContent(this.getReponseContent());
+		bidResponseInvited.setIsInvited(Integer.valueOf(this.getIsInvited() ));
+		bidResponseInvited.setInviteTime(java.sql.Timestamp.valueOf(this.getInviteTime() ));
+		bidResponseInvited.setIsConfirmed(Integer.valueOf(this.getIsConfirmed() ));
+		bidResponseInvited.setConfirmedTime(java.sql.Timestamp.valueOf(this.getConfirmedTime() ));
+		bidResponseInvited.setCoonfirmMoney(Double.valueOf(this.getCoonfirmMoney() ));
+		bidResponseInvited.setBidderRemark(this.getBidderRemark());
+		String strOneId = ServletActionContext.getRequest().getParameter("oneId");
+		System.out.println("F2 insert getParameter  of oneId:"+strOneId);
+		Bid oneInstance = this.getBidService().select(strOneId);
+		bidResponseInvited.setBid(oneInstance);
+		
+		nid = this.getBidResponseInvitedService().insert(bidResponseInvited);
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_BIDRESPONSEINVITED);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+		//????????????
+		super.pager = this.getBidResponseInvitedService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		// ?????????
+		if (nid != null) {
+			saveActionMessage("bidResponseInvited.message.add.success");
+			return Constants.LIST_KEY;
+		} else {
+			saveActionError("bidResponseInvited.message.add.failed");
+			return Constants.ADD_KEY;
+		}
+	}//end insert()
+	public String update() throws Exception {
+		// 
+		clearErrorsAndMessages();
+		
+		try{
+			// 
+			BidResponseInvited bidResponseInvited = this.getBidResponseInvitedService().select(new String(id));
+//			bidResponseInvited.setUser(userInstance);    
+//			bidResponseInvited.setBidAimPerson(bidAimPersonInstance);    
+			bidResponseInvited.setUser(this.getUserService().selectById(Integer.parseInt(this.getUserId())));    
+			bidResponseInvited.setBidAimPerson(this.getBidAimPersonService().select(this.getBidAimPersonId()));  
+			
+			bidResponseInvited.setIsResponse(Integer.valueOf(this.getIsResponse() ));
+			bidResponseInvited.setReponseTime(java.sql.Timestamp.valueOf(this.getReponseTime() ));
+			bidResponseInvited.setReponseMoney(Double.valueOf(this.getReponseMoney() ));
+			bidResponseInvited.setReponseContent(this.getReponseContent());
+			bidResponseInvited.setIsInvited(Integer.valueOf(this.getIsInvited() ));
+			bidResponseInvited.setInviteTime(java.sql.Timestamp.valueOf(this.getInviteTime() ));
+			bidResponseInvited.setIsConfirmed(Integer.valueOf(this.getIsConfirmed() ));
+			bidResponseInvited.setConfirmedTime(java.sql.Timestamp.valueOf(this.getConfirmedTime() ));
+			bidResponseInvited.setCoonfirmMoney(Double.valueOf(this.getCoonfirmMoney() ));
+			bidResponseInvited.setBidderRemark(this.getBidderRemark());
+		this.getBidResponseInvitedService().update(bidResponseInvited);
+		
+		bean2Form(bidResponseInvited);	
+		
+		// ?????????????
+		Pager pagerSession = (Pager) getSession(Constants.PAGER_BIDRESPONSEINVITED);
+		if(pagerSession == null){
+			//??????????
+			super.pageSize = Constants.pageSize;
+			super.pageNo = Constants.pageNo;
+		}else{
+			super.pageSize = pagerSession.getPageSize();
+			super.pageNo = pagerSession.getPageNo();
+			
+		}
+		
+			// ????????????
+			super.pager = this.getBidResponseInvitedService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			saveActionMessage("bidResponseInvited.message.edit.success");
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2(" Sorry ");
+			return Constants.ERROR_KEY;
+		}
+		
+		return Constants.LIST_KEY;
+	}//end update() 
+	public String delete() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		try{
+			// id???????????
+			if (this.getId() == null) {
+				saveActionError("bidResponseInvited.message.edit.notexist");
+			} else {
+				// ??????
+				this.getBidResponseInvitedService().delete(id);
+				saveActionMessage("bidResponseInvited.message.delete.success");
+			}
+			
+			// ???????????
+			super.pager = this.getBidResponseInvitedService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+			
+		}catch(Exception e){
+			saveActionError2(e.toString());
+			saveActionMessage2("Please delete child first");
+			return Constants.ERROR_KEY;
+		}
+		return Constants.LIST_KEY;
+		
+	}
+	
+	
+	
+	
+//	@JSON(serialize=false)
+//	public String confirmChangePeople() throws Exception {
+//		// 
+//		clearErrorsAndMessages();
+//		String nid = null ;
+//		
+//		try{
+//			
+//		//
+//		BidReceiverConfirmChange bidReceiverConfirmChange = new BidReceiverConfirmChange();
+//	    User user= userService.select(username);
+//	    BidAimPerson aimPerson=bidAimPersonService.select(aimId);
+//	   int nowpage=1;
+//	   int pagesize=1000;
+//	   List<BidResponseInvited> list= this.getBidResponseInvitedService().listConfirm(user,aimPerson,nowpage,pagesize);
+//	   for (BidResponseInvited bidResponseInvited : list) {
+//		   bidResponseInvited.setIsConfirmed(2);
+//		   this.getBidResponseInvitedService().update(bidResponseInvited);
+//		
+//	}
+//	   BidResponseInvited invited=null;
+//		if(list.size()>0){
+//			invited=list.get(0);
+//			
+//		}
+//		bidReceiverConfirmChange.setCancelWorker(invited);    
+//	//	bidReceiverConfirmChange.setBidResponseInvitedTo(this.getBidResponseInvitedService().select(this.getBidResponseInvitedToId()));    
+//		//bidReceiverConfirmChange.setSiteConfig(this.getSiteConfigService().select(2+"")); 
+//			
+////		bidReceiverConfirmChange.setChangeTime(java.sql.Timestamp.valueOf(this.getChangeTime() ));
+////		bidReceiverConfirmChange.setChangeReason(this.getChangeReason());
+//		//bidReceiverConfirmChange.setChangeeOpnion(this.getChangeeOpnion());
+//		String strOneId = ServletActionContext.getRequest().getParameter("bid");
+//		System.out.println("F2 insert getParameter  of oneId:"+strOneId);
+//		Bid oneInstance = this.getBidService().select(strOneId);
+//		bidReceiverConfirmChange.setBid(oneInstance);
+//		
+//		//nid = this.getBidReceiverConfirmChangeService().insert(bidReceiverConfirmChange);
+//		
+//		// ?????????????
+//		Pager pagerSession = (Pager) getSession(Constants.PAGER_BIDRECEIVERCONFIRMCHANGE);
+//		if(pagerSession == null){
+//			//??????????
+//			super.pageSize = Constants.pageSize;
+//			super.pageNo = Constants.pageNo;
+//		}else{
+//			super.pageSize = pagerSession.getPageSize();
+//			super.pageNo = pagerSession.getPageNo();
+//			
+//		}
+//		
+//		//????????????
+//		//super.pager = this.getBidReceiverConfirmChangeService().list(super.getLoginUsername(), super.pageSize, super.pageNo);
+//		
+//		
+//		}catch(Exception e){
+//			saveActionError2(e.toString());
+//			saveActionMessage2(" Sorry ");
+//			return Constants.ERROR_KEY;
+//		}
+//		
+//		// ?????????
+//		if (nid != null) {
+//			saveActionMessage("bidReceiverConfirmChange.message.add.success");
+//			return Constants.LIST_KEY;
+//		} else {
+//			saveActionError("bidReceiverConfirmChange.message.add.failed");
+//			return Constants.ADD_KEY;
+//		}
+//	}//end insert()
+//	
+//	
+	
+	
+	
+	
+	//0代表失败
+	//1代表存在
+	//2代表成功
+	int msg=0;
+	
+	@JSON(serialize=false)
+	public String responseInvited(){
+	BidResponseInvited invited=	bidResponseInvitedService.select(id);
+	     msg=1;
+	if(invited.getIsResponse()<=0){
+		invited.setConfirmedTime(new Timestamp(new Date().getTime()));
+		invited.setIsConfirmed(0);
+		invited.setIsResponse(1);
+		invited.setReponseTime(new Timestamp(new Date().getTime()));
+		msg=0;
+	
+	
+	boolean  uuString= bidResponseInvitedService.update(invited);
+	if(uuString){
+		msg=2;
+		
+	}
+	}	
+		
+		return "responseInvited";
+	}
+	
+	
+	
+	
+	//boolean loginflag;
+	
+	int msg1=0;
+	/*
+	 * msg1=1;已经应邀
+	 * msg1=2;应邀成功
+	 * msg1=3;验证码错误
+	 * msg1=4;//没有经过实名
+	 * msg1=5;没有登录;
+	 * msg1=6;权限不够
+	 * msg1=7;//自个不能应约自己的约拍
+	 * msg1=8;登录失败
+	 * msg1=9;模特权限不够
+	 * msg1=10;摄影师特权限不够
+	 * msg1=11;//图片征集
+	 * msg=12;//用户不存在
+	 * 
+	 * 
+	 * /
+	 */
+	@SuppressWarnings("unchecked")
+	@JSON(serialize=false)
+	public String publicResponseInvited() throws Exception{
+			if(username==""){
+				 String userName=super.getLoginUsername();
+				 System.out.println(userName);
+				if(userName==null){
+					
+					
+					msg1=5;
+					return "publicResponseInvited";
+					
+				}
+				
+			}
+		 
+		
+			
+			
+			
+			if(super.getLoginUsername()==null){
+				 String oldCode = getSession("loginValidateCode")+"";
+				 //输入验证码
+		         if(!code.equals(oldCode)){
+		        	 msg1=3;
+		        	return "publicResponseInvited";
+		         }
+		    MD5Code des = new MD5Code("leemenz");
+		    
+		    
+			
+			User userLogn=null;
+			String str="^([a-zA-Z0-9]*[._]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
+	        Pattern p = Pattern.compile(str);     
+	        Matcher m = p.matcher(username); 
+	        Map<String, Object> maplogin=new HashMap<String, Object>();
+	       if(m.matches()){
+	    	   maplogin.put("email", username);
+	    	   
+	       }else{
+	    	   maplogin.put("username", username); 
+	       }
+			List<User> listLogin=(List<User>) userService.list(maplogin, 1, 1).getResultList();
+			
+			if(listLogin.size()==0||listLogin==null){
+			msg1=12;
+			return "publicResponseInvited";
+			}else{
+				userLogn=listLogin.get(0);
+				username=userLogn.getUsername();
+			}
+		    
+		    
+		    
+		    
+		    
+			if (this.userService.login(username, des.encrypt(password))) {
+				User user=userService.select(username);
+				username="";
+				if(!user.getRole().contains("photographer")&&!user.getRole().contains("model")){
+					msg1=6;
+					return "publicResponseInvited";
+					
+					
+				}
+				ActionContext.getContext().getSession().put("id", user.getId());
+				ActionContext.getContext().getSession().put("username", user.getUsername());
+				ActionContext.getContext().getSession().put("role", user.getRole());
+				String userCatType = user.getUserCat().getType() ;
+				ActionContext.getContext().getSession().put("cat",  userCatType );
+				//ActionContext.getContext().getSession().put("id",id);
+				//ActionContext.getContext().getSession().put("role", role);
+				int validate=0;
+				if (user.getIfIdentityTrue()==null) {
+				//	msg
+					validate=0;
+					
+				}else {
+					validate=user.getIfIdentityTrue();
+					//if(validate)
+				}
+				if(validate!=2){
+					msg1=4;	
+					return "publicResponseInvited";
+					
+				}
+				ActionContext.getContext().getSession().put("validate",validate);
+			}else{
+				msg1=8;	
+				return "publicResponseInvited";
+				
+			}
+			
+			}
+		
+		
+			
+		
+		String queryString = getRequestPath();
+	//	System.out.println("queryString :" + queryString);
+		User user=userService.select(super.getLoginUsername());
+		
+		int validate=0;
+		if (user.getIfIdentityTrue()==null) {
+		//	msg
+			validate=0;
+			
+		}else {
+			validate=user.getIfIdentityTrue();
+			//if(validate)
+		}
+		if(validate!=2){
+			msg1=4;	
+			return "publicResponseInvited";
+			
+		}
+		
+		
+		Bid bid=bidService.select(bidId);
+		if((bid.getUser().getId()+"").equals(user.getId()+"")){
+			msg1=7;
+		return "publicResponseInvited";
+			
+		}
+		
+		if(bid.getType()==3){
+			msg1=11;
+			return "publicResponseInvited";
+			
+		}
+		
+		List<BidAimPerson> list=(List<BidAimPerson>) bidAimPersonService.aimSelect(bid, 1, 1);
+		BidAimPerson bidAimPerson=list.get(0);
+		if(bid.getType()==1){
+			if(bidAimPerson.getType()==0){
+				if(!user.getRole().contains("photographer")){
+					msg1=10;
+					return "publicResponseInvited";
+				}
+				
+			}else{
+				if(!user.getRole().contains("model")){
+					msg1=9;
+					return "publicResponseInvited";
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		BidResponseInvited invited=new BidResponseInvited();
+		
+		
+		invited.setBid(bid);
+		if(bid.getRecruitNum()==0){
+			bid.setRecruitNum(1);
+			
+			
+		}
+		invited.setReponseMoney(bid.getTotalMoney()/bid.getRecruitNum());
+		invited.setBidAimPerson(bidAimPerson);
+		invited.setUser(user);
+		invited.setInviteTime(new Timestamp(new Date().getTime()));
+		invited.setIsInvited(0);
+		invited.setIsConfirmed(0);
+		invited.setIsResponse(1);
+	     
+	    if(type==0){
+	 	Map<String, Object> map=new HashMap<String, Object>();
+		map.put("user", user);
+		map.put("bidAimPerson",bidAimPerson);
+		Pager pager=bidResponseInvitedService.list(map, super.pageSize, super.pageNo);
+		if(pager.getResultList().size()>0){
+			BidResponseInvited bidResponseInvited=(BidResponseInvited) pager.getResultList().get(0);
+			if(bidResponseInvited.getIsResponse()==1){
+				 msg1=1;	
+				 return "publicResponseInvited";
+				
+			}
+			bidResponseInvited.setIsResponse(1);
+			
+		}
+	    }
+	String  uuString= bidResponseInvitedService.insert(invited);
+	if(uuString!=null){
+		msg1=2;
+		
+	}
+	
+		return "publicResponseInvited";
+	}
+	
+	//邀请摄影师投标
+	@JSON(serialize=false)
+	public String getPeopleOrModel(){
+		String type="";
+		String tiaojianId="";
+		Bid bid=bidService.select(id);
+		if(bid.getType()!=3){
+			List<BidAimPerson> aimPersons=(List<BidAimPerson>)bidAimPersonService.aimSelect(bid, 1, 1);
+			BidAimPerson aimPerson=null;
+			if(aimPersons.size()>0){
+				aimPerson=aimPersons.get(0);
+				type=aimPerson.getType()+"";
+				tiaojianId=aimPerson.getId();
+			}
+			
+		}else{
+			type=3+"";
+			tiaojianId=bid.getId();
+			
+		}
+		String workPlace="";
+		if(bid.getType()!=3){
+			String work=bid.getWorkPlace();
+			workPlace=work;
+			
+			
+		}
+		String  wodrk=bid.getWorkPlace();
+		//ActionContext.getContext().put("bid", bid);
+		//ActionContext.getContext().put("aimPerson", aimPerson);
+		System.out.println(id+"=aimId");
+		System.out.println(bidId+"==bidId");
+		Pager pager1 = this.getUserService().moelorPotolist(type, 4,nowPager,(Integer)super.getSession("id"),tiaojianId,workPlace);
+		 pagerList=( List<User>)pager1.getResultList();
+		   newList=new ArrayList();
+		  for (User user : pagerList) {
+			    UserCredit userCredit=this.getCreditService().selectByUser(user);
+		       int totalMark=(int)userCredit.getTotalMark();
+		       int goodRemark=userCredit.getBidGoodRemarkNum();
+		       int badRemark=userCredit.getBidBadRemarkNum();
+		       int attentionNumber=this.getContactService().findAttentionNumber(user);
+		      // int System.out.println(attentionNumber+"******************");
+		       int fansNumber=this.getContactService().findFansNumber(user);
+		       UserMess userMess=new UserMess();
+			  //t userMess.setCredit(userCredit);
+			   userMess.setBadRemark(badRemark);
+			   userMess.setGoodRemark(goodRemark);
+			   userMess.setFansNumber(fansNumber);
+			   userMess.setAttentionNumber(attentionNumber);
+			   userMess.setTotalMark(totalMark);
+			   user.setUserMess(userMess);
+			   newList.add(user);
+			
+		}
+		  pager1.setResultList(newList);
+		  super.pager=pager1;
+		//  pagerList=newList;//.setResultList(newList);
+		  //super.pager=pager1;
+		  
+		
+		
+		
+		
+		
+		
+		return "getPeopleOrModel";
+	}
+	
+	//投诉处理
+	public String tousuChuli(){
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("complain","null");
+		Pager pager1=bidResponseInvitedService.findtousuList(4, 1);
+		
+		List<BidResponseInvited> dateList=( List<BidResponseInvited>)pager1.getResultList();
+		 List<BidResponseInvited>   newList1=new ArrayList();
+		  for (BidResponseInvited invited : dateList) {
+			    User user=invited.getUser();
+			    UserCredit userCredit=this.getCreditService().selectByUser(user);
+		       int totalMark=(int)userCredit.getTotalMark();
+		       int goodRemark=userCredit.getBidGoodRemarkNum();
+		       int badRemark=userCredit.getBidBadRemarkNum();
+		       int attentionNumber=this.getContactService().findAttentionNumber(user);
+		      // int System.out.println(attentionNumber+"******************");
+		       int fansNumber=this.getContactService().findFansNumber(user);
+		       UserMess userMess=new UserMess();
+			  //t userMess.setCredit(userCredit);
+			   userMess.setBadRemark(badRemark);
+			   userMess.setGoodRemark(goodRemark);
+			   userMess.setFansNumber(fansNumber);
+			   userMess.setAttentionNumber(attentionNumber);
+			   userMess.setTotalMark(totalMark);
+			   user.setUserMess(userMess);
+			   invited.setUser(user);
+			   User user2=invited.getBid().getUser();
+			   
+			   UserCredit userCredit2=this.getCreditService().selectByUser(user);
+		       int totalMark2=(int)userCredit.getTotalMark();
+		       int goodRemark2=userCredit.getBidGoodRemarkNum();
+		       int badRemark2=userCredit.getBidBadRemarkNum();
+		       int attentionNumber2=this.getContactService().findAttentionNumber(user);
+		      // int System.out.println(attentionNumber+"******************");
+		       int fansNumber2=this.getContactService().findFansNumber(user);
+		       UserMess userMess2=new UserMess();
+			  //t userMess.setCredit(userCredit);
+			   userMess2.setBadRemark(badRemark2);
+			   userMess2.setGoodRemark(goodRemark2);
+			   userMess2.setFansNumber(fansNumber2);
+			   userMess2.setAttentionNumber(attentionNumber2);
+			   userMess2.setTotalMark(totalMark2);
+			   user2.setUserMess(userMess2);
+			   invited.getBid().setUser(user2);
+			   
+			   
+			   
+			   
+			   newList1.add(invited);
+			   
+			
+		}
+		  pager1.setResultList(newList1);
+		  super.pager=pager1;
+		
+		
+		return "tousuChuli";
+	}
+	
+	
+	//boolean b=
+	
+	@JSON(serialize=false)
+	public String getPublishInvited(){
+		clearErrorsAndMessages();
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+		super.pager = this.getBidService().findPublicBidList(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+
+		setSession(Constants.PAGER_BID, super.pager);
+		
+		
+		
+		
+		return "publishInvited";
+		
+		
+	} 	
+	
+	
+	
+	
+    @SuppressWarnings("unchecked")
+	@JSON(serialize=false)
+    public String getReplyPhoto(){
+		clearErrorsAndMessages();
+		//super.pageSize = Constants.pageSize;
+		//super.pageNo = Constants.pageNo;
+		Pager pager1 = this.getBidResponseInvitedService().getReplyPhoto(aimId,6, nowPage,tags,username);
+		  List list=pager1.getResultList();
+		  List newdateList=new ArrayList();
+		    for(int i=0;i<list.size();i++){
+			 Object[] list2=(Object[])list.get(i);
+			 List arrlist=new ArrayList(); 
+			 User user=userService.selectById(Integer.parseInt(list2[0].toString()));
+			  UserCredit userCredit=this.getCreditService().selectByUser(user);
+		       int totalMark=(int)userCredit.getTotalMark();
+		       int goodRemark=userCredit.getBidGoodRemarkNum();
+		       int badRemark=userCredit.getBidBadRemarkNum();
+		       int attentionNumber=this.getContactService().findAttentionNumber(user);
+		      // int System.out.println(attentionNumber+"******************");
+		       int fansNumber=this.getContactService().findFansNumber(user);
+		       UserMess userMess=new UserMess();
+			  //t userMess.setCredit(userCredit);
+			   userMess.setBadRemark(badRemark);
+			   userMess.setGoodRemark(goodRemark);
+			   userMess.setFansNumber(fansNumber);
+			   userMess.setAttentionNumber(attentionNumber);
+			   userMess.setTotalMark(totalMark);
+		 for (Object object : list2) {			 
+			   arrlist.add(object); 
+		}
+		  arrlist.add(userMess); 
+		  newdateList.add(arrlist);
+			  
+		  }
+		  pager1.setResultList(newdateList);
+		super.pager=pager1;
+		
+		
+		setSession(Constants.PAGER_BID, super.pager);
+		
+		return "replyInvited";
+		
+		
+	} 	
+    
+/*
+    @JSON(serialize=false)
+    public String getallConfirmReplyPhoto(){
+		clearErrorsAndMessages();
+		//super.pageSize = Constants.pageSize;
+		//super.pageNo = Constants.pageNo;
+		super.pager = this.getBidResponseInvitedService().getReplyPhoto(aimId,2, nowPage,tags,username);
+		
+		
+		setSession(Constants.PAGER_BID, super.pager);
+		
+		return "replyInvited";
+		
+		
+	} 	
+    */
+    //应约者要求付款
+    @JSON(serialize=false)
+    public String confirmTaskFinished() throws Exception{
+    	try{
+	
+		//super.pageNo = Constants.pageNo;
+		BidResponseInvited bidResponseInvited = this.getBidResponseInvitedService().select(id);
+		bidResponseInvited.setTaskFinished(1);
+		bidResponseInvitedService.update(bidResponseInvited);
+		
+		    Bid bid=bidResponseInvited.getBid();
+		    User user=bid.getUser();
+		    SendMsg sendMsg=new SendMsg();
+		   System.out.println(bid.getName());
+		  //  sendMsg.sendMsgByTel(user.getMobile(), "按项目计划，项目   "+bid.getName()+" 已经完成，请登录唯图网确认付款。。如有问题可以进入项目操作投诉。（唯图网）");		
+			String content1="<span style='font-size:12px;'>尊敬的用户！"+user.getUsername()+"<br/>";
+	        content1+="您好:<br/>";
+	        content1+="您在唯图网发布的"+bid.getName()+"项目，按项目计划，已经完成，请登录唯图网确认付款。如有问题可以进入项目操作投诉。（唯图网）<br/>";
+	        content1+="<a href='http://www.wepic.cn/view/frontend/login.jsp'>http://www.wepic.cn/view/frontend/login.jsp</a><br/>";
+	        content1+="<span style='color:#CCC;font-size:12px;'>（如果以上链接无法点击，请将上面的地址复制到你的浏览器(如IE)的地址栏进入唯图网.）</span><br/></span>" +
+	        		"<span style='font-size:12px;'>为了保障您的项目进度，请尽快登录唯图网进行项目操作！</span>";
+	        content1+="<span style='font-size:12px;'><br/>唯图网客服团队<br/></span>";
+	        content1+="key@wepic.cn";
+	        sendMsg.sendMsgByEmail(user.getEmail(), content1);
+	        sendMeString="1";
+    	}catch (Exception e) {
+			e.printStackTrace();
+    		sendMeString="0";
+		}
+		return "confirmTaskFinished";
+		
+		
+	} 	
+    //发布者付款
+    public String bidpayMoney() throws Exception{
+    	
+		return isResponseBid();
+		
+		
+	} 	
+	
+	
+	
+	
+	Map<String, Integer> list1=new HashMap<String, Integer>();
+	// @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
+	public String  confirmInvited(){
+	    List<BidResponseInvited> list=bidResponseInvitedService.listConfirm(userService.selectById(Integer.parseInt(userId)), 
+	    		bidAimPersonService.select(aimId), 100, 0);
+	    int userId=(Integer)super.getSession("id");
+	   
+	   int msg= bidtransaction.insert(userService.selectById(userId).getUsername(), bidAimPersonService.select(aimId).getBid(), list,bidResponseInvitedService, bidResponseInvitedService.getOrderConfirm(aimId).size());
+	      list1.put("userId", userId);
+	      list1.put("msg", msg);
+		   return "confirmInvited";	
+	}
+	//选为待定
+	@SuppressWarnings("unchecked")
+	public String  undetermined(){
+		try{
+	   BidResponseInvited responseInvited= bidResponseInvitedService.select(id);
+	   responseInvited.setIsResponse(2);
+	   bidResponseInvitedService.update(responseInvited);
+	   message="ok";
+		}catch (Exception e) {
+		e.printStackTrace();
+			 message="error";
+		}
+		   return "undetermined";	
+	}
+	
+	
+	
+	
+	
+    
+    
+	//要取消的约拍
+	public String willCancelBidList() throws Exception {
+		// ?????????
+		clearErrorsAndMessages();
+		
+		// ??????????
+		super.pageSize = Constants.pageSize;
+		super.pageNo = Constants.pageNo;
+//		Map<String, Object> map=new HashMap<String, Object>();
+//		map.put("user", userService.select(super.getLoginUsername()));
+//		map.put("isResponse", 1);
+		super.pager =bidService.cancelbidList(super.getLoginUsername(), super.pageSize, super.pageNo);
+		
+		// ???????????
+	//	super.pager = this.getBidResponseInvitedService().list(map, super.pageSize, super.pageNo);
+		
+		// ?????????
+		setSession(Constants.PAGER_BIDRESPONSEINVITED, super.pager);
+		
+		return "cancelBidList";
+		
+	}//end init()
+	@JSON(serialize=false)
+	public String cancelBid() throws Exception {
+		
+	message=bidtransaction.cancelBid(super.getLoginUsername(), bidId, bidResponseInvitedService)+"";
+		
+		
+		return   "cancelBid";
+	}
+	
+	//约拍拍付款
+	public String payBidMoney(){
+		
+		try{
+			
+			//super.pageNo = Constants.pageNo;
+			BidResponseInvited bidResponseInvited = this.getBidResponseInvitedService().select(id);
+			bidResponseInvited.setTaskFinished(2);
+			bidResponseInvitedService.update(bidResponseInvited);
+			
+			sendMeString=bidtransaction.payMoney(bidResponseInvited);
+
+	    	}catch (Exception e) {
+				e.printStackTrace();
+	    		sendMeString="1";
+			}
+		
+		return "payBidMoney";
+	}
+	
+	public Map<String, Integer> getList1() {
+		return list1;
+	}
+	public void setList1(Map<String, Integer> list1) {
+		this.list1 = list1;
+	}
+	public int getMsg() {
+		return msg;
+	}
+	public void setMsg(int msg) {
+		this.msg = msg;
+	}
+	public String getId(){
+		return  id;
+	}
+	public void  setId(String id){
+		this.id = id ;
+	}
+	 
+	public BidResponseInvitedService getBidResponseInvitedService() {
+		return bidResponseInvitedService;
+	}
+	public void setBidResponseInvitedService(BidResponseInvitedService bidResponseInvitedService) {
+		this.bidResponseInvitedService = bidResponseInvitedService;
+	}
+	
+	public String getUserId(){
+		return  userId;
+	}
+	public void  setUserId(String userId){
+		this.userId = userId ;
+	}
+	 
+	public String getBidAimPersonId(){
+		return  bidAimPersonId;
+	}
+	public void  setBidAimPersonId(String bidAimPersonId){
+		this.bidAimPersonId = bidAimPersonId ;
+	}
+	 
+	public String getIsResponse(){
+		return  isResponse;
+	}
+	public void  setIsResponse(String isResponse){
+		this.isResponse = isResponse ;
+	}
+	 
+	public String getReponseTime(){
+		return  reponseTime;
+	}
+	public void  setReponseTime(String reponseTime){
+		this.reponseTime = reponseTime ;
+	}
+	 
+	public String getReponseMoney(){
+		return  reponseMoney;
+	}
+	public void  setReponseMoney(String reponseMoney){
+		this.reponseMoney = reponseMoney ;
+	}
+	 
+	public String getReponseContent(){
+		return  reponseContent;
+	}
+	public void  setReponseContent(String reponseContent){
+		this.reponseContent = reponseContent ;
+	}
+	 
+	public String getIsInvited(){
+		return  isInvited;
+	}
+	public void  setIsInvited(String isInvited){
+		this.isInvited = isInvited ;
+	}
+	 
+	public String getInviteTime(){
+		return  inviteTime;
+	}
+	public void  setInviteTime(String inviteTime){
+		this.inviteTime = inviteTime ;
+	}
+	 
+	public String getIsConfirmed(){
+		return  isConfirmed;
+	}
+	public void  setIsConfirmed(String isConfirmed){
+		this.isConfirmed = isConfirmed ;
+	}
+	 
+	public String getConfirmedTime(){
+		return  confirmedTime;
+	}
+	public void  setConfirmedTime(String confirmedTime){
+		this.confirmedTime = confirmedTime ;
+	}
+	 
+	public String getCoonfirmMoney(){
+		return  coonfirmMoney;
+	}
+	public void  setCoonfirmMoney(String coonfirmMoney){
+		this.coonfirmMoney = coonfirmMoney ;
+	}
+	 
+	public String getBidderRemark(){
+		return  bidderRemark;
+	}
+	public void  setBidderRemark(String bidderRemark){
+		this.bidderRemark = bidderRemark ;
+	}
+	 
+	 public String getUsername() {
+	 	return username;
+	 }
+	 public void setUsername(String username) {
+	 	this.username = username;
+	 }
+	 private String  sendMeString;
+	 
+	 public String getSendMeString() {
+		return sendMeString;
+	}
+	public void setSendMeString(String sendMeString) {
+		this.sendMeString = sendMeString;
+	}
+	int retflag;
+	 
+	    public int getRetflag() {
+		return retflag;
+	}
+	public void setRetflag(int retflag) {
+		this.retflag = retflag;
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		@JSON(serialize=false)
+		 public String confirmImag(){
+			
+		    retflag=bidtransaction.confirmImag(id,super.getLoginUsername());
+		  
+			super.pager=bidForOpusService.getConfirmImgPager(bidId,nowPage,4);
+			pager.setMeString(retflag+"");
+			
+			return "confirmImag";
+		}
+		
+		String mesString="";
+		
+		public String getMesString() {
+			return mesString;
+		}
+		public void setMesString(String mesString) {
+			this.mesString = mesString;
+		}
+		@SuppressWarnings("unchecked")
+		public  String confirmChecked(){
+			
+			
+			BidForOpus bidForOpus= bidForOpusService.selectById(id);
+			Bid bid=bidForOpus.getBid();
+
+	    	List<BidForOpus> list=bidForOpusService.getConfirm(bidForOpus.getBid().getId());
+	    	if(list.size()>=bid.getImgSum()){
+	    		mesString=3+"";
+	    		
+	    	}
+			return "confirmChecked";
+			
+			
+		}
+		
+		@JSON(serialize=false)
+		 public String pagerConfirmImag(){
+			
+		   // retflag=bidtransaction.confirmImag(id,super.getLoginUsername());
+		  
+			super.pager=bidForOpusService.getConfirmImgPager(bidId,nowPage,4);
+			//pager.setMeString(retflag+"");
+			
+			
+			
+			
+			
+			
+			
+			
+			return "pagerConfirmImag";
+		}
+	public String checkedBidOk(){
+		Bid bid= bidService.select(bidId);
+		if("ok".equals(tags)){
+			bid.setStatus(0);	
+		}else if("not".equals(tags)){
+			bid.setStatus(9);
+		}
+		 boolean b=bidService.update(bid);
+	  if(b){
+		  bidflag=1;
+	  }else{
+		  bidflag=2;
+	  }
+		
+		
+		
+		return "checkedBidOk";
+	}
+	//评价+投诉+处理
+	@JSON(serialize=false)
+	public String bidRemark(){
+	BidResponseInvited bidResponseInvited= bidResponseInvitedService.select(id);
+		bidResponseInvited.setBidRemarkType(bidRemarkType);
+		User user=bidResponseInvited.getUser();
+		UserCredit userCredit=creditService.selectByUser(user);
+		if(bidderRemark.equals("0")){
+			userCredit.setBidBadRemarkNum(userCredit.getBidBadRemarkNum()+1);
+		   float newMark=userCredit.getTotalMark()-50;
+		   if(newMark<=0){
+			   
+			   newMark=0;
+		   }
+		   userCredit.setTotalMark(newMark);
+			
+		}else{
+			userCredit.setBidGoodRemarkNum(userCredit.getBidGoodRemarkNum()+1);
+			userCredit.setTotalMark(userCredit.getTotalMark()+10);
+			
+			
+		}
+		creditService.update(userCredit);
+		bidResponseInvited.setBidderRemarkTime(new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
+		bidResponseInvited.setBidderRemark(bidderRemark);
+		complainFalgString="0";
+		if(bidResponseInvitedService.update(bidResponseInvited)){
+			complainFalgString="1";
+		}
+		
+		return "bidRemark";
+	}
+	@JSON(serialize=false)
+	public String compain(){
+		BidResponseInvited bidResponseInvited= bidResponseInvitedService.select(id);
+			bidResponseInvited.setComplain(complain);
+			//bidResponseInvited.setComplainTime(complainTime);
+			bidResponseInvited.setComplainTime(new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
+			bidResponseInvited.setComplainstatus(0+"");
+			complainFalgString="0";
+			if(bidResponseInvitedService.update(bidResponseInvited)){
+				complainFalgString="1";
+			}
+			return "compain";
+		}
+	
+public String countBid(){
+		
+		super.pager=this.getBidService().list(pageSize, nowPage);
+		
+		
+		return "countBid";
+}
+
+
+@SuppressWarnings("unchecked")
+public String readOnlybidMark(){
+	if(username==null||username==""){
+		username=super.getLoginUsername();
+	}else{
+		 //String name=ServletActionContext.getRequest().getParameter("name");
+		  try {
+				username=new String(username.getBytes("iso-8859-1"),"utf-8");
+				//System.out.println(username);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+	}
+	
+	
+	
+	
+	Map map=new HashedMap();
+	User user=userService.select(username);
+	nickName=user.getNickName();
+	map.put("user", user);
+	Pager pager1=bidResponseInvitedService.list(map, 4, nowPage);
+	
+	List<BidResponseInvited> BidResponseInviteds=(List<BidResponseInvited>) pager1.getResultList();
+	 List arrlist=new ArrayList(); 
+	for (BidResponseInvited bidResponseInvited : BidResponseInviteds) {
+		 User userbid=bidResponseInvited.getBid().getUser();
+		   UserCredit userCredit=this.getCreditService().selectByUser(userbid);
+	     int totalMark=(int)userCredit.getTotalMark();
+	      UserMess userMess=new UserMess();
+	       int start=totalMark/200;     
+	       userCredit.setUser(null);
+	       userCredit.setUserCreditHistorySet(null);
+	       userCredit.setStar(start);
+		   userMess.setCredit(userCredit);
+		   userbid.setUserMess(userMess);
+		   bidResponseInvited.getBid().setUser(userbid);
+		   arrlist.add(bidResponseInvited);
+	}
+	int endpage=pager1.getLastPageNo();
+	ActionContext.getContext().put("endpage", endpage);
+	pager1.setResultList(arrlist);
+	super.pager=pager1;
+	   
+	   
+	   
+	return "readOnlybidMark";
+}
+}

@@ -1,0 +1,215 @@
+#divAccountHead{
+	background:#FFFFFF;
+    height: 751px;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin:0 auto;
+    width: 870px;
+	margin-bottom:20px;
+	margin-top:10px;
+	
+	}
+
+#divAccountHead .title{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:52px;
+	line-height:52px;
+	border-bottom:1px solid #f0f0f0;
+	text-align:left;
+	padding-left:30px;
+	}
+#divAccountHead .title h2{
+	font-size:13px;
+	color:#4a4a4a;
+	font-weight:normal;
+	}
+
+
+
+
+
+
+
+
+#divAccountHead .conennt{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:593px;
+	width: 870px;
+	border-bottom:1px solid #f0f0f0;
+	}
+#divAccountHead .conennt .option{
+	position:absolute;
+	top:0px;
+	right:0px;
+	height:72px;
+	width: 770px;
+	text-align:left;
+	}	
+	
+#divAccountHead .conennt input{
+     border: 0;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 17px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -1072px;
+	}
+	/*
+#divAccountHead .conennt input:hover{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -1104px;
+	}
+#divAccountHead .conennt input:active{
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -1136px;
+	}
+	*/
+#divAccountHead .conennt .choosePhoto{
+	margin-left:26px;
+	}
+
+#divAccountHead .conennt .head{
+	position:absolute;
+	top:72px;
+	left:100px;
+	height:500px;
+	width: 750px;
+	}
+#divAccountHead .conennt .choose{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:488px;
+	width: 488px;
+	border:1px solid #f0f0f0;
+	background:#fcfcfc;
+	}
+#divAccountHead .conennt .choose .explain{
+	margin:0 auto;
+	font-family:"宋体";
+	margin-top:100px;
+	color: #8A8A8A;
+	}
+#divAccountHead .conennt .preview{
+	position:absolute;
+	top:0px;
+	left:495px;
+	height:488px;
+	width: 250px;
+	}
+#divAccountHead .conennt .preview .explain{
+	position:relative;
+	top:0px;
+	left:0;
+	height:30px;
+	text-align:left;
+	font-family:"宋体";
+	color: #8A8A8A;
+	padding-left:40px;
+	}
+#divAccountHead .conennt .preview  .small{
+	position:relative;
+	top:0px;
+	left:0;
+	margin:0 auto;
+	width:80px;
+	height:100px;
+	}
+#divAccountHead .conennt .preview  .small .smalle{
+	position:relative;
+	top:5px;
+	left:0;
+	width:80px;
+	text-align:left;
+	font-family:"宋体";
+	color: #8A8A8A;
+	}
+#divAccountHead .conennt .preview  .big{
+	position:relative;
+	top:0px;
+	left:0;
+	margin:0 auto;
+	width:150px;
+	height:170px;
+	margin-top:30px;
+	}
+#divAccountHead .conennt .preview  .big .bige{
+	position:relative;
+	top:5px;
+	left:0;
+	width:150px;
+	text-align:left;
+	font-family:"宋体";
+	color: #8A8A8A;
+	}
+
+
+
+
+
+
+
+
+
+
+#divAccountHead .submit{
+	position:relative;
+	top:0px;
+	left:0px;
+	height:104px;
+	width: 870px;
+	}
+	
+#divAccountHead .submit .input{
+	position:absolute;
+	top:0px;
+	right:0px;
+	width: 500px;
+	height:104px;
+	}
+
+
+#divAccountHead .submit input {
+   	margin-left:68px;
+	*margin-left:0px;
+    border: 0;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    height: 36px;
+    letter-spacing: 15px;
+    margin-top: 23px;
+    padding-bottom: 2px;
+    padding-left: 18px;
+	*padding-left: 0px;
+    text-align: center;
+    width: 126px;
+	}
+#divAccountHead .submit .reset{ 
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -482px;
+    color: #000000;
+	}
+#divAccountHead .submit .reset:hover{ 
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -518px;
+	}
+#divAccountHead .submit .reset:active{ 
+	background: url(../../../..//public/images/buttonGroup01.png) no-repeat  0 -554px;
+	}
+#divAccountHead .submit .submit{ 
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -600px;
+    color: #FFFFFF;
+	}
+#divAccountHead .submit .submit:hover{ 
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -636px;
+	}
+#divAccountHead .submit .submit:active{ 
+	background: url(../../../../public/images/buttonGroup01.png) no-repeat  0 -672px;
+	color:#d6d6d6;
+	text-shadow: 1px 1px  1px #000;
+	padding-bottom:5px;
+	}

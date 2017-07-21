@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>选择行业</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+
+<style>
+/*我的代表作弹出框*/
+body{background:#000;}
+*{margin:0;padding:0;}
+li{list-style: none;}
+img{border:0;}
+#divChooseWorkPop{
+	width:974px;
+	min-height:1130px;
+	margin:0 auto;
+	color:#575757;
+	font-size:12px;
+	}
+
+.rework{
+	background:#ffffff;
+	/*padding-bottom:90px;*/
+	}
+.rework .top{
+    background:#F6F6F6;
+    border-bottom: 1px solid #E3E3E3;
+    height: 57px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 974px;
+	}
+.rework .top h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 22px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.rework .top a {
+    background:url(images/closeBox.png) 0 0 no-repeat;
+    height: 58px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+	}
+.rework .top a:hover{
+	background:url(images/closeBox.png) no-repeat 0 -58px;
+	}
+.rework .top a:active{
+	background:url(images/closeBox.png) no-repeat 0 -116px;
+	}
+	
+	
+.rework .character{
+    height: 55px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 500px;
+	padding-left:33px;
+	}
+
+.rework .character h2 {
+    color: #585858;
+    font-family: "微软雅黑";
+    font-size: 18px;
+    font-weight: normal;
+    height: 58px;
+    line-height: 58px;
+    padding-left: 30px;
+	text-align:left;
+	}
+
+.rework .content{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 935px;
+	height: 890px;
+	border:1px solid #f0f0f0;
+	margin:0 auto;
+	}
+.rework .content .one{
+	width:310px;
+	height: 890px;
+	float:left;
+	border-right:1px solid #f0f0f0;
+	}
+.rework .content .two{
+	width:310px;
+	height: 890px;
+	float:left;
+	border-right:1px solid #f0f0f0;
+	}
+.rework .content .three{
+	width:310px;
+	height: 890px;
+	float:left;
+	}
+
+.childIndustry{
+	width:285px;
+	min-height:60px;
+	padding:15px 0px 15px 25px;
+	border-bottom:1px solid #f0f0f0;
+	}
+.childIndustryOne{
+	width:285px;
+	min-height:50px;
+	padding:10px 0px 7px 25px;
+	border-bottom:1px solid #f0f0f0;
+	}
+.childIndustryThree{
+	width:285px;
+	min-height:50px;
+	padding:11px 0px 0px 25px;
+	border-bottom:1px solid #f0f0f0;
+	}
+.childIndustry .name{
+    color: #000;
+	height:22px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+	}
+.childIndustry .childIndustryValue{
+	height:40px;
+	line-height:40px;
+	}
+
+
+.rework .divChoosed{
+	position:relative;
+	top:0;
+	left:0;
+	width:935px;
+	height:130px;
+	margin:20px auto;
+	}
+.rework .divChoosed .divChoosedCha{
+	position:relative;
+	top:0;
+	left:0;
+	width:70px;
+	height:130px;
+	float:left;
+	font-family:"微软雅黑";
+	font-size:15px;
+	color:#000;
+	}
+.rework .divChoosed .choosedUl{
+	position:relative;
+	top:0;
+	left:0;
+	width:610px;
+	height:130px;
+	float:left;
+	}
+.rework .divChoosed .choosedUl li{
+	float:left;
+	width:300px;
+	height:27px;
+	}
+.rework .divChoosed .choosedUl li span{
+	margin-left:5px;}
+.rework .divChoosed .divSubmit{
+	float:left;
+	width:250px;
+	height:50px;
+    left: 0;
+    margin-top: 25px;
+    position: relative;
+    top: 0;
+	}
+
+	
+.rework .divChoosed .divSubmit .reset{
+	background:url(images/buttonGroup01.png) no-repeat 0 -1072px;
+    border: 0;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.rework .divChoosed .divSubmit .reset:hover{
+	background:url(images/buttonGroup01.png) no-repeat 0 -1104px;
+	}
+.rework .divChoosed .divSubmit  .sub{
+	background:url(images/buttonGroup01.png) no-repeat 0 -1168px;
+    border: 0;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+	}
+.rework .divChoosed .divSubmit  .sub:hover{
+	background:url(images/buttonGroup01.png) no-repeat 0 -1200px;
+	}
+</style>
+
+
+<script>
+$(document).ready(function() {
+	document.getElementById("formChooseWorkPop").reset();
+	
+	check();
+	
+	//checked();
+});
+
+
+function check(){
+	
+    var allCheckBox = $(".childIndustryValueCheck");
+	$(allCheckBox).each(function() {
+        $(this).click(
+			function(){
+				var thisVal = $(this).val();
+				
+				if($(this).is(':checked')){
+					var allCheckedBox = $("#choosedUl").find("input");			//获取下面选中所有checked
+					if(allCheckedBox.length < 5){
+						
+						var addLi = '<li><input type="checkbox" checked="checked" value="'+thisVal+'"/><span class="childIndustryValueSpan">'+thisVal+'</span></li>'
+						$("#choosedUl").append(addLi);
+						checked();
+						}
+					else{
+						$(this).removeAttr("checked");
+						alert("最多只可以选择5个行业领域！");
+						}
+					
+				}
+				else{
+					removeLi(thisVal);	
+					}
+		});
+    });
+}
+
+function checked(){
+	
+	var allCheckedBox = $("#choosedUl").find("input");			//获取下面选中所有checked
+	
+	$(allCheckedBox).each(function() {							//循环加click事件
+        $(this).click(
+			function(){
+				$(this).parents("li").remove();					//删除自身
+				var thisVal = $(this).val();	
+				removeChecked(thisVal);							//删除列表中与之相同的
+				
+				}
+		);
+    });
+}
+
+//去掉列表中checked状态
+function removeChecked(thisVal){
+	var allCheckBox = $(".childIndustryValueCheck");
+		$(allCheckBox).each(function() {
+			var checkVal = $(this).val();
+			if(thisVal ==checkVal){
+				$(this).removeAttr("checked");
+				}	
+		});
+
+}
+
+//去掉下面checked
+function removeLi(thisVal){
+	var allCheckedBox = $("#choosedUl").find("input");			//获取下面选中所有checked
+		$(allCheckedBox).each(function() {
+			var checkedVal = $(this).val();		
+       		if(thisVal ==checkedVal){
+				$(this).parents("li").remove();					
+			}
+		
+    });
+}
+</script>
+</head>
+
+<body>
+
+
+ <!--选择行业-->
+    <div class="rework" id="divChooseWorkPop">
+    <form id="formChooseWorkPop">
+    	<input type="hidden" id="hiddenv" />
+    	<div class="top">
+    		<h2>选择行业</h2>
+			<a href="javascript:cloosePopBox();"></a>
+    	</div>    
+    	
+        <div class="character">
+    		<h2>您最多可以选择5种行业：</h2>
+    	</div>  
+        
+       	
+        <div class="content">
+    		<div class="one">
+            
+            	<div class="childIndustry">
+                	<div class="name">IT/通信/电子/互联网</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="互联网/电子商务"/>
+                        <span class="childIndustryValueSpan">互联网/电子商务</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="计算机软件"/>
+                        <span class="childIndustryValueSpan">计算机软件</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="IT服务（系统/数据/维护）/多领域经营"/>
+                        <span class="childIndustryValueSpan">IT服务（系统/数据/维护）/多领域经营</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="电子技术/半导体/集成电路"/>
+                        <span class="childIndustryValueSpan">电子技术/半导体/集成电路</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="计算机硬件及网络设备"/>
+                        <span class="childIndustryValueSpan">计算机硬件及网络设备</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="通信/电信/网络设备"/>
+                        <span class="childIndustryValueSpan">通信/电信/网络设备</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="通信/电信运营、增值服务"/>
+                        <span class="childIndustryValueSpan">通信/电信运营、增值服务</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="网络游戏"/>
+                        <span class="childIndustryValueSpan">网络游戏</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry">
+                	<div class="name">文教体育/工艺美术</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="礼品/玩具/工艺美术/收藏品/奢侈品"/>
+                        <span class="childIndustryValueSpan">礼品/玩具/工艺美术/收藏品/奢侈品</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry">
+                	<div class="name">加工制造/仪表设备</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="大型设备/机电设备/重工业"/>
+                        <span class="childIndustryValueSpan">大型设备/机电设备/重工业</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="加工制造（原料加工/模具）"/>
+                        <span class="childIndustryValueSpan">加工制造（原料加工/模具）</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="仪器仪表及工业自动化"/>
+                        <span class="childIndustryValueSpan">仪器仪表及工业自动化</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="汽车/摩托车（制造/维护/配件/销售/服务/租赁）"/>
+                        <span class="childIndustryValueSpan">汽车/摩托车（制造/维护/配件/销售/服务/租赁）</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="办公用品及设备"/>
+                        <span class="childIndustryValueSpan">办公用品及设备</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="航空/航天研究与制造"/>
+                        <span class="childIndustryValueSpan">航空/航天研究与制造</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry">
+                	<div class="name">政府/非盈利机构</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="学术/科研"/>
+                        <span class="childIndustryValueSpan">学术/科研</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="政府/公共事业/非盈利机构"/>
+                        <span class="childIndustryValueSpan">政府/公共事业/非盈利机构</span>
+                    </div>
+                </div>
+                
+            </div>
+    		<div class="two">
+            	<div class="childIndustry">
+                	<div class="name">金融业</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="金融/银行/投资/基金/证券/期货"/>
+                        <span class="childIndustryValueSpan">金融/银行/投资/基金/证券/期货</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="保险"/>
+                        <span class="childIndustryValueSpan">保险</span>
+                    </div>
+                </div>
+            	
+                <div class="childIndustry">
+                	<div class="name">房地产/建筑业</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="房地产/建筑/建材/工程"/>
+                        <span class="childIndustryValueSpan">房地产/建筑/建材/工程</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="家居/室内设计/装饰装潢"/>
+                        <span class="childIndustryValueSpan">家居/室内设计/装饰装潢</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="物业管理/商业中心"/>
+                        <span class="childIndustryValueSpan">物业管理/商业中心</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry childIndustryOne">
+                	<div class="name">造纸及纸制品/印刷业</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="印刷/包装/造纸"/>
+                        <span class="childIndustryValueSpan">印刷/包装/造纸</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry childIndustryOne">
+                	<div class="name">交通运输仓储</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="交通/运输/物流"/>
+                        <span class="childIndustryValueSpan">交通/运输/物流</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry">
+                	<div class="name">制药医疗/生物/卫生保健</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="医药/生物工程"/>
+                        <span class="childIndustryValueSpan">医药/生物工程</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="医疗/护理/美容/保健/卫生服务"/>
+                        <span class="childIndustryValueSpan">医疗/护理/美容/保健/卫生服务</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="医疗设备/器械"/>
+                        <span class="childIndustryValueSpan">医疗设备/器械</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry childIndustryOne">
+                	<div class="name">教育</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="教育/培训/院校"/>
+                        <span class="childIndustryValueSpan">教育/培训/院校</span>
+                    </div>
+                </div>
+                
+                <div class="childIndustry">
+                	<div class="name">能源/电气/采掘/地质/石油加工</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="石油/石化/化工"/>
+                        <span class="childIndustryValueSpan">石油/石化/化工</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="能源/矿产/采掘/冶炼"/>
+                        <span class="childIndustryValueSpan">能源/矿产/采掘/冶炼</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="电气/电力/水利"/>
+                        <span class="childIndustryValueSpan">电气/电力/水利</span>
+                    </div>
+                </div>
+                
+            </div>
+    		<div class="three">
+            	<div class="childIndustry childIndustryThree">
+                	<div class="name">商业服务</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="专业服务(咨询/财会/法律等)"/>
+                        <span class="childIndustryValueSpan">专业服务(咨询/财会/法律等)</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="广告/会展/公关/市场推广"/>
+                        <span class="childIndustryValueSpan">广告/会展/公关/市场推广</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="中介服务"/>
+                        <span class="childIndustryValueSpan">中介服务</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="检验/检测/认证"/>
+                        <span class="childIndustryValueSpan">检验/检测/认证</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="会计/审计"/>
+                        <span class="childIndustryValueSpan">会计/审计</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="外包服务"/>
+                        <span class="childIndustryValueSpan">外包服务</span>
+                    </div>
+                </div>
+                
+                
+                <div class="childIndustry childIndustryThree">
+                	<div class="name">贸易/批发/零售业</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="快速消费品（食品/饮料/烟酒/日化）"/>
+                        <span class="childIndustryValueSpan">快速消费品（食品/饮料/烟酒/日化）</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="耐用消费品（服装服饰/纺织/皮革/家具/家电）"/>
+                        <span class="childIndustryValueSpan">耐用消费品（服装服饰/纺织/皮革/家具/家电）</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="贸易/进出口"/>
+                        <span class="childIndustryValueSpan">贸易/进出口</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="零售/批发"/>
+                        <span class="childIndustryValueSpan">零售/批发</span>
+                    </div>
+                </div>
+                
+                
+                <div class="childIndustry childIndustryThree">
+                	<div class="name">酒店/餐饮/旅游</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="酒店/餐饮"/>
+                        <span class="childIndustryValueSpan">酒店/餐饮</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="旅游/度假"/>
+                        <span class="childIndustryValueSpan">旅游/度假</span>
+                    </div>
+                </div>
+                
+                
+                <div class="childIndustry childIndustryThree">
+                	<div class="name">文化/体育/娱乐业</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="媒体/出版/影视/文化传播"/>
+                        <span class="childIndustryValueSpan">媒体/出版/影视/文化传播</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="娱乐/体育/休闲"/>
+                        <span class="childIndustryValueSpan">娱乐/体育/休闲</span>
+                    </div>
+                </div>
+                
+                
+                <div class="childIndustry childIndustryThree">
+                	<div class="name">农林牧渔/其他</div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="农/林/牧/渔"/>
+                        <span class="childIndustryValueSpan">农/林/牧/渔</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="跨领域经营"/>
+                        <span class="childIndustryValueSpan">跨领域经营</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="环保"/>
+                        <span class="childIndustryValueSpan">环保</span>
+                    </div>
+                	<div class="childIndustryValue">
+                    	<input type="checkbox"  class="childIndustryValueCheck" value="其它"/>
+                        <span class="childIndustryValueSpan">其它</span>
+                    </div>
+                </div>
+            
+            </div>
+    	</div>      
+                
+        <div class="divChoosed">
+        	<div class="divChoosedCha">已选行业</div>
+        	<ul class="choosedUl" id="choosedUl">
+            	
+            </ul>
+        
+        	<div class="divSubmit">
+                <input class="reset" type="button" value="取消"  onclick="cloosePopBox();"/>
+                <input class="sub" type="button" value="完成" onclick="submitPopBox();"/>
+            </div>
+        </div>
+            
+    
+ 	</form>     
+    </div>
+    
+</body>
+</html>

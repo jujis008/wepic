@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>33</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+     <script type="text/javascript" src="../../../public/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="attachment.css"/>
+    
+    
+    <style type="text/css">
+    .submit {
+    height: 100px;
+    left: 0;
+    position: relative;
+    text-align: left;
+    top: 0;
+    width: 1178px;
+    z-index: 100;
+}
+    
+.submit .inp {
+    position: absolute;
+    right: 38px;
+    top: 30px;
+}
+.submit .char {
+    color: #ADADAD;
+    font-family: "宋体";
+    font-size: 12px;
+    left: 160px;
+    position: relative;
+    top: 37px;
+    width: 500px;
+}
+.submit .editSelect {
+    left: 20px;
+    top: 26px;
+}
+.editSelect {
+    position: absolute;
+}
+#viewBelowHighestDegree {
+    overflow: hidden;
+    padding-right: 40px;
+}
+.viewBelow {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E8E8E6;
+    cursor: pointer;
+    height: 22px;
+    left: 0;
+    padding-left: 10px;
+    padding-top: 5px;
+    position: absolute;
+    top: 0;
+    width: 75px;
+}
+
+#selectHighestDegreeValue {
+    overflow: hidden;
+    width: 80px;
+}
+
+.viewBelowRight {
+    border-left: 1px solid #E4E8EB;
+    height: 16px;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    width: 30px;
+}
+
+.viewBelowRight i {
+    background: url("../../../back/pubimg/images/select_bi.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 10px;
+    left: 11px;
+    position: absolute;
+    top: 6px;
+    width: 10px;
+}
+#divSelectHighestDegreeValue {
+    max-height: 98px;
+    min-width: 125px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.belowValue {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E8E8E6;
+    cursor: pointer;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 28px;
+    width: 85px;
+}
+.belowValue .selectValueIn {
+    width: 120px;
+}
+.belowValue .selectValueIn {
+    color: #788F72;
+    cursor: pointer;
+    display: block;
+    height: 25px;
+    line-height: 22px;
+    padding-left: 10px;
+    width: 75px;
+}
+.submit .char .glz {
+    color: #ADADAD;
+    margin-left: 5px;
+    text-decoration: underline;
+}
+.submit .char .sp1, #divWorkLibUpLoad .submit .char .sp2 {
+    margin-left: 28px;
+}
+.submit .char .num {
+    color: #E92D00;
+    font-family: "黑体";
+    margin-right: 5px;
+}
+.submit .inp .inputup {
+    background: url("../../..//public/images/buttonGroup01.png") no-repeat scroll 0 -1072px rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #000000;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    margin-left: 12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+}
+
+    
+    .submit .inp .finished {
+    background: url("../../..//public/images/buttonGroup01.png") no-repeat scroll 0 -1168px rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height: 32px;
+    margin-left: 12px;
+    padding-bottom: 2px;
+    text-align: center;
+    width: 116px;
+}
+    
+    </style>
+    
+
+    
+    
+    
+</head>
+<body>
+<div class="wrapper">
+    <div class="controller">
+        <!--<span id="divStatus"></span>-->
+        <span id="spanButtonPlaceHolder"></span>
+    </div>
+    <div class="fieldset flash" id="fsUploadProgress"></div>
+    <!-- <span id="startUpload" style="display: none;"></span> -->
+
+</div>
+<div class="submit" style="z-index: 0;">
+        	
+            		<div id="divHighestDegree" class="editSelect">
+                    	<div id="viewBelowHighestDegree" onclick="showBelow('divSelectHighestDegreeValue')" class="viewBelow">
+                        	<div id="selectHighestDegreeValue"></div>
+                       		<div class="viewBelowRight"><i></i></div>    
+                    	</div>
+                           
+                    	<div style="display: none;" id="divSelectHighestDegreeValue" class="belowValue">
+                        	
+ 						</div>
+            		</div>
+              
+               
+               <div class="char">
+               		<a class="glz" href="javascript:">管理专辑</a>
+               		<span class="sp1">当前专辑作品数</span>
+                    <span class="num" id="totalPic" >0</span>张
+                    
+                    <span class="sp2">已发布</span>
+                    <span class="num" id="fabutotalPic">0</span>张
+                    <input type="hidden" value="25" id="fileLength">
+               </div>
+               
+               <div class="inp">
+               		<input type="button" value="开始上传" class="inputup" id="startUpload">
+					<input type="button" value="完成" class="finished" onclick="gotoNewPage()" />
+               </div>
+        </div>
+<script type="text/javascript" src="../../third-party/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="../../third-party/swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="../../third-party/swfupload/fileprogress.js"></script>
+<script type="text/javascript" src="callbacks.js"></script>
+<script type="text/javascript" src="fileTypeMaps.js"></script>
+<script type="text/javascript">
+     var filelength=parent.fileLength;
+     //alert(filelength);
+     //var sentType="";
+     //var path="";
+     //var filelength=25;
+    var swfupload,
+        filesList=[];
+    editor.setOpt({
+        fileFieldName:"upfile"
+    });
+    window.onload = function () {
+        var settings = {
+            upload_url:editor.options.fileUrl,           //附件上传服务器地址
+            file_post_name:editor.options.fileFieldName,      //向后台提交的表单名
+            flash_url:"../../third-party/swfupload/swfupload.swf",
+            flash9_url:"../../third-party/swfupload/swfupload_fp9.swf",
+            post_params:{"PHPSESSID":"<?php echo session_id(); ?>"}, //解决session丢失问题
+            file_size_limit:"100 MB",                                 //文件大小限制，此处仅是前端flash选择时候的限制，具体还需要和后端结合判断
+            file_types:"*.jpg;*.jpeg;*.png;*.gif;*.tiff;*.tif;*.psd;*.max;*.ai;*.cdr;*.eps",                                         //允许的扩展名，多个扩展名之间用分号隔开，支持*通配符
+            file_types_description:"All Files",                      //扩展名描述  ,*.png,*.gif,*.tiff,*.tif,*.psd,*.max,*.ai,*.cdr,*.eps
+            file_upload_limit:100,                                   //单次可同时上传的文件数目
+            file_queue_limit:filelength,                                      //队列中可同时上传的文件数目
+            custom_settings:{                                         //自定义设置，用户可在此向服务器传递自定义变量
+                progressTarget:"fsUploadProgress",
+                startUploadId:"startUpload"
+            },
+            debug:false,
+
+            // 按钮设置
+            button_image_url:"../../themes/default/images/filescan.png",
+            button_width:"100",
+            button_height:"25",
+            button_placeholder_id:"spanButtonPlaceHolder",
+            button_text:'<span class="theFont" style="color:red">选择文件</span>',
+            button_text_style:".theFont {font-family:微软雅黑;font-size:12px;color:#FFFFFF}",
+            button_text_left_padding:20,
+            button_text_top_padding:2,
+
+            // 所有回调函数 in handlers.jsSSSSS
+            swfupload_preload_handler:preLoad,
+            swfupload_load_failed_handler:loadFailed,
+            file_queued_handler:fileQueued,
+            file_queue_error_handler:fileQueueError,
+            //选择文件完成回调
+            file_dialog_complete_handler:function(numFilesSelected, numFilesQueued) {
+                var me = this;        //此处的this是swfupload对象
+                //me.addPostParam("publishSpecialCatId",));
+              
+                if (numFilesQueued > 0) {
+                	   var numb=$("#fsUploadProgress").find(".progressWrapper").length;
+                	    // alert(numFilesQueued);
+                	   $('#yixuanze', parent.document).html(numb);
+                	   $('#kexuanze', parent.document).html(filelength-numb);
+                	   
+                    dialog.buttons[0].setDisabled(true);
+                    var start = $G(this.customSettings.startUploadId);
+                    start.style.display = "";
+                    start.onclick = function(){
+                        me.startUpload();
+                     
+                       // start.style.display = "none";
+                    }
+                }
+            },
+            upload_start_handler:uploadStart,
+            upload_progress_handler:uploadProgress,
+            upload_error_handler:uploadError,
+            upload_success_handler:function (file, serverData) {
+                try{
+                    var info = eval("("+serverData+")");
+                }catch(e){}
+                var progress = new FileProgress(file, this.customSettings.progressTarget);
+                if(info.state=="SUCCESS"){
+                    progress.setComplete();
+                    progress.setStatus("<span style='color: #0b0'>"+lang.uploadSuccess+"</span>");
+                    filesList.push({url:info.url,type:info.fileType,original:info.original});
+                    progress.toggleCancel(true,this,lang.delSuccessFile);
+                    //alert(info.publishId)
+                   if(parent.sentType=="searchByTermfromMylibforPublish"){
+                       
+                      top.location.href=parent.path+"/publish!findEditePublish.do?id="+info.publishId
+
+
+                       }
+
+
+
+
+
+
+
+                     }else{
+                    progress.setError();
+                    progress.setStatus(info.state);
+                    progress.toggleCancel(true,this,lang.delFailSaveFile);
+                }
+
+            },
+            //上传完成回调
+            upload_complete_handler:uploadComplete,
+            //队列完成回调
+            queue_complete_handler:function(numFilesUploaded){
+                dialog.buttons[0].setDisabled(false);
+//                var status = $G("divStatus");
+//                var num = status.innerHTML.match(/\d+/g);
+//                status.innerHTML = ((num && num[0] ?parseInt(num[0]):0) + numFilesUploaded) +lang.statusPrompt;
+            }
+        };
+        swfupload = new SWFUpload( settings );
+        //点击OK按钮
+        dialog.onok = function(){
+            var map = fileTypeMaps,
+                str="";
+            for(var i=0,ci;ci=filesList[i++];){
+                var src = editor.options.UEDITOR_HOME_URL + "dialogs/attachment/fileTypeImages/"+(map[ci.type]||"icon_default.png");
+                str += "<p style='line-height: 16px;'><img src='"+ src + "' _src='"+src+"' />" +
+                       "<a href='"+editor.options.filePath + ci.url+"'>" + ci.original + "</a></p>";
+            }
+            editor.execCommand("insertHTML",str);
+            swfupload.destroy();
+        };
+        dialog.oncancel = function(){
+            swfupload.destroy();
+        }
+
+        $("#startUpload").removeAttr("style");
+        inits();
+    };
+    function showBelow(showDiv){
+    	$("#"+showDiv).show();
+    	$("#"+showDiv).parent().parent().css("z-index","200");
+    	}
+
+    function achieveBelow(bolewDiv,showValue){
+    	var bolewDiv=document.getElementById(bolewDiv);
+    	var bolewDivSpan=bolewDiv.getElementsByTagName("span");
+    	/*alert("11");*/
+    				
+    	for(var i=0;i<bolewDivSpan.length;i++){
+    		   bolewDivSpan[i].onclick=function (){
+    			/*document.getElementById(showValue).innerHTML = this.innerHTML;*/
+    			getImgSUnm($(this).attr("id"));
+    			swfupload.addPostParam("publishSpecialCatId",$(this).attr("id"));
+    			
+    			$("#"+showValue).html(this.innerHTML);
+    			$(bolewDiv).hide();
+    			$(bolewDiv).parent().parent().css("z-index","0");
+    			};
+    		}
+    }
+
+   function  inits(){
+        $("#selectHighestDegreeValue").html("默认专辑");
+    	$.ajax({
+  	      type:"Post",
+  		  url: "specialcat_getpublishSpecialCats.do",
+  		  data:"",		
+  		  success : function(data) {
+  	  		  
+  	  	  var list=data.publishSpecialCats;
+  	  	  var html='';
+  	  	  for(var i=0;i<list.length;i++){
+  	  	  	  publishCat=list[i];
+  	  		html+='<span class="selectValueIn" id='+publishCat.id+'>'+publishCat.name+'</span>';
+  	  		//alert(publishCat.type=="isDefault");
+  	  		if(publishCat.type=="isDefault"){
+
+  	  		   swfupload.addPostParam("publishSpecialCatId",publishCat.id);
+
+  	  	  		}
+  	  	  	  } 
+
+  	  	    $("#divSelectHighestDegreeValue").html(html);
+  	  	    achieveBelow("divSelectHighestDegreeValue","selectHighestDegreeValue");
+  	  		   
+  		  }
+    	});  	
+        }
+
+
+    function getImgSUnm(id){
+
+    	$.ajax({
+    	      type:"Post",
+    		  url: "jsonpublish_findbyCountBySpecialCat.do",
+    		  data:"publishSpecialCatId="+id,		
+    		  success : function(data) {
+              var c=data.count;
+    	  	$("#totalPic").html(c[0]);
+    	  	$("#fabutotalPic").html(c[1]);  
+    	  	
+    	  		   
+    		  }
+      	});
+
+
+
+
+        }
+
+
+
+    function gotoNewPage(){
+        //  alert("ssssssss");
+         window.top.location.href="publish!findAllMyLib.do"
+
+
+
+
+
+         }
+    
+</script>
+
+
+
+</body>
+</html>

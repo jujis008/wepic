@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class name="com.wetuo.wepic.core.beans.LoginInfo" table="loginfo">
+	
+	<id name="id" type="java.lang.Integer" column="id">
+		<generator class="native" />
+	</id>
+	<property name="ipAddress" type="java.lang.String" column="ipAddress" length="248"/>
+	<property  name="accessTime" type="java.util.Date" column="accessTime" length="248"/>
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

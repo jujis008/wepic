@@ -1,0 +1,33 @@
+package com.wetuo.wepic.core.dao ;
+ 
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.criterion.DetachedCriteria;
+
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.core.beans.AccountWithdraw;
+import com.wetuo.wepic.core.beans.User;
+ 
+public interface AccountWithdrawDao {
+ 	
+ 	List<AccountWithdraw> findAll();
+ 	List<AccountWithdraw> findPart(String strFields,String[] strArrValues);
+ 	public List<AccountWithdraw> findByAccount(int id);
+	public Pager list(int pageSize, int pageNo)  ;
+	public Pager list(String username, int pageSize, int pageNo) ;
+	public Pager list(Map<String,Object>  mapSqlParam, int pageSize, int pageNo) ;
+   	public AccountWithdraw select(Integer id);
+	public Integer insert(AccountWithdraw record);
+	public boolean update(AccountWithdraw record);
+   	public boolean delete(AccountWithdraw record);
+	public boolean delete(Integer id) ;
+	//public boolean updateAccount(Account account);
+	
+	public Pager List(Integer userId,int pageSize,int pageNo);
+	public Pager applayList(int pageSize, int pageNo,int flag);
+	///////////////////////////////wepic2.0//////////////////////////////
+	public Pager findbyDetachedCriteria(DetachedCriteria detachedCriteria,int pageNo,int pageSize);
+	public List find(DetachedCriteria detachedCriteria);
+ 
+}//end class

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+	name="com.wetuo.wepic.publish.beans.PublishCat_Publish"
+	table="goodChance_publish_publishcat_publish"
+>
+	
+	<id
+		name="id"
+		type="java.lang.Integer"
+		column="id"
+	>
+		<generator class="native" />
+	</id>
+	
+	
+	<many-to-one name="publishCat" 
+		column="publishCat" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.PublishCat" 
+		foreign-key="FK_MEM_PublishCat" 
+		index="IDX_MEM_PublishCat"
+		  lazy="false"/> 
+	
+	<many-to-one name="publish" 
+		column="publish" 
+		not-null="true" 
+		class="com.wetuo.wepic.publish.beans.Publish" 
+		foreign-key="FK_MEM_Publish" 
+		index="IDX_MEM_Publish"
+		 lazy="false"/> 
+	
+	<property name="relation" column="relation" /> 
+	
+<!-- @#$% -->
+</class>
+</hibernate-mapping>

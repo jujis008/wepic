@@ -1,0 +1,114 @@
+package com.wetuo.wepic.deal.service ;
+ 
+import java.util.*;
+
+import org.hibernate.criterion.DetachedCriteria;
+
+import com.wetuo.wepic.deal.beans.Bid;
+import com.wetuo.wepic.deal.beans.BidAimPerson;
+import com.wetuo.wepic.deal.beans.BidResponseInvited;
+import com.wetuo.wepic.deal.dao.BidResponseInvitedDao;
+import com.wetuo.wepic.common.hibernate.Pager;
+import com.wetuo.wepic.core.beans.User;
+ 
+public class BidResponseInvitedServiceImpl implements BidResponseInvitedService {
+	BidResponseInvitedDao domainDao;
+	BidAimPersonService aimPersonService=null;
+	
+	public BidAimPersonService getAimPersonService() {
+		return aimPersonService;
+	}
+	public void setAimPersonService(BidAimPersonService aimPersonService) {
+		this.aimPersonService = aimPersonService;
+	}
+	public BidResponseInvitedDao getBidResponseInvitedDao() {
+		return domainDao;
+	}//
+	public void setBidResponseInvitedDao(BidResponseInvitedDao  domainDao) {
+		this.domainDao = domainDao;
+	}//
+	
+	//////////////common crud////////////////
+	public List<BidResponseInvited> findAll(DetachedCriteria detachedCriteria){ 
+		return domainDao.findAll(detachedCriteria);
+	}
+	
+	public List<BidResponseInvited> findPart(String strFields, String[] arrStrValues){ 
+		return domainDao.findPart(strFields,arrStrValues);
+	}
+	
+	public Pager list(int pageSize, int pageNo)  {
+		return domainDao.list(pageSize,pageNo);
+	}//end list()
+	
+	public Pager list(String username, int pageSize, int pageNo)  {
+		return domainDao.list(username,pageSize,pageNo);
+	}//end list()
+	
+	public Pager list(Map<String,Object> mapSqlParam, int pageSize, int pageNo)  {
+		return domainDao.list(mapSqlParam,pageSize,pageNo);
+	}//end list()
+	
+	/////insert///
+	public String insert(BidResponseInvited record) {
+		return domainDao.insert(record) ;
+	}//end insert()
+			
+	/////delete///
+	public boolean delete(BidResponseInvited record)  {
+		return domainDao.delete(record);
+	}//end delete()
+			
+	public boolean delete(String id)  {
+		return domainDao.delete(id);
+	}//end delete()
+	
+	/////update///
+	public boolean update(BidResponseInvited record)  {
+		return domainDao.update(record);
+	}//end update()
+			
+	/////select///
+	public BidResponseInvited select(String id)  {
+		return domainDao.select(id);
+	}//end select()
+	public Pager getReplyPhoto(String aimPersonId, int pageSize, int pageNo,String tags,String username) {
+		// TODO Auto-generated method stub
+		return domainDao.getReplyPhoto( aimPersonId,pageSize,pageNo,tags, username);
+	}
+	public List listConfirm(User user, BidAimPerson aimPerson, int pageSize,
+			int pageNo) {
+		// TODO Auto-generated method stub
+		return domainDao.listConfirm(user, aimPerson, pageSize, pageNo);
+	}
+	public Pager listInvited(Map<String, Object> mapSqlParam, int pageSize,
+			int pageNo) {
+		// TODO Auto-generated method stub
+		return domainDao.listInvited(mapSqlParam, pageSize, pageNo);
+	}
+	public List<BidResponseInvited> getOrderConfirm( String aimPersonId){
+		return domainDao.getOrderConfirm(aimPersonId);
+		
+	}
+	public List getConfrim(User user, String aimPerson, int pageSize, int pageNo) {
+		BidAimPerson person=aimPersonService.select(aimPerson);
+		
+		
+		 return domainDao.listConfirm(user, person, pageSize, pageNo);
+	}
+	public List getAllConfrim(Bid bid, int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		  return domainDao.listAllConfirm(bid,pageSize, pageNo);
+	}
+	public Pager getReplyPhotoFratend(String aimPersonId, int pageSize,
+			int pageNo, String username) {
+		// TODO Auto-generated method stub
+		return domainDao.getReplyPhotoFratend(aimPersonId, pageSize, pageNo, username);
+	}
+	public Pager findtousuList(int pageSize, int pageNo) {
+		// TODO Auto-generated method stub
+		return domainDao.findtousuList(pageSize, pageNo);
+	}
+	
+	
+}//end class
